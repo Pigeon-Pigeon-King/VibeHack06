@@ -11,6 +11,8 @@ import { buildHistoryHall } from './history-environments';
 import { buildFrontGate } from './frontgate-environment';
 import { buildTransfer } from './transfer-environment';
 import { buildFlank } from './flank-environment';
+import { buildEscort } from './escort-environment';
+import { buildRelief } from './relief-environment';
 
 
 function addJupiter(root: Group): Group {
@@ -192,6 +194,8 @@ export function buildEnvironment(scenario: ScenarioId): EnvironmentModel {
   else if (scenario === 'frontgate') dynamics = buildFrontGate(kit);
   else if (scenario === 'transfer') dynamics = buildTransfer(kit);
   else if (scenario === 'flank') dynamics = buildFlank(kit);
+  else if (scenario === 'escort') dynamics = buildEscort(kit);
+  else if (scenario === 'relief') dynamics = buildRelief(kit);
   else if (scenario === 'nightshift') dynamics = buildNightShift(kit);
   else if (scenario === 'workers') dynamics = buildWorkersSector(kit);
   else {

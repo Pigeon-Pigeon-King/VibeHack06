@@ -9,7 +9,7 @@
 - 患者车具有 0.9 × 1.15 × 2.4 米床体碰撞、1.3米导航净空与同向排队间距；模型含患者和附着推车者。普通人物仍不互相挤压，推车者没有独立全身碰撞；这不是完整拥挤和接触模拟。
 - S05 的周延私有知识单独携带，不自动授予闻川。S06 新知识由联络员触发；S07 完整报告在真实分流完成之后发送。重开本段不会保留本段完成事实。
 
-`npm test -- --reporter=default --reporter=json --outputFile=artifacts/test-results.json`：**91 项通过、0 失败，10 文件**，见 [完整报告](test-results.json)，SHA-256 `7fdaf0a82d39a74a0f838e41877d689e46114223c3b676a71b2fa51b041bb3ae`。
+`npm test -- --reporter=default --reporter=json --outputFile=artifacts/test-results.json`：**91 项通过、0 失败，10 文件**，见 [完整报告](transfer-test-results.json)，SHA-256 `7fdaf0a82d39a74a0f838e41877d689e46114223c3b676a71b2fa51b041bb3ae`。
 
 | 测试文件 | 数量 | 覆盖 |
 | --- | ---: | --- |
@@ -54,7 +54,7 @@ S06 本轮操作控制台 error／warn 为空。局部观察约56—62 FPS：S06
 
 ## 构建与下一步
 
-类型、生产构建、Windows x64便携打包及包内容核对通过，见 [构建清单](build-manifest.json)。主 JS 约5.10MB，gzip约1.88MB，构建有单块体积提示；尚未做目标 Windows 加载与长时性能验证。Windows运行为 **NOT_RUN**，并非安装器或签名成品。
+类型、生产构建、Windows x64便携打包及包内容核对通过，见 [构建清单](transfer-build-manifest.json)。主 JS 约5.10MB，gzip约1.88MB，构建有单块体积提示；尚未做目标 Windows 加载与长时性能验证。Windows运行为 **NOT_RUN**，并非安装器或签名成品。
 
 备用工作树代码与验证提交 `6a9cd89` 已 fast-forward 合入 main。主线重新构建并打包，`sourceSha256` 与 `distSha256` 两份映射均与已测试工作树逐项完全相同，生产 JS 中不含章节独立检查菜单。继续 S08 护送、S09接防成长、S10协作救援、S11医疗视点、S12如实报告，并补先前未完成的浏览器完整首通。正式资产沿既定概念图先行流程生产，成年闻川概念不重复生成；Tripo尚无已提交模型任务。
 

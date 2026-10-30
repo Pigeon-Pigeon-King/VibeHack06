@@ -5,10 +5,14 @@ import { HISTORY } from '../content/history-layout';
 import { FRONTGATE } from '../content/frontgate-layout';
 import { TRANSFER } from '../content/transfer-layout';
 import { FLANK } from '../content/flank-layout';
+import { ESCORT } from '../content/escort-layout';
+import { RELIEF } from '../content/relief-layout';
 import { openingObjective, populateOpening, updateOpening } from './Opening';
 import { frontgateObjective, populateFrontgate, updateFrontgate } from './Frontgate';
 import { populateTransfer, transferObjective, updateTransfer } from './Transfer';
 import { flankObjective, populateFlank, updateFlank } from './Flank';
+import { escortObjective, populateEscort, updateEscort } from './Escort';
+import { populateRelief, reliefObjective, updateRelief } from './Relief';
 import { Physics, FIXED_DT } from '../runtime/Physics';
 import { Random } from '../runtime/random';
 import { Ballistics } from '../combat/Ballistics';
@@ -59,7 +63,8 @@ export class Simulation {
     this.physics = new Physics(solids);
     this.navBounds = scenario === 'nightshift' ? NIGHT.bounds : scenario === 'workers' ? WORKERS.bounds
       : scenario === 'childhood' || scenario === 'mainhall' ? HISTORY.bounds : scenario === 'frontgate' ? FRONTGATE.bounds
-      : scenario === 'transfer' ? TRANSFER.bounds : scenario === 'flank' ? FLANK.bounds : undefined;
+      : scenario === 'transfer' ? TRANSFER.bounds : scenario === 'flank' ? FLANK.bounds
+      : scenario === 'escort' ? ESCORT.bounds : scenario === 'relief' ? RELIEF.bounds : undefined;
     this.navigation = new Navigation(solids, this.navBounds);
     this.cartNavigation = new Navigation(solids, this.navBounds, 1.3);
     this.ballistics = new Ballistics((a, b, except) => this.physics.trace(a, b, except));
@@ -67,8 +72,8 @@ export class Simulation {
     this.player = { position: [...layout.spawn], yaw: layout.yaw, pitch: 0, health: 100,
       ammo: scenario === 'nightshift' || scenario === 'childhood' ? 0 : 25, reserve: scenario === 'nightshift' || scenario === 'childhood' ? 0 : 150, height: scenario === 'prologue' || scenario === 'childhood' ? 1.1 : 1.8, crouched: false,
       reload: 0, cooldown: 0, hurtAt: -10, walk: 0, recoil: 0, ads: false,
-      name: scenario === 'prologue' || scenario === 'childhood' ? '陆闻川 · 九岁' : scenario === 'mainhall' ? '周延 · 二十三岁' : scenario === 'northgate' || scenario === 'frontgate' || scenario === 'flank' ? '周延 · 三十三岁' : '陆闻川 · 十九岁' };
-    this.mission = { scenario, phase: 0, elapsed: 0, phaseTime: 0, control: scenario === 'northgate' || scenario === 'frontgate' || scenario === 'flank' ? 'combat' : 'work',
+      name: scenario === 'prologue' || scenario === 'childhood' ? '陆闻川 · 九岁' : scenario === 'mainhall' ? '周延 · 二十三岁' : scenario === 'northgate' || scenario === 'frontgate' || scenario === 'flank' || scenario === 'relief' ? '周延 · 三十三岁' : '陆闻川 · 十九岁' };
+    this.mission = { scenario, phase: 0, elapsed: 0, phaseTime: 0, control: scenario === 'northgate' || scenario === 'frontgate' || scenario === 'flank' || scenario === 'relief' ? 'combat' : 'work',
       facts: [...new Set(priorFacts)], complete: false, failed: false, checkpointLabel: '进入区域',
       subtitle: '', speaker: '', subtitleUntil: 0, spawned: 0, nextSpawn: 12 };
     if (saved) {
@@ -77,7 +82,7 @@ export class Simulation {
       this.checkpoint = clone(saved);
     } else this.populate();
     this.physics.add('player', this.player.position, this.player.height);
-    for (const actor of this.actors) if (!actor.down) {
+    for (const actor of this.actors) if (!actor.down && !(scenario === 'escort' && actor.role === 'enemy' && actor.safe)) {
       if (actor.role === 'cart') this.physics.addCart(actor.id, actor.position, actor.yaw);
       else this.physics.add(actor.id, actor.position, actor.role === 'child' ? 1.1 : 1.8);
     }
@@ -92,6 +97,8 @@ export class Simulation {
     if (this.scenario === 'frontgate') { populateFrontgate(this); return; }
     if (this.scenario === 'transfer') { populateTransfer(this); return; }
     if (this.scenario === 'flank') { populateFlank(this); return; }
+    if (this.scenario === 'escort') { populateEscort(this); return; }
+    if (this.scenario === 'relief') { populateRelief(this); return; }
     const l = LAYOUT[this.scenario];
     if (this.scenario === 'nightshift') {
       this.createActor('xu', '许岚', 'medic', NIGHT.xu);
@@ -151,7 +158,7 @@ export class Simulation {
     if (clearPaths) { for (const actor of this.actors) actor.path = []; this.pathRetry.clear(); }
   }
   spawnChapterGroup(group: string, positions: Vec3[], goals?: Vec3[]): void {
-    const budget = group === 'E04' || group === 'E05' ? 44 : group === 'E02' ? 20 : 18;
+    const budget = group === 'E04' || group === 'E05' || group === 'E08' ? 44 : group === 'E06' ? 32 : group === 'E07' ? 38 : group === 'E02' ? 20 : 18;
     const used = this.actors.filter(actor => actor.id.startsWith(`enemy-${group}-`)).length;
     const count = Math.min(positions.length, Math.max(0, 8 - this.aliveEnemies.length), Math.max(0, budget - used));
     for (let i = 0; i < count; i++) {
@@ -182,7 +189,7 @@ export class Simulation {
 
   get workers(): Actor[] { return this.actors.filter(a => a.role === 'worker'); }
   get safeCount(): number { return this.workers.filter(a => a.safe).length; }
-  get aliveEnemies(): Actor[] { return this.actors.filter(a => a.role === 'enemy' && !a.down); }
+  get aliveEnemies(): Actor[] { return this.actors.filter(a => a.role === 'enemy' && !a.down && !(this.scenario === 'escort' && a.safe)); }
   get playerEye(): Vec3 { return eye(this.player.position, this.player.height); }
 
   snapshot(): Snapshot {
@@ -216,7 +223,7 @@ export class Simulation {
       if (!p.reload) { const count = Math.min(25 - p.ammo, p.reserve); p.ammo += count; p.reserve -= count; }
     }
     const isChild = this.scenario === 'childhood' || this.scenario === 'prologue' && m.phase < 2;
-    const desiredHeight = isChild ? 1.1 : this.scenario === 'mainhall' && m.phase >= 4 ? 0.65 : (intent.crouch ? 1.2 : 1.8);
+    const desiredHeight = isChild || this.scenario === 'relief' && m.phase === 7 ? 1.1 : this.scenario === 'mainhall' && m.phase >= 4 ? 0.65 : (intent.crouch ? 1.2 : 1.8);
     if (this.physics.setHeight('player', desiredHeight)) p.height = desiredHeight;
     p.crouched = !isChild && p.height < 1.5;
     const speed = m.control === 'cooperative' ? 1.5 : isChild ? 1.55 : p.crouched ? 1.35 : intent.sprint && !p.ads ? 6.3 : p.ads ? 1.65 : 2.1;
@@ -263,6 +270,7 @@ export class Simulation {
         const friendlyShot = playerShot || this.actors.some(source => source.id === projectile.owner && source.role === 'ally');
         if (actor?.role === 'enemy' && friendlyShot) {
           actor.health -= projectile.damage;
+          if (!playerShot && this.scenario === 'relief' && this.has('relief-handover-complete')) this.fact('relief-cover-hit');
           if (playerShot) { this.hits++; this.hitFlash = 1; this.events.push({ type: 'hit' }); }
           if (actor.health <= 0) { actor.down = true; actor.aiming = false; this.physics.remove(actor.id); if (playerShot) this.kills++; }
         } else if (actor && actor.role !== 'enemy' && projectile.owner === 'player') {
@@ -284,7 +292,7 @@ export class Simulation {
     const closest = this.aliveEnemies.slice().sort((a, b) => distance(a.position, this.player.position) - distance(b.position, this.player.position)).slice(0, 2);
     for (const a of this.actors) {
       if (a.down || !this.physics.bodies.has(a.id)) continue;
-      let speed = a.role === 'enemy' ? 1.5 : a.role === 'cart' ? 1.25 : 2.1;
+      let speed = a.role === 'enemy' ? 1.5 : a.role === 'cart' ? this.scenario === 'escort' ? 1.7 : 1.25 : 2.1;
       if (this.scenario === 'transfer' && a.id === 'xu') speed = 1.2;
       a.cooldown = Math.max(0, a.cooldown - dt);
       a.aiming = false;
@@ -306,7 +314,9 @@ export class Simulation {
         } else a.aimTime = 0;
       }
       if (a.role === 'worker' && a.released && !a.safe && this.workerThreatened(a)) speed = 0;
-      if (a.role === 'ally' && a.id !== 'meng' && !a.goals.length && m.control === 'combat' && (this.scenario === 'mainhall' || this.scenario === 'frontgate' || this.scenario === 'flank')) {
+      const covering = this.scenario === 'relief' && this.has('relief-handover-complete') && a.id !== 'zheng';
+      if (a.role === 'ally' && (a.id !== 'meng' || this.scenario === 'escort' || this.scenario === 'relief') && !a.goals.length
+        && (m.control === 'combat' || covering) && (this.scenario === 'mainhall' || this.scenario === 'frontgate' || this.scenario === 'flank' || this.scenario === 'escort' || this.scenario === 'relief')) {
         const target = this.aliveEnemies.find(enemy => distance(a.position, enemy.position) < 48
           && !this.physics.trace(eye(a.position), eye(enemy.position), a.id, true));
         if (target) {
@@ -317,27 +327,35 @@ export class Simulation {
               to[1] - from[1], to[2] - from[2] + this.random.between(-0.8, 0.8)], 17, 420);
             a.cooldown = this.random.between(1.6, 2.8);
             this.events.push({ type: 'shot', position: from });
+            if (covering) this.fact('relief-cover-fired');
           }
         }
       }
       let vx = 0, vz = 0;
       if (a.goals.length && speed) {
         const goal = a.goals[0];
-        if (distance(a.position, goal) < 0.85) { a.goals.shift(); a.path = []; }
+        const preciseDock = this.scenario === 'escort' && a.role !== 'enemy';
+        const tolerance = preciseDock ? 0.008 : this.scenario === 'relief' && a.id === 'zheng' && m.phase >= 6 ? 0.06 : 0.85;
+        if (distance(a.position, goal) < tolerance) { a.goals.shift(); a.path = []; }
         else {
           // The short stepped walkway has authored successive support points.
           // Its walkers follow those through actual physics, not the ground-only
           // navigation grid. Carts use their own full-width clearance grid.
-          const authored = this.scenario === 'flank' && (a.id.startsWith('walker-') || a.role === 'worker');
+          const authored = this.scenario === 'flank' && (a.id.startsWith('walker-') || a.role === 'worker')
+            || this.scenario === 'relief' && a.id === 'zheng' && m.phase >= 6;
+          // Preserve the authored berth instead of rounding it to the nav grid.
+          // The short final approach still goes through the full body controller.
+          if (preciseDock && distance(a.position, goal) < 1.4) a.path = [[...goal]];
           if (!a.path.length && m.elapsed >= (this.pathRetry.get(a.id) ?? 0)) {
             a.path = authored ? [[...goal]] : (a.role === 'cart' ? this.cartNavigation : this.navigation).path(a.position, goal);
             this.pathRetry.set(a.id, a.path.length ? 0 : m.elapsed + 1);
           }
-          while (a.path.length && distance(a.position, a.path[0]) < 0.35) a.path.shift();
+          while (a.path.length && distance(a.position, a.path[0]) < Math.min(0.35, tolerance)) a.path.shift();
           const next = a.path[0];
           if (next) {
             const dx = next[0] - a.position[0], dz = next[2] - a.position[2], len = Math.hypot(dx, dz);
-            vx = dx / len * speed; vz = dz / len * speed;
+            const travelSpeed = Math.min(speed, len / dt);
+            vx = dx / len * travelSpeed; vz = dz / len * travelSpeed;
             a.yaw = Math.atan2(vx, vz); a.walk += dt * speed * 4;
           }
         }
@@ -378,6 +396,8 @@ export class Simulation {
     if (this.scenario === 'frontgate') { updateFrontgate(this, input); return; }
     if (this.scenario === 'transfer') { updateTransfer(this, input); return; }
     if (this.scenario === 'flank') { updateFlank(this, input); return; }
+    if (this.scenario === 'escort') { updateEscort(this, input); return; }
+    if (this.scenario === 'relief') { updateRelief(this, input); return; }
     if (this.scenario === 'nightshift') this.updateNight(input);
     else if (this.scenario === 'workers') this.updateWorkers(input);
     else if (this.scenario === 'northgate') {
@@ -563,6 +583,8 @@ export class Simulation {
   }
 
   get objective(): { phase: string; text: string; detail: string; point: Vec3; interaction: string } {
+    if (this.scenario === 'escort') return escortObjective(this);
+    if (this.scenario === 'relief') return reliefObjective(this);
     if (this.scenario === 'childhood' || this.scenario === 'mainhall') return openingObjective(this);
     if (this.scenario === 'frontgate') return frontgateObjective(this);
     if (this.scenario === 'transfer') return transferObjective(this);

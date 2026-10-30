@@ -1,0 +1,19 @@
+{
+  "version": 1,
+  "runId": "escort-relief-native-final-2026-10-31",
+  "mode": "desktop",
+  "state": null,
+  "method": "cua_repl native screenshot and visible input",
+  "viewport": {
+    "width": 65536,
+    "height": 4292542531
+  },
+  "screenshot": "artifacts/escort-empty-cart-retained.png",
+  "sha256": "859ef155c8372bd5bb064c7d1c4a72699df765a3d238f077f311e1c6fbc54803",
+  "observedPhase": 12,
+  "origin": "restored real public-Intent replay checkpoint; not a from-start manual completion",
+  "qaBundle": "index-BIY-lMuU.js",
+  "standaloneInspector": "NOT_RUN",
+  "namedStateHook": "NOT_RUN",
+  "browserErrorsObserved": []
+}

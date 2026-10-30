@@ -23,6 +23,7 @@ for (const file of [...files('dist'), ...files('desktop')]) {
 }
 const embedded = JSON.parse(extractFile(archive, 'package.json'));
 assert.equal(embedded.main, 'desktop/main.cjs');
+assert.equal(embedded.version, JSON.parse(read('package.json')).version);
 const executable = read(`${packageDir}/ReturnToGanymede.exe`);
 assert.equal(executable.toString('ascii', 0, 2), 'MZ');
 const pe = executable.readUInt32LE(0x3c);
@@ -34,7 +35,7 @@ assert.equal(report.numFailedTests, 0);
 const source = [...files('src'), ...files('desktop'), ...files('scripts'), ...files('tests'),
   'index.html', 'package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts'].sort();
 const manifest = {
-  candidate: 'transfer-preview-2026-10-31', recordedAt: new Date().toISOString(), node: process.version,
+  candidate: 'escort-relief-preview-2026-10-31', recordedAt: new Date().toISOString(), node: process.version,
   target: 'Windows x64 portable directory', entry: `${packageDir}/ReturnToGanymede.exe`,
   runtimeVerifiedOnWindows: false,
   packageRoots: top,

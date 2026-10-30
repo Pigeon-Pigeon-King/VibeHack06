@@ -1,0 +1,18 @@
+{
+  "kind": "public-intent-replay-checkpoint",
+  "sourceTest": "tests/relief-paths.test.ts",
+  "sourceCase": "physically hands over the posts, crosses under allied fire and accepts care; natural/skip endings converge",
+  "replay": {
+    "skip": false,
+    "restore": false,
+    "firstPhaseEntry": true
+  },
+  "artifact": "relief-care.json",
+  "slot": "relief",
+  "scenario": "relief",
+  "phase": 7,
+  "elapsed": 122.21666666666101,
+  "phaseTime": 0,
+  "sha256": "94cfcffd812c31297ba609340c43af784b352c7c600c40134dac391407d7f80d",
+  "note": "真实公开输入回放到达的检查点；供恢复后的局部视觉观察，不代表人工完整路线通关。"
+}

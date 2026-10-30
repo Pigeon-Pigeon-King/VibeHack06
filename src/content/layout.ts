@@ -4,8 +4,20 @@ import { HISTORY } from './history-layout';
 import { FRONTGATE } from './frontgate-layout';
 import { TRANSFER } from './transfer-layout';
 import { FLANK } from './flank-layout';
+import { ESCORT } from './escort-layout';
+import { RELIEF } from './relief-layout';
 
 export const LAYOUT = {
+  escort: {
+    name: '通路 · 留下护送', spawn: ESCORT.spawn, yaw: 0,
+    terminal: ESCORT.reception, post: ESCORT.cargo, exit: ESCORT.exit, safe: ESCORT.arrival,
+    workerSpawns: [] as Vec3[], enemySpawns: ESCORT.enemyEntries[0],
+  },
+  relief: {
+    name: '下一班 · 接受换班', spawn: RELIEF.spawn, yaw: 0,
+    terminal: RELIEF.entryHold, post: RELIEF.post, exit: RELIEF.exit, safe: RELIEF.techSafe,
+    workerSpawns: RELIEF.techSpawns, enemySpawns: RELIEF.enemyEntries[0],
+  },
   transfer: {
     name: '占领区 · 转接门与争执', spawn: TRANSFER.spawn, yaw: Math.PI,
     terminal: TRANSFER.panel, post: TRANSFER.equipment, exit: TRANSFER.exit, safe: TRANSFER.xuSafe,

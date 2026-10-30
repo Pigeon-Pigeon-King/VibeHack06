@@ -1,0 +1,200 @@
+
+> return-to-ganymede@0.5.0 check:escort
+> vitest run --config scripts/escort-checks/vitest.config.ts --reporter=default --reporter=json --outputFile=artifacts/escort-check-results.json
+
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+stdout | scripts/escort-checks/scenes.check.ts > S08 full patient boxes follow all three legs, both bridges and separate parking slots
+S08 full cart geometry route {
+  i: 0,
+  leg: 0,
+  seconds: 56.13333333333399,
+  travel: 93.91177171617923,
+  maxY: 0.010030794143676802,
+  minY: -1.1920928910669204e-8
+}
+S08 full cart geometry route {
+  i: 0,
+  leg: 1,
+  seconds: 76.71666666666626,
+  travel: 128.000619800274,
+  maxY: 0.019855368137359664,
+  minY: 0.0005148530006409135
+}
+S08 full cart geometry route {
+  i: 0,
+  leg: 2,
+  seconds: 101.45000000000029,
+  travel: 168.45287229703231,
+  maxY: 0.025405514240264937,
+  minY: -0.00015009641647334426
+}
+S08 full cart geometry route {
+  i: 1,
+  leg: 0,
+  seconds: 55.916666666667474,
+  travel: 93.9249079312195,
+  maxY: 0.009940016269683882,
+  minY: -1.1920928910669204e-8
+}
+S08 full cart geometry route {
+  i: 1,
+  leg: 1,
+  seconds: 75.74999999999956,
+  travel: 128.0005992543718,
+  maxY: 0.01824806928634648,
+  minY: -0.0004322052001952681
+}
+S08 full cart geometry route {
+  i: 1,
+  leg: 2,
+  seconds: 105.15000000000023,
+  travel: 175.30898604506922,
+  maxY: 0.018773126602172896,
+  minY: 0.000018286705017134253
+}
+
+stdout | scripts/escort-checks/scenes.check.ts > S08 second patient actually bypasses both full parked beds without geometric penetration
+S08 actual two-bed bypass {
+  offset: 0,
+  minimumOld: 2.4549965858459473,
+  minimumReplacement: 0.05499616265296936,
+  closestReplacement: [ -237.94361877441406, 0.00617538690567021, 18.052581787109375 ],
+  seconds: 17.483333333333327,
+  travel: 29.531622285603305,
+  maxY: 0.009328770637512251,
+  minY: -1.1920928910669204e-8
+}
+S08 actual two-bed bypass {
+  offset: 0.8,
+  minimumOld: 2.4531617164611816,
+  minimumReplacement: 0.05051564425230026,
+  closestReplacement: [ -237.94688415527344, 0.005871045589447066, 18.04985237121582 ],
+  seconds: 18.333333333333353,
+  travel: 30.543431411585594,
+  maxY: 0.01029812097549443,
+  minY: -1.1920928910669204e-8
+}
+
+stdout | scripts/escort-checks/scenes.check.ts > S08 both ambulatory routes, real upper stairs, player work/fight route and return team route
+S08 actual upper stairs {
+  seconds: 19.66666666666683,
+  travel: 39.59271413839342,
+  maxY: 2.418453550338745,
+  minY: 0.01497695446014402,
+  end: [ -173.52609252929688, 0.015076851844787575, -12.999983787536621 ]
+}
+S08 player work-and-combat station route { travel: 561.4207911051938, seconds: 187.14999999999918 }
+S08 walking companion route { i: 0, travel: 399.4591953897546 }
+S08 walking companion route { i: 1, travel: 399.364801743135 }
+
+stdout | scripts/escort-checks/scenes.check.ts > S08 combat anchors have both eye and conservative muzzle sightlines to their local threats
+S08 firing lanes {"anchor":[-52,0,-9],"lanes":[{"target":[-70,0,-31],"eye":null,"barrel":null,"muzzle":null},{"target":[-45,0,-39],"eye":null,"barrel":null,"muzzle":null},{"target":[-27,0,-30],"eye":null,"barrel":null,"muzzle":null}]}
+S08 firing lanes {"anchor":[-118,0,-9],"lanes":[{"target":[-126,0,-33],"eye":null,"barrel":null,"muzzle":null},{"target":[-109,0,-40],"eye":null,"barrel":null,"muzzle":null},{"target":[-96,0,-31],"eye":null,"barrel":null,"muzzle":null}]}
+S08 firing lanes {"anchor":[-150,2.4,-13],"lanes":[{"target":[-182,0,-28],"eye":null,"barrel":null,"muzzle":null},{"target":[-180,0,-9],"eye":null,"barrel":null,"muzzle":null},{"target":[-189,0,-36],"eye":null,"barrel":null,"muzzle":null},{"target":[-178,0,2],"eye":null,"barrel":null,"muzzle":null}]}
+S08 firing lanes {"anchor":[-246,0,-11],"lanes":[{"target":[-266,0,-32],"eye":null,"barrel":null,"muzzle":null},{"target":[-244,0,-39],"eye":null,"barrel":null,"muzzle":null},{"target":[-224,0,-29],"eye":null,"barrel":null,"muzzle":null}]}
+S08 firing lanes {"anchor":[-284,0,5],"lanes":[{"target":[-298,0,-15],"eye":null,"barrel":null,"muzzle":null},{"target":[-281,0,-26],"eye":null,"barrel":null,"muzzle":null},{"target":[-261,0,-17],"eye":null,"barrel":null,"muzzle":null}]}
+
+stdout | scripts/escort-checks/scenes.check.ts > S08 the patient corridor and waiting slots have physical screening
+S08 screened-route samples { points: 296, exposed: [] }
+
+stdout | scripts/escort-checks/scenes.check.ts > S09 all stations are clear, workers withdraw, relief occupies posts and the player crosses to rest
+S09 technicians {
+  i: 0,
+  seconds: 35.550000000000395,
+  travel: 72.68181920881223,
+  maxY: 0.02138409614562986,
+  minY: -2.384185793236071e-8
+}
+S09 real arrivals {
+  i: 0,
+  seconds: 46.30000000000012,
+  travel: 94.55421520679349,
+  maxY: 0.022601640224456765,
+  minY: -2.384185793236071e-8
+}
+S09 technicians {
+  i: 1,
+  seconds: 32.96666666666693,
+  travel: 67.45643851248666,
+  maxY: 0.021601951122283913,
+  minY: -2.384185793236071e-8
+}
+S09 real arrivals {
+  i: 1,
+  seconds: 57.11666666666689,
+  travel: 116.32991177889227,
+  maxY: 0.02290145158767698,
+  minY: -2.384185793236071e-8
+}
+S09 technicians {
+  i: 2,
+  seconds: 32.8333333333336,
+  travel: 66.90686568987621,
+  maxY: 0.022753989696502663,
+  minY: -2.384185793236071e-8
+}
+S09 real arrivals {
+  i: 2,
+  seconds: 41.31666666666667,
+  travel: 84.54105363971212,
+  maxY: 0.021821475028991677,
+  minY: -2.384185793236071e-8
+}
+S09 player withdrawal {
+  seconds: 76.95000000000095,
+  travel: 238.03063717675815,
+  maxY: 0.027369654178619363,
+  minY: -2.384185793236071e-8
+}
+
+stdout | scripts/escort-checks/scenes.check.ts > S09 relief has real covering fire and the rest seat is physically protected
+S09 covering lanes {
+  post: [ -8, 0, 78 ],
+  targets: [ [ 26, 0, 92 ], [ 14, 0, 62 ], [ -19, 0, 66 ] ]
+}
+S09 covering lanes {
+  post: [ 9, 0, 80 ],
+  targets: [ [ 26, 0, 92 ], [ 14, 0, 62 ], [ -19, 0, 66 ] ]
+}
+S09 covering lanes {
+  post: [ -22, 0, 86 ],
+  targets: [ [ 26, 0, 92 ], [ 14, 0, 62 ], [ -19, 0, 66 ] ]
+}
+
+stdout | scripts/escort-checks/scenes.check.ts > static scene statistics excluding browser-only labels and moving actors
+scene statistics {
+  id: 'escort',
+  solids: 140,
+  meshes: 32,
+  batches: 26,
+  instances: 1195,
+  triangles: 19504,
+  geometries: 12,
+  materials: 20
+}
+scene statistics {
+  id: 'relief',
+  solids: 51,
+  meshes: 26,
+  batches: 21,
+  instances: 480,
+  triangles: 9556,
+  geometries: 8,
+  materials: 16
+}
+
+ ✓ scripts/escort-checks/scenes.check.ts (10 tests) 10916ms
+   ✓ S08 authored actor, cart and task positions have real clearance 548ms
+   ✓ S08 full patient boxes follow all three legs, both bridges and separate parking slots 5757ms
+   ✓ S08 both ambulatory routes, real upper stairs, player work/fight route and return team route 2017ms
+   ✓ S09 all stations are clear, workers withdraw, relief occupies posts and the player crosses to rest 1087ms
+   ✓ NPC navigation ends inside the actual mission arrival tolerance and enemy entries can reach posts 1175ms
+
+ Test Files  1 passed (1)
+      Tests  10 passed (10)
+   Start at  05:18:47
+   Duration  11.25s (tests 98%, import 1%, transform 1%)
+
+JSON report written to /Users/penguin/VibeHack06-worktree/artifacts/escort-check-results.json

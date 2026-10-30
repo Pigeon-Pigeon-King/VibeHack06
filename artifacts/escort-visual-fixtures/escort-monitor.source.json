@@ -1,0 +1,18 @@
+{
+  "kind": "public-intent-replay-checkpoint",
+  "sourceTest": "tests/escort-paths.test.ts",
+  "sourceCase": "walks both bridge stairs and escorts the same two patients and two attendants; natural/skip endings converge",
+  "replay": {
+    "skip": false,
+    "restore": false,
+    "firstPhaseEntry": true
+  },
+  "artifact": "escort-monitor.json",
+  "slot": "escort",
+  "scenario": "escort",
+  "phase": 4,
+  "elapsed": 31.266666666666172,
+  "phaseTime": 0,
+  "sha256": "49d56823bfd03af691b748f54284f9571772dc5c72d0dee79d94078988c541bb",
+  "note": "真实公开输入回放到达的检查点；供恢复后的局部视觉观察，不代表人工完整路线通关。"
+}

@@ -10,13 +10,16 @@ export function createPatientCart(): CharacterModel {
   new VertexParts()
     .box([0.82, 0.12, 2.18], [0, 0.64, 0], 0x74898c)
     .box([0.74, 0.10, 2.02], [0, 0.75, 0], 0xd7d9cd)
-    .box([0.58, 0.23, 1.30], [0, 0.91, -0.15], 0x87a3a3)
-    .box([0.30, 0.30, 0.30], [0, 0.96, 0.76], 0xc49977)
-    .box([0.48, 0.10, 0.38], [0, 0.83, 0.79], 0xe3e1cf)
     .box([0.05, 0.29, 1.60], [-0.41, 0.90, 0], 0x788f96)
     .box([0.05, 0.29, 1.60], [0.41, 0.90, 0], 0x788f96)
     .box([0.78, 0.05, 0.05], [0, 1.03, -1.13], 0x788f96)
-    .mesh(root, material, 'occupied-bed');
+    .mesh(root, material, 'bed-frame');
+  const patient = new Group(); patient.name = 'patient-and-pillow'; root.add(patient);
+  new VertexParts().box([0.58, 0.23, 1.30], [0, 0.91, -0.15], 0x87a3a3)
+    .box([0.30, 0.30, 0.30], [0, 0.96, 0.76], 0xc49977)
+    .box([0.48, 0.10, 0.38], [0, 0.83, 0.79], 0xe3e1cf)
+    .box([0.60, 0.035, 1.62], [0, 0.79, 0.03], 0xb9c9c5)
+    .mesh(patient, material, 'patient-on-transfer-sheet');
   const wheels: Group[] = [];
   for (const x of [-0.34, 0.34]) for (const z of [-0.80, 0.80]) {
     new VertexParts().box([0.045, 0.42, 0.045], [x, 0.40, z], 0x788f96).mesh(root, material, 'leg');
@@ -43,8 +46,11 @@ export function createPatientCart(): CharacterModel {
     legs.push(leg);
   }
   let disposed = false;
-  return { root, setPose({ walk }) {
-    wheels.forEach(w => w.rotation.x = walk / 0.6);
+  return { root, setPose({ walk, occupied = true, damaged = false, patientOffset }) {
+    patient.visible = occupied;
+    patient.position.set(...(patientOffset ?? [0, 0, 0]));
+    orderly.visible = !damaged;
+    wheels.forEach((w, i) => { w.rotation.x = walk / 0.6; w.rotation.z = damaged && i === 0 ? 0.55 : 0; });
     legs.forEach((leg, i) => leg.rotation.x = Math.sin(walk) * 0.3 * (i ? -1 : 1));
   }, dispose() { if (!disposed) { disposed = true; disposeModelTree(root); } } };
 }

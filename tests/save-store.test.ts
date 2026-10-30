@@ -297,6 +297,7 @@ describe('SaveStore: real simulation snapshots with injected storage', () => {
 describe('campaign expansion and version 0.2 chapter compatibility', () => {
   const addedScenes: Array<[ScenarioId, ChapterStageId]> = [
     ['childhood', 'S01'], ['mainhall', 'S02'], ['frontgate', 'S05'], ['transfer', 'S06'], ['flank', 'S07'],
+    ['escort', 'S08'], ['relief', 'S09'],
   ];
 
   it.each(addedScenes)('round-trips the actual %s initial snapshot in campaign stage %s', (scene, stage) => {
@@ -536,6 +537,88 @@ describe('S06/S07 patient transport save boundaries', () => {
       const loaded = store.load(scene);
       expect(loaded.save, label).toBeUndefined(); expect(loaded.warning, label).toBeTruthy();
       expect(storage.getItem(key(scene)), label).toBe(damaged);
+    }
+  });
+});
+
+describe('S08/S09 escort and relief save identities', () => {
+  const scenes = ['escort', 'relief'] as const;
+  const requiredIds = {
+    escort: ['luo', 'meng', 'medic', 'relief-0', 'relief-1', 'cart-0', 'cart-1', 'cart-2', 'walker-0', 'walker-1'],
+    relief: ['meng', 'zheng', 'relief-0', 'relief-1', 'worker-0', 'worker-1', 'worker-2'],
+  };
+
+  it.each(scenes)('keeps every protected %s participant present and alive without overwriting a valid checkpoint', scene => {
+    const original = fixture(scene), storage = new MemoryStorage(), store = new SaveStore(storage);
+    expect(store.save(scene, original)).toEqual({ ok: true });
+    const raw = storage.getItem(key(scene))!;
+    for (const id of requiredIds[scene]) {
+      const missing = structuredClone(original); missing.actors = missing.actors.filter(a => a.id !== id);
+      expect(store.save(scene, missing).ok, `missing ${id}`).toBe(false);
+      for (const patch of [{ role: 'enemy' }, { down: true }, { health: 0 }, { health: -1 }]) {
+        const corrupt = structuredClone(original); Object.assign(corrupt.actors.find(a => a.id === id)!, patch);
+        expect(store.save(scene, corrupt).ok, `${id}: ${JSON.stringify(patch)}`).toBe(false);
+        expect(storage.getItem(key(scene))).toBe(raw);
+        const imported = new MemoryStorage(), damaged = JSON.stringify({ ...JSON.parse(raw), snapshot: corrupt });
+        imported.values.set(key(scene), damaged); imported.values.set(`${key(scene)}.backup`, raw);
+        const loaded = new SaveStore(imported).load(scene);
+        expect(loaded.save!.snapshot).toEqual(original); expect(loaded.warning).toContain('备份');
+        expect(imported.getItem(key(scene))).toBe(damaged);
+      }
+    }
+  });
+
+  it.each(scenes)('rejects extra %s task-prefix actors even when disguised as decorative civilians', scene => {
+    const original = fixture(scene), store = new SaveStore(new MemoryStorage());
+    const decorative = { ...structuredClone(original.actors[0]), id: 'bystander-save-fixture', name: '非任务群众', role: 'civilian' as const };
+    const withCrowd = structuredClone(original); withCrowd.actors.push(decorative);
+    expect(store.save(scene, withCrowd)).toEqual({ ok: true });
+    for (const prefix of ['cart-', 'walker-', 'relief-', 'worker-']) {
+      const corrupt = structuredClone(original); corrupt.actors.push({ ...structuredClone(decorative), id: `${prefix}extra` });
+      expect(store.save(scene, corrupt).ok, prefix).toBe(false);
+    }
+  });
+
+  it('preserves the S08 spare cart body without treating it as an arrived third patient', () => {
+    const snapshot = fixture('escort'), storage = new MemoryStorage();
+    const carts = snapshot.actors.filter(a => a.role === 'cart');
+    expect(carts.map(a => a.id)).toEqual(['cart-0', 'cart-1', 'cart-2']);
+    expect(snapshot.actors.filter(a => a.role === 'worker').map(a => a.id)).toEqual(['luo']);
+    expect(carts.find(a => a.id === 'cart-2')!.safe).toBe(false);
+    expect(carts.find(a => a.id === 'cart-2')!.released).toBe(false);
+    expect(new SaveStore(storage).save('escort', snapshot)).toEqual({ ok: true });
+    const loaded = new SaveStore(storage).load('escort');
+    expect(loaded.warning).toBeUndefined(); expect(loaded.save!.snapshot).toEqual(snapshot);
+    const rebuilt = simulation('escort', loaded.save!.snapshot);
+    for (const id of ['cart-0', 'cart-1', 'cart-2']) expect(rebuilt.physics.bodies.get(id)!.height).toBe(1.15);
+    expect(rebuilt.snapshot()).toEqual(snapshot);
+    const missingSpare = structuredClone(snapshot); missingSpare.actors = missingSpare.actors.filter(a => a.id !== 'cart-2');
+    expect(new SaveStore(storage).save('escort', missingSpare).ok).toBe(false);
+    expect(new SaveStore(storage).load('escort').save!.snapshot).toEqual(snapshot);
+  });
+
+  it('rejects a standing S09 seated-phase body without replacing a prior valid save (synthetic corruption)', () => {
+    const snapshot = fixture('relief'), storage = new MemoryStorage(), store = new SaveStore(storage);
+    expect(store.save('relief', snapshot)).toEqual({ ok: true });
+    const raw = storage.getItem(key('relief'));
+    // Deliberately contradictory import, not a replayed route or claimed ending.
+    const corrupt = structuredClone(snapshot); corrupt.mission.phase = 7; corrupt.mission.control = 'staged';
+    expect(corrupt.player.height).toBe(1.8);
+    expect(store.save('relief', corrupt)).toEqual({ ok: false, error: expect.stringContaining('坐姿') });
+    expect(storage.getItem(key('relief'))).toBe(raw);
+  });
+
+  it('rejects phase/occupancy contradictions that would follow the wrong S08 patient cart (synthetic corruption)', () => {
+    const snapshot = fixture('escort'), storage = new MemoryStorage(), store = new SaveStore(storage);
+    expect(store.save('escort', snapshot)).toEqual({ ok: true });
+    const raw = storage.getItem(key('escort'));
+    // No claim of driving to these phases: these are intentionally malformed
+    // imports. The path test separately restores a real post-transfer snapshot.
+    for (const [phase, transferred] of [[11, true], [12, false], [15, false]] as const) {
+      const corrupt = structuredClone(snapshot); corrupt.mission.phase = phase;
+      if (transferred) corrupt.mission.facts.push('escort-patient-transferred');
+      expect(store.save('escort', corrupt)).toEqual({ ok: false, error: expect.stringContaining('换车状态') });
+      expect(storage.getItem(key('escort'))).toBe(raw);
     }
   });
 });

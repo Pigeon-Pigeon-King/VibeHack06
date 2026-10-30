@@ -58,7 +58,7 @@ export class GameUI {
             <p class="eyebrow">连续战役</p>
             <button class="primary-button" type="button" data-action="chapter-continue" data-ui="chapter-continue" hidden></button>
             <button type="button" data-action="chapter-start" data-ui="chapter-start">从序章开始</button>
-            <p class="chapter-description">检修门 → 主厅 → 夜班 → 港务接应 → 北闸 → 转接门 → 侧翼</p>
+            <p class="chapter-description">序章 · 占领区 · 通路 · 接受换班</p>
           </div>
           <details class="validation-reference"><summary>独立验证场景</summary>
           <div class="scenario-list" aria-label="选择验证场景">
@@ -69,6 +69,7 @@ export class GameUI {
                 <span class="scenario-availability" data-ui="availability-${id}">待接入</span>
               </button>`).join('')}
           </div>
+          ${import.meta.env.DEV ? '<button class="quiet-button" type="button" data-action="qa-import">检查点文件（开发验收）</button>' : ''}
           </details>
           <details class="control-reference" open>
             <summary>操作</summary>
@@ -186,7 +187,7 @@ export class GameUI {
     this.text('pause-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('failure-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('complete-scenario', state.scenarioName);
-    const resultTitles: Partial<Record<ScenarioId, string>> = { childhood: '隔断合拢', mainhall: '主厅失守', nightshift: '准备出发', workers: '人员已交接', frontgate: '北闸暂稳', transfer: '转接门已通', flank: '把事情交给同伴' };
+    const resultTitles: Partial<Record<ScenarioId, string>> = { childhood: '隔断合拢', mainhall: '主厅失守', nightshift: '准备出发', workers: '人员已交接', frontgate: '北闸暂稳', transfer: '转接门已通', flank: '把事情交给同伴', escort: '最后一批已到站', relief: '有人接你回去' };
     this.text('complete-title', state.chapter ? resultTitles[state.scenario] ?? '本段完成' : '本场行动完成');
     this.text('complete-detail', state.detail || state.objective);
     this.text('complete-workers', state.workerTotal > 0 ? `人员到达 ${integer(state.workersSafe)} / ${integer(state.workerTotal)}` : '本段结束');
@@ -250,6 +251,11 @@ export class GameUI {
     if (scenario && this.state?.availableScenarios.includes(scenario)) {
       this.actions.start(scenario);
       return;
+    }
+    if (import.meta.env.DEV && button.dataset.action === 'qa-import') {
+      const picker = document.createElement('input'); picker.type = 'file'; picker.accept = '.json,application/json';
+      picker.addEventListener('change', () => { const file = picker.files?.[0]; if (file) this.actions.importCheckpoint?.(file); }, { once: true });
+      picker.click(); return;
     }
     switch (button.dataset.action) {
       case 'chapter-start': this.actions.startChapter(); break;

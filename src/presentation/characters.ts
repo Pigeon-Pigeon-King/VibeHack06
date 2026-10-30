@@ -153,7 +153,7 @@ export function createCharacter(role: CharacterRole): CharacterModel {
     if (object instanceof Mesh) object.castShadow = ['torso-and-equipment', 'head-face-and-headwear', 'leg-knee-and-boot'].includes(object.name);
   });
   let disposed = false;
-  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false, gesture = 0, lookAway = 0 }) => {
+  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false, gesture = 0, lookAway = 0, care = false }) => {
     const stride = Math.sin(walk) * 0.48;
     body.position.y = down ? 0.24 : kneeling ? -0.36 : Math.abs(Math.sin(walk * 2)) * 0.018;
     body.rotation.set(down ? Math.PI / 2 : 0, 0, 0);
@@ -167,6 +167,11 @@ export function createCharacter(role: CharacterRole): CharacterModel {
     }
     if (!armed && !down && !carrying && gesture) {
       arms[1].rotation.x -= gesture * 0.6; elbows[1].rotation.x -= gesture * 0.8;
+    }
+    if (care && !down) {
+      // Kneeling shoulders are 0.965m high. These two joints put the hands
+      // at approximately 0.55m / 0.27m forward, beside the seated knee straps.
+      arms.forEach((arm, i) => { arm.rotation.set(-0.56, 0, i ? -0.30 : 0.30); elbows[i].rotation.x = -0.04; });
     }
     if (weapon) {
       weapon.root.position.set(0.14, aiming ? 1.10 : 1.00, aiming ? 0.30 : 0.24);

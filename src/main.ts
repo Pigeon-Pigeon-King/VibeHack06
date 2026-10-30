@@ -1,5 +1,5 @@
 import { ACESFilmicToneMapping, BoxGeometry, CanvasTexture, Color, ConeGeometry, FogExp2, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PCFShadowMap, PerspectiveCamera, RingGeometry, Scene, Sprite, SpriteMaterial, SRGBColorSpace, Vector3, WebGLRenderer } from 'three';
-import type { CharacterModel, EnvironmentModel, RunMode, ScenarioId, UiState } from './contracts';
+import type { CharacterModel, EnvironmentModel, RunMode, ScenarioId, UiState, Vec3 } from './contracts';
 import { buildEnvironment } from './presentation/environment';
 import { createCharacter, createWeaponView } from './presentation/characters';
 import { Feedback } from './presentation/Feedback';
@@ -10,7 +10,12 @@ import { Simulation, distance, type Snapshot } from './mission/Simulation';
 import { GameUI } from './ui/GameUI';
 import { LAYOUT } from './content/layout';
 import { carryFacts, CHAPTER_STAGES, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
-import { SaveStore, type SavedGame } from './persistence/SaveStore';
+import { SAVE_KEY_PREFIX, SaveStore, type SavedGame, type SaveSlot } from './persistence/SaveStore';
+import { escortPatients } from './mission/Escort';
+import { ESCORT } from './content/escort-layout';
+import { RELIEF } from './content/relief-layout';
+import { DepartureMonitor } from './presentation/DepartureMonitor';
+import { CareView } from './presentation/CareView';
 
 function label(text: string, color = '#e4e6dd'): Sprite {
   const canvas = document.createElement('canvas'); canvas.width = 512; canvas.height = 96;
@@ -42,9 +47,11 @@ class Game {
   private readonly feedback = new Feedback();
   private readonly weapon = createWeaponView();
   private readonly supply = carriedSupply();
+  private readonly care = new CareView();
+  private monitor?: DepartureMonitor;
   private readonly ui: GameUI;
   private readonly input: Input;
-  private readonly characters = new Map<string, { model: CharacterModel; label?: Sprite }>();
+  private readonly characters = new Map<string, { model: CharacterModel; label?: Sprite; name: string }>();
   private readonly marker = new Group();
   private readonly markerLabel = label('目标', '#f4d49e');
   private environment!: EnvironmentModel;
@@ -66,6 +73,7 @@ class Game {
   private chapter?: ChapterProgress;
   private saveNotice = '';
   private writeErrors = { checkpoint: '', settings: '' };
+  private qaImported = false;
 
   constructor() {
     const view = document.querySelector<HTMLElement>('#game-view')!;
@@ -77,7 +85,7 @@ class Game {
     this.renderer.domElement.setAttribute('aria-label', '游戏画面');
     this.renderer.domElement.tabIndex = -1;
     this.scene.background = new Color(0x677e8d); this.scene.fog = new FogExp2(0x677e8d, 0.008);
-    this.camera.rotation.order = 'YXZ'; this.camera.add(this.weapon.root, this.supply); this.scene.add(this.camera, this.feedback.root, this.marker);
+    this.camera.rotation.order = 'YXZ'; this.camera.add(this.weapon.root, this.supply); this.scene.add(this.camera, this.feedback.root, this.marker, this.care.root);
     const ring = new Mesh(new RingGeometry(0.5, 0.58, 32), new MeshBasicMaterial({ color: 0xe7c782, side: 2, transparent: true, opacity: 0.8 }));
     ring.rotation.x = -Math.PI / 2; ring.position.y = 0.04;
     const arrow = new Mesh(new ConeGeometry(0.16, 0.35, 4), new MeshBasicMaterial({ color: 0xe7c782 }));
@@ -95,6 +103,7 @@ class Game {
       start: id => this.start(id), startChapter: () => this.startChapter(), continueChapter: () => this.continueChapter(), nextStage: () => this.advanceChapter(),
       resume: () => this.resume(), retry: () => this.retry(), restart: () => this.restart(),
       menu: () => this.menu(), setSensitivity: value => { this.input.sensitivity = value; this.persistSettings(); },
+      importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
       setVolume: value => { this.sound.setVolume(value); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
     });
     this.load('nightshift');
@@ -108,15 +117,18 @@ class Game {
 
   private load(id: ScenarioId, saved?: Snapshot, priorFacts: readonly string[] = []): void {
     this.sim?.dispose();
+    if (this.monitor) { this.scene.remove(this.monitor.screen); this.monitor.dispose(); this.monitor = undefined; }
     if (this.environment) { this.scene.remove(this.environment.root); this.environment.dispose(); }
     for (const { model, label: tag } of this.characters.values()) { this.scene.remove(model.root); model.dispose(); if (tag) { this.scene.remove(tag); disposeLabel(tag); } }
     this.characters.clear(); this.feedback.clear(); this.sound.stopTransient();
     this.environment = buildEnvironment(id); this.scene.add(this.environment.root);
     this.sim = new Simulation(id, this.environment.solids, saved, priorFacts);
+    if (id === 'escort') { this.monitor = new DepartureMonitor(); this.scene.add(this.monitor.screen); }
     this.input.yaw = this.sim.player.yaw; this.input.pitch = this.sim.player.pitch;
     this.input.clear(); this.accumulator = 0; this.ads = 0; this.lastFootstep = 0;
   }
   private start(id: ScenarioId): void {
+    this.qaImported = false;
     this.chapter = undefined;
     const restored = this.store?.load(id);
     if (restored?.warning) this.saveNotice = restored.warning;
@@ -124,10 +136,12 @@ class Game {
     this.persistCheckpoint(); this.begin();
   }
   private startChapter(): void {
+    this.qaImported = false;
     this.chapter = { chapter: 'campaign', stage: 'S01', elapsedBefore: 0 };
     this.load('childhood'); this.persistCheckpoint(); this.begin();
   }
   private continueChapter(): void {
+    this.qaImported = false;
     this.refreshCampaign();
     if (!this.savedCampaign?.chapter) return;
     this.chapter = structuredClone(this.savedCampaign.chapter);
@@ -170,10 +184,30 @@ class Game {
     if (result) this.writeErrors.settings = result.ok ? '' : result.error ?? '设置保存失败。';
   }
   private persistCheckpoint(snapshot = this.sim.checkpoint): void {
+    if (import.meta.env.DEV && this.qaImported) return;
     const result = this.store?.save(this.chapter ? 'campaign' : this.sim.scenario, snapshot, this.chapter);
     if (!result) return;
     this.writeErrors.checkpoint = result.ok ? '' : result.error ?? '检查点保存失败。';
     if (result.ok && this.chapter) this.savedCampaign = { snapshot: structuredClone(snapshot), chapter: structuredClone(this.chapter), savedAt: Date.now() };
+  }
+
+  private async importCheckpoint(file: File): Promise<void> {
+    if (!import.meta.env.DEV) return;
+    try {
+      if (file.size > 1_000_000) throw new Error('检查点文件超过大小限制。');
+      const raw = await file.text(), envelope: unknown = JSON.parse(raw);
+      if (!envelope || typeof envelope !== 'object' || !('slot' in envelope) || typeof envelope.slot !== 'string') throw new Error('检查点信封缺少槽位。');
+      // Use the ordinary strict parser, with isolated memory storage. QA imports
+      // must never overwrite the player's campaign or independent-scene slots.
+      const slot = envelope.slot as SaveSlot;
+      const loaded = new SaveStore({
+        getItem: key => key === `${SAVE_KEY_PREFIX}${slot}` ? raw : null,
+        setItem: () => {}, removeItem: () => {},
+      }).load(slot);
+      if (!loaded.save) throw new Error(loaded.warning ?? '检查点无效。');
+      this.qaImported = true; this.chapter = loaded.save.chapter;
+      this.load(loaded.save.snapshot.mission.scenario, loaded.save.snapshot); this.begin();
+    } catch (error) { this.error = error instanceof Error ? error.message : '检查点无法读取。'; }
   }
 
   private simulate(): void {
@@ -218,6 +252,15 @@ class Game {
     if (sim.physics.trace(sim.playerEye, [near.x, near.y, near.z], 'player', true)) this.weapon.root.position.y -= 0.15;
     this.environment.update(m.elapsed, this.camera.position);
     this.environment.setFacts?.(m.facts);
+    const seated = sim.scenario === 'relief' && m.phase === 7;
+    const transferring = sim.scenario === 'escort' && m.phase === 11;
+    const transferProgress = transferring ? Math.min(1, m.phaseTime / 8) : 0;
+    const oldBed = transferring ? sim.actors.find(a => a.id === 'cart-0') : undefined;
+    const newBed = transferring ? sim.actors.find(a => a.id === 'cart-2') : undefined;
+    const transferPatient: Vec3 | undefined = oldBed && newBed ? oldBed.position.map((v, i) => v + (newBed.position[i] - v) * transferProgress) as Vec3 : undefined;
+    const transferYaw = transferPatient ? Math.atan2(-(transferPatient[0] - p.position[0]), -(transferPatient[2] - p.position[2])) : p.yaw;
+    this.care.update(p.position, seated ? RELIEF.seatYaw : transferYaw, seated ? 'seat' : transferring ? 'transfer' : 'none',
+      seated ? m.phaseTime / 13 : transferProgress, sim.has('zhou-brace-adjusted'));
     this.sound.setVentilation(sim.scenario === 'nightshift' && m.facts.includes('fan-restarted'));
     const seen = new Set<string>();
     for (const actor of sim.actors) {
@@ -226,25 +269,52 @@ class Game {
       if (!item) {
         const model = createCharacter(actor.role);
         const tag = actor.role !== 'enemy' ? label(actor.name, actor.role === 'worker' ? '#efc78b' : '#c5e3dc') : undefined;
-        item = { model, label: tag }; this.characters.set(actor.id, item); this.scene.add(model.root); if (tag) this.scene.add(tag);
+        item = { model, label: tag, name: actor.name }; this.characters.set(actor.id, item); this.scene.add(model.root); if (tag) this.scene.add(tag);
+      }
+      if (item.label && item.name !== actor.name) {
+        this.scene.remove(item.label); disposeLabel(item.label);
+        item.label = label(actor.name, actor.role === 'worker' ? '#efc78b' : '#c5e3dc'); item.name = actor.name;
+        this.scene.add(item.label);
       }
       item.model.root.position.set(...actor.position); item.model.root.rotation.y = actor.yaw;
+      if (actor.id === 'medic' && transferPatient && oldBed) {
+        const footX = transferPatient[0] - Math.sin(oldBed.yaw) * 0.8;
+        const footZ = transferPatient[2] - Math.cos(oldBed.yaw) * 0.8;
+        // NPC models face +Z; the first-person hands above face -Z.
+        item.model.root.rotation.y = Math.atan2(footX - actor.position[0], footZ - actor.position[2]);
+      }
+      item.model.root.visible = !(sim.scenario === 'escort' && actor.role === 'enemy' && actor.safe);
+      let patientOffset: Vec3 | undefined;
+      if (transferring && actor.id === 'cart-0') {
+        const replacement = sim.actors.find(a => a.id === 'cart-2')!;
+        const dx = replacement.position[0] - actor.position[0], dz = replacement.position[2] - actor.position[2];
+        patientOffset = [(dx * Math.cos(actor.yaw) - dz * Math.sin(actor.yaw)) * transferProgress,
+          Math.sin(transferProgress * Math.PI) * 0.13, (dx * Math.sin(actor.yaw) + dz * Math.cos(actor.yaw)) * transferProgress];
+      }
       const stagedWalker = active && m.control === 'staged' && (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
         && ['father', 'evacuator', 'daughter', 'zhao', 'shao'].includes(actor.id);
       item.model.setPose({ walk: actor.goals.length || stagedWalker ? actor.walk : 0, aiming: actor.aiming, down: actor.down,
         armed: actor.role === 'enemy' || actor.role === 'ally' && sim.scenario !== 'transfer'
           && !(sim.scenario === 'flank' && (m.control !== 'combat' || actor.id === 'meng'))
+          && !(sim.scenario === 'escort' && m.control !== 'combat')
+          && !(sim.scenario === 'relief' && actor.id === 'zheng' && m.phase >= 6)
           && !(sim.scenario === 'mainhall' && actor.id === 'zhao' && m.phase >= 4)
           || actor.role === 'opponent' && (m.phase > 4 || m.phaseTime >= 18)
           || actor.id === 'father' && m.facts.includes('father-rifle-collected') && !actor.down,
         kneeling: actor.id === 'zhao' && sim.scenario === 'mainhall' && m.phase === 4 && m.phaseTime >= 7 && m.phaseTime < 20
-          || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= 4 && m.phaseTime < 7,
+          || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= 4 && m.phaseTime < 7
+          || actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
+        care: actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
         gesture: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.speaker === '周延' ? 0.35 + Math.sin(m.phaseTime * 2.2) * 0.12 : 0,
         lookAway: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.phaseTime >= 42 && m.phaseTime < 49 ? -0.3 : 0,
+        occupied: sim.scenario !== 'escort' || actor.id !== 'cart-0' && actor.id !== 'cart-2'
+          || actor.id === 'cart-0' && !sim.has('escort-patient-transferred') || actor.id === 'cart-2' && sim.has('escort-patient-transferred'),
+        damaged: sim.scenario === 'escort' && actor.id === 'cart-0' && sim.has('escort-wheel-jammed'), patientOffset,
         carrying: (actor.id === 'father' && sim.scenario === 'prologue' && m.phase === 1)
           || (actor.id === 'evacuator' && sim.scenario === 'childhood' && m.phase >= 3 && (m.phase === 4 || m.phaseTime >= 12))
           || (actor.id === 'evacuator' && sim.scenario === 'mainhall' && m.phase >= 4)
-          || (actor.id === 'zheng' && sim.scenario === 'handover' && m.phase === 4) });
+          || (actor.id === 'zheng' && sim.scenario === 'handover' && m.phase === 4)
+          || (actor.id === 'medic' && transferring) });
       if (item.label) {
         item.label.position.set(actor.position[0], actor.position[1] + 2.1, actor.position[2]);
         const size = Math.min(1, this.camera.position.distanceTo(item.label.position) / 10);
@@ -255,10 +325,11 @@ class Game {
     this.marker.visible = active && m.control !== 'staged';
     this.marker.position.set(...objective.point);
     this.feedback.update(active ? dt : 0, sim.ballistics.projectiles);
-    const diagnostics = import.meta.env.DEV ? `阶段 ${m.phase} · ${p.name} · 坐标 ${p.position.map(v => v.toFixed(1)).join(', ')} · ${Math.round(this.fps)} FPS\n` +
+    const diagnostics = import.meta.env.DEV ? (this.qaImported ? '检查点恢复 · 局部视觉验收\n' : '') + `阶段 ${m.phase} · ${p.name} · 坐标 ${p.position.map(v => v.toFixed(1)).join(', ')} · ${Math.round(this.fps)} FPS\n` +
       `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}` : undefined;
     const evacuees = sim.scenario === 'transfer' ? sim.actors.filter(a => a.role === 'cart')
-      : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-')) : sim.workers;
+      : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-'))
+      : sim.scenario === 'escort' ? [...escortPatients(sim), ...sim.actors.filter(a => a.id.startsWith('walker-'))] : sim.workers;
     const state: UiState = {
       mode: this.mode, control: m.control, scenario: sim.scenario, scenarioName: LAYOUT[sim.scenario].name,
       availableScenarios: ['northgate', 'prologue', 'handover', ...(import.meta.env.DEV ? CHAPTER_STAGES.map(stage => stage.scenario) : [])], phaseName: objective.phase,
@@ -274,6 +345,7 @@ class Game {
       error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings].filter(Boolean).join(' '), diagnostics,
     };
     this.ui.render(state);
+    if (this.monitor && distance(p.position, ESCORT.monitor) < 30) this.monitor.render(this.renderer, m.phaseTime, m.phase === 4, sim.has('shaoyuan-departure-confirmed'));
     this.renderer.render(this.scene, this.camera);
   }
 
@@ -288,7 +360,7 @@ class Game {
   };
   dispose(): void {
     cancelAnimationFrame(this.raf); this.abort.abort(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
-    this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose();
+    this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
     for (const { model, label: tag } of this.characters.values()) { model.dispose(); if (tag) disposeLabel(tag); }
     disposeLabel(this.markerLabel);

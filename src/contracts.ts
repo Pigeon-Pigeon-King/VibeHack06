@@ -1,6 +1,6 @@
 import type { Group, Vector3 } from 'three';
 
-export const SCENARIO_IDS = ['northgate', 'prologue', 'handover', 'nightshift', 'workers', 'childhood', 'mainhall', 'frontgate', 'transfer', 'flank'] as const;
+export const SCENARIO_IDS = ['northgate', 'prologue', 'handover', 'nightshift', 'workers', 'childhood', 'mainhall', 'frontgate', 'transfer', 'flank', 'escort', 'relief'] as const;
 export type ScenarioId = typeof SCENARIO_IDS[number];
 export type Vec3 = [number, number, number];
 export type ControlMode = 'combat' | 'work' | 'cooperative' | 'staged';
@@ -21,7 +21,8 @@ export interface EnvironmentModel {
 }
 export interface CharacterModel {
   root: Group;
-  setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean; gesture?: number; lookAway?: number }): void;
+  setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean; gesture?: number; lookAway?: number;
+    occupied?: boolean; damaged?: boolean; patientOffset?: Vec3; care?: boolean }): void;
   dispose(): void;
 }
 export type CharacterRole = 'enemy' | 'ally' | 'worker' | 'father' | 'child' | 'medic' | 'civilian' | 'opponent' | 'cart';
@@ -75,6 +76,7 @@ export interface UiActions {
   retry(): void;
   restart(): void;
   menu(): void;
+  importCheckpoint?(file: File): void;
   setSensitivity(value: number): void;
   setVolume(value: number): void;
   setLowMotion(value: boolean): void;

@@ -1,0 +1,63 @@
+import type { Vec3 } from '../contracts';
+
+export interface ConvoyLeg { via: Vec3[]; cartStops: Vec3[]; walkerStops: Vec3[] }
+
+/** S08 travels west across two real bridge spans. North remains -Z; carts always stay on level decks. */
+export const ESCORT = {
+  bounds: { minX: -430, maxX: 30, minZ: -68, maxZ: 56 },
+  spawn: [12, 0, 10] as Vec3,
+  reception: [9, 0, 4] as Vec3,
+  luo: [10, 0, 12] as Vec3,
+  luoDesk: [3, 0, 5] as Vec3,
+  monitor: [-7, 0, 5] as Vec3,
+  monitorScreen: [-7, 2.05, 2.2] as Vec3,
+  monitorScreenYaw: 0,
+  monitorScreenSize: [3.2, 1.8] as [number, number],
+  receptionRoom: { minX: -14, maxX: 20, minZ: -4, maxZ: 20 },
+  cargo: [-52, 0, -9] as Vec3,
+  bridgeHead: [-118, 0, -9] as Vec3,
+  sidePlatform: [-150, 2.4, -13] as Vec3,
+  platformStairStart: [-134, 0, -13] as Vec3,
+  platformStairTop: [-143.6, 2.4, -13] as Vec3,
+  platformDescentTop: [-164, 2.4, -13] as Vec3,
+  platformDescentEnd: [-173.6, 0, -13] as Vec3,
+  medicalHead: [-246, 0, -11] as Vec3,
+  flankPost: [-284, 0, 5] as Vec3,
+  bridgeSpans: [{ minX: -174, maxX: -132, minZ: -21, maxZ: -4 }, { minX: -174, maxX: -132, minZ: 5.5, maxZ: 22.5 }, { minX: -350, maxX: -308, minZ: 22, maxZ: 38 }],
+  cartSpawns: [[-16, 0, 14], [-10, 0, 14]] as Vec3[],
+  walkerSpawns: [[-16, 0, 18], [-10, 0, 18]] as Vec3[],
+  convoyLegs: [
+    { via: [[-38, 0, 14], [-68, 0, 14], [-100, 0, 14]], cartStops: [[-110, 0, 14], [-104, 0, 14]], walkerStops: [[-110, 0, 18], [-104, 0, 18]] },
+    { via: [[-124, 0, 14], [-180, 0, 14], [-218, 0, 14]], cartStops: [[-238, 0, 14], [-232, 0, 14]], walkerStops: [[-238, 0, 20], [-232, 0, 20]] },
+    { via: [[-254, 0, 14], [-274, 0, 30], [-300, 0, 30], [-358, 0, 30], [-382, 0, 30]], cartStops: [[-396, 0, 30], [-390, 0, 30]], walkerStops: [[-396, 0, 34], [-390, 0, 34]] },
+  ] as ConvoyLeg[],
+  changeBay: [-238, 0, 14] as Vec3,
+  replacement: [-238, 0, 16.4] as Vec3,
+  changeAssist: [-239.3, 0, 15.2] as Vec3,
+  medic: [-236.4, 0, 15.2] as Vec3,
+  pillow: [-240.2, 0, 19] as Vec3,
+  arrival: [-400, 0, 35] as Vec3,
+  manifest: [-401, 0, 39] as Vec3,
+  returnExit: [-366, 0, 50] as Vec3,
+  returnVia: [[-398, 0, 46], [-382, 0, 50]] as Vec3[],
+  meng: [-28, 0, 18] as Vec3,
+  recruits: [[-32, 0, 18], [-36, 0, 18]] as Vec3[],
+  ammo: [[-26, 0, -6], [-108, 0, -4], [-206, 0, -4], [-278, 0, 8]] as Vec3[],
+  exit: [-402, 0, 44] as Vec3,
+  // Ground navigation is available between banks; the platform requires these authored real stairs.
+  playerRoute: [[-18, 0, -9], [-52, 0, -9], [-118, 0, -9], [-134, 0, -13], [-143.6, 2.4, -13], [-150, 2.4, -13], [-164, 2.4, -13], [-173.6, 0, -13], [-206, 0, -10], [-246, 0, -11], [-284, 0, 5]] as Vec3[],
+  enemyEntries: [
+    [[-80, 0, -55], [-46, 0, -57], [-18, 0, -52]],
+    [[-126, 0, -57], [-110, 0, -56], [-92, 0, -52]],
+    [[-207, 0, -38], [-210, 0, -16], [-191, 0, -50]],
+    [[-278, 0, -54], [-248, 0, -57], [-221, 0, -50]],
+    [[-301, 0, -34], [-285, 0, -48], [-258, 0, -42]],
+  ] as Vec3[][],
+  enemyPosts: [
+    [[-70, 0, -31], [-45, 0, -39], [-27, 0, -30]],
+    [[-126, 0, -33], [-109, 0, -40], [-96, 0, -31]],
+    [[-182, 0, -28], [-180, 0, -9], [-189, 0, -36], [-178, 0, 2]],
+    [[-266, 0, -32], [-244, 0, -39], [-224, 0, -29]],
+    [[-298, 0, -15], [-281, 0, -26], [-261, 0, -17]],
+  ] as Vec3[][],
+};

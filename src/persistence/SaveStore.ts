@@ -87,6 +87,7 @@ function validateSnapshot(value: unknown): Snapshot {
   numeric(player.height, '玩家高度', mission.scenario === 'mainhall' && mission.phase >= 4 ? 0.65 : 0.8, 3);
   if (mission.scenario === 'childhood' && player.height !== 1.1) throw new InvalidRecord('童年视点高度与角色不一致。');
   if (mission.scenario === 'mainhall' && mission.phase >= 4 && player.height !== 0.65) throw new InvalidRecord('主厅演出高度与角色状态不一致。');
+  if (mission.scenario === 'relief' && mission.phase === 7 && player.height !== 1.1) throw new InvalidRecord('内门坐姿高度与角色状态不一致。');
   numeric(mission.elapsed, '场景用时', 0, MAX_SECONDS);
   numeric(mission.phaseTime, '阶段用时', 0, mission.elapsed + 0.0001);
   numeric(mission.subtitleUntil, '字幕时间', 0, MAX_SECONDS + 3600);
@@ -100,6 +101,14 @@ function validateSnapshot(value: unknown): Snapshot {
   list(mission.facts, '任务事实', 256);
   mission.facts.forEach(fact => text(fact, '任务事实', 120));
   if (new Set(mission.facts).size !== mission.facts.length) throw new InvalidRecord('任务事实重复。');
+  // The patient keeps their identity while changing physical cart. A mismatched
+  // occupancy fact would wait forever for the empty cart left at the exchange bay.
+  if (mission.scenario === 'escort' && mission.facts.includes('escort-patient-transferred') !== (mission.phase >= 12)) {
+    throw new InvalidRecord('患者换车状态与护送阶段不一致。');
+  }
+  if (mission.scenario === 'relief' && mission.facts.includes('relief-handover-complete') !== (mission.phase >= 4)) {
+    throw new InvalidRecord('接防交接状态与撤回阶段不一致。');
+  }
 
   list(snapshot.actors, '人物', 256);
   const actors = new Map<string, Record<string, unknown>>();
@@ -124,7 +133,7 @@ function validateSnapshot(value: unknown): Snapshot {
     if (actor?.role !== role) throw new InvalidRecord(`场景缺少必需人物 ${id}，或其身份错误。`);
     // These missions protect every mandatory participant. A dead required body
     // cannot follow its route, leaving the later handover permanently incomplete.
-    if ((mission.scenario === 'transfer' || mission.scenario === 'flank')
+    if ((mission.scenario === 'transfer' || mission.scenario === 'flank' || mission.scenario === 'escort' || mission.scenario === 'relief')
       && (actor.down !== false || (actor.health as number) <= 0)) throw new InvalidRecord(`必需人物 ${id} 已失去行动能力，存档状态与场景不一致。`);
   };
   if (mission.scenario === 'childhood' || mission.scenario === 'mainhall') {
@@ -133,6 +142,7 @@ function validateSnapshot(value: unknown): Snapshot {
     else { need('young-lu', 'child'); if (mission.phase >= 4) need('shao', 'opponent'); }
   } else if (mission.scenario === 'nightshift') { need('xu', 'medic'); need('meng', 'ally'); need('zhou', 'ally'); }
   else if (mission.scenario === 'transfer') { need('courier', 'civilian'); need('xu', 'medic'); need('zhou', 'ally'); need('luo', 'worker'); }
+  else if (mission.scenario === 'escort') { need('luo', 'worker'); need('meng', 'ally'); need('medic', 'medic'); }
   else need('zheng', 'ally');
   if (mission.scenario === 'prologue') need('father', 'father');
   if (mission.scenario === 'workers') need('meng', 'ally');
@@ -143,20 +153,32 @@ function validateSnapshot(value: unknown): Snapshot {
     // walker would make the real group-completion check wait forever.
     if ([...actors.keys()].filter(id => id.startsWith('walker-')).length !== 2) throw new InvalidRecord('步行家属名单与场景不一致。');
   }
+  if (mission.scenario === 'escort' || mission.scenario === 'relief') {
+    need('meng', 'ally'); need('relief-0', 'ally'); need('relief-1', 'ally');
+    if (mission.scenario === 'escort') { need('walker-0', 'civilian'); need('walker-1', 'civilian'); }
+    const groups = mission.scenario === 'escort'
+      ? { 'cart-': 3, 'walker-': 2, 'relief-': 2, 'worker-': 0 }
+      : { 'cart-': 0, 'walker-': 0, 'relief-': 2, 'worker-': 3 };
+    for (const [prefix, count] of Object.entries(groups)) {
+      if ([...actors.keys()].filter(id => id.startsWith(prefix)).length !== count) throw new InvalidRecord(`任务名单 ${prefix} 与场景不一致。`);
+    }
+  }
   if (mission.scenario === 'handover') {
     need('medic', 'medic');
     if (mission.phase >= 3) need('meng', 'ally');
   }
   const workerCount: Record<ScenarioId, number> = {
     northgate: 7, prologue: 3, handover: 2, nightshift: 0, workers: 9,
-    childhood: 0, mainhall: HISTORY.civilians.length, frontgate: 7, transfer: 1, flank: 3,
+    childhood: 0, mainhall: HISTORY.civilians.length, frontgate: 7, transfer: 1, flank: 3, escort: 1, relief: 3,
   };
-  // Luo remains a worker in S06, but is not one of its patients or worker-N evacuees.
-  if (mission.scenario !== 'transfer') for (let i = 0; i < workerCount[mission.scenario]; i++) need(`worker-${i}`, 'worker');
+  // Luo remains a worker in S06/S08, but is not a patient or worker-N evacuee.
+  if (mission.scenario !== 'transfer' && mission.scenario !== 'escort') for (let i = 0; i < workerCount[mission.scenario]; i++) need(`worker-${i}`, 'worker');
   if ([...actors.values()].filter(actor => actor.role === 'worker').length !== workerCount[mission.scenario]) {
     throw new InvalidRecord('场景工作人员数量与要求不一致。');
   }
-  const cartCount = mission.scenario === 'transfer' ? 3 : mission.scenario === 'flank' ? 2 : 0;
+  // S08 retains all three bodies, including the empty replacement/original cart.
+  // Patient occupancy is mission-owned; it is not the number of cart actors.
+  const cartCount = mission.scenario === 'transfer' || mission.scenario === 'escort' ? 3 : mission.scenario === 'flank' ? 2 : 0;
   for (let i = 0; i < cartCount; i++) need(`cart-${i}`, 'cart');
   if ([...actors.values()].filter(actor => actor.role === 'cart').length !== cartCount) {
     throw new InvalidRecord('患者车数量与场景不一致。');

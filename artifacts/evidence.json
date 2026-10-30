@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "runId": "escort-relief-native-final-2026-10-31",
+  "captures": [
+    {
+      "mode": "desktop",
+      "state": null,
+      "report": "artifacts/escort-native-capture.json"
+    }
+  ],
+  "artifacts": [
+    "artifacts/escort-empty-cart-retained.png",
+    "artifacts/escort-monitor-before.png",
+    "artifacts/escort-monitor-after.png",
+    "artifacts/escort-visual-fixtures/escort-transfer.json",
+    "artifacts/escort-visual-fixtures/relief-care.json"
+  ],
+  "coveragePlan": "build/ESCORT_RELIEF_PLAN.md",
+  "coverageResults": "artifacts/escort-evidence.md",
+  "standaloneInspector": "NOT_RUN"
+}
