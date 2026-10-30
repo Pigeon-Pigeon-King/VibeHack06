@@ -18,7 +18,7 @@ Dot 是另一条可用制作路线：向本机 Dot 提供概念图、尺寸、�
 
 生成成功、文件下载、能导入、动作可用、碰撞可用和实景验收是不同状态。状态建议依次为 planned、briefed、submitted、downloaded、prepared、integrated、validated；不适用的阶段说明原因，不凭预览图直接跳到 validated。
 
-目前尚未连接生成账户或提交付费任务。接入服务时重新核对实际插件／API 版本、账户与预算；交接中的 API 迁移日期等外部信息不作为永久有效配置。
+已使用 ImageGen 内置工具完成并检查 [陆闻川成年概念图](../assets/concepts/CH-LU/adult-v2.png)，[提示词与生产状态](../artifacts/asset-jobs/CH-LU-adult-concept.md)已归档。首图方块结构不足，定向修订后选用 v2。本机配置探测显示 Tripo API 密钥未设置，尚未提交任何 3D 生成任务；Hyper3D／Dot 云端连接也未验证。接入服务时重新核对实际插件／API 版本、账户与预算；交接中的 API 迁移日期等外部信息不作为永久有效配置。
 
 ## 资产清单字段
 

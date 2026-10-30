@@ -1,6 +1,6 @@
 import type { Group, Vector3 } from 'three';
 
-export const SCENARIO_IDS = ['northgate', 'prologue', 'handover', 'nightshift', 'workers'] as const;
+export const SCENARIO_IDS = ['northgate', 'prologue', 'handover', 'nightshift', 'workers', 'childhood', 'mainhall', 'frontgate'] as const;
 export type ScenarioId = typeof SCENARIO_IDS[number];
 export type Vec3 = [number, number, number];
 export type ControlMode = 'combat' | 'work' | 'cooperative' | 'staged';
@@ -21,10 +21,10 @@ export interface EnvironmentModel {
 }
 export interface CharacterModel {
   root: Group;
-  setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean }): void;
+  setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean }): void;
   dispose(): void;
 }
-export type CharacterRole = 'enemy' | 'ally' | 'worker' | 'father' | 'child' | 'medic';
+export type CharacterRole = 'enemy' | 'ally' | 'worker' | 'father' | 'child' | 'medic' | 'civilian' | 'opponent';
 export interface WeaponModel {
   root: Group;
   muzzle: Group;

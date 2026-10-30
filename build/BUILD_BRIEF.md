@@ -8,7 +8,7 @@ targetFinish: 当前先交可操作的风险验证候选；最终继承完整 Wi
 
 依据：[GAME_DESIGN](../design/GAME_DESIGN.md)、[ART_DIRECTION](../design/ART_DIRECTION.md)、[技术规范](../docs/THREEJS_FPS_STANDARDS.md)。最大风险是飞行弹丸／掩体与撤离事实能否形成可玩的循环，随后覆盖儿童视点及协作表演。
 
-当前 0.2.0 接入 S03 夜班工作、S04 三处相连遭遇与九名技工接应，通过完成页连续转场；V2、V1、V3 保留为独立缩短验证场景。它们共用固定 60 Hz 仿真、输入、身体、弹丸、事实、表现模块；新增本机存档、设置恢复、事实驱动门碰撞与导航更新。方块代理与工业场景模块可替换，具体覆盖见证据。signature_command: N/A。
+当前 0.3.0 连通 S01 检修门、S02 主厅、S03 夜班、S04 港务接应与 S05 北闸；V2、V1、V3 保留独立缩短验证入口。Simulation 保持单一状态权威，Opening／Frontgate 组织新段落，共用固定60Hz仿真、弹丸、导航、检查点和表现；旧 L1 存档可原进度继续。方块人物与工业场景仍是占位，首张成年闻川 ImageGen 概念图已归档但尚无生成模型。signature_command: N/A。
 
 targetPlatform: Windows desktop
 
@@ -37,10 +37,10 @@ Electron 下载在本机通过已有系统代理对应的进程级 `HTTP_PROXY`�
 
 verification.owner: 当前开发会话
 
-verification.evidence: 当前 `artifacts/chapter-evidence.md`；首轮历史 `artifacts/final-evidence.md`；测试在 `tests/`。
+verification.evidence: 当前 `artifacts/opening-evidence.md`；0.2 历史 `artifacts/chapter-evidence.md`；首轮历史 `artifacts/final-evidence.md`；测试在 `tests/`。
 
 物理选择：Rapier 运动学胶囊＋简化静态盒，固定 1/60 秒；NPC 按带间距的网格导航。弹丸独立积分并逐段扫掠，飞行重力 1.428 m/s²；射手胶囊排除，最近遮挡优先。枪口目前为保守物理代理，低掩体阻挡有反例测试，最终骨骼枪口对齐仍待正式动画。
 
 存档采用 schema/version 包装、阶段及字段校验、稳定角色 ID／入场编号校验，主记录加上一份有效备份。损坏记录可只读回退，后续覆盖前保留损坏原文；未来版本拒绝覆盖。检查点包含人物、路径、随机状态、弹药、任务与门事实；恢复会清空旧弹丸并重建物理世界。写入失败可见，不取消本次内存检查点。浏览器刷新与设置恢复已有操作证据，Electron 重启恢复尚待原生运行验收。
 
-限制：五个入口的资产和演出仍为开发白盒，不能计作完整战役或正式表演。S03／S04 是可连续游玩的第一关前段，尚缺完整 S01／S02、S05—S12 与其全部遭遇和动作。没有正式模型、录制语音、细致人物接触或正式存档迁移／跨设备导入。多人搬运仍采用位置锚点，尚未完成可碰撞担架。Mac 浏览器与 Windows 实机证据分开记录；内嵌浏览器拒绝 Pointer Lock，不能据替代按键声称鼠标已验证。
+限制：八个场景ID的运行资产与演出仍为开发白盒。S01—S05 已连接并有完整模拟回放；S01 浏览器自然完成，S02 浏览器只做到开门、射击与推进，S04/S05 浏览器完整首通未完成。仍缺 S06—S12 正式段落、完整一小时时长、生成模型、录制语音、精细接触与可碰撞担架。旧0.2本机存档兼容已测，跨设备导入与原生重启未测。IAB拒绝Pointer Lock；Windows真实鼠标、声音、长时间性能与启动退出仍待实机。

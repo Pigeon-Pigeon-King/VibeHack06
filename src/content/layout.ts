@@ -1,7 +1,24 @@
 import type { ScenarioId, Vec3 } from '../contracts';
 import { NIGHT, WORKERS } from './chapter-layout';
+import { HISTORY } from './history-layout';
+import { FRONTGATE } from './frontgate-layout';
 
 export const LAYOUT = {
+  childhood: {
+    name: '序章 · 检修门', spawn: HISTORY.childSpawn, yaw: 0,
+    terminal: HISTORY.lunch, post: HISTORY.gateOutside, exit: HISTORY.childSafe, safe: HISTORY.childSafe,
+    workerSpawns: [] as Vec3[], enemySpawns: HISTORY.enemyEntries,
+  },
+  mainhall: {
+    name: '序章 · 主厅', spawn: HISTORY.youngSpawn, yaw: Math.PI / 2,
+    terminal: HISTORY.gatePanel, post: HISTORY.defenseB, exit: HISTORY.childSafe, safe: HISTORY.childSafe,
+    workerSpawns: HISTORY.civilians, enemySpawns: HISTORY.enemyEntries,
+  },
+  frontgate: {
+    name: '占领区 · 北闸的预告', spawn: FRONTGATE.spawn, yaw: 0,
+    terminal: FRONTGATE.observe, post: FRONTGATE.rearPost, exit: FRONTGATE.exit, safe: FRONTGATE.safe,
+    workerSpawns: FRONTGATE.workers, enemySpawns: FRONTGATE.northEntries,
+  },
   nightshift: {
     name: '占领区 · 夜班与出发', spawn: NIGHT.spawn, yaw: 0,
     terminal: NIGHT.fan, post: NIGHT.map, exit: NIGHT.exit, safe: NIGHT.delivery,

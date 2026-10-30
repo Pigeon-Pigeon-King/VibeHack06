@@ -9,7 +9,7 @@ import { initializePhysics, FIXED_DT } from './runtime/Physics';
 import { Simulation, distance, type Snapshot } from './mission/Simulation';
 import { GameUI } from './ui/GameUI';
 import { LAYOUT } from './content/layout';
-import { NIGHT_CARRY_FACTS, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
+import { carryFacts, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
 import { SaveStore, type SavedGame } from './persistence/SaveStore';
 
 function label(text: string, color = '#e4e6dd'): Sprite {
@@ -124,8 +124,8 @@ class Game {
     this.persistCheckpoint(); this.begin();
   }
   private startChapter(): void {
-    this.chapter = { chapter: 'L1', stage: 'S03', elapsedBefore: 0 };
-    this.load('nightshift'); this.persistCheckpoint(); this.begin();
+    this.chapter = { chapter: 'campaign', stage: 'S01', elapsedBefore: 0 };
+    this.load('childhood'); this.persistCheckpoint(); this.begin();
   }
   private continueChapter(): void {
     this.refreshCampaign();
@@ -136,12 +136,12 @@ class Game {
   private advanceChapter(): void {
     const next = nextStage(this.sim.scenario);
     if (!this.chapter || !this.sim.mission.complete || !next) return;
-    const facts = this.sim.mission.facts.filter(fact => (NIGHT_CARRY_FACTS as readonly string[]).includes(fact));
-    this.chapter = { chapter: 'L1', stage: next.id, elapsedBefore: this.chapter.elapsedBefore + this.sim.mission.elapsed };
+    const facts = carryFacts(next.id, this.sim.mission.facts);
+    this.chapter = { chapter: 'campaign', stage: next.id, elapsedBefore: this.chapter.elapsedBefore + this.sim.mission.elapsed };
     this.load(next.scenario, undefined, facts); this.persistCheckpoint(); this.begin();
   }
   private restart(): void {
-    const facts = this.chapter?.stage === 'S04' ? this.sim.mission.facts.filter(fact => (NIGHT_CARRY_FACTS as readonly string[]).includes(fact)) : [];
+    const facts = this.chapter ? carryFacts(this.chapter.stage, this.sim.mission.facts) : [];
     this.load(this.sim.scenario, undefined, facts); this.persistCheckpoint(); this.begin();
   }
   private begin(): void {
@@ -180,7 +180,9 @@ class Game {
     const oldPhase = this.sim.mission.phase;
     this.sim.step(this.input.read(FIXED_DT));
     // Viewpoint changes have explicit body state; the next input frame starts there.
-    if (oldPhase !== this.sim.mission.phase) this.input.pitch = this.sim.player.pitch;
+    if (oldPhase !== this.sim.mission.phase || this.sim.mission.control === 'staged') {
+      this.input.pitch = this.sim.player.pitch; this.input.yaw = this.sim.player.yaw;
+    }
     for (const e of this.sim.events) {
       if (e.type === 'shot') {
         const relative = e.position ? (e.position[0] - this.sim.player.position[0]) / 20 : 0;
@@ -227,8 +229,18 @@ class Game {
         item = { model, label: tag }; this.characters.set(actor.id, item); this.scene.add(model.root); if (tag) this.scene.add(tag);
       }
       item.model.root.position.set(...actor.position); item.model.root.rotation.y = actor.yaw;
-      item.model.setPose({ walk: actor.goals.length ? actor.walk : 0, aiming: actor.aiming, down: actor.down,
-        carrying: (actor.id === 'father' && sim.scenario === 'prologue' && m.phase === 1) || (actor.id === 'zheng' && sim.scenario === 'handover' && m.phase === 4) });
+      const stagedWalker = active && m.control === 'staged' && (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
+        && ['father', 'evacuator', 'daughter', 'zhao', 'shao'].includes(actor.id);
+      item.model.setPose({ walk: actor.goals.length || stagedWalker ? actor.walk : 0, aiming: actor.aiming, down: actor.down,
+        armed: actor.role === 'enemy' || actor.role === 'ally' && !(sim.scenario === 'mainhall' && actor.id === 'zhao' && m.phase >= 4)
+          || actor.role === 'opponent' && (m.phase > 4 || m.phaseTime >= 18)
+          || actor.id === 'father' && m.facts.includes('father-rifle-collected') && !actor.down,
+        kneeling: actor.id === 'zhao' && sim.scenario === 'mainhall' && m.phase === 4 && m.phaseTime >= 7 && m.phaseTime < 20
+          || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= 4 && m.phaseTime < 7,
+        carrying: (actor.id === 'father' && sim.scenario === 'prologue' && m.phase === 1)
+          || (actor.id === 'evacuator' && sim.scenario === 'childhood' && m.phase >= 3 && (m.phase === 4 || m.phaseTime >= 12))
+          || (actor.id === 'evacuator' && sim.scenario === 'mainhall' && m.phase >= 4)
+          || (actor.id === 'zheng' && sim.scenario === 'handover' && m.phase === 4) });
       if (item.label) {
         item.label.position.set(actor.position[0], actor.position[1] + 2.1, actor.position[2]);
         const size = Math.min(1, this.camera.position.distanceTo(item.label.position) / 10);

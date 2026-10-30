@@ -49,6 +49,16 @@ function makeCarbine(material: MeshStandardMaterial): { root: Group; magazine: G
   return { root, magazine, bolt, muzzle };
 }
 
+function makeSidearm(material: MeshStandardMaterial): Group {
+  const root = new Group(); root.name = 'sidearm-placeholder'; root.userData.assetStatus = 'placeholder';
+  new VertexParts().box([0.08, 0.09, 0.28], [0, 0, -0.14], C.steel)
+    .box([0.065, 0.18, 0.09], [0, -0.10, -0.035], C.dark, [-0.12, 0, 0])
+    .box([0.045, 0.045, 0.07], [0, -0.015, -0.29], C.dark)
+    .box([0.01, 0.025, 0.02], [0, 0.057, -0.25], C.white)
+    .mesh(root, material, 'sidearm-body');
+  return root;
+}
+
 export function createCharacter(role: CharacterRole): CharacterModel {
   const root = new Group();
   root.name = `character-${role}`;
@@ -57,7 +67,7 @@ export function createCharacter(role: CharacterRole): CharacterModel {
   const body = joint(root, 'pose-root', 0, 0);
   const material = characterMaterial();
   const isChild = role === 'child';
-  const military = role === 'enemy' || role === 'ally';
+  const military = role === 'enemy' || role === 'ally' || role === 'opponent';
   const hip = isChild ? 0.39 : 0.79;
   const shoulder = isChild ? 0.78 : 1.37;
   const legLength = isChild ? 0.34 : 0.66;
@@ -67,7 +77,7 @@ export function createCharacter(role: CharacterRole): CharacterModel {
   const armWidth = isChild ? 0.12 : 0.18;
   const headSize = isChild ? 0.29 : 0.32;
   const headY = isChild ? 0.99 : 1.62;
-  const cloth = role === 'enemy' ? C.enemy : role === 'worker' ? 0x56666b : role === 'father' ? 0x7d6651 : role === 'medic' ? 0xc3c9c2 : isChild ? 0x6b8b98 : C.cloth;
+  const cloth = role === 'enemy' || role === 'opponent' ? C.enemy : role === 'worker' ? 0x56666b : role === 'civilian' ? 0x786b71 : role === 'father' ? 0x7d6651 : role === 'medic' ? 0xc3c9c2 : isChild ? 0x6b8b98 : C.cloth;
   const torso = new VertexParts()
     .box([torsoWidth, shoulder - hip, isChild ? 0.20 : 0.28], [0, (shoulder + hip) / 2, 0], cloth)
     .box([torsoWidth + 0.025, 0.07, isChild ? 0.22 : 0.30], [0, hip + 0.06, 0], C.dark);
@@ -131,7 +141,7 @@ export function createCharacter(role: CharacterRole): CharacterModel {
       .mesh(leg, material, 'leg-knee-and-boot');
     legs.push(leg);
   }
-  const weapon = military ? makeCarbine(material) : null;
+  const weapon = role === 'opponent' ? { root: makeSidearm(material) } : military || role === 'father' ? makeCarbine(material) : null;
   if (weapon) {
     body.add(weapon.root);
     weapon.root.scale.setScalar(0.68);
@@ -141,21 +151,21 @@ export function createCharacter(role: CharacterRole): CharacterModel {
     if (object instanceof Mesh) object.castShadow = ['torso-and-equipment', 'head-face-and-headwear', 'leg-knee-and-boot'].includes(object.name);
   });
   let disposed = false;
-  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying }) => {
+  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false }) => {
     const stride = Math.sin(walk) * 0.48;
-    body.position.y = down ? 0.24 : Math.abs(Math.sin(walk * 2)) * 0.018;
+    body.position.y = down ? 0.24 : kneeling ? -0.36 : Math.abs(Math.sin(walk * 2)) * 0.018;
     body.rotation.set(down ? Math.PI / 2 : 0, 0, 0);
     head.rotation.x = down ? 0.12 : aiming ? -0.055 : 0;
     for (let i = 0; i < 2; i++) {
       const sign = i === 0 ? 1 : -1;
-      legs[i].rotation.x = down ? 0.05 * sign : stride * sign;
-      arms[i].rotation.set(down ? 0.35 * sign : carrying ? -1.40 : aiming && military ? -1.18 : -stride * sign * 0.7, 0, down ? 0.25 * sign : aiming || carrying ? sign * 0.20 : sign * 0.035);
-      elbows[i].rotation.x = carrying ? -0.10 : aiming && military ? -0.40 : -0.06;
+      legs[i].rotation.x = down ? 0.05 * sign : kneeling ? 1.03 : stride * sign;
+      arms[i].rotation.set(down ? 0.35 * sign : carrying ? -1.40 : aiming && armed ? -1.18 : -stride * sign * 0.7, 0, down ? 0.25 * sign : aiming || carrying ? sign * 0.20 : sign * 0.035);
+      elbows[i].rotation.x = carrying ? -0.10 : aiming && armed ? -0.40 : -0.06;
     }
     if (weapon) {
       weapon.root.position.set(0.14, aiming ? 1.10 : 1.00, aiming ? 0.30 : 0.24);
       weapon.root.rotation.x = aiming ? 0 : -0.66;
-      weapon.root.visible = !carrying;
+      weapon.root.visible = armed && !carrying;
     }
   };
   setPose({ walk: 0, aiming: false, down: false });

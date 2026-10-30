@@ -1,6 +1,10 @@
 import type { CharacterRole, ControlMode, ScenarioId, SolidSpec, Vec3 } from '../contracts';
 import { LAYOUT } from '../content/layout';
 import { NIGHT, WORKERS } from '../content/chapter-layout';
+import { HISTORY } from '../content/history-layout';
+import { FRONTGATE } from '../content/frontgate-layout';
+import { openingObjective, populateOpening, updateOpening } from './Opening';
+import { frontgateObjective, populateFrontgate, updateFrontgate } from './Frontgate';
 import { Physics, FIXED_DT } from '../runtime/Physics';
 import { Random } from '../runtime/random';
 import { Ballistics } from '../combat/Ballistics';
@@ -48,15 +52,16 @@ export class Simulation {
 
   constructor(readonly scenario: ScenarioId, readonly solids: SolidSpec[], saved?: Snapshot, priorFacts: readonly string[] = []) {
     this.physics = new Physics(solids);
-    this.navBounds = scenario === 'nightshift' ? NIGHT.bounds : scenario === 'workers' ? WORKERS.bounds : undefined;
+    this.navBounds = scenario === 'nightshift' ? NIGHT.bounds : scenario === 'workers' ? WORKERS.bounds
+      : scenario === 'childhood' || scenario === 'mainhall' ? HISTORY.bounds : scenario === 'frontgate' ? FRONTGATE.bounds : undefined;
     this.navigation = new Navigation(solids, this.navBounds);
     this.ballistics = new Ballistics((a, b, except) => this.physics.trace(a, b, except));
     const layout = LAYOUT[scenario];
     this.player = { position: [...layout.spawn], yaw: layout.yaw, pitch: 0, health: 100,
-      ammo: scenario === 'nightshift' ? 0 : 25, reserve: scenario === 'nightshift' ? 0 : 150, height: scenario === 'prologue' ? 1.1 : 1.8, crouched: false,
+      ammo: scenario === 'nightshift' || scenario === 'childhood' ? 0 : 25, reserve: scenario === 'nightshift' || scenario === 'childhood' ? 0 : 150, height: scenario === 'prologue' || scenario === 'childhood' ? 1.1 : 1.8, crouched: false,
       reload: 0, cooldown: 0, hurtAt: -10, walk: 0, recoil: 0, ads: false,
-      name: scenario === 'prologue' ? '陆闻川 · 九岁' : scenario === 'northgate' ? '周延 · 三十三岁' : '陆闻川 · 十九岁' };
-    this.mission = { scenario, phase: 0, elapsed: 0, phaseTime: 0, control: scenario === 'northgate' ? 'combat' : 'work',
+      name: scenario === 'prologue' || scenario === 'childhood' ? '陆闻川 · 九岁' : scenario === 'mainhall' ? '周延 · 二十三岁' : scenario === 'northgate' || scenario === 'frontgate' ? '周延 · 三十三岁' : '陆闻川 · 十九岁' };
+    this.mission = { scenario, phase: 0, elapsed: 0, phaseTime: 0, control: scenario === 'northgate' || scenario === 'frontgate' ? 'combat' : 'work',
       facts: [...new Set(priorFacts)], complete: false, failed: false, checkpointLabel: '进入区域',
       subtitle: '', speaker: '', subtitleUntil: 0, spawned: 0, nextSpawn: 12 };
     if (saved) {
@@ -73,6 +78,8 @@ export class Simulation {
   }
 
   private populate(): void {
+    if (this.scenario === 'childhood' || this.scenario === 'mainhall') { populateOpening(this); return; }
+    if (this.scenario === 'frontgate') { populateFrontgate(this); return; }
     const l = LAYOUT[this.scenario];
     if (this.scenario === 'nightshift') {
       this.createActor('xu', '许岚', 'medic', NIGHT.xu);
@@ -106,7 +113,7 @@ export class Simulation {
     }
   }
 
-  private createActor(id: string, name: string, role: CharacterRole, position: Vec3): Actor {
+  createActor(id: string, name: string, role: CharacterRole, position: Vec3): Actor {
     const actor: Actor = { id, name, role, position: [...position], health: role === 'enemy' ? 68 : 100,
       yaw: role === 'enemy' ? Math.PI : 0, goals: [], path: [], walk: 0,
       aiming: false, aimTime: 0, cooldown: this.random.between(0.7, 1.4), safe: false, released: false, down: false };
@@ -124,14 +131,14 @@ export class Simulation {
     actor.goals = [east ? [14, 0, -2] : [this.random.between(-9, 9), 0, this.random.between(-15, -9)]];
     if (addBody) this.physics.add(actor.id, actor.position);
   }
-  private route(actor: Actor, goals: Vec3[]): void { actor.goals = clone(goals); actor.path = []; actor.released = true; }
+  route(actor: Actor, goals: Vec3[]): void { actor.goals = clone(goals); actor.path = []; actor.released = true; }
   private syncTopology(clearPaths = true): void {
     if (!this.physics.applyFacts(this.mission.facts)) return;
     this.navigation = new Navigation(this.solids.filter(solid => !solid.openFact || !this.has(solid.openFact)), this.navBounds);
     if (clearPaths) { for (const actor of this.actors) actor.path = []; this.pathRetry.clear(); }
   }
-  private spawnChapterGroup(group: string, positions: Vec3[], goals?: Vec3[]): void {
-    const budget = group === 'E02' ? 20 : 18;
+  spawnChapterGroup(group: string, positions: Vec3[], goals?: Vec3[]): void {
+    const budget = group === 'E04' ? 44 : group === 'E02' ? 20 : 18;
     const used = this.actors.filter(actor => actor.id.startsWith(`enemy-${group}-`)).length;
     const count = Math.min(positions.length, Math.max(0, 8 - this.aliveEnemies.length), Math.max(0, budget - used));
     for (let i = 0; i < count; i++) {
@@ -140,7 +147,7 @@ export class Simulation {
       this.physics.add(actor.id, actor.position);
     }
   }
-  private exposedThreat(point: Vec3, radius: number): boolean {
+  exposedThreat(point: Vec3, radius: number): boolean {
     return this.aliveEnemies.some(actor => distance(actor.position, point) < radius
       && !this.physics.trace(eye(point), eye(actor.position), undefined, true));
   }
@@ -148,12 +155,12 @@ export class Simulation {
     return this.aliveEnemies.some(enemy => distance(actor.position, enemy.position) < 8
       && !this.physics.trace(eye(actor.position), eye(enemy.position), actor.id, true));
   }
-  private fact(id: string): void { if (!this.mission.facts.includes(id)) this.mission.facts.push(id); }
-  private has(id: string): boolean { return this.mission.facts.includes(id); }
-  private say(speaker: string, subtitle: string, seconds = 7): void {
+  fact(id: string): void { if (!this.mission.facts.includes(id)) this.mission.facts.push(id); }
+  has(id: string): boolean { return this.mission.facts.includes(id); }
+  say(speaker: string, subtitle: string, seconds = 7): void {
     Object.assign(this.mission, { speaker, subtitle, subtitleUntil: this.mission.elapsed + seconds });
   }
-  private phase(phase: number, subtitle: string, control: ControlMode = 'combat', speaker = this.player.name): void {
+  phase(phase: number, subtitle: string, control: ControlMode = 'combat', speaker = this.player.name): void {
     Object.assign(this.mission, { phase, phaseTime: 0, control });
     this.say(speaker, subtitle);
     this.events.push({ type: 'objective' });
@@ -195,8 +202,8 @@ export class Simulation {
       p.reload = Math.max(0, p.reload - dt);
       if (!p.reload) { const count = Math.min(25 - p.ammo, p.reserve); p.ammo += count; p.reserve -= count; }
     }
-    const isChild = this.scenario === 'prologue' && m.phase < 2;
-    const desiredHeight = isChild ? 1.1 : (intent.crouch ? 1.2 : 1.8);
+    const isChild = this.scenario === 'childhood' || this.scenario === 'prologue' && m.phase < 2;
+    const desiredHeight = isChild ? 1.1 : this.scenario === 'mainhall' && m.phase >= 4 ? 0.65 : (intent.crouch ? 1.2 : 1.8);
     if (this.physics.setHeight('player', desiredHeight)) p.height = desiredHeight;
     p.crouched = !isChild && p.height < 1.5;
     const speed = m.control === 'cooperative' ? 1.5 : isChild ? 1.55 : p.crouched ? 1.35 : intent.sprint && !p.ads ? 6.3 : p.ads ? 1.65 : 2.1;
@@ -234,16 +241,19 @@ export class Simulation {
     for (const impact of this.ballistics.update(dt)) {
       const { projectile, hit } = impact;
       this.events.push({ type: 'impact', position: hit.point, enemy: hit.id.startsWith('enemy-') });
-      if (hit.id === 'player' && projectile.owner !== 'player') {
+      if (hit.id === 'player' && this.actors.some(source => source.id === projectile.owner && source.role === 'enemy')) {
         p.health = Math.max(0, p.health - projectile.damage); p.hurtAt = m.elapsed; this.hurtFlash = 1;
         this.events.push({ type: 'hurt' });
       } else {
         const actor = this.actors.find(a => a.id === hit.id && !a.down);
-        if (actor?.role === 'enemy' && projectile.owner === 'player') {
-          actor.health -= projectile.damage; this.hits++; this.hitFlash = 1; this.events.push({ type: 'hit' });
-          if (actor.health <= 0) { actor.down = true; actor.aiming = false; this.physics.remove(actor.id); this.kills++; }
+        const playerShot = projectile.owner === 'player';
+        const friendlyShot = playerShot || this.actors.some(source => source.id === projectile.owner && source.role === 'ally');
+        if (actor?.role === 'enemy' && friendlyShot) {
+          actor.health -= projectile.damage;
+          if (playerShot) { this.hits++; this.hitFlash = 1; this.events.push({ type: 'hit' }); }
+          if (actor.health <= 0) { actor.down = true; actor.aiming = false; this.physics.remove(actor.id); if (playerShot) this.kills++; }
         } else if (actor && actor.role !== 'enemy' && projectile.owner === 'player') {
-          this.say('郑铎', '停火，自己人！', 2);
+          this.say(this.scenario === 'mainhall' ? '赵启明' : '郑铎', '停火，自己人！', 2);
         }
       }
     }
@@ -282,6 +292,20 @@ export class Simulation {
         } else a.aimTime = 0;
       }
       if (a.role === 'worker' && a.released && !a.safe && this.workerThreatened(a)) speed = 0;
+      if (a.role === 'ally' && !a.goals.length && m.control === 'combat' && (this.scenario === 'mainhall' || this.scenario === 'frontgate')) {
+        const target = this.aliveEnemies.find(enemy => distance(a.position, enemy.position) < 48
+          && !this.physics.trace(eye(a.position), eye(enemy.position), a.id, true));
+        if (target) {
+          a.aiming = true; a.yaw = Math.atan2(target.position[0] - a.position[0], target.position[2] - a.position[2]);
+          if (a.cooldown === 0) {
+            const from = eye(a.position), to = eye(target.position);
+            this.ballistics.fire(a.id, from, [to[0] - from[0] + this.random.between(-0.8, 0.8),
+              to[1] - from[1], to[2] - from[2] + this.random.between(-0.8, 0.8)], 17, 420);
+            a.cooldown = this.random.between(1.6, 2.8);
+            this.events.push({ type: 'shot', position: from });
+          }
+        }
+      }
       let vx = 0, vz = 0;
       if (a.goals.length && speed) {
         const goal = a.goals[0];
@@ -321,6 +345,8 @@ export class Simulation {
       if (a.released && !a.goals.length && distance(a.position, target) < (this.scenario === 'handover' ? 4 : 5)) a.safe = true;
     }
     const at = (target: Vec3, range = 2.8) => distance(p.position, target) < range;
+    if (this.scenario === 'childhood' || this.scenario === 'mainhall') { updateOpening(this, input); return; }
+    if (this.scenario === 'frontgate') { updateFrontgate(this, input); return; }
     if (this.scenario === 'nightshift') this.updateNight(input);
     else if (this.scenario === 'workers') this.updateWorkers(input);
     else if (this.scenario === 'northgate') {
@@ -402,7 +428,7 @@ export class Simulation {
     void dt;
   }
 
-  private finish(text: string): void { this.mission.complete = true; this.ballistics.clear(); this.say('', text, 100); this.events.push({ type: 'objective' }); }
+  finish(text: string): void { this.mission.complete = true; this.ballistics.clear(); this.say('', text, 100); this.events.push({ type: 'objective' }); }
 
   private updateNight(input: Intent): void {
     const m = this.mission;
@@ -506,6 +532,8 @@ export class Simulation {
   }
 
   get objective(): { phase: string; text: string; detail: string; point: Vec3; interaction: string } {
+    if (this.scenario === 'childhood' || this.scenario === 'mainhall') return openingObjective(this);
+    if (this.scenario === 'frontgate') return frontgateObjective(this);
     if (this.scenario === 'nightshift' || this.scenario === 'workers') return this.chapterObjective;
     const l = LAYOUT[this.scenario], m = this.mission;
     let phase = '', text = '', detail = '', point: Vec3 = l.terminal, action = '';

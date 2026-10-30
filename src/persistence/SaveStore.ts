@@ -1,5 +1,6 @@
 import { SCENARIO_IDS, type CharacterRole, type ScenarioId } from '../contracts';
 import { CHAPTER_STAGES, SCENARIO_PHASE_LIMITS, type ChapterProgress } from '../content/chapter-flow';
+import { HISTORY } from '../content/history-layout';
 import type { Snapshot } from '../mission/Simulation';
 
 export interface StorageLike {
@@ -73,7 +74,6 @@ function validateSnapshot(value: unknown): Snapshot {
   numeric(player.health, '玩家生命', 0, 100);
   numeric(player.ammo, '弹匣', 0, 25, true);
   numeric(player.reserve, '备用弹药', 0, 10_000, true);
-  numeric(player.height, '玩家高度', 0.8, 3);
   numeric(player.reload, '装填时间', 0, 60);
   numeric(player.cooldown, '武器冷却', 0, 60);
   numeric(player.hurtAt, '受伤时间', -MAX_SECONDS, MAX_SECONDS);
@@ -84,6 +84,9 @@ function validateSnapshot(value: unknown): Snapshot {
   const mission = record(snapshot.mission, '任务', ['scenario', 'phase', 'elapsed', 'phaseTime', 'control', 'facts', 'complete', 'failed', 'checkpointLabel', 'subtitle', 'speaker', 'subtitleUntil', 'spawned', 'nextSpawn']);
   scenario(mission.scenario);
   numeric(mission.phase, '任务阶段', 0, SCENARIO_PHASE_LIMITS[mission.scenario], true);
+  numeric(player.height, '玩家高度', mission.scenario === 'mainhall' && mission.phase >= 4 ? 0.65 : 0.8, 3);
+  if (mission.scenario === 'childhood' && player.height !== 1.1) throw new InvalidRecord('童年视点高度与角色不一致。');
+  if (mission.scenario === 'mainhall' && mission.phase >= 4 && player.height !== 0.65) throw new InvalidRecord('主厅演出高度与角色状态不一致。');
   numeric(mission.elapsed, '场景用时', 0, MAX_SECONDS);
   numeric(mission.phaseTime, '阶段用时', 0, mission.elapsed + 0.0001);
   numeric(mission.subtitleUntil, '字幕时间', 0, MAX_SECONDS + 3600);
@@ -104,7 +107,7 @@ function validateSnapshot(value: unknown): Snapshot {
     const actor = record(value, '人物', ['id', 'name', 'role', 'position', 'health', 'yaw', 'goals', 'path', 'walk', 'aiming', 'aimTime', 'cooldown', 'safe', 'released', 'down']);
     text(actor.id, '人物 ID', 80); text(actor.name, '人物姓名', 120);
     if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(actor.id) || actor.id === 'player' || actors.has(actor.id)) throw new InvalidRecord('人物 ID 重复、非法或与玩家冲突。');
-    if (typeof actor.role !== 'string' || !['enemy', 'ally', 'worker', 'father', 'child', 'medic'].includes(actor.role)) throw new InvalidRecord('人物类型不受支持。');
+    if (typeof actor.role !== 'string' || !['enemy', 'ally', 'worker', 'father', 'child', 'medic', 'civilian', 'opponent'].includes(actor.role)) throw new InvalidRecord('人物类型不受支持。');
     vector(actor.position, '人物位置');
     numeric(actor.health, '人物生命', -1000, 1000); numeric(actor.yaw, '人物朝向', -1_000_000, 1_000_000);
     numeric(actor.walk, '人物步态', 0, 1_000_000_000); numeric(actor.aimTime, '瞄准时间', 0, MAX_SECONDS);
@@ -112,23 +115,34 @@ function validateSnapshot(value: unknown): Snapshot {
     for (const key of ['aiming', 'safe', 'released', 'down']) boolean(actor[key], `人物 ${key}`);
     list(actor.goals, '目标路线', 128); list(actor.path, '导航路径', 4096);
     actor.goals.forEach(point => vector(point, '目标路点')); actor.path.forEach(point => vector(point, '导航路点'));
-    const enemyIndex = /^enemy-(?:E0[123]-)?(\d+)$/.exec(actor.id);
+    const enemyIndex = /^enemy-(?:E0[0-4]-)?(\d+)$/.exec(actor.id);
     if (enemyIndex && Number(enemyIndex[1]) >= mission.spawned) throw new InvalidRecord('敌人 ID 与入场计数冲突。');
     actors.set(actor.id, actor);
   }
   const need = (id: string, role: CharacterRole) => {
     if (actors.get(id)?.role !== role) throw new InvalidRecord(`场景缺少必需人物 ${id}，或其身份错误。`);
   };
-  if (mission.scenario === 'nightshift') { need('xu', 'medic'); need('meng', 'ally'); need('zhou', 'ally'); }
+  if (mission.scenario === 'childhood' || mission.scenario === 'mainhall') {
+    need('father', 'father'); need('evacuator', 'civilian'); need('daughter', 'child'); need('zhao', 'ally');
+    if (mission.scenario === 'childhood') need('young-zhou', 'ally');
+    else { need('young-lu', 'child'); if (mission.phase >= 4) need('shao', 'opponent'); }
+  } else if (mission.scenario === 'nightshift') { need('xu', 'medic'); need('meng', 'ally'); need('zhou', 'ally'); }
   else need('zheng', 'ally');
   if (mission.scenario === 'prologue') need('father', 'father');
   if (mission.scenario === 'workers') need('meng', 'ally');
+  if (mission.scenario === 'frontgate') need('relief', 'ally');
   if (mission.scenario === 'handover') {
     need('medic', 'medic');
     if (mission.phase >= 3) need('meng', 'ally');
   }
-  const workerCount: Record<ScenarioId, number> = { northgate: 7, prologue: 3, handover: 2, nightshift: 0, workers: 9 };
+  const workerCount: Record<ScenarioId, number> = {
+    northgate: 7, prologue: 3, handover: 2, nightshift: 0, workers: 9,
+    childhood: 0, mainhall: HISTORY.civilians.length, frontgate: 7,
+  };
   for (let i = 0; i < workerCount[mission.scenario]; i++) need(`worker-${i}`, 'worker');
+  if ([...actors.values()].filter(actor => actor.role === 'worker').length !== workerCount[mission.scenario]) {
+    throw new InvalidRecord('任务撤离组人数与场景不一致。');
+  }
   return structuredClone(value) as Snapshot;
 }
 
@@ -139,7 +153,9 @@ function validateChapter(slot: SaveSlot, scene: ScenarioId, value: unknown): Cha
     return undefined;
   }
   const chapter = record(value, '连续章节', ['chapter', 'stage', 'elapsedBefore']);
-  if (chapter.chapter !== 'L1' || !CHAPTER_STAGES.some(stage => stage.id === chapter.stage && stage.scenario === scene)) throw new InvalidRecord('连续章节、段落与场景不匹配。');
+  const supportedChapter = chapter.chapter === 'campaign'
+    || (chapter.chapter === 'L1' && (chapter.stage === 'S03' || chapter.stage === 'S04'));
+  if (!supportedChapter || !CHAPTER_STAGES.some(stage => stage.id === chapter.stage && stage.scenario === scene)) throw new InvalidRecord('连续章节、段落与场景不匹配。');
   numeric(chapter.elapsedBefore, '此前章节用时', 0, MAX_SECONDS);
   return structuredClone(chapter) as unknown as ChapterProgress;
 }
@@ -189,8 +205,11 @@ export class SaveStore {
     try {
       validateSlot(slot);
       const checked = validateSnapshot(snapshot), progress = validateChapter(slot, checked.mission.scenario, chapter);
+      // Loading preserves legacy bytes and stage identity; an explicit later save
+      // upgrades only the chapter label, never the scene, phase or elapsed time.
+      const currentProgress = progress ? { ...progress, chapter: 'campaign' as const } : undefined;
       const savedAt = this.now(); numeric(savedAt, '保存时间', 0, Number.MAX_SAFE_INTEGER, true);
-      const data: SaveEnvelope = { schema: 'ganymede-save', version: VERSION, slot, savedAt, snapshot: checked, ...(progress ? { chapter: progress } : {}) };
+      const data: SaveEnvelope = { schema: 'ganymede-save', version: VERSION, slot, savedAt, snapshot: checked, ...(currentProgress ? { chapter: currentProgress } : {}) };
       const raw = JSON.stringify(data);
       if (raw.length > MAX_RECORD_LENGTH) throw new InvalidRecord('存档超过允许大小。');
       return this.write(`${SAVE_KEY_PREFIX}${slot}`, raw, previous => parseSave(previous, slot));

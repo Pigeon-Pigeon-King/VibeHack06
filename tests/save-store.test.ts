@@ -1,7 +1,8 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 import { SCENARIO_IDS, type ScenarioId, type SolidSpec } from '../src/contracts';
-import { SCENARIO_PHASE_LIMITS } from '../src/content/chapter-flow';
-import { WORKERS } from '../src/content/chapter-layout';
+import { SCENARIO_PHASE_LIMITS, type ChapterStageId } from '../src/content/chapter-flow';
+import { NIGHT, WORKERS } from '../src/content/chapter-layout';
+import { HISTORY } from '../src/content/history-layout';
 import { LAYOUT } from '../src/content/layout';
 import { distance, emptyIntent, Simulation, type Snapshot } from '../src/mission/Simulation';
 import { buildEnvironment } from '../src/presentation/environment';
@@ -103,7 +104,7 @@ describe('SaveStore: real simulation snapshots with injected storage', () => {
     } finally { environment.dispose(); }
   });
 
-  it.each(['enemy-', 'enemy-E01-', 'enemy-E02-', 'enemy-E03-'])('rejects reserved/future enemy IDs for %s on both write and load', prefix => {
+  it.each(['enemy-', 'enemy-E00-', 'enemy-E01-', 'enemy-E02-', 'enemy-E03-', 'enemy-E04-'])('rejects reserved/future enemy IDs for %s on both write and load', prefix => {
     const base = fixture('workers');
     const enemy = fixture().actors.find(actor => actor.role === 'enemy')!;
     // Deliberately synthetic corruption fixtures, not gameplay progression.
@@ -140,7 +141,7 @@ describe('SaveStore: real simulation snapshots with injected storage', () => {
     expect(store.load('northgate').save!.snapshot).toEqual(original);
   });
 
-  it('accepts all five current scenario snapshots and enforces their own phase limits', () => {
+  it('accepts all current scenario snapshots and enforces their own phase limits', () => {
     const store = new SaveStore(new MemoryStorage());
     for (const scene of SCENARIO_IDS) {
       const snapshot = fixture(scene);
@@ -161,7 +162,7 @@ describe('SaveStore: real simulation snapshots with injected storage', () => {
     expect(store.save('campaign', second, { chapter: 'L1', stage: 'S04', elapsedBefore: 123 })).toEqual({ ok: true });
     const reader = new SaveStore(storage);
     expect(reader.load('campaign').save!.snapshot.mission.scenario).toBe('workers');
-    expect(reader.load('campaign').save!.chapter).toEqual({ chapter: 'L1', stage: 'S04', elapsedBefore: 123 });
+    expect(reader.load('campaign').save!.chapter).toEqual({ chapter: 'campaign', stage: 'S04', elapsedBefore: 123 });
     expect(reader.load('nightshift').save!.snapshot).toEqual(first);
     expect(reader.load('northgate').save!.snapshot).toEqual(northgate);
   });
@@ -290,6 +291,146 @@ describe('SaveStore: real simulation snapshots with injected storage', () => {
     expect(store.load('prologue').save).toBeUndefined();
     expect(store.load('prologue').warning).toContain('槽位');
     expect(storage.getItem(key('prologue'))).toBe(raw);
+  });
+});
+
+describe('campaign expansion and version 0.2 chapter compatibility', () => {
+  const addedScenes: Array<[ScenarioId, ChapterStageId]> = [
+    ['childhood', 'S01'], ['mainhall', 'S02'], ['frontgate', 'S05'],
+  ];
+
+  it.each(addedScenes)('round-trips the actual %s initial snapshot in campaign stage %s', (scene, stage) => {
+    const snapshot = fixture(scene), storage = new MemoryStorage();
+    const chapter = { chapter: 'campaign', stage, elapsedBefore: 37 } as const;
+    expect(new SaveStore(storage, () => 100).save('campaign', snapshot, chapter)).toEqual({ ok: true });
+    const loaded = new SaveStore(storage).load('campaign');
+    expect(loaded.warning).toBeUndefined();
+    expect(loaded.save!.chapter).toEqual(chapter);
+    expect(loaded.save!.snapshot).toEqual(snapshot);
+    expect(simulation(scene, loaded.save!.snapshot).snapshot()).toEqual(snapshot);
+    // Independent validation slots remain distinct, even for these campaign scenes.
+    expect(new SaveStore(storage).load(scene)).toEqual({});
+  });
+
+  it.each([
+    ['childhood', 'young-zhou'], ['mainhall', 'evacuator'], ['mainhall', 'young-lu'], ['frontgate', 'relief'],
+  ] as const)('rejects a missing or misidentified required participant in %s', (scene, id) => {
+    const original = fixture(scene), storage = new MemoryStorage(), store = new SaveStore(storage);
+    expect(store.save(scene, original)).toEqual({ ok: true });
+    const missing = structuredClone(original);
+    missing.actors = missing.actors.filter(actor => actor.id !== id);
+    expect(store.save(scene, missing).ok).toBe(false);
+    const wrongRole = structuredClone(original);
+    wrongRole.actors.find(actor => actor.id === id)!.role = 'enemy';
+    expect(store.save(scene, wrongRole).ok).toBe(false);
+    expect(store.load(scene).save!.snapshot).toEqual(original);
+  });
+
+  it.each([4, 5])('preserves a low mainhall staged body and opponents in phase %s without spending enemy IDs', phase => {
+    const snapshot = fixture('mainhall');
+    // Synthetic staged-save boundary: this tests range and participant validation,
+    // not a claim that the player has completed the collapse/escape sequence.
+    snapshot.mission.phase = phase; snapshot.mission.control = 'staged'; snapshot.mission.complete = phase === 5;
+    snapshot.player.height = 0.65; snapshot.player.position[1] = -2;
+    // Optional late crowds may vary between candidate revisions without making
+    // an otherwise complete task snapshot unusable.
+    snapshot.actors = snapshot.actors.filter(actor => !actor.id.startsWith('late-civilian-'));
+    const actor = snapshot.actors.find(actor => actor.id === 'zhao')!;
+    snapshot.actors.push({ ...structuredClone(actor), id: 'shao', name: '邵原', role: 'opponent' },
+      { ...structuredClone(actor), id: 'guard-save-fixture', name: '固定演出警卫', role: 'opponent' });
+    const spawned = snapshot.mission.spawned;
+    const storage = new MemoryStorage(), store = new SaveStore(storage);
+    expect(snapshot.actors.filter(actor => actor.role === 'worker')).toHaveLength(HISTORY.civilians.length);
+    expect(store.save('campaign', snapshot, { chapter: 'campaign', stage: 'S02', elapsedBefore: 81 })).toEqual({ ok: true });
+    const loaded = new SaveStore(storage).load('campaign');
+    expect(loaded.save!.snapshot).toEqual(snapshot);
+    expect(loaded.save!.snapshot.mission.spawned).toBe(spawned);
+    const rebuilt = simulation('mainhall', loaded.save!.snapshot);
+    expect(rebuilt.player.height).toBe(0.65);
+    expect(rebuilt.player.position[1]).toBe(-2);
+    expect(rebuilt.mission.phase).toBe(phase);
+    expect(rebuilt.actors.find(a => a.id === 'shao')!.role).toBe('opponent');
+    expect(() => rebuilt.step(emptyIntent)).not.toThrow();
+    expect(rebuilt.player.height).toBe(0.65);
+
+    const missingShao = structuredClone(snapshot);
+    missingShao.actors = missingShao.actors.filter(a => a.id !== 'shao');
+    expect(store.save('mainhall', missingShao).ok).toBe(false);
+    const tooShort = structuredClone(snapshot); tooShort.player.height = 0.64;
+    expect(store.save('mainhall', tooShort).ok).toBe(false);
+    const standing = structuredClone(snapshot); standing.player.height = 1.8;
+    expect(store.save('mainhall', standing).ok).toBe(false);
+    const premature = structuredClone(snapshot); premature.mission.phase = 3; premature.mission.complete = false;
+    expect(store.save('mainhall', premature).ok).toBe(false);
+  });
+
+  it('keeps child height and task-worker membership distinct from optional civilian crowds', () => {
+    const child = fixture('childhood'), hall = fixture('mainhall'), store = new SaveStore(new MemoryStorage());
+    expect(child.player.height).toBe(1.1);
+    expect(child.actors.filter(actor => actor.role === 'worker')).toHaveLength(0);
+    const extra = structuredClone(child.actors.find(actor => actor.id === 'evacuator')!);
+    extra.id = 'optional-civilian-save-fixture';
+    child.actors.push(extra);
+    expect(store.save('childhood', child)).toEqual({ ok: true });
+    const adultHeight = structuredClone(child); adultHeight.player.height = 1.8;
+    expect(store.save('childhood', adultHeight).ok).toBe(false);
+    const wrongGroup = structuredClone(child); wrongGroup.actors.at(-1)!.role = 'worker';
+    expect(store.save('childhood', wrongGroup).ok).toBe(false);
+    hall.actors.push(structuredClone(extra));
+    expect(store.save('mainhall', hall)).toEqual({ ok: true });
+    hall.actors = hall.actors.filter(actor => actor.id !== `worker-${HISTORY.civilians.length - 1}`);
+    expect(store.save('mainhall', hall).ok).toBe(false);
+  });
+
+  it.each([['nightshift', 'S03'], ['workers', 'S04']] as const)('loads legacy L1/%s at its original stage and upgrades only on a successful save', (scene, stage) => {
+    const environment = buildEnvironment(scene);
+    try {
+      const sim = simulation(scene, undefined, environment.solids);
+      const point = scene === 'nightshift' ? NIGHT.fan : WORKERS.observation;
+      const path = sim.navigation.path(sim.player.position, point);
+      for (let frame = 0; frame < 900 && distance(sim.player.position, point) > 2; frame++) {
+        while (path.length && distance(sim.player.position, path[0]) < 0.3) path.shift();
+        const next = path[0] ?? point;
+        sim.step({ ...emptyIntent, forward: 1, sprint: true,
+          yaw: Math.atan2(-(next[0] - sim.player.position[0]), -(next[2] - sim.player.position[2])) });
+      }
+      expect(distance(sim.player.position, point)).toBeLessThanOrEqual(2);
+      const yaw = scene === 'workers' ? Math.atan2(-(WORKERS.convoy[0] - sim.player.position[0]), -(WORKERS.convoy[2] - sim.player.position[2])) : sim.player.yaw;
+      sim.step({ ...emptyIntent, yaw, interact: true });
+      expect(sim.mission.phase).toBe(1);
+      const snapshot = sim.snapshot(), storage = new MemoryStorage();
+      const chapter = { chapter: 'L1', stage, elapsedBefore: 123.45 } as const;
+      // Raw schema-1 envelope models bytes written by version 0.2, before S01/S02
+      // were inserted into the stage list. Reading must never renumber its stage.
+      const legacy = JSON.stringify({ schema: 'ganymede-save', version: 1, slot: 'campaign', savedAt: 100, snapshot, chapter });
+      storage.values.set(key('campaign'), legacy);
+      const loaded = new SaveStore(storage).load('campaign');
+      expect(loaded.warning).toBeUndefined();
+      expect(loaded.save).toEqual({ snapshot, chapter, savedAt: 100 });
+      expect(storage.getItem(key('campaign'))).toBe(legacy);
+      expect(storage.writes).toHaveLength(0);
+      expect(simulation(scene, loaded.save!.snapshot, environment.solids).snapshot()).toEqual(snapshot);
+
+      storage.failWriteKey = key('campaign');
+      expect(new SaveStore(storage).save('campaign', loaded.save!.snapshot, loaded.save!.chapter).ok).toBe(false);
+      expect(storage.getItem(key('campaign'))).toBe(legacy);
+      expect(new SaveStore(storage).load('campaign').save!.chapter).toEqual(chapter);
+      storage.failWriteKey = '';
+      expect(new SaveStore(storage, () => 200).save('campaign', loaded.save!.snapshot, loaded.save!.chapter)).toEqual({ ok: true });
+      const current = new SaveStore(storage).load('campaign');
+      expect(current.save!.chapter).toEqual({ ...chapter, chapter: 'campaign' });
+      expect(current.save!.snapshot).toEqual(snapshot);
+      expect(loaded.save!.chapter).toEqual(chapter);
+      expect(storage.getItem(`${key('campaign')}.backup`)).toBe(legacy);
+      expect(storage.getItem(`${key('campaign')}.damaged`)).toBeNull();
+    } finally { environment.dispose(); }
+  });
+
+  it('rejects a legacy chapter label on newly introduced stages instead of treating it as a valid old save', () => {
+    const store = new SaveStore(new MemoryStorage());
+    for (const [scene, stage] of addedScenes) {
+      expect(store.save('campaign', fixture(scene), { chapter: 'L1', stage, elapsedBefore: 0 }).ok).toBe(false);
+    }
   });
 });
 

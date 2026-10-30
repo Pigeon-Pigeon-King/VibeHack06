@@ -1,6 +1,6 @@
 # 连续章节候选验证记录 · 0.2.0
 
-候选标识 `chapter-preview-2026-10-31`。这版新增 S03→S04 的可玩前段、持久检查点和设置；旧三白盒保留独立入口。它不是完整一小时战役或最终比赛提交。原始交接文件未改写，首轮证据另存于 [历史记录](final-evidence.md)。
+本页是 0.2.0 历史记录；当前版本见 [0.3 验证](opening-evidence.md)。候选标识 `chapter-preview-2026-10-31`。这版新增 S03→S04 的可玩前段、持久检查点和设置；旧三白盒保留独立入口。它不是完整一小时战役或最终比赛提交。原始交接文件未改写，首轮证据另存于 [历史记录](final-evidence.md)。
 
 ## 已实现的实际流程
 
@@ -14,7 +14,7 @@ E01／E02／E03 使用有限入场预算 18／20／18；预算是上限，不是
 
 ## 自动验证
 
-`npm test -- --reporter=json --outputFile=artifacts/test-results.json`：**47 项通过，0 失败，6 个测试文件**。可复查 [测试报告](test-results.json) 和源码。
+`npm test -- --reporter=json --outputFile=artifacts/test-results.json`：**47 项通过，0 失败，6 个测试文件**。可复查 [测试报告](chapter-test-results.json) 和源码。
 
 | 文件 | 项数 | 证明范围 |
 | --- | ---: | --- |
@@ -51,7 +51,7 @@ E01／E02／E03 使用有限入场预算 18／20／18；预算是上限，不是
 
 SaveStore 使用本机 storage、版本包装、严格结构校验和上一份有效备份。读取损坏主记录可回退并显示原因；覆盖前保存损坏原文；不覆盖未来版本；写入失败保留旧主记录。连续章节槽与独立场景槽分离。恢复重建人物、物理和门状态，保留随机状态、弹药与任务，清除旧弹丸。浏览器与 Electron、不同来源／端口之间不自动共享；当前没有导入导出、云同步或已发布旧版本迁移。
 
-`npm run package:win` 完成类型检查、生产构建和 x64 便携目录生成。生产 JS 约 5.03 MB、gzip 约 1.86 MB，仍包含 Rapier compat WASM；尚未拆包优化。`node scripts/inspect-package.mjs` 核对应用包只含 `LICENSES`、`desktop`、`dist` 和最小 package，打包内容与当前源码／dist 一致，EXE 是 x86-64 PE。散列与当前测试数见 [build-manifest.json](build-manifest.json)。这项检查不启动 Windows 游戏。
+`npm run package:win` 完成类型检查、生产构建和 x64 便携目录生成。生产 JS 约 5.03 MB、gzip 约 1.86 MB，仍包含 Rapier compat WASM；尚未拆包优化。`node scripts/inspect-package.mjs` 核对应用包只含 `LICENSES`、`desktop`、`dist` 和最小 package，打包内容与当前源码／dist 一致，EXE 是 x86-64 PE。散列与当前测试数见 [build-manifest.json](chapter-build-manifest.json)。这项检查不启动 Windows 游戏。
 
 当前便携候选位于 `release/ReturnToGanymede-win32-x64/`，新压缩文件名为 `ReturnToGanymede-chapter-preview-win-x64.zip`。旧 `ReturnToGanymede-whitebox-win-x64.zip` 保留为首轮候选。EXE 必须连同整个文件夹转移；尚未提供签名安装程序。
 

@@ -7,6 +7,8 @@ import { LAYOUT } from '../content/layout';
 import { disposeModelTree } from './model-tools';
 import { addGround, PortKit } from './port-kit';
 import { buildNightShift, buildWorkersSector, type SceneDynamics } from './chapter-environments';
+import { buildHistoryHall } from './history-environments';
+import { buildFrontGate } from './frontgate-environment';
 
 
 function addJupiter(root: Group): Group {
@@ -184,7 +186,9 @@ function handoverSite(kit: PortKit): void {
 export function buildEnvironment(scenario: ScenarioId): EnvironmentModel {
   const kit = new PortKit();
   let dynamics: SceneDynamics | undefined;
-  if (scenario === 'nightshift') dynamics = buildNightShift(kit);
+  if (scenario === 'childhood' || scenario === 'mainhall') dynamics = buildHistoryHall(kit);
+  else if (scenario === 'frontgate') dynamics = buildFrontGate(kit);
+  else if (scenario === 'nightshift') dynamics = buildNightShift(kit);
   else if (scenario === 'workers') dynamics = buildWorkersSector(kit);
   else {
     siteBase(kit);
