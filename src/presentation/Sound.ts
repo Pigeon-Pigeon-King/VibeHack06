@@ -7,6 +7,9 @@ export class Sound {
   private master?: GainNode;
   private noise?: AudioBuffer;
   private ambience?: AudioBufferSourceNode;
+  private fan?: OscillatorNode;
+  private fanGain?: GainNode;
+  private ventilation = false;
   private active = new Set<AudioScheduledSourceNode>();
   async unlock(): Promise<void> {
     if (!this.context) {
@@ -23,7 +26,15 @@ export class Sound {
       source.buffer = this.noise!; source.loop = true;
       filter.type = 'lowpass'; filter.frequency.value = 180; gain.gain.value = 0.12;
       source.connect(filter).connect(gain).connect(this.master!); source.start(); this.ambience = source;
+      this.fan = this.context.createOscillator(); this.fan.type = 'sine'; this.fan.frequency.value = 62;
+      this.fanGain = this.context.createGain(); this.fanGain.gain.value = this.ventilation ? 0.075 : 0;
+      this.fan.connect(this.fanGain).connect(this.master!); this.fan.start();
     }
+  }
+  setVentilation(on: boolean): void {
+    if (this.ventilation === on) return;
+    this.ventilation = on;
+    if (this.context && this.fanGain) this.fanGain.gain.setTargetAtTime(on ? 0.075 : 0, this.context.currentTime, 0.25);
   }
   setVolume(value: number): void { this.volume = value; if (this.master) this.master.gain.value = value * 0.65; }
   private pulse(frequency: number, duration: number, gainValue: number, noise: boolean, pan = 0): void {
@@ -47,5 +58,5 @@ export class Sound {
   footstep(): void { this.pulse(400, 0.065, 0.13, true); }
   pause(): void { this.stopTransient(); void this.context?.suspend(); }
   stopTransient(): void { for (const source of this.active) { try { source.stop(); } catch { /* Already ended. */ } } this.active.clear(); }
-  dispose(): void { this.stopTransient(); this.ambience?.stop(); void this.context?.close(); }
+  dispose(): void { this.stopTransient(); this.ambience?.stop(); this.fan?.stop(); void this.context?.close(); }
 }

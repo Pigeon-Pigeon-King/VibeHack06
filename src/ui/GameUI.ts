@@ -20,8 +20,6 @@ export class GameUI {
   private readonly nodes = new Map<string, HTMLElement>();
   private readonly events = new AbortController();
   private previousMode: RunMode | null = null;
-  private previousMuted: boolean | null = null;
-  private lastAudibleVolume = 70;
   private state: UiState | null = null;
   private disposed = false;
 
@@ -52,6 +50,13 @@ export class GameUI {
           <p class="build-label"><span aria-hidden="true"></span>开发候选</p>
           <h1 id="game-title">重返木卫三</h1>
           <p class="menu-intent">把眼前的人，交给下一班。</p>
+          <div class="chapter-entry">
+            <p class="eyebrow">第一关 · 占领区</p>
+            <button class="primary-button" type="button" data-action="chapter-continue" data-ui="chapter-continue" hidden></button>
+            <button type="button" data-action="chapter-start" data-ui="chapter-start">开始第一关前段</button>
+            <p class="chapter-description">当前可玩：夜班准备 → 港务人员接应</p>
+          </div>
+          <details class="validation-reference"><summary>独立验证场景</summary>
           <div class="scenario-list" aria-label="选择验证场景">
             ${SCENARIOS.map(({ id, index, title, description }) => `
               <button class="scenario-button" type="button" data-scenario="${id}" data-ui="scenario-${id}" disabled>
@@ -60,6 +65,7 @@ export class GameUI {
                 <span class="scenario-availability" data-ui="availability-${id}">待接入</span>
               </button>`).join('')}
           </div>
+          </details>
           <details class="control-reference" open>
             <summary>操作</summary>
             <div class="controls-grid">
@@ -81,7 +87,7 @@ export class GameUI {
           <div class="button-pair"><button type="button" data-action="retry">重试检查点</button><button type="button" data-action="restart">重开本场</button></div>
           <details class="settings-panel">
             <summary>操作与声音</summary>
-            <label class="slider-setting" for="ganymede-sensitivity"><span>鼠标灵敏度</span><output data-ui="sensitivity-value">1.00</output><input id="ganymede-sensitivity" data-setting="sensitivity" type="range" min="0.25" max="2.5" value="1" step="0.05" /></label>
+            <label class="slider-setting" for="ganymede-sensitivity"><span>鼠标灵敏度</span><output data-ui="sensitivity-value">1.00</output><input id="ganymede-sensitivity" data-ui="sensitivity-input" data-setting="sensitivity" type="range" min="0.25" max="2.5" value="1" step="0.05" /></label>
             <label class="slider-setting" for="ganymede-volume"><span>音量</span><output data-ui="volume-value">70%</output><input id="ganymede-volume" data-setting="volume" type="range" min="0" max="100" value="70" step="1" data-ui="volume-input" /></label>
             <label class="checkbox-setting"><input type="checkbox" data-setting="motion" data-ui="motion-input" /><span>减少镜头晃动</span></label>
           </details>
@@ -101,10 +107,11 @@ export class GameUI {
 
       <section class="game-overlay" data-ui="complete" role="dialog" aria-modal="true" aria-labelledby="complete-title" hidden>
         <div class="dialog-panel result-panel">
-          <p class="eyebrow" data-ui="complete-scenario"></p><h2 id="complete-title">本场行动完成</h2>
+          <p class="eyebrow" data-ui="complete-scenario"></p><h2 id="complete-title" data-ui="complete-title">本场行动完成</h2>
           <p class="result-description" data-ui="complete-detail"></p>
           <div class="result-facts"><p data-ui="complete-workers"></p><p><span>行动用时</span><strong data-ui="complete-time"></strong></p></div>
-          <button type="button" class="primary-button" data-action="menu">选择其他场景</button>
+          <button type="button" class="primary-button" data-action="next-stage" data-ui="next-stage" hidden></button>
+          <button type="button" data-action="menu">返回主菜单</button>
           <button type="button" data-action="restart">重开本场</button>
           <p class="result-footnote">当前为开发验证段落，完整战役仍在制作。</p>
         </div>
@@ -165,26 +172,25 @@ export class GameUI {
       (this.node(`scenario-${id}`) as HTMLButtonElement).disabled = !available;
       this.text(`availability-${id}`, available ? '进入 →' : '待接入');
     }
+    this.show('chapter-continue', Boolean(state.continueLabel));
+    this.text('chapter-continue', state.continueLabel ?? '');
+    this.text('chapter-start', state.continueLabel ? '从夜班重新开始' : '开始第一关前段');
+    this.node('chapter-start').classList.toggle('primary-button', !state.continueLabel);
+    this.show('next-stage', Boolean(state.nextLabel));
+    this.text('next-stage', state.nextLabel ?? '');
     this.text('pause-scenario', state.scenarioName);
     this.text('pause-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('failure-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('complete-scenario', state.scenarioName);
+    this.text('complete-title', state.chapter ? state.nextLabel ? '准备出发' : '本段接应完成' : '本场行动完成');
     this.text('complete-detail', state.detail || state.objective);
     this.text('complete-workers', state.workerTotal > 0 ? `人员到达 ${integer(state.workersSafe)} / ${integer(state.workerTotal)}` : '任务交接完成');
     this.text('complete-time', elapsed(state.elapsed));
     (this.node('motion-input') as HTMLInputElement).checked = state.lowMotion;
-    if (state.muted !== this.previousMuted) {
-      this.previousMuted = state.muted;
-      const volume = this.node('volume-input') as HTMLInputElement;
-      if (state.muted) {
-        if (Number(volume.value) > 0) this.lastAudibleVolume = Number(volume.value);
-        volume.value = '0';
-        this.text('volume-value', '静音');
-      } else if (Number(volume.value) === 0) {
-        volume.value = String(this.lastAudibleVolume);
-        this.text('volume-value', `${volume.value}%`);
-      }
-    }
+    (this.node('sensitivity-input') as HTMLInputElement).value = String(state.sensitivity);
+    this.text('sensitivity-value', state.sensitivity.toFixed(2));
+    (this.node('volume-input') as HTMLInputElement).value = String(Math.round(state.volume * 100));
+    this.text('volume-value', state.muted ? '静音' : `${Math.round(state.volume * 100)}%`);
     this.show('error', Boolean(state.error));
     this.text('error', state.error || '');
     this.show('diagnostics', Boolean(state.diagnostics));
@@ -194,7 +200,8 @@ export class GameUI {
       this.previousMode = state.mode;
       if (!playing) {
         const panel = this.node(state.mode);
-        panel.querySelector<HTMLButtonElement>('button:not(:disabled)')?.focus({ preventScroll: true });
+        [...panel.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')]
+          .find(button => button.getClientRects().length > 0)?.focus({ preventScroll: true });
       }
     }
   }
@@ -240,6 +247,9 @@ export class GameUI {
       return;
     }
     switch (button.dataset.action) {
+      case 'chapter-start': this.actions.startChapter(); break;
+      case 'chapter-continue': this.actions.continueChapter(); break;
+      case 'next-stage': this.actions.nextStage(); break;
       case 'resume': this.actions.resume(); break;
       case 'retry': this.actions.retry(); break;
       case 'restart': this.actions.restart(); break;
@@ -256,7 +266,6 @@ export class GameUI {
         this.actions.setSensitivity(Number(input.value));
         break;
       case 'volume':
-        if (Number(input.value) > 0) this.lastAudibleVolume = Number(input.value);
         this.text('volume-value', Number(input.value) === 0 ? '静音' : `${input.value}%`);
         this.actions.setVolume(Number(input.value) / 100);
         break;

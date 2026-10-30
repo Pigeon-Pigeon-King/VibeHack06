@@ -1,5 +1,6 @@
 import { afterEach, beforeAll, describe, expect, it } from 'vitest';
 import type { ScenarioId, SolidSpec, Vec3 } from '../src/contracts';
+import { WORKERS } from '../src/content/chapter-layout';
 import { LAYOUT } from '../src/content/layout';
 import { distance, emptyIntent, Simulation } from '../src/mission/Simulation';
 import { FIXED_DT, initializePhysics } from '../src/runtime/Physics';
@@ -194,5 +195,68 @@ describe('mission transition and restoration invariants', () => {
       expect(distance(medic.position, [16, 0, 25])).toBeLessThan(1);
       expect(medic.goals).toHaveLength(0);
     }
+  });
+});
+
+describe('synthetic snapshot pressure boundaries (not chapter input playthroughs)', () => {
+  it('S04 opens the checkpoint with eight distant survivors without overfilling the next group', () => {
+    const snapshot = create('workers').snapshot();
+    const enemy = create('northgate').snapshot().actors.find(actor => actor.role === 'enemy')!;
+    // E01 has spent its 18-person budget, with eight survivors outside the
+    // checkpoint interaction radius. Only this initial Snapshot is synthetic.
+    snapshot.player.position = [...WORKERS.checkpoint];
+    Object.assign(snapshot.mission, { phase: 1, control: 'combat', elapsed: 100, phaseTime: 10,
+      spawned: 18, nextSpawn: 1000, facts: ['convoy-reported', 'zhou-adopts-lu-report'] });
+    snapshot.kills = 10;
+    snapshot.actors.push(...Array.from({ length: 18 }, (_, index) => ({
+      ...structuredClone(enemy), id: `enemy-E01-${index}`, position: [-40 + index % 8 * 1.5, 0, -35] as Vec3,
+      goals: [], path: [], health: index < 8 ? 68 : 0, down: index >= 8, cooldown: 10, aiming: false, aimTime: 0,
+    })));
+    const simulation = create('workers', snapshot);
+    expect(simulation.aliveEnemies).toHaveLength(8);
+    expect(simulation.aliveEnemies.every(actor => distance(actor.position, WORKERS.checkpoint) > 19)).toBe(true);
+
+    simulation.step({ ...emptyIntent, interact: true });
+
+    expect(simulation.mission.phase).toBe(2);
+    expect(simulation.mission.facts).toContain('checkpoint-open');
+    expect(simulation.mission.failed).toBe(false);
+    expect(simulation.aliveEnemies.length).toBeLessThanOrEqual(8);
+    for (const [group, budget] of [['E01', 18], ['E02', 20], ['E03', 18]] as const) {
+      expect(simulation.actors.filter(actor => actor.id.startsWith(`enemy-${group}-`)).length).toBeLessThanOrEqual(budget);
+    }
+    expect(simulation.mission.spawned).toBeLessThanOrEqual(18 + 20 + 18);
+    expect(new Set(simulation.actors.map(actor => actor.id)).size).toBe(simulation.actors.length);
+  });
+
+  it('northgate advances its east-pressure phase with six survivors without exceeding active or total budgets', () => {
+    const snapshot = create('northgate').snapshot();
+    const enemy = snapshot.actors.find(actor => actor.role === 'enemy')!;
+    // All 24 budgeted enemies have entered; six remain. Three workers have
+    // already reached the receiving lane. Normal step owns the phase change.
+    Object.assign(snapshot.mission, { phase: 1, control: 'combat', elapsed: 100, phaseTime: 10,
+      spawned: 24, nextSpawn: 1000, facts: ['evac-line-open', 'workers-released'] });
+    snapshot.kills = 18;
+    snapshot.actors = snapshot.actors.filter(actor => actor.role !== 'enemy');
+    snapshot.actors.filter(actor => actor.role === 'worker').forEach((worker, index) => {
+      worker.released = true; worker.safe = index < 3; worker.goals = []; worker.path = [];
+      if (index < 3) worker.position = [...LAYOUT.northgate.safe];
+    });
+    snapshot.actors.push(...Array.from({ length: 24 }, (_, index) => ({
+      ...structuredClone(enemy), id: `enemy-${index}`, position: [-24 + index % 6 * 2, 0, -30] as Vec3,
+      goals: [], path: [], health: index < 6 ? 68 : 0, down: index >= 6, cooldown: 10, aiming: false, aimTime: 0,
+    })));
+    const simulation = create('northgate', snapshot);
+    expect(simulation.aliveEnemies).toHaveLength(6);
+    expect(simulation.safeCount).toBe(3);
+
+    simulation.step(emptyIntent);
+
+    expect(simulation.mission.phase).toBe(2);
+    expect(simulation.mission.failed).toBe(false);
+    expect(simulation.aliveEnemies.length).toBeLessThanOrEqual(6);
+    expect(simulation.mission.spawned).toBeLessThanOrEqual(24);
+    expect(simulation.actors.filter(actor => actor.role === 'enemy').length).toBeLessThanOrEqual(24);
+    expect(new Set(simulation.actors.map(actor => actor.id)).size).toBe(simulation.actors.length);
   });
 });

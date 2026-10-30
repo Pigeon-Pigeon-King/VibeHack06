@@ -38,7 +38,7 @@ V2 适合最早检验系统联动，V1 与 V3 的高风险接触动作可以在�
 
 建议以 TypeScript＋Vite 组织 Three.js 游戏；先以 WebGL2 为兼容基线，Electron 作为 Windows 桌面封装候选。版本在创建运行工程时固定并写锁文件；此处不把旧示例的依赖版本直接作为项目版本。
 
-下列是职责边界。首轮代码已建立 `src/runtime`、`src/player`、`src/combat`、`src/actors`、`src/mission`、`src/presentation`、`src/content`、`src/ui` 和 `desktop`；协作演出当前由 Simulation 统一状态，后续内容扩展时再拆分。实现与实际验证范围见持续进度，不把目录存在视为完整模块验收。
+下列是职责边界。代码已建立 `src/runtime`、`src/player`、`src/combat`、`src/actors`、`src/mission`、`src/presentation`、`src/content`、`src/persistence`、`src/ui` 和 `desktop`；协作演出当前由 Simulation 统一状态，后续内容扩展时再拆分。0.2.0 将 S03→S04 接成连续前段，独立保留旧三白盒；不把它们串接后冒充完整战役。实现与实际验证范围见持续进度。
 
 | 模块 ID | 拟建职责 | 关键接口与约束 |
 | --- | --- | --- |
@@ -47,6 +47,7 @@ V2 适合最早检验系统联动，V1 与 V3 的高风险接触动作可以在�
 | ballistics | 武器状态、弹丸积分、碰撞扫掠、伤害 | WeaponState → Projectile → HitEvent；飞行时间和当地重力统一 |
 | actors | NPC 身份、导航、感知、战斗、动画与死亡 | 行为、物理位置和表现分层；任务人物由稳定 ID 识别 |
 | mission | 目标事实、遭遇阶段、检查点与角色知识 | 人员到达／设备状态等事实推动进度；不可用计时器假完成 |
+| persistence | 连续章节／独立场景存档及设置 | 严格读取、有效备份、失败可见；检查点恢复重建物理和导航 |
 | staging | 作战、工作、协作、固定演出控制权 | 每段声明进入条件、占用资源、跳过终态、恢复输入 |
 | presentation | 世界、木星天空、灯光、音频、HUD 与字幕 | 世界方向统一；第一人称可读；多站位验证动作与视线 |
 | assets | 生产记录、导入、角色／武器／场景契约 | 来源、原件、运行版和验收分别记录；无浏览器凭据 |

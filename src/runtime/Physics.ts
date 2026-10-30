@@ -21,6 +21,8 @@ export class Physics {
   readonly world = new RAPIER.World({ x: 0, y: -GRAVITY, z: 0 });
   readonly bodies = new Map<string, Body>();
   readonly ids = new Map<number, string>();
+  private readonly doors: Array<{ collider: RAPIER.Collider; openFact: string }> = [];
+  private readonly disabled = new Set<number>();
   private readonly controller = this.world.createCharacterController(0.015);
 
   constructor(solids: SolidSpec[]) {
@@ -38,8 +40,19 @@ export class Physics {
         .setRotation({ x: 0, y: Math.sin(angle / 2), z: 0, w: Math.cos(angle / 2) })
         .setFriction(0.8));
       this.ids.set(collider.handle, `solid:${solid.id}`);
+      if (solid.openFact) this.doors.push({ collider, openFact: solid.openFact });
     }
     this.world.step();
+  }
+
+  applyFacts(facts: readonly string[]): boolean {
+    let changed = false;
+    for (const door of this.doors) {
+      const enabled = !facts.includes(door.openFact);
+      if (door.collider.isEnabled() !== enabled) { door.collider.setEnabled(enabled); changed = true; }
+      if (enabled) this.disabled.delete(door.collider.handle); else this.disabled.add(door.collider.handle);
+    }
+    return changed;
   }
 
   add(id: string, foot: Vec3, height = 1.8): Body {
@@ -83,7 +96,7 @@ export class Physics {
       const blocked = this.world.intersectionWithShape(
         { x: foot[0], y: foot[1] + height / 2 + 0.025, z: foot[2] },
         { x: 0, y: 0, z: 0, w: 1 }, shape, undefined, undefined, body.collider,
-        undefined, c => (this.ids.get(c.handle) ?? '').startsWith('solid:'),
+        undefined, c => !this.disabled.has(c.handle) && (this.ids.get(c.handle) ?? '').startsWith('solid:'),
       );
       if (blocked) return false;
     }
@@ -103,7 +116,7 @@ export class Physics {
     const desired = { x: x * dt, y: body.verticalSpeed * dt, z: z * dt };
     // NPC routes may overlap other NPCs; render and story slots keep contacts deliberate.
     this.controller.computeColliderMovement(body.collider, desired, undefined, undefined,
-      c => (this.ids.get(c.handle) ?? '').startsWith('solid:'));
+      c => !this.disabled.has(c.handle) && (this.ids.get(c.handle) ?? '').startsWith('solid:'));
     const delta = this.controller.computedMovement();
     const p = body.rigid.translation();
     body.rigid.setNextKinematicTranslation({ x: p.x + delta.x, y: p.y + delta.y, z: p.z + delta.z });
@@ -120,12 +133,16 @@ export class Physics {
     const ray = new RAPIER.Ray({ x: from[0], y: from[1], z: from[2] }, { x: dx / distance, y: dy / distance, z: dz / distance });
     const hit = this.world.castRayAndGetNormal(ray, distance, true, undefined, undefined,
       this.bodies.get(exclude)?.collider, undefined,
-      c => !onlySolids || (this.ids.get(c.handle) ?? '').startsWith('solid:'));
+      // A door's broad-phase entry is removed on the next fixed tick. Respect
+      // its disabled state immediately, including same-frame interaction rays.
+      // Keep the predicate in JS: calling collider methods here would re-enter
+      // a borrowed WASM ColliderSet during Rapier's query callback.
+      c => !this.disabled.has(c.handle) && (!onlySolids || (this.ids.get(c.handle) ?? '').startsWith('solid:')));
     if (!hit) return null;
     const p = ray.pointAt(hit.timeOfImpact);
     return { id: this.ids.get(hit.collider.handle) ?? 'unknown', point: [p.x, p.y, p.z],
       normal: [hit.normal.x, hit.normal.y, hit.normal.z], distance: hit.timeOfImpact };
   }
 
-  dispose(): void { this.world.free(); this.bodies.clear(); this.ids.clear(); }
+  dispose(): void { this.world.free(); this.bodies.clear(); this.ids.clear(); this.disabled.clear(); }
 }

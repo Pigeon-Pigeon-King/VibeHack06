@@ -1,6 +1,7 @@
 import type { Group, Vector3 } from 'three';
 
-export type ScenarioId = 'northgate' | 'prologue' | 'handover';
+export const SCENARIO_IDS = ['northgate', 'prologue', 'handover', 'nightshift', 'workers'] as const;
+export type ScenarioId = typeof SCENARIO_IDS[number];
 export type Vec3 = [number, number, number];
 export type ControlMode = 'combat' | 'work' | 'cooperative' | 'staged';
 export type RunMode = 'menu' | 'playing' | 'paused' | 'failed' | 'complete';
@@ -9,11 +10,13 @@ export interface SolidSpec {
   position: Vec3;
   size: Vec3;
   rotationY?: number;
+  openFact?: string;
 }
 export interface EnvironmentModel {
   root: Group;
   solids: SolidSpec[];
   update(time: number, cameraPosition: Vector3): void;
+  setFacts?(facts: readonly string[]): void;
   dispose(): void;
 }
 export interface CharacterModel {
@@ -55,11 +58,19 @@ export interface UiState {
   hurtFlash: number;
   lowMotion: boolean;
   muted: boolean;
+  sensitivity: number;
+  volume: number;
+  chapter: boolean;
+  continueLabel?: string;
+  nextLabel?: string;
   error?: string;
   diagnostics?: string;
 }
 export interface UiActions {
   start(scenario: ScenarioId): void;
+  startChapter(): void;
+  continueChapter(): void;
+  nextStage(): void;
   resume(): void;
   retry(): void;
   restart(): void;

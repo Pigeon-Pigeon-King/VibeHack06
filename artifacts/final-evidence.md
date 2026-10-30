@@ -1,6 +1,6 @@
-# 首轮白盒验证记录
+# 首轮白盒验证记录（0.1.0 历史）
 
-候选标识：`whitebox-2026-10-31`，实现提交 `ed4395e`，已合回 main；main 重新安装锁定依赖并构建，源码、dist 与应用包散列一致。这是当前仓库新建的三个机制验证场景，不是交接包中的旧 Windows 原型，也不是完整战役验收。长期目标仍在推进。
+候选标识：`whitebox-2026-10-31`，实现提交 `ed4395e`，已合回 main。以下保留首轮当时的检查结果；后续 0.2.0 的连续章节、持久存档、47 项测试和当前应用包见 [新记录](chapter-evidence.md)。本页不是当前完整产品验收。
 
 ## 当前结论
 
@@ -8,7 +8,7 @@ Three.js 真实画面、键盘移动／射击／交互、任务事实推进、�
 
 ## 可复查的自动验证
 
-`npm test -- --reporter=json --outputFile=artifacts/test-results.json`：20 项通过，0 项失败，4 个测试文件。报告见 [test-results.json](test-results.json)。
+首轮 `npm test -- --reporter=json --outputFile=artifacts/test-results.json`：20 项通过，0 项失败，4 个测试文件。报告已归档为 [whitebox-test-results.json](whitebox-test-results.json)。
 
 | 测试 | 证明的范围 |
 | --- | --- |
@@ -42,7 +42,7 @@ Three.js 真实画面、键盘移动／射击／交互、任务事实推进、�
 
 `npm run package:win` 先构建网页，再生成 `release/ReturnToGanymede-win32-x64/`。`ReturnToGanymede.exe` 已识别为 Windows x86-64 PE；目录约 362 MB，主要包含 Electron 运行时。另提供 `release/ReturnToGanymede-whitebox-win-x64.zip` 便于转移。解压后必须保留整个文件夹，不是一个可单独拷走的 EXE，也尚非安装程序。
 
-应用包仅装入 `dist`、`desktop`、最小 package 信息及 Three.js／Rapier 许可，不装入交接原件、完整源码、依赖开发目录或本机军事资产库。资源从本地 `game://local` 加载，渲染进程禁用 Node、启用 sandbox 与 contextIsolation，外部导航／新窗口被拒绝。构建散列见 [build-manifest.json](build-manifest.json)。签名、安装、Windows 首启／全屏／锁鼠标／音频／退出与性能仍待目标电脑验证。
+应用包仅装入 `dist`、`desktop`、最小 package 信息及 Three.js／Rapier 许可，不装入交接原件、完整源码、依赖开发目录或本机军事资产库。资源从本地 `game://local` 加载，渲染进程禁用 Node、启用 sandbox 与 contextIsolation，外部导航／新窗口被拒绝。首轮构建散列已归档为 [whitebox-build-manifest.json](whitebox-build-manifest.json)。签名、安装、Windows 首启／全屏／锁鼠标／音频／退出与性能仍待目标电脑验证。
 
 ## 尚不能声称完成的内容
 

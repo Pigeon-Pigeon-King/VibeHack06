@@ -1,10 +1,41 @@
 import type { SolidSpec, Vec3 } from '../contracts';
 
+export interface NavBounds { minX: number; maxX: number; minZ: number; maxZ: number }
+type SearchNode = { x: number; z: number; g: number; f: number };
+class OpenSet {
+  private nodes: SearchNode[] = [];
+  get size(): number { return this.nodes.length; }
+  push(node: SearchNode): void {
+    const a = this.nodes; a.push(node);
+    let i = a.length - 1;
+    while (i > 0) {
+      const parent = (i - 1) >> 1;
+      if (a[parent].f <= node.f) break;
+      a[i] = a[parent]; i = parent;
+    }
+    a[i] = node;
+  }
+  pop(): SearchNode {
+    const a = this.nodes, first = a[0], tail = a.pop()!;
+    if (a.length) {
+      let i = 0;
+      while (i * 2 + 1 < a.length) {
+        let child = i * 2 + 1;
+        if (child + 1 < a.length && a[child + 1].f < a[child].f) child++;
+        if (a[child].f >= tail.f) break;
+        a[i] = a[child]; i = child;
+      }
+      a[i] = tail;
+    }
+    return first;
+  }
+}
+
 /** Small authored arenas use a clearance-expanded grid; physics remains authoritative. */
 export class Navigation {
   private blocked = new Set<string>();
   private key(x: number, z: number): string { return `${x},${z}`; }
-  constructor(solids: SolidSpec[]) {
+  constructor(solids: SolidSpec[], private readonly bounds: NavBounds = { minX: -29, maxX: 29, minZ: -40, maxZ: 33 }) {
     for (const s of solids) {
       if (s.position[1] + s.size[1] / 2 < 0.35 || s.position[1] - s.size[1] / 2 > 1.8) continue;
       const a = s.rotationY ?? 0;
@@ -16,25 +47,26 @@ export class Navigation {
     }
   }
   private free(x: number, z: number): boolean {
-    return x > -29 && x < 29 && z > -40 && z < 33 && !this.blocked.has(this.key(x, z));
+    return x > this.bounds.minX && x < this.bounds.maxX && z > this.bounds.minZ && z < this.bounds.maxZ && !this.blocked.has(this.key(x, z));
   }
-  private nearest(p: Vec3): [number, number] {
+  private nearest(p: Vec3): [number, number] | undefined {
     const x = Math.round(p[0]), z = Math.round(p[2]);
     for (let r = 0; r < 8; r++) {
       for (let dx = -r; dx <= r; dx++) for (let dz = -r; dz <= r; dz++) {
         if (this.free(x + dx, z + dz)) return [x + dx, z + dz];
       }
     }
-    return [x, z];
+    return undefined;
   }
   path(from: Vec3, to: Vec3): Vec3[] {
-    const [sx, sz] = this.nearest(from), [tx, tz] = this.nearest(to);
+    const startPoint = this.nearest(from), endPoint = this.nearest(to);
+    if (!startPoint || !endPoint) return [];
+    const [sx, sz] = startPoint, [tx, tz] = endPoint;
     const start = this.key(sx, sz), goal = this.key(tx, tz);
-    const open: Array<{ x: number; z: number; g: number; f: number }> = [{ x: sx, z: sz, g: 0, f: 0 }];
+    const open = new OpenSet(); open.push({ x: sx, z: sz, g: 0, f: 0 });
     const costs = new Map([[start, 0]]), parent = new Map<string, string>();
-    while (open.length) {
-      open.sort((a, b) => a.f - b.f);
-      const cur = open.shift()!, key = this.key(cur.x, cur.z);
+    while (open.size) {
+      const cur = open.pop(), key = this.key(cur.x, cur.z);
       if (key === goal) {
         const points: Vec3[] = [];
         let k = goal;

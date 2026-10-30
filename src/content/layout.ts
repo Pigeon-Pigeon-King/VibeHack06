@@ -1,6 +1,17 @@
 import type { ScenarioId, Vec3 } from '../contracts';
+import { NIGHT, WORKERS } from './chapter-layout';
 
 export const LAYOUT = {
+  nightshift: {
+    name: '占领区 · 夜班与出发', spawn: NIGHT.spawn, yaw: 0,
+    terminal: NIGHT.fan, post: NIGHT.map, exit: NIGHT.exit, safe: NIGHT.delivery,
+    workerSpawns: [] as Vec3[], enemySpawns: [] as Vec3[],
+  },
+  workers: {
+    name: '占领区 · 带回港务人员', spawn: WORKERS.spawn, yaw: 0,
+    terminal: WORKERS.observation, post: WORKERS.post, exit: WORKERS.exit, safe: WORKERS.safe,
+    workerSpawns: WORKERS.workers, enemySpawns: WORKERS.checkpointEnemies,
+  },
   northgate: {
     name: '北闸 · 下一班之前', spawn: [0, 0, 22] as Vec3, yaw: 0,
     terminal: [0, 0, 5] as Vec3, post: [2, 0, 16] as Vec3,

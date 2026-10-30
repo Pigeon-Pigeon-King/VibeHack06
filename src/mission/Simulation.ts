@@ -1,9 +1,10 @@
 import type { CharacterRole, ControlMode, ScenarioId, SolidSpec, Vec3 } from '../contracts';
 import { LAYOUT } from '../content/layout';
+import { NIGHT, WORKERS } from '../content/chapter-layout';
 import { Physics, FIXED_DT } from '../runtime/Physics';
 import { Random } from '../runtime/random';
 import { Ballistics } from '../combat/Ballistics';
-import { Navigation } from '../actors/Navigation';
+import { Navigation, type NavBounds } from '../actors/Navigation';
 import type { Intent } from '../player/Input';
 
 export interface Actor {
@@ -32,7 +33,7 @@ export const emptyIntent: Intent = { forward: 0, right: 0, sprint: false, crouch
 
 export class Simulation {
   readonly physics: Physics;
-  readonly navigation: Navigation;
+  navigation: Navigation;
   readonly ballistics: Ballistics;
   readonly random = new Random();
   actors: Actor[] = [];
@@ -42,18 +43,21 @@ export class Simulation {
   events: GameEvent[] = [];
   hits = 0; kills = 0; hitFlash = 0; hurtFlash = 0;
   private checkpointPending = false;
+  private readonly navBounds?: NavBounds;
+  private readonly pathRetry = new Map<string, number>();
 
-  constructor(readonly scenario: ScenarioId, readonly solids: SolidSpec[], saved?: Snapshot) {
+  constructor(readonly scenario: ScenarioId, readonly solids: SolidSpec[], saved?: Snapshot, priorFacts: readonly string[] = []) {
     this.physics = new Physics(solids);
-    this.navigation = new Navigation(solids);
+    this.navBounds = scenario === 'nightshift' ? NIGHT.bounds : scenario === 'workers' ? WORKERS.bounds : undefined;
+    this.navigation = new Navigation(solids, this.navBounds);
     this.ballistics = new Ballistics((a, b, except) => this.physics.trace(a, b, except));
     const layout = LAYOUT[scenario];
     this.player = { position: [...layout.spawn], yaw: layout.yaw, pitch: 0, health: 100,
-      ammo: 25, reserve: 150, height: scenario === 'prologue' ? 1.1 : 1.8, crouched: false,
+      ammo: scenario === 'nightshift' ? 0 : 25, reserve: scenario === 'nightshift' ? 0 : 150, height: scenario === 'prologue' ? 1.1 : 1.8, crouched: false,
       reload: 0, cooldown: 0, hurtAt: -10, walk: 0, recoil: 0, ads: false,
-      name: scenario === 'prologue' ? '陆闻川 · 九岁' : '陆闻川' };
-    this.mission = { scenario, phase: 0, elapsed: 0, phaseTime: 0, control: scenario === 'prologue' ? 'work' : 'combat',
-      facts: [], complete: false, failed: false, checkpointLabel: '进入区域',
+      name: scenario === 'prologue' ? '陆闻川 · 九岁' : scenario === 'northgate' ? '周延 · 三十三岁' : '陆闻川 · 十九岁' };
+    this.mission = { scenario, phase: 0, elapsed: 0, phaseTime: 0, control: scenario === 'northgate' ? 'combat' : 'work',
+      facts: [...new Set(priorFacts)], complete: false, failed: false, checkpointLabel: '进入区域',
       subtitle: '', speaker: '', subtitleUntil: 0, spawned: 0, nextSpawn: 12 };
     if (saved) {
       this.player = clone(saved.player); this.mission = clone(saved.mission); this.actors = clone(saved.actors);
@@ -62,6 +66,7 @@ export class Simulation {
     } else this.populate();
     this.physics.add('player', this.player.position, this.player.height);
     for (const actor of this.actors) if (!actor.down) this.physics.add(actor.id, actor.position, actor.role === 'child' ? 1.1 : 1.8);
+    this.syncTopology(false);
     this.physics.step();
     if (!saved) this.saveCheckpoint('进入区域');
     this.events = [];
@@ -69,7 +74,22 @@ export class Simulation {
 
   private populate(): void {
     const l = LAYOUT[this.scenario];
+    if (this.scenario === 'nightshift') {
+      this.createActor('xu', '许岚', 'medic', NIGHT.xu);
+      this.createActor('meng', '孟齐', 'ally', NIGHT.meng);
+      this.createActor('zhou', '周延', 'ally', NIGHT.zhou);
+      this.say('许岚', '闻川，通风又停了。你修完，把架上的保温毯送过来；我还得把这班交完。');
+      return;
+    }
     l.workerSpawns.forEach((p, i) => this.createActor(`worker-${i}`, this.scenario === 'prologue' ? `撤离者 ${i + 1}` : `港务员 ${i + 1}`, 'worker', p));
+    if (this.scenario === 'workers') {
+      this.actors[0].name = '罗敬';
+      this.actors[0].position = [21, 0, 17]; this.actors[1].position = [24, 0, 17];
+      this.createActor('zheng', '郑铎', 'ally', WORKERS.zheng);
+      this.createActor('meng', '孟齐', 'ally', WORKERS.meng);
+      this.say('郑铎', '街角有遮护。右前方那辆军用车上，怎么都是港务的人？先看清楚，报给周延。');
+      return;
+    }
     this.createActor('zheng', '郑铎', 'ally', this.scenario === 'northgate' ? [10, 0, 24] : [4, 0, 6]);
     if (this.scenario === 'northgate') {
       for (let i = 0; i < 3; i++) this.spawnEnemy(false);
@@ -94,6 +114,7 @@ export class Simulation {
     return actor;
   }
   private spawnEnemy(addBody = true, east = false): void {
+    if (this.scenario === 'northgate' && (this.aliveEnemies.length >= 6 || this.mission.spawned >= 24)) return;
     const l = LAYOUT[this.scenario];
     const index = east && this.scenario === 'northgate' ? 3 : this.mission.spawned % Math.min(3, l.enemySpawns.length);
     const position = [...l.enemySpawns[index]] as Vec3;
@@ -104,6 +125,29 @@ export class Simulation {
     if (addBody) this.physics.add(actor.id, actor.position);
   }
   private route(actor: Actor, goals: Vec3[]): void { actor.goals = clone(goals); actor.path = []; actor.released = true; }
+  private syncTopology(clearPaths = true): void {
+    if (!this.physics.applyFacts(this.mission.facts)) return;
+    this.navigation = new Navigation(this.solids.filter(solid => !solid.openFact || !this.has(solid.openFact)), this.navBounds);
+    if (clearPaths) { for (const actor of this.actors) actor.path = []; this.pathRetry.clear(); }
+  }
+  private spawnChapterGroup(group: string, positions: Vec3[], goals?: Vec3[]): void {
+    const budget = group === 'E02' ? 20 : 18;
+    const used = this.actors.filter(actor => actor.id.startsWith(`enemy-${group}-`)).length;
+    const count = Math.min(positions.length, Math.max(0, 8 - this.aliveEnemies.length), Math.max(0, budget - used));
+    for (let i = 0; i < count; i++) {
+      const actor = this.createActor(`enemy-${group}-${this.mission.spawned++}`, '敌方步枪兵', 'enemy', positions[i]);
+      if (goals?.[i]) actor.goals = [goals[i]];
+      this.physics.add(actor.id, actor.position);
+    }
+  }
+  private exposedThreat(point: Vec3, radius: number): boolean {
+    return this.aliveEnemies.some(actor => distance(actor.position, point) < radius
+      && !this.physics.trace(eye(point), eye(actor.position), undefined, true));
+  }
+  private workerThreatened(actor: Actor): boolean {
+    return this.aliveEnemies.some(enemy => distance(actor.position, enemy.position) < 8
+      && !this.physics.trace(eye(actor.position), eye(enemy.position), actor.id, true));
+  }
   private fact(id: string): void { if (!this.mission.facts.includes(id)) this.mission.facts.push(id); }
   private has(id: string): boolean { return this.mission.facts.includes(id); }
   private say(speaker: string, subtitle: string, seconds = 7): void {
@@ -208,6 +252,7 @@ export class Simulation {
     }
     if (m.elapsed - p.hurtAt > 6) p.health = Math.min(100, p.health + dt * 7);
     this.updateMission(intent, dt);
+    this.syncTopology();
     if (this.checkpointPending) { this.checkpointPending = false; this.saveCheckpoint(this.objective.phase); }
   }
 
@@ -236,13 +281,16 @@ export class Simulation {
           speed = 0;
         } else a.aimTime = 0;
       }
-      if (a.role === 'worker' && a.released && !a.safe && this.aliveEnemies.some(enemy => distance(a.position, enemy.position) < 8 && !this.physics.trace(eye(a.position), eye(enemy.position), a.id, true))) speed = 0;
+      if (a.role === 'worker' && a.released && !a.safe && this.workerThreatened(a)) speed = 0;
       let vx = 0, vz = 0;
       if (a.goals.length && speed) {
         const goal = a.goals[0];
         if (distance(a.position, goal) < 0.85) { a.goals.shift(); a.path = []; }
         else {
-          if (!a.path.length) a.path = this.navigation.path(a.position, goal);
+          if (!a.path.length && m.elapsed >= (this.pathRetry.get(a.id) ?? 0)) {
+            a.path = this.navigation.path(a.position, goal);
+            this.pathRetry.set(a.id, a.path.length ? 0 : m.elapsed + 1);
+          }
           while (a.path.length && distance(a.position, a.path[0]) < 0.35) a.path.shift();
           const next = a.path[0];
           if (next) {
@@ -273,7 +321,9 @@ export class Simulation {
       if (a.released && !a.goals.length && distance(a.position, target) < (this.scenario === 'handover' ? 4 : 5)) a.safe = true;
     }
     const at = (target: Vec3, range = 2.8) => distance(p.position, target) < range;
-    if (this.scenario === 'northgate') {
+    if (this.scenario === 'nightshift') this.updateNight(input);
+    else if (this.scenario === 'workers') this.updateWorkers(input);
+    else if (this.scenario === 'northgate') {
       if (m.phase === 0 && input.interact && at(l.terminal)) {
         this.fact('evac-line-open'); this.releaseWorkers(); this.phase(1, '撤离线接通。先让称重台的人往南走。');
       } else if (m.phase === 1 && this.safeCount >= 3) {
@@ -354,7 +404,109 @@ export class Simulation {
 
   private finish(text: string): void { this.mission.complete = true; this.ballistics.clear(); this.say('', text, 100); this.events.push({ type: 'objective' }); }
 
+  private updateNight(input: Intent): void {
+    const m = this.mission;
+    const at = (point: Vec3) => distance(this.player.position, point) < 2.8;
+    if (m.phase === 0 && input.interact && at(NIGHT.fan)) {
+      this.fact('fan-cleared'); this.phase(1, '堵塞物拿出来了。到旁边的面板复位。', 'work');
+    } else if (m.phase === 1 && input.interact && at(NIGHT.fanReset)) {
+      this.fact('fan-restarted'); this.phase(2, '风起来了。我去拿保温毯。', 'work');
+    } else if (m.phase === 2 && input.interact && at(NIGHT.supplies)) {
+      this.fact('supplies-collected'); this.phase(3, '箱子放交接台就好，我先核对转运名单。', 'cooperative', '许岚');
+    } else if (m.phase === 3 && input.interact && at(NIGHT.delivery)) {
+      this.fact('supplies-delivered'); this.phase(4, '收到。孟齐已经看过转运路线，你们在旧样本室碰头。', 'work', '许岚');
+    } else if (m.phase === 4 && input.interact && at(NIGHT.map)) {
+      this.fact('fleet-approaching'); this.phase(5, '舰队已经抵近。先带回港务技工，再接通接收中心。护送到站后，我带人回北闸换班。', 'staged', '孟齐');
+    } else if (m.phase === 5) {
+      if (m.phaseTime > 4 && !this.has('briefing-zhou-spoke')) {
+        this.fact('briefing-zhou-spoke'); this.say('周延', '看到邵原的消息，彼此都说一声。护送的人先接稳——装备我再替你核一遍。');
+      }
+      if (m.phaseTime > 9 || input.skip) {
+        this.fact('briefing-zhou-spoke');
+        this.fact('sharing-promised'); this.fact('handoff-planned');
+        this.phase(6, '明白。消息一起看，护送之后换班。我的装备我自己核。', 'work');
+      }
+    } else if (m.phase === 6 && input.interact && at(NIGHT.weapons)) {
+      this.player.ammo = 25; this.player.reserve = 150;
+      this.fact('weapon-collected'); this.phase(7, '弹匣、备用弹、通信，都在。出发。', 'work');
+    } else if (m.phase === 7 && at(NIGHT.exit)) {
+      this.fact('departed-for-port'); this.phase(8, '', 'work');
+      this.finish('夜班交接完毕。带着共享情报与护送后接防的约定，前往占领区。');
+    }
+  }
+
+  private updateWorkers(input: Intent): void {
+    const m = this.mission, p = this.player, w = WORKERS;
+    const at = (point: Vec3, height = false) => distance(p.position, point) < 2.8 && (!height || Math.abs(p.position[1] - point[1]) < 0.5);
+    if (m.phase === 0 && input.interact && at(w.observation) && this.lookingAtConvoy()) {
+      this.fact('convoy-reported'); this.fact('zhou-adopts-lu-report');
+      for (let i = 0; i < 2; i++) this.route(this.workers[i], [[44, 0, 17], [44, 0, -130], [-32, 0, -130], [-32, 0, -99], w.workers[i]]);
+      this.spawnChapterGroup('E01', w.checkpointEnemies); m.nextSpawn = m.elapsed + 14;
+      this.phase(1, '看清了，是港务的人。采纳你的判断：从检查口进去，走西侧检修线，别从宿舍正门撞进去。', 'combat', '周延');
+    } else if (m.phase === 1 && input.interact && at(w.checkpoint) && !this.exposedThreat(w.checkpoint, 19)) {
+      this.fact('checkpoint-open'); this.spawnChapterGroup('E02', w.maintenanceEnemies); m.nextSpawn = m.elapsed + 18;
+      this.phase(2, '检查口已开。西边下层有检修隔离面板，先把通道接通。', 'combat', '郑铎');
+    } else if (m.phase === 2 && input.interact && at(w.lower) && !this.exposedThreat(w.lower, 14)) {
+      this.fact('maintenance-access');
+      this.phase(3, '电源接好了。沿台阶上去，看清上层和生活院的后门。', 'combat', '郑铎');
+    } else if (m.phase === 3 && input.interact && at(w.overlook, true) && !this.exposedThreat(w.overlook, 18)) {
+      this.fact('maintenance-overlook-secured');
+      this.phase(4, '后门在院南侧。下面还能走，从另一头台阶下去，我给你看着后路。', 'combat', '郑铎');
+    } else if (m.phase === 4 && input.interact && at(w.yardGate)) {
+      this.fact('yard-open'); this.spawnChapterGroup('E03', w.yardEnemies); m.nextSpawn = m.elapsed + 16;
+      this.phase(5, '门开了！先清掉院里的威胁，让他们从西侧集合点出来。');
+    } else if (m.phase === 5 && input.interact && at(w.release) && !this.exposedThreat(w.release, 30)) {
+      this.fact('workers-released');
+      this.workers.forEach((actor, i) => this.route(actor, [[-8, 0, -108 - i % 3 * 0.6], [20 + i % 3 * 2, 0, -111 - Math.floor(i / 3) * 1.5]]));
+      this.spawnChapterGroup('E03', w.counterattack, [[27, 0, -110], [30, 0, -108]]); m.nextSpawn = m.elapsed + 14;
+      this.phase(6, '转运位在东侧，我把车接过来。留意东北运输道，护送他们到转运位。', 'combat', '孟齐');
+    } else if (m.phase === 6 && this.safeCount === this.workers.length && !this.exposedThreat(w.safe, 24)) {
+      this.fact('technicians-received'); this.route(this.actors.find(actor => actor.id === 'meng')!, [w.post]);
+      this.phase(7, '人都到了。我家里人还在别的转运点，你们能不能把他们也接上？', 'work', '罗敬');
+    } else if (m.phase === 7 && input.interact && at(w.post)
+      && distance(this.actors.find(actor => actor.id === 'meng')!.position, w.post) < 1) {
+      this.fact('family-escort-promised'); this.fact('reception-damage-known');
+      this.finish('九名港务人员已交接。接收中心门机受损，罗敬的家属护送承诺已经记下。');
+    }
+    this.updateChapterReinforcements();
+  }
+
+  private lookingAtConvoy(): boolean {
+    const dx = WORKERS.convoy[0] - this.player.position[0], dz = WORKERS.convoy[2] - this.player.position[2];
+    return (-Math.sin(this.player.yaw) * dx - Math.cos(this.player.yaw) * dz) / Math.hypot(dx, dz) > 0.65;
+  }
+
+  private updateChapterReinforcements(): void {
+    const m = this.mission;
+    const group = m.phase === 1 ? 'E01' : m.phase === 2 || m.phase === 3 ? 'E02' : m.phase === 5 || m.phase === 6 ? 'E03' : undefined;
+    if (!group || this.aliveEnemies.length >= 8) return;
+    const used = this.actors.filter(actor => actor.id.startsWith(`enemy-${group}-`)).length;
+    const budget = group === 'E02' ? 20 : 18;
+    if (used >= budget) return;
+    const initial = group === 'E01' ? WORKERS.checkpointEnemies : group === 'E02' ? WORKERS.maintenanceEnemies : WORKERS.yardEnemies;
+    // Surviving enemies keep their bodies and identities across a door. Delay
+    // the next area's initial group until slots free up instead of exceeding
+    // the pressure cap or silently deleting the previous group.
+    if (m.phase !== 6 && used < initial.length) {
+      this.spawnChapterGroup(group, initial.slice(used));
+      m.nextSpawn = m.elapsed + 14;
+      return;
+    }
+    const warning = `reinforcements-${group}-${used}`;
+    if (m.elapsed >= m.nextSpawn - 3 && !this.has(warning)) {
+      this.fact(warning); this.say('郑铎', group === 'E03' ? '东北运输道有动静，靠住硬掩体。' : '北边又有人进来，先看入口。', 3);
+    }
+    if (m.elapsed < m.nextSpawn) return;
+    const entries: Vec3[] = group === 'E01' ? [[-11, 0, -13], [11, 0, -14]]
+      : group === 'E02' ? [[-30, 0, -63], [-8, 0, -65]] : WORKERS.counterattack;
+    const goals: Vec3[] = group === 'E01' ? [[-9, 0, 5], [9, 0, 5]]
+      : group === 'E02' ? [[-26, 0, -32], [-8, 0, -38]] : [[27, 0, -110], [30, 0, -108]];
+    this.spawnChapterGroup(group, entries.slice(0, Math.min(2, budget - used, 8 - this.aliveEnemies.length)), goals);
+    m.nextSpawn = m.elapsed + 12;
+  }
+
   get objective(): { phase: string; text: string; detail: string; point: Vec3; interaction: string } {
+    if (this.scenario === 'nightshift' || this.scenario === 'workers') return this.chapterObjective;
     const l = LAYOUT[this.scenario], m = this.mission;
     let phase = '', text = '', detail = '', point: Vec3 = l.terminal, action = '';
     if (this.scenario === 'northgate') {
@@ -385,4 +537,48 @@ export class Simulation {
   }
 
   dispose(): void { this.ballistics.clear(); this.physics.dispose(); }
+
+  private get chapterObjective(): { phase: string; text: string; detail: string; point: Vec3; interaction: string } {
+    const m = this.mission;
+    let text = '', detail = '', action = '', point: Vec3;
+    if (this.scenario === 'nightshift') {
+      const points = [NIGHT.fan, NIGHT.fanReset, NIGHT.supplies, NIGHT.delivery, NIGHT.map, NIGHT.map, NIGHT.weapons, NIGHT.exit, NIGHT.exit];
+      point = points[m.phase];
+      [text, action, detail] = [
+        ['清除风机堵塞', '取出堵塞物', '维修廊的进风口停了。'],
+        ['复位风机', '合上复位开关', '风道清理完毕，面板在旁边。'],
+        ['领取保温物资', '搬起物资箱', '许岚在护理后勤等这箱保温毯。'],
+        ['把物资送到交接台', '放下物资箱', '双手搬运，沿廊道往护理站走。'],
+        ['到旧样本室查看港图', '查看港图', '孟齐和周延在集合点。'],
+        ['确认接应与换班分工', '', '可环顾。Enter 跳过短对话。'],
+        ['领取并核对装备', '领取装备', '从港图旁的武器架取装备。'],
+        ['前往出发点', '', '共享情报，护送到站后接防。'],
+        ['准备出发', '', ''],
+      ][m.phase];
+    } else {
+      const points = [WORKERS.observation, WORKERS.checkpoint, WORKERS.lower, WORKERS.overlook, WORKERS.yardGate, WORKERS.release, WORKERS.safe, WORKERS.post];
+      point = points[m.phase];
+      [text, action, detail] = [
+        ['观察押运车辆并报告', this.lookingAtConvoy() ? '报告押运异常' : '', '在街角看向右前方：军用车旁是港务工服。'],
+        ['清出检查口，接通闸门', this.exposedThreat(point, 19) ? '' : '打开检查闸', '从街角掩体向入口推进。'],
+        ['接通西侧下层检修线', this.exposedThreat(point, 14) ? '' : '复位检修电源', '留意上层火力。楼梯从下层北端开始。'],
+        ['登上检修栈道，确认后门', Math.abs(this.player.position[1] - point[1]) < 0.5 && !this.exposedThreat(point, 18) ? '报告后门位置' : '', '从宽台阶上去；清掉同层威胁后观察院落。'],
+        ['从北端台阶下行，开启后门', '开启后门', '出口就在生活院南侧。'],
+        ['掩护院内人员集合', this.exposedThreat(point, 30) ? '' : '通知人员撤离', '清掉集合点近处的火力。'],
+        ['掩护港务人员到转运位', '', '压住东北入口，人员会沿西侧掩体绕行。'],
+        ['与孟齐确认人员交接', distance(this.actors.find(actor => actor.id === 'meng')!.position, WORKERS.post) < 1 ? '确认转运与家属护送' : '', '等孟齐接上转运位，再确认罗敬的家属需求。'],
+      ][m.phase];
+      if (m.phase === 6) {
+        const pending = this.workers.filter(actor => !actor.safe);
+        const blocked = pending.find(actor => this.workerThreatened(actor));
+        const follow = blocked ?? pending[0];
+        if (follow) {
+          point = [...follow.position];
+          detail = blocked ? `${blocked.name} 被压住了。沿标记接近，清理人员身边的火力。` : '跟随尚未到站的人员，留意运输通道的侧翼。';
+        } else detail = '人员已经到站；清掉转运位附近仍能开火的敌人。';
+      }
+    }
+    return { phase: this.scenario === 'nightshift' ? 'S03 · 夜班与出发' : `S04 · ${m.phase < 2 ? '通勤检查口' : m.phase < 4 ? '检修栈道' : '生活院与转运'}`,
+      text, detail, point, interaction: action && distance(this.player.position, point) < 2.8 ? action : '' };
+  }
 }
