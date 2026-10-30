@@ -4,7 +4,7 @@
 
 先读 `README.md`、`docs/PROJECT_BLUEPRINT.md`、`docs/THREEJS_FPS_STANDARDS.md` 和 `docs/ASSET_PIPELINE.md`。需要追溯时再读 `docs/handoff/current/` 的对应分册。
 
-当前是原创《重返木卫三》的开发资料仓库，最终目标为 Three.js Windows EXE。不得把已有文档架构、旧原型测试、自动走线或资产需求表标成当前代码、成品或真人验收。
+本仓库用于原创《重返木卫三》的资料与实际制作，最终目标为 Three.js Windows EXE。不得把已有文档架构、旧原型测试、自动走线或资产需求表标成当前代码、成品或真人验收。开发进度与下一步持续记录在 `artifacts/game-progress.md`。
 
 ## 需求优先级
 
@@ -23,5 +23,9 @@
 ## 资产与运行
 
 这是 Three.js 桌面 FPS 项目，已明确采用自制、Tripo／Hyper3D 生成及有来源的可用素材。按 `docs/ASSET_PIPELINE.md` 保存原件、运行版、任务与许可记录。模型生成、绑定、动画、碰撞、导航和实机验收分别记录。
+
+先检索本机已有军事库，定位见 `docs/LOCAL_ASSET_SOURCES.md`。正式新建 3D 资产采用概念图先行：ImageGen 制作概念图，检查后交给 Tripo／Hyper3D 图生模型，或交给 Dot 在云电脑 Blender 建模。不能把文本直接生模型当成本项目默认流程。用户已允许先用程序化占位符验证；占位符不冒充正式资产。资产复制到项目内部后再进入运行，不能依赖共享库绝对路径。
+
+美术采用原创方块人物与形体更自由、细节更丰富的工业场景。参考《我的三体》的表现思路，不复制其人物、地图或素材；不是全场景体素化。具体边界见 `design/ART_DIRECTION.md`。
 
 Nativue 保持本机状态在 `.nativue/`；通过 CLI 导入真实 analysis-request 对应的分析。不自动启用后台模型、远程同步或代理批次。规划节点不能标为已实现；无实际测试证据不能标为 verified。

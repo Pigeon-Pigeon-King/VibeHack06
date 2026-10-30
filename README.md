@@ -11,6 +11,9 @@ Three.js 单人线性第一人称射击战役。开发环境为 Mac，最终目�
 | [项目方案与验证顺序](docs/PROJECT_BLUEPRINT.md) | 原创内容边界、系统职责、三条验证线与全战役扩展 |
 | [Three.js FPS 技术规范](docs/THREEJS_FPS_STANDARDS.md) | 输入、碰撞、飞行弹丸、动画、任务、性能与 EXE 交付 |
 | [资产生产与验收接口](docs/ASSET_PIPELINE.md) | Tripo／Hyper3D／Blender 到运行资产的交付要求 |
+| [本机军事资产来源](docs/LOCAL_ASSET_SOURCES.md) | 已有模型、代码工厂、选型与复制入口 |
+| [美术方向](design/ART_DIRECTION.md) | 方块人物与更精细工业场景的视觉边界 |
+| [持续开发进度](artifacts/game-progress.md) | 长期目标、实际完成项、缺口与下一步 |
 | [参考项目与官方资料](docs/REFERENCE_PROJECTS.md) | 源码、演示、API、许可证和核查范围 |
 | [交接归并与版本裁决](docs/HANDOFF_RECONCILIATION.md) | 三个 ZIP 的重复关系、历史差异与适用优先级 |
 | [Nativue 架构画布](docs/NATIVUE.md) | 启动、阅读与刷新本地架构图 |
@@ -21,6 +24,8 @@ Three.js 单人线性第一人称射击战役。开发环境为 Mac，最终目�
 2026-10-30 用户选择尽可能覆盖三条验证线：序章 S01—S02、北闸 E04、S08—S11 人物取舍与协作演出。先共用一套输入、弹丸、任务、人物和演出接口，通过后扩展剩余战役；具体顺序见项目方案。验证线是开发步骤，不替代完整产品范围。
 
 日常工作在 `main`。大改或并行工作前，先整理并提交主线，再将最新 `main` 同步到备用工作树的 `codex/vibehack06` 分支；分支验证通过后合回主线并检查整合结果。
+
+用户已授权架构完成后持续制作，并允许占位资产先行。正式新资产先由 ImageGen 制作概念图，再进入 Tripo／Hyper3D 或 Dot 云端 Blender；先复用适合本作的已有素材。
 
 ## 文档状态
 
