@@ -43,6 +43,10 @@ nativue analyze .
 
 源文件改变会使旧分析过期；应重新读新的分析包，不通过替换旧结果的 inputId 强行导入。服务的文件扫描可以自动刷新，语义更新仍由交互分析完成，不能称为已启用无人值守模型分析。
 
+## 扫描范围
+
+当前 CLI 内建排除名为 `build` 和 `runtime` 的目录，因此 89 个被索引的文本文件不包含 `build/BUILD_BRIEF.md`、`src/runtime/Physics.ts` 与 `src/runtime/random.ts`。这不是代码缺失。画布里的身体／物理节点引用已索引的 Simulation 调用、输入模块和实际测试证据；直接源码仍可从仓库读取。没有修改扫描器排除规则或伪造文件索引。11 个二进制或超限文件（截图与原始 HTML）也不会作为带行号的代码证据。
+
 ## 来源与本机状态
 
 `.nativue/` 已由 Git 忽略，里面保存配置、真实请求、分析结果和运行状态。源版本与文件散列由扫描记录；以当前快照中的 branch、commit、dirty 和 analysis.status 判断版本。
