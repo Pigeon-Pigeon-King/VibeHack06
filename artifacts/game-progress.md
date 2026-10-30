@@ -8,7 +8,8 @@
 - 70 项／8 文件回归通过，覆盖自然／跳过固定结局、真实NPC移动、低视点恢复、东侧与后线安全条件、无线电结束生命一致性和旧 L1 存档无损继续。
 - 浏览器完成 S01 自然演出、完成档恢复和 S01→S02 切换；S02 实际开门、命中与推进，完整通关未做。浏览器控制随后被中断，S05 实际画面待测。具体边界见 [当前证据](opening-evidence.md)。
 - ImageGen 内置工具已完成成年闻川概念图；首图方块结构不足，定向修订选择 `assets/concepts/CH-LU/adult-v2.png`。提示词、检查与哈希保存在 `artifacts/asset-jobs/CH-LU-adult-concept.md`。Tripo API 配置探测为 MISSING，没有提交3D任务；Hyper3D／Dot 尚未连接。运行人物仍为占位。
-- 类型、生产构建、Windows便携包已生成并核对；Windows仍 NOT_RUN。合入与主线复核待在本条之后记录。
+- 类型、生产构建、Windows便携包已生成并核对；Windows仍 NOT_RUN。实现提交 `fba1d3d` 已快进合入 main；主线源码散列与生产 dist 同测试工作树逐项一致，主线包内容也核对通过。
+- 新便携候选：`release/ReturnToGanymede-opening-preview-win-x64.zip`，160,032,243 字节，SHA-256 `043fea400a263a722c8f45033946e7f10267ebd5a0f6f46fceb0e5b4af23045d`。保留完整解压目录运行，不是单文件EXE安装包。旧0.1/0.2 ZIP保留。
 
 ## 前序进展 · 0.1—0.2
 

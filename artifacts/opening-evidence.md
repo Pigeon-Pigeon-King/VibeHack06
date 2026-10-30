@@ -51,7 +51,9 @@ S01／S02 局部观察约 57—62 FPS、约 119—288 次绘制、0.81—1.68 �
 
 ## 构建与交付
 
-类型检查、生产构建、Windows x64 便携打包及包内容核对结果见 [build-manifest.json](build-manifest.json)。清单须与本轮 70 项报告和当前源码相符；生成 PE 文件不代表 Windows 已启动游戏。主线合入与包散列在持续开发记录中更新。
+类型检查、生产构建、Windows x64 便携打包及包内容核对通过，见 [build-manifest.json](build-manifest.json)。实现 `fba1d3d` 已快进合入 main；主线源码与生产 dist 散列均与已测试工作树相同，主线包内容已重新核对。生成 PE 文件不代表 Windows 已启动游戏。
+
+便携 ZIP：`release/ReturnToGanymede-opening-preview-win-x64.zip`，160,032,243字节；SHA-256 `043fea400a263a722c8f45033946e7f10267ebd5a0f6f46fceb0e5b4af23045d`。解压后保留整个目录启动其中EXE，未制作签名安装器。
 
 ## 接下来
 
