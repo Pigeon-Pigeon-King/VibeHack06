@@ -53,7 +53,11 @@ SaveStore 使用本机 storage、版本包装、严格结构校验和上一份�
 
 `npm run package:win` 完成类型检查、生产构建和 x64 便携目录生成。生产 JS 约 5.03 MB、gzip 约 1.86 MB，仍包含 Rapier compat WASM；尚未拆包优化。`node scripts/inspect-package.mjs` 核对应用包只含 `LICENSES`、`desktop`、`dist` 和最小 package，打包内容与当前源码／dist 一致，EXE 是 x86-64 PE。散列与当前测试数见 [build-manifest.json](build-manifest.json)。这项检查不启动 Windows 游戏。
 
-当前便携候选位于 `release/ReturnToGanymede-win32-x64/`，新压缩文件名为 `ReturnToGanymede-chapter-preview-win-x64.zip`。旧 `ReturnToGanymede-whitebox-win-x64.zip` 保留为首轮候选。EXE 必须连同整个文件夹转移；尚未提供签名安装程序。生产页面的最后检查与本次 Git／架构刷新结果会在合并后补记。
+当前便携候选位于 `release/ReturnToGanymede-win32-x64/`，新压缩文件名为 `ReturnToGanymede-chapter-preview-win-x64.zip`。旧 `ReturnToGanymede-whitebox-win-x64.zip` 保留为首轮候选。EXE 必须连同整个文件夹转移；尚未提供签名安装程序。
+
+实施提交 `a74d5a0` 已从备用分支快进合入 main；main 重新构建并核对应用包，dist 散列与已测版本一致。生产入口 `http://127.0.0.1:5189/` 另行实测 Enter 启动、移动到风机、E 维修、暂停、返回菜单、进入独立北闸，再恢复连续章节的维修检查点；事实与阶段保留。生产界面没有开发诊断，检查时浏览器错误／警告日志为空。见 [生产菜单](production-menu.png)。
+
+新压缩包为 160,018,256 字节，SHA-256：`9b65d44bd6cfe6b1a021019e89effdca4a080fd7ac6952acc5eb468816f843ec`。该散列用于辨认本次文件，不代替 Windows 启动测试。
 
 ## 仍需完成
 
