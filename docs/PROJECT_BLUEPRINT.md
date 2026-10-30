@@ -38,7 +38,7 @@ V2 适合最早检验系统联动，V1 与 V3 的高风险接触动作可以在�
 
 建议以 TypeScript＋Vite 组织 Three.js 游戏；先以 WebGL2 为兼容基线，Electron 作为 Windows 桌面封装候选。版本在创建运行工程时固定并写锁文件；此处不把旧示例的依赖版本直接作为项目版本。
 
-下列路径均是**拟建边界**，目前不存在游戏源码。实现时可调整目录，不改变职责与状态所有权。
+下列是职责边界。首轮代码已建立 `src/runtime`、`src/player`、`src/combat`、`src/actors`、`src/mission`、`src/presentation`、`src/content`、`src/ui` 和 `desktop`；协作演出当前由 Simulation 统一状态，后续内容扩展时再拆分。实现与实际验证范围见持续进度，不把目录存在视为完整模块验收。
 
 | 模块 ID | 拟建职责 | 关键接口与约束 |
 | --- | --- | --- |

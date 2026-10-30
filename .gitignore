@@ -1,3 +1,8 @@
 /.nativue/
 /*.zip
 .DS_Store
+node_modules/
+dist/
+release/
+artifacts/runs/
+*.tsbuildinfo

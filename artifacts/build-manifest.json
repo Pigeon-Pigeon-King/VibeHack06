@@ -1,0 +1,58 @@
+{
+  "candidate": "whitebox-2026-10-31",
+  "recordedAt": "2026-10-30T17:23:09.193Z",
+  "node": "v22.14.0",
+  "target": "Windows x64 portable directory",
+  "entry": "release/ReturnToGanymede-win32-x64/ReturnToGanymede.exe",
+  "runtimeVerifiedOnWindows": false,
+  "packageRoots": [
+    "LICENSES",
+    "desktop",
+    "dist",
+    "package.json"
+  ],
+  "tests": {
+    "total": 20,
+    "passed": 20,
+    "failed": 0,
+    "files": 4,
+    "reportSha256": "9d4559ddf81b12dd15d6f43e3265104ad587ed76ca62acef14acd0d2b9033b79"
+  },
+  "sourceSha256": {
+    "desktop/main.cjs": "9ed8c5e9662e11e4b46bdc1336ebf4af64d2e0e3ba714f31a804a86407161735",
+    "index.html": "547a7f8a0cca8f96a699da568fbe6badb4c832ba1ab8e14c801540ed9a658a99",
+    "package-lock.json": "7a3b161e8305311a604edc2fd334c9f00c759136db8c0c4789fc2dab323a7e2f",
+    "package.json": "664b7168e106a7525a156f09827e5b9b5955f3be330c6d353f1fb425fb0ba543",
+    "scripts/inspect-package.mjs": "2ff60a8b3b8667d3cf57fc900881dd5c0f50866d097c38d2b9b15cd607af0933",
+    "scripts/package-windows.mjs": "09c153a037ba0915a8ab74de7b1226d5d46b9681f90333d43efe364ff22bc4ab",
+    "src/actors/Navigation.ts": "62e03ac35730930949aac803b168525047ff3f5085cbe32786230f393f3c9c97",
+    "src/combat/Ballistics.ts": "081fe98fac1b3ebb14464d88c12fac25f39026fbfc4bdeb5e2b98ac31c276785",
+    "src/content/layout.ts": "42e8f20f058ca1e737c5d314a5ae8278a2c7e9de2d1898f412f58f3f8d8173cf",
+    "src/contracts.ts": "4955978f9ad8bc4c3d45c98c39895be79a552b20e88c622e857a5040f7a6d6eb",
+    "src/main.ts": "793bfd125b5e297e4142f5086b570aa56f1b2b04fa4611ef47dc1a3fe111d230",
+    "src/mission/Simulation.ts": "dff106c6c7d9d97ac34c38adf5337eea79508f18daaf7b50a2b19de7b9a65842",
+    "src/player/Input.ts": "bf4258ef03b7f7d4346a48e7ba1866c1997b6bd87cfc8904ac8fa2132983e2c6",
+    "src/presentation/Feedback.ts": "abd790a47c577c2f76536484abab1fd902d8b6de14097e7fb7a004a00a9983bf",
+    "src/presentation/Sound.ts": "0b1c4707294384c5c24cadbced2123ee5b9ba59688b130d7f8d4d67f09266ec8",
+    "src/presentation/characters.ts": "06262144faf96fae95a4dec2628078e0cde9f717efeedb14a571f774a7eb7775",
+    "src/presentation/environment.ts": "40c879d3284d6804771f00e5f32520ca771cfd6185a1e3cc618d45bb9eecc90b",
+    "src/presentation/model-tools.ts": "f072818ef3833fe6db7789f1b39dbf2ff60604e3e46b937577d5f69dc59c33e9",
+    "src/runtime/Physics.ts": "d7da4df414c4475675cfbcaec38def4a25719500c4a9f4f1e8dbf5e7ba5262c2",
+    "src/runtime/random.ts": "c1fa182484525fcaa198d529d51ef54bfb0ed9510f5ddc409153770dfac4805e",
+    "src/ui/GameUI.ts": "7dc6627d272a8c755cf4b2190f7d32e2c95a848d20e62f430e4811f583ec2d52",
+    "src/ui/style.css": "dc1825213abd95b5bdc0c9ced703e702e288b1f49e6f28211ab0cda7d1d50c70",
+    "tests/mission-state.test.ts": "37127639a1a1dc3d511c5c6f0d4c6ea519de5580ea97e7533ef070d1da48521b",
+    "tests/navigation.test.ts": "87d64842e460327763436d6d6575644a55898f641c8a2a84678717c042edec8f",
+    "tests/physics-ballistics.test.ts": "384f4352ac5f401ddaf961712f90e97f5f47f4af4473467660ac919ee1d5e5d2",
+    "tests/scenario-paths.test.ts": "2fa1e86d049d2862867c462c404dcbda43cf5fd07d7fa0dd638541fa340cb2f7",
+    "tsconfig.json": "63d21aae1d346d6f718aad46d19e0baad972d5a1fb2d7a8b14a65fb407f28273",
+    "vite.config.ts": "efc7129945354641ae14e02b35c86b33b8267099bc39d31b6a203600b6e03aaa"
+  },
+  "distSha256": {
+    "dist/assets/index-BZzTLTOu.js": "df81c8578a3fff32df0eade65496a875ba6127da26daf39521e28401deadb943",
+    "dist/assets/index-D6QFliKp.css": "0c47bcefec34b8f45fc1002829e3b1c958ca021d9e03f816f08a92433208e494",
+    "dist/index.html": "74549382a424d13ccc2953f886d7c566245ccb9812ab56ce654cae418415a3cc"
+  },
+  "appAsarSha256": "3d325d01c871304fe6102e539b7309b3ce9f187c50336e019114630c24303b21",
+  "executableSha256": "b6c5f377d0349c074807f6592c82e240b900850168b182912f36dd1c496570fc"
+}
