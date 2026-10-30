@@ -1,0 +1,12 @@
+{
+  "version": "0.5.0",
+  "sourceCommit": "c5685b7e45e04a2a9a4e21b999b5f7a7a7de84e1",
+  "path": "release/ReturnToGanymede-escort-relief-preview-win-x64.zip",
+  "bytes": 160029352,
+  "sha256": "dc51647125e73ede03b62266be79d4110044b9b7cdfd7309e6aff5617373927b",
+  "files": 74,
+  "archiveIntegrity": "PASS",
+  "sourceHashesMatchTestedWorktree": 69,
+  "distHashesMatchTestedWorktree": 3,
+  "runtimeVerifiedOnWindows": false
+}

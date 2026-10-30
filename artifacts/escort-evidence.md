@@ -58,12 +58,22 @@ IAB拒绝Pointer Lock，因此以方向键／F替代；未验证Windows鼠标、
 
 三份 [存档及来源记录](escort-visual-fixtures/escort-transfer.source.json) 来自公开输入自然回放第一次实际进入phase4、11、7；通过SaveStore保存和再次读取校验，原始信封与SHA-256均保留。没有手工写入假阶段。开发菜单通过可见文件选择器导入同一严格格式；导入后的自动保存被隔离，不覆盖玩家持久进度。生产构建不包含此入口。
 
-`artifacts/evidence.json`另列当前原生截图及文件；预定覆盖仍以上表和实施约定为准。没有运行技能所附的独立Playwright画布检查器，也没有命名状态钩子的自动确认；原生CUA截图、实际键盘观察、物理回放和包检查分别提供证据。
+`artifacts/evidence.json`另列当前原生截图及文件；预定覆盖仍以上表和实施约定为准。辅助文件检查使用 `check_evidence.py --skip-inspector` 确认21项引用文件存在。没有运行技能所附的独立Playwright画布检查器，也没有命名状态钩子的自动确认；原生CUA截图、实际键盘观察、物理回放和包检查分别提供证据。
 
 ## 构建与整合
 
 类型、生产构建、Windows x64便携打包和包内容检查已通过，见 [构建清单](build-manifest.json)。生产包移除了章节独立检查菜单与检查点文件入口。初次直接下载Electron校验文件超时，使用本机已有代理的进程级配置后打包成功；没有改变系统代理。
 
-Windows运行仍为 **NOT_RUN**。包检查证明PE为x86-64、asar根目录和文件内容正确，不证明EXE已在Windows启动。备用工作树本轮验证完成，随后按约定合回main，再核对主线构建与包。
+实现提交 `c5685b7e45e04a2a9a4e21b999b5f7a7a7de84e1` 已从备用工作树快进合入main。主线重新构建与打包后，69项源码散列及3项dist散列均与通过测试的工作树一致，主线包检查再次通过。
+
+便携候选：[ReturnToGanymede-escort-relief-preview-win-x64.zip](../release/ReturnToGanymede-escort-relief-preview-win-x64.zip)，160,029,352字节、74个文件；压缩包CRC检查通过。SHA-256为 `dc51647125e73ede03b62266be79d4110044b9b7cdfd7309e6aff5617373927b`，机器可读记录见 [escort-package.json](escort-package.json)。解压后保留完整目录运行，旧版ZIP仍保留。
+
+Windows运行仍为 **NOT_RUN**。包检查证明PE为x86-64、asar根目录和文件内容正确，不证明EXE已在Windows启动。
+
+## Nativue刷新
+
+真实分析请求当前索引157个文本文件；导入36个模块、62条关系、4条旅程，其中25个模块的“已验证”只对应描述中的窄范围证据。新增S08、S09、独立离站监控、移位与护理节点；更新104＋10检查、60项存储检查、九段连续流程及S10—S12剩余工作。`nativue doctor`与`nativue check`均返回ok。
+
+浏览器实际选择S08、S09，分别打开当前 `src/mission/Escort.ts:85`、`src/mission/Relief.ts:55` 的只读源码。见 [架构画布截图](nativue-escort-canvas.png)。截图采集于实现提交c5685b7合并后、证据文档归档提交前，界面据实显示“有修改”；源码与本轮候选一致。最终本机分支、提交、dirty与分析状态以实时快照为准，后台模型与远程同步仍未启用。
 
 正式资产沿既定ImageGen概念图→Tripo／Hyper3D或Dot云端Blender流程推进；本轮没有重复生成成年闻川概念或提交新的模型任务。下一批为S10主动求援与协作救援、S11医疗视点、S12真实报告，并补齐前面未做的浏览器完整首通、节奏和目标平台验收。
