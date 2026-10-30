@@ -35,12 +35,12 @@ class OpenSet {
 export class Navigation {
   private blocked = new Set<string>();
   private key(x: number, z: number): string { return `${x},${z}`; }
-  constructor(solids: SolidSpec[], private readonly bounds: NavBounds = { minX: -29, maxX: 29, minZ: -40, maxZ: 33 }) {
+  constructor(solids: SolidSpec[], private readonly bounds: NavBounds = { minX: -29, maxX: 29, minZ: -40, maxZ: 33 }, clearance = 0.42) {
     for (const s of solids) {
       if (s.position[1] + s.size[1] / 2 < 0.35 || s.position[1] - s.size[1] / 2 > 1.8) continue;
       const a = s.rotationY ?? 0;
-      const hx = Math.abs(Math.cos(a)) * s.size[0] / 2 + Math.abs(Math.sin(a)) * s.size[2] / 2 + 0.42;
-      const hz = Math.abs(Math.sin(a)) * s.size[0] / 2 + Math.abs(Math.cos(a)) * s.size[2] / 2 + 0.42;
+      const hx = Math.abs(Math.cos(a)) * s.size[0] / 2 + Math.abs(Math.sin(a)) * s.size[2] / 2 + clearance;
+      const hz = Math.abs(Math.sin(a)) * s.size[0] / 2 + Math.abs(Math.cos(a)) * s.size[2] / 2 + clearance;
       for (let x = Math.ceil(s.position[0] - hx); x <= Math.floor(s.position[0] + hx); x++) {
         for (let z = Math.ceil(s.position[2] - hz); z <= Math.floor(s.position[2] + hz); z++) this.blocked.add(this.key(x, z));
       }

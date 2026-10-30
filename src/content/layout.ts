@@ -2,8 +2,20 @@ import type { ScenarioId, Vec3 } from '../contracts';
 import { NIGHT, WORKERS } from './chapter-layout';
 import { HISTORY } from './history-layout';
 import { FRONTGATE } from './frontgate-layout';
+import { TRANSFER } from './transfer-layout';
+import { FLANK } from './flank-layout';
 
 export const LAYOUT = {
+  transfer: {
+    name: '占领区 · 转接门与争执', spawn: TRANSFER.spawn, yaw: Math.PI,
+    terminal: TRANSFER.panel, post: TRANSFER.equipment, exit: TRANSFER.exit, safe: TRANSFER.xuSafe,
+    workerSpawns: [] as Vec3[], enemySpawns: [] as Vec3[],
+  },
+  flank: {
+    name: '占领区 · 交给别人', spawn: FLANK.spawn, yaw: 0,
+    terminal: FLANK.platform, post: FLANK.innerGate, exit: FLANK.exit, safe: FLANK.techSafe,
+    workerSpawns: FLANK.technicians, enemySpawns: FLANK.eastEntries,
+  },
   childhood: {
     name: '序章 · 检修门', spawn: HISTORY.childSpawn, yaw: 0,
     terminal: HISTORY.lunch, post: HISTORY.gateOutside, exit: HISTORY.childSafe, safe: HISTORY.childSafe,

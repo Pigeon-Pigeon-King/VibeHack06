@@ -24,4 +24,14 @@ describe('synthetic navigation fixtures', () => {
     const navigation = new Navigation([{ id: 'divider', position: [0, 1.5, 0], size: [80, 3, 2] }]);
     expect(navigation.path([0, 0, -5], [0, 0, 5])).toEqual([]);
   });
+
+  it('keeps the long patient-cart envelope out of a person-sized gap', () => {
+    const walls: SolidSpec[] = [
+      { id: 'left', position: [-5, 1.5, 0], size: [7.6, 3, 1] },
+      { id: 'right', position: [5, 1.5, 0], size: [7.6, 3, 1] },
+    ];
+    const bounds = { minX: -8, maxX: 8, minZ: -8, maxZ: 8 };
+    expect(new Navigation(walls, bounds).path([0, 0, -5], [0, 0, 5]).length).toBeGreaterThan(0);
+    expect(new Navigation(walls, bounds, 1.3).path([0, 0, -5], [0, 0, 5])).toEqual([]);
+  });
 });

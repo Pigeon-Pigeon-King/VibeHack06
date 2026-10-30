@@ -3,8 +3,12 @@ import { LAYOUT } from '../content/layout';
 import { NIGHT, WORKERS } from '../content/chapter-layout';
 import { HISTORY } from '../content/history-layout';
 import { FRONTGATE } from '../content/frontgate-layout';
+import { TRANSFER } from '../content/transfer-layout';
+import { FLANK } from '../content/flank-layout';
 import { openingObjective, populateOpening, updateOpening } from './Opening';
 import { frontgateObjective, populateFrontgate, updateFrontgate } from './Frontgate';
+import { populateTransfer, transferObjective, updateTransfer } from './Transfer';
+import { flankObjective, populateFlank, updateFlank } from './Flank';
 import { Physics, FIXED_DT } from '../runtime/Physics';
 import { Random } from '../runtime/random';
 import { Ballistics } from '../combat/Ballistics';
@@ -38,6 +42,7 @@ export const emptyIntent: Intent = { forward: 0, right: 0, sprint: false, crouch
 export class Simulation {
   readonly physics: Physics;
   navigation: Navigation;
+  private cartNavigation: Navigation;
   readonly ballistics: Ballistics;
   readonly random = new Random();
   actors: Actor[] = [];
@@ -53,15 +58,17 @@ export class Simulation {
   constructor(readonly scenario: ScenarioId, readonly solids: SolidSpec[], saved?: Snapshot, priorFacts: readonly string[] = []) {
     this.physics = new Physics(solids);
     this.navBounds = scenario === 'nightshift' ? NIGHT.bounds : scenario === 'workers' ? WORKERS.bounds
-      : scenario === 'childhood' || scenario === 'mainhall' ? HISTORY.bounds : scenario === 'frontgate' ? FRONTGATE.bounds : undefined;
+      : scenario === 'childhood' || scenario === 'mainhall' ? HISTORY.bounds : scenario === 'frontgate' ? FRONTGATE.bounds
+      : scenario === 'transfer' ? TRANSFER.bounds : scenario === 'flank' ? FLANK.bounds : undefined;
     this.navigation = new Navigation(solids, this.navBounds);
+    this.cartNavigation = new Navigation(solids, this.navBounds, 1.3);
     this.ballistics = new Ballistics((a, b, except) => this.physics.trace(a, b, except));
     const layout = LAYOUT[scenario];
     this.player = { position: [...layout.spawn], yaw: layout.yaw, pitch: 0, health: 100,
       ammo: scenario === 'nightshift' || scenario === 'childhood' ? 0 : 25, reserve: scenario === 'nightshift' || scenario === 'childhood' ? 0 : 150, height: scenario === 'prologue' || scenario === 'childhood' ? 1.1 : 1.8, crouched: false,
       reload: 0, cooldown: 0, hurtAt: -10, walk: 0, recoil: 0, ads: false,
-      name: scenario === 'prologue' || scenario === 'childhood' ? '陆闻川 · 九岁' : scenario === 'mainhall' ? '周延 · 二十三岁' : scenario === 'northgate' || scenario === 'frontgate' ? '周延 · 三十三岁' : '陆闻川 · 十九岁' };
-    this.mission = { scenario, phase: 0, elapsed: 0, phaseTime: 0, control: scenario === 'northgate' || scenario === 'frontgate' ? 'combat' : 'work',
+      name: scenario === 'prologue' || scenario === 'childhood' ? '陆闻川 · 九岁' : scenario === 'mainhall' ? '周延 · 二十三岁' : scenario === 'northgate' || scenario === 'frontgate' || scenario === 'flank' ? '周延 · 三十三岁' : '陆闻川 · 十九岁' };
+    this.mission = { scenario, phase: 0, elapsed: 0, phaseTime: 0, control: scenario === 'northgate' || scenario === 'frontgate' || scenario === 'flank' ? 'combat' : 'work',
       facts: [...new Set(priorFacts)], complete: false, failed: false, checkpointLabel: '进入区域',
       subtitle: '', speaker: '', subtitleUntil: 0, spawned: 0, nextSpawn: 12 };
     if (saved) {
@@ -70,7 +77,10 @@ export class Simulation {
       this.checkpoint = clone(saved);
     } else this.populate();
     this.physics.add('player', this.player.position, this.player.height);
-    for (const actor of this.actors) if (!actor.down) this.physics.add(actor.id, actor.position, actor.role === 'child' ? 1.1 : 1.8);
+    for (const actor of this.actors) if (!actor.down) {
+      if (actor.role === 'cart') this.physics.addCart(actor.id, actor.position, actor.yaw);
+      else this.physics.add(actor.id, actor.position, actor.role === 'child' ? 1.1 : 1.8);
+    }
     this.syncTopology(false);
     this.physics.step();
     if (!saved) this.saveCheckpoint('进入区域');
@@ -80,6 +90,8 @@ export class Simulation {
   private populate(): void {
     if (this.scenario === 'childhood' || this.scenario === 'mainhall') { populateOpening(this); return; }
     if (this.scenario === 'frontgate') { populateFrontgate(this); return; }
+    if (this.scenario === 'transfer') { populateTransfer(this); return; }
+    if (this.scenario === 'flank') { populateFlank(this); return; }
     const l = LAYOUT[this.scenario];
     if (this.scenario === 'nightshift') {
       this.createActor('xu', '许岚', 'medic', NIGHT.xu);
@@ -135,10 +147,11 @@ export class Simulation {
   private syncTopology(clearPaths = true): void {
     if (!this.physics.applyFacts(this.mission.facts)) return;
     this.navigation = new Navigation(this.solids.filter(solid => !solid.openFact || !this.has(solid.openFact)), this.navBounds);
+    this.cartNavigation = new Navigation(this.solids.filter(solid => !solid.openFact || !this.has(solid.openFact)), this.navBounds, 1.3);
     if (clearPaths) { for (const actor of this.actors) actor.path = []; this.pathRetry.clear(); }
   }
   spawnChapterGroup(group: string, positions: Vec3[], goals?: Vec3[]): void {
-    const budget = group === 'E04' ? 44 : group === 'E02' ? 20 : 18;
+    const budget = group === 'E04' || group === 'E05' ? 44 : group === 'E02' ? 20 : 18;
     const used = this.actors.filter(actor => actor.id.startsWith(`enemy-${group}-`)).length;
     const count = Math.min(positions.length, Math.max(0, 8 - this.aliveEnemies.length), Math.max(0, budget - used));
     for (let i = 0; i < count; i++) {
@@ -271,7 +284,8 @@ export class Simulation {
     const closest = this.aliveEnemies.slice().sort((a, b) => distance(a.position, this.player.position) - distance(b.position, this.player.position)).slice(0, 2);
     for (const a of this.actors) {
       if (a.down || !this.physics.bodies.has(a.id)) continue;
-      let speed = a.role === 'enemy' ? 1.5 : 2.1;
+      let speed = a.role === 'enemy' ? 1.5 : a.role === 'cart' ? 1.25 : 2.1;
+      if (this.scenario === 'transfer' && a.id === 'xu') speed = 1.2;
       a.cooldown = Math.max(0, a.cooldown - dt);
       a.aiming = false;
       if (a.role === 'enemy') {
@@ -292,7 +306,7 @@ export class Simulation {
         } else a.aimTime = 0;
       }
       if (a.role === 'worker' && a.released && !a.safe && this.workerThreatened(a)) speed = 0;
-      if (a.role === 'ally' && !a.goals.length && m.control === 'combat' && (this.scenario === 'mainhall' || this.scenario === 'frontgate')) {
+      if (a.role === 'ally' && a.id !== 'meng' && !a.goals.length && m.control === 'combat' && (this.scenario === 'mainhall' || this.scenario === 'frontgate' || this.scenario === 'flank')) {
         const target = this.aliveEnemies.find(enemy => distance(a.position, enemy.position) < 48
           && !this.physics.trace(eye(a.position), eye(enemy.position), a.id, true));
         if (target) {
@@ -311,8 +325,12 @@ export class Simulation {
         const goal = a.goals[0];
         if (distance(a.position, goal) < 0.85) { a.goals.shift(); a.path = []; }
         else {
+          // The short stepped walkway has authored successive support points.
+          // Its walkers follow those through actual physics, not the ground-only
+          // navigation grid. Carts use their own full-width clearance grid.
+          const authored = this.scenario === 'flank' && (a.id.startsWith('walker-') || a.role === 'worker');
           if (!a.path.length && m.elapsed >= (this.pathRetry.get(a.id) ?? 0)) {
-            a.path = this.navigation.path(a.position, goal);
+            a.path = authored ? [[...goal]] : (a.role === 'cart' ? this.cartNavigation : this.navigation).path(a.position, goal);
             this.pathRetry.set(a.id, a.path.length ? 0 : m.elapsed + 1);
           }
           while (a.path.length && distance(a.position, a.path[0]) < 0.35) a.path.shift();
@@ -323,6 +341,17 @@ export class Simulation {
             a.yaw = Math.atan2(vx, vz); a.walk += dt * speed * 4;
           }
         }
+      }
+      if (a.role === 'cart' && (vx || vz)) {
+        const length = Math.hypot(vx, vz), dx = vx / length, dz = vz / length;
+        const queueAhead = this.actors.some(other => {
+          if (other === a || other.role !== 'cart' || other.safe) return false;
+          const x = other.position[0] - a.position[0], z = other.position[2] - a.position[2];
+          const ahead = x * dx + z * dz;
+          return ahead > 0 && ahead < 3.6 && Math.abs(x * dz - z * dx) < 1.0;
+        });
+        if (queueAhead) { vx = 0; vz = 0; a.walk -= dt * speed * 4; }
+        this.physics.orient(a.id, a.yaw);
       }
       this.physics.move(a.id, vx, vz, dt);
     }
@@ -347,6 +376,8 @@ export class Simulation {
     const at = (target: Vec3, range = 2.8) => distance(p.position, target) < range;
     if (this.scenario === 'childhood' || this.scenario === 'mainhall') { updateOpening(this, input); return; }
     if (this.scenario === 'frontgate') { updateFrontgate(this, input); return; }
+    if (this.scenario === 'transfer') { updateTransfer(this, input); return; }
+    if (this.scenario === 'flank') { updateFlank(this, input); return; }
     if (this.scenario === 'nightshift') this.updateNight(input);
     else if (this.scenario === 'workers') this.updateWorkers(input);
     else if (this.scenario === 'northgate') {
@@ -534,6 +565,8 @@ export class Simulation {
   get objective(): { phase: string; text: string; detail: string; point: Vec3; interaction: string } {
     if (this.scenario === 'childhood' || this.scenario === 'mainhall') return openingObjective(this);
     if (this.scenario === 'frontgate') return frontgateObjective(this);
+    if (this.scenario === 'transfer') return transferObjective(this);
+    if (this.scenario === 'flank') return flankObjective(this);
     if (this.scenario === 'nightshift' || this.scenario === 'workers') return this.chapterObjective;
     const l = LAYOUT[this.scenario], m = this.mission;
     let phase = '', text = '', detail = '', point: Vec3 = l.terminal, action = '';

@@ -1,6 +1,6 @@
 {
   "name": "return-to-ganymede",
-  "version": "0.3.0",
+  "version": "0.4.0",
   "author": "VibeHack06 contributors",
   "private": true,
   "type": "module",
@@ -12,7 +12,8 @@
     "preview": "vite preview --host 127.0.0.1 --port 5189 --strictPort",
     "test": "vitest run",
     "desktop": "electron .",
-    "package:win": "npm run build && node scripts/package-windows.mjs"
+    "package:win": "npm run build && node scripts/package-windows.mjs",
+    "check:transport": "vitest run --config scripts/transport-checks/vitest.config.ts"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "0.21.0",

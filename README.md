@@ -2,7 +2,7 @@
 
 Three.js 单人线性第一人称射击战役。开发环境为 Mac，最终目标为 Windows EXE。完整产品保留序章、三个主关卡和尾声，约 60 分钟是待实测目标。
 
-当前 0.3.0 接通五段开发流程：S01 检修门 → S02 主厅 → S03 夜班 → S04 接回九名港务人员 → S05 北闸。旧版夜班与港务进度可继续，本机检查点和设置保持兼容；三个缩短白盒仍有独立验证入口。运行资产与表演仍为可替换的程序化占位件；首张陆闻川成年概念图已归档，尚无生成模型。完整约一小时战役仍在制作。三个原始 ZIP 均为文档包，当前代码是在本仓库新建的原创实现。
+当前 0.4.0 已接通 S01—S07：历史双视点、夜班、港务接应、北闸、转接门与争执、侧翼与情报共享。患者车具有真实环境碰撞，步行分流、维修组撤回和角色知识随检查点保存。旧版夜班与港务进度可继续，三个缩短白盒仍保留独立验证入口。运行资产与表演仍为程序化占位；成年闻川概念图已归档，尚无生成模型。S08—S12、完整约一小时战役与 Windows 实机验收仍在推进。
 
 ## 运行候选
 
@@ -11,7 +11,7 @@ npm ci
 npm run dev
 ```
 
-浏览器入口 `http://127.0.0.1:5188`。桌面容器用 `npm run build` 后 `npm run desktop`；Windows 候选打包用 `npm run package:win`。实际覆盖与限制见 [构建说明](build/BUILD_BRIEF.md) 和 [当前验证记录](artifacts/opening-evidence.md)。此前三白盒与 S03／S04 的操作证据分别保存在 [白盒记录](artifacts/final-evidence.md)、[0.2 记录](artifacts/chapter-evidence.md)。
+浏览器入口 `http://127.0.0.1:5188`。桌面容器用 `npm run build` 后 `npm run desktop`；Windows 候选打包用 `npm run package:win`。实际覆盖与限制见 [构建说明](build/BUILD_BRIEF.md) 和 [当前验证记录](artifacts/transfer-evidence.md)。此前序章与北闸见 [0.3 记录](artifacts/opening-evidence.md)；三白盒与 S03／S04 的操作证据分别保存在 [白盒记录](artifacts/final-evidence.md)、[0.2 记录](artifacts/chapter-evidence.md)。
 
 WASD 移动，Shift 冲刺，C 蹲伏，Space 跳跃，鼠标观察，左键／F 射击，右键瞄准，R 换弹，E 交互，Esc 暂停。方向键提供转向替代；Enter 只跳过允许的演出。暂停中可重试检查点、重开、调整音量／灵敏度与减少晃动。
 

@@ -1,0 +1,5 @@
+
+> return-to-ganymede@0.4.0 check:transport
+> vitest run --config scripts/transport-checks/vitest.config.ts --reporter=json --outputFile=artifacts/transport-check-results.json
+
+JSON report written to /Users/penguin/VibeHack06-worktree/artifacts/transport-check-results.json

@@ -1,4 +1,5 @@
 import type { RunMode, ScenarioId, UiActions, UiState } from '../contracts';
+import { CHAPTER_STAGES } from '../content/chapter-flow';
 import './style.css';
 
 const SCENARIOS: Array<{ id: ScenarioId; index: string; title: string; description: string }> = [
@@ -6,6 +7,9 @@ const SCENARIOS: Array<{ id: ScenarioId; index: string; title: string; descripti
   { id: 'prologue', index: 'V1', title: '同一扇门', description: '从儿童与年轻周延的视点，穿过序章。' },
   { id: 'handover', index: 'V3', title: '下一班', description: '兑现护送承诺，换班，再接伤员回去。' },
 ];
+if (import.meta.env.DEV) SCENARIOS.push(...CHAPTER_STAGES.map(stage => ({
+  id: stage.scenario, index: stage.id, title: stage.title, description: '章节独立检查',
+})));
 
 const clamp = (value: number, max = 1) => Number.isFinite(value) ? Math.max(0, Math.min(max, value)) : 0;
 const integer = (value: number) => Math.max(0, Math.ceil(Number.isFinite(value) ? value : 0)).toString();
@@ -51,10 +55,10 @@ export class GameUI {
           <h1 id="game-title">重返木卫三</h1>
           <p class="menu-intent">把眼前的人，交给下一班。</p>
           <div class="chapter-entry">
-            <p class="eyebrow">序章与第一关</p>
+            <p class="eyebrow">连续战役</p>
             <button class="primary-button" type="button" data-action="chapter-continue" data-ui="chapter-continue" hidden></button>
             <button type="button" data-action="chapter-start" data-ui="chapter-start">从序章开始</button>
-            <p class="chapter-description">检修门 → 主厅 → 夜班 → 港务接应 → 北闸</p>
+            <p class="chapter-description">检修门 → 主厅 → 夜班 → 港务接应 → 北闸 → 转接门 → 侧翼</p>
           </div>
           <details class="validation-reference"><summary>独立验证场景</summary>
           <div class="scenario-list" aria-label="选择验证场景">
@@ -182,7 +186,7 @@ export class GameUI {
     this.text('pause-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('failure-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('complete-scenario', state.scenarioName);
-    const resultTitles: Partial<Record<ScenarioId, string>> = { childhood: '隔断合拢', mainhall: '主厅失守', nightshift: '准备出发', workers: '人员已交接', frontgate: '北闸暂稳' };
+    const resultTitles: Partial<Record<ScenarioId, string>> = { childhood: '隔断合拢', mainhall: '主厅失守', nightshift: '准备出发', workers: '人员已交接', frontgate: '北闸暂稳', transfer: '转接门已通', flank: '把事情交给同伴' };
     this.text('complete-title', state.chapter ? resultTitles[state.scenario] ?? '本段完成' : '本场行动完成');
     this.text('complete-detail', state.detail || state.objective);
     this.text('complete-workers', state.workerTotal > 0 ? `人员到达 ${integer(state.workersSafe)} / ${integer(state.workerTotal)}` : '本段结束');
@@ -194,7 +198,7 @@ export class GameUI {
     this.text('volume-value', state.muted ? '静音' : `${Math.round(state.volume * 100)}%`);
     this.show('error', Boolean(state.error));
     this.text('error', state.error || '');
-    this.show('diagnostics', Boolean(state.diagnostics));
+    this.show('diagnostics', playing && Boolean(state.diagnostics));
     this.text('diagnostics', state.diagnostics || '');
 
     if (state.mode !== this.previousMode) {

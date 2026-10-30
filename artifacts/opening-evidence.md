@@ -1,6 +1,6 @@
 # 序章与第一关开发候选 · 0.3.0
 
-候选标识 `opening-preview-2026-10-31`。当前连接 S01→S02→S03→S04→S05，旧三白盒仍为独立入口。完整约一小时战役、正式模型和 Windows 实机验收仍未完成。此前证据保存在 [0.2 记录](chapter-evidence.md) 与 [白盒记录](final-evidence.md)，不以新结果改写旧记录。
+此文件是 0.3 历史记录，最新状态见 [0.4 记录](transfer-evidence.md)。候选标识 `opening-preview-2026-10-31`。当前连接 S01→S02→S03→S04→S05，旧三白盒仍为独立入口。完整约一小时战役、正式模型和 Windows 实机验收仍未完成。此前证据保存在 [0.2 记录](chapter-evidence.md) 与 [白盒记录](final-evidence.md)，不以新结果改写旧记录。
 
 ## 本轮实现
 
@@ -12,7 +12,7 @@ S05 使用独立的 108×148 米北闸前沿：观察北路、称重台两处位
 
 ## 自动验证
 
-`npm test -- --reporter=default --reporter=json --outputFile=artifacts/test-results.json`：**70 项通过，0 失败，8 个测试文件**。[完整报告](test-results.json)。
+`npm test -- --reporter=default --reporter=json --outputFile=artifacts/test-results.json`：**70 项通过，0 失败，8 个测试文件**。[完整报告](opening-test-results.json)。
 
 | 文件 | 项数 | 本轮相关覆盖 |
 | --- | ---: | --- |
@@ -51,7 +51,7 @@ S01／S02 局部观察约 57—62 FPS、约 119—288 次绘制、0.81—1.68 �
 
 ## 构建与交付
 
-类型检查、生产构建、Windows x64 便携打包及包内容核对通过，见 [build-manifest.json](build-manifest.json)。实现 `fba1d3d` 已快进合入 main；主线源码与生产 dist 散列均与已测试工作树相同，主线包内容已重新核对。生成 PE 文件不代表 Windows 已启动游戏。
+类型检查、生产构建、Windows x64 便携打包及包内容核对通过，见 [0.3 构建清单](opening-build-manifest.json)。实现 `fba1d3d` 已快进合入 main；主线源码与生产 dist 散列均与已测试工作树相同，主线包内容已重新核对。生成 PE 文件不代表 Windows 已启动游戏。
 
 便携 ZIP：`release/ReturnToGanymede-opening-preview-win-x64.zip`，160,032,243字节；SHA-256 `043fea400a263a722c8f45033946e7f10267ebd5a0f6f46fceb0e5b4af23045d`。解压后保留整个目录启动其中EXE，未制作签名安装器。
 

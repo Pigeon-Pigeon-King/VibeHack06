@@ -15,6 +15,21 @@ beforeAll(() => initializePhysics());
 afterEach(() => { for (const world of worlds.splice(0)) world.dispose(); });
 
 describe('synthetic projectile and collision fixtures', () => {
+  it('stops the patient bed front at a shutter and moves its full body through after opening', () => {
+    const world = physics([{ id: 'shutter', position: [0, 1.5, 0], size: [5, 3, 0.2], openFact: 'gate-open' }]);
+    world.addCart('cart-0', [0, 0, -3]); world.step();
+    for (let i = 0; i < 180; i++) { world.move('cart-0', 0, 1.25, FIXED_DT); world.step(); }
+    expect(world.foot('cart-0')[2]).toBeGreaterThan(-1.4);
+    expect(world.foot('cart-0')[2]).toBeLessThan(-1.29);
+    expect(world.foot('cart-0')[1]).toBeGreaterThanOrEqual(-0.01);
+    expect(world.foot('cart-0')[1]).toBeLessThan(0.04);
+    expect(world.applyFacts(['gate-open'])).toBe(true);
+    for (let i = 0; i < 300; i++) { world.move('cart-0', 0, 1.25, FIXED_DT); world.step(); }
+    expect(world.foot('cart-0')[2]).toBeGreaterThan(4.5);
+    expect(world.foot('cart-0')[1]).toBeGreaterThanOrEqual(-0.01);
+    expect(world.foot('cart-0')[1]).toBeLessThan(0.04);
+  });
+
   it('does not perform a collision query at the instant a shot is created', () => {
     const trace = vi.fn(() => null);
     const shots = new Ballistics(trace);

@@ -9,7 +9,7 @@ import { initializePhysics, FIXED_DT } from './runtime/Physics';
 import { Simulation, distance, type Snapshot } from './mission/Simulation';
 import { GameUI } from './ui/GameUI';
 import { LAYOUT } from './content/layout';
-import { carryFacts, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
+import { carryFacts, CHAPTER_STAGES, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
 import { SaveStore, type SavedGame } from './persistence/SaveStore';
 
 function label(text: string, color = '#e4e6dd'): Sprite {
@@ -232,11 +232,15 @@ class Game {
       const stagedWalker = active && m.control === 'staged' && (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
         && ['father', 'evacuator', 'daughter', 'zhao', 'shao'].includes(actor.id);
       item.model.setPose({ walk: actor.goals.length || stagedWalker ? actor.walk : 0, aiming: actor.aiming, down: actor.down,
-        armed: actor.role === 'enemy' || actor.role === 'ally' && !(sim.scenario === 'mainhall' && actor.id === 'zhao' && m.phase >= 4)
+        armed: actor.role === 'enemy' || actor.role === 'ally' && sim.scenario !== 'transfer'
+          && !(sim.scenario === 'flank' && (m.control !== 'combat' || actor.id === 'meng'))
+          && !(sim.scenario === 'mainhall' && actor.id === 'zhao' && m.phase >= 4)
           || actor.role === 'opponent' && (m.phase > 4 || m.phaseTime >= 18)
           || actor.id === 'father' && m.facts.includes('father-rifle-collected') && !actor.down,
         kneeling: actor.id === 'zhao' && sim.scenario === 'mainhall' && m.phase === 4 && m.phaseTime >= 7 && m.phaseTime < 20
           || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= 4 && m.phaseTime < 7,
+        gesture: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.speaker === '周延' ? 0.35 + Math.sin(m.phaseTime * 2.2) * 0.12 : 0,
+        lookAway: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.phaseTime >= 42 && m.phaseTime < 49 ? -0.3 : 0,
         carrying: (actor.id === 'father' && sim.scenario === 'prologue' && m.phase === 1)
           || (actor.id === 'evacuator' && sim.scenario === 'childhood' && m.phase >= 3 && (m.phase === 4 || m.phaseTime >= 12))
           || (actor.id === 'evacuator' && sim.scenario === 'mainhall' && m.phase >= 4)
@@ -252,13 +256,15 @@ class Game {
     this.marker.position.set(...objective.point);
     this.feedback.update(active ? dt : 0, sim.ballistics.projectiles);
     const diagnostics = import.meta.env.DEV ? `阶段 ${m.phase} · ${p.name} · 坐标 ${p.position.map(v => v.toFixed(1)).join(', ')} · ${Math.round(this.fps)} FPS\n` +
-      `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length} · 事实 ${m.facts.join('/') || '无'}` : undefined;
+      `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}` : undefined;
+    const evacuees = sim.scenario === 'transfer' ? sim.actors.filter(a => a.role === 'cart')
+      : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-')) : sim.workers;
     const state: UiState = {
       mode: this.mode, control: m.control, scenario: sim.scenario, scenarioName: LAYOUT[sim.scenario].name,
-      availableScenarios: ['northgate', 'prologue', 'handover'], phaseName: objective.phase,
+      availableScenarios: ['northgate', 'prologue', 'handover', ...(import.meta.env.DEV ? CHAPTER_STAGES.map(stage => stage.scenario) : [])], phaseName: objective.phase,
       objective: objective.text, detail: this.mode === 'complete' ? m.subtitle : `${objective.detail} 目标 ${Math.round(distance(p.position, objective.point))} m`,
       health: p.health, ammo: p.ammo, reserve: p.reserve, reload: p.reload > 0 ? 1 - p.reload / 2.1 : 0,
-      workersSafe: sim.safeCount, workerTotal: sim.workers.length, elapsed: m.elapsed + (this.chapter?.elapsedBefore ?? 0), interaction: objective.interaction,
+      workersSafe: evacuees.filter(a => a.safe).length, workerTotal: evacuees.length, elapsed: m.elapsed + (this.chapter?.elapsedBefore ?? 0), interaction: objective.interaction,
       subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, hurtFlash: sim.hurtFlash,
       lowMotion: this.lowMotion, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,

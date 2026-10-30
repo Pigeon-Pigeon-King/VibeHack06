@@ -1,6 +1,7 @@
 import { Group, MathUtils, Mesh, MeshStandardMaterial } from 'three';
 import type { CharacterModel, CharacterRole, WeaponModel } from '../contracts';
 import { characterMaterial, disposeModelTree, VertexParts } from './model-tools';
+import { createPatientCart } from './patient-cart';
 
 const C = {
   skin: 0xc49977, skinShade: 0xa77c5b, cloth: 0x4b6170, dark: 0x202c35,
@@ -60,6 +61,7 @@ function makeSidearm(material: MeshStandardMaterial): Group {
 }
 
 export function createCharacter(role: CharacterRole): CharacterModel {
+  if (role === 'cart') return createPatientCart();
   const root = new Group();
   root.name = `character-${role}`;
   root.userData.assetStatus = 'placeholder';
@@ -151,16 +153,20 @@ export function createCharacter(role: CharacterRole): CharacterModel {
     if (object instanceof Mesh) object.castShadow = ['torso-and-equipment', 'head-face-and-headwear', 'leg-knee-and-boot'].includes(object.name);
   });
   let disposed = false;
-  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false }) => {
+  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false, gesture = 0, lookAway = 0 }) => {
     const stride = Math.sin(walk) * 0.48;
     body.position.y = down ? 0.24 : kneeling ? -0.36 : Math.abs(Math.sin(walk * 2)) * 0.018;
     body.rotation.set(down ? Math.PI / 2 : 0, 0, 0);
     head.rotation.x = down ? 0.12 : aiming ? -0.055 : 0;
+    head.rotation.y = down ? 0 : lookAway;
     for (let i = 0; i < 2; i++) {
       const sign = i === 0 ? 1 : -1;
       legs[i].rotation.x = down ? 0.05 * sign : kneeling ? 1.03 : stride * sign;
       arms[i].rotation.set(down ? 0.35 * sign : carrying ? -1.40 : aiming && armed ? -1.18 : -stride * sign * 0.7, 0, down ? 0.25 * sign : aiming || carrying ? sign * 0.20 : sign * 0.035);
       elbows[i].rotation.x = carrying ? -0.10 : aiming && armed ? -0.40 : -0.06;
+    }
+    if (!armed && !down && !carrying && gesture) {
+      arms[1].rotation.x -= gesture * 0.6; elbows[1].rotation.x -= gesture * 0.8;
     }
     if (weapon) {
       weapon.root.position.set(0.14, aiming ? 1.10 : 1.00, aiming ? 0.30 : 0.24);

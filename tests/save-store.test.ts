@@ -104,7 +104,7 @@ describe('SaveStore: real simulation snapshots with injected storage', () => {
     } finally { environment.dispose(); }
   });
 
-  it.each(['enemy-', 'enemy-E00-', 'enemy-E01-', 'enemy-E02-', 'enemy-E03-', 'enemy-E04-'])('rejects reserved/future enemy IDs for %s on both write and load', prefix => {
+  it.each(['enemy-', ...Array.from({ length: 10 }, (_, i) => `enemy-E0${i}-`)])('rejects reserved/future enemy IDs for %s on both write and load', prefix => {
     const base = fixture('workers');
     const enemy = fixture().actors.find(actor => actor.role === 'enemy')!;
     // Deliberately synthetic corruption fixtures, not gameplay progression.
@@ -296,7 +296,7 @@ describe('SaveStore: real simulation snapshots with injected storage', () => {
 
 describe('campaign expansion and version 0.2 chapter compatibility', () => {
   const addedScenes: Array<[ScenarioId, ChapterStageId]> = [
-    ['childhood', 'S01'], ['mainhall', 'S02'], ['frontgate', 'S05'],
+    ['childhood', 'S01'], ['mainhall', 'S02'], ['frontgate', 'S05'], ['transfer', 'S06'], ['flank', 'S07'],
   ];
 
   it.each(addedScenes)('round-trips the actual %s initial snapshot in campaign stage %s', (scene, stage) => {
@@ -430,6 +430,112 @@ describe('campaign expansion and version 0.2 chapter compatibility', () => {
     const store = new SaveStore(new MemoryStorage());
     for (const [scene, stage] of addedScenes) {
       expect(store.save('campaign', fixture(scene), { chapter: 'L1', stage, elapsedBefore: 0 }).ok).toBe(false);
+    }
+  });
+});
+
+describe('S06/S07 patient transport save boundaries', () => {
+  const scenes = ['transfer', 'flank'] as const;
+  const requiredIds = {
+    transfer: ['courier', 'xu', 'zhou', 'luo', 'cart-0', 'cart-1', 'cart-2'],
+    flank: ['zheng', 'meng', 'worker-0', 'worker-1', 'worker-2', 'cart-0', 'cart-1', 'walker-0', 'walker-1'],
+  };
+
+  it.each(scenes)('requires every stable task participant in %s without confusing decorative civilians with patients', scene => {
+    const original = fixture(scene), storage = new MemoryStorage(), store = new SaveStore(storage);
+    expect(original.actors.filter(a => a.role === 'cart').map(a => a.id)).toEqual(
+      scene === 'transfer' ? ['cart-0', 'cart-1', 'cart-2'] : ['cart-0', 'cart-1']);
+    if (scene === 'transfer') {
+      expect(original.actors.some(a => a.id === 'zheng' || a.id === 'worker-0')).toBe(false);
+      expect(original.actors.filter(a => a.role === 'worker').map(a => a.id)).toEqual(['luo']);
+    }
+    const civilian = structuredClone(original.actors.find(a => a.role === 'civilian')!);
+    civilian.id = 'optional-civilian-save-fixture'; original.actors.push(civilian);
+    expect(store.save(scene, original)).toEqual({ ok: true });
+    const raw = storage.getItem(key(scene));
+    for (const id of requiredIds[scene]) {
+      const missing = structuredClone(original); missing.actors = missing.actors.filter(a => a.id !== id);
+      expect(store.save(scene, missing).ok, `missing ${id}`).toBe(false);
+      const wrongRole = structuredClone(original); wrongRole.actors.find(a => a.id === id)!.role = 'enemy';
+      expect(store.save(scene, wrongRole).ok, `wrong role for ${id}`).toBe(false);
+      expect(storage.getItem(key(scene))).toBe(raw);
+    }
+  });
+
+  it.each(scenes)('preserves patient positions, route state and occupancy flags in a synthetic %s save boundary', scene => {
+    const snapshot = fixture(scene), storage = new MemoryStorage();
+    // Deliberately synthetic actor-state fixture, not a claim that a patient
+    // reached this location through play. Public-input transport has separate tests.
+    const cart = snapshot.actors.find(a => a.id === 'cart-0')!;
+    cart.position = [4, -1.5, 12]; cart.goals = [[7, -1.5, 12], [13, 0, 8]];
+    cart.path = [[4.5, -1.5, 12], [6.5, -1.5, 12]]; cart.released = true; cart.safe = false;
+    const safeCart = snapshot.actors.find(a => a.id === 'cart-1')!;
+    safeCart.safe = true; safeCart.released = true;
+    snapshot.player.ammo = 13; snapshot.player.reserve = 84;
+    const original = structuredClone(snapshot);
+    expect(new SaveStore(storage).save(scene, snapshot)).toEqual({ ok: true });
+    cart.goals[0][0] = 999; safeCart.safe = false;
+    const loaded = new SaveStore(storage).load(scene);
+    expect(loaded.warning).toBeUndefined(); expect(loaded.save!.snapshot).toEqual(original);
+    const rebuilt = simulation(scene, loaded.save!.snapshot);
+    expect(rebuilt.snapshot()).toEqual(original);
+    expect(rebuilt.physics.bodies.has('cart-0')).toBe(true);
+    expect(rebuilt.physics.bodies.get('cart-0')!.height).toBe(1.15);
+    expect(rebuilt.ballistics.projectiles).toHaveLength(0);
+    loaded.save!.snapshot.actors.find(a => a.id === 'cart-0')!.path[0][2] = 999;
+    expect(new SaveStore(storage).load(scene).save!.snapshot).toEqual(original);
+  });
+
+  it.each(scenes)('rejects lifeless mandatory participants in %s and recovers an intact backup without erasing damage', scene => {
+    const original = fixture(scene), goodStorage = new MemoryStorage();
+    expect(new SaveStore(goodStorage).save(scene, original)).toEqual({ ok: true });
+    const raw = goodStorage.getItem(key(scene))!;
+    // Synthetic corruption cases: these protected characters cannot die in
+    // these missions. Losing their body makes later arrival checks wait forever.
+    for (const id of requiredIds[scene]) for (const corrupt of [{ down: true }, { health: 0 }, { health: -1 }]) {
+      const snapshot = structuredClone(original); Object.assign(snapshot.actors.find(a => a.id === id)!, corrupt);
+      const storage = new MemoryStorage();
+      storage.values.set(key(scene), raw); storage.values.set(`${key(scene)}.backup`, raw);
+      expect(new SaveStore(storage).save(scene, snapshot).ok, `${id}: ${JSON.stringify(corrupt)}`).toBe(false);
+      expect(storage.getItem(key(scene))).toBe(raw);
+      const damaged = JSON.stringify({ ...JSON.parse(raw), snapshot }); storage.values.set(key(scene), damaged);
+      const loaded = new SaveStore(storage).load(scene);
+      expect(loaded.save!.snapshot).toEqual(original); expect(loaded.warning).toContain('备份');
+      expect(storage.getItem(key(scene))).toBe(damaged);
+    }
+    if (scene === 'flank') {
+      const defeated = structuredClone(original), enemy = defeated.actors.find(a => a.role === 'enemy')!;
+      enemy.health = 0; enemy.down = true;
+      expect(new SaveStore(new MemoryStorage()).save(scene, defeated)).toEqual({ ok: true });
+    }
+  });
+
+  it.each(scenes)('rejects malformed or extra patient carts in %s on save and load while retaining the old bytes', scene => {
+    const original = fixture(scene), goodStorage = new MemoryStorage();
+    expect(new SaveStore(goodStorage).save(scene, original).ok).toBe(true);
+    const raw = goodStorage.getItem(key(scene))!;
+    const cases: Array<[string, (snapshot: Snapshot) => void]> = [
+      ['missing cart', value => { value.actors = value.actors.filter(a => a.id !== 'cart-0'); }],
+      ['renumbered cart', value => { value.actors.find(a => a.id === 'cart-0')!.id = 'cart-77'; }],
+      ['extra cart', value => { value.actors.push({ ...structuredClone(value.actors.find(a => a.id === 'cart-0')!), id: 'cart-extra' }); }],
+      ['non-finite cart position', value => { value.actors.find(a => a.id === 'cart-0')!.position[1] = NaN; }],
+      ['non-finite route', value => { value.actors.find(a => a.id === 'cart-0')!.goals = [[0, Infinity, 1]]; }],
+      ['bad path vector', value => { value.actors.find(a => a.id === 'cart-0')!.path = [[1, 2] as unknown as [number, number, number]]; }],
+      ['bad patient flag', value => { value.actors.find(a => a.id === 'cart-0')!.safe = 'yes' as unknown as boolean; }],
+    ];
+    if (scene === 'flank') cases.push(['extra unrouted walker', value => {
+      value.actors.push({ ...structuredClone(value.actors.find(a => a.id === 'walker-0')!), id: 'walker-extra' });
+    }]);
+    for (const [label, corrupt] of cases) {
+      const snapshot = structuredClone(original); corrupt(snapshot);
+      const storage = new MemoryStorage(); storage.values.set(key(scene), raw);
+      const store = new SaveStore(storage);
+      expect(store.save(scene, snapshot).ok, label).toBe(false);
+      expect(storage.writes, label).toHaveLength(0); expect(storage.getItem(key(scene))).toBe(raw);
+      const damaged = JSON.stringify({ ...JSON.parse(raw), snapshot }); storage.values.set(key(scene), damaged);
+      const loaded = store.load(scene);
+      expect(loaded.save, label).toBeUndefined(); expect(loaded.warning, label).toBeTruthy();
+      expect(storage.getItem(key(scene)), label).toBe(damaged);
     }
   });
 });

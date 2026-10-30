@@ -65,6 +65,22 @@ export class Physics {
     return body;
   }
 
+  /** Patient cart collision covers its full bed, rather than a person capsule. */
+  addCart(id: string, foot: Vec3, yaw = 0): Body {
+    const height = 1.15;
+    const rigid = this.world.createRigidBody(RAPIER.RigidBodyDesc.kinematicPositionBased()
+      .setTranslation(foot[0], foot[1] + height / 2, foot[2])
+      .setRotation({ x: 0, y: Math.sin(yaw / 2), z: 0, w: Math.cos(yaw / 2) }));
+    const collider = this.world.createCollider(RAPIER.ColliderDesc.cuboid(0.45, height / 2, 1.2), rigid);
+    const body: Body = { rigid, collider, height, grounded: false, verticalSpeed: 0 };
+    this.bodies.set(id, body); this.ids.set(collider.handle, id);
+    return body;
+  }
+
+  orient(id: string, yaw: number): void {
+    this.bodies.get(id)?.rigid.setNextKinematicRotation({ x: 0, y: Math.sin(yaw / 2), z: 0, w: Math.cos(yaw / 2) });
+  }
+
   remove(id: string): void {
     const body = this.bodies.get(id);
     if (!body) return;

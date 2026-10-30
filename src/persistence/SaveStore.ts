@@ -107,7 +107,7 @@ function validateSnapshot(value: unknown): Snapshot {
     const actor = record(value, '人物', ['id', 'name', 'role', 'position', 'health', 'yaw', 'goals', 'path', 'walk', 'aiming', 'aimTime', 'cooldown', 'safe', 'released', 'down']);
     text(actor.id, '人物 ID', 80); text(actor.name, '人物姓名', 120);
     if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(actor.id) || actor.id === 'player' || actors.has(actor.id)) throw new InvalidRecord('人物 ID 重复、非法或与玩家冲突。');
-    if (typeof actor.role !== 'string' || !['enemy', 'ally', 'worker', 'father', 'child', 'medic', 'civilian', 'opponent'].includes(actor.role)) throw new InvalidRecord('人物类型不受支持。');
+    if (typeof actor.role !== 'string' || !['enemy', 'ally', 'worker', 'father', 'child', 'medic', 'civilian', 'opponent', 'cart'].includes(actor.role)) throw new InvalidRecord('人物类型不受支持。');
     vector(actor.position, '人物位置');
     numeric(actor.health, '人物生命', -1000, 1000); numeric(actor.yaw, '人物朝向', -1_000_000, 1_000_000);
     numeric(actor.walk, '人物步态', 0, 1_000_000_000); numeric(actor.aimTime, '瞄准时间', 0, MAX_SECONDS);
@@ -115,33 +115,51 @@ function validateSnapshot(value: unknown): Snapshot {
     for (const key of ['aiming', 'safe', 'released', 'down']) boolean(actor[key], `人物 ${key}`);
     list(actor.goals, '目标路线', 128); list(actor.path, '导航路径', 4096);
     actor.goals.forEach(point => vector(point, '目标路点')); actor.path.forEach(point => vector(point, '导航路点'));
-    const enemyIndex = /^enemy-(?:E0[0-4]-)?(\d+)$/.exec(actor.id);
+    const enemyIndex = /^enemy-(?:E0[0-9]-)?(\d+)$/.exec(actor.id);
     if (enemyIndex && Number(enemyIndex[1]) >= mission.spawned) throw new InvalidRecord('敌人 ID 与入场计数冲突。');
     actors.set(actor.id, actor);
   }
   const need = (id: string, role: CharacterRole) => {
-    if (actors.get(id)?.role !== role) throw new InvalidRecord(`场景缺少必需人物 ${id}，或其身份错误。`);
+    const actor = actors.get(id);
+    if (actor?.role !== role) throw new InvalidRecord(`场景缺少必需人物 ${id}，或其身份错误。`);
+    // These missions protect every mandatory participant. A dead required body
+    // cannot follow its route, leaving the later handover permanently incomplete.
+    if ((mission.scenario === 'transfer' || mission.scenario === 'flank')
+      && (actor.down !== false || (actor.health as number) <= 0)) throw new InvalidRecord(`必需人物 ${id} 已失去行动能力，存档状态与场景不一致。`);
   };
   if (mission.scenario === 'childhood' || mission.scenario === 'mainhall') {
     need('father', 'father'); need('evacuator', 'civilian'); need('daughter', 'child'); need('zhao', 'ally');
     if (mission.scenario === 'childhood') need('young-zhou', 'ally');
     else { need('young-lu', 'child'); if (mission.phase >= 4) need('shao', 'opponent'); }
   } else if (mission.scenario === 'nightshift') { need('xu', 'medic'); need('meng', 'ally'); need('zhou', 'ally'); }
+  else if (mission.scenario === 'transfer') { need('courier', 'civilian'); need('xu', 'medic'); need('zhou', 'ally'); need('luo', 'worker'); }
   else need('zheng', 'ally');
   if (mission.scenario === 'prologue') need('father', 'father');
   if (mission.scenario === 'workers') need('meng', 'ally');
   if (mission.scenario === 'frontgate') need('relief', 'ally');
+  if (mission.scenario === 'flank') {
+    need('meng', 'ally'); need('walker-0', 'civilian'); need('walker-1', 'civilian');
+    // The mission uses this prefix for its passage group. An un-routed extra
+    // walker would make the real group-completion check wait forever.
+    if ([...actors.keys()].filter(id => id.startsWith('walker-')).length !== 2) throw new InvalidRecord('步行家属名单与场景不一致。');
+  }
   if (mission.scenario === 'handover') {
     need('medic', 'medic');
     if (mission.phase >= 3) need('meng', 'ally');
   }
   const workerCount: Record<ScenarioId, number> = {
     northgate: 7, prologue: 3, handover: 2, nightshift: 0, workers: 9,
-    childhood: 0, mainhall: HISTORY.civilians.length, frontgate: 7,
+    childhood: 0, mainhall: HISTORY.civilians.length, frontgate: 7, transfer: 1, flank: 3,
   };
-  for (let i = 0; i < workerCount[mission.scenario]; i++) need(`worker-${i}`, 'worker');
+  // Luo remains a worker in S06, but is not one of its patients or worker-N evacuees.
+  if (mission.scenario !== 'transfer') for (let i = 0; i < workerCount[mission.scenario]; i++) need(`worker-${i}`, 'worker');
   if ([...actors.values()].filter(actor => actor.role === 'worker').length !== workerCount[mission.scenario]) {
-    throw new InvalidRecord('任务撤离组人数与场景不一致。');
+    throw new InvalidRecord('场景工作人员数量与要求不一致。');
+  }
+  const cartCount = mission.scenario === 'transfer' ? 3 : mission.scenario === 'flank' ? 2 : 0;
+  for (let i = 0; i < cartCount; i++) need(`cart-${i}`, 'cart');
+  if ([...actors.values()].filter(actor => actor.role === 'cart').length !== cartCount) {
+    throw new InvalidRecord('患者车数量与场景不一致。');
   }
   return structuredClone(value) as Snapshot;
 }

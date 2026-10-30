@@ -34,7 +34,7 @@ assert.equal(report.numFailedTests, 0);
 const source = [...files('src'), ...files('desktop'), ...files('scripts'), ...files('tests'),
   'index.html', 'package.json', 'package-lock.json', 'tsconfig.json', 'vite.config.ts'].sort();
 const manifest = {
-  candidate: 'opening-preview-2026-10-31', recordedAt: new Date().toISOString(), node: process.version,
+  candidate: 'transfer-preview-2026-10-31', recordedAt: new Date().toISOString(), node: process.version,
   target: 'Windows x64 portable directory', entry: `${packageDir}/ReturnToGanymede.exe`,
   runtimeVerifiedOnWindows: false,
   packageRoots: top,
