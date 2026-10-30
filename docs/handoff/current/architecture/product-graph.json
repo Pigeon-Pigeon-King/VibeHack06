@@ -1,0 +1,621 @@
+{
+  "format": "product-handoff-graph",
+  "version": 1,
+  "date": "2026-10-30",
+  "scope": "产品构思与手工交接，非运行时代码扫描",
+  "sourceVersion": {
+    "basis": "截至2026-10-30的列明项目文件与当前对话",
+    "gitRepository": false,
+    "commit": null,
+    "nativueCliDetected": false,
+    "nativeAnalysisPerformed": false
+  },
+  "confidenceLegend": {
+    "observed": "在所引文档中可以观察到；不表示已实现",
+    "inferred": "本次基于需求提出的架构或后续旅程",
+    "verified": "本轮未用于新Mac功能；不伪造行为证明"
+  },
+  "modules": [
+    {
+      "id": "vision",
+      "name": "产品愿景",
+      "document": "01_PRODUCT_VISION.md",
+      "description": "约一小时完整产品与玩家应获得的体验",
+      "kind": "product-area",
+      "files": [
+        "01_PRODUCT_VISION.md",
+        "01_PRODUCT_VISION.md"
+      ],
+      "evidence": [
+        {
+          "file": "01_PRODUCT_VISION.md",
+          "startLine": 11,
+          "endLine": 11,
+          "excerpt": "## 已确认的产品边界"
+        }
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "world",
+      "name": "世界与地理",
+      "document": "02_WORLD_AND_STORY.md",
+      "description": "地球化木卫三、寒冷工业港、统一天空",
+      "kind": "product-area",
+      "files": [
+        "02_WORLD_AND_STORY.md",
+        "references/world_ganymede.md"
+      ],
+      "evidence": [
+        {
+          "file": "references/world_ganymede.md",
+          "startLine": 71,
+          "endLine": 71,
+          "excerpt": "地球化没有提高木卫三的自然重力。2026-10-27 按用户要求改为木卫三实际重力弹道：本作主线涉及的港口、居住区、道路、检修栈道和作业平台均采用约 1.43 m/s²，不再沿用此前的 0.85 g 人工重力覆盖区。战士与港务人员使用牵引鞋、关节阻尼和助力护具维持接地、制动与搬运。这些装备是科幻假设，不会改变周围自由物体的重力。"
+        }
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "characters",
+      "name": "人物与成长",
+      "document": "03_CHARACTERS_AND_ARCS.md",
+      "description": "知情取舍、关系修复、成长先于退场",
+      "kind": "product-area",
+      "files": [
+        "03_CHARACTERS_AND_ARCS.md",
+        "references/source_bible.md"
+      ],
+      "evidence": [
+        {
+          "file": "references/source_bible.md",
+          "startLine": 13,
+          "endLine": 13,
+          "excerpt": "| 2 主厅 | 赵启明先信任周延分工；周延被压住，目睹剩余平民遭屠杀与班长被邵原处决 | 掩护疏散、开门；失去行动能力后限幅观察 |"
+        }
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "campaign",
+      "name": "三关与十二段",
+      "document": "04_CAMPAIGN_AND_LEVELS.md",
+      "description": "完整行动单元、来路、交互和完成条件",
+      "kind": "product-area",
+      "files": [
+        "04_CAMPAIGN_AND_LEVELS.md",
+        "references/campaign_scale.md"
+      ],
+      "evidence": [
+        {
+          "file": "references/campaign_scale.md",
+          "startLine": 36,
+          "endLine": 36,
+          "excerpt": "## 3. 一小时重新组成三个主战役关卡"
+        }
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "gameplay",
+      "name": "战斗与交互",
+      "document": "05_GAMEPLAY_AND_PRESENTATION.md",
+      "description": "完整输入、弹丸、AI、容错、任务事实",
+      "kind": "product-area",
+      "files": [
+        "05_GAMEPLAY_AND_PRESENTATION.md",
+        "references/game_design.md"
+      ],
+      "evidence": [
+        {
+          "file": "references/game_design.md",
+          "startLine": 19,
+          "endLine": 19,
+          "excerpt": "当前成人玩家步行2.1、奔跑6.3、蹲行1.35米/秒，不设体力条。按住右键时使用机械瞄准并停止冲刺；C切换蹲姿，空格起跳，Q/E升降仅在自由观察模式使用。跳跃采用1.428米/秒²重力和1.65米/秒的初始竖直速度，理论最高约0.95米、同高度滞空约2.31秒；实际落点由场景表面决定。儿童、负伤和共同搬运单独安排，不能用伤员动作限制普通战斗中的奔跑。"
+        }
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "staging",
+      "name": "演出与控制权",
+      "document": "05_GAMEPLAY_AND_PRESENTATION.md",
+      "description": "同引擎演出、信息边界、协作和跳过",
+      "kind": "product-area",
+      "files": [
+        "05_GAMEPLAY_AND_PRESENTATION.md",
+        "references/game_design.md"
+      ],
+      "evidence": [
+        {
+          "file": "references/game_design.md",
+          "startLine": 140,
+          "endLine": 140,
+          "excerpt": "### 统一的控制权说明"
+        }
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "assets",
+      "name": "资产生产",
+      "document": "06_ASSETS_HYPER3D_TRIPO.md",
+      "description": "自制与生成结合，保留有效网格并适配Three.js",
+      "kind": "product-area",
+      "files": [
+        "06_ASSETS_HYPER3D_TRIPO.md",
+        "06_ASSETS_HYPER3D_TRIPO.md"
+      ],
+      "evidence": [
+        {
+          "file": "06_ASSETS_HYPER3D_TRIPO.md",
+          "startLine": 4,
+          "endLine": 4,
+          "excerpt": "用户已明确：可以使用自己制作的模型，并通过 Hyper3D、Tripo 补充原创资产，不必全部依赖开源模型。这里的 Tripo 对应此前赛事页面的服务，“Triple”按同一工具理解。"
+        }
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "runtime",
+      "name": "Mac实现边界",
+      "document": "07_MAC_REBUILD_PLAN.md",
+      "description": "建议的模块职责，尚未存在新实现",
+      "kind": "proposed-system",
+      "files": [
+        "07_MAC_REBUILD_PLAN.md",
+        "07_MAC_REBUILD_PLAN.md"
+      ],
+      "evidence": [
+        {
+          "file": "07_MAC_REBUILD_PLAN.md",
+          "startLine": 21,
+          "endLine": 21,
+          "excerpt": "## 建议的模块职责"
+        }
+      ],
+      "confidence": "inferred"
+    },
+    {
+      "id": "prototype",
+      "name": "原型证据与教训",
+      "document": "09_PROTOTYPE_LESSONS.md",
+      "description": "局部回归记录和用户反馈的适用范围",
+      "kind": "product-area",
+      "files": [
+        "09_PROTOTYPE_LESSONS.md",
+        "references/northgate_playtest.md"
+      ],
+      "evidence": [
+        {
+          "file": "references/northgate_playtest.md",
+          "startLine": 21,
+          "endLine": 21,
+          "excerpt": "记录内游戏时间224.75秒，包含输入测试和自动瞄准操作；它不是真人首通用时，也不用于推算整部战役长度。"
+        }
+      ],
+      "confidence": "observed"
+    },
+    {
+      "id": "delivery",
+      "name": "接手与下一步",
+      "document": "10_NATIVUE_HANDOFF.md",
+      "description": "产品移交、后续任务建议和真实能力说明",
+      "kind": "product-area",
+      "files": [
+        "10_NATIVUE_HANDOFF.md",
+        "10_NATIVUE_HANDOFF.md"
+      ],
+      "evidence": [
+        {
+          "file": "10_NATIVUE_HANDOFF.md",
+          "startLine": 41,
+          "endLine": 41,
+          "excerpt": "## 后续任务卡：供规划，不是正在执行的台账"
+        }
+      ],
+      "confidence": "inferred"
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "from": "vision",
+      "to": "world",
+      "label": "约束世界体验",
+      "confidence": "observed",
+      "evidence": [
+        {
+          "file": "02_WORLD_AND_STORY.md",
+          "startLine": 6,
+          "endLine": 6,
+          "excerpt": "## 世界规则"
+        }
+      ]
+    },
+    {
+      "id": "e2",
+      "from": "vision",
+      "to": "characters",
+      "label": "定义主题与结局",
+      "confidence": "observed",
+      "evidence": [
+        {
+          "file": "03_CHARACTERS_AND_ARCS.md",
+          "startLine": 17,
+          "endLine": 17,
+          "excerpt": "成长依次发生：承认隐瞒；交出可靠消息与不确定项；采用孟齐的专业建议；说出伤腿和换班需要；核实接防后离开阵位；接受护具调整与保护，回复家人、安排接下来想做的事。**S09／第十一章完成内在转变。**"
+        }
+      ]
+    },
+    {
+      "id": "e3",
+      "from": "characters",
+      "to": "campaign",
+      "label": "人物选择改变任务",
+      "confidence": "observed",
+      "evidence": [
+        {
+          "file": "04_CAMPAIGN_AND_LEVELS.md",
+          "startLine": 63,
+          "endLine": 63,
+          "excerpt": "## 十二段制作卡"
+        }
+      ]
+    },
+    {
+      "id": "e4",
+      "from": "world",
+      "to": "campaign",
+      "label": "决定空间与方向",
+      "confidence": "observed",
+      "evidence": [
+        {
+          "file": "04_CAMPAIGN_AND_LEVELS.md",
+          "startLine": 18,
+          "endLine": 18,
+          "excerpt": "## 港区的空间关系"
+        }
+      ]
+    },
+    {
+      "id": "e5",
+      "from": "campaign",
+      "to": "gameplay",
+      "label": "转为实际战斗目标",
+      "confidence": "observed",
+      "evidence": [
+        {
+          "file": "04_CAMPAIGN_AND_LEVELS.md",
+          "startLine": 83,
+          "endLine": 83,
+          "excerpt": "## 十组遭遇预算与来路"
+        }
+      ]
+    },
+    {
+      "id": "e6",
+      "from": "characters",
+      "to": "staging",
+      "label": "要求可见的成长行为",
+      "confidence": "observed",
+      "evidence": [
+        {
+          "file": "03_CHARACTERS_AND_ARCS.md",
+          "startLine": 37,
+          "endLine": 37,
+          "excerpt": "| 阶段 | 两人关系 | 先有的证据 | 玩家能看见的变化 |"
+        }
+      ]
+    },
+    {
+      "id": "e7",
+      "from": "campaign",
+      "to": "assets",
+      "label": "给出用途与优先级",
+      "confidence": "observed",
+      "evidence": [
+        {
+          "file": "06_ASSETS_HYPER3D_TRIPO.md",
+          "startLine": 6,
+          "endLine": 6,
+          "excerpt": "生产以关卡用途为先。适合生成的是角色外形、车辆、工业机具、生活物品与美术模块；地图拓扑、敌人路线、多人接触动画、碰撞和任务逻辑仍由制作过程设计。不要一次生成整张不可拆、没有实际通路的“漂亮港口”。"
+        }
+      ]
+    },
+    {
+      "id": "e8",
+      "from": "assets",
+      "to": "runtime",
+      "label": "经修整进入运行场景",
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "file": "06_ASSETS_HYPER3D_TRIPO.md",
+          "startLine": 64,
+          "endLine": 64,
+          "excerpt": "## 生成结果到 Three.js"
+        }
+      ]
+    },
+    {
+      "id": "e9",
+      "from": "gameplay",
+      "to": "runtime",
+      "label": "输入与任务需联动",
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "file": "07_MAC_REBUILD_PLAN.md",
+          "startLine": 27,
+          "endLine": 27,
+          "excerpt": "| 输入与玩家 | Pointer Lock、走跑蹲跳、ADS、交互、自由观察隔离 | 碰撞、枪械、控制权 |"
+        }
+      ]
+    },
+    {
+      "id": "e10",
+      "from": "staging",
+      "to": "runtime",
+      "label": "共享状态和控制权",
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "file": "07_MAC_REBUILD_PLAN.md",
+          "startLine": 32,
+          "endLine": 32,
+          "excerpt": "| 剧情演出 | 控制权、站位、身体接触、字幕、跳过终态 | 玩家、人物、任务 |"
+        }
+      ]
+    },
+    {
+      "id": "e11",
+      "from": "prototype",
+      "to": "gameplay",
+      "label": "反馈问题与已有局部证据",
+      "confidence": "observed",
+      "evidence": [
+        {
+          "file": "09_PROTOTYPE_LESSONS.md",
+          "startLine": 3,
+          "endLine": 3,
+          "excerpt": "## 用户实际反复指出的问题"
+        }
+      ]
+    },
+    {
+      "id": "e12",
+      "from": "prototype",
+      "to": "delivery",
+      "label": "限定完成声明",
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "file": "09_PROTOTYPE_LESSONS.md",
+          "startLine": 32,
+          "endLine": 32,
+          "excerpt": "这些结论是**既有测试文档的记录**。本次交接没有重跑游戏。记录中的224.75秒包含输入测试和自动瞄准，不是真人首通，不是全战役计时；“PASS”不证明成熟商业FPS观感或Mac性能。用户尚未对该版本提交完成验收。"
+        }
+      ]
+    },
+    {
+      "id": "e13",
+      "from": "runtime",
+      "to": "delivery",
+      "label": "未来以可玩产物交付",
+      "confidence": "inferred",
+      "evidence": [
+        {
+          "file": "07_MAC_REBUILD_PLAN.md",
+          "startLine": 1,
+          "endLine": 1,
+          "excerpt": "# 07 · Mac 接手与重新制作顺序"
+        }
+      ]
+    }
+  ],
+  "journeys": [
+    {
+      "id": "understand",
+      "name": "产品理解",
+      "description": "按资料理解已确认方向与可重做部分",
+      "confidence": "inferred",
+      "steps": [
+        {
+          "moduleId": "vision",
+          "label": "产品愿景",
+          "evidence": [
+            {
+              "file": "01_PRODUCT_VISION.md",
+              "startLine": 11,
+              "endLine": 11,
+              "excerpt": "## 已确认的产品边界"
+            }
+          ]
+        },
+        {
+          "moduleId": "world",
+          "label": "世界与地理",
+          "evidence": [
+            {
+              "file": "references/world_ganymede.md",
+              "startLine": 71,
+              "endLine": 71,
+              "excerpt": "地球化没有提高木卫三的自然重力。2026-10-27 按用户要求改为木卫三实际重力弹道：本作主线涉及的港口、居住区、道路、检修栈道和作业平台均采用约 1.43 m/s²，不再沿用此前的 0.85 g 人工重力覆盖区。战士与港务人员使用牵引鞋、关节阻尼和助力护具维持接地、制动与搬运。这些装备是科幻假设，不会改变周围自由物体的重力。"
+            }
+          ]
+        },
+        {
+          "moduleId": "characters",
+          "label": "人物与成长",
+          "evidence": [
+            {
+              "file": "references/source_bible.md",
+              "startLine": 13,
+              "endLine": 13,
+              "excerpt": "| 2 主厅 | 赵启明先信任周延分工；周延被压住，目睹剩余平民遭屠杀与班长被邵原处决 | 掩护疏散、开门；失去行动能力后限幅观察 |"
+            }
+          ]
+        },
+        {
+          "moduleId": "campaign",
+          "label": "三关与十二段",
+          "evidence": [
+            {
+              "file": "references/campaign_scale.md",
+              "startLine": 36,
+              "endLine": 36,
+              "excerpt": "## 3. 一小时重新组成三个主战役关卡"
+            }
+          ]
+        },
+        {
+          "moduleId": "gameplay",
+          "label": "战斗与交互",
+          "evidence": [
+            {
+              "file": "references/game_design.md",
+              "startLine": 19,
+              "endLine": 19,
+              "excerpt": "当前成人玩家步行2.1、奔跑6.3、蹲行1.35米/秒，不设体力条。按住右键时使用机械瞄准并停止冲刺；C切换蹲姿，空格起跳，Q/E升降仅在自由观察模式使用。跳跃采用1.428米/秒²重力和1.65米/秒的初始竖直速度，理论最高约0.95米、同高度滞空约2.31秒；实际落点由场景表面决定。儿童、负伤和共同搬运单独安排，不能用伤员动作限制普通战斗中的奔跑。"
+            }
+          ]
+        },
+        {
+          "moduleId": "assets",
+          "label": "资产生产",
+          "evidence": [
+            {
+              "file": "06_ASSETS_HYPER3D_TRIPO.md",
+              "startLine": 4,
+              "endLine": 4,
+              "excerpt": "用户已明确：可以使用自己制作的模型，并通过 Hyper3D、Tripo 补充原创资产，不必全部依赖开源模型。这里的 Tripo 对应此前赛事页面的服务，“Triple”按同一工具理解。"
+            }
+          ]
+        },
+        {
+          "moduleId": "prototype",
+          "label": "原型证据与教训",
+          "evidence": [
+            {
+              "file": "references/northgate_playtest.md",
+              "startLine": 21,
+              "endLine": 21,
+              "excerpt": "记录内游戏时间224.75秒，包含输入测试和自动瞄准操作；它不是真人首通用时，也不用于推算整部战役长度。"
+            }
+          ]
+        },
+        {
+          "moduleId": "delivery",
+          "label": "接手与下一步",
+          "evidence": [
+            {
+              "file": "10_NATIVUE_HANDOFF.md",
+              "startLine": 41,
+              "endLine": 41,
+              "excerpt": "## 后续任务卡：供规划，不是正在执行的台账"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "build",
+      "name": "制作与验证建议",
+      "description": "从可玩切片到叙事风险验证与完整战役；尚未执行",
+      "confidence": "inferred",
+      "steps": [
+        {
+          "moduleId": "runtime",
+          "label": "Mac实现边界",
+          "evidence": [
+            {
+              "file": "07_MAC_REBUILD_PLAN.md",
+              "startLine": 21,
+              "endLine": 21,
+              "excerpt": "## 建议的模块职责"
+            }
+          ]
+        },
+        {
+          "moduleId": "gameplay",
+          "label": "战斗与交互",
+          "evidence": [
+            {
+              "file": "references/game_design.md",
+              "startLine": 19,
+              "endLine": 19,
+              "excerpt": "当前成人玩家步行2.1、奔跑6.3、蹲行1.35米/秒，不设体力条。按住右键时使用机械瞄准并停止冲刺；C切换蹲姿，空格起跳，Q/E升降仅在自由观察模式使用。跳跃采用1.428米/秒²重力和1.65米/秒的初始竖直速度，理论最高约0.95米、同高度滞空约2.31秒；实际落点由场景表面决定。儿童、负伤和共同搬运单独安排，不能用伤员动作限制普通战斗中的奔跑。"
+            }
+          ]
+        },
+        {
+          "moduleId": "campaign",
+          "label": "三关与十二段",
+          "evidence": [
+            {
+              "file": "references/campaign_scale.md",
+              "startLine": 36,
+              "endLine": 36,
+              "excerpt": "## 3. 一小时重新组成三个主战役关卡"
+            }
+          ]
+        },
+        {
+          "moduleId": "assets",
+          "label": "资产生产",
+          "evidence": [
+            {
+              "file": "06_ASSETS_HYPER3D_TRIPO.md",
+              "startLine": 4,
+              "endLine": 4,
+              "excerpt": "用户已明确：可以使用自己制作的模型，并通过 Hyper3D、Tripo 补充原创资产，不必全部依赖开源模型。这里的 Tripo 对应此前赛事页面的服务，“Triple”按同一工具理解。"
+            }
+          ]
+        },
+        {
+          "moduleId": "staging",
+          "label": "演出与控制权",
+          "evidence": [
+            {
+              "file": "references/game_design.md",
+              "startLine": 140,
+              "endLine": 140,
+              "excerpt": "### 统一的控制权说明"
+            }
+          ]
+        },
+        {
+          "moduleId": "prototype",
+          "label": "原型证据与教训",
+          "evidence": [
+            {
+              "file": "references/northgate_playtest.md",
+              "startLine": 21,
+              "endLine": 21,
+              "excerpt": "记录内游戏时间224.75秒，包含输入测试和自动瞄准操作；它不是真人首通用时，也不用于推算整部战役长度。"
+            }
+          ]
+        },
+        {
+          "moduleId": "delivery",
+          "label": "接手与下一步",
+          "evidence": [
+            {
+              "file": "10_NATIVUE_HANDOFF.md",
+              "startLine": 41,
+              "endLine": 41,
+              "excerpt": "## 后续任务卡：供规划，不是正在执行的台账"
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "warnings": [
+    "本文件不是Nativue analysis-response，不能直接导入运行台账",
+    "没有原生scan/inputId，没有独立C评审或用户验收",
+    "原型证据只适用于旧记录的Windows局部测试",
+    "尺寸、分钟数和敌人数是设计起点"
+  ]
+}

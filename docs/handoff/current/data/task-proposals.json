@@ -1,0 +1,155 @@
+{
+  "kind": "handoff-proposals-not-ledger",
+  "tasks": [
+    {
+      "id": "T01",
+      "priority": "P0",
+      "title": "Mac可玩射击基础",
+      "dependsOn": [],
+      "proposedResponsibility": [
+        "input",
+        "player",
+        "weapon",
+        "collision"
+      ],
+      "acceptanceEvidence": [
+        "真实键鼠移动、ADS、跳跃、大角度转向",
+        "弹丸有飞行时间与场景碰撞",
+        "死亡与重新开始可复现"
+      ],
+      "status": "proposed",
+      "claimedFiles": [],
+      "developer": null,
+      "reviewer": null,
+      "submittedCommit": null,
+      "integrationCommit": null,
+      "userAcceptance": null
+    },
+    {
+      "id": "T02",
+      "priority": "P0",
+      "title": "北闸具体地图与四阶段遭遇",
+      "dependsOn": [
+        "T01"
+      ],
+      "proposedResponsibility": [
+        "northgate-map",
+        "encounters",
+        "npc-navigation"
+      ],
+      "acceptanceEvidence": [
+        "实际地图上可读玩家、敌人、工人路线",
+        "人员真实到达触发任务进度",
+        "可回撤补弹，结束无需追杀远处残兵"
+      ],
+      "status": "proposed",
+      "claimedFiles": [],
+      "developer": null,
+      "reviewer": null,
+      "submittedCommit": null,
+      "integrationCommit": null,
+      "userAcceptance": null
+    },
+    {
+      "id": "T03",
+      "priority": "P0",
+      "title": "代表资产和场景画面",
+      "dependsOn": [
+        "T02"
+      ],
+      "proposedResponsibility": [
+        "assets",
+        "materials",
+        "lighting"
+      ],
+      "acceptanceEvidence": [
+        "五类代表资产进入实景",
+        "比例、落地、动画与碰撞相符",
+        "正常第一人称与自由观察可看"
+      ],
+      "status": "proposed",
+      "claimedFiles": [],
+      "developer": null,
+      "reviewer": null,
+      "submittedCommit": null,
+      "integrationCommit": null,
+      "userAcceptance": null
+    },
+    {
+      "id": "T04",
+      "priority": "P0",
+      "title": "取舍与协作演出验证",
+      "dependsOn": [
+        "T01"
+      ],
+      "proposedResponsibility": [
+        "staging",
+        "story-state",
+        "subtitles"
+      ],
+      "acceptanceEvidence": [
+        "完整知情后取舍",
+        "先交接后负伤的顺序清楚",
+        "身体接触与控制权衔接，跳过终态一致"
+      ],
+      "status": "proposed",
+      "claimedFiles": [],
+      "developer": null,
+      "reviewer": null,
+      "submittedCommit": null,
+      "integrationCommit": null,
+      "userAcceptance": null
+    },
+    {
+      "id": "T05",
+      "priority": "P1",
+      "title": "三关十二段串联",
+      "dependsOn": [
+        "T02",
+        "T03",
+        "T04"
+      ],
+      "proposedResponsibility": [
+        "campaign",
+        "checkpoints"
+      ],
+      "acceptanceEvidence": [
+        "三关各有完整行动区域",
+        "信息范围和人物状态连续",
+        "原作结局与游戏结果一致"
+      ],
+      "status": "proposed",
+      "claimedFiles": [],
+      "developer": null,
+      "reviewer": null,
+      "submittedCommit": null,
+      "integrationCommit": null,
+      "userAcceptance": null
+    },
+    {
+      "id": "T06",
+      "priority": "P0切片/P1全片",
+      "title": "真人体验与目标Mac复核",
+      "dependsOn": [
+        "T01",
+        "T02",
+        "T03"
+      ],
+      "proposedResponsibility": [
+        "qa-evidence"
+      ],
+      "acceptanceEvidence": [
+        "记录人类误操作与恢复",
+        "真实用时与Mac性能",
+        "未测项明确，不用自动化代替观感"
+      ],
+      "status": "proposed",
+      "claimedFiles": [],
+      "developer": null,
+      "reviewer": null,
+      "submittedCommit": null,
+      "integrationCommit": null,
+      "userAcceptance": null
+    }
+  ]
+}

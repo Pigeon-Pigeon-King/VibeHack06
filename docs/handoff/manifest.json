@@ -1,0 +1,773 @@
+{
+  "schemaVersion": 1,
+  "reviewDate": "2026-10-30",
+  "timeZone": "Asia/Shanghai",
+  "canonicalArchive": "GANYMEDE_MAC_HANDOFF_20261030.zip",
+  "archives": [
+    {
+      "filename": "GANYMEDE_MAC_HANDOFF_20261030.zip",
+      "sha256": "c53a19afcd1b73626863c60aa16a2f2695ee83353cdbf3f8a4777f53ec2f9f76",
+      "bytes": 1336326,
+      "role": "canonical-current",
+      "files": [
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/START_HERE.md",
+          "logicalPath": "START_HERE.md",
+          "bytes": 4395,
+          "sha256": "19a40906977b50a85f5946eb2d198cb3433cfe81c133287da31162b2097cb1e0",
+          "projectPath": "docs/handoff/current/START_HERE.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/01_PRODUCT_VISION.md",
+          "logicalPath": "01_PRODUCT_VISION.md",
+          "bytes": 4442,
+          "sha256": "e776459e6c2fb325a58307fb83306d6b6cc2c7128164f7b661ff9759152839f5",
+          "projectPath": "docs/handoff/current/01_PRODUCT_VISION.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/02_WORLD_AND_STORY.md",
+          "logicalPath": "02_WORLD_AND_STORY.md",
+          "bytes": 7094,
+          "sha256": "ab4ba827646590b2888ac2dfad5f31a8a33f0c0eaf8b2ed213dba783b0868a69",
+          "projectPath": "docs/handoff/current/02_WORLD_AND_STORY.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/03_CHARACTERS_AND_ARCS.md",
+          "logicalPath": "03_CHARACTERS_AND_ARCS.md",
+          "bytes": 6529,
+          "sha256": "d9f9c2b4465824a359656b1d529f09e7d340e61943e6195f2884168bd29ffea5",
+          "projectPath": "docs/handoff/current/03_CHARACTERS_AND_ARCS.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/04_CAMPAIGN_AND_LEVELS.md",
+          "logicalPath": "04_CAMPAIGN_AND_LEVELS.md",
+          "bytes": 13685,
+          "sha256": "04ca90678b6a55c42d3ed8fa853aed0a504ed26e009630561633842d8d1038a3",
+          "projectPath": "docs/handoff/current/04_CAMPAIGN_AND_LEVELS.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/05_GAMEPLAY_AND_PRESENTATION.md",
+          "logicalPath": "05_GAMEPLAY_AND_PRESENTATION.md",
+          "bytes": 8243,
+          "sha256": "474d592463b4c8c397f0f79c3b87a07034118844e593ddbfe53a4d682354b90a",
+          "projectPath": "docs/handoff/current/05_GAMEPLAY_AND_PRESENTATION.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/06_ASSETS_HYPER3D_TRIPO.md",
+          "logicalPath": "06_ASSETS_HYPER3D_TRIPO.md",
+          "bytes": 10117,
+          "sha256": "4ac9dfc45b3952c5daf8d13dfefe4aebd17bcb3de3a3b5dd09d95bdcbdeded19",
+          "projectPath": "docs/handoff/current/06_ASSETS_HYPER3D_TRIPO.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/07_MAC_REBUILD_PLAN.md",
+          "logicalPath": "07_MAC_REBUILD_PLAN.md",
+          "bytes": 5053,
+          "sha256": "e6100ac8a42c2b9151d71668cf69e55def5db1e9d584e843f675ab5325a98d81",
+          "projectPath": "docs/handoff/current/07_MAC_REBUILD_PLAN.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/08_DECISIONS_AND_OPEN_QUESTIONS.md",
+          "logicalPath": "08_DECISIONS_AND_OPEN_QUESTIONS.md",
+          "bytes": 4898,
+          "sha256": "a4bb1a888653e57d81cde331de0a30a02d05d977964a97e5006917af8964b2b9",
+          "projectPath": "docs/handoff/current/08_DECISIONS_AND_OPEN_QUESTIONS.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/09_PROTOTYPE_LESSONS.md",
+          "logicalPath": "09_PROTOTYPE_LESSONS.md",
+          "bytes": 4842,
+          "sha256": "d1d9f1c5e47d0915c5d96805b94a8889cfee00c192eee0d9c5c8402c39e7d551",
+          "projectPath": "docs/handoff/current/09_PROTOTYPE_LESSONS.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/10_NATIVUE_HANDOFF.md",
+          "logicalPath": "10_NATIVUE_HANDOFF.md",
+          "bytes": 5661,
+          "sha256": "319ad25790a858bba4d0e2b3719b415947ddc41d326985487d51fd6bb9e550bf",
+          "projectPath": "docs/handoff/current/10_NATIVUE_HANDOFF.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/MAC_CODEX_PROMPT.md",
+          "logicalPath": "MAC_CODEX_PROMPT.md",
+          "bytes": 3966,
+          "sha256": "f4f14424fb34dca13823b2fb63bdaa0c85d7759e1defd5af0d12b0f5e2693d00",
+          "projectPath": "docs/handoff/current/MAC_CODEX_PROMPT.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/nativue_method.md",
+          "logicalPath": "references/nativue_method.md",
+          "bytes": 1436,
+          "sha256": "2950e92b0d9dc9eb589fd1ff2d068a3e5f39bd8c7ef36b3ad14ff90ee0608674",
+          "projectPath": "docs/handoff/current/references/nativue_method.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/novel_original.md",
+          "logicalPath": "references/novel_original.md",
+          "bytes": 104853,
+          "sha256": "814d5b283cfcf0263fc6d87b76fa1d0e2076f605d3fa90579d6aa1ac8affe926",
+          "projectPath": "docs/handoff/current/references/novel_original.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/novel_outline_v5.md",
+          "logicalPath": "references/novel_outline_v5.md",
+          "bytes": 28829,
+          "sha256": "87711dc54be0c50401e459f4c6f31eabcc46e86e3678390559006234434c48b6",
+          "projectPath": "docs/handoff/current/references/novel_outline_v5.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/source_bible.md",
+          "logicalPath": "references/source_bible.md",
+          "bytes": 8306,
+          "sha256": "69fd9d67920713149f37a873260926396070f72253b75bc2c50f3fca95291f94",
+          "projectPath": "docs/handoff/current/references/source_bible.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/world_ganymede.md",
+          "logicalPath": "references/world_ganymede.md",
+          "bytes": 19452,
+          "sha256": "b055c195bd93108555a7aa76c9d341b5a127b8d4f5c6a6ff5e8b23fba4f56531",
+          "projectPath": "docs/handoff/current/references/world_ganymede.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/campaign_scale.md",
+          "logicalPath": "references/campaign_scale.md",
+          "bytes": 13401,
+          "sha256": "21525fb2c48a9796432214e37e37d3760c93719e3649a14e447b7e74c71603c8",
+          "projectPath": "docs/handoff/current/references/campaign_scale.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/game_design.md",
+          "logicalPath": "references/game_design.md",
+          "bytes": 48558,
+          "sha256": "0ee44daa35b7ebd2629c6971576b6b747b7d58e76de08c68f3e953fca99e0d08",
+          "projectPath": "docs/handoff/current/references/game_design.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/art_direction.md",
+          "logicalPath": "references/art_direction.md",
+          "bytes": 17405,
+          "sha256": "d57a1eb0b0c9f8ccb863296b274f803eb72afdb36a59fdfa518f21daab89eadb",
+          "projectPath": "docs/handoff/current/references/art_direction.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/combat_encounters.md",
+          "logicalPath": "references/combat_encounters.md",
+          "bytes": 11355,
+          "sha256": "b69482efa5bedc1a9c233ca31eef61894b91d770b390a394d5d45afd4a23c13c",
+          "projectPath": "docs/handoff/current/references/combat_encounters.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/map_ganymede_v2.md",
+          "logicalPath": "references/map_ganymede_v2.md",
+          "bytes": 22354,
+          "sha256": "eb12ad64a091d9b24d086833b443f4cb7f416175f500357453e223963cf19034",
+          "projectPath": "docs/handoff/current/references/map_ganymede_v2.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/walkthrough_review.md",
+          "logicalPath": "references/walkthrough_review.md",
+          "bytes": 26442,
+          "sha256": "336eb509573396fdf52abc5bdfcd7f851eb39dcc8641b1edb7a413b3d6cc91e9",
+          "projectPath": "docs/handoff/current/references/walkthrough_review.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/northgate_playtest.md",
+          "logicalPath": "references/northgate_playtest.md",
+          "bytes": 3619,
+          "sha256": "50ee024551e8a317a7517df59389df92a5c98f5d5ed8a2414334c26790f3fb0e",
+          "projectPath": "docs/handoff/current/references/northgate_playtest.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/northgate_scene.md",
+          "logicalPath": "references/northgate_scene.md",
+          "bytes": 3618,
+          "sha256": "b65957111eb9889a16b4330ed68507db4faf1c09eff981d455d552ae0cfe8670",
+          "projectPath": "docs/handoff/current/references/northgate_scene.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/asset_register.md",
+          "logicalPath": "references/asset_register.md",
+          "bytes": 10927,
+          "sha256": "6e317851cd936f0746e3928c2f49a80797d7e4d27329c04b67d0a5cf635c7718",
+          "projectPath": "docs/handoff/current/references/asset_register.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/assets_expanded.md",
+          "logicalPath": "references/assets_expanded.md",
+          "bytes": 4842,
+          "sha256": "79289ee112bf61561eebc65ad147e11874b798140164887fe2526b2ac1f8c12e",
+          "projectPath": "docs/handoff/current/references/assets_expanded.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/fps_research.md",
+          "logicalPath": "references/fps_research.md",
+          "bytes": 7996,
+          "sha256": "81e8fedb2f7e9e0839e26612b8009b8e943c6452fa10eef77883de8416de2b4c",
+          "projectPath": "docs/handoff/current/references/fps_research.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/references/hyper3d_research.md",
+          "logicalPath": "references/hyper3d_research.md",
+          "bytes": 5118,
+          "sha256": "5df502e6402ab4cb93eca2e78c55775462911bd7f3b55e9d1aaf1feada9a405f",
+          "projectPath": "docs/handoff/current/references/hyper3d_research.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/data/campaign.json",
+          "logicalPath": "data/campaign.json",
+          "bytes": 13722,
+          "sha256": "5ee2ecd4dfbb778e851f8cd66556df46b35932b22f239c63067c53abf0ff2452",
+          "projectPath": "docs/handoff/current/data/campaign.json",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/data/task-proposals.json",
+          "logicalPath": "data/task-proposals.json",
+          "bytes": 3859,
+          "sha256": "aed18682bd689c12e308a55d74d864ecd5de5270247093276d33de258c045a9d",
+          "projectPath": "docs/handoff/current/data/task-proposals.json",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/data/assets.csv",
+          "logicalPath": "data/assets.csv",
+          "bytes": 5630,
+          "sha256": "bea93f8b748bd0310d4cc383995527306b5fbffa6a8b78dacd62648b51ab8bbd",
+          "projectPath": "docs/handoff/current/data/assets.csv",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/SOURCE_INDEX.md",
+          "logicalPath": "SOURCE_INDEX.md",
+          "bytes": 6201,
+          "sha256": "b212eed0c825d6d4ba43f03fc7001752c407e7bccf5d3941eddd586d0b247e9a",
+          "projectPath": "docs/handoff/current/SOURCE_INDEX.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/architecture/product-graph.json",
+          "logicalPath": "architecture/product-graph.json",
+          "bytes": 20823,
+          "sha256": "43ddfc13703835d42f8eccfc0113668d0dd00d58aa957e0cdcfb77f0bae177b0",
+          "projectPath": "docs/handoff/current/architecture/product-graph.json",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/PRODUCT_HANDOFF.md",
+          "logicalPath": "PRODUCT_HANDOFF.md",
+          "bytes": 71221,
+          "sha256": "d432f61d28ae037769dbd6469f956f24ed50cf76cadd3f315606de1e74bb2a29",
+          "projectPath": "docs/handoff/current/PRODUCT_HANDOFF.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/RUN_STATE.md",
+          "logicalPath": "RUN_STATE.md",
+          "bytes": 1688,
+          "sha256": "8d8b384344f70a7d460f272507fdf50647022f0582555b70ee66b0dfbdba618a",
+          "projectPath": "docs/handoff/current/RUN_STATE.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "GANYMEDE_MAC_HANDOFF_20261030/HANDOFF.html",
+          "logicalPath": "HANDOFF.html",
+          "bytes": 788870,
+          "sha256": "2553d5e5c01e96f8e1b71232d466f4b4ec94ed22ebfccc80e685b83243547ad0",
+          "projectPath": "docs/handoff/current/HANDOFF.html",
+          "extracted": true
+        }
+      ]
+    },
+    {
+      "filename": "ganymede_mac_20261030.zip",
+      "sha256": "8cb380c715846a2a64e648e586b48254da88225c185e6bebb1e6cb8306c5fa5c",
+      "bytes": 583476,
+      "role": "duplicate-current",
+      "files": [
+        {
+          "archivePath": "01_PRODUCT_VISION.md",
+          "logicalPath": "01_PRODUCT_VISION.md",
+          "bytes": 4442,
+          "sha256": "e776459e6c2fb325a58307fb83306d6b6cc2c7128164f7b661ff9759152839f5",
+          "projectPath": "docs/handoff/current/01_PRODUCT_VISION.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "02_WORLD_AND_STORY.md",
+          "logicalPath": "02_WORLD_AND_STORY.md",
+          "bytes": 7094,
+          "sha256": "ab4ba827646590b2888ac2dfad5f31a8a33f0c0eaf8b2ed213dba783b0868a69",
+          "projectPath": "docs/handoff/current/02_WORLD_AND_STORY.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "03_CHARACTERS_AND_ARCS.md",
+          "logicalPath": "03_CHARACTERS_AND_ARCS.md",
+          "bytes": 6529,
+          "sha256": "d9f9c2b4465824a359656b1d529f09e7d340e61943e6195f2884168bd29ffea5",
+          "projectPath": "docs/handoff/current/03_CHARACTERS_AND_ARCS.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "04_CAMPAIGN_AND_LEVELS.md",
+          "logicalPath": "04_CAMPAIGN_AND_LEVELS.md",
+          "bytes": 13685,
+          "sha256": "04ca90678b6a55c42d3ed8fa853aed0a504ed26e009630561633842d8d1038a3",
+          "projectPath": "docs/handoff/current/04_CAMPAIGN_AND_LEVELS.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "05_GAMEPLAY_AND_PRESENTATION.md",
+          "logicalPath": "05_GAMEPLAY_AND_PRESENTATION.md",
+          "bytes": 8243,
+          "sha256": "474d592463b4c8c397f0f79c3b87a07034118844e593ddbfe53a4d682354b90a",
+          "projectPath": "docs/handoff/current/05_GAMEPLAY_AND_PRESENTATION.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "06_ASSETS_HYPER3D_TRIPO.md",
+          "logicalPath": "06_ASSETS_HYPER3D_TRIPO.md",
+          "bytes": 10117,
+          "sha256": "4ac9dfc45b3952c5daf8d13dfefe4aebd17bcb3de3a3b5dd09d95bdcbdeded19",
+          "projectPath": "docs/handoff/current/06_ASSETS_HYPER3D_TRIPO.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "07_MAC_REBUILD_PLAN.md",
+          "logicalPath": "07_MAC_REBUILD_PLAN.md",
+          "bytes": 5053,
+          "sha256": "e6100ac8a42c2b9151d71668cf69e55def5db1e9d584e843f675ab5325a98d81",
+          "projectPath": "docs/handoff/current/07_MAC_REBUILD_PLAN.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "08_DECISIONS_AND_OPEN_QUESTIONS.md",
+          "logicalPath": "08_DECISIONS_AND_OPEN_QUESTIONS.md",
+          "bytes": 4898,
+          "sha256": "a4bb1a888653e57d81cde331de0a30a02d05d977964a97e5006917af8964b2b9",
+          "projectPath": "docs/handoff/current/08_DECISIONS_AND_OPEN_QUESTIONS.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "09_PROTOTYPE_LESSONS.md",
+          "logicalPath": "09_PROTOTYPE_LESSONS.md",
+          "bytes": 4842,
+          "sha256": "d1d9f1c5e47d0915c5d96805b94a8889cfee00c192eee0d9c5c8402c39e7d551",
+          "projectPath": "docs/handoff/current/09_PROTOTYPE_LESSONS.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "10_NATIVUE_HANDOFF.md",
+          "logicalPath": "10_NATIVUE_HANDOFF.md",
+          "bytes": 5661,
+          "sha256": "319ad25790a858bba4d0e2b3719b415947ddc41d326985487d51fd6bb9e550bf",
+          "projectPath": "docs/handoff/current/10_NATIVUE_HANDOFF.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "architecture/product-graph.json",
+          "logicalPath": "architecture/product-graph.json",
+          "bytes": 20823,
+          "sha256": "43ddfc13703835d42f8eccfc0113668d0dd00d58aa957e0cdcfb77f0bae177b0",
+          "projectPath": "docs/handoff/current/architecture/product-graph.json",
+          "extracted": false
+        },
+        {
+          "archivePath": "data/assets.csv",
+          "logicalPath": "data/assets.csv",
+          "bytes": 5630,
+          "sha256": "bea93f8b748bd0310d4cc383995527306b5fbffa6a8b78dacd62648b51ab8bbd",
+          "projectPath": "docs/handoff/current/data/assets.csv",
+          "extracted": false
+        },
+        {
+          "archivePath": "data/campaign.json",
+          "logicalPath": "data/campaign.json",
+          "bytes": 13722,
+          "sha256": "5ee2ecd4dfbb778e851f8cd66556df46b35932b22f239c63067c53abf0ff2452",
+          "projectPath": "docs/handoff/current/data/campaign.json",
+          "extracted": false
+        },
+        {
+          "archivePath": "data/task-proposals.json",
+          "logicalPath": "data/task-proposals.json",
+          "bytes": 3859,
+          "sha256": "aed18682bd689c12e308a55d74d864ecd5de5270247093276d33de258c045a9d",
+          "projectPath": "docs/handoff/current/data/task-proposals.json",
+          "extracted": false
+        },
+        {
+          "archivePath": "HANDOFF.html",
+          "logicalPath": "HANDOFF.html",
+          "bytes": 788871,
+          "sha256": "e47645aeab3ebad07caf4cebada70c51d4e998c09a97586482be5cd900feb75d",
+          "projectPath": "docs/handoff/current/HANDOFF.html",
+          "extracted": false
+        },
+        {
+          "archivePath": "MAC_CODEX_PROMPT.md",
+          "logicalPath": "MAC_CODEX_PROMPT.md",
+          "bytes": 3966,
+          "sha256": "f4f14424fb34dca13823b2fb63bdaa0c85d7759e1defd5af0d12b0f5e2693d00",
+          "projectPath": "docs/handoff/current/MAC_CODEX_PROMPT.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "PRODUCT_HANDOFF.md",
+          "logicalPath": "PRODUCT_HANDOFF.md",
+          "bytes": 71221,
+          "sha256": "d432f61d28ae037769dbd6469f956f24ed50cf76cadd3f315606de1e74bb2a29",
+          "projectPath": "docs/handoff/current/PRODUCT_HANDOFF.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/art_direction.md",
+          "logicalPath": "references/art_direction.md",
+          "bytes": 17405,
+          "sha256": "d57a1eb0b0c9f8ccb863296b274f803eb72afdb36a59fdfa518f21daab89eadb",
+          "projectPath": "docs/handoff/current/references/art_direction.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/asset_register.md",
+          "logicalPath": "references/asset_register.md",
+          "bytes": 10927,
+          "sha256": "6e317851cd936f0746e3928c2f49a80797d7e4d27329c04b67d0a5cf635c7718",
+          "projectPath": "docs/handoff/current/references/asset_register.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/assets_expanded.md",
+          "logicalPath": "references/assets_expanded.md",
+          "bytes": 4842,
+          "sha256": "79289ee112bf61561eebc65ad147e11874b798140164887fe2526b2ac1f8c12e",
+          "projectPath": "docs/handoff/current/references/assets_expanded.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/campaign_scale.md",
+          "logicalPath": "references/campaign_scale.md",
+          "bytes": 13401,
+          "sha256": "21525fb2c48a9796432214e37e37d3760c93719e3649a14e447b7e74c71603c8",
+          "projectPath": "docs/handoff/current/references/campaign_scale.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/combat_encounters.md",
+          "logicalPath": "references/combat_encounters.md",
+          "bytes": 11355,
+          "sha256": "b69482efa5bedc1a9c233ca31eef61894b91d770b390a394d5d45afd4a23c13c",
+          "projectPath": "docs/handoff/current/references/combat_encounters.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/fps_research.md",
+          "logicalPath": "references/fps_research.md",
+          "bytes": 7996,
+          "sha256": "81e8fedb2f7e9e0839e26612b8009b8e943c6452fa10eef77883de8416de2b4c",
+          "projectPath": "docs/handoff/current/references/fps_research.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/game_design.md",
+          "logicalPath": "references/game_design.md",
+          "bytes": 48558,
+          "sha256": "0ee44daa35b7ebd2629c6971576b6b747b7d58e76de08c68f3e953fca99e0d08",
+          "projectPath": "docs/handoff/current/references/game_design.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/hyper3d_research.md",
+          "logicalPath": "references/hyper3d_research.md",
+          "bytes": 5118,
+          "sha256": "5df502e6402ab4cb93eca2e78c55775462911bd7f3b55e9d1aaf1feada9a405f",
+          "projectPath": "docs/handoff/current/references/hyper3d_research.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/map_ganymede_v2.md",
+          "logicalPath": "references/map_ganymede_v2.md",
+          "bytes": 22354,
+          "sha256": "eb12ad64a091d9b24d086833b443f4cb7f416175f500357453e223963cf19034",
+          "projectPath": "docs/handoff/current/references/map_ganymede_v2.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/nativue_method.md",
+          "logicalPath": "references/nativue_method.md",
+          "bytes": 1436,
+          "sha256": "2950e92b0d9dc9eb589fd1ff2d068a3e5f39bd8c7ef36b3ad14ff90ee0608674",
+          "projectPath": "docs/handoff/current/references/nativue_method.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/northgate_playtest.md",
+          "logicalPath": "references/northgate_playtest.md",
+          "bytes": 3619,
+          "sha256": "50ee024551e8a317a7517df59389df92a5c98f5d5ed8a2414334c26790f3fb0e",
+          "projectPath": "docs/handoff/current/references/northgate_playtest.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/northgate_scene.md",
+          "logicalPath": "references/northgate_scene.md",
+          "bytes": 3618,
+          "sha256": "b65957111eb9889a16b4330ed68507db4faf1c09eff981d455d552ae0cfe8670",
+          "projectPath": "docs/handoff/current/references/northgate_scene.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/novel_original.md",
+          "logicalPath": "references/novel_original.md",
+          "bytes": 104853,
+          "sha256": "814d5b283cfcf0263fc6d87b76fa1d0e2076f605d3fa90579d6aa1ac8affe926",
+          "projectPath": "docs/handoff/current/references/novel_original.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/novel_outline_v5.md",
+          "logicalPath": "references/novel_outline_v5.md",
+          "bytes": 28829,
+          "sha256": "87711dc54be0c50401e459f4c6f31eabcc46e86e3678390559006234434c48b6",
+          "projectPath": "docs/handoff/current/references/novel_outline_v5.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/source_bible.md",
+          "logicalPath": "references/source_bible.md",
+          "bytes": 8306,
+          "sha256": "69fd9d67920713149f37a873260926396070f72253b75bc2c50f3fca95291f94",
+          "projectPath": "docs/handoff/current/references/source_bible.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/walkthrough_review.md",
+          "logicalPath": "references/walkthrough_review.md",
+          "bytes": 26442,
+          "sha256": "336eb509573396fdf52abc5bdfcd7f851eb39dcc8641b1edb7a413b3d6cc91e9",
+          "projectPath": "docs/handoff/current/references/walkthrough_review.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "references/world_ganymede.md",
+          "logicalPath": "references/world_ganymede.md",
+          "bytes": 19452,
+          "sha256": "b055c195bd93108555a7aa76c9d341b5a127b8d4f5c6a6ff5e8b23fba4f56531",
+          "projectPath": "docs/handoff/current/references/world_ganymede.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "RUN_STATE.md",
+          "logicalPath": "RUN_STATE.md",
+          "bytes": 1688,
+          "sha256": "8d8b384344f70a7d460f272507fdf50647022f0582555b70ee66b0dfbdba618a",
+          "projectPath": "docs/handoff/current/RUN_STATE.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "SOURCE_INDEX.md",
+          "logicalPath": "SOURCE_INDEX.md",
+          "bytes": 6201,
+          "sha256": "b212eed0c825d6d4ba43f03fc7001752c407e7bccf5d3941eddd586d0b247e9a",
+          "projectPath": "docs/handoff/current/SOURCE_INDEX.md",
+          "extracted": false
+        },
+        {
+          "archivePath": "START_HERE.md",
+          "logicalPath": "START_HERE.md",
+          "bytes": 4395,
+          "sha256": "19a40906977b50a85f5946eb2d198cb3433cfe81c133287da31162b2097cb1e0",
+          "projectPath": "docs/handoff/current/START_HERE.md",
+          "extracted": false
+        }
+      ]
+    },
+    {
+      "filename": "重返木卫六_Dot_Blender_全场景委托包_v1.zip",
+      "sha256": "bea25e51f0404cf8463188c0bd1f37960c68102468692bb7a9d9478936eae497",
+      "bytes": 88520,
+      "role": "historical",
+      "files": [
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/00_START_HERE.md",
+          "logicalPath": "00_START_HERE.md",
+          "bytes": 2781,
+          "sha256": "e2423c57576e791962d7f8024012e7b62c35265cae4ff1d2d880e0764fa946d8",
+          "projectPath": "docs/handoff/legacy-himalia/00_START_HERE.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/01_DOT_PROMPT.md",
+          "logicalPath": "01_DOT_PROMPT.md",
+          "bytes": 8184,
+          "sha256": "2c60c99f2b26fe2b6d96944a466c401b2417517a818d657eb31b512feb496800",
+          "projectPath": "docs/handoff/legacy-himalia/01_DOT_PROMPT.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/02_BUILD_AND_DELIVERY.md",
+          "logicalPath": "02_BUILD_AND_DELIVERY.md",
+          "bytes": 8700,
+          "sha256": "d9e1b39519fb1ddcf178d06d981e71e2195ac87c4087646b61346e378588d3a2",
+          "projectPath": "docs/handoff/legacy-himalia/02_BUILD_AND_DELIVERY.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/PRODUCT_BRIEF.md",
+          "logicalPath": "PRODUCT_BRIEF.md",
+          "bytes": 3768,
+          "sha256": "f7565bba0e6c65a84234fa57c6139ff151de7dccd26c9ecae9d1c41b17504647",
+          "projectPath": "docs/handoff/legacy-himalia/PRODUCT_BRIEF.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/analysis/SOURCE_BIBLE.md",
+          "logicalPath": "analysis/SOURCE_BIBLE.md",
+          "bytes": 7582,
+          "sha256": "b6490709425f933621b389046eda9d6e74b2718819505e57db41e9175e925285",
+          "projectPath": "docs/handoff/legacy-himalia/analysis/SOURCE_BIBLE.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/concepts/CONCEPT.md",
+          "logicalPath": "concepts/CONCEPT.md",
+          "bytes": 3426,
+          "sha256": "e3475ecaec608518fd2611a169386c444efcadbdd354c87af3c509a08d6f18c4",
+          "projectPath": "docs/handoff/legacy-himalia/concepts/CONCEPT.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/design/GAME_DESIGN.md",
+          "logicalPath": "design/GAME_DESIGN.md",
+          "bytes": 33902,
+          "sha256": "5574e54c4fbeea71787f5c036a43fe8f9add3d77fd8de571891fe054df5a7588",
+          "projectPath": "docs/handoff/legacy-himalia/design/GAME_DESIGN.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/design/ART_DIRECTION.md",
+          "logicalPath": "design/ART_DIRECTION.md",
+          "bytes": 14853,
+          "sha256": "32851dba56d6b1af60a23606984f29b66a17d9819958e1458c3a7d357ff57998",
+          "projectPath": "docs/handoff/legacy-himalia/design/ART_DIRECTION.md",
+          "extracted": true
+        },
+        {
+          "archivePath": "Himalia_Dot_Blender_Pack_v1/source/NOVEL.md",
+          "logicalPath": "source/NOVEL.md",
+          "bytes": 104561,
+          "sha256": "26c9e04fa17f70575766c248f83fc86f5692f529b0197ef4c746ab0adefe3790",
+          "projectPath": "docs/handoff/legacy-himalia/source/NOVEL.md",
+          "extracted": true
+        }
+      ]
+    }
+  ],
+  "duplicateComparison": {
+    "filesPerArchive": 37,
+    "byteIdentical": [
+      "01_PRODUCT_VISION.md",
+      "02_WORLD_AND_STORY.md",
+      "03_CHARACTERS_AND_ARCS.md",
+      "04_CAMPAIGN_AND_LEVELS.md",
+      "05_GAMEPLAY_AND_PRESENTATION.md",
+      "06_ASSETS_HYPER3D_TRIPO.md",
+      "07_MAC_REBUILD_PLAN.md",
+      "08_DECISIONS_AND_OPEN_QUESTIONS.md",
+      "09_PROTOTYPE_LESSONS.md",
+      "10_NATIVUE_HANDOFF.md",
+      "MAC_CODEX_PROMPT.md",
+      "PRODUCT_HANDOFF.md",
+      "RUN_STATE.md",
+      "SOURCE_INDEX.md",
+      "START_HERE.md",
+      "architecture/product-graph.json",
+      "data/assets.csv",
+      "data/campaign.json",
+      "data/task-proposals.json",
+      "references/art_direction.md",
+      "references/asset_register.md",
+      "references/assets_expanded.md",
+      "references/campaign_scale.md",
+      "references/combat_encounters.md",
+      "references/fps_research.md",
+      "references/game_design.md",
+      "references/hyper3d_research.md",
+      "references/map_ganymede_v2.md",
+      "references/nativue_method.md",
+      "references/northgate_playtest.md",
+      "references/northgate_scene.md",
+      "references/novel_original.md",
+      "references/novel_outline_v5.md",
+      "references/source_bible.md",
+      "references/walkthrough_review.md",
+      "references/world_ganymede.md"
+    ],
+    "differences": [
+      {
+        "path": "HANDOFF.html",
+        "whitespaceOnly": true,
+        "canonicalBytes": 788870,
+        "duplicateBytes": 788871
+      }
+    ],
+    "onlyCanonical": [],
+    "onlyDuplicate": []
+  },
+  "legacyComparisons": [
+    {
+      "current": "references/novel_original.md",
+      "legacy": "source/NOVEL.md",
+      "byteIdentical": false,
+      "equalWithNormalizedNewlines": false
+    },
+    {
+      "current": "references/source_bible.md",
+      "legacy": "analysis/SOURCE_BIBLE.md",
+      "byteIdentical": false,
+      "equalWithNormalizedNewlines": false
+    },
+    {
+      "current": "references/game_design.md",
+      "legacy": "design/GAME_DESIGN.md",
+      "byteIdentical": false,
+      "equalWithNormalizedNewlines": false
+    },
+    {
+      "current": "references/art_direction.md",
+      "legacy": "design/ART_DIRECTION.md",
+      "byteIdentical": false,
+      "equalWithNormalizedNewlines": false
+    }
+  ]
+}

@@ -1,0 +1,491 @@
+{
+  "schemaVersion": 1,
+  "kind": "planning-reference",
+  "date": "2026-10-30",
+  "title": "重返木卫三",
+  "implementation": false,
+  "source": "04_CAMPAIGN_AND_LEVELS.md",
+  "duration": {
+    "targetMinutes": 60,
+    "firstPlayRange": [
+      55,
+      70
+    ],
+    "verified": false,
+    "note": "战斗中移动不重复计时；不含暂停、加载、重试与名单"
+  },
+  "units": [
+    {
+      "id": "prologue",
+      "name": "检修门",
+      "planningMinutes": 7
+    },
+    {
+      "id": "L1",
+      "name": "占领区",
+      "planningMinutes": 17
+    },
+    {
+      "id": "L2",
+      "name": "通路",
+      "planningMinutes": 17
+    },
+    {
+      "id": "L3",
+      "name": "下一班",
+      "planningMinutes": 13
+    },
+    {
+      "id": "epilogue",
+      "name": "进场之前",
+      "planningMinutes": 6
+    }
+  ],
+  "segments": [
+    {
+      "id": "S01",
+      "title": "检修门",
+      "unit": "prologue",
+      "pov": "陆闻川",
+      "period": "9岁，十年前",
+      "spaceAnchors": [
+        "A01",
+        "A02"
+      ],
+      "encounterIds": [],
+      "playerActions": [
+        "观察父亲与生活物件",
+        "跟随撤离到检修门"
+      ],
+      "performance": "交出孩子、拾枪、倒下、抱离；短时限幅回望",
+      "storyResult": "孩子先离开，父亲死亡；不归因玩家失误",
+      "relationship": "普通父子关系变成失去",
+      "setupPayoff": "护住门让他人通过→S08/S12",
+      "completion": "隔断关闭且孩子已进入检修通道"
+    },
+    {
+      "id": "S02",
+      "title": "主厅",
+      "unit": "prologue",
+      "pov": "周延",
+      "period": "23岁，十年前",
+      "spaceAnchors": [
+        "A03",
+        "A02"
+      ],
+      "encounterIds": [
+        "E00"
+      ],
+      "playerActions": [
+        "保护指定一组居民",
+        "在相通防守位交火",
+        "打开检修门"
+      ],
+      "performance": "完成撤离后转坍塌受困、暴行、赵启明被处决",
+      "storyResult": "班长先授权，周延随后形成幸存负担",
+      "relationship": "信任来自真实分工",
+      "setupPayoff": "班长授权→S07/S09",
+      "completion": "指定居民实际通过，之后固定剧情失守"
+    },
+    {
+      "id": "S03",
+      "title": "夜班与出发",
+      "unit": "L1",
+      "pov": "陆闻川",
+      "period": "19岁，现在",
+      "spaceAnchors": [
+        "B01",
+        "B02",
+        "B03"
+      ],
+      "encounterIds": [],
+      "playerActions": [
+        "修复风机",
+        "送交物资",
+        "看图领武器"
+      ],
+      "performance": "同行短对话和集合，约定共享情报与护送后接防",
+      "storyResult": "闻川已有职责，周延仍习惯替人核对",
+      "relationship": "熟悉但不完全对等",
+      "setupPayoff": "共享约定→S05—S08；接防安排→S09",
+      "completion": "接应任务与分工成立"
+    },
+    {
+      "id": "S04",
+      "title": "带回港务人员",
+      "unit": "L1",
+      "pov": "陆闻川",
+      "period": "现在",
+      "spaceAnchors": [
+        "C05",
+        "C02",
+        "C01"
+      ],
+      "encounterIds": [
+        "E01",
+        "E02",
+        "E03"
+      ],
+      "playerActions": [
+        "观察押运异常并报告",
+        "检修线路接近后门",
+        "清除封控与院内威胁",
+        "掩护交接"
+      ],
+      "performance": "安全后罗敬问家属，孟齐实际解决转运",
+      "storyResult": "追踪仇人帮助共同任务，保护承诺成立",
+      "relationship": "周延采用闻川判断",
+      "setupPayoff": "家属承诺→S08；孟齐专业→S09",
+      "completion": "人员进入安全交接位并报告接收受损"
+    },
+    {
+      "id": "S05",
+      "title": "北闸的预告",
+      "unit": "L1",
+      "pov": "周延",
+      "period": "33岁，现在",
+      "spaceAnchors": [
+        "D01-front"
+      ],
+      "encounterIds": [
+        "E04"
+      ],
+      "playerActions": [
+        "北路接敌",
+        "守称重台",
+        "应对东侧",
+        "分批回撤"
+      ],
+      "performance": "稳定后收到预告，周延扣下时间；只通报机动力量",
+      "storyResult": "主动违背共享约定",
+      "relationship": "责任感与控制欲同时暴露",
+      "setupPayoff": "机动部队→S07/S09/S10",
+      "completion": "工人和队友实际撤回，预告送达"
+    },
+    {
+      "id": "S06",
+      "title": "转接门与争执",
+      "unit": "L2",
+      "pov": "陆闻川",
+      "period": "现在",
+      "spaceAnchors": [
+        "E01",
+        "D02"
+      ],
+      "encounterIds": [],
+      "playerActions": [
+        "检查门机",
+        "释放锁杆",
+        "让患者实际通过"
+      ],
+      "performance": "设备间收枪争执；恢复控制后继续任务",
+      "storyResult": "发现违约，闻川说出不公指责",
+      "relationship": "信任受损但双方仍履职",
+      "setupPayoff": "伤人话→S08修复；通路→S10",
+      "completion": "门修好，人物已知情，争执结束"
+    },
+    {
+      "id": "S07",
+      "title": "交给别人",
+      "unit": "L2",
+      "pov": "周延",
+      "period": "现在",
+      "spaceAnchors": [
+        "D01-flank",
+        "D02"
+      ],
+      "encounterIds": [
+        "E05"
+      ],
+      "playerActions": [
+        "夺检修台",
+        "经泵房外侧清内门",
+        "采用路线建议",
+        "发送完整信息"
+      ],
+      "performance": "短承认与安静间隙通信，明确换班和自身需要",
+      "storyResult": "周延先改变做法，结果真实可见",
+      "relationship": "由过滤信息转为共同判断",
+      "setupPayoff": "路线采用→S08；需要接替→S09",
+      "completion": "人员撤回、共享消息与执行反馈成立"
+    },
+    {
+      "id": "S08",
+      "title": "留下护送",
+      "unit": "L2",
+      "pov": "陆闻川",
+      "period": "现在",
+      "spaceAnchors": [
+        "C03",
+        "E02",
+        "F01"
+      ],
+      "encounterIds": [
+        "E06",
+        "E07"
+      ],
+      "playerActions": [
+        "确认家属到站",
+        "接收完整追击情报",
+        "保护车队通过两处阻滞",
+        "协助换车"
+      ],
+      "performance": "罗敬留岗、修复关系、监控邵原出发、决定留下",
+      "storyResult": "完全知情后放弃现实追击机会",
+      "relationship": "关系在周延生前修复",
+      "setupPayoff": "护送→孟齐按时接防；父亲动作回响",
+      "completion": "人员到站，孟齐带接防队返回"
+    },
+    {
+      "id": "S09",
+      "title": "接受换班",
+      "unit": "L3",
+      "pov": "周延",
+      "period": "现在",
+      "spaceAnchors": [
+        "D01-rear",
+        "D03"
+      ],
+      "encounterIds": [
+        "E08"
+      ],
+      "playerActions": [
+        "保护接防入口",
+        "交接通信与岗位",
+        "在同伴掩护下撤回"
+      ],
+      "performance": "孟齐占位、护具调整、回复家人、日常安排",
+      "storyResult": "周延允许自己受保护，完成成长",
+      "relationship": "信任真正交给同伴",
+      "setupPayoff": "班长授权回收；生活愿望使失去有重量",
+      "completion": "接防成立、周延离岗并在内门接受帮助"
+    },
+    {
+      "id": "S10",
+      "title": "共同撤回",
+      "unit": "L3",
+      "pov": "周延",
+      "period": "现在",
+      "spaceAnchors": [
+        "E03",
+        "E02",
+        "F01"
+      ],
+      "encounterIds": [
+        "E09"
+      ],
+      "playerActions": [
+        "应对已知反扑",
+        "压制伤员附近威胁",
+        "等郑铎到位",
+        "确认协助搬运"
+      ],
+      "performance": "救援成果成立后固定受击、报伤求援、两人转运",
+      "storyResult": "按成长后的方式协作和求助",
+      "relationship": "别人能救他，他也愿意被救",
+      "setupPayoff": "机动力量与医疗通路回收",
+      "completion": "孟齐进入遮护、两名伤员送达，固定伤情无失败判定"
+    },
+    {
+      "id": "S11",
+      "title": "救护点",
+      "unit": "epilogue",
+      "pov": "陆闻川",
+      "period": "现在",
+      "spaceAnchors": [
+        "F01",
+        "F02",
+        "F03"
+      ],
+      "encounterIds": [],
+      "playerActions": [
+        "交接装备资料",
+        "探视与观察"
+      ],
+      "performance": "救治、短时间过渡、医生明确告知周延死亡",
+      "storyResult": "孟齐存活治疗；闻川的悲痛被同伴接住",
+      "relationship": "失去已和解的人",
+      "setupPayoff": "护理与转运成果持续有效",
+      "completion": "死亡确认，孟齐在治，闻川接到联络"
+    },
+    {
+      "id": "S12",
+      "title": "进场之前",
+      "unit": "epilogue",
+      "pov": "陆闻川",
+      "period": "现在",
+      "spaceAnchors": [
+        "E04",
+        "C03"
+      ],
+      "encounterIds": [],
+      "playerActions": [
+        "如实报告",
+        "转交医疗需求",
+        "走安全岸路",
+        "扶门接收人员"
+      ],
+      "performance": "郑铎补充、罗敬确认、舰队回执；最后动作归玩家",
+      "storyResult": "闻川接受帮助并继续承担",
+      "relationship": "个人悲痛与共同工作并存",
+      "setupPayoff": "共享信息与护门动作回收",
+      "completion": "接收开始，首批援军进场，邵原仍逃离"
+    }
+  ],
+  "encounters": [
+    {
+      "id": "E00",
+      "segment": "S02",
+      "location": "主厅",
+      "spawnBudget": {
+        "min": 12,
+        "max": 18,
+        "verified": false
+      },
+      "enemyApproach": "东门",
+      "playerTask": "保护门边居民",
+      "recoveryOrCivilianSpace": "检修通道",
+      "completion": "撤离完成后转固定剧情"
+    },
+    {
+      "id": "E01",
+      "segment": "S04",
+      "location": "通勤检查口",
+      "spawnBudget": {
+        "min": 18,
+        "max": 24,
+        "verified": false
+      },
+      "enemyApproach": "押运方向",
+      "playerTask": "背街接近与封控突破",
+      "recoveryOrCivilianSpace": "街角遮护",
+      "completion": "清出进入建筑的通路"
+    },
+    {
+      "id": "E02",
+      "segment": "S04",
+      "location": "检修栈道",
+      "spawnBudget": {
+        "min": 20,
+        "max": 28,
+        "verified": false
+      },
+      "enemyApproach": "尽头检修棚",
+      "playerTask": "上下层接近与侧压制",
+      "recoveryOrCivilianSpace": "下层恢复位",
+      "completion": "抵达宿舍后门"
+    },
+    {
+      "id": "E03",
+      "segment": "S04",
+      "location": "生活院",
+      "spawnBudget": {
+        "min": 18,
+        "max": 24,
+        "verified": false
+      },
+      "enemyApproach": "院东封控口",
+      "playerTask": "解除威胁与防反击",
+      "recoveryOrCivilianSpace": "家属西侧等待位",
+      "completion": "人物进入安全交接区"
+    },
+    {
+      "id": "E04",
+      "segment": "S05",
+      "location": "北闸前沿",
+      "spawnBudget": {
+        "min": 36,
+        "max": 48,
+        "verified": false
+      },
+      "enemyApproach": "北路＋东侧车道",
+      "playerTask": "初接敌／防守／侧袭／回撤",
+      "recoveryOrCivilianSpace": "南侧后路",
+      "completion": "工人到内侧且队友交接"
+    },
+    {
+      "id": "E05",
+      "segment": "S07",
+      "location": "储罐侧翼",
+      "spawnBudget": {
+        "min": 32,
+        "max": 44,
+        "verified": false
+      },
+      "enemyApproach": "东储料口＋北路",
+      "playerTask": "检修台／泵房／内门",
+      "recoveryOrCivilianSpace": "二号设备间",
+      "completion": "人员撤回与信息共享"
+    },
+    {
+      "id": "E06",
+      "segment": "S08",
+      "location": "第一桥",
+      "spawnBudget": {
+        "min": 24,
+        "max": 32,
+        "verified": false
+      },
+      "enemyApproach": "对侧检修桥",
+      "playerTask": "清桥头与侧平台",
+      "recoveryOrCivilianSpace": "前桥头等候位",
+      "completion": "第一批车队通过"
+    },
+    {
+      "id": "E07",
+      "segment": "S08",
+      "location": "医疗桥头",
+      "spawnBudget": {
+        "min": 28,
+        "max": 38,
+        "verified": false
+      },
+      "enemyApproach": "北侧维修支路",
+      "playerTask": "阻侧袭与换车",
+      "recoveryOrCivilianSpace": "医疗方向安全位",
+      "completion": "人员全部到站"
+    },
+    {
+      "id": "E08",
+      "segment": "S09",
+      "location": "后线接防",
+      "spawnBudget": {
+        "min": 32,
+        "max": 44,
+        "verified": false
+      },
+      "enemyApproach": "已报告的西北路",
+      "playerTask": "防守／实际接替／离岗",
+      "recoveryOrCivilianSpace": "接防内门",
+      "completion": "孟齐接手且周延受保护撤出"
+    },
+    {
+      "id": "E09",
+      "segment": "S10",
+      "location": "设备交叉口",
+      "spawnBudget": {
+        "min": 36,
+        "max": 48,
+        "verified": false
+      },
+      "enemyApproach": "已建立的内陆支线",
+      "playerTask": "反扑／清近威胁／协作救援",
+      "recoveryOrCivilianSpace": "医疗侧硬掩护",
+      "completion": "协作完成，进入固定负伤"
+    }
+  ],
+  "northgatePrototype": {
+    "totalSpawns": 44,
+    "phaseCounts": [
+      8,
+      12,
+      10,
+      14
+    ],
+    "maxAlive": 8,
+    "workers": 7,
+    "evidence": "references/northgate_playtest.md",
+    "note": "旧原型记录；不是全部战役或Mac真人证据"
+  },
+  "coordinateWarning": "旧规划Z高程；新Three.js常用Y向上，必须显式转换。"
+}
