@@ -1,6 +1,6 @@
 {
   "candidate": "transfer-preview-2026-10-31",
-  "recordedAt": "2026-10-30T20:12:28.870Z",
+  "recordedAt": "2026-10-30T20:17:09.172Z",
   "node": "v22.14.0",
   "target": "Windows x64 portable directory",
   "entry": "release/ReturnToGanymede-win32-x64/ReturnToGanymede.exe",

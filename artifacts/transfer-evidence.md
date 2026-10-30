@@ -56,4 +56,9 @@ S06 本轮操作控制台 error／warn 为空。局部观察约56—62 FPS：S06
 
 类型、生产构建、Windows x64便携打包及包内容核对通过，见 [构建清单](build-manifest.json)。主 JS 约5.10MB，gzip约1.88MB，构建有单块体积提示；尚未做目标 Windows 加载与长时性能验证。Windows运行为 **NOT_RUN**，并非安装器或签名成品。
 
-备用工作树验证完成后合入 main；集成提交、主线包与散列在最终整合记录补齐。继续 S08 护送、S09接防成长、S10协作救援、S11医疗视点、S12如实报告，并补先前未完成的浏览器完整首通。正式资产沿既定概念图先行流程生产，成年闻川概念不重复生成；Tripo尚无已提交模型任务。
+备用工作树代码与验证提交 `6a9cd89` 已 fast-forward 合入 main。主线重新构建并打包，`sourceSha256` 与 `distSha256` 两份映射均与已测试工作树逐项完全相同，生产 JS 中不含章节独立检查菜单。继续 S08 护送、S09接防成长、S10协作救援、S11医疗视点、S12如实报告，并补先前未完成的浏览器完整首通。正式资产沿既定概念图先行流程生产，成年闻川概念不重复生成；Tripo尚无已提交模型任务。
+
+
+## 主线便携包
+
+[Windows x64 ZIP](../release/ReturnToGanymede-transfer-preview-win-x64.zip) 大小160,014,622字节，SHA-256 `84dc267dcff558b020237b70ea895bbb88bf40d110ad0540a110bca9464943ef`。包含整个 `ReturnToGanymede-win32-x64` 目录；解压后运行其中EXE，不能只复制EXE。旧版本ZIP保留。包内容与当前dist、desktop源码一致，PE头确认为x86-64；这只证明打包结构，不替代Windows实际运行。
