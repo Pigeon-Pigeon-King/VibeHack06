@@ -91,12 +91,15 @@ export class GameUI {
           </details>
         </div>
         <p class="candidate-note">占位资产 · 功能验证</p>
+        <p class="equipment-status" data-ui="equipment-status" role="status" hidden></p>
+        <button type="button" class="equipment-retry" data-ui="menu-retry-equipment" data-action="retry-equipment" hidden>重新载入装备</button>
       </section>
 
       <section class="game-overlay" data-ui="paused" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden>
         <div class="dialog-panel pause-panel">
           <p class="eyebrow" data-ui="pause-scenario"></p><h2 id="pause-title">暂停</h2>
           <p class="checkpoint-label" data-ui="pause-checkpoint"></p>
+          <button type="button" class="equipment-retry" data-ui="pause-retry-equipment" data-action="retry-equipment" hidden>重新载入装备</button>
           <button type="button" class="primary-button" data-action="resume">继续行动</button>
           <div class="button-pair"><button type="button" data-action="retry">重试检查点</button><button type="button" data-action="restart">重开本场</button></div>
           <details class="settings-panel">
@@ -218,6 +221,10 @@ export class GameUI {
     this.text('volume-value', state.muted ? '静音' : `${Math.round(state.volume * 100)}%`);
     this.show('error', Boolean(state.error));
     this.text('error', state.error || '');
+    this.show('menu-retry-equipment', Boolean(state.equipmentError));
+    this.show('pause-retry-equipment', Boolean(state.equipmentError));
+    this.show('equipment-status', state.mode === 'menu' && Boolean(state.equipmentStatus));
+    this.text('equipment-status', state.equipmentStatus ?? '');
     this.show('diagnostics', playing && Boolean(state.diagnostics));
     this.text('diagnostics', state.diagnostics || '');
 
@@ -303,6 +310,7 @@ export class GameUI {
       case 'retry': this.actions.retry(); break;
       case 'restart': this.actions.restart(); break;
       case 'menu': this.actions.menu(); break;
+      case 'retry-equipment': this.actions.retryEquipment(); break;
     }
   };
 

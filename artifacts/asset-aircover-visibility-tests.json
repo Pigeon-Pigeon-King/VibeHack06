@@ -1,0 +1,220 @@
+{
+  "status": "numeric-visibility-only-browser-verification-pending",
+  "sampleSeconds": 0.1,
+  "visibilityWindowSeconds": [
+    0,
+    15
+  ],
+  "clearanceWindowSeconds": [
+    0,
+    180
+  ],
+  "geometry": {
+    "sourceRevision": "2726b3bdf3c7c54ea09a5d4a248e86a739604ca7",
+    "sourceMeshes": 79,
+    "triangles": 35753,
+    "localBounds": {
+      "min": [
+        -5.525945663452148,
+        -0.9090288698201165,
+        -9.257140159606934
+      ],
+      "max": [
+        5.525934219360352,
+        2.8443338871002197,
+        7.896121025085449
+      ]
+    }
+  },
+  "occlusion": {
+    "source": "Actual buildEpilogue + PortKit batches, with reception-door-open; includes box roof, generated arch and lintel",
+    "probes": "Actual geometry hull corners and center, all must be unoccluded",
+    "labels": "DOM-only label canvases are absent in Node"
+  },
+  "assumedS12FogDensity": 0.004,
+  "fogMetric": "exp(-(density * cameraViewDepth)^2), minimum 0.20 for interval gate",
+  "acceptance": {
+    "leadVisibleBySeconds": 6.5,
+    "wingmanVisibleBySeconds": 11,
+    "leadVisibleBefore14Seconds": "> 5",
+    "wingmanAndBothVisibleBefore14Seconds": "> 2",
+    "actualVertexPixelSpan": "> 18 and < 140",
+    "nearPassPixelSpan": "> 70 and < 140",
+    "centerSeparationMeters": "> 70",
+    "wholeHullWalkwayClearanceMeters": "> 80"
+  },
+  "cameras": [
+    {
+      "name": "supplied-inside-door",
+      "position": [
+        -5.73,
+        1.65,
+        2.31
+      ],
+      "yaw": 0.7099,
+      "pitch": 0,
+      "verticalFov": 75,
+      "width": 1366,
+      "height": 768,
+      "far": 1000,
+      "aircraft": [
+        {
+          "aircraft": 1,
+          "visibleRangesAtTenthSecondSamples": [
+            {
+              "start": 5.2,
+              "endInclusive": 15
+            }
+          ],
+          "visibleSecondsBefore14": 8.8,
+          "minimumFogTransmission": 0.2480387474574412,
+          "hullPixelSpan": {
+            "min": 22.1083982399267,
+            "max": 144.13939151032298
+          },
+          "blockedSampleCount": 0
+        },
+        {
+          "aircraft": 2,
+          "visibleRangesAtTenthSecondSamples": [
+            {
+              "start": 9.4,
+              "endInclusive": 15
+            }
+          ],
+          "visibleSecondsBefore14": 4.6,
+          "minimumFogTransmission": 0.4977524059745123,
+          "hullPixelSpan": {
+            "min": 41.882699318386585,
+            "max": 127.52896555094384
+          },
+          "blockedSampleCount": 0
+        }
+      ],
+      "bothVisibleSecondsBefore14": 4.6
+    },
+    {
+      "name": "outside-north-roof-edge",
+      "position": [
+        -5.73,
+        1.65,
+        -5.5
+      ],
+      "yaw": 0.7099,
+      "pitch": 0,
+      "verticalFov": 75,
+      "width": 1366,
+      "height": 768,
+      "far": 1000,
+      "aircraft": [
+        {
+          "aircraft": 1,
+          "visibleRangesAtTenthSecondSamples": [
+            {
+              "start": 5.3,
+              "endInclusive": 12.2
+            }
+          ],
+          "visibleSecondsBefore14": 7,
+          "minimumFogTransmission": 0.4316397496956519,
+          "hullPixelSpan": {
+            "min": 31.475787167552355,
+            "max": 144.4835491151989
+          },
+          "blockedSampleCount": 28
+        },
+        {
+          "aircraft": 2,
+          "visibleRangesAtTenthSecondSamples": [
+            {
+              "start": 9.7,
+              "endInclusive": 15
+            }
+          ],
+          "visibleSecondsBefore14": 4.3,
+          "minimumFogTransmission": 0.5175578368001532,
+          "hullPixelSpan": {
+            "min": 42.42608801111207,
+            "max": 118.85330537397257
+          },
+          "blockedSampleCount": 0
+        }
+      ],
+      "bothVisibleSecondsBefore14": 2.6
+    }
+  ],
+  "vertexProjectionSamples": [
+    {
+      "camera": "supplied-inside-door",
+      "time": 6,
+      "aircraft": 1,
+      "width": 99.76431103490448,
+      "height": 38.40433841293006
+    },
+    {
+      "camera": "outside-north-roof-edge",
+      "time": 6,
+      "aircraft": 1,
+      "width": 105.27607706356136,
+      "height": 42.067564604713624
+    },
+    {
+      "camera": "supplied-inside-door",
+      "time": 10,
+      "aircraft": 1,
+      "width": 33.86525801856927,
+      "height": 20.284104676544892
+    },
+    {
+      "camera": "outside-north-roof-edge",
+      "time": 10,
+      "aircraft": 1,
+      "width": 34.21822252578462,
+      "height": 21.396979294847085
+    },
+    {
+      "camera": "supplied-inside-door",
+      "time": 10,
+      "aircraft": 2,
+      "width": 99.76431103490448,
+      "height": 43.81426704986956
+    },
+    {
+      "camera": "outside-north-roof-edge",
+      "time": 10,
+      "aircraft": 2,
+      "width": 105.27607706356136,
+      "height": 48.085428868630046
+    },
+    {
+      "camera": "supplied-inside-door",
+      "time": 14,
+      "aircraft": 1,
+      "width": 20.66347391811179,
+      "height": 11.286690679169133
+    },
+    {
+      "camera": "supplied-inside-door",
+      "time": 14,
+      "aircraft": 2,
+      "width": 33.86525801856927,
+      "height": 22.95650413679092
+    },
+    {
+      "camera": "outside-north-roof-edge",
+      "time": 14,
+      "aircraft": 2,
+      "width": 34.21822252578462,
+      "height": 24.246648550036653
+    }
+  ],
+  "minCenterSeparationMeters": 87.71969260407393,
+  "conservativeBodySphereGapMeters": 66.9370344288442,
+  "conservativeWholeAircraftWalkwayClearanceMeters": 82.56407050676563,
+  "minWholeAircraftAltitudeMeters": 58.082761362671036,
+  "limits": [
+    "Numerical camera/occlusion/size checks are not rendered screenshots or human visibility acceptance",
+    "No GPU, phone frame-time or thermal performance claim",
+    "Only the supplied inside pose and one just-outside pose are covered"
+  ]
+}

@@ -3,6 +3,7 @@ import type { Vec3 } from '../contracts';
 import { EPILOGUE as E } from '../content/epilogue-layout';
 import type { SceneDynamics } from './chapter-environments';
 import { addGround, PortKit, type Surface } from './port-kit';
+import { DeferredAirCover } from './DeferredAirCover';
 
 function block(k: PortKit, id: string, p: Vec3, size: Vec3, surface: Surface = 'pale') {
   k.box(surface, p, size); k.solid(id, p, size);
@@ -69,12 +70,15 @@ export function buildEpilogue(k: PortKit): SceneDynamics {
     k.box('signal', [x, 4.5, z], [1.2, 0.4, 1.2], [0, 0, 0], false);
   }
   let target = 0, progress = 0, previous: number | undefined, first = true;
+  const airCover = new DeferredAirCover(k.root);
   const apply = () => { door.position.y = 1.7 + progress * 3.5; };
   return { bounds: E.bounds, setFacts(facts) {
+    airCover.setFacts(facts);
     target = facts.includes('reception-door-open') ? 1 : 0;
     if (first) { first = false; progress = target; apply(); }
   }, update(time) {
+    airCover.update(time);
     const dt = previous === undefined ? 0 : Math.max(0, Math.min(0.1, time - previous)); previous = time;
     progress += Math.max(-dt / 2.0, Math.min(dt / 2.0, target - progress)); apply();
-  } };
+  }, dispose() { airCover.dispose(); } };
 }

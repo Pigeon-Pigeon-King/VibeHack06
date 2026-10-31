@@ -1,0 +1,427 @@
+{
+  "file": "../Assets/lowpoly-military/packs/github-operation-steel-tide-ccby/models/bamen_military_soldier.glb",
+  "sha256": "673649f2eee9ce69af5fe2cc4593f6492561cea44b915b451769369e81423697",
+  "textureValidation": "NOT_RUN: image decoding replaced for structural CLI inspection",
+  "boneNames": [
+    {
+      "name": "mixamorigHips",
+      "parent": "BamenMilitarySoldierRig"
+    },
+    {
+      "name": "mixamorigLeftUpLeg",
+      "parent": "mixamorigHips"
+    },
+    {
+      "name": "mixamorigLeftLeg",
+      "parent": "mixamorigLeftUpLeg"
+    },
+    {
+      "name": "mixamorigLeftFoot",
+      "parent": "mixamorigLeftLeg"
+    },
+    {
+      "name": "mixamorigLeftToeBase",
+      "parent": "mixamorigLeftFoot"
+    },
+    {
+      "name": "mixamorigLeftToe_End",
+      "parent": "mixamorigLeftToeBase"
+    },
+    {
+      "name": "mixamorigLeftToe_End_end",
+      "parent": "mixamorigLeftToe_End"
+    },
+    {
+      "name": "mixamorigRightUpLeg",
+      "parent": "mixamorigHips"
+    },
+    {
+      "name": "mixamorigRightLeg",
+      "parent": "mixamorigRightUpLeg"
+    },
+    {
+      "name": "mixamorigRightFoot",
+      "parent": "mixamorigRightLeg"
+    },
+    {
+      "name": "mixamorigRightToeBase",
+      "parent": "mixamorigRightFoot"
+    },
+    {
+      "name": "mixamorigRightToe_End",
+      "parent": "mixamorigRightToeBase"
+    },
+    {
+      "name": "mixamorigRightToe_End_end",
+      "parent": "mixamorigRightToe_End"
+    },
+    {
+      "name": "mixamorigSpine",
+      "parent": "mixamorigHips"
+    },
+    {
+      "name": "mixamorigSpine1",
+      "parent": "mixamorigSpine"
+    },
+    {
+      "name": "mixamorigSpine2",
+      "parent": "mixamorigSpine1"
+    },
+    {
+      "name": "mixamorigLeftShoulder",
+      "parent": "mixamorigSpine2"
+    },
+    {
+      "name": "mixamorigLeftArm",
+      "parent": "mixamorigLeftShoulder"
+    },
+    {
+      "name": "mixamorigLeftForeArm",
+      "parent": "mixamorigLeftArm"
+    },
+    {
+      "name": "mixamorigLeftHand",
+      "parent": "mixamorigLeftForeArm"
+    },
+    {
+      "name": "mixamorigLeftHandIndex1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandIndex2",
+      "parent": "mixamorigLeftHandIndex1"
+    },
+    {
+      "name": "mixamorigLeftHandIndex3",
+      "parent": "mixamorigLeftHandIndex2"
+    },
+    {
+      "name": "mixamorigLeftHandIndex4",
+      "parent": "mixamorigLeftHandIndex3"
+    },
+    {
+      "name": "mixamorigLeftHandIndex4_end",
+      "parent": "mixamorigLeftHandIndex4"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle2",
+      "parent": "mixamorigLeftHandMiddle1"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle3",
+      "parent": "mixamorigLeftHandMiddle2"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle4",
+      "parent": "mixamorigLeftHandMiddle3"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle4_end",
+      "parent": "mixamorigLeftHandMiddle4"
+    },
+    {
+      "name": "mixamorigLeftHandPinky1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandPinky2",
+      "parent": "mixamorigLeftHandPinky1"
+    },
+    {
+      "name": "mixamorigLeftHandPinky3",
+      "parent": "mixamorigLeftHandPinky2"
+    },
+    {
+      "name": "mixamorigLeftHandPinky4",
+      "parent": "mixamorigLeftHandPinky3"
+    },
+    {
+      "name": "mixamorigLeftHandPinky4_end",
+      "parent": "mixamorigLeftHandPinky4"
+    },
+    {
+      "name": "mixamorigLeftHandRing1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandRing2",
+      "parent": "mixamorigLeftHandRing1"
+    },
+    {
+      "name": "mixamorigLeftHandRing3",
+      "parent": "mixamorigLeftHandRing2"
+    },
+    {
+      "name": "mixamorigLeftHandRing4",
+      "parent": "mixamorigLeftHandRing3"
+    },
+    {
+      "name": "mixamorigLeftHandRing4_end",
+      "parent": "mixamorigLeftHandRing4"
+    },
+    {
+      "name": "mixamorigLeftHandThumb1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandThumb2",
+      "parent": "mixamorigLeftHandThumb1"
+    },
+    {
+      "name": "mixamorigLeftHandThumb3",
+      "parent": "mixamorigLeftHandThumb2"
+    },
+    {
+      "name": "mixamorigLeftHandThumb4",
+      "parent": "mixamorigLeftHandThumb3"
+    },
+    {
+      "name": "mixamorigLeftHandThumb4_end",
+      "parent": "mixamorigLeftHandThumb4"
+    },
+    {
+      "name": "mixamorigNeck",
+      "parent": "mixamorigSpine2"
+    },
+    {
+      "name": "mixamorigHead",
+      "parent": "mixamorigNeck"
+    },
+    {
+      "name": "mixamorigHeadTop_End",
+      "parent": "mixamorigHead"
+    },
+    {
+      "name": "mixamorigHeadTop_End_end",
+      "parent": "mixamorigHeadTop_End"
+    },
+    {
+      "name": "mixamorigRightShoulder",
+      "parent": "mixamorigSpine2"
+    },
+    {
+      "name": "mixamorigRightArm",
+      "parent": "mixamorigRightShoulder"
+    },
+    {
+      "name": "mixamorigRightForeArm",
+      "parent": "mixamorigRightArm"
+    },
+    {
+      "name": "mixamorigRightHand",
+      "parent": "mixamorigRightForeArm"
+    },
+    {
+      "name": "mixamorigRightHandIndex1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandIndex2",
+      "parent": "mixamorigRightHandIndex1"
+    },
+    {
+      "name": "mixamorigRightHandIndex3",
+      "parent": "mixamorigRightHandIndex2"
+    },
+    {
+      "name": "mixamorigRightHandIndex4",
+      "parent": "mixamorigRightHandIndex3"
+    },
+    {
+      "name": "mixamorigRightHandIndex4_end",
+      "parent": "mixamorigRightHandIndex4"
+    },
+    {
+      "name": "mixamorigRightHandMiddle1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandMiddle2",
+      "parent": "mixamorigRightHandMiddle1"
+    },
+    {
+      "name": "mixamorigRightHandMiddle3",
+      "parent": "mixamorigRightHandMiddle2"
+    },
+    {
+      "name": "mixamorigRightHandMiddle4",
+      "parent": "mixamorigRightHandMiddle3"
+    },
+    {
+      "name": "mixamorigRightHandMiddle4_end",
+      "parent": "mixamorigRightHandMiddle4"
+    },
+    {
+      "name": "mixamorigRightHandPinky1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandPinky2",
+      "parent": "mixamorigRightHandPinky1"
+    },
+    {
+      "name": "mixamorigRightHandPinky3",
+      "parent": "mixamorigRightHandPinky2"
+    },
+    {
+      "name": "mixamorigRightHandPinky4",
+      "parent": "mixamorigRightHandPinky3"
+    },
+    {
+      "name": "mixamorigRightHandPinky4_end",
+      "parent": "mixamorigRightHandPinky4"
+    },
+    {
+      "name": "mixamorigRightHandRing1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandRing2",
+      "parent": "mixamorigRightHandRing1"
+    },
+    {
+      "name": "mixamorigRightHandRing3",
+      "parent": "mixamorigRightHandRing2"
+    },
+    {
+      "name": "mixamorigRightHandRing4",
+      "parent": "mixamorigRightHandRing3"
+    },
+    {
+      "name": "mixamorigRightHandRing4_end",
+      "parent": "mixamorigRightHandRing4"
+    },
+    {
+      "name": "mixamorigRightHandThumb1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandThumb2",
+      "parent": "mixamorigRightHandThumb1"
+    },
+    {
+      "name": "mixamorigRightHandThumb3",
+      "parent": "mixamorigRightHandThumb2"
+    },
+    {
+      "name": "mixamorigRightHandThumb4",
+      "parent": "mixamorigRightHandThumb3"
+    },
+    {
+      "name": "mixamorigRightHandThumb4_end",
+      "parent": "mixamorigRightHandThumb4"
+    }
+  ],
+  "profile": "adult",
+  "version": "",
+  "structureReady": false,
+  "errors": [
+    {
+      "code": "missing-version",
+      "detail": "基础骨架须有版本。"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "root"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "pelvis"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "abdomen"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "chest"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "neck"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "head"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "clavicle.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "upper_arm.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "forearm.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "hand.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "clavicle.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "upper_arm.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "forearm.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "hand.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "thigh.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "shin.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "foot.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "toe.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "thigh.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "shin.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "foot.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "toe.R"
+    }
+  ],
+  "warnings": [],
+  "joints": [],
+  "skinnedMeshes": 11,
+  "vertices": 11501,
+  "clips": [],
+  "manualChecks": [
+    "逐关节转动：权重串动、拉伸、穿插与关节旋转中心",
+    "脚底、握持、枪械、担架和抱持接触；开始、循环与结束",
+    "第二名成人共用动作实测；儿童步幅、重心及抱持独立校准",
+    "第一人称关卡、暂停、跳过、检查点恢复与Windows运行"
+  ]
+}

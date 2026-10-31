@@ -25,13 +25,13 @@ Clide 优先考虑 `hosting-only`：得到独立 `*.clide.app` 地址，不建�
 | --- | --- | --- |
 | 静态构建 | `vite.config.ts` 使用 `base:'./'`；浏览器源码不依赖 Electron IPC、Node 文件系统或本机绝对资源路径；Rapier 使用 compat 包 | 发布前确认所有运行资源与解码器均进入 dist，实际站点无缺失请求 |
 | Clide 离线检查 | [dry-run 记录](../artifacts/clide-compatibility-20261031.json)：static-compatible，secret scan passed；3 文件、5,205,309 字节，未含正式 GLB／声音 | 该结果不是上传或手机验收；报告中的默认 license 字段也不替代作品及第三方许可决定 |
-| 手机操作 | 备用工作树候选已接入统一触屏 Intent、摇杆／观察／战斗／情境／掩护／暂停，含可选设置与旧记录兼容；尚未合回 main | 完成页面操作与真机多指验证；不能把输入逻辑测试当作手机可玩验收 |
-| 短横屏布局 | 主线旧版 844×390 的 S01 存在字幕／E 提示重叠；候选首次实际渲染已分离。随后生命标签和字幕靠下排布修正尚待重测 | 覆盖最终横屏／竖屏／桌面入口、长提示与触控区；详见 [触屏候选证据](../artifacts/mobile-evidence.md) |
+| 手机操作 | 备用候选已接入统一触屏 Intent；实际以单个接触完成移动、观察、射击、瞄准、换弹、接通撤离线、死亡及检查点恢复，尚未合回 main | 真机多指、掩护按钮和完整任务体验继续检查；不能把桌面模拟当作手机可玩验收 |
+| 短横屏布局 | 844×390的字幕／交互提示已分离并实际复查；390×844已观察HUD、字幕和触控，按实际截图收回竖屏腰射偏移后再次查看机匣可见 | 不同手机安全区、方向切换及多指遮挡仍需验证；详见 [运行资产与触控补验](../artifacts/asset-runtime-evidence.md) |
 | 浏览器历史返回 | 候选已区分 pagehide.persisted：缓存离开保留资源并暂停，pageshow恢复渲染但不自动恢复战斗；非缓存离开才销毁。事件序列测试通过 | 实际浏览器 BFCache、手机前后台与 GPU／声音恢复仍待验证 |
 | 声音／前后台 | 已有用户操作解锁 Web Audio、失焦暂停、检查点存储与写入失败提示 | 验证 iOS／Android 的开始、切后台、恢复和声音重开；当前不跨域名／浏览器同步存档 |
-| GLB 接入 | 当前为同步创建的程序化代理，没有异步 GLTFLoader／AnimationMixer 运行管线 | 增加资源清单、加载进度与重试、切章取消或代次保护、共享模型引用计数、骨架动作映射和纹理释放 |
+| GLB 接入 | 备用候选已有 ModelLibrary／GLTFLoader／独立骨架与 AnimationMixer 租约，真实 AK-47、加载进度／失败重试、取消代次与共享资源释放；首批真实人物骨架已有结构审计 | 正式角色／场景分批接入，动作、贴图、手部接触和真机验证；当前只支持嵌入式未压缩 GLB，尚无 Draco／Meshopt／KTX2 解码器 |
 | 手机性能 | 固定抗锯齿、DPR 上限 1.5、部分 2048² 阴影；尚无真实手机测量 | 按章节加载、移动画质档、贴图与材质预算、实例化／LOD；用真机帧时和内存制定预算 |
-| 许可 | Windows 包已含 Three.js／Rapier 许可；当前网页 dist 尚未附带许可文件 | 网页交付前补齐第三方许可与正式资产来源记录 |
+| 许可 | 候选已补入 Three.js／Rapier、AK-47、F-35B 原许可／署名与飞行组件源码包；10个public/dist文件字节一致、包内18个源文件摘要核对通过；未改变整体项目许可证 | 继续补齐后续正式资产来源，不能以首批文件齐备代替完整发布检查；见 `artifacts/asset-dist-audit.json` |
 
 现代 Three.js WebGLRenderer 要求 WebGL 2；不能承诺所有旧手机或旧 WebView 均可玩。初始验证对象为具备 WebGL 2 的 iOS Safari 与 Android Chrome，记录具体设备和版本；微信内置浏览器另列验证，不能以系统浏览器通过代替。参考 [WebGLRenderer](https://threejs.org/docs/pages/WebGLRenderer.html)、[Web Audio 自动播放限制](https://developer.mozilla.org/en-US/docs/Web/Media/Guides/Autoplay)。
 

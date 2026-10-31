@@ -1,7 +1,12 @@
 import { ACESFilmicToneMapping, BoxGeometry, CanvasTexture, Color, ConeGeometry, FogExp2, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PCFShadowMap, PerspectiveCamera, RingGeometry, Scene, Sprite, SpriteMaterial, SRGBColorSpace, Vector3, WebGLRenderer } from 'three';
 import type { CharacterModel, EnvironmentModel, RunMode, ScenarioId, UiState, Vec3 } from './contracts';
 import { buildEnvironment } from './presentation/environment';
-import { createCharacter, createWeaponView } from './presentation/characters';
+import { createCharacter } from './presentation/characters';
+import { ImportedWeaponView } from './presentation/ImportedWeaponView';
+import { createIndirectLighting } from './presentation/IndirectLighting';
+import { ModelLibrary } from './assets/ModelLibrary';
+import { ak47Source } from './assets/weapon-catalog';
+import type { ModelLoadProgress } from './assets/model-contracts';
 import { Feedback } from './presentation/Feedback';
 import { Sound } from './presentation/Sound';
 import { Input } from './player/Input';
@@ -54,9 +59,12 @@ class Game {
   private readonly scene = new Scene();
   private readonly camera = new PerspectiveCamera(75, innerWidth / innerHeight, 0.045, 1000);
   private readonly renderer = new WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+  private readonly indirectLighting: ReturnType<typeof createIndirectLighting>;
   private readonly sound = new Sound();
   private readonly feedback = new Feedback();
-  private readonly weapon = createWeaponView();
+  private readonly modelLibrary = new ModelLibrary();
+  private equipment: { state: 'loading' | 'ready' | 'error'; message?: string; progress?: ModelLoadProgress } = { state: 'loading' };
+  private readonly weapon = new ImportedWeaponView(this.modelLibrary, ak47Source(document.baseURI), state => { this.equipment = state; });
   private readonly supply = carriedSupply();
   private readonly heldItems = new HeldItemMotion();
   private readonly care = new CareView();
@@ -98,6 +106,10 @@ class Game {
     this.renderer.toneMapping = ACESFilmicToneMapping; this.renderer.toneMappingExposure = 1.0;
     this.renderer.shadowMap.enabled = true; this.renderer.shadowMap.type = PCFShadowMap;
     this.renderer.outputColorSpace = SRGBColorSpace;
+    this.weapon.setViewportAspect(this.camera.aspect);
+    this.indirectLighting = createIndirectLighting(this.renderer);
+    this.scene.environment = this.indirectLighting.texture;
+    this.scene.environmentIntensity = 0.55;
     view.append(this.renderer.domElement);
     this.renderer.domElement.setAttribute('aria-label', '游戏画面');
     this.renderer.domElement.tabIndex = -1;
@@ -125,6 +137,7 @@ class Game {
       importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
       setVolume: value => { this.sound.setVolume(value); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
       setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.pointerError = ''; this.persistSettings(); },
+      retryEquipment: () => this.weapon.retry(),
     });
     this.touchControls = new TouchControls(document.querySelector('#game-ui')!, {
       move: (forward, right) => this.input.setTouchMove(forward, right),
@@ -137,6 +150,7 @@ class Game {
     window.addEventListener('resize', () => {
       this.input.clearTouch();
       this.camera.aspect = innerWidth / innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(innerWidth, innerHeight);
+      this.weapon.setViewportAspect(this.camera.aspect);
     }, { signal: this.abort.signal });
     bindPageLifecycle(window, {
       suspend: () => {
@@ -169,6 +183,9 @@ class Game {
     for (const { model, label: tag } of this.characters.values()) { this.scene.remove(model.root); model.dispose(); if (tag) { this.scene.remove(tag); disposeLabel(tag); } }
     this.characters.clear(); this.feedback.clear(); this.sound.stopTransient();
     this.environment = buildEnvironment(id); this.scene.add(this.environment.root);
+    // S12 opens onto the distant arrival corridor; the combat-area haze hid
+    // the incoming escorts at a few hundred metres. Restore it in other scenes.
+    this.scene.fog = new FogExp2(0x677e8d, id === 'epilogue' ? 0.004 : 0.008);
     this.sim = new Simulation(id, this.environment.solids, saved, priorFacts);
     this.heldItems.reset(this.heldItem);
     if (id === 'escort') { this.monitor = new DepartureMonitor(); this.scene.add(this.monitor.screen); }
@@ -393,7 +410,9 @@ class Game {
     this.marker.position.set(...objective.point);
     this.feedback.update(active ? dt : 0, sim.ballistics.projectiles);
     const diagnostics = import.meta.env.DEV ? (this.qaImported ? '检查点恢复 · 局部视觉验收\n' : '') + `阶段 ${m.phase} · ${p.name} · 坐标 ${p.position.map(v => v.toFixed(1)).join(', ')} · ${Math.round(this.fps)} FPS\n` +
-      `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}` : undefined;
+      `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}` +
+      (sim.scenario === 'epilogue' ? ` · 护航 ${this.environment.root.userData.airCoverStatus}` : '') +
+      `\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}` : undefined;
     const evacuees = sim.scenario === 'transfer' ? sim.actors.filter(a => a.role === 'cart')
       : sim.scenario === 'epilogue' ? sim.actors.filter(a => a.id.startsWith('worker-') || a.id === 'supply-cart')
       : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-'))
@@ -409,10 +428,13 @@ class Game {
       subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, hurtFlash: sim.hurtFlash,
       lowMotion: this.lowMotion, touchControls: this.input.touchEnabled, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,
+      equipmentStatus: this.equipment.state === 'loading' ? '装备载入中' : undefined,
+      equipmentError: this.equipment.state === 'error',
       chapter: Boolean(this.chapter),
       continueLabel: this.savedCampaign ? `继续 · ${stageFor(this.savedCampaign.snapshot.mission.scenario)?.title ?? '第一关'}` : undefined,
       nextLabel: this.chapter && nextStage(sim.scenario) ? `继续 · ${nextStage(sim.scenario)!.title}` : undefined,
-      error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings].filter(Boolean).join(' '), diagnostics,
+      error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings,
+        this.equipment.state === 'error' ? `装备载入失败。${this.mode === 'playing' ? '可在暂停菜单重试。' : ''}` : ''].filter(Boolean).join(' '), diagnostics,
     };
     this.ui.render(state);
     // Every current staged sequence supports skip; these three first wait for an
@@ -446,11 +468,12 @@ class Game {
     this.disposed = true;
     this.objectiveIndicator.dispose();
     cancelAnimationFrame(this.raf); this.abort.abort(); this.touchControls.dispose(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
-    this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
+    this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.modelLibrary.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
     for (const { model, label: tag } of this.characters.values()) { model.dispose(); if (tag) disposeLabel(tag); }
     disposeLabel(this.markerLabel);
     this.marker.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshBasicMaterial).dispose(); } });
+    this.scene.environment = null; this.indirectLighting.dispose();
     this.renderer.dispose();
   }
 }

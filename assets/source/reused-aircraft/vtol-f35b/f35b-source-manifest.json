@@ -1,0 +1,57 @@
+{
+  "repository": "https://github.com/FGMEMBERS/F-35B",
+  "revision": "2726b3bdf3c7c54ea09a5d4a248e86a739604ca7",
+  "license": "GPL-3.0",
+  "files": [
+    {
+      "path": "License.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "F-35B-yasim-set.xml",
+      "bytes": 19681,
+      "sha256": "f1c9d95580ed4bd06ea8c8d86f5d1c1da1bb8dffd1dbcd9db602b4ec8e798623"
+    },
+    {
+      "path": "Models/F-35B.ac",
+      "bytes": 1628471,
+      "sha256": "fce5758edc01a37c741605c4044425ba785790eaefad39c9d7ef772ee132e878"
+    },
+    {
+      "path": "Models/F-35B.xml",
+      "bytes": 19493,
+      "sha256": "343478543918bd77bd9d213db372680f62128508e53ee3801b49ffa14761d36b"
+    },
+    {
+      "path": "Models/Engine.ac",
+      "bytes": 94685,
+      "sha256": "c7638a624428f9163b19242fa9a24b3c9f7ccbf8488ac6feeec04707d515a4f1"
+    },
+    {
+      "path": "Models/Engine.xml",
+      "bytes": 6495,
+      "sha256": "2206938c0294490bada2caf04cccf7cd93f224508c202f173856fbfdd2630009"
+    },
+    {
+      "path": "Models/Gear.ac",
+      "bytes": 306146,
+      "sha256": "36de5d1a47132f8b5004783b9d1829eea466037b0129ab1beeba2bb12427caa9"
+    },
+    {
+      "path": "Models/Gear.xml",
+      "bytes": 7772,
+      "sha256": "3f71d521d10f9b64c02d2c96e00f7d7b4e3e8d91c36bd745e5a7e93c938090d1"
+    },
+    {
+      "path": "Models/Cockpit.ac",
+      "bytes": 544161,
+      "sha256": "0d90400e3311e616c3c246fb4378d2031c8d71c416ef460c9bbe8310e2d3fee3"
+    },
+    {
+      "path": "Models/Cockpit.xml",
+      "bytes": 2229,
+      "sha256": "cdef4c33b47a2533172b476a2c59d17e4731a586e1373b10702edb536bb3f94e"
+    }
+  ]
+}

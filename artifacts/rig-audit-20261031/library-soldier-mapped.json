@@ -1,0 +1,840 @@
+{
+  "file": "../Assets/lowpoly-military/packs/github-operation-steel-tide-ccby/models/bamen_military_soldier.glb",
+  "sha256": "673649f2eee9ce69af5fe2cc4593f6492561cea44b915b451769369e81423697",
+  "textureValidation": "NOT_RUN: image decoding replaced for structural CLI inspection",
+  "boneNames": [
+    {
+      "name": "mixamorigHips",
+      "parent": "BamenMilitarySoldierRig"
+    },
+    {
+      "name": "mixamorigLeftUpLeg",
+      "parent": "mixamorigHips"
+    },
+    {
+      "name": "mixamorigLeftLeg",
+      "parent": "mixamorigLeftUpLeg"
+    },
+    {
+      "name": "mixamorigLeftFoot",
+      "parent": "mixamorigLeftLeg"
+    },
+    {
+      "name": "mixamorigLeftToeBase",
+      "parent": "mixamorigLeftFoot"
+    },
+    {
+      "name": "mixamorigLeftToe_End",
+      "parent": "mixamorigLeftToeBase"
+    },
+    {
+      "name": "mixamorigLeftToe_End_end",
+      "parent": "mixamorigLeftToe_End"
+    },
+    {
+      "name": "mixamorigRightUpLeg",
+      "parent": "mixamorigHips"
+    },
+    {
+      "name": "mixamorigRightLeg",
+      "parent": "mixamorigRightUpLeg"
+    },
+    {
+      "name": "mixamorigRightFoot",
+      "parent": "mixamorigRightLeg"
+    },
+    {
+      "name": "mixamorigRightToeBase",
+      "parent": "mixamorigRightFoot"
+    },
+    {
+      "name": "mixamorigRightToe_End",
+      "parent": "mixamorigRightToeBase"
+    },
+    {
+      "name": "mixamorigRightToe_End_end",
+      "parent": "mixamorigRightToe_End"
+    },
+    {
+      "name": "mixamorigSpine",
+      "parent": "mixamorigHips"
+    },
+    {
+      "name": "mixamorigSpine1",
+      "parent": "mixamorigSpine"
+    },
+    {
+      "name": "mixamorigSpine2",
+      "parent": "mixamorigSpine1"
+    },
+    {
+      "name": "mixamorigLeftShoulder",
+      "parent": "mixamorigSpine2"
+    },
+    {
+      "name": "mixamorigLeftArm",
+      "parent": "mixamorigLeftShoulder"
+    },
+    {
+      "name": "mixamorigLeftForeArm",
+      "parent": "mixamorigLeftArm"
+    },
+    {
+      "name": "mixamorigLeftHand",
+      "parent": "mixamorigLeftForeArm"
+    },
+    {
+      "name": "mixamorigLeftHandIndex1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandIndex2",
+      "parent": "mixamorigLeftHandIndex1"
+    },
+    {
+      "name": "mixamorigLeftHandIndex3",
+      "parent": "mixamorigLeftHandIndex2"
+    },
+    {
+      "name": "mixamorigLeftHandIndex4",
+      "parent": "mixamorigLeftHandIndex3"
+    },
+    {
+      "name": "mixamorigLeftHandIndex4_end",
+      "parent": "mixamorigLeftHandIndex4"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle2",
+      "parent": "mixamorigLeftHandMiddle1"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle3",
+      "parent": "mixamorigLeftHandMiddle2"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle4",
+      "parent": "mixamorigLeftHandMiddle3"
+    },
+    {
+      "name": "mixamorigLeftHandMiddle4_end",
+      "parent": "mixamorigLeftHandMiddle4"
+    },
+    {
+      "name": "mixamorigLeftHandPinky1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandPinky2",
+      "parent": "mixamorigLeftHandPinky1"
+    },
+    {
+      "name": "mixamorigLeftHandPinky3",
+      "parent": "mixamorigLeftHandPinky2"
+    },
+    {
+      "name": "mixamorigLeftHandPinky4",
+      "parent": "mixamorigLeftHandPinky3"
+    },
+    {
+      "name": "mixamorigLeftHandPinky4_end",
+      "parent": "mixamorigLeftHandPinky4"
+    },
+    {
+      "name": "mixamorigLeftHandRing1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandRing2",
+      "parent": "mixamorigLeftHandRing1"
+    },
+    {
+      "name": "mixamorigLeftHandRing3",
+      "parent": "mixamorigLeftHandRing2"
+    },
+    {
+      "name": "mixamorigLeftHandRing4",
+      "parent": "mixamorigLeftHandRing3"
+    },
+    {
+      "name": "mixamorigLeftHandRing4_end",
+      "parent": "mixamorigLeftHandRing4"
+    },
+    {
+      "name": "mixamorigLeftHandThumb1",
+      "parent": "mixamorigLeftHand"
+    },
+    {
+      "name": "mixamorigLeftHandThumb2",
+      "parent": "mixamorigLeftHandThumb1"
+    },
+    {
+      "name": "mixamorigLeftHandThumb3",
+      "parent": "mixamorigLeftHandThumb2"
+    },
+    {
+      "name": "mixamorigLeftHandThumb4",
+      "parent": "mixamorigLeftHandThumb3"
+    },
+    {
+      "name": "mixamorigLeftHandThumb4_end",
+      "parent": "mixamorigLeftHandThumb4"
+    },
+    {
+      "name": "mixamorigNeck",
+      "parent": "mixamorigSpine2"
+    },
+    {
+      "name": "mixamorigHead",
+      "parent": "mixamorigNeck"
+    },
+    {
+      "name": "mixamorigHeadTop_End",
+      "parent": "mixamorigHead"
+    },
+    {
+      "name": "mixamorigHeadTop_End_end",
+      "parent": "mixamorigHeadTop_End"
+    },
+    {
+      "name": "mixamorigRightShoulder",
+      "parent": "mixamorigSpine2"
+    },
+    {
+      "name": "mixamorigRightArm",
+      "parent": "mixamorigRightShoulder"
+    },
+    {
+      "name": "mixamorigRightForeArm",
+      "parent": "mixamorigRightArm"
+    },
+    {
+      "name": "mixamorigRightHand",
+      "parent": "mixamorigRightForeArm"
+    },
+    {
+      "name": "mixamorigRightHandIndex1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandIndex2",
+      "parent": "mixamorigRightHandIndex1"
+    },
+    {
+      "name": "mixamorigRightHandIndex3",
+      "parent": "mixamorigRightHandIndex2"
+    },
+    {
+      "name": "mixamorigRightHandIndex4",
+      "parent": "mixamorigRightHandIndex3"
+    },
+    {
+      "name": "mixamorigRightHandIndex4_end",
+      "parent": "mixamorigRightHandIndex4"
+    },
+    {
+      "name": "mixamorigRightHandMiddle1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandMiddle2",
+      "parent": "mixamorigRightHandMiddle1"
+    },
+    {
+      "name": "mixamorigRightHandMiddle3",
+      "parent": "mixamorigRightHandMiddle2"
+    },
+    {
+      "name": "mixamorigRightHandMiddle4",
+      "parent": "mixamorigRightHandMiddle3"
+    },
+    {
+      "name": "mixamorigRightHandMiddle4_end",
+      "parent": "mixamorigRightHandMiddle4"
+    },
+    {
+      "name": "mixamorigRightHandPinky1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandPinky2",
+      "parent": "mixamorigRightHandPinky1"
+    },
+    {
+      "name": "mixamorigRightHandPinky3",
+      "parent": "mixamorigRightHandPinky2"
+    },
+    {
+      "name": "mixamorigRightHandPinky4",
+      "parent": "mixamorigRightHandPinky3"
+    },
+    {
+      "name": "mixamorigRightHandPinky4_end",
+      "parent": "mixamorigRightHandPinky4"
+    },
+    {
+      "name": "mixamorigRightHandRing1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandRing2",
+      "parent": "mixamorigRightHandRing1"
+    },
+    {
+      "name": "mixamorigRightHandRing3",
+      "parent": "mixamorigRightHandRing2"
+    },
+    {
+      "name": "mixamorigRightHandRing4",
+      "parent": "mixamorigRightHandRing3"
+    },
+    {
+      "name": "mixamorigRightHandRing4_end",
+      "parent": "mixamorigRightHandRing4"
+    },
+    {
+      "name": "mixamorigRightHandThumb1",
+      "parent": "mixamorigRightHand"
+    },
+    {
+      "name": "mixamorigRightHandThumb2",
+      "parent": "mixamorigRightHandThumb1"
+    },
+    {
+      "name": "mixamorigRightHandThumb3",
+      "parent": "mixamorigRightHandThumb2"
+    },
+    {
+      "name": "mixamorigRightHandThumb4",
+      "parent": "mixamorigRightHandThumb3"
+    },
+    {
+      "name": "mixamorigRightHandThumb4_end",
+      "parent": "mixamorigRightHandThumb4"
+    }
+  ],
+  "profile": "adult",
+  "version": "reference-bamen-only-v1",
+  "structureReady": true,
+  "errors": [],
+  "warnings": [],
+  "joints": [
+    {
+      "semantic": "root",
+      "name": "BamenMilitarySoldierRig",
+      "restMatrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        -3.029462621882817e-9,
+        0.009999999434196888,
+        0,
+        0,
+        -0.009999999434196888,
+        -3.029462621882817e-9,
+        0,
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "semantic": "pelvis",
+      "name": "mixamorigHips",
+      "parent": "root",
+      "restMatrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0.009999999091911385,
+        3.371747916609139e-9,
+        0,
+        0,
+        -3.371747916609139e-9,
+        0.009999999091911385,
+        0,
+        0,
+        1.1924770523032675,
+        -0.02626696075126041,
+        1
+      ]
+    },
+    {
+      "semantic": "abdomen",
+      "name": "mixamorigSpine",
+      "parent": "pelvis",
+      "restMatrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0.009999919761224243,
+        0.00003983224030190478,
+        0,
+        0,
+        -0.00003983224030190478,
+        0.009999919761224243,
+        0,
+        0,
+        1.3041209476547295,
+        -0.02582225606957487,
+        1
+      ]
+    },
+    {
+      "semantic": "chest",
+      "name": "mixamorigSpine2",
+      "parent": "abdomen",
+      "restMatrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0.00999991975987021,
+        0.00003983258023191692,
+        0,
+        0,
+        -0.00003983258023191692,
+        0.00999991975987021,
+        0,
+        0,
+        1.5832298073599547,
+        -0.024710497885941075,
+        1
+      ]
+    },
+    {
+      "semantic": "neck",
+      "name": "mixamorigNeck",
+      "parent": "chest",
+      "restMatrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0.009999999091916456,
+        3.3857158096540184e-9,
+        0,
+        0,
+        -3.3857158096540184e-9,
+        0.009999999091916456,
+        0,
+        0,
+        1.7506952566692848,
+        -0.02404343563094877,
+        1
+      ]
+    },
+    {
+      "semantic": "head",
+      "name": "mixamorigHead",
+      "parent": "neck",
+      "restMatrix": [
+        0.009999999776482582,
+        0,
+        0,
+        0,
+        0,
+        0.009999997899823669,
+        3.3857154770995093e-9,
+        0,
+        0,
+        -3.385715880708294e-9,
+        0.009999999091916456,
+        0,
+        0,
+        1.8223737119781438,
+        -0.009337475789356953,
+        1
+      ]
+    },
+    {
+      "semantic": "clavicle.L",
+      "name": "mixamorigLeftShoulder",
+      "parent": "chest",
+      "restMatrix": [
+        0.00004929774514630431,
+        0.000039787887215904805,
+        -0.009999795811815138,
+        0,
+        0.009586867800049415,
+        -0.0028444005828270487,
+        0.00003594433669196655,
+        0,
+        -0.002844201081798346,
+        -0.009586852534858557,
+        -0.00005216610142780828,
+        0,
+        0.07519554923782756,
+        1.7284091579710763,
+        -0.023762125443424258,
+        1
+      ]
+    },
+    {
+      "semantic": "upper_arm.L",
+      "name": "mixamorigLeftArm",
+      "parent": "clavicle.L",
+      "restMatrix": [
+        0.00017544426314176028,
+        0.00046511111378496933,
+        -0.009987634591076348,
+        0,
+        0.006217475710786728,
+        -0.007828010224652395,
+        -0.00025532311622923317,
+        0,
+        -0.007830208276498718,
+        -0.006205309757741587,
+        -0.000426519347718095,
+        0,
+        0.22526159088247172,
+        1.6838849376176517,
+        -0.023199476031871683,
+        1
+      ]
+    },
+    {
+      "semantic": "forearm.L",
+      "name": "mixamorigLeftForeArm",
+      "parent": "upper_arm.L",
+      "restMatrix": [
+        0.0013887277826015113,
+        -0.0010757097643190657,
+        -0.00984450287614716,
+        0,
+        0.006243267418119188,
+        -0.0076213814048050384,
+        0.001713504127437847,
+        0,
+        -0.007687196738175155,
+        -0.006384147215595801,
+        -0.00038680771806498966,
+        0,
+        0.39579365728416116,
+        1.4691794488779122,
+        -0.030202431612597832,
+        1
+      ]
+    },
+    {
+      "semantic": "hand.L",
+      "name": "mixamorigLeftHand",
+      "parent": "forearm.L",
+      "restMatrix": [
+        0.0015766322512034351,
+        -0.0002888638650159084,
+        -0.009870701213512401,
+        0,
+        0.005552386269896131,
+        -0.008240054431080808,
+        0.001128017918505914,
+        0,
+        -0.008166099233501754,
+        -0.005658443788829247,
+        -0.0011387652499235685,
+        0,
+        0.5667339189275179,
+        1.260506558996565,
+        0.016713195482815076,
+        1
+      ]
+    },
+    {
+      "semantic": "clavicle.R",
+      "name": "mixamorigRightShoulder",
+      "parent": "chest",
+      "restMatrix": [
+        -0.000025665202111811166,
+        -0.00003986451112335215,
+        0.009999885410055576,
+        0,
+        -0.009586869410120043,
+        -0.0028443963518621287,
+        -0.00003594387051818837,
+        0,
+        0.002844508044383405,
+        -0.009586855536250155,
+        -0.00003091804071075076,
+        0,
+        -0.07519554923782756,
+        1.728409157963178,
+        -0.024324761939767486,
+        1
+      ]
+    },
+    {
+      "semantic": "upper_arm.R",
+      "name": "mixamorigRightArm",
+      "parent": "clavicle.R",
+      "restMatrix": [
+        0.000044186211208717196,
+        -0.000275252636245168,
+        0.00999611061587734,
+        0,
+        -0.006218398509097977,
+        -0.007829181984171471,
+        -0.00018809663298202328,
+        0,
+        0.007831314960460476,
+        -0.006215151355030563,
+        -0.00020575807840663996,
+        0,
+        -0.225261684011275,
+        1.6838847633544411,
+        -0.02488740169585334,
+        1
+      ]
+    },
+    {
+      "semantic": "forearm.R",
+      "name": "mixamorigRightForeArm",
+      "parent": "upper_arm.R",
+      "restMatrix": [
+        0.0012159570048071299,
+        0.0012059857419305271,
+        0.009852256344543864,
+        0,
+        -0.006244351635696154,
+        -0.007622682221513961,
+        0.0017037425948657945,
+        0,
+        0.00771553284928839,
+        -0.006359266826190349,
+        -0.00017382633318374413,
+        0,
+        -0.3957937556331328,
+        1.4691788612914485,
+        -0.030045725374328525,
+        1
+      ]
+    },
+    {
+      "semantic": "hand.R",
+      "name": "mixamorigRightHand",
+      "parent": "forearm.R",
+      "restMatrix": [
+        0.0017233722101261037,
+        0.00025642833896316803,
+        0.009847037078072602,
+        0,
+        -0.005723092514799616,
+        -0.008110191326412504,
+        0.0012128220612922349,
+        0,
+        0.00801723834950417,
+        -0.005844568574191456,
+        -0.0012509326063852475,
+        0,
+        -0.5667339962121333,
+        1.2605063099272098,
+        0.016594625194373092,
+        1
+      ]
+    },
+    {
+      "semantic": "thigh.L",
+      "name": "mixamorigLeftUpLeg",
+      "parent": "pelvis",
+      "restMatrix": [
+        -0.009999294236554958,
+        -0.00011866935419311283,
+        0.000006949397274373732,
+        0,
+        0.00011887263310667009,
+        -0.009982095689396129,
+        0.0005861549061930429,
+        0,
+        -1.8907983030914358e-8,
+        0.0005861981615768418,
+        0.009982835133461815,
+        0,
+        0.1289274949820154,
+        1.130552919239218,
+        -0.024433638887189617,
+        1
+      ]
+    },
+    {
+      "semantic": "shin.L",
+      "name": "mixamorigLeftLeg",
+      "parent": "thigh.L",
+      "restMatrix": [
+        -0.00999993657679649,
+        0.000035775750205344334,
+        -0.0000021172500677410703,
+        0,
+        -0.000035376767419869366,
+        -0.00994839529572038,
+        -0.0010139722867357338,
+        0,
+        -0.000005733881004044362,
+        -0.00101395075153673,
+        0.00994849069712765,
+        0,
+        0.13494301094303934,
+        0.6254115223960415,
+        0.005228575228666595,
+        1
+      ]
+    },
+    {
+      "semantic": "foot.L",
+      "name": "mixamorigLeftFoot",
+      "parent": "shin.L",
+      "restMatrix": [
+        -0.009997317970040331,
+        0.00005839477437263961,
+        -0.00022408888015312554,
+        0,
+        -0.0002226725437968949,
+        -0.005080982888491518,
+        0.008610135837656055,
+        0,
+        -0.00006358026675661251,
+        0.008612790179917784,
+        0.0050809411733368955,
+        0,
+        0.13312757424087987,
+        0.11490624896297075,
+        -0.04680370480651179,
+        1
+      ]
+    },
+    {
+      "semantic": "toe.L",
+      "name": "mixamorigLeftToeBase",
+      "parent": "foot.L",
+      "restMatrix": [
+        -0.00992076640284883,
+        -0.0009528246750991621,
+        -0.0008188502596039583,
+        0,
+        -0.0008179682641518864,
+        -0.00004834505937516536,
+        0.009966401990607053,
+        0,
+        -0.0009535795639367307,
+        0.009954384125381636,
+        -0.000029971976813281467,
+        0,
+        0.12797801184240667,
+        -0.0025977781895512725,
+        0.15231645095677282,
+        1
+      ]
+    },
+    {
+      "semantic": "thigh.R",
+      "name": "mixamorigRightUpLeg",
+      "parent": "pelvis",
+      "restMatrix": [
+        -0.00999929186875118,
+        0.00011868542794305281,
+        -0.000006812489254311119,
+        0,
+        -0.0001188808193972102,
+        -0.00998278259496099,
+        0.0005743897166762878,
+        0,
+        1.6408636092511325e-8,
+        0.000574431552474022,
+        0.009983514339761686,
+        0,
+        -0.1289274949820154,
+        1.1305529198173965,
+        -0.026148411918886828,
+        1
+      ]
+    },
+    {
+      "semantic": "shin.R",
+      "name": "mixamorigRightLeg",
+      "parent": "thigh.R",
+      "restMatrix": [
+        -0.009999934382659321,
+        -0.000035757989625541945,
+        0.0000020590735722909446,
+        0,
+        0.0000353979431032768,
+        -0.009954247420916204,
+        -0.0009548412758239815,
+        0,
+        0.000005463948204232735,
+        -0.000954822438905689,
+        0.00995433586380138,
+        0,
+        -0.13494306183056637,
+        0.625411074609009,
+        0.0029164627231096016,
+        1
+      ]
+    },
+    {
+      "semantic": "foot.R",
+      "name": "mixamorigRightFoot",
+      "parent": "shin.R",
+      "restMatrix": [
+        -0.009997283248138502,
+        -0.00005723254481691334,
+        0.0002259880408591644,
+        0,
+        0.0002235624116099917,
+        -0.005101271253465247,
+        0.008598105463227704,
+        0,
+        0.00006607334519801876,
+        0.008600800582426653,
+        0.005101180562942369,
+        0,
+        -0.1331276715670215,
+        0.11490612975297665,
+        -0.04605269900133281,
+        1
+      ]
+    },
+    {
+      "semantic": "toe.R",
+      "name": "mixamorigRightToeBase",
+      "parent": "foot.R",
+      "restMatrix": [
+        -0.009920891731851011,
+        0.0009494459263368601,
+        0.0008212684613723946,
+        0,
+        0.0008203743632787215,
+        -0.000048485765213671095,
+        0.009966201071386512,
+        0,
+        0.0009502166106593988,
+        0.009954709504432755,
+        -0.00002978454551212737,
+        0,
+        -0.12797806376246473,
+        -0.0025981616297683086,
+        0.15199852643199596,
+        1
+      ]
+    }
+  ],
+  "skinnedMeshes": 11,
+  "vertices": 11501,
+  "clips": [],
+  "manualChecks": [
+    "逐关节转动：权重串动、拉伸、穿插与关节旋转中心",
+    "脚底、握持、枪械、担架和抱持接触；开始、循环与结束",
+    "第二名成人共用动作实测；儿童步幅、重心及抱持独立校准",
+    "第一人称关卡、暂停、跳过、检查点恢复与Windows运行"
+  ]
+}

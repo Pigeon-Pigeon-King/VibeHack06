@@ -1,0 +1,13 @@
+{
+  "id": "github-operation-steel-tide-ak47",
+  "title": "Steel Tide AK-47 World Weapon",
+  "author": "taradavies (source), Operation Steel Tide adaptation",
+  "source_url": "https://opengameart.org/content/ak-47-1",
+  "download_url": "https://github.com/AetherRadar/operation-steel-tide/tree/7ef7b539af1e0166e1d2735dc0ba200a08ba6492/assets/models/steel_tide_ak74",
+  "license": "CC0 1.0 Universal (source geometry; adaptation record retained)",
+  "license_url": "https://creativecommons.org/publicdomain/zero/1.0/",
+  "retrieved_at": "2026-09-20T00:00:00+08:00",
+  "description": "Self-contained world-space AK-47 GLB adapted from taradavies' OpenGameArt CC0 model. It includes packed PBR images, mechanism nodes, and no external texture sidecars.",
+  "tags": ["github", "opengameart", "ak47", "ak74", "rifle", "weapon", "military", "low-poly", "cc0", "embedded-textures"],
+  "git_sha": "7ef7b539af1e0166e1d2735dc0ba200a08ba6492"
+}
