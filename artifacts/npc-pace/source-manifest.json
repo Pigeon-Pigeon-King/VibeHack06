@@ -606,5 +606,15 @@
     "models/characters/ch-zhou-rig-v1.glb": "e643df2c1bc4a42ebd35d7b1da52a769222c09aa501963f49cd53dcb0a7bcd98",
     "models/weapons/ak47-world-r1.glb": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
     "sources/reused-aircraft/f35b-ganymede-source.zip": "2309ebd2b9017be78ccdc159ce03388598203d8d059f1ac6649593dcb9724b48"
+  },
+  "mainVerification": {
+    "head": "547312f73e3c1d4588e2fbe0e97a7055b2e475e4",
+    "verifiedAt": "2026-10-31T15:46:58.587786+08:00",
+    "runtimeInputsMatched": 357,
+    "distFilesMatched": 245,
+    "typecheck": "PASS",
+    "productionBuild": "PASS",
+    "localHttp5188": "200 for /, /src/actors/Locomotion.ts (4.5), /src/mission/Rescue.ts (ride)",
+    "browserVisual": "NOT_RUN: disabled in Work settings"
   }
 }
