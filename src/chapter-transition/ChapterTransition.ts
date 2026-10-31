@@ -1,6 +1,6 @@
 import { TransitionController } from './TransitionController';
 import { TransitionOverlay } from './TransitionOverlay';
-import type { ChapterBridge, TransitionPorts, TransitionSnapshot } from './types';
+import type { TransitionPorts, TransitionScript, TransitionSnapshot } from './types';
 
 /** Optional browser shell. Keep its instance alive so a held click can be drained after entry. */
 export class ChapterTransition<T> {
@@ -27,7 +27,7 @@ export class ChapterTransition<T> {
     window.addEventListener('focus', () => { this.windowFocused = true; this.syncPause(); }, { signal: this.abort.signal });
   }
 
-  start(bridge: ChapterBridge): boolean {
+  start(bridge: TransitionScript): boolean {
     if (this.disposed) return false;
     const started = this.controller.start(bridge);
     if (!started) return false;

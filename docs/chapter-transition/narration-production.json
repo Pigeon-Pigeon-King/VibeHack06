@@ -1,0 +1,330 @@
+{
+  "schemaVersion": 1,
+  "sources": [
+    {
+      "path": "src/chapter-transition/opening.json",
+      "sha256": "2cedf112062c87b7f30119f44f10623124cfe1a2d6ecb892b1c196c5d1533194"
+    },
+    {
+      "path": "src/chapter-transition/bridges.json",
+      "sha256": "3680b3bbf98aa365b652f732fad0f955e3ae4e2316b462ad0cbe9353d078d93d"
+    }
+  ],
+  "sequences": [
+    {
+      "id": "opening-campaign",
+      "kind": "opening",
+      "from": null,
+      "to": "S01",
+      "cueIds": [
+        "opening-campaign-01",
+        "opening-campaign-02",
+        "opening-campaign-03",
+        "opening-campaign-04"
+      ]
+    },
+    {
+      "id": "bridge-s01-s02",
+      "kind": "bridge",
+      "from": "S01",
+      "to": "S02",
+      "cueIds": [
+        "bridge-s01-s02-01",
+        "bridge-s01-s02-02",
+        "bridge-s01-s02-03"
+      ]
+    },
+    {
+      "id": "bridge-s02-s03",
+      "kind": "bridge",
+      "from": "S02",
+      "to": "S03",
+      "cueIds": [
+        "bridge-s02-s03-01",
+        "bridge-s02-s03-02",
+        "bridge-s02-s03-03"
+      ]
+    },
+    {
+      "id": "bridge-s03-s04",
+      "kind": "bridge",
+      "from": "S03",
+      "to": "S04",
+      "cueIds": [
+        "bridge-s03-s04-01",
+        "bridge-s03-s04-02",
+        "bridge-s03-s04-03"
+      ]
+    },
+    {
+      "id": "bridge-s04-s05",
+      "kind": "bridge",
+      "from": "S04",
+      "to": "S05",
+      "cueIds": [
+        "bridge-s04-s05-01",
+        "bridge-s04-s05-02"
+      ]
+    },
+    {
+      "id": "bridge-s05-s06",
+      "kind": "bridge",
+      "from": "S05",
+      "to": "S06",
+      "cueIds": [
+        "bridge-s05-s06-01",
+        "bridge-s05-s06-02",
+        "bridge-s05-s06-03"
+      ]
+    },
+    {
+      "id": "bridge-s06-s07",
+      "kind": "bridge",
+      "from": "S06",
+      "to": "S07",
+      "cueIds": [
+        "bridge-s06-s07-01",
+        "bridge-s06-s07-02"
+      ]
+    },
+    {
+      "id": "bridge-s07-s08",
+      "kind": "bridge",
+      "from": "S07",
+      "to": "S08",
+      "cueIds": [
+        "bridge-s07-s08-01",
+        "bridge-s07-s08-02",
+        "bridge-s07-s08-03"
+      ]
+    },
+    {
+      "id": "bridge-s08-s09",
+      "kind": "bridge",
+      "from": "S08",
+      "to": "S09",
+      "cueIds": [
+        "bridge-s08-s09-01",
+        "bridge-s08-s09-02"
+      ]
+    },
+    {
+      "id": "bridge-s09-s10",
+      "kind": "bridge",
+      "from": "S09",
+      "to": "S10",
+      "cueIds": [
+        "bridge-s09-s10-01",
+        "bridge-s09-s10-02"
+      ]
+    },
+    {
+      "id": "bridge-s10-s11",
+      "kind": "bridge",
+      "from": "S10",
+      "to": "S11",
+      "cueIds": [
+        "bridge-s10-s11-01",
+        "bridge-s10-s11-02"
+      ]
+    },
+    {
+      "id": "bridge-s11-s12",
+      "kind": "bridge",
+      "from": "S11",
+      "to": "S12",
+      "cueIds": [
+        "bridge-s11-s12-01",
+        "bridge-s11-s12-02"
+      ]
+    }
+  ],
+  "cues": [
+    {
+      "cueId": "opening-campaign-01",
+      "sequenceId": "opening-campaign",
+      "text": "木卫三经过几代人的改造，有了可呼吸的空气；冰脊港的居民靠供热设施抵御寒冷。",
+      "readingSeconds": 10
+    },
+    {
+      "cueId": "opening-campaign-02",
+      "sequenceId": "opening-campaign",
+      "text": "当地爆发叛乱，工区居民挤进避难所，驻军守着入口，准备掩护人们从检修通道撤离。",
+      "readingSeconds": 10
+    },
+    {
+      "cueId": "opening-campaign-03",
+      "sequenceId": "opening-campaign",
+      "text": "九岁的陆闻川和父亲陆建平待在主厅，母亲许岚去了医院。",
+      "readingSeconds": 7
+    },
+    {
+      "cueId": "opening-campaign-04",
+      "sequenceId": "opening-campaign",
+      "text": "检修门前的过道被一张床垫堵住，陆建平准备过去帮人清出通路。",
+      "readingSeconds": 8
+    },
+    {
+      "cueId": "bridge-s01-s02-01",
+      "sequenceId": "bridge-s01-s02",
+      "text": "父亲拾枪冲向防线，闻川随人流挤过西侧隔断，进了撤离通道。",
+      "readingSeconds": 7.5
+    },
+    {
+      "cueId": "bridge-s01-s02-02",
+      "sequenceId": "bridge-s01-s02",
+      "text": "回到同一次失守稍早的时刻，年轻的周延接下了主厅西侧的防守。",
+      "readingSeconds": 8
+    },
+    {
+      "cueId": "bridge-s01-s02-03",
+      "sequenceId": "bridge-s01-s02",
+      "text": "他要打开检修门，护送居民穿过下一道隔断。",
+      "readingSeconds": 5.5
+    },
+    {
+      "cueId": "bridge-s02-s03-01",
+      "sequenceId": "bridge-s02-s03",
+      "text": "周延从那场失守中活了下来。",
+      "readingSeconds": 3.5
+    },
+    {
+      "cueId": "bridge-s02-s03-02",
+      "sequenceId": "bridge-s02-s03",
+      "text": "十年后，闻川已长大成人，和周延一起为港区的接应行动做准备。",
+      "readingSeconds": 7.5
+    },
+    {
+      "cueId": "bridge-s02-s03-03",
+      "sequenceId": "bridge-s02-s03",
+      "text": "集合之前，闻川还要修好通风，把护理物资交到许岚手里。",
+      "readingSeconds": 7
+    },
+    {
+      "cueId": "bridge-s03-s04-01",
+      "sequenceId": "bridge-s03-s04",
+      "text": "闻川与周延约好共享情报，等护送人员到站，再安排接防换班。",
+      "readingSeconds": 7.5
+    },
+    {
+      "cueId": "bridge-s03-s04-02",
+      "sequenceId": "bridge-s03-s04",
+      "text": "夜班交完，闻川带上装备，与郑铎进入占领区。",
+      "readingSeconds": 5.5
+    },
+    {
+      "cueId": "bridge-s03-s04-03",
+      "sequenceId": "bridge-s03-s04",
+      "text": "他们要先接回熟悉港口设备的技工，恢复接收中心的运作。",
+      "readingSeconds": 7
+    },
+    {
+      "cueId": "bridge-s04-s05-01",
+      "sequenceId": "bridge-s04-s05",
+      "text": "港务人员已在转运位交接，闻川也答应把罗敬的家属送到安全地点。",
+      "readingSeconds": 8
+    },
+    {
+      "cueId": "bridge-s04-s05-02",
+      "sequenceId": "bridge-s04-s05",
+      "text": "北闸的维修工还在等撤离，周延要守住来路，掩护他们沿西侧后路退入内门。",
+      "readingSeconds": 9
+    },
+    {
+      "cueId": "bridge-s05-s06-01",
+      "sequenceId": "bridge-s05-s06",
+      "text": "北闸的维修工已退到内侧，周延和郑铎也沿后线撤回。",
+      "readingSeconds": 6.5
+    },
+    {
+      "cueId": "bridge-s05-s06-02",
+      "sequenceId": "bridge-s05-s06",
+      "text": "周延把敌军机动部队仍在港区的消息传给闻川，闻川继续协助转运。",
+      "readingSeconds": 8
+    },
+    {
+      "cueId": "bridge-s05-s06-03",
+      "sequenceId": "bridge-s05-s06",
+      "text": "西货廊的患者车堵在一道转接门前，正等闻川排除故障。",
+      "readingSeconds": 7
+    },
+    {
+      "cueId": "bridge-s06-s07-01",
+      "sequenceId": "bridge-s06-s07",
+      "text": "患者通过转接门后，闻川为周延扣下邵原转移预告的事与他争执，随后跟罗敬回去做维修。",
+      "readingSeconds": 11
+    },
+    {
+      "cueId": "bridge-s06-s07-02",
+      "sequenceId": "bridge-s06-s07",
+      "text": "东侧机动队正逼近检修台，周延要掩护维修人员经泵房退入内门。",
+      "readingSeconds": 8
+    },
+    {
+      "cueId": "bridge-s07-s08-01",
+      "sequenceId": "bridge-s07-s08",
+      "text": "维修组退回内门，孟齐的分流路线也走通了。",
+      "readingSeconds": 5.5
+    },
+    {
+      "cueId": "bridge-s07-s08-02",
+      "sequenceId": "bridge-s07-s08",
+      "text": "周延把完整报告连同来源交给闻川，并把自己列入换班名单。",
+      "readingSeconds": 7.5
+    },
+    {
+      "cueId": "bridge-s07-s08-03",
+      "sequenceId": "bridge-s07-s08",
+      "text": "闻川回到接应区，要先核对罗敬家属的安置，再接下一段护送。",
+      "readingSeconds": 7.5
+    },
+    {
+      "cueId": "bridge-s08-s09-01",
+      "sequenceId": "bridge-s08-s09",
+      "text": "患者和陪护已到旧检修站，名单核对齐了，孟齐带着接防组返回北闸。",
+      "readingSeconds": 8
+    },
+    {
+      "cueId": "bridge-s08-s09-02",
+      "sequenceId": "bridge-s08-s09",
+      "text": "周延守住后线，等同伴进到阵位，接过通信和防区，他这一组就能撤回。",
+      "readingSeconds": 8
+    },
+    {
+      "cueId": "bridge-s09-s10-01",
+      "sequenceId": "bridge-s09-s10",
+      "text": "接防队员留守阵位，周延让郑铎调好了护具，也给家里留了回复。",
+      "readingSeconds": 7.5
+    },
+    {
+      "cueId": "bridge-s09-s10-02",
+      "sequenceId": "bridge-s09-s10",
+      "text": "周延跟孟齐、郑铎继续撤回，要穿过设备交叉口，去旧检修站报到。",
+      "readingSeconds": 7.5
+    },
+    {
+      "cueId": "bridge-s10-s11-01",
+      "sequenceId": "bridge-s10-s11",
+      "text": "郑铎和医护沿着保住的西货廊，把周延与孟齐送到了旧检修站。",
+      "readingSeconds": 7.5
+    },
+    {
+      "cueId": "bridge-s10-s11-02",
+      "sequenceId": "bridge-s10-s11",
+      "text": "闻川来到救护点，郑铎带着装备和转运记录在等他，里面的医护已开始救治。",
+      "readingSeconds": 9
+    },
+    {
+      "cueId": "bridge-s11-s12-01",
+      "sequenceId": "bridge-s11-s12",
+      "text": "医师确认周延抢救失败，孟齐继续留在救护点治疗。",
+      "readingSeconds": 6
+    },
+    {
+      "cueId": "bridge-s11-s12-02",
+      "sequenceId": "bridge-s11-s12",
+      "text": "闻川和郑铎带上医疗需求单，准备向接收台报告伤亡和通路情况；罗敬正在那边等他们。",
+      "readingSeconds": 10.5
+    }
+  ]
+}

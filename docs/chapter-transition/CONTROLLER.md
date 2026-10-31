@@ -39,6 +39,14 @@ renderTransition(transition.snapshot);
 
 `phase` 为 idle／active／entered／cancelled／disposed。加载失败仍处于 active，可继续听旁白并重试。叙述结束但加载未完成时，`cue` 为 null、`narrationState` 为 complete 或 skipped，宿主显示等待加载状态。
 
+## 新战役开场
+
+`ChapterBridge` 保持真实章节之间的 `from: ChapterStageId`。新增 `CampaignOpening` 使用 `from: null`、`to: 'S01'`；`TransitionScript` 是两者的联合类型。控制器和浏览器外壳的 `start`、ports 的 `preload`／`enter`、`snapshot.bridge` 接受该联合类型，沿用 `bridge` 字段和原来的加载／旁白门控，不新增状态。
+
+`planCampaignEntry(intent)` 是纯计划函数。只有 `new-game` 和 `restart-campaign` 返回 `{ bridge: CAMPAIGN_OPENING, chapter: { chapter: 'campaign', stage: 'S01', elapsedBefore: 0 }, scenario: 'childhood', facts: [] }`；`continue`、`retry-checkpoint`、`restart-stage` 和 `validation` 返回 undefined。它不读取或写入检查点。`from: null` 只是开场元数据，不创建 S00，也不产生或继承任何任务事实；原来的 `planCampaignTransition` 继续负责真实章节间的过关衔接。
+
+宿主在玩家确认新游戏或重开战役后，先 `cancel` 旧过场，再 `start(plan.bridge)`。取消旧运行也使已进入过 S01 的同 ID 开场可以明确重播。准备 S01、播放旁白或跳过旁白期间均保留原存档；玩家取消开场或加载失败时仍能回到旧进度。仅在 S01 准备好、叙述完成且未暂停的 `enter` 中，宿主原子激活 S01 并提交新战役存档。
+
 ## 音频与时间
 
 `narration` 可省略。`play(cue, signal)` 返回 `{ finished, pause, resume, stop }`，其中 `finished` 为 `Promise<'ended' | 'unavailable'>`。正常音频由真实 ended 事件推进下一条字幕；静音仍应正常播放时间线并结束。缺失、加载失败、解码失败或禁止播放应结算 unavailable，Promise 拒绝或 `play`／`pause`／`resume` 抛错也会进入阅读降级。
@@ -59,7 +67,7 @@ renderTransition(transition.snapshot);
 
 ## 宿主必须负责的条件
 
-- 仅在连续战役段落真正完成且存在下一段时调用 `start`；普通失败、未完成段落和最终 S12 都不能发起过场。状态机不读取任务系统，不会假完成战斗。
+- 章节衔接仅在连续战役段落真正完成且存在下一段时调用 `start`；普通失败、未完成段落和最终 S12 都不能发起过关过场。新战役开场由 `planCampaignEntry` 的明确意图单独选择。状态机不读取任务系统，不会假完成战斗。
 - 遮罩出现后隔离游戏输入。触发跳过的点击须被消费，直到新关开始前清空按键、鼠标和触屏状态。不能让同一次点击成为下一关的开火。
 - 切回菜单、重开、读取检查点或替换流程时调用 `cancel`；销毁应用时调用 `dispose`。
 - 加载失败时显示 `error` 和重试动作。`canRetryLoad` 为 false 的进入错误应走宿主恢复流程。
@@ -68,8 +76,10 @@ renderTransition(transition.snapshot);
 
 `tests/chapter-transition/controller.test.ts` 用 deferred Promise 与 fake voice 覆盖并行启动、两种完成顺序、跳过后等待加载、一次性提交、真实 ended 推进、无音频／异常声音降级、异常适配器保护、暂停和后台结果、加载失败重试、进度输入、取消／替换／销毁的迟到资源释放、进入错误以及异常时间参数。
 
+`tests/chapter-transition/entry-plan.test.ts` 验证新游戏／重开战役有开场、续档与关内恢复不重播、入口状态不污染下一次计划，以及开场复用双门控、跳过等待加载、取消保留旧档、明确重播和 null 来源的类型边界。这些测试使用宿主替身记录提交，不证明主战役的真实存档已经接线。
+
 定向运行：
 
 ```sh
-node node_modules/vitest/vitest.mjs run tests/chapter-transition/controller.test.ts
+node node_modules/vitest/vitest.mjs run tests/chapter-transition/controller.test.ts tests/chapter-transition/entry-plan.test.ts
 ```
