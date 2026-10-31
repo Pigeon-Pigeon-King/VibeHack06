@@ -1,0 +1,2608 @@
+{
+  "schemaVersion": 1,
+  "project": "重返木卫三",
+  "recordedOn": "2026-10-31",
+  "integrationBaseline": "574ac27",
+  "scope": "60 个独立生产 ID：13 人物、25 道具、22 架构资产；旧目录三件地图模型是同 ID 运行变体。共享动画另列，不重复计概念。",
+  "recordBasis": "本地原文、已保存的制作清单与已记录授权；本轮未联网查询或重新进行法律审查。",
+  "projectLicense": "本摘要不决定整个游戏的许可证，也不将生成平台输出统一宣称为 CC0。",
+  "runtimePreparation": "人物与25件道具保留源几何/骨架并将运行纹理缩至最长边1024；架构使用冻结LOD0与LOD1/2几何包，后两档借用LOD0材质。原件保留，源与各运行变体SHA分别记录。",
+  "counts": {
+    "characters": 13,
+    "productionProps": 25,
+    "architecture": 22,
+    "uniqueProductionIds": 60,
+    "sceneCatalogRecords": 28,
+    "crossCatalogDuplicateIds": [
+      "BG-CRANE",
+      "ENV-LIGHTKIT-POLE",
+      "PROP-TANK"
+    ],
+    "modelRuntimeFiles": 107,
+    "sceneProps": 28,
+    "mapRelatedInSceneCatalog": 3
+  },
+  "assets": [
+    {
+      "id": "CH-DOCTOR",
+      "name": "医师",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-DOCTOR-apose-v1.png",
+        "inputSha256": "b8a0185eb9d4a5ab4fdb1535a894f66df10c706079d736cb9a450852467b10ca"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "bdf7f567d245dc555393a53423a6ce7fb52d2a09c8ab82eb7b2e39fe17bb7a24",
+        "bytes": 7991068
+      },
+      "runtime": {
+        "path": "models/characters/ch-doctor-rig-v1.glb",
+        "sha256": "ac40a5bd08473ccd844ec77146c264dfc0cdaea65fb28f314626f121d38cb8cd",
+        "bytes": 1474328,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-ENEMY",
+      "name": "敌兵",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-ENEMY-apose-v1.png",
+        "inputSha256": "05c6ca8fbf32476da124e3c5c88ecc9671bbc351dea26e67a3168417a325651d"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "5f5d3f3fb12a31cae51954ff3e47e615fdd779bd461ee5c4add5b90e1530b3d0",
+        "bytes": 11880164
+      },
+      "runtime": {
+        "path": "models/characters/ch-enemy-rig-v1.glb",
+        "sha256": "0242cf47abaf0d8692a9fcd40465913af64488f90f5186b02a058920eef83b6c",
+        "bytes": 1871400,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-FATHER",
+      "name": "陆建平",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-FATHER-apose-v1.png",
+        "inputSha256": "a148d228f49da63e28104a5075f32efc74edae42b4106bfc9a7c17f551232747"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "56f25bda8d2fe8a89475fdbeb142604d10c07d505b30663c83b48750093b82b3",
+        "bytes": 11585296
+      },
+      "runtime": {
+        "path": "models/characters/ch-father-rig-v1.glb",
+        "sha256": "0f3e20b3a03cb3000e2fbf4bc9d06118c852433f7ad8e8f174899bea72a3a7f7",
+        "bytes": 1862188,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-LU",
+      "name": "陆闻川",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-LU-apose-v1.png",
+        "inputSha256": "8eaaf13b0885283cda1eb8c4d9461bec29285be3348741d14a7224d3286c17bc"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "33579cb205c11d50c6fa6dfa42f93f022e387cbcf07b5a24c9a6be0b37961501",
+        "bytes": 9097540
+      },
+      "runtime": {
+        "path": "models/characters/ch-lu-rig-v1.glb",
+        "sha256": "6d6e12d9e23449ab24f260f2b33bdb30a1e48a179c625e0c9904992ac7b5737f",
+        "bytes": 1636760,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-LU-CHILD",
+      "name": "陆闻川 · 儿童独立模型",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-LU-CHILD-apose-v1.png",
+        "inputSha256": "862bc0d3c4bdd279f4b51b2e37f2ed402c0783bd2cb8285c0e6e82fa8d2f21b4"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "1d33683fcf92e1db07de9ca73b059052d16fd841551d927f25022efc72cf83c1",
+        "bytes": 9603700
+      },
+      "runtime": {
+        "path": "models/characters/ch-lu-child-rig-v1.glb",
+        "sha256": "13f8f41d6852a69b6844c51118825e8a0017d7a86856daf6ba1cf1c51ca63f31",
+        "bytes": 1673800,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-LUO",
+      "name": "罗敬",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-LUO-apose-v1.png",
+        "inputSha256": "6ce531814a4b67311df2837b09bc1505200eb50324f40447499f688f00e01636"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "99d550070d86e919ca780d58699d70daa8ed172f2e9696ee78d4a5a666cbb329",
+        "bytes": 10643556
+      },
+      "runtime": {
+        "path": "models/characters/ch-luo-rig-v1.glb",
+        "sha256": "d5e7dad0e2c4c0d4391af902474df2db1a197ff7d6668dc5184b52047c64b894",
+        "bytes": 1774244,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-MENG",
+      "name": "孟齐",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-MENG-apose-v1.png",
+        "inputSha256": "8fc55be2617c5a43f45d20a3722619e9c4616e6be292ed5de106e159ccea6206"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "3c12c834d9efbc5fb15a731101e31f71872bc3f193f0c867f9d09508b7da2a1a",
+        "bytes": 10019672
+      },
+      "runtime": {
+        "path": "models/characters/ch-meng-rig-v1.glb",
+        "sha256": "c90132d7e2afa41b4ea2fdcf3186a149e4814487a45e08d10c742eb601b61d37",
+        "bytes": 1680184,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-SHAO",
+      "name": "邵原",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-SHAO-apose-v1.png",
+        "inputSha256": "74e432f05aacc0283a21546f8c09a967da6702970b4f40ada548fe5f00db7fb8"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "8b13b2f6aecc9689df545e93387cc82277775b53feca6ecd73b495376170358d",
+        "bytes": 9687232
+      },
+      "runtime": {
+        "path": "models/characters/ch-shao-rig-v1.glb",
+        "sha256": "b972baf3bb59fa52f25e7d449e913ae13d5a5dcc9c95c51d02644a67816c72d4",
+        "bytes": 1656292,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-SHEN",
+      "name": "沈玉芬",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-SHEN-apose-v1.png",
+        "inputSha256": "88701ef7bb1895aab778d4d1a5e3361099cf883aba58c9a93582ce8ade021872"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "00740e54780b3f6b06ffdeba1d68ca531b99638be6fa7bfd50bbfa50f305d0a3",
+        "bytes": 8582020
+      },
+      "runtime": {
+        "path": "models/characters/ch-shen-rig-v1.glb",
+        "sha256": "f79c3447a5c3d77bf4ab8abba48281fc696a45bc7db053dedc2e57f5dabaa75e",
+        "bytes": 1491652,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-XU",
+      "name": "许岚",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-XU-apose-v1.png",
+        "inputSha256": "e8a0240b4453ef9201ae9ffe8db8232eb980ac5ec96215754c98321826fd72df"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "91851024995f6285c1a6c2cd7c4ac0be6bef80766e4124eb648a69938e9b0c8f",
+        "bytes": 9132952
+      },
+      "runtime": {
+        "path": "models/characters/ch-xu-rig-v1.glb",
+        "sha256": "a92899ff81b6ee64e8b9a36185ae2c0e56380c37eef243f14a3542167271e640",
+        "bytes": 1578972,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-ZHAO",
+      "name": "赵启明",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-ZHAO-apose-v1.png",
+        "inputSha256": "62a90ca6c554c372047d044077c93f8464d73fa89d24520d846f5f78892cd0bd"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "bb3feadbff89b2ea8bc4dd008cc5c6a4eee4b34c53d6018116003429a4f3af9e",
+        "bytes": 10827388
+      },
+      "runtime": {
+        "path": "models/characters/ch-zhao-rig-v1.glb",
+        "sha256": "4f669c12b0fbe108e3080f2acf418d6402755cbc443af610b84dc3ddce56bb20",
+        "bytes": 1764692,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-ZHENG",
+      "name": "郑铎",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-ZHENG-apose-v1.png",
+        "inputSha256": "5da65fe0dbb3cfa39fee004d07c7bbd14b488bcc72ad4a8e55f87ccfe7c6ac8a"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "71465e2907f29cb26e4fd7927bf07a1f756e11fb511ebcc91ffdd1e78fc2e765",
+        "bytes": 10475064
+      },
+      "runtime": {
+        "path": "models/characters/ch-zheng-rig-v1.glb",
+        "sha256": "5753250c0198f63d7a2b723e0e6c704189283870f330513f323635959ccddd09",
+        "bytes": 1732376,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "CH-ZHOU",
+      "name": "周延",
+      "category": "character",
+      "provider": "Tripo",
+      "revision": "rig-v1-tex1024",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "CH-ZHOU-apose-v1.png",
+        "inputSha256": "4cc9951c75175f9881e1692dd5116354e5b809ca1f6f03cb314ee09cd2827e60"
+      },
+      "original": {
+        "kind": "rig-v1 绑定 GLB",
+        "sha256": "1ec1a772922bf269612bb9b7edf0d1453e297ad41ff0a739603bd9c3a0abd38d",
+        "bytes": 10017412
+      },
+      "runtime": {
+        "path": "models/characters/ch-zhou-rig-v1.glb",
+        "sha256": "e643df2c1bc4a42ebd35d7b1da52a769222c09aa501963f49cd53dcb0a7bcd98",
+        "bytes": 1648864,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入；实际画面、接触动作与目标设备验收待完成",
+      "productionCategory": "character"
+    },
+    {
+      "id": "BG-CRANE",
+      "name": "港区吊机",
+      "category": "scene-prop",
+      "provider": "Hyper3D",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "BG-CRANE-v1.png",
+        "inputSha256": "dd7a6e7cb8d0194381fccb3bd4e884f1be7994bc4bcd58a5ba5c345ac3a3b88d"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "db2856bf9bf59c22ba408e98a35cf471871d21db2727659d5ec44c3470d0845d",
+        "bytes": 5331512
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031/BG-CRANE.glb",
+        "sha256": "bfec243ec25cf469ae3f2eb36a373f4d9737ff92cdfc8cdb2937811f4f1b2ca5",
+        "bytes": 3154172,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入既定位置；实际画面、碰撞接触与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "assets/generated/production-20261031/BG-CRANE.glb",
+          "sha256": "bfec243ec25cf469ae3f2eb36a373f4d9737ff92cdfc8cdb2937811f4f1b2ca5",
+          "bytes": 3154172,
+          "textureMaxEdge": 1024
+        },
+        {
+          "path": "models/architecture-r1/BG-CRANE-lod0.glb",
+          "sha256": "988917110226e797d0466d8669118ac4ea66ef208c6d80717080c4dc6a684a55",
+          "bytes": 3104116,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "BG-CRANE:lod0"
+        },
+        {
+          "path": "models/architecture-r1/BG-CRANE-lod1-geometry.glb",
+          "sha256": "a50b521bbfa6185e21dc733f89a3776ca4dbfeb8a11af51e6be548ec35ea3485",
+          "bytes": 1835628,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "BG-CRANE:lod0"
+        },
+        {
+          "path": "models/architecture-r1/BG-CRANE-lod2-geometry.glb",
+          "sha256": "db18fe34a1657102be2b44899466ac5a18ab29214c9dab0b27bfe0b0d4da6e21",
+          "bytes": 1835340,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "BG-CRANE:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "db2856bf9bf59c22ba408e98a35cf471871d21db2727659d5ec44c3470d0845d",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ENV-LIGHTKIT-POLE",
+      "name": "工业灯杆",
+      "category": "scene-prop",
+      "provider": "Hyper3D",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "ENV-LIGHTKIT-POLE-v1.png",
+        "inputSha256": "fcd95e80c536b4458bdb67f9645173b9cda6c3e412c34c7a1e5963e3125a9441"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "c2b66359af56e25609032fa2f0826d89436e1ce76c9d6003713ba9ce1ff83248",
+        "bytes": 2319412
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb",
+        "sha256": "afe2b14a3580fe5445f4cef5441acf9532a5b25c9f127236cfb3d6fa9e0f220d",
+        "bytes": 1393544,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入既定位置；实际画面、碰撞接触与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb",
+          "sha256": "afe2b14a3580fe5445f4cef5441acf9532a5b25c9f127236cfb3d6fa9e0f220d",
+          "bytes": 1393544,
+          "textureMaxEdge": 1024
+        },
+        {
+          "path": "models/architecture-r1/ENV-LIGHTKIT-POLE-lod0.glb",
+          "sha256": "682ee4c3cc2db2bf9998d796dad27ae6a54884b5bcee0038b2ef26c008657e70",
+          "bytes": 1377664,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ENV-LIGHTKIT-POLE:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-LIGHTKIT-POLE-lod1-geometry.glb",
+          "sha256": "5fd7c25aeb9fee4fe8eb299195753522422a65eb39d2624aa3e0790df8a965c2",
+          "bytes": 541484,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-LIGHTKIT-POLE:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-LIGHTKIT-POLE-lod2-geometry.glb",
+          "sha256": "c0dfd815dd4196082370f0d7fc965cabe65dc0367575bf36422ec00d1a2a1212",
+          "bytes": 540836,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-LIGHTKIT-POLE:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "c2b66359af56e25609032fa2f0826d89436e1ce76c9d6003713ba9ce1ff83248",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "PROP-BENCH",
+      "name": "工业长凳",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-BENCH-v1.png",
+        "inputSha256": "bd12203732610fdfedbb0308e9cafff95fa9f26c79343e36cdb4b4b66fa45b6e"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "bafcb58d9cd1d40badbbbf4a7bc05ad19b0e5df657a2dae423d156b82cd01022",
+        "bytes": 11641764
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-BENCH.glb",
+        "sha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+        "bytes": 1256928,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入既定位置；实际画面、碰撞接触与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-LIFE-MUG",
+      "name": "生活杯",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-LIFE-MUG-v1.png",
+        "inputSha256": "c7452aed4f0b9ba1971b62dc9d196b0e8f357e10f84ccd7d8eb54b50318e9fe1"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+        "bytes": 8377524
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+        "sha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+        "bytes": 834268,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入既定位置；实际画面、碰撞接触与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "name": "护理包",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-MEDICAL-BAG-v1.png",
+        "inputSha256": "eec73a2dd407689fdd18b3839c32a3b32c5f5c3bf5a051e1417543f9926b9ec0"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+        "bytes": 17454464
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+        "sha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+        "bytes": 1569588,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入既定位置；实际画面、碰撞接触与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-TANK",
+      "name": "工业罐体",
+      "category": "scene-prop",
+      "provider": "Hyper3D",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-TANK-v1.png",
+        "inputSha256": "fc0f3aa07f6a7f14585a75641382cce632524111fefeaac8490e7d40e7982aa7"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "fa1688f012e5dfa93e28dc6147a9215e84334f855c7d850d1c68c5270574ee8c",
+        "bytes": 3169960
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-TANK.glb",
+        "sha256": "03f4f654a3101d91247dcd0fc5dd7170999367c477075c470b4fd3ebe663bb1b",
+        "bytes": 1690788,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入既定位置；实际画面、碰撞接触与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "assets/generated/production-20261031/PROP-TANK.glb",
+          "sha256": "03f4f654a3101d91247dcd0fc5dd7170999367c477075c470b4fd3ebe663bb1b",
+          "bytes": 1690788,
+          "textureMaxEdge": 1024
+        },
+        {
+          "path": "models/architecture-r1/PROP-TANK-lod0.glb",
+          "sha256": "52cc47b314a1bcb4ea88da5038be5a94a0492612b505e621d7b9d415fe392e3a",
+          "bytes": 1665872,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "PROP-TANK:lod0"
+        },
+        {
+          "path": "models/architecture-r1/PROP-TANK-lod1-geometry.glb",
+          "sha256": "b3ba0780699bdc6b099bfb11f95bedbc0b25cabdb5699cb2e3850435db84ca82",
+          "bytes": 839296,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "PROP-TANK:lod0"
+        },
+        {
+          "path": "models/architecture-r1/PROP-TANK-lod2-geometry.glb",
+          "sha256": "5a56f2175ab37197cbd96d756d1f27cf0c573bbd620a64a1ff3de708a34eec2d",
+          "bytes": 836320,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "PROP-TANK:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "fa1688f012e5dfa93e28dc6147a9215e84334f855c7d850d1c68c5270574ee8c",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "PROP-TERMINAL-CONSOLE",
+      "name": "港务控制台",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-TERMINAL-CONSOLE-v1.png",
+        "inputSha256": "ffec322ee97b44933d43800d48ef775c48bf23bcf33a34101cef31a1e5d80cfa"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "8213a3b4a182c5df399dd56e06f7a9de31e1745d18aaafdf2f4bb36dbdf415a2",
+        "bytes": 10952596
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+        "sha256": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+        "bytes": 1617188,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入既定位置；实际画面、碰撞接触与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-VEH-TUG",
+      "name": "港区牵引维修车",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-VEH-TUG-v1.png",
+        "inputSha256": "987d8721b34bb5ea95a9e6021c2e9ba1555f3492004fcc08699b8fcbaafef2f9"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "41012891d28356f8e57810b96b1620af34aa81ea59ab98f386411ad408d428da",
+        "bytes": 14286384
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-VEH-TUG.glb",
+        "sha256": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+        "bytes": 2185792,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入既定位置；实际画面、碰撞接触与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-TRANSFER",
+      "name": "转运车",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-TRANSFER-v1.png",
+        "inputSha256": "259cb870a39ac93e0269c36eeaa51a2cae15ea7908165e1428d7fd246cd1bfeb"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "3f029558fb380a475fae91e5ed09700224445dc445fdae4f7d8495338ed9a56d",
+        "bytes": 9200768
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb",
+        "sha256": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+        "bytes": 1647596,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-STRETCHER",
+      "name": "手提担架",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-STRETCHER-v1.png",
+        "inputSha256": "e6119b9a9a6aa01db5721ec36eb6a96a199e0534ed8aa96a9f46e1f800e6471d"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "f82188ebd6f314a80a28f1719f466dd6a61c4873afa29c617a20c9281538a8a6",
+        "bytes": 10915136
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb",
+        "sha256": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+        "bytes": 1350900,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-DOOR-LEAF",
+      "name": "滑动门叶",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-DOOR-LEAF-v1.png",
+        "inputSha256": "bba9c5baad84f0ae88c2b85278b29b0a5dd305e36342bda68b376c5c628dfbff"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "df28de7339fc37401088b2deeadae2aac7779c61d344134b4f55c79ec0bb75f3",
+        "bytes": 11420968
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb",
+        "sha256": "e01e2ebd2db78d58ee372e3588fd7cc42e4d71ee48157a21e9c32f77141931b1",
+        "bytes": 1604400,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-DOOR-LOCK",
+      "name": "滑动门锁杆",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-DOOR-LOCK-v1.png",
+        "inputSha256": "267e168ba13ab74eb6a199d3ea2f1d5bfb24b574dfe62b06be984ad5f13a6ac4"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "52ff81fdb82013c7f52c31a36ae2277d234d8358a745bfb6a42211f4ea59e8d5",
+        "bytes": 11095424
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb",
+        "sha256": "e786f8eddae672f6f23599fdab5efc84ad05844aa55cdf6f2e06ea4929de1955",
+        "bytes": 1402304,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-TERMINAL-HANDHELD",
+      "name": "手持终端",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-TERMINAL-HANDHELD-v1.png",
+        "inputSha256": "ad2b7416660eebe5f5daa064e5ccdfc696bc7a6af8c4b22aef704c8610acf739"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "234b2bea3fc26466eae954075d9cc9e02db6fa0e9d6f2dc68666fad19c614c3d",
+        "bytes": 15435756
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb",
+        "sha256": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+        "bytes": 1576612,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-VEH-TRANSPORT",
+      "name": "人员货物运输车",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-VEH-TRANSPORT-v1.png",
+        "inputSha256": "44e0f6834638926345cddbf98c562278bbee4389589c57b28a9cf0fac3670d75"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "cc936c5892774b3c6d569ba9181a7b72cf1c56da32b5293b632031643c4e9864",
+        "bytes": 11384668
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb",
+        "sha256": "4fa477429e68cc40f8cd65d6ec3ee9c288cbaaeb652c8d91318a230020092a10",
+        "bytes": 1785076,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-FILTER",
+      "name": "滤芯维护机组",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-FILTER-v1.png",
+        "inputSha256": "681c54fd0be734ba66bb3fe0cf7720d968dfd5b027bdb331f074d3de729547fc"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "232bf081736435438f871a860680232a47287f12616bfa8e880acced07d1c6e2",
+        "bytes": 11934652
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-FILTER.glb",
+        "sha256": "c5b51ec1c1bc3f0fc34e20b0485077047f03bea2a742a920660180d701e5256f",
+        "bytes": 1611708,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-CARGO",
+      "name": "货箱",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-CARGO-v1.png",
+        "inputSha256": "e65ba7605bd22b235c1a9ca91505afc4c4d9588ebd1ab7c25374c5f7430b9b46"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "a036cefdf7c9a92edb81f5908986b9b2701245511f3bece3540a68b8d52581ef",
+        "bytes": 17572088
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-CARGO.glb",
+        "sha256": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+        "bytes": 1880176,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-PUMP",
+      "name": "泵组",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-PUMP-v1.png",
+        "inputSha256": "82a69df05dab2d84efcd6d7f033d13e38a22a957e5807a9352ba036eec6b12f1"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "4de2d7d9a2fc84316ae24c8fe9c512a64a3d8eb2284137035467b8f9e50ef7c9",
+        "bytes": 13377124
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-PUMP.glb",
+        "sha256": "ea37539ae6da8e0c56cd99001471de30b7ab55f8eab2586549dba0c66c392890",
+        "bytes": 1842348,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-FAN",
+      "name": "风机",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-FAN-v1.png",
+        "inputSha256": "8eb9a8bcd0b7e1b5dd7b6ec54c12bdda75d2f54a76d4f94ffb49bf373b64c3e4"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "247508f6c9680631d86e679e3370d1caa069c36562fd36a81eade680775816a6",
+        "bytes": 10345464
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-FAN.glb",
+        "sha256": "8a0b1f1ad9bfcac49d8aa0587ad94409f758e5ffc34a2c8e5f5f956b19d97910",
+        "bytes": 1460432,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-TOOL-BAG",
+      "name": "维修包",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-TOOL-BAG-v1.png",
+        "inputSha256": "563b92224b6b06a77e6de011437003672c0e3f0663da413f48a3b65f20e4d3e5"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "b1e5648ce9369f954f910e4b93aa4d1d2005cbf38f88ece011cc790100ebf2b7",
+        "bytes": 17039144
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb",
+        "sha256": "936b657dd2151be5ae36c3a65b7625b6fc1752299a7e35716a03ab5153d31650",
+        "bytes": 1652892,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-TOOL-ROLL",
+      "name": "工具卷",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-TOOL-ROLL-v1.png",
+        "inputSha256": "cd97c2c872220be0ef760a658539cc8ee880d84c4d1fa20ad9dab29b0546bb7a"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "56c03b2ce98ca994e5ef6c98348c3a86e15f7fba19dc684c82ddd39e48b4b4b3",
+        "bytes": 16894308
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb",
+        "sha256": "ca5d918c44c649e0149d63b3eb68c6e5a61981b16c3d4e25509a8fe64a1722bd",
+        "bytes": 1682284,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-TOOL-LUNCHBOX",
+      "name": "饭盒",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-TOOL-LUNCHBOX-v1.png",
+        "inputSha256": "3273c2e4368cb2c89fbc08ca435f0fc86e82e5fda5ce4c673cfb58e9bc31fc39"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "b78ffa416f0e2995970011de78a1865ef5f247f96e33a1071fc0c7a215212925",
+        "bytes": 17181560
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb",
+        "sha256": "b84562c1a10554721ab50b58e7f0d2f9b8ad1eae03d04d19efca2738376e63b4",
+        "bytes": 1649228,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-RADIO-PACK",
+      "name": "通信背包",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-RADIO-PACK-v1.png",
+        "inputSha256": "cc3c2402dbf7e0b001016168e5583dc8e010db83b882e8025b61c6937d227c20"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "0ec3cb9ff4b2b28dae7f4957b72d7d2b7ef3c3324c12e2d01bb01025842d48f6",
+        "bytes": 12347788
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb",
+        "sha256": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+        "bytes": 1417512,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-RADIO-HEADSET",
+      "name": "单耳耳麦",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-RADIO-HEADSET-v1.png",
+        "inputSha256": "dc4a9845cd4bed853802436faa349c0313ad72d1a59a8aee53d616b4936e5aeb"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "115f17e668682f67f14bda4855885065bcd43dd6f570fd2982fb2dd0af208304",
+        "bytes": 11850600
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb",
+        "sha256": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+        "bytes": 1349396,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-ARMOR-CHEST",
+      "name": "可拆轻胸甲",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-ARMOR-CHEST-v1.png",
+        "inputSha256": "9823a1a45b439fc997cbe50af694b9947669c3d1084e9726fbd510b20daac570"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "fbdac8521d6078cb7c6aed001d81042bd0d7e180e0b0a3800dd7079675a63079",
+        "bytes": 10557232
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb",
+        "sha256": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+        "bytes": 1219540,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-ARMOR-LEFT-BRACE",
+      "name": "左膝旧支具",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-ARMOR-LEFT-BRACE-v1.png",
+        "inputSha256": "c287e6844349794e515547260905aea4fe40bad3e6ec33039533d358f65afa47"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "28cdb4035899713a36fe5e73e9279819bee8f2f2a9da10b536c2168a5f6953fb",
+        "bytes": 10709188
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+        "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+        "bytes": 1320340,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-ARMOR-HELMET",
+      "name": "敌兵头盔",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-ARMOR-HELMET-v1.png",
+        "inputSha256": "41e3c5973aeb644c54f916155cb5ef0a15aba4cf0ac603aa13b3b5c8b9f4c167"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "45793603d143012d6683072156e1a209fc325512bba8b0c3dcc84b01555d8185",
+        "bytes": 12420076
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb",
+        "sha256": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+        "bytes": 1278600,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-SAMPLE-CABINET",
+      "name": "样本柜",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-SAMPLE-CABINET-v1.png",
+        "inputSha256": "5ccc8daa7b0788befff3d7cc568fe2dd25e6d9bf140a4a72f681625f9a459620"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "e6668bbf6876af59b36f8d6e423fb6c3c8355550c325668d0eeff5911e728dad",
+        "bytes": 12946880
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb",
+        "sha256": "40eca6cd7e558e0668df0f3791f487eabf6f5a13ceb876cf05fad40087d8b165",
+        "bytes": 1607528,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "PROP-SAMPLE-CORECASE",
+      "name": "冰芯匣",
+      "category": "scene-prop",
+      "provider": "Tripo",
+      "revision": "production-20261031-tex1024-v1",
+      "concept": {
+        "origin": "《重返木卫三》项目原创概念；依据已记录的用户设计审查与生产输入审查",
+        "tool": "ImageGen",
+        "scope": "仅记录概念来源；不代表运行模型、动作或实景已验收",
+        "inputFile": "PROP-SAMPLE-CORECASE-v1.png",
+        "inputSha256": "1ab5d1ed4a6843b8bd063cb30d7189a8fe44da9fc5378c7078e1aa2c3d2a8043"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "a8ea25df78c93292849e83ea11ba2393fad6b0944281e8f9526843ca921b7a7d",
+        "bytes": 14024928
+      },
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb",
+        "sha256": "341ff92746ab75956402abf21604c5aaf186ee14fd5e4fc6177a9386dd82edf6",
+        "bytes": 1638668,
+        "textureMaxEdge": 1024
+      },
+      "status": "已接入静态使用或存放位置；机械分件、装备穿戴、实际画面与目标设备验收待完成",
+      "productionCategory": "prop"
+    },
+    {
+      "id": "ARCH-BEAM-STEEL",
+      "name": "钢梁模块",
+      "category": "architecture",
+      "provider": "Tripo",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "65ddfa79ab9d80e3dfc6798b983cc6cd33da3d0e97de6b193d8402a3946befa3",
+        "bytes": 11941908
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ARCH-BEAM-STEEL-lod0.glb",
+        "sha256": "54ba70eca4ca5909fa0342f00986cab283a14008429eb24173edf38f40224cf7",
+        "bytes": 1616140,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ARCH-BEAM-STEEL:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ARCH-BEAM-STEEL-lod0.glb",
+          "sha256": "54ba70eca4ca5909fa0342f00986cab283a14008429eb24173edf38f40224cf7",
+          "bytes": 1616140,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ARCH-BEAM-STEEL:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-BEAM-STEEL-lod1-geometry.glb",
+          "sha256": "46a2f6560cea092525fc9eba1ece1d1323afc5aa4f2634f7887c0cf7768e8ed2",
+          "bytes": 178232,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-BEAM-STEEL:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-BEAM-STEEL-lod2-geometry.glb",
+          "sha256": "73769db7a3b0972a1633cb2875ee4c152352b8f1c19717c397e76e1fa94c1e5d",
+          "bytes": 164860,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-BEAM-STEEL:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "65ddfa79ab9d80e3dfc6798b983cc6cd33da3d0e97de6b193d8402a3946befa3",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ARCH-CARGO-CONTAINER",
+      "name": "货运集装箱",
+      "category": "architecture",
+      "provider": "Tripo",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "635bcf4e223ecc497d9db8de188db50bb3dfc874cf0f52c7705af948375a99da",
+        "bytes": 11149524
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ARCH-CARGO-CONTAINER-lod0.glb",
+        "sha256": "6f96d868d16de630ea1b0f874b73ebc32ee50d3132d84990ae2ba08ad8e6aa13",
+        "bytes": 1556028,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ARCH-CARGO-CONTAINER:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ARCH-CARGO-CONTAINER-lod0.glb",
+          "sha256": "6f96d868d16de630ea1b0f874b73ebc32ee50d3132d84990ae2ba08ad8e6aa13",
+          "bytes": 1556028,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ARCH-CARGO-CONTAINER:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-CARGO-CONTAINER-lod1-geometry.glb",
+          "sha256": "20718bb0b536f1805a2b4937f6d6b1bbee28e57517830a8c9c13a35984b7b0df",
+          "bytes": 232984,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-CARGO-CONTAINER:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-CARGO-CONTAINER-lod2-geometry.glb",
+          "sha256": "b28838752a255f54ceb32f4b11dd611e7ea710379ac439683f0fcb3a2e6cba3b",
+          "bytes": 225640,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-CARGO-CONTAINER:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "635bcf4e223ecc497d9db8de188db50bb3dfc874cf0f52c7705af948375a99da",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ARCH-COVER-CONCRETE",
+      "name": "混凝土掩体",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "3db63c946161f964e3d40966102a2e6bb7074f02691aea36f71c4004c5eb2de3",
+        "bytes": 2144944
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ARCH-COVER-CONCRETE-lod0.glb",
+        "sha256": "2006a6be5eefda3acbfdf91ac0243105cf81e06a4936a882c8f63f27be108adf",
+        "bytes": 935216,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ARCH-COVER-CONCRETE:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ARCH-COVER-CONCRETE-lod0.glb",
+          "sha256": "2006a6be5eefda3acbfdf91ac0243105cf81e06a4936a882c8f63f27be108adf",
+          "bytes": 935216,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ARCH-COVER-CONCRETE:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-COVER-CONCRETE-lod1-geometry.glb",
+          "sha256": "678b3a345412b6dc2d4f28fc3dbe02fe88e51158f4197a09f3462daac3774409",
+          "bytes": 190688,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-COVER-CONCRETE:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-COVER-CONCRETE-lod2-geometry.glb",
+          "sha256": "f512abff239ef2c1e1824faeb5f3fcca1d7ac3330b83ffa26381950bc3820207",
+          "bytes": 177296,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-COVER-CONCRETE:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "3db63c946161f964e3d40966102a2e6bb7074f02691aea36f71c4004c5eb2de3",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ARCH-FLOOR-METAL",
+      "name": "金属地板模块",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "d2e287a165297e30312d618d35367d843b836fe3d54c2fa80eb080c7a86a34b4",
+        "bytes": 1774700
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ARCH-FLOOR-METAL-lod0.glb",
+        "sha256": "62e35537871fc9682c992f5803b0f8ff856148f76711775bf88cbfc7d70ce6e9",
+        "bytes": 651944,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ARCH-FLOOR-METAL:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ARCH-FLOOR-METAL-lod0.glb",
+          "sha256": "62e35537871fc9682c992f5803b0f8ff856148f76711775bf88cbfc7d70ce6e9",
+          "bytes": 651944,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ARCH-FLOOR-METAL:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-FLOOR-METAL-lod1-geometry.glb",
+          "sha256": "7aae1d3986c086bdc2a3ef4ac192f346bb618b6e4bd6459d504260f9889265c3",
+          "bytes": 173784,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-FLOOR-METAL:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-FLOOR-METAL-lod2-geometry.glb",
+          "sha256": "12be499ca07736e4a392cb6b596e895e12dccdb54154a022366a6bd140d5f018",
+          "bytes": 160392,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-FLOOR-METAL:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "d2e287a165297e30312d618d35367d843b836fe3d54c2fa80eb080c7a86a34b4",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ARCH-ROOF-METAL",
+      "name": "金属屋面模块",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "bf002745a7bde9f688d0e454800c4581ddc633de7fbede312b977dcaed75f02c",
+        "bytes": 2100972
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ARCH-ROOF-METAL-lod0.glb",
+        "sha256": "6c07afa048e756e63f1184626af2e3f504179ea78652a4f9bcbce65ff7c16fbb",
+        "bytes": 778468,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ARCH-ROOF-METAL:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ARCH-ROOF-METAL-lod0.glb",
+          "sha256": "6c07afa048e756e63f1184626af2e3f504179ea78652a4f9bcbce65ff7c16fbb",
+          "bytes": 778468,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ARCH-ROOF-METAL:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-ROOF-METAL-lod1-geometry.glb",
+          "sha256": "7dea9d88996c031524a57b757e05485a52c56d0033b7ab822d446067e8ae014b",
+          "bytes": 204332,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-ROOF-METAL:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-ROOF-METAL-lod2-geometry.glb",
+          "sha256": "93645e2850788e7106112fc809895b88832a2f4a45852bff7548303778f4a7f7",
+          "bytes": 190940,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-ROOF-METAL:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "bf002745a7bde9f688d0e454800c4581ddc633de7fbede312b977dcaed75f02c",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ARCH-WALL-PAINT",
+      "name": "涂装墙模块",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "5d1d6409fbaf5fd669c5ed45615e4cc470443fa52f340c1fb8d8dadd31167c16",
+        "bytes": 1946144
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ARCH-WALL-PAINT-lod0.glb",
+        "sha256": "c7a7430ae5a1cd94d5bed073daa25a8f74fa203981402241e13e88acd9d3325b",
+        "bytes": 820432,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ARCH-WALL-PAINT:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ARCH-WALL-PAINT-lod0.glb",
+          "sha256": "c7a7430ae5a1cd94d5bed073daa25a8f74fa203981402241e13e88acd9d3325b",
+          "bytes": 820432,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ARCH-WALL-PAINT:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-WALL-PAINT-lod1-geometry.glb",
+          "sha256": "329a0480006fa9d175a593ac5a12e19c9d74bf84370680432bcae9743483b0aa",
+          "bytes": 204736,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-WALL-PAINT:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ARCH-WALL-PAINT-lod2-geometry.glb",
+          "sha256": "f978462808393d89a0b492474c0660e2a6a91efe0715b540b268e4dba7d69e06",
+          "bytes": 191320,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ARCH-WALL-PAINT:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "5d1d6409fbaf5fd669c5ed45615e4cc470443fa52f340c1fb8d8dadd31167c16",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "BG-HEAT",
+      "name": "远景供热厂",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "c4726d6440105cc1a7444e45dc68b2ccb817c84eb2037ceab0014e50df83d047",
+        "bytes": 4342204
+      },
+      "runtime": {
+        "path": "models/architecture-r1/BG-HEAT-lod0.glb",
+        "sha256": "eb3452143786ad8636ac015800d3e109f5edc4a755a21d5f3d71cb5a111cc422",
+        "bytes": 2511080,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "BG-HEAT:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/BG-HEAT-lod0.glb",
+          "sha256": "eb3452143786ad8636ac015800d3e109f5edc4a755a21d5f3d71cb5a111cc422",
+          "bytes": 2511080,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "BG-HEAT:lod0"
+        },
+        {
+          "path": "models/architecture-r1/BG-HEAT-lod1-geometry.glb",
+          "sha256": "aceaeeca3634bad9a341807d4eb7f3790bd24bf62ca0733c327d1e44b57223e3",
+          "bytes": 1349208,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "BG-HEAT:lod0"
+        },
+        {
+          "path": "models/architecture-r1/BG-HEAT-lod2-geometry.glb",
+          "sha256": "d68b14d7b432ea96ae640c503e1b6c7dfa62744844dc719a16d12746a2be856e",
+          "bytes": 1347672,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "BG-HEAT:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "c4726d6440105cc1a7444e45dc68b2ccb817c84eb2037ceab0014e50df83d047",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "BG-SHIP",
+      "name": "岸外接收船",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "5fc70f5dcc18748df2a5110b462d64449d3975edb565d2d774d73a5f25d166fb",
+        "bytes": 3683728
+      },
+      "runtime": {
+        "path": "models/architecture-r1/BG-SHIP-lod0.glb",
+        "sha256": "a429963bf4fe839581953a26e986156d61c3b50f6cb77e3022515f0fcf61681d",
+        "bytes": 1971596,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "BG-SHIP:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/BG-SHIP-lod0.glb",
+          "sha256": "a429963bf4fe839581953a26e986156d61c3b50f6cb77e3022515f0fcf61681d",
+          "bytes": 1971596,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "BG-SHIP:lod0"
+        },
+        {
+          "path": "models/architecture-r1/BG-SHIP-lod1-geometry.glb",
+          "sha256": "8a31b4b1ba45ab8b100e51004c923eaf1ca2222e0c963d2e7d6b0cb018f0cbdf",
+          "bytes": 868960,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "BG-SHIP:lod0"
+        },
+        {
+          "path": "models/architecture-r1/BG-SHIP-lod2-geometry.glb",
+          "sha256": "a9a96e2f20dc7ff74fe7c79e31879b8a9e160cb1552bfc19cc64a6a470b19619",
+          "bytes": 868624,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "BG-SHIP:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "5fc70f5dcc18748df2a5110b462d64449d3975edb565d2d774d73a5f25d166fb",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ENV-BRIDGEKIT-DECK",
+      "name": "桥下板模块",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "03d89179b9a3ad9b35d54595bcf2e5977834503ae36cfac0978c5d67fd7a7d0e",
+        "bytes": 3559308
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ENV-BRIDGEKIT-DECK-lod0.glb",
+        "sha256": "7e9a3ea7cc0ead1f3133e1c9d9d7eb76c6ebb3850ff101be84e45f816a893d3a",
+        "bytes": 2066836,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ENV-BRIDGEKIT-DECK:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ENV-BRIDGEKIT-DECK-lod0.glb",
+          "sha256": "7e9a3ea7cc0ead1f3133e1c9d9d7eb76c6ebb3850ff101be84e45f816a893d3a",
+          "bytes": 2066836,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ENV-BRIDGEKIT-DECK:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-BRIDGEKIT-DECK-lod1-geometry.glb",
+          "sha256": "4b3807a064fbc3d00e02aabfcff22c88485010fe46cf99f596eca8546ff608af",
+          "bytes": 1121056,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-BRIDGEKIT-DECK:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-BRIDGEKIT-DECK-lod2-geometry.glb",
+          "sha256": "698acc53b11bf7be7469019549574e6848910294ef47ea42f881d52d63f37cd5",
+          "bytes": 1120696,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-BRIDGEKIT-DECK:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "03d89179b9a3ad9b35d54595bcf2e5977834503ae36cfac0978c5d67fd7a7d0e",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ENV-PIPEKIT-ELBOW",
+      "name": "管道弯头",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "f733849b61955efa9cdfd5d42bfb5f92db4bec36bf6f1c2a71065590823ce842",
+        "bytes": 2304084
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ENV-PIPEKIT-ELBOW-lod0.glb",
+        "sha256": "ab440b57ba514d7aad5160e0cc005c17d472f1b07c784d3b64b8dd64e0662523",
+        "bytes": 1093996,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ENV-PIPEKIT-ELBOW:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ENV-PIPEKIT-ELBOW-lod0.glb",
+          "sha256": "ab440b57ba514d7aad5160e0cc005c17d472f1b07c784d3b64b8dd64e0662523",
+          "bytes": 1093996,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ENV-PIPEKIT-ELBOW:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-PIPEKIT-ELBOW-lod1-geometry.glb",
+          "sha256": "3d5991237679075d72c09be06723e8c9fd8a66169fd35290093449c49287194f",
+          "bytes": 378972,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-PIPEKIT-ELBOW:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-PIPEKIT-ELBOW-lod2-geometry.glb",
+          "sha256": "ae4af7834ce24478b4bc7186ff2bb6166d381362033e67c3e195d18971f9f0c5",
+          "bytes": 373164,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-PIPEKIT-ELBOW:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "f733849b61955efa9cdfd5d42bfb5f92db4bec36bf6f1c2a71065590823ce842",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ENV-PIPEKIT-STRAIGHT",
+      "name": "直管模块",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "fce6c603b9bbd6616afd5c4801b7678dbbb5074b1ad57c333481e34c860cac44",
+        "bytes": 2438296
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod0.glb",
+        "sha256": "b8c1f188db65ed1d21e0e2822dad24d881e939a6a1fc4742c5dde65d92705a50",
+        "bytes": 1162192,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ENV-PIPEKIT-STRAIGHT:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod0.glb",
+          "sha256": "b8c1f188db65ed1d21e0e2822dad24d881e939a6a1fc4742c5dde65d92705a50",
+          "bytes": 1162192,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ENV-PIPEKIT-STRAIGHT:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod1-geometry.glb",
+          "sha256": "51e3d1b9acfe7c701f312b2f3b0f191786504bd82879248356b90fe22a5f6705",
+          "bytes": 349444,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-PIPEKIT-STRAIGHT:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod2-geometry.glb",
+          "sha256": "2666616c68565c1dfcc70ea2c419b88acd2a00ec87044bef266866cac4799874",
+          "bytes": 346924,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-PIPEKIT-STRAIGHT:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "fce6c603b9bbd6616afd5c4801b7678dbbb5074b1ad57c333481e34c860cac44",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "ENV-WALLKIT-PANEL",
+      "name": "工业墙板",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "e8d8255c54f0f209ddc27168e78b61268bb96c3267459569cec1e4a36a28856e",
+        "bytes": 2717720
+      },
+      "runtime": {
+        "path": "models/architecture-r1/ENV-WALLKIT-PANEL-lod0.glb",
+        "sha256": "8a6dd7947bff0da1fc267362d06fc1d60e8e79b3ea1495b4b1d7cbd805d12d0f",
+        "bytes": 1217056,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "ENV-WALLKIT-PANEL:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/ENV-WALLKIT-PANEL-lod0.glb",
+          "sha256": "8a6dd7947bff0da1fc267362d06fc1d60e8e79b3ea1495b4b1d7cbd805d12d0f",
+          "bytes": 1217056,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "ENV-WALLKIT-PANEL:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-WALLKIT-PANEL-lod1-geometry.glb",
+          "sha256": "573ad68f40e2b377135b2cf31f77d081be78afa03e45ab3bb61db3dd7c0f112b",
+          "bytes": 328292,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-WALLKIT-PANEL:lod0"
+        },
+        {
+          "path": "models/architecture-r1/ENV-WALLKIT-PANEL-lod2-geometry.glb",
+          "sha256": "d79e711c7749dae22675ebd77b492d0f92ace297b2619d6f73eaec7d063a3bce",
+          "bytes": 327356,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "ENV-WALLKIT-PANEL:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "e8d8255c54f0f209ddc27168e78b61268bb96c3267459569cec1e4a36a28856e",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "MAP-A-ARCH-01",
+      "name": "避难所入口拱冠",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "6a5fa4a7ee7fe73dfd92f154087d40631f4570a5afc1a747068ef9ccc11bf765",
+        "bytes": 2989836
+      },
+      "runtime": {
+        "path": "models/architecture-r1/MAP-A-ARCH-01-lod0.glb",
+        "sha256": "c1d27aa0882a093d974bd280b08214bae606083a8cb41100cc278c92f7348981",
+        "bytes": 1515392,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "MAP-A-ARCH-01:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/MAP-A-ARCH-01-lod0.glb",
+          "sha256": "c1d27aa0882a093d974bd280b08214bae606083a8cb41100cc278c92f7348981",
+          "bytes": 1515392,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "MAP-A-ARCH-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-A-ARCH-01-lod1-geometry.glb",
+          "sha256": "44271b9d767774509f11a57c778689ef43e8e0cc5f4c6a8a7adfcd9b7a0c3e97",
+          "bytes": 547012,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-A-ARCH-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-A-ARCH-01-lod2-geometry.glb",
+          "sha256": "1afe3d4a8b41262ddb6fbbdb67f737e0f73e7279cafadcde046772138f9f7bde",
+          "bytes": 546292,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-A-ARCH-01:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "6a5fa4a7ee7fe73dfd92f154087d40631f4570a5afc1a747068ef9ccc11bf765",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "MAP-B-CORRIDOR-01",
+      "name": "货运连接廊",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "fcdbbbe516f068ededa846fc65a8a010f07db62fb9a3f61699c96cf5bee4784c",
+        "bytes": 3139984
+      },
+      "runtime": {
+        "path": "models/architecture-r1/MAP-B-CORRIDOR-01-lod0.glb",
+        "sha256": "29dfe65de0a950db2cb7897d4683a13fad9f26125ebe6c988d7b222b631a8d3e",
+        "bytes": 1573708,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "MAP-B-CORRIDOR-01:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/MAP-B-CORRIDOR-01-lod0.glb",
+          "sha256": "29dfe65de0a950db2cb7897d4683a13fad9f26125ebe6c988d7b222b631a8d3e",
+          "bytes": 1573708,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "MAP-B-CORRIDOR-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-B-CORRIDOR-01-lod1-geometry.glb",
+          "sha256": "0fa9775c5c693cfef576087641f69493ed5a643b6ee813a50935b55f0630ec44",
+          "bytes": 821880,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-B-CORRIDOR-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-B-CORRIDOR-01-lod2-geometry.glb",
+          "sha256": "cc579c9dc1283d3b37dde798d0c732fff816db45f7994b2a551274462d4bd3f9",
+          "bytes": 820776,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-B-CORRIDOR-01:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "fcdbbbe516f068ededa846fc65a8a010f07db62fb9a3f61699c96cf5bee4784c",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "MAP-C-FACADE-01",
+      "name": "港区外墙面层",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "05ccbdcafe65069e254056a6c7ca697b6693d5bd12d6a16167bccd6614b2b562",
+        "bytes": 3102172
+      },
+      "runtime": {
+        "path": "models/architecture-r1/MAP-C-FACADE-01-lod0.glb",
+        "sha256": "2349f04bb17ed4f81c197b3ae4b040cfa287040922c2e64bacc81ea7a22b5d25",
+        "bytes": 1743068,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "MAP-C-FACADE-01:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/MAP-C-FACADE-01-lod0.glb",
+          "sha256": "2349f04bb17ed4f81c197b3ae4b040cfa287040922c2e64bacc81ea7a22b5d25",
+          "bytes": 1743068,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "MAP-C-FACADE-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-C-FACADE-01-lod1-geometry.glb",
+          "sha256": "71db6482222f91ea77ed456e4d48b92ec809ce738f50394b2f8ffec35570ad90",
+          "bytes": 1091980,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-C-FACADE-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-C-FACADE-01-lod2-geometry.glb",
+          "sha256": "59e4b86e59170d58ca102936ffbac3264df569ed826ed86026e97080c665f4f4",
+          "bytes": 1090732,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-C-FACADE-01:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "05ccbdcafe65069e254056a6c7ca697b6693d5bd12d6a16167bccd6614b2b562",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "MAP-C-ICEBANK-01",
+      "name": "冰岸远景",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "f8de4170fbbd88663d3b1ee531db46052f23c4f82fb8d305b31b79ea85f7a0cd",
+        "bytes": 4303288
+      },
+      "runtime": {
+        "path": "models/architecture-r1/MAP-C-ICEBANK-01-lod0.glb",
+        "sha256": "bd81511d0598d5b4ef9c690d9b0db4b3883387022dd4dae209439349ca9bf050",
+        "bytes": 2109560,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "MAP-C-ICEBANK-01:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/MAP-C-ICEBANK-01-lod0.glb",
+          "sha256": "bd81511d0598d5b4ef9c690d9b0db4b3883387022dd4dae209439349ca9bf050",
+          "bytes": 2109560,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "MAP-C-ICEBANK-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-C-ICEBANK-01-lod1-geometry.glb",
+          "sha256": "8775324856093dd94cb926217d416b2c68cffcda5a18bba6861298c8e5f6d3a4",
+          "bytes": 989692,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-C-ICEBANK-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-C-ICEBANK-01-lod2-geometry.glb",
+          "sha256": "9ae7a1d6a831b7272d960ebec4493df351cd490d672bc7df5701e243181a4eac",
+          "bytes": 986668,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-C-ICEBANK-01:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "f8de4170fbbd88663d3b1ee531db46052f23c4f82fb8d305b31b79ea85f7a0cd",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "MAP-E-PIER-01",
+      "name": "桥墩",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "da9cc8b52d3a26f282764a04cae30dc27c2c76488867ecc210615baab5af22f1",
+        "bytes": 2972508
+      },
+      "runtime": {
+        "path": "models/architecture-r1/MAP-E-PIER-01-lod0.glb",
+        "sha256": "6a81dfd5f3c0c38787acf38014af579173a1f8be0719d25111afef48f9b5756e",
+        "bytes": 1213472,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "MAP-E-PIER-01:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/MAP-E-PIER-01-lod0.glb",
+          "sha256": "6a81dfd5f3c0c38787acf38014af579173a1f8be0719d25111afef48f9b5756e",
+          "bytes": 1213472,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "MAP-E-PIER-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-E-PIER-01-lod1-geometry.glb",
+          "sha256": "ebd64e0aa9125df8a29cce885ed2a1f0c68849410c74768a3897bfdf81d77439",
+          "bytes": 405560,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-E-PIER-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-E-PIER-01-lod2-geometry.glb",
+          "sha256": "44d54da120cc30e1f7a676817e1b8b392f5bec96d3b0e750403aadc5c3ed1651",
+          "bytes": 403760,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-E-PIER-01:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "da9cc8b52d3a26f282764a04cae30dc27c2c76488867ecc210615baab5af22f1",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "MAP-F-ROOF-01",
+      "name": "接收仓库屋盖",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "1c5812397fbe797973f95fe7bef688ad744f0363fc23e5da8aafd7de3a9a39cd",
+        "bytes": 2960584
+      },
+      "runtime": {
+        "path": "models/architecture-r1/MAP-F-ROOF-01-lod0.glb",
+        "sha256": "a574967cda96f4a2865ec6ac9703a02ab5ff83372f182b9e6a499677877423d6",
+        "bytes": 1593880,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "MAP-F-ROOF-01:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/MAP-F-ROOF-01-lod0.glb",
+          "sha256": "a574967cda96f4a2865ec6ac9703a02ab5ff83372f182b9e6a499677877423d6",
+          "bytes": 1593880,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "MAP-F-ROOF-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-F-ROOF-01-lod1-geometry.glb",
+          "sha256": "ae026f7bf018559c78ecfe703642d18909a9dabc6bb46e40bf05f8f799f6ed5d",
+          "bytes": 831008,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-F-ROOF-01:lod0"
+        },
+        {
+          "path": "models/architecture-r1/MAP-F-ROOF-01-lod2-geometry.glb",
+          "sha256": "667365d18f768e4ea70c4d5b62199195d5547303a0391d12f1c491e755a0503e",
+          "bytes": 828704,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "MAP-F-ROOF-01:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "1c5812397fbe797973f95fe7bef688ad744f0363fc23e5da8aafd7de3a9a39cd",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    },
+    {
+      "id": "PROP-BOOTH",
+      "name": "查验岗亭",
+      "category": "architecture",
+      "provider": "Hyper3D",
+      "revision": "architecture-r1",
+      "concept": {
+        "origin": "《重返木卫三》原创地图概念与模块设计；按已记录设计审查生产",
+        "tool": "ImageGen／项目模块设计",
+        "scope": "本地制作合同与离线审查留档，不代表本次关卡画面已验收"
+      },
+      "original": {
+        "kind": "供应商静态 GLB",
+        "sha256": "2b57813cb2de4182a1f575c6878b270442b1f7344ef33fcf254ba7ae43d32777",
+        "bytes": 3003108
+      },
+      "runtime": {
+        "path": "models/architecture-r1/PROP-BOOTH-lod0.glb",
+        "sha256": "d1786fc792731127f7ff345f0b205b9cae6100d4c4f33d00f30882ad5dfa53d7",
+        "bytes": 1674904,
+        "level": 0,
+        "geometryOnly": false,
+        "materialSourceId": "PROP-BOOTH:lod0"
+      },
+      "status": "已接入真实场景构造与共享租约；实景、视距与目标设备验收待完成",
+      "productionCategory": "architecture",
+      "runtimeVariants": [
+        {
+          "path": "models/architecture-r1/PROP-BOOTH-lod0.glb",
+          "sha256": "d1786fc792731127f7ff345f0b205b9cae6100d4c4f33d00f30882ad5dfa53d7",
+          "bytes": 1674904,
+          "level": 0,
+          "geometryOnly": false,
+          "materialSourceId": "PROP-BOOTH:lod0"
+        },
+        {
+          "path": "models/architecture-r1/PROP-BOOTH-lod1-geometry.glb",
+          "sha256": "5fed8050937a2af0f7d67948aa0426b001bd20db9f870a594f9c94495c359328",
+          "bytes": 917920,
+          "level": 1,
+          "geometryOnly": true,
+          "materialSourceId": "PROP-BOOTH:lod0"
+        },
+        {
+          "path": "models/architecture-r1/PROP-BOOTH-lod2-geometry.glb",
+          "sha256": "10cbfb89eef32ff2fa9ab8873058915e74ad70da01692ad4607f0d5b4d0b04e5",
+          "bytes": 916000,
+          "level": 2,
+          "geometryOnly": true,
+          "materialSourceId": "PROP-BOOTH:lod0"
+        }
+      ],
+      "architectureContract": {
+        "lodCount": 3,
+        "materialPolicy": "LOD1/2 geometry borrow LOD0 materials",
+        "originalSha256": "2b57813cb2de4182a1f575c6878b270442b1f7344ef33fcf254ba7ae43d32777",
+        "uniformScale": "placement contract",
+        "visualAcceptance": "NOT_REVIEWED_IN_GAME"
+      }
+    }
+  ],
+  "sharedAnimation": {
+    "id": "ANIM-WALK-CANONICAL",
+    "name": "共用原地行走",
+    "provider": "Tripo／项目本地转换与适配",
+    "revision": "canonical-v1",
+    "runtime": {
+      "path": "models/animations/walk-canonical-v1.glb",
+      "sha256": "8281b6b9d7563805e9fffed3a0db6657eefe42fac0d8d86c9a4357e193b0aa78",
+      "bytes": 532296
+    },
+    "scope": "独立行走片段；不代表所有角色动作或多人接触已完成。"
+  },
+  "evidenceScope": "项目内文件SHA/bytes与源码调用/场景分配已核对；没有以此宣称全部白盒覆盖、实际画面、动作接触、手机/Windows性能或发布许可检查完成。",
+  "privacy": "仅导出白名单字段；不含账户、凭证、临时下载 URL、服务任务原响应或绝对本机路径。",
+  "previousSummaries": [
+    {
+      "recordedOn": "2026-10-31",
+      "scope": "13套人物、25件Tripo道具、首批3件地图类场景模型及共用行走片段的来源摘要；后续建筑批次另有清单。",
+      "runtimePreparation": "源 GLB 保留；运行副本内嵌纹理最长边 1024。几何、UV、材质槽与骨架数据保持，源与运行 SHA 分别记录。",
+      "counts": {
+        "characters": 13,
+        "sceneProps": 28,
+        "productionProps": 25,
+        "mapRelatedInSceneCatalog": 3
+      }
+    }
+  ],
+  "sharedTacticalAnimations": {
+    "id": "SHARED-TACTICAL-R1",
+    "independentProductionConcept": false,
+    "clipCount": 17,
+    "clipNames": [
+      "ready_idle",
+      "crouch_down",
+      "crouch_idle",
+      "crouch_walk",
+      "stand_up",
+      "cover_enter",
+      "cover_idle",
+      "cover_peek_left",
+      "cover_aim_left",
+      "cover_fire_left",
+      "cover_peek_right",
+      "cover_aim_right",
+      "cover_fire_right",
+      "cover_exit",
+      "idle",
+      "run",
+      "walk_in_place"
+    ],
+    "characterPackages": [
+      {
+        "characterId": "CH-LU",
+        "sourceSha256": "33579cb205c11d50c6fa6dfa42f93f022e387cbcf07b5a24c9a6be0b37961501",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-lu.glb",
+          "sha256": "8cdaec04e90cff8e3b31bd750d4e5b9bc3029cee9d08156b0b84dcda9bb58d37",
+          "bytes": 2504620
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-ZHOU",
+        "sourceSha256": "1ec1a772922bf269612bb9b7edf0d1453e297ad41ff0a739603bd9c3a0abd38d",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-zhou.glb",
+          "sha256": "984be4cb00668be40db4990241c65cc9912516793d9479f2819f68b601de2076",
+          "bytes": 2504392
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-FATHER",
+        "sourceSha256": "56f25bda8d2fe8a89475fdbeb142604d10c07d505b30663c83b48750093b82b3",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-father.glb",
+          "sha256": "cca255aab9c8775f6bd3366916e6eb49edcfc9dae3e9b5a18e4b6f3c9e4f81fd",
+          "bytes": 2504620
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-ZHAO",
+        "sourceSha256": "bb3feadbff89b2ea8bc4dd008cc5c6a4eee4b34c53d6018116003429a4f3af9e",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-zhao.glb",
+          "sha256": "18ed2282b2392e81e58abbf5c6827ffd17c8e5520e4158b251f6225a945a847c",
+          "bytes": 2504692
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-XU",
+        "sourceSha256": "91851024995f6285c1a6c2cd7c4ac0be6bef80766e4124eb648a69938e9b0c8f",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-xu.glb",
+          "sha256": "b07d9ec4042b5c9ba4c38e40d1e170b09d4305a46b04b5d35254407fbe902c0e",
+          "bytes": 2504644
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-MENG",
+        "sourceSha256": "3c12c834d9efbc5fb15a731101e31f71872bc3f193f0c867f9d09508b7da2a1a",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-meng.glb",
+          "sha256": "e371069a9f777d3aa259ba941823c1011b46ec398b12ebc5baf1b578fb33b76d",
+          "bytes": 2504364
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-LUO",
+        "sourceSha256": "99d550070d86e919ca780d58699d70daa8ed172f2e9696ee78d4a5a666cbb329",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-luo.glb",
+          "sha256": "c17476b99ab44e1527b1bbe10f74001e377044f8cbf202e13c6d8c8e8b8ce770",
+          "bytes": 2504424
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-SHAO",
+        "sourceSha256": "8b13b2f6aecc9689df545e93387cc82277775b53feca6ecd73b495376170358d",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-shao.glb",
+          "sha256": "9b91d53d9cd7e790a75fadf1150b85470488b56553636dceb9df633eb0cc31cd",
+          "bytes": 2504600
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-ZHENG",
+        "sourceSha256": "71465e2907f29cb26e4fd7927bf07a1f756e11fb511ebcc91ffdd1e78fc2e765",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-zheng.glb",
+          "sha256": "89b779a30c6fe70d1fd4054b5f1beab02d5ae6201abc2441704178f8a908397f",
+          "bytes": 2504948
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-SHEN",
+        "sourceSha256": "00740e54780b3f6b06ffdeba1d68ca531b99638be6fa7bfd50bbfa50f305d0a3",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-shen.glb",
+          "sha256": "ed69c9add8da32fa75d4bcbf6b0cbd298762a54e930671409a5260c575b62d73",
+          "bytes": 2504348
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-DOCTOR",
+        "sourceSha256": "bdf7f567d245dc555393a53423a6ce7fb52d2a09c8ab82eb7b2e39fe17bb7a24",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-doctor.glb",
+          "sha256": "21e093bb23618df6c8e5275c1d6eb49934477ac4be8b5c95f383cb822c434a37",
+          "bytes": 2504548
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-ENEMY",
+        "sourceSha256": "5f5d3f3fb12a31cae51954ff3e47e615fdd779bd461ee5c4add5b90e1530b3d0",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-enemy.glb",
+          "sha256": "00ea81296696405ac4fe55bc9ff2164a98a91976c2013afb294c7bcd9c393a8d",
+          "bytes": 2504580
+        },
+        "authoredHeightMeters": 1.8,
+        "bodyPlan": "adult"
+      },
+      {
+        "characterId": "CH-LU-CHILD",
+        "sourceSha256": "1d33683fcf92e1db07de9ca73b059052d16fd841551d927f25022efc72cf83c1",
+        "runtime": {
+          "path": "models/animations/tactical-r1/ch-lu-child.glb",
+          "sha256": "100407019610bfb05d23328cffdc74e68e80c960b88e068c2913c5fa2c5ffd17",
+          "bytes": 2504548
+        },
+        "authoredHeightMeters": 1.25,
+        "bodyPlan": "child-independent"
+      }
+    ],
+    "state": "integrated-locomotion-subset-candidate",
+    "runtimeSelectedClips": [
+      "ready_idle",
+      "crouch_idle",
+      "crouch_walk",
+      "idle",
+      "run"
+    ],
+    "consumer": {
+      "file": "src/presentation/ImportedCharacter.ts",
+      "line": 10,
+      "role": "可选战术包加载与稳定回退"
+    },
+    "limits": [
+      "17 段可加载不等于 17 个战斗状态全部启用",
+      "成人且排除 CH-SHAO/CH-DOCTOR/CH-SHEN；儿童、伤倒、照护、搬运、约束、换弹等继续采用稳定回退",
+      "原权重局部拉伸、儿童持枪和多人接触没有实景通过结论"
+    ],
+    "visualAcceptance": "NOT_REVIEWED",
+    "snapshotUtc": "2026-10-31T08:47:27.579572+00:00"
+  },
+  "integrationSnapshotUtc": "2026-10-31T08:47:27.579572+00:00"
+}

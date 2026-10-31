@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="dark light">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; style-src 'unsafe-inline'; base-uri 'none'; form-action 'none'">
+  <title>制作与来源 · 重返木卫三</title>
+  <style>
+    :root { color-scheme: dark; font: 17px/1.75 system-ui, -apple-system, "PingFang SC", "Microsoft YaHei", sans-serif; background: #15232a; color: #e4e9e5; }
+    * { box-sizing: border-box; }
+    body { margin: 0; }
+    main { max-width: 800px; margin: auto; padding: 44px 24px 60px; }
+    header { border-top: 4px solid #d4ae76; padding-top: 18px; }
+    header p { color: #bac9c9; margin: 0; }
+    h1 { font-size: 2rem; line-height: 1.35; margin: 8px 0 12px; }
+    h2 { font-size: 1.2rem; margin: 28px 0 8px; }
+    p { margin: 8px 0 12px; }
+    ul { margin: 0; padding-left: 1.4em; }
+    li { margin: 9px 0; }
+    a { color: #e9c992; text-underline-offset: .22em; text-decoration-thickness: 1px; }
+    a:focus-visible, summary:focus-visible { outline: 2px solid #f1d7ac; outline-offset: 5px; border-radius: 2px; }
+    details { margin-top: 12px; padding: 10px 16px; border: 1px solid #40545c; border-radius: 8px; }
+    summary { cursor: pointer; font-weight: 600; }
+    footer { border-top: 1px solid #40545c; margin-top: 30px; padding-top: 14px; color: #bac9c9; }
+    @media (max-width: 480px) { main { padding: 26px 20px 40px; } h1 { font-size: 1.7rem; } }
+    @media print { :root { color: #17242c; background: white; } a { color: #17242c; } main { max-width: none; } }
+  </style>
+</head>
+<body>
+<main>
+    <nav aria-label="返回"><a href="./index.html">返回游戏</a></nav>
+  <header>
+    <p>重返木卫三</p>
+    <h1>制作与来源</h1>
+    <p>本页链接随包保存的许可、署名和素材来源。离线时也可查看。</p>
+  </header>
+  <section aria-labelledby="runtime-title">
+    <h2 id="runtime-title">运行库</h2>
+    <ul>
+      <li>Three.js 0.186.0：<a href="licenses/dependencies/Three.txt">MIT 许可原文</a>。</li>
+      <li>Rapier 0.21.0：<a href="licenses/dependencies/Rapier.txt">Apache 2.0 许可原文</a>。</li>
+    </ul>
+  </section>
+  <section aria-labelledby="reused-title">
+    <h2 id="reused-title">复用模型</h2>
+    <ul>
+      <li>AK-47：taradavies 原几何；Operation Steel Tide／AetherRadar 适配。<a href="licenses/WP-AK47/NOTICE.md">署名</a>、<a href="licenses/WP-AK47/SOURCE_LICENSE.md">来源说明（含 CC0 记录）</a>、<a href="licenses/WP-AK47/LICENSE">适配 MIT 原文</a>。</li>
+      <li>F-35B：FGMEMBERS 上游贡献者；Headwind Corridor 转换按已记录授权复用。<a href="licenses/reused-aircraft/f35b/NOTICE.md">完整署名与修改说明</a>、<a href="licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt">GPL 3.0 原文</a>、<a href="sources/reused-aircraft/f35b-ganymede-source.zip">组件对应源码 ZIP</a>。</li>
+    </ul>
+  </section>
+  <section aria-labelledby="generated-title">
+    <h2 id="generated-title">原创概念与生成资产</h2>
+    <p>项目原创概念与模块设计经审查后交由 Tripo／Hyper3D 制作。本轮按独立生产 ID 汇总 60 件：13 套人物、25 件道具、22 件架构资产。架构的三档模型及旧目录变体不重复计算。</p>
+    <p><a href="licenses/generated-assets/manifest.json">查看平台、概念来源及源／运行文件 SHA-256</a> · <a href="licenses/generated-assets/README.md">首批来源说明（历史）</a></p>
+    <details>
+      <summary>查看本轮 60 件资产名称</summary>
+      <p><strong>人物：</strong>医师、敌兵、陆建平、陆闻川、陆闻川（儿童）、罗敬、孟齐、邵原、沈玉芬、许岚、赵启明、郑铎、周延。</p>
+      <p><strong>道具：</strong>可拆轻胸甲、敌兵头盔、左膝旧支具、工业长凳、货箱、滑动门叶、滑动门锁杆、风机、滤芯维护机组、生活杯、护理包、泵组、单耳耳麦、通信背包、样本柜、冰芯匣、手提担架、港务控制台、手持终端、维修包、饭盒、工具卷、转运车、人员货物运输车、港区牵引维修车。</p>
+      <p><strong>架构：</strong>钢梁模块、货运集装箱、混凝土掩体、金属地板模块、金属屋面模块、涂装墙模块、港区吊机、远景供热厂、岸外接收船、桥下板模块、工业灯杆、管道弯头、直管模块、工业墙板、避难所入口拱冠、货运连接廊、港区外墙面层、冰岸远景、桥墩、接收仓库屋盖、查验岗亭、工业罐体。</p>
+    </details>
+    <p>13 份角色战术动作包提供 17 个共享片段。当前人物接线选用待机、持枪待机、跑步与两种蹲姿片段，其余状态保留稳定回退；动作包存在不代表全部动作或接触已验收。</p>
+    <p>本批包含明确位置的视觉替换和陈设，保留可玩的碰撞、动态门与必要信息叠层；整张地图的白盒尚未全部替换。</p>
+  </section>
+  <section aria-labelledby="audio-title">
+    <h2 id="audio-title">声音</h2>
+    <p>作者、制作与授权依据见<a href="audio/provenance.json">随包声音来源记录</a>；以该记录的当前内容为准。</p>
+    <p>开场与章节衔接使用原创 AI 旁白，共 31 条；文件、原文和制作依据见<a href="audio/chapter-bridge-01/manifest.json">章节旁白来源记录</a>。</p>
+  </section>
+  <footer>
+    <p>2026-10-31 · 来源为本地原文、制作清单与已记录授权。本页不决定游戏整体许可证；已接入不等于实际画面、接触动作或目标设备已验收。</p>
+  </footer>
+</main>
+</body>
+</html>

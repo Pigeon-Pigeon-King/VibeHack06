@@ -1,0 +1,2189 @@
+{
+  "schemaVersion": 1,
+  "assets": [
+    {
+      "id": "PROP-TRANSFER",
+      "name": "转运车",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb",
+      "sourcePath": "assets/source/tripo/PROP-TRANSFER/1c388cb1-fe48-4263-a1e0-7210e4451aa3-pbr-model.glb",
+      "taskId": "1c388cb1-fe48-4263-a1e0-7210e4451aa3",
+      "sha256": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+      "bytes": 1647596,
+      "sourceSha256": "3f029558fb380a475fae91e5ed09700224445dc445fdae4f7d8495338ed9a56d",
+      "sourceBytes": 9200768,
+      "sourceBounds": {
+        "min": [
+          -0.5,
+          -0.23441840708255768,
+          -0.25887173414230347
+        ],
+        "max": [
+          0.5,
+          0.23441840708255768,
+          0.25887173414230347
+        ]
+      },
+      "sourceCost": {
+        "triangles": 17042,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2943727,
+            "runtimeBytes": 271928,
+            "sourceSha256": "ee79a61a02d10266e4382dedf441e1930464ea2be9378691939c6c01c847401d",
+            "runtimeSha256": "04f7a4c7795e0c8e7eb0d661f5c07cf8d62414125127d92cce1ef98614813440",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2233939,
+            "runtimeBytes": 309193,
+            "sourceSha256": "3a165126e8d42a2f7c4fb52e88da44b5a095cafbaf50ebf73dcc8e75ecebf4ac",
+            "runtimeSha256": "91ed1a86afbaa909b738defe7ac7f1dd9bb7d0707c18959c95dda3639b2ede06",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3421643,
+            "runtimeBytes": 465018,
+            "sourceSha256": "badf067d313e29fd03991050c6ebf73c041f1f429ab978a932da469a7a156b32",
+            "runtimeSha256": "6368f3711c52388857d54ed76c6158e09b7ce991ce5b8017290696e74c5d7c14",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-TRANSFER-v1.png",
+        "inputSha256": "259cb870a39ac93e0269c36eeaa51a2cae15ea7908165e1428d7fd246cd1bfeb"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-STRETCHER",
+      "name": "手提担架",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb",
+      "sourcePath": "assets/source/tripo/PROP-STRETCHER/8d8192a4-2414-497c-9ef3-019dc604fce0-pbr-model.glb",
+      "taskId": "8d8192a4-2414-497c-9ef3-019dc604fce0",
+      "sha256": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+      "bytes": 1350900,
+      "sourceSha256": "f82188ebd6f314a80a28f1719f466dd6a61c4873afa29c617a20c9281538a8a6",
+      "sourceBytes": 10915136,
+      "sourceBounds": {
+        "min": [
+          -0.5,
+          -0.031084980815649033,
+          -0.17940440773963928
+        ],
+        "max": [
+          0.5,
+          0.031084980815649033,
+          0.17940440773963928
+        ]
+      },
+      "sourceCost": {
+        "triangles": 7168,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4243237,
+            "runtimeBytes": 269493,
+            "sourceSha256": "2c6b1da73dec55304c86ddb48b45defca060aaf0f2856f3db718eb781f777161",
+            "runtimeSha256": "81dcf4180b83f0a0360e8e40fbf5c5db935b2ebfa22ca9aa30ca551c7490607c",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 1824433,
+            "runtimeBytes": 243391,
+            "sourceSha256": "76bbc97244bb530a6b4c101cea138c396d94a0684b3d01c7157c9b65532367ad",
+            "runtimeSha256": "0dc9747d792588f109d92978a692f515f0b97abde527cdfc56f4f5e68c152c19",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4593613,
+            "runtimeBytes": 584176,
+            "sourceSha256": "800699cbaca2f7c7d3356481c97c6e975e8407d1149a7a011a68d2a8f2a951c5",
+            "runtimeSha256": "2aef7244258e121c401dcd744be81198169e5e510483b1d2a185c4bd0602ad67",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-STRETCHER-v1.png",
+        "inputSha256": "e6119b9a9a6aa01db5721ec36eb6a96a199e0534ed8aa96a9f46e1f800e6471d"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-DOOR-LEAF",
+      "name": "滑动门叶",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb",
+      "sourcePath": "assets/source/tripo/PROP-DOOR-LEAF/ce8b2327-8995-44d0-9fe5-e3551e06009e-pbr-model.glb",
+      "taskId": "ce8b2327-8995-44d0-9fe5-e3551e06009e",
+      "sha256": "e01e2ebd2db78d58ee372e3588fd7cc42e4d71ee48157a21e9c32f77141931b1",
+      "bytes": 1604400,
+      "sourceSha256": "df28de7339fc37401088b2deeadae2aac7779c61d344134b4f55c79ec0bb75f3",
+      "sourceBytes": 11420968,
+      "sourceBounds": {
+        "min": [
+          -0.1281512826681137,
+          -0.5,
+          -0.3024097979068756
+        ],
+        "max": [
+          0.1281512826681137,
+          0.5,
+          0.3024097979068756
+        ]
+      },
+      "sourceCost": {
+        "triangles": 8730,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3064774,
+            "runtimeBytes": 278043,
+            "sourceSha256": "26f34db4729d27723438bd583f684a18274d5ed0ab4291e436ea62e60b0a8d32",
+            "runtimeSha256": "7cb1646150e68de61d388967de59573eef290587d7eb19e39e2a979f8fc13abb",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 1808445,
+            "runtimeBytes": 207097,
+            "sourceSha256": "a5cc249fead7858f8da255491f996262ee3d355bd61d5c358645b9fdae3fc22c",
+            "runtimeSha256": "54839fd5a4f3f38d43af6e532dd6240ab6d0b11594d8399a7862d589418602a7",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 6174104,
+            "runtimeBytes": 745619,
+            "sourceSha256": "6bbd8f843e0e31a13d9bb7ebdd9a01d4c707670c509aa21c9d85fe430f799fc5",
+            "runtimeSha256": "66b1025274f2688634016ee0a2f3ef64cbe2e2da9ee261b78d1e480329c14ac0",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-DOOR-LEAF-v1.png",
+        "inputSha256": "bba9c5baad84f0ae88c2b85278b29b0a5dd305e36342bda68b376c5c628dfbff"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-DOOR-LOCK",
+      "name": "滑动门锁杆",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb",
+      "sourcePath": "assets/source/tripo/PROP-DOOR-LOCK/6caff16f-c506-44e0-afb8-db653121a67d-pbr-model.glb",
+      "taskId": "6caff16f-c506-44e0-afb8-db653121a67d",
+      "sha256": "e786f8eddae672f6f23599fdab5efc84ad05844aa55cdf6f2e06ea4929de1955",
+      "bytes": 1402304,
+      "sourceSha256": "52ff81fdb82013c7f52c31a36ae2277d234d8358a745bfb6a42211f4ea59e8d5",
+      "sourceBytes": 11095424,
+      "sourceBounds": {
+        "min": [
+          -0.25948432087898254,
+          -0.15692640841007233,
+          -0.5
+        ],
+        "max": [
+          0.25948432087898254,
+          0.15692640841007233,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 4691,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3180519,
+            "runtimeBytes": 275784,
+            "sourceSha256": "e87516238a0919dfdab1d455a978a1b7900dbbd62e3f88ffa325f422ae31137b",
+            "runtimeSha256": "9bcdd2b1e21e758a172125df35df6e158f516906ca8791387096c2bf46272a4d",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2076977,
+            "runtimeBytes": 263957,
+            "sourceSha256": "eb6ce4d72039a426be937c2d655c7bce8563c144cef4821c02d00d558e984628",
+            "runtimeSha256": "8ef3f4514e21a73888fe6579652c436a90fc205fb0f962e23599ffd130cd1608",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 5662186,
+            "runtimeBytes": 686830,
+            "sourceSha256": "74e1b75ffb97a1f37045e0b9a491a3527d12db1b7bd1a007ef3bb3169a9909cc",
+            "runtimeSha256": "c06297001e63f3c070c8c3e5cb332d413dbf97260f1f79cc49214fd004544a79",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-DOOR-LOCK-v1.png",
+        "inputSha256": "267e168ba13ab74eb6a199d3ea2f1d5bfb24b574dfe62b06be984ad5f13a6ac4"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-TERMINAL-HANDHELD",
+      "name": "手持终端",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb",
+      "sourcePath": "assets/source/tripo/PROP-TERMINAL-HANDHELD/f8f981a5-3714-4010-a0d8-c263a49b46ba-pbr-model.glb",
+      "taskId": "f8f981a5-3714-4010-a0d8-c263a49b46ba",
+      "sha256": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+      "bytes": 1576612,
+      "sourceSha256": "234b2bea3fc26466eae954075d9cc9e02db6fa0e9d6f2dc68666fad19c614c3d",
+      "sourceBytes": 15435756,
+      "sourceBounds": {
+        "min": [
+          -0.1957043707370758,
+          -0.5,
+          -0.3151775896549225
+        ],
+        "max": [
+          0.1957043707370758,
+          0.5,
+          0.3151775896549225
+        ]
+      },
+      "sourceCost": {
+        "triangles": 4196,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 5649668,
+            "runtimeBytes": 351858,
+            "sourceSha256": "63c4ffe01b42b829a98e45cb937307e58d81202e6f3f7c4c28dd31edb8e0235e",
+            "runtimeSha256": "6fde1161e86cfaf3ea580c4c9b046c918837e62c1858d771dc69b9acf1bc5404",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 1589229,
+            "runtimeBytes": 161349,
+            "sourceSha256": "9180beb1ed157f9005258db49db387ed3b567a784b21703d32517f4dc99a51d4",
+            "runtimeSha256": "3f61c166522d339299d8baaaeca33b68b928e7c682b176a80c334a986e17736f",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 8042458,
+            "runtimeBytes": 909011,
+            "sourceSha256": "100d57c788644263bf64cd0144b16bfcd55d0b574ab61d1cdb8a100f67a25077",
+            "runtimeSha256": "68a364d3026196ae0b32d286483c0556e841a8a99cfff528b9d9b3f08bb55680",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-TERMINAL-HANDHELD-v1.png",
+        "inputSha256": "ad2b7416660eebe5f5daa064e5ccdfc696bc7a6af8c4b22aef704c8610acf739"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-VEH-TRANSPORT",
+      "name": "人员货物运输车",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb",
+      "sourcePath": "assets/source/tripo/PROP-VEH-TRANSPORT/711110bd-b12a-4cf3-863a-376aa825f30d-pbr-model.glb",
+      "taskId": "711110bd-b12a-4cf3-863a-376aa825f30d",
+      "sha256": "4fa477429e68cc40f8cd65d6ec3ee9c288cbaaeb652c8d91318a230020092a10",
+      "bytes": 1785076,
+      "sourceSha256": "cc936c5892774b3c6d569ba9181a7b72cf1c56da32b5293b632031643c4e9864",
+      "sourceBytes": 11384668,
+      "sourceBounds": {
+        "min": [
+          -0.5,
+          -0.2035214751958847,
+          -0.19288723170757294
+        ],
+        "max": [
+          0.5,
+          0.2035214751958847,
+          0.19288723170757294
+        ]
+      },
+      "sourceCost": {
+        "triangles": 17959,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4238031,
+            "runtimeBytes": 369939,
+            "sourceSha256": "4386fa37e4b9ae8153da3a8f3fcf235c3061104661c1a8c5381d9d52d58438cb",
+            "runtimeSha256": "72e1a909190833aeffdc2de8b80afb8a5650dda70aee21aba62d84b85d2df4bd",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2149270,
+            "runtimeBytes": 263087,
+            "sourceSha256": "d8e198975c96728dec2d6b3324351da2180ae1c2cbecdf7934ad3c8844dd5a4e",
+            "runtimeSha256": "9fc29425ccffb9e9b1c24da0f1ffa21a35164e537d9b3e381edafe57fbb7b246",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4339639,
+            "runtimeBytes": 494328,
+            "sourceSha256": "06dbf238b9b74a99de23f31087b29dba0a9c0146e796de5e11c07420f83c7346",
+            "runtimeSha256": "9d77929ecc0307cc96bc301e9e7e6da9dbbc8f311d14bea233afbc88fb681c4a",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-VEH-TRANSPORT-v1.png",
+        "inputSha256": "44e0f6834638926345cddbf98c562278bbee4389589c57b28a9cf0fac3670d75"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-FILTER",
+      "name": "滤芯维护机组",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-FILTER.glb",
+      "sourcePath": "assets/source/tripo/PROP-FILTER/a6423fe0-9719-45d4-b285-4ee37ae409b5-pbr-model.glb",
+      "taskId": "a6423fe0-9719-45d4-b285-4ee37ae409b5",
+      "sha256": "c5b51ec1c1bc3f0fc34e20b0485077047f03bea2a742a920660180d701e5256f",
+      "bytes": 1611708,
+      "sourceSha256": "232bf081736435438f871a860680232a47287f12616bfa8e880acced07d1c6e2",
+      "sourceBytes": 11934652,
+      "sourceBounds": {
+        "min": [
+          -0.23325049877166748,
+          -0.2907179296016693,
+          -0.5
+        ],
+        "max": [
+          0.23325049877166748,
+          0.2907179296016693,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 10809,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4106484,
+            "runtimeBytes": 344326,
+            "sourceSha256": "0d7b71e10a47c0099bbfef319191f655a1617ffa4852bd3114ff00e2f3be580f",
+            "runtimeSha256": "df37698afd36a920027678a0c3ff896e26929318a8b54a464e98c1a98ab3969b",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2217616,
+            "runtimeBytes": 281905,
+            "sourceSha256": "4533f9db086b07a95f57ee7588886926eda5b5b8150bc42e35d01171f9b509b6",
+            "runtimeSha256": "be06df9c535fc2052b657c44087f79e2a684ab64eb100648eac109e19863d4d5",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 5184742,
+            "runtimeBytes": 559666,
+            "sourceSha256": "24fe3f44fbf7f972b45e093e269913e531dfb3e33464005899e2a0f5091ca1af",
+            "runtimeSha256": "9571454d01b05f1070553874256c6e6db8d1c2860665a278ceaa6ffdad4cc04b",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-FILTER-v1.png",
+        "inputSha256": "681c54fd0be734ba66bb3fe0cf7720d968dfd5b027bdb331f074d3de729547fc"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-CARGO",
+      "name": "货箱",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-CARGO.glb",
+      "sourcePath": "assets/source/tripo/PROP-CARGO/72ca2db1-f3d0-4a3b-9555-3a8be0109392-pbr-model.glb",
+      "taskId": "72ca2db1-f3d0-4a3b-9555-3a8be0109392",
+      "sha256": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+      "bytes": 1880176,
+      "sourceSha256": "a036cefdf7c9a92edb81f5908986b9b2701245511f3bece3540a68b8d52581ef",
+      "sourceBytes": 17572088,
+      "sourceBounds": {
+        "min": [
+          -0.31533247232437134,
+          -0.33937782049179077,
+          -0.5
+        ],
+        "max": [
+          0.31533247232437134,
+          0.33937782049179077,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 5039,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 5168284,
+            "runtimeBytes": 345063,
+            "sourceSha256": "55df5c5768fb7c186abba146e033d1b6d94394f4d4ef740cab517b9f00b4f077",
+            "runtimeSha256": "5d36de8fcc8e219813dcb43377cc4b3d88b453b9593f93a5affc23477f4b7dc0",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2321574,
+            "runtimeBytes": 296619,
+            "sourceSha256": "1ddb9ecd1c7ea687feb67dc85f558f963350cae84ee9fb962aa82663325d2d89",
+            "runtimeSha256": "c0f1111714565a742486715976cb11f5981b0a17dfb38c7d12cbb897293d7916",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 9895437,
+            "runtimeBytes": 1051705,
+            "sourceSha256": "d142a721dee0b7007d8065d28e0e3b62b972f774b19ad8b03afa3b38edd5a9ec",
+            "runtimeSha256": "92e71c4833259938e28cc74a9d5465edf7be5764ee3e467a0b7ca63d0d85d27d",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-CARGO-v1.png",
+        "inputSha256": "e65ba7605bd22b235c1a9ca91505afc4c4d9588ebd1ab7c25374c5f7430b9b46"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-PUMP",
+      "name": "泵组",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-PUMP.glb",
+      "sourcePath": "assets/source/tripo/PROP-PUMP/30ddf85f-f5f3-44d5-9b84-3535a0f1425e-pbr-model.glb",
+      "taskId": "30ddf85f-f5f3-44d5-9b84-3535a0f1425e",
+      "sha256": "ea37539ae6da8e0c56cd99001471de30b7ab55f8eab2586549dba0c66c392890",
+      "bytes": 1842348,
+      "sourceSha256": "4de2d7d9a2fc84316ae24c8fe9c512a64a3d8eb2284137035467b8f9e50ef7c9",
+      "sourceBytes": 13377124,
+      "sourceBounds": {
+        "min": [
+          -0.2847839295864105,
+          -0.23878398537635803,
+          -0.5
+        ],
+        "max": [
+          0.2847839295864105,
+          0.23878398537635803,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 10485,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4238195,
+            "runtimeBytes": 373367,
+            "sourceSha256": "a2c6445b81996c3af5b6940cd556ea0fbad05d552fa01c0f54df0a878f5a60c3",
+            "runtimeSha256": "33dc5de7758795033a599eb28d01fea9b28024955be24106d002bb3d347dd31a",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2859123,
+            "runtimeBytes": 386031,
+            "sourceSha256": "e9992fe9a28ce3f10506eb785f7ab3cb40a842549db71837132e9daaf43a37cd",
+            "runtimeSha256": "53abd2ff696206aa498b33fe494b8e624593414636fa25f35b6b32e9218873cc",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 5848073,
+            "runtimeBytes": 651223,
+            "sourceSha256": "468a333bcb91cb3cde773d6990ed7ee205f27be7251636aba8b7e5f8722a486a",
+            "runtimeSha256": "6be0a568a33ba39956025c93ead755f6d8a9a6f55fe095cb7afe51a66f4e8205",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-PUMP-v1.png",
+        "inputSha256": "82a69df05dab2d84efcd6d7f033d13e38a22a957e5807a9352ba036eec6b12f1"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-FAN",
+      "name": "风机",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-FAN.glb",
+      "sourcePath": "assets/source/tripo/PROP-FAN/f6b963d0-cdc7-4ea2-939c-b4ed3b437fea-pbr-model.glb",
+      "taskId": "f6b963d0-cdc7-4ea2-939c-b4ed3b437fea",
+      "sha256": "8a0b1f1ad9bfcac49d8aa0587ad94409f758e5ffc34a2c8e5f5f956b19d97910",
+      "bytes": 1460432,
+      "sourceSha256": "247508f6c9680631d86e679e3370d1caa069c36562fd36a81eade680775816a6",
+      "sourceBytes": 10345464,
+      "sourceBounds": {
+        "min": [
+          -0.25746995210647583,
+          -0.497150719165802,
+          -0.5
+        ],
+        "max": [
+          0.25746995210647583,
+          0.497150719165802,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 9437,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3276554,
+            "runtimeBytes": 299073,
+            "sourceSha256": "c7ad401e8919e2145c808f74ca4929b6d1f2ce2b41dab604e27688c497857603",
+            "runtimeSha256": "f261ae4da308d4759800e333a8cfa9c97006578b25c5dd5ef56255a5da7f5718",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2953558,
+            "runtimeBytes": 374582,
+            "sourceSha256": "7e6c36c9892ccc430876e6bec4ecedca5bac8b29aec3770195d0a2840f65e247",
+            "runtimeSha256": "a3b4c9a8919ef35e7b055458eca5571c6ebde7e4bb679b77a37201f903098657",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3710664,
+            "runtimeBytes": 382090,
+            "sourceSha256": "981e5a3cb7b158ffbc0dfda148d38a0d6b01cfe7acc7b172e6fbdf05cee76645",
+            "runtimeSha256": "36c10defab6194e8479de345b847d9b8ff641be4a547240a2996661e3db4f17c",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-FAN-v1.png",
+        "inputSha256": "8eb9a8bcd0b7e1b5dd7b6ec54c12bdda75d2f54a76d4f94ffb49bf373b64c3e4"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-TOOL-BAG",
+      "name": "维修包",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb",
+      "sourcePath": "assets/source/tripo/PROP-TOOL-BAG/0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5-pbr-model.glb",
+      "taskId": "0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5",
+      "sha256": "936b657dd2151be5ae36c3a65b7625b6fc1752299a7e35716a03ab5153d31650",
+      "bytes": 1652892,
+      "sourceSha256": "b1e5648ce9369f954f910e4b93aa4d1d2005cbf38f88ece011cc790100ebf2b7",
+      "sourceBytes": 17039144,
+      "sourceBounds": {
+        "min": [
+          -0.31173914670944214,
+          -0.397460013628006,
+          -0.5
+        ],
+        "max": [
+          0.31173914670944214,
+          0.397460013628006,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 5496,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 6015672,
+            "runtimeBytes": 369435,
+            "sourceSha256": "a751dbd57bfa10e4cebddd4379f78537bb7f4f5e43f7a09a9fd7560bc93b669d",
+            "runtimeSha256": "db168456a90713f9b028fc9d398146591c653895b5d052ee49ee83691e6f36bb",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 1612210,
+            "runtimeBytes": 200103,
+            "sourceSha256": "3c6787d0767514b8ebc30cddc9e51fd5b14ee7003481b3814b8799dca02adfe5",
+            "runtimeSha256": "59aaa917f20397e42497083a0d781652479cdef5a441805f85ceb46bb24a25b7",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 9199184,
+            "runtimeBytes": 871279,
+            "sourceSha256": "bc4c5e76cfe81564226a35e3b9d7b1a28b8fff7f9d1a38f1b23b759eefe334d5",
+            "runtimeSha256": "db3a2d720aa9af20c74a09f46b1ee49b0760103e8e616c30e81e11b69834f9b4",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-TOOL-BAG-v1.png",
+        "inputSha256": "563b92224b6b06a77e6de011437003672c0e3f0663da413f48a3b65f20e4d3e5"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-TOOL-ROLL",
+      "name": "工具卷",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb",
+      "sourcePath": "assets/source/tripo/PROP-TOOL-ROLL/ad2d5d2a-a635-4a84-8341-be625ac6cae5-pbr-model.glb",
+      "taskId": "ad2d5d2a-a635-4a84-8341-be625ac6cae5",
+      "sha256": "ca5d918c44c649e0149d63b3eb68c6e5a61981b16c3d4e25509a8fe64a1722bd",
+      "bytes": 1682284,
+      "sourceSha256": "56c03b2ce98ca994e5ef6c98348c3a86e15f7fba19dc684c82ddd39e48b4b4b3",
+      "sourceBytes": 16894308,
+      "sourceBounds": {
+        "min": [
+          -0.23423536121845245,
+          -0.20957869291305542,
+          -0.5
+        ],
+        "max": [
+          0.23423536121845245,
+          0.20957869291305542,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 4787,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 6150171,
+            "runtimeBytes": 407576,
+            "sourceSha256": "0ae3d3874c9604d7cc334e748002e5159b1df1bd1c5cbfffb16935810c7b4dee",
+            "runtimeSha256": "9d6274a99b8fd6a0b85350616f5c989be4338c82c3a45de5908ab7d1b266a50f",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 1890894,
+            "runtimeBytes": 211320,
+            "sourceSha256": "5c42177c80d5323b94c6dc257976785cb74db15fc7483bf3d94b0344160ab466",
+            "runtimeSha256": "ccb3a05e8b4bf6c3baa7e068b9fa6471d27dda01bdf3761e2373020b1f7af251",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 8685092,
+            "runtimeBytes": 895244,
+            "sourceSha256": "083330358ef45476ad334a1bc27433d7936a1e170377e2d518758ac0bac9aa04",
+            "runtimeSha256": "a3a34024847107585a24594d72742fa4453edb7781c031479d81fc0e47f789c6",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-TOOL-ROLL-v1.png",
+        "inputSha256": "cd97c2c872220be0ef760a658539cc8ee880d84c4d1fa20ad9dab29b0546bb7a"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-TOOL-LUNCHBOX",
+      "name": "饭盒",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb",
+      "sourcePath": "assets/source/tripo/PROP-TOOL-LUNCHBOX/f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec-pbr-model.glb",
+      "taskId": "f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec",
+      "sha256": "b84562c1a10554721ab50b58e7f0d2f9b8ad1eae03d04d19efca2738376e63b4",
+      "bytes": 1649228,
+      "sourceSha256": "b78ffa416f0e2995970011de78a1865ef5f247f96e33a1071fc0c7a215212925",
+      "sourceBytes": 17181560,
+      "sourceBounds": {
+        "min": [
+          -0.3599480986595154,
+          -0.40197446942329407,
+          -0.5
+        ],
+        "max": [
+          0.3599480986595154,
+          0.40197446942329407,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 3328,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 5525959,
+            "runtimeBytes": 291211,
+            "sourceSha256": "10cc65a73648fa469dcfe2dc5fdc71c1f964754a93f4c1e1677348f1dcf21963",
+            "runtimeSha256": "b1a45b2af9b7b725579656e2818dbc28c71650f9a7755e7eaf8962d39a20d828",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2114609,
+            "runtimeBytes": 267175,
+            "sourceSha256": "109c674a2e3aad59dfeef0be5a702fc9e80eca921e8feb381641a42b7cb2c4a8",
+            "runtimeSha256": "627eb2bae5d50ff6913570647bd01c79fa6410a5ceabb299b62cab29467a98a7",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 9413611,
+            "runtimeBytes": 963468,
+            "sourceSha256": "f24e44cb8b17b4d4b8186255761ffd9dfbbcc4f3e9de02334a05b1ac98f054a1",
+            "runtimeSha256": "bc587cb978243476adc0fceffea62ef475a0d30f3da5027b1f494835f5f1206d",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-TOOL-LUNCHBOX-v1.png",
+        "inputSha256": "3273c2e4368cb2c89fbc08ca435f0fc86e82e5fda5ce4c673cfb58e9bc31fc39"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-RADIO-PACK",
+      "name": "通信背包",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb",
+      "sourcePath": "assets/source/tripo/PROP-RADIO-PACK/1301e9a7-c909-4b44-9218-0160fbd9a0cb-pbr-model.glb",
+      "taskId": "1301e9a7-c909-4b44-9218-0160fbd9a0cb",
+      "sha256": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+      "bytes": 1417512,
+      "sourceSha256": "0ec3cb9ff4b2b28dae7f4957b72d7d2b7ef3c3324c12e2d01bb01025842d48f6",
+      "sourceBytes": 12347788,
+      "sourceBounds": {
+        "min": [
+          -0.21003249287605286,
+          -0.5,
+          -0.3248141407966614
+        ],
+        "max": [
+          0.21003249287605286,
+          0.5,
+          0.3248141407966614
+        ]
+      },
+      "sourceCost": {
+        "triangles": 7124,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4345101,
+            "runtimeBytes": 286851,
+            "sourceSha256": "0a7c8e4a27eb9b9758033c56a374fac2e417c5c5db3b485f077adf904fdc0f6c",
+            "runtimeSha256": "e6a7a8ceb392b67713c92c1cb9fb632959a817f059da2a223fa859eeb6abfdf8",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 1761262,
+            "runtimeBytes": 186900,
+            "sourceSha256": "539dbfa2e63cf2fd1c9748481feede6261fd23f4dd9a6280965b722b8b32eaed",
+            "runtimeSha256": "dc1295cdad15c593ab12ab848652165df1139fce33e5bd1e3e7801ab03c39722",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 5983374,
+            "runtimeBytes": 685719,
+            "sourceSha256": "95ca35aff637a6ff6fe2cfc23516aa1a63938a832dcbeeb2d99b0aa06e1b03ac",
+            "runtimeSha256": "911d068a41ca1564f6714cf0f4204c4aae14a1f857feb25fb628942b19cf6e4e",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-RADIO-PACK-v1.png",
+        "inputSha256": "cc3c2402dbf7e0b001016168e5583dc8e010db83b882e8025b61c6937d227c20"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-RADIO-HEADSET",
+      "name": "单耳耳麦",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb",
+      "sourcePath": "assets/source/tripo/PROP-RADIO-HEADSET/ce2057ec-310e-4711-a656-ab74a7d5f73f-pbr-model.glb",
+      "taskId": "ce2057ec-310e-4711-a656-ab74a7d5f73f",
+      "sha256": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+      "bytes": 1349396,
+      "sourceSha256": "115f17e668682f67f14bda4855885065bcd43dd6f570fd2982fb2dd0af208304",
+      "sourceBytes": 11850600,
+      "sourceBounds": {
+        "min": [
+          -0.21589766442775726,
+          -0.40636977553367615,
+          -0.5
+        ],
+        "max": [
+          0.21589766442775726,
+          0.40636977553367615,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 4656,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3648525,
+            "runtimeBytes": 228521,
+            "sourceSha256": "2b7017bc5e87592ff8aba08b339669c413cb0a7f9afec081b544a2ffc640812c",
+            "runtimeSha256": "289f68a8b5c701801203d512638013948a8c5d2497057ec837d779e2fa4ba981",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 1851009,
+            "runtimeBytes": 232776,
+            "sourceSha256": "122085e88c2b44a42da63e15fe1ca5c1190ecc1e7913eaa19c0e7e6db945bbc9",
+            "runtimeSha256": "2a9fea888a6d15c31d70882688a55955a5b3cc24829e5778b3d0280e0426cb22",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 6193729,
+            "runtimeBytes": 730771,
+            "sourceSha256": "f214c2fa6340c2f175b74f95865a9be6b350c6aa19fef2c74e36f40e3de57296",
+            "runtimeSha256": "929c4cce0f82b8f1ebb046589392e39196170de39f7d50655f3c99d305fdd03d",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-RADIO-HEADSET-v1.png",
+        "inputSha256": "dc4a9845cd4bed853802436faa349c0313ad72d1a59a8aee53d616b4936e5aeb"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-ARMOR-CHEST",
+      "name": "可拆轻胸甲",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb",
+      "sourcePath": "assets/source/tripo/PROP-ARMOR-CHEST/840ece9e-0e2f-4a39-933f-68729b55ffa4-pbr-model.glb",
+      "taskId": "840ece9e-0e2f-4a39-933f-68729b55ffa4",
+      "sha256": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+      "bytes": 1219540,
+      "sourceSha256": "fbdac8521d6078cb7c6aed001d81042bd0d7e180e0b0a3800dd7079675a63079",
+      "sourceBytes": 10557232,
+      "sourceBounds": {
+        "min": [
+          -0.39480137825012207,
+          -0.5,
+          -0.4739276170730591
+        ],
+        "max": [
+          0.39480137825012207,
+          0.5,
+          0.4739276170730591
+        ]
+      },
+      "sourceCost": {
+        "triangles": 7063,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3207661,
+            "runtimeBytes": 197205,
+            "sourceSha256": "0afff4b70ddf1d7965677a89aaa72dd7a6fc62ee8583b704f1ed6bffe0ecc783",
+            "runtimeSha256": "39558505cf736194f54df1f37adec80b8572a3da98c2f5eabbcc221457a90cb4",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2194890,
+            "runtimeBytes": 256803,
+            "sourceSha256": "78197605c3623a14570bfb1db1c5232e32703718678b65c32414795a2ccf9c5e",
+            "runtimeSha256": "0581aa8d3db5295cc958ced158150b1becffffa77cc0e495c08640df44a413b4",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4907789,
+            "runtimeBytes": 518652,
+            "sourceSha256": "4fe5a6373f00845f8785f3b061c6862ca682ee9d7670f873068445d21d308da7",
+            "runtimeSha256": "932ddfe0f3aadfe1db705a9c3dcd083861d4127d0563ab9862ff9443f3823809",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-ARMOR-CHEST-v1.png",
+        "inputSha256": "9823a1a45b439fc997cbe50af694b9947669c3d1084e9726fbd510b20daac570"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-ARMOR-LEFT-BRACE",
+      "name": "左膝旧支具",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+      "sourcePath": "assets/source/tripo/PROP-ARMOR-LEFT-BRACE/98939ba8-5a7f-4895-94e2-90f76dd807cc-pbr-model.glb",
+      "taskId": "98939ba8-5a7f-4895-94e2-90f76dd807cc",
+      "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+      "bytes": 1320340,
+      "sourceSha256": "28cdb4035899713a36fe5e73e9279819bee8f2f2a9da10b536c2168a5f6953fb",
+      "sourceBytes": 10709188,
+      "sourceBounds": {
+        "min": [
+          -0.31692633032798767,
+          -0.5,
+          -0.25358349084854126
+        ],
+        "max": [
+          0.31692633032798767,
+          0.5,
+          0.25358349084854126
+        ]
+      },
+      "sourceCost": {
+        "triangles": 5641,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3300154,
+            "runtimeBytes": 255631,
+            "sourceSha256": "4511e388ddaf76d873b13274f9166b5ce41b196bcfc7381321ea19ff646bbaef",
+            "runtimeSha256": "4d35b5817f4d45bedea338bb367717f9d734b372fdd676e902cd6849be0b8c00",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2464097,
+            "runtimeBytes": 312430,
+            "sourceSha256": "21e672a9ba8309052f7564b8211e8e9dff32d639007d97acb4dad2c9f753de24",
+            "runtimeSha256": "074a2470d0c15c8919048b73e13fb97eb53df75035df0313b6e10f854580fe71",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4725639,
+            "runtimeBytes": 532988,
+            "sourceSha256": "1f08663d35e644d71e2902833f8f8d97c2c2c4e0977509cf3c4b086a126e787e",
+            "runtimeSha256": "e1d25e7ff5f0b80b3831c557f8035a441c510cbaf6bf46e176803940a7930d25",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-ARMOR-LEFT-BRACE-v1.png",
+        "inputSha256": "c287e6844349794e515547260905aea4fe40bad3e6ec33039533d358f65afa47"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-ARMOR-HELMET",
+      "name": "敌兵头盔",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb",
+      "sourcePath": "assets/source/tripo/PROP-ARMOR-HELMET/2f160991-6325-4ede-83b7-4e71ffc5ccba-pbr-model.glb",
+      "taskId": "2f160991-6325-4ede-83b7-4e71ffc5ccba",
+      "sha256": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+      "bytes": 1278600,
+      "sourceSha256": "45793603d143012d6683072156e1a209fc325512bba8b0c3dcc84b01555d8185",
+      "sourceBytes": 12420076,
+      "sourceBounds": {
+        "min": [
+          -0.3688441812992096,
+          -0.5,
+          -0.42772576212882996
+        ],
+        "max": [
+          0.3688441812992096,
+          0.5,
+          0.42772576212882996
+        ]
+      },
+      "sourceCost": {
+        "triangles": 6138,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4290132,
+            "runtimeBytes": 259505,
+            "sourceSha256": "e76a8c6ebcf2336dae17cfcdb97a9b3b39e318f8747c061420020bdd30a5d186",
+            "runtimeSha256": "67e5c212bb032665275cfc14b65bbe5648db3dda2e5bb293decaffb13c1a7e41",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 974781,
+            "runtimeBytes": 93295,
+            "sourceSha256": "7cf4c5c456383522ee8ff809674f230f4e98ed0289cf580b33773cd3f47d52a3",
+            "runtimeSha256": "0ae64c63ab16ff7255f0729415a616464e395775c3491bc0e0e11eb452725c6d",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 6946014,
+            "runtimeBytes": 716657,
+            "sourceSha256": "7c69170b4748b55658be4d30c35ad132ef4a3041644dccbc7344f74dac5948d3",
+            "runtimeSha256": "9eebdc35f1c57cc01dee852b356fb4a83e55631d5cf0e500062b294b103aac7a",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-ARMOR-HELMET-v1.png",
+        "inputSha256": "41e3c5973aeb644c54f916155cb5ef0a15aba4cf0ac603aa13b3b5c8b9f4c167"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-SAMPLE-CABINET",
+      "name": "样本柜",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb",
+      "sourcePath": "assets/source/tripo/PROP-SAMPLE-CABINET/b7566df9-bdcd-4133-bbac-c01576ba79ca-pbr-model.glb",
+      "taskId": "b7566df9-bdcd-4133-bbac-c01576ba79ca",
+      "sha256": "40eca6cd7e558e0668df0f3791f487eabf6f5a13ceb876cf05fad40087d8b165",
+      "bytes": 1607528,
+      "sourceSha256": "e6668bbf6876af59b36f8d6e423fb6c3c8355550c325668d0eeff5911e728dad",
+      "sourceBytes": 12946880,
+      "sourceBounds": {
+        "min": [
+          -0.21986743807792664,
+          -0.5,
+          -0.3536636531352997
+        ],
+        "max": [
+          0.21986743807792664,
+          0.5,
+          0.3536636531352997
+        ]
+      },
+      "sourceCost": {
+        "triangles": 7407,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 3558143,
+            "runtimeBytes": 286845,
+            "sourceSha256": "d9883b577abdd7c7275ea8421db34f4794ec8704c61eeb30944d0db4009167b6",
+            "runtimeSha256": "2a415af7ac00aa5e3a34882ca291e7377d82d67855227d7e840d9c9e7eb5394c",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 1990749,
+            "runtimeBytes": 245745,
+            "sourceSha256": "6eafd45080d39c7310f5b07ddf25af6d60a523fccc69ef9c24de2250a852d3be",
+            "runtimeSha256": "4c04b84bc21dcf631fc929d033e01156128303059085b4a34447e175122bf337",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 7128453,
+            "runtimeBytes": 805405,
+            "sourceSha256": "82ecfd9433c552736a791158cfc66991735880c848e190aa3669779af7d0895f",
+            "runtimeSha256": "232b4f98c51c3549940f876d659b6e5214e0e56152e5fdf15c2f0027a09f48b4",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-SAMPLE-CABINET-v1.png",
+        "inputSha256": "5ccc8daa7b0788befff3d7cc568fe2dd25e6d9bf140a4a72f681625f9a459620"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    },
+    {
+      "id": "PROP-SAMPLE-CORECASE",
+      "name": "冰芯匣",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb",
+      "sourcePath": "assets/source/tripo/PROP-SAMPLE-CORECASE/96f7adc2-ca55-42ab-864d-333a01fe0e83-pbr-model.glb",
+      "taskId": "96f7adc2-ca55-42ab-864d-333a01fe0e83",
+      "sha256": "341ff92746ab75956402abf21604c5aaf186ee14fd5e4fc6177a9386dd82edf6",
+      "bytes": 1638668,
+      "sourceSha256": "a8ea25df78c93292849e83ea11ba2393fad6b0944281e8f9526843ca921b7a7d",
+      "sourceBytes": 14024928,
+      "sourceBounds": {
+        "min": [
+          -0.19621585309505463,
+          -0.17366966605186462,
+          -0.5
+        ],
+        "max": [
+          0.19621585309505463,
+          0.17366966605186462,
+          0.5
+        ]
+      },
+      "sourceCost": {
+        "triangles": 4416,
+        "meshes": 1,
+        "materials": 1,
+        "embeddedImages": 3,
+        "animationClips": 0
+      },
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 4126140,
+            "runtimeBytes": 289613,
+            "sourceSha256": "28b40572a4b598aedf794139353dddc315d61eb1efb21553596243632812ffcc",
+            "runtimeSha256": "8a087c0061cb30196f175edddc73f478442740af3f016bc09087825d8f51ba4a",
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 2466607,
+            "runtimeBytes": 341928,
+            "sourceSha256": "552d7247a24eb030784b64d6081ac7d855fcac884541fb9368bb4c5464000440",
+            "runtimeSha256": "3e44b3c9f3484768354f12ab27c2d62aef1b0a6450d7693481c429d4ec42ba5e",
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "sourceBytes": 7270644,
+            "runtimeBytes": 845592,
+            "sourceSha256": "9281f7af47cc86b6e7b74ea7bef31480564409393cbd6c014fe76a8d1a8074d2",
+            "runtimeSha256": "8a12025ee5ca87355bf53172f1f1d146ae72c0bae56f228e170aad9a9ff6568f",
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      },
+      "concept": {
+        "inputFile": "PROP-SAMPLE-CORECASE-v1.png",
+        "inputSha256": "1ab5d1ed4a6843b8bd063cb30d7189a8fe44da9fc5378c7078e1aa2c3d2a8043"
+      },
+      "status": "prepared-integration-candidate-rendering-pending"
+    }
+  ],
+  "totalBytes": 30977540,
+  "sourceModified": false,
+  "textureResizing": true,
+  "sourceReport": "artifacts/asset-jobs/production-20261031/props/report.json"
+}
