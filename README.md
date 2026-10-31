@@ -10,7 +10,7 @@ Three.js 单人线性第一人称射击战役。开发环境为 Mac，最终目�
 
 ## 运行候选
 
-本轮运行实现为 `83da4a8`，主线与被测备用候选的 427 项输入／245 项构建文件一致。证据见 [本轮整合](artifacts/asset-integration/README.md)，之后按 [缺口表](docs/INTEGRATION_GAPS.md) 决定备用版补齐顺序。新一批地图与动作待接包、开场及章节过场、全程实机和目标设备验收仍独立记录。
+本轮运行实现为 `83da4a8`，主线的 245 项构建文件与被测备用候选一致。后来保存的开场与章节桥接候选另通过76项专项，尚未接入主战役。证据见 [本轮整合](artifacts/asset-integration/README.md)，之后按 [缺口表](docs/INTEGRATION_GAPS.md) 决定备用版补齐顺序。新一批地图与动作、全程实机和目标设备验收仍独立记录。
 
 ```sh
 npm ci

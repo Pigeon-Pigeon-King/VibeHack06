@@ -69,6 +69,8 @@ nativue analyze .
 
 ## 扫描范围
 
+本轮还排除持续制作且尚未接入的 `assets/prepared/`。原文件保留；正式运行版通过 `src`、`public` 的安全清单及本轮整合记录引用，不把独立制作中的 LOD／动作候选当作主战役完成。
+
 本轮本地配置将仍在写入、且尚未由本画布审核的并行生产区排除：`artifacts/asset-jobs/`、`artifacts/campaign-qa/`、`artifacts/mobile-compat/`、`artifacts/submission/`、`artifacts/trailer-45s/`、`assets/source/`、`design/audio/`、`docs/campaign-qa/`、`docs/mobile-compat/`、`docs/submission/`、`scripts/submission/`、`tests/campaign-qa/`。这些文件仍完整保留在项目中，窗口归属由 `docs/PARALLEL_WORKSTREAMS.md` 表示；它们的持续日志变化不参与这张主线代码图的来源校验。当前 58 个节点的文件证据均在扫描范围内。后续审核这些工作流时应逐项重新纳入，而不是从本图推断其完成状态。
 
 当前 CLI 内建排除名为 `build` 和 `runtime` 的目录，因此被索引的文本文件不包含 `build/BUILD_BRIEF.md`、`src/runtime/Physics.ts` 与 `src/runtime/random.ts`。这不是代码缺失。画布里的身体／物理节点引用已索引的 Simulation 调用、输入模块和实际测试证据；直接源码仍可从仓库读取。没有修改扫描器排除规则或伪造文件索引。截图与超限原始 HTML 也不会作为带行号的代码证据；准确文件数量以每次真实分析请求为准。
