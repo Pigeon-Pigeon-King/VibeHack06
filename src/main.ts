@@ -11,6 +11,9 @@ import { GameUI } from './ui/GameUI';
 import { ObjectiveIndicator } from './ui/ObjectiveIndicator';
 import { objectiveFocusOpacity, smoothObjectiveOpacity } from './ui/objective-focus';
 import { HeldItemMotion, type HeldItem } from './presentation/HeldItemMotion';
+import { openingView } from './presentation/OpeningView';
+import { OPENING_TIMELINE, openingCrowdHitTime } from './content/opening-timeline';
+import { CrowdView } from './presentation/CrowdView';
 import { LAYOUT } from './content/layout';
 import { carryFacts, CHAPTER_STAGES, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
 import { SAVE_KEY_PREFIX, SaveStore, type SavedGame, type SaveSlot } from './persistence/SaveStore';
@@ -60,6 +63,7 @@ class Game {
   private readonly supply = carriedSupply();
   private readonly heldItems = new HeldItemMotion();
   private readonly care = new CareView();
+  private readonly crowd = new CrowdView();
   private monitor?: DepartureMonitor;
   private readonly ui: GameUI;
   private readonly objectiveIndicator: ObjectiveIndicator;
@@ -100,7 +104,7 @@ class Game {
     this.renderer.domElement.setAttribute('aria-label', '游戏画面');
     this.renderer.domElement.tabIndex = -1;
     this.scene.background = new Color(0x677e8d); this.scene.fog = new FogExp2(0x677e8d, 0.008);
-    this.camera.rotation.order = 'YXZ'; this.camera.add(this.weapon.root, this.supply); this.scene.add(this.camera, this.feedback.root, this.marker, this.care.root);
+    this.camera.rotation.order = 'YXZ'; this.camera.add(this.weapon.root, this.supply); this.scene.add(this.camera, this.feedback.root, this.marker, this.care.root, this.crowd.root);
     const ring = new Mesh(new RingGeometry(0.5, 0.58, 32), new MeshBasicMaterial({ color: 0xe7c782, side: 2, transparent: true, opacity: 0.8, depthWrite: false }));
     ring.rotation.x = -Math.PI / 2; ring.position.y = 0.04;
     const arrow = new Mesh(new ConeGeometry(0.16, 0.35, 4), new MeshBasicMaterial({ color: 0xe7c782, transparent: true, depthWrite: false }));
@@ -145,7 +149,7 @@ class Game {
     if (this.monitor) { this.scene.remove(this.monitor.screen); this.monitor.dispose(); this.monitor = undefined; }
     if (this.environment) { this.scene.remove(this.environment.root); this.environment.dispose(); }
     for (const { model, label: tag } of this.characters.values()) { this.scene.remove(model.root); model.dispose(); if (tag) { this.scene.remove(tag); disposeLabel(tag); } }
-    this.characters.clear(); this.feedback.clear(); this.sound.stopTransient();
+    this.characters.clear(); this.crowd.clear(); this.feedback.clear(); this.sound.stopTransient();
     this.environment = buildEnvironment(id); this.scene.add(this.environment.root);
     this.sim = new Simulation(id, this.environment.solids, saved, priorFacts);
     this.heldItems.reset(this.heldItem);
@@ -238,7 +242,11 @@ class Game {
 
   private simulate(): void {
     const oldPhase = this.sim.mission.phase;
+    const bombarded = this.sim.has('history-bombardment'), collapsed = this.sim.has('history-collapse');
     this.sim.step(this.input.read(FIXED_DT));
+    const liveHall = this.sim.scenario === 'mainhall' && oldPhase === 4 && this.sim.mission.phase === 4 && this.sim.has('history-timeline-v2');
+    if (liveHall && !bombarded && this.sim.has('history-bombardment')) this.sound.blast();
+    if (liveHall && !collapsed && this.sim.has('history-collapse')) this.sound.collapse();
     // Viewpoint changes have explicit body state; the next input frame starts there.
     if (oldPhase !== this.sim.mission.phase || this.sim.mission.control === 'staged') {
       this.input.pitch = this.sim.player.pitch; this.input.yaw = this.sim.player.yaw;
@@ -265,9 +273,12 @@ class Game {
   private present(dt: number): void {
     const sim = this.sim, p = sim.player, m = sim.mission, objective = sim.objective;
     const active = this.mode === 'playing';
+    const sceneFrame = { scenario: sim.scenario, phase: m.phase, phaseTime: m.phaseTime, lowMotion: this.lowMotion };
+    const history = openingView(sceneFrame, m.facts);
     this.camera.position.set(...sim.playerEye);
+    this.camera.position.y += history.eyeLift + history.shake;
     if (!this.lowMotion && active && m.control !== 'staged') this.camera.position.y += Math.sin(p.walk * 2) * 0.018;
-    this.camera.rotation.set(p.pitch + (this.lowMotion ? 0 : p.recoil * 0.012), p.yaw, 0, 'YXZ');
+    this.camera.rotation.set(p.pitch + (this.lowMotion ? 0 : p.recoil * 0.012), p.yaw, history.shake * 0.6, 'YXZ');
     const motionDt = active ? dt : 0;
     this.ads += ((p.ads ? 1 : 0) - this.ads) * Math.min(1, motionDt * 14);
     this.camera.fov = 75 - this.ads * 21; this.camera.updateProjectionMatrix();
@@ -283,8 +294,8 @@ class Game {
     this.supply.visible = pose.supply > 0;
     this.supply.position.set(0, -0.44 - (1 - pose.supply) * 0.62, -0.72 + (1 - pose.supply) * 0.20);
     this.supply.rotation.x = (1 - pose.supply) * 0.16;
-    this.environment.update(m.elapsed, this.camera.position);
     this.environment.setFacts?.(m.facts);
+    this.environment.update(m.elapsed, this.camera.position, sceneFrame);
     const seated = sim.scenario === 'relief' && m.phase === 7;
     const transferring = sim.scenario === 'escort' && m.phase === 11;
     const transferProgress = transferring ? Math.min(1, m.phaseTime / 8) : 0;
@@ -307,8 +318,11 @@ class Game {
         this.characters.delete(actor.id); item = undefined;
       }
       if (!item) {
-        const model = createCharacter(actor.role);
-        const tag = actor.role !== 'enemy' ? label(actor.name, actor.role === 'worker' ? '#efc78b' : '#c5e3dc') : undefined;
+        const crowdActor = (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
+          && actor.role === 'civilian' && /^(late-civilian-|evac-crowd-|civilian-)/.test(actor.id);
+        const model = crowdActor ? this.crowd.create() : createCharacter(actor.id.startsWith('hall-invader-') ? 'enemy' : actor.role);
+        const anonymous = /^(hall-invader-|hall-defender-|late-civilian-|evac-crowd-|civilian-)/.test(actor.id);
+        const tag = actor.role !== 'enemy' && !anonymous ? label(actor.name, actor.role === 'worker' ? '#efc78b' : '#c5e3dc') : undefined;
         item = { model, label: tag, name: actor.name, role: actor.role }; this.characters.set(actor.id, item); this.scene.add(model.root); if (tag) this.scene.add(tag);
       }
       if (item.label && item.name !== actor.name) {
@@ -323,7 +337,8 @@ class Game {
         // NPC models face +Z; the first-person hands above face -Z.
         item.model.root.rotation.y = Math.atan2(footX - actor.position[0], footZ - actor.position[2]);
       }
-      item.model.root.visible = !(sim.scenario === 'escort' && actor.role === 'enemy' && actor.safe);
+      const hallInvader = sim.scenario === 'mainhall' && (actor.id === 'shao' || actor.id.startsWith('hall-invader-'));
+      item.model.root.visible = !(sim.scenario === 'escort' && actor.role === 'enemy' && actor.safe) && (!hallInvader || history.invaders);
       let patientOffset: Vec3 | undefined;
       if (transferring && actor.id === 'cart-0') {
         const replacement = sim.actors.find(a => a.id === 'cart-2')!;
@@ -332,21 +347,27 @@ class Game {
           Math.sin(transferProgress * Math.PI) * 0.13, (dx * Math.sin(actor.yaw) + dz * Math.cos(actor.yaw)) * transferProgress];
       }
       const stagedWalker = active && m.control === 'staged' && (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
-        && ['father', 'evacuator', 'daughter', 'zhao', 'shao'].includes(actor.id);
+        && (['father', 'evacuator', 'daughter', 'young-lu', 'zhao', 'shao'].includes(actor.id)
+          || /^(hall-invader-|hall-defender-|late-civilian-|evac-crowd-)/.test(actor.id));
+      const crowdHitTime = actor.id.startsWith('late-civilian-') ? openingCrowdHitTime(Number(actor.id.slice(14))) : undefined;
       item.model.setPose({ walk: actor.goals.length || actor.combat?.moving || stagedWalker ? actor.walk : 0, aiming: actor.aiming, down: actor.down,
+        fallProgress: actor.down && crowdHitTime !== undefined && sim.scenario === 'mainhall'
+          ? !sim.has('history-timeline-v2') || history.time < crowdHitTime ? 1 : (history.time - crowdHitTime) / 0.4 : undefined,
         armed: actor.role === 'enemy' || actor.role === 'ally' && sim.scenario !== 'transfer'
           && !(sim.scenario === 'flank' && (m.control !== 'combat' || actor.id === 'meng'))
           && !(sim.scenario === 'escort' && m.control !== 'combat')
           && !(sim.scenario === 'relief' && actor.id === 'zheng' && m.phase >= 6)
           && !(sim.scenario === 'rescue' && (m.control !== 'combat' || actor.id === 'meng' && m.phase >= 1))
           && sim.scenario !== 'medical' && sim.scenario !== 'epilogue'
-          && !(sim.scenario === 'mainhall' && actor.id === 'zhao' && m.phase >= 4)
-          || actor.role === 'opponent' && (m.phase > 4 || m.phaseTime >= 18)
+          && !(sim.scenario === 'mainhall' && actor.id === 'zhao' && sim.has('history-collapse'))
+          || actor.role === 'opponent' && (sim.scenario === 'mainhall' ? history.invaders : m.phase > 4 || m.phaseTime >= 18)
           || actor.id === 'father' && m.facts.includes('father-rifle-collected') && !actor.down,
         crouched: actor.combat?.crouched,
-        kneeling: actor.id === 'zhao' && sim.scenario === 'mainhall' && m.phase === 4 && m.phaseTime >= 7 && m.phaseTime < 20
-          || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= 4 && m.phaseTime < 7
+        kneeling: actor.id === 'zhao' && history.restrained
+          || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= OPENING_TIMELINE.childhood.rifle - 1 && m.phaseTime < OPENING_TIMELINE.childhood.departure
           || actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
+        reaching: actor.id === 'zhao' ? history.reaching : 0,
+        restrained: actor.id === 'zhao' && history.restrained,
         care: actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
         gesture: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.speaker === '周延' ? 0.35 + Math.sin(m.phaseTime * 2.2) * 0.12 : 0,
         lookAway: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.phaseTime >= 42 && m.phaseTime < 49 ? -0.3 : 0,
@@ -355,8 +376,6 @@ class Game {
         damaged: sim.scenario === 'escort' && actor.id === 'cart-0' && sim.has('escort-wheel-jammed'), patientOffset,
         cargo: actor.id === 'supply-cart', orderly: sim.scenario !== 'medical' && !(sim.scenario === 'rescue' && m.phase <= 7),
         carrying: (actor.id === 'father' && sim.scenario === 'prologue' && m.phase === 1)
-          || (actor.id === 'evacuator' && sim.scenario === 'childhood' && m.phase >= 3 && (m.phase === 4 || m.phaseTime >= 12))
-          || (actor.id === 'evacuator' && sim.scenario === 'mainhall' && m.phase >= 4)
           || (actor.id === 'zheng' && sim.scenario === 'handover' && m.phase === 4)
           || (actor.id === 'zheng' && rescueCarry)
           || (actor.id === 'medic' && transferring) });
@@ -364,7 +383,8 @@ class Game {
         item.label.position.set(actor.position[0], actor.position[1] + 2.1, actor.position[2]);
         const size = Math.min(1, this.camera.position.distanceTo(item.label.position) / 10);
         item.label.scale.set(2.8 * size, 0.525 * size, 1);
-        item.label.visible = !actor.down && distance(actor.position, p.position) < 24;
+        item.label.visible = item.model.root.visible && !actor.down && distance(actor.position, p.position) < 24
+          && !(sim.scenario === 'mainhall' && actor.id === 'shao' && !sim.has('shao-identified-by-zhou'));
       }
     }
     this.marker.visible = active && m.control !== 'staged';
@@ -390,6 +410,7 @@ class Game {
       presentationEpoch: this.presentationEpoch, subtitleTime: m.elapsed, subtitleRevision: m.subtitleUntil,
       subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, killFlash: sim.killFlash, hurtFlash: sim.hurtFlash,
+      blackout: history.blackout,
       lowMotion: this.lowMotion, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,
       chapter: Boolean(this.chapter),
       continueLabel: this.savedCampaign ? `继续 · ${stageFor(this.savedCampaign.snapshot.mission.scenario)?.title ?? '第一关'}` : undefined,
@@ -417,6 +438,7 @@ class Game {
     this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
     for (const { model, label: tag } of this.characters.values()) { model.dispose(); if (tag) disposeLabel(tag); }
+    this.crowd.dispose();
     disposeLabel(this.markerLabel);
     this.marker.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshBasicMaterial).dispose(); } });
     this.renderer.dispose();

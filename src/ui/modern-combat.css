@@ -1,4 +1,6 @@
 /* Original combat HUD treatment. Import after style.css; retain its layout and visibility rules. */
+#app .story-blackout { position: absolute; inset: 0; background: #000; opacity: 0; z-index: 2; pointer-events: none; }
+#app .game-overlay { z-index: 3; }
 #app .game-hud {
   --combat-paper: #f6f8fa;
   --combat-muted: #b8c1c8;

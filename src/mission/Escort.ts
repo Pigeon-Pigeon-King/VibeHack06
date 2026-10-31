@@ -1,5 +1,6 @@
 import type { Vec3 } from '../contracts';
 import { ESCORT as E } from '../content/escort-layout';
+import { CROWD_STAGING_FACT, LEGACY_CROWD_STOPS } from '../content/crowd-layout';
 import type { Intent } from '../player/Input';
 import { distance, type Actor, type Simulation } from './Simulation';
 import { finishDialogue, lookWithin, playDialogue, type DialogueLine } from './Dialogue';
@@ -24,6 +25,7 @@ const at = (s: Simulation, p: Vec3, range = 2.8) => distance(s.player.position, 
 const quiet = (s: Simulation, p: Vec3) => !s.exposedThreat(p, 52);
 const posts = () => [E.cargo, E.bridgeHead, E.sidePlatform, E.medicalHead, E.flankPost];
 const arrived = (actor: Actor, p: Vec3) => actor.released && !actor.goals.length && distance(actor.position, p) < 1.2;
+const walkerStops = (s: Simulation, leg: number) => s.has(CROWD_STAGING_FACT) ? E.convoyLegs[leg].walkerStops : LEGACY_CROWD_STOPS.escortWalkers[leg];
 
 export function escortPatients(s: Simulation): Actor[] {
   return [a(s, s.has('escort-patient-transferred') ? 'cart-2' : 'cart-0'), a(s, 'cart-1')];
@@ -37,14 +39,14 @@ function convoy(s: Simulation, leg: number): void {
     const bypass: Vec3[] = leg === 2 && i === 1 ? [[cart.position[0], 0, E.changeBay[2] + 5], [E.changeBay[0] - 8, 0, E.changeBay[2] + 5]] : [];
     s.route(cart, [...bypass, ...route.via, route.cartStops[i]]);
   });
-  [0, 1].forEach(i => { const walker = a(s, `walker-${i}`); walker.safe = false; s.route(walker, [...route.via, route.walkerStops[i]]); });
+  [0, 1].forEach(i => { const walker = a(s, `walker-${i}`); walker.safe = false; s.route(walker, [...route.via, walkerStops(s, leg)[i]]); });
   [a(s, 'meng'), a(s, 'relief-0'), a(s, 'relief-1')].forEach((person, i) =>
-    s.route(person, [...route.via, [route.cartStops[1][0] + i * 2, route.cartStops[1][1], route.cartStops[1][2] + 3]]));
+    s.route(person, [...route.via, [route.cartStops[1][0] + [-0.8, 1.7, 3.6][i], route.cartStops[1][1], route.cartStops[1][2] - [2.1, 1.5, 3.2][i]]]));
 }
 function convoyReady(s: Simulation, leg: number, mark = true): boolean {
   const route = E.convoyLegs[leg];
   const people = [...escortPatients(s), a(s, 'walker-0'), a(s, 'walker-1')];
-  const targets = [...route.cartStops, ...route.walkerStops];
+  const targets = [...route.cartStops, ...walkerStops(s, leg)];
   if (mark) people.forEach((actor, i) => { if (arrived(actor, targets[i])) actor.safe = true; });
   return people.every((actor, i) => arrived(actor, targets[i]));
 }
@@ -72,6 +74,7 @@ function spawn(s: Simulation, index: number, first = false): void {
 }
 
 export function populateEscort(s: Simulation): void {
+  s.fact(CROWD_STAGING_FACT);
   s.createActor('luo', '罗敬', 'worker', E.luo); s.createActor('meng', '孟齐', 'ally', E.meng);
   s.createActor('medic', '随车医护', 'medic', E.medic);
   E.recruits.forEach((p, i) => s.createActor(`relief-${i}`, `接防队员 ${i + 1}`, 'ally', p));

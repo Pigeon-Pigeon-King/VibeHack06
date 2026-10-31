@@ -43,8 +43,7 @@ export function populateFrontgate(s: Simulation): void {
 
 function release(s: Simulation, first: number, last: number): void {
   s.workers.slice(first, last).forEach((a, i) => {
-    if (!a.released && !a.safe) s.route(a, [...F.workerVia,
-      [F.safe[0] + (i % 3 - 1) * 1.2, 0, F.safe[2] - Math.floor(i / 3) * 1.5]]);
+    if (!a.released && !a.safe) s.route(a, [...F.workerVia, F.workerSafe[first + i]]);
   });
 }
 

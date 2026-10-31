@@ -1,0 +1,13 @@
+
+> return-to-ganymede@0.6.0 test
+> vitest run --maxWorkers=1 --testTimeout=20000
+
+
+ RUN  v5.0.5 /Users/penguin/.codex/worktrees/ganymede-combat-ai/VibeHack06
+
+ ❯ tests/finale-paths.test.ts (4 tests | 1 failed) 19295ms
+   ❯ final campaign whitebox through public intent (4)
+     × epilogue: real actions, natural/skip results and persisted phase restore 2228ms
+ ❯ tests/frontgate-paths.test.ts (7 tests | 1 failed) 47664ms
+   ❯ S05 continuous northgate encounter (7)
+     × uses no E input to move both groups behind cover, receive a real relief and preserve withheld knowledge on natural/skip/restore playback 44640ms

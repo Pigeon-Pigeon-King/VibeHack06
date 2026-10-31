@@ -106,7 +106,6 @@ function validateSnapshot(value: unknown): Snapshot {
   numeric(player.height, '玩家高度', (mission.scenario === 'mainhall' && mission.phase >= 4)
     || (mission.scenario === 'rescue' && mission.phase >= 6) ? 0.65 : 0.8, 3);
   if (mission.scenario === 'childhood' && player.height !== 1.1) throw new InvalidRecord('童年视点高度与角色不一致。');
-  if (mission.scenario === 'mainhall' && mission.phase >= 4 && player.height !== 0.65) throw new InvalidRecord('主厅演出高度与角色状态不一致。');
   if (mission.scenario === 'relief' && mission.phase === 7 && player.height !== 1.1) throw new InvalidRecord('内门坐姿高度与角色状态不一致。');
   numeric(mission.elapsed, '场景用时', 0, MAX_SECONDS);
   numeric(mission.phaseTime, '阶段用时', 0, mission.elapsed + 0.0001);
@@ -122,6 +121,10 @@ function validateSnapshot(value: unknown): Snapshot {
   const facts = mission.facts;
   mission.facts.forEach(fact => text(fact, '任务事实', 120));
   if (new Set(mission.facts).size !== mission.facts.length) throw new InvalidRecord('任务事实重复。');
+  if (mission.scenario === 'mainhall' && mission.phase >= 4
+    && player.height !== (!facts.includes('history-timeline-v2') || facts.includes('history-collapse') ? 0.65 : 1.8)) {
+    throw new InvalidRecord('主厅演出高度与坍塌状态不一致。');
+  }
   // The patient keeps their identity while changing physical cart. A mismatched
   // occupancy fact would wait forever for the empty cart left at the exchange bay.
   if (mission.scenario === 'escort' && mission.facts.includes('escort-patient-transferred') !== (mission.phase >= 12)) {

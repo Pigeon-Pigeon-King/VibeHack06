@@ -1,12 +1,12 @@
 import { CylinderGeometry, Group, Mesh, MeshStandardMaterial, PointLight } from 'three';
-import type { Vec3 } from '../contracts';
+import type { SceneFrame, Vec3 } from '../contracts';
 import { NIGHT, WORKERS } from '../content/chapter-layout';
 import { characterMaterial, VertexParts } from './model-tools';
 import { addGround, PortKit, type SceneBounds, type Surface } from './port-kit';
 
 export interface SceneDynamics {
   bounds: SceneBounds;
-  update(time: number): void;
+  update(time: number, frame?: SceneFrame): void;
   setFacts(facts: readonly string[]): void;
 }
 

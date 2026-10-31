@@ -3,6 +3,8 @@ import type { Vec3 } from '../contracts';
 import { HISTORY as H } from '../content/history-layout';
 import type { SceneDynamics } from './chapter-environments';
 import { addGround, PortKit, type SceneBounds, type Surface } from './port-kit';
+import { openingView } from './OpeningView';
+import { OPENING_TIMELINE } from '../content/opening-timeline';
 
 function block(kit: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'concrete', openFact?: string): void {
   kit.box(surface, at, size);
@@ -58,7 +60,14 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   for (const [a, b] of [[-22, 12], [24, 30]]) block(kit, `history-north-wall-${a}`, [(a + b) / 2, 3.9, -22], [b - a, 7.8, 0.6], 'paint');
   block(kit, 'history-north-lintel', [18, 6.2, -22], [12.5, 3.2, 0.8], 'pale');
   block(kit, 'history-south-wall', [4, 3.9, 22], [52, 7.8, 0.6], 'paint');
-  block(kit, 'history-roof', [4, 7.95, 0], [52.7, 0.3, 44.7], 'pale');
+  kit.solid('history-roof', [4, 7.95, 0], [52.7, 0.3, 44.7]);
+  const roofPanels: Group[] = [];
+  for (const x of [-15.5, -2.5, 10.5, 23.5]) for (const z of [-14.7, 0, 14.7]) {
+    const section = new PortKit(); section.root.name = `history-roof-section-${roofPanels.length}`;
+    section.box('pale', [0, 0, 0], [13.2, 0.3, 14.9]);
+    section.box('steel', [0, -0.21, 0], [12.8, 0.16, 0.18]); section.flush();
+    section.root.position.set(x, 7.95, z); kit.root.add(section.root); roofPanels.push(section.root);
+  }
   // Interior walls and trims remain readable under ordinary emergency work lighting.
   for (const x of [-21.6, 29.6]) kit.box('pale', [x, 1.2, -11], [0.06, 0.22, 20]);
   for (const x of [-15, -2, 14]) {
@@ -162,8 +171,9 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   partition.flush(); partition.root.position.y = 6.8; kit.root.add(partition.root);
   // This shutter and collapse are staged visuals; the scripts have already ended free traversal.
   const rubble = new PortKit(); rubble.root.name = 'history-collapse-debris'; rubble.root.visible = false;
-  rubble.beam('steel', [-13, 0.54, 4.75], [-7.0, 0.74, 5.15], 0.32);
-  rubble.beam('pale', [-11.5, 0.38, 4.85], [-8.9, 1.35, 6.1], 0.22);
+  // Pin the legs below the low eye line; keep nearby civilians visible above the debris.
+  rubble.beam('steel', [-13, 0.26, 4.95], [-7.0, 0.44, 5.35], 0.32);
+  rubble.beam('pale', [-11.5, 0.20, 5.1], [-8.9, 0.72, 6.15], 0.22);
   for (let i = 0; i < 13; i++) {
     const x = -12.8 + i % 5 * 0.9, z = 3.1 + Math.floor(i / 5) * 1.0;
     rubble.box(i % 2 ? 'concrete' : 'pale', [x, 0.10 + i % 3 * 0.06, z], [0.55 + i % 3 * 0.16, 0.15, 0.6], [0.10, i * 0.6, 0.14]);
@@ -173,6 +183,8 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   rafter.box('steel', [-8, 7.3, 4.8], [15, 0.32, 0.32]); rafter.flush(); kit.root.add(rafter.root);
   const sourceRifle = rifleModel(kit.root, 'history-source-rifle', H.rifle); sourceRifle.visible = false;
   const droppedRifle = rifleModel(kit.root, 'history-fallen-rifle', [-12.4, 0.015, 9.8]); droppedRifle.visible = false;
+  const commanderRifle = rifleModel(kit.root, 'history-commander-rifle', [H.zhaoCaptured[0] + 0.8, 0.015, H.zhaoCaptured[2] + 0.7]);
+  commanderRifle.visible = false;
   const spilled = new PortKit(); spilled.root.name = 'history-spilled-lunch'; spilled.root.visible = false;
   spilled.box('pale', [-29.2, -1.28, 6.4], [0.32, 0.12, 0.23], [0.08, 0.4, 0.4]);
   spilled.box('steel', [-29.6, -1.48, 6.3], [0.29, 0.025, 0.21], [0, -0.6, 0]);
@@ -181,19 +193,39 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
     spilled.box('white', [x, stairY + 0.018, 6.1 + (i * 7 % 11) * 0.055], [0.025, 0.018, 0.015]);
   }
   spilled.flush(); kit.root.add(spilled.root);
+  let currentFacts: readonly string[] = [];
+  const moveCollapse = (fall: number, collapsed: boolean, time = Infinity) => {
+    rubble.root.visible = collapsed; rubble.root.position.y = collapsed ? 4.5 * (1 - fall) ** 2 : 0;
+    rafter.root.visible = !collapsed || fall < 1;
+    rafter.root.position.y = -6.4 * fall; rafter.root.rotation.z = 0.08 * fall;
+    roofPanels.forEach((panel, i) => {
+      const u = !collapsed || i % 3 === 0 ? 0 : Math.max(0, Math.min(1, (time - OPENING_TIMELINE.mainhall.collapse - i * 0.07) / 1.5));
+      const progress = u * u * (3 - 2 * u);
+      panel.position.y = 7.95 - 3.5 * progress;
+      panel.rotation.set((i % 2 ? 0.20 : -0.20) * progress, 0, (i % 2 ? -0.14 : 0.14) * progress);
+    });
+  };
 
   return {
     bounds: H.bounds,
-    update() {},
+    update(_time, frame) {
+      if (!frame) return;
+      const view = openingView(frame, currentFacts);
+      const legacy = !currentFacts.includes('history-timeline-v2');
+      moveCollapse(view.fall, view.collapsed, legacy ? Infinity : view.time);
+      combatLight.intensity = (view.collapsed ? 40 : 100) + view.blast * 75;
+    },
     setFacts(facts) {
+      currentFacts = facts;
       const opened = facts.includes('history-gate-open'), collapsed = facts.includes('history-collapse');
       gate.root.position.z = opened ? 4.2 : 0;
       gate.root.userData.opened = opened;
       mattress.root.visible = !opened; upright.root.visible = opened;
       lunch.root.visible = !opened && !facts.includes('lunch-packed');
-      sourceRifle.visible = opened && !facts.includes('father-rifle-collected');
+      sourceRifle.visible = opened && facts.includes('history-defender-0-down') && !facts.includes('father-rifle-collected');
       droppedRifle.visible = facts.includes('father-died');
-      rubble.root.visible = collapsed; rafter.root.visible = !collapsed;
+      moveCollapse(collapsed ? 1 : 0, collapsed);
+      commanderRifle.visible = collapsed;
       combatLight.intensity = collapsed ? 40 : 100;
       const sealed = facts.includes('history-partition-closed');
       partition.root.position.y = sealed ? 0 : 6.8;

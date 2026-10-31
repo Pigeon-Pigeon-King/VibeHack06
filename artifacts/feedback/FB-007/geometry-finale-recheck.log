@@ -1,0 +1,13 @@
+
+> return-to-ganymede@0.6.0 check:finale
+> vitest run --config scripts/finale-checks/vitest.config.ts --maxWorkers=1 --no-isolate -t S10 patient body can be carried
+
+
+ RUN  v5.0.5 /Users/penguin/.codex/worktrees/ganymede-combat-ai/VibeHack06
+
+
+ Test Files  1 passed | 1 skipped (2)
+      Tests  1 passed | 9 skipped (10)
+   Start at  12:39:29
+   Duration  36.21s (tests 90%, transform 5%, import 5%)
+

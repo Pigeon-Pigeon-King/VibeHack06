@@ -1,0 +1,23 @@
+{
+  "kind": "public-intent-replay-checkpoint",
+  "sourceTest": "tests/opening-paths.test.ts",
+  "sourceCase": "keeps a late child safe and 1.1m tall, then gives natural/skip the same evacuation ending",
+  "replay": {
+    "skip": false,
+    "skipScope": "staged-playback",
+    "restore": false,
+    "firstPhaseEntry": true
+  },
+  "artifact": "child-timeline-3.json",
+  "slot": "childhood",
+  "scenario": "childhood",
+  "phase": 3,
+  "elapsed": 67.34999999999746,
+  "phaseTime": 0,
+  "crowds": {
+    "hallResidents": 32,
+    "evacuationResidents": 12
+  },
+  "sha256": "dec1f36b114545d7414cc4505b9fec41be8249ec53542ab7a9f4d83c1e365f1d",
+  "note": "真实公开输入回放到达 S01 phase 3 首帧；尚未交出孩子，供正常速度的局部时间线观察，不代表人工首通。此前包含一分钟停留与无效输入检查。"
+}

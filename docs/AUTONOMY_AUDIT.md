@@ -14,8 +14,8 @@
 
 | 段落／节点 | 自主或自然触发 | 保留玩家操作及理由 | 主要代码／回归 |
 | --- | --- | --- | --- |
-| S01 检修门 | 父子真实到门口后自然交接、随后父亲拾枪与儿童抱撤 | 饭盒、搬开床垫涉及亲手接触 | `Opening.ts`；`opening-paths.test.ts` |
-| S02 主厅 | 前沿及撤离入口安全后首批居民自行走；首批真正穿门且侧通道安全后末批自行走；六人实际到安全区才进入既定失守 | 开门面板仍需 E；不再按 E 批准居民走 | `Opening.ts`；`opening-paths.test.ts`、`opening-autonomy.test.ts` |
+| S01 检修门 | 父子真实到门口后进入防守／撤离演出；守军伤亡后父亲拾枪冲向防线，闻川随女人越过隔断，结束对主厅的目击 | 饭盒、搬开床垫涉及亲手接触 | `Opening.ts`、`opening-timeline.ts`；`opening-paths.test.ts`、`opening-timeline.test.ts` |
+| S02 主厅 | 前沿及撤离入口安全后居民分批自行走；六人及闻川一行实际越过隔断、父亲抵达防线并掩护后，才进入轰炸→坍塌→敌军冲入与群众遭袭／班长被控→怒吼被杀→周延昏迷 | 开门面板仍需 E；不再按 E 批准居民走 | `Opening.ts`；`opening-paths.test.ts`、`opening-autonomy.test.ts`、`opening-timeline.test.ts` |
 | S03 夜班 | 进入港图会合区自然听分工，正常对白与跳过落在相同终态 | 清风机／复位、取放物资、领装备 | `Simulation.updateNight`；`chapter-paths.test.ts` |
 | S04 港务接应 | 实际看见押运异常后报知同伴；到真实上层并稳住火线后报告后门；后门开放且集合点安全后九名技工自行撤离；真实到站后接应 | 检查闸、检修电源、院门；答应罗敬的家属护送仍作为主动承诺 | `Simulation.updateWorkers`；`chapter-paths.test.ts` |
 | S05 北闸 | 观察区与真实北向视线触发敌情；两批工人、郑铎回撤、接防到岗及后线预告由对应安全／位置条件触发 | 本段任务推进无需 E；移动、观察、作战保持玩家控制 | `Frontgate.ts`；`frontgate-paths.test.ts`、边界回归 |

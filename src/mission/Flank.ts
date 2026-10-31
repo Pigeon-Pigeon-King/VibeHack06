@@ -1,5 +1,6 @@
 import type { Vec3 } from '../contracts';
 import { FLANK as F } from '../content/flank-layout';
+import { CROWD_STAGING_FACT, LEGACY_CROWD_STOPS } from '../content/crowd-layout';
 import type { Intent } from '../player/Input';
 import { distance, type Simulation } from './Simulation';
 import { finishDialogue, lookWithin, playDialogue, type DialogueLine } from './Dialogue';
@@ -24,6 +25,7 @@ const REPORT_FACTS = ['full-report-shared', 'lu-has-full-report', 'departure-unc
   'mobile-force-role-shared', 'escort-staffing-shared', 'uncertainty-explicit', 'source-timestamp-shared'];
 
 export function populateFlank(s: Simulation): void {
+  s.fact(CROWD_STAGING_FACT);
   s.createActor('zheng', '郑铎', 'ally', F.zheng);
   s.createActor('meng', '孟齐', 'ally', F.meng);
   F.technicians.forEach((p, i) => s.createActor(`worker-${i}`, `收尾维修员 ${i + 1}`, 'worker', p));
@@ -78,7 +80,7 @@ export function updateFlank(s: Simulation, input: Intent): void {
   } else if (m.phase === 2) {
     if (!s.has('flank-tank-base-secured') && m.phaseTime >= 1 && at(s, F.northPost, 8) && quiet(s, F.northPost)) {
       s.fact('flank-tank-base-secured');
-      s.workers.forEach((a, i) => s.route(a, [...F.technicianVia, [F.techSafe[0] + (i - 1) * 1.2, F.techSafe[1], F.techSafe[2]]]));
+      s.workers.forEach((a, i) => s.route(a, [...F.technicianVia, F.technicianStops[i]]));
       s.route(actor(s, 'zheng'), [F.innerGate]);
       s.phase(2, '维修组沿内侧通道撤，郑铎跟我收回内门。', 'combat', '周延');
     } else if (s.has('flank-tank-base-secured') && s.safeCount === 3 && distance(actor(s, 'zheng').position, F.innerGate) < 1.2
@@ -89,10 +91,12 @@ export function updateFlank(s: Simulation, input: Intent): void {
   } else if (m.phase === 3 && input.interact && at(s, F.report)) {
     s.fact('meng-route-adopted');
     F.cartSafe.forEach((target, i) => s.route(actor(s, `cart-${i}`), [...F.cartVia, target]));
-    F.walkerSafe.forEach((target, i) => s.route(actor(s, `walker-${i}`), [...F.walkerVia, target]));
+    const walkerStops = s.has(CROWD_STAGING_FACT) ? F.walkerSafe : LEGACY_CROWD_STOPS.flankWalkers;
+    walkerStops.forEach((target, i) => s.route(actor(s, `walker-${i}`), [...F.walkerVia, target]));
     s.phase(4, '按你踏勘过的路线走。你负责分开的人，两边保留名单，到站报我。', 'work', '周延');
   } else if (m.phase === 4) {
-    for (const [prefix, targets] of [['cart', F.cartSafe], ['walker', F.walkerSafe]] as const) {
+    const walkerStops = s.has(CROWD_STAGING_FACT) ? F.walkerSafe : LEGACY_CROWD_STOPS.flankWalkers;
+    for (const [prefix, targets] of [['cart', F.cartSafe], ['walker', walkerStops]] as const) {
       targets.forEach((target, i) => {
         const a = actor(s, `${prefix}-${i}`);
         if (a.released && !a.goals.length && distance(a.position, target) < 1.2 && Math.abs(a.position[1] - target[1]) < 0.5) a.safe = true;

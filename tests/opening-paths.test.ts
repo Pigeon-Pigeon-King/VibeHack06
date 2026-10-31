@@ -3,6 +3,7 @@ import { createHash } from 'node:crypto';
 import { mkdirSync, writeFileSync } from 'node:fs';
 import type { EnvironmentModel, Vec3 } from '../src/contracts';
 import { HISTORY as H } from '../src/content/history-layout';
+import { OPENING_TIMELINE } from '../src/content/opening-timeline';
 import { distance, emptyIntent, Simulation } from '../src/mission/Simulation';
 import { SaveStore, SAVE_KEY_PREFIX, type StorageLike } from '../src/persistence/SaveStore';
 import type { Intent } from '../src/player/Input';
@@ -17,6 +18,14 @@ beforeAll(() => initializePhysics());
 const round = (point: Vec3) => point.map(n => +n.toFixed(3));
 const distance3 = (a: Vec3, b: Vec3) => Math.hypot(...a.map((n, i) => n - b[i]));
 const storyFacts = (s: Simulation) => [...s.mission.facts].sort();
+const CHILD_CASE = 'keeps a late child safe and 1.1m tall, then gives natural/skip the same evacuation ending';
+const HALL_CASE = 'physically evacuates six residents before fixed hall loss, preserving natural/skip terminal facts and positions';
+const CHILD_UNSEEN_FACTS = ['father-died', 'history-bombardment', 'history-collapse', 'zhou-pinned',
+  'history-enemy-breach', 'history-crowd-attacked', 'history-crowd-massacred', 'zhao-captured',
+  'shao-identified-by-zhou', 'zhao-executed', 'zhou-unconscious'];
+const HALL_RESIDENT_IDS = Array.from({ length: 32 }, (_, i) => `late-civilian-${i}`);
+const EVACUATION_RESIDENT_IDS = Array.from({ length: 12 }, (_, i) => `evac-crowd-${i}`);
+const CROWD_IDS = [...HALL_RESIDENT_IDS, ...EVACUATION_RESIDENT_IDS];
 
 class MemoryStorage implements StorageLike {
   private readonly data = new Map<string, string>();
@@ -25,28 +34,45 @@ class MemoryStorage implements StorageLike {
   removeItem(key: string): void { this.data.delete(key); }
 }
 
-let recordedHallFixture = false;
-function recordHallVisualFixture(s: Simulation): void {
-  if (process.env.RECORD_VISUAL_FIXTURES !== '1' || recordedHallFixture) return;
+const VISUAL_FIXTURES = {
+  'hall-autonomy-1': { scenario: 'mainhall', phase: 1, sourceCase: HALL_CASE,
+    note: '正常公开输入回放的开门后检查点；六名居民尚未放行。供恢复后的局部操作验证，不代表人工通关。' },
+  'child-timeline-3': { scenario: 'childhood', phase: 3, sourceCase: CHILD_CASE,
+    note: '真实公开输入回放到达 S01 phase 3 首帧；尚未交出孩子，供正常速度的局部时间线观察，不代表人工首通。此前包含一分钟停留与无效输入检查。' },
+  'hall-timeline-4': { scenario: 'mainhall', phase: 4, sourceCase: HALL_CASE,
+    note: '真实公开输入回放到达 S02 phase 4 首帧；六名居民与孩子已撤出，周延仍站立且尚未轰炸坍塌。供正常速度的局部时间线观察，不代表人工首通。' },
+} as const;
+const recordedVisualFixtures = new Set<keyof typeof VISUAL_FIXTURES>();
+function recordVisualFixture(s: Simulation, name: keyof typeof VISUAL_FIXTURES): void {
+  const enabled = process.env.RECORD_OPENING_VISUAL_FIXTURES === '1' || process.env.RECORD_VISUAL_FIXTURES === '1';
+  if (!enabled || recordedVisualFixtures.has(name)) return;
+  const selected = process.env.RECORD_VISUAL_FIXTURE_NAMES?.split(',');
+  if (selected && !selected.includes(name)) return;
+  const fixture = VISUAL_FIXTURES[name];
   const snapshot = s.checkpoint, storage = new MemoryStorage(), store = new SaveStore(storage);
-  expect(snapshot.mission.phase).toBe(1);
-  expect(snapshot.actors.filter(a => a.role === 'worker').every(a => !a.released)).toBe(true);
-  expect(store.save('mainhall', snapshot)).toEqual({ ok: true });
-  expect(store.load('mainhall').save!.snapshot).toEqual(snapshot);
-  const raw = storage.getItem(`${SAVE_KEY_PREFIX}mainhall`)!;
+  expect(snapshot.mission.scenario).toBe(fixture.scenario);
+  expect(snapshot.mission.phase).toBe(fixture.phase);
+  expect(snapshot.mission.phaseTime).toBe(0);
+  if (name === 'hall-autonomy-1') expect(snapshot.actors.filter(a => a.role === 'worker').every(a => !a.released)).toBe(true);
+  expect(store.save(fixture.scenario, snapshot)).toEqual({ ok: true });
+  expect(store.load(fixture.scenario).save!.snapshot).toEqual(snapshot);
+  const raw = storage.getItem(`${SAVE_KEY_PREFIX}${fixture.scenario}`)!;
   const directory = new URL('../artifacts/runs/visual-fixtures/', import.meta.url);
   mkdirSync(directory, { recursive: true });
-  writeFileSync(new URL('hall-autonomy-1.json', directory), raw, 'utf8');
-  writeFileSync(new URL('hall-autonomy-1.source.json', directory), JSON.stringify({
+  // Save the exact validated envelope, never a handcrafted or edited snapshot.
+  writeFileSync(new URL(`${name}.json`, directory), raw, 'utf8');
+  writeFileSync(new URL(`${name}.source.json`, directory), JSON.stringify({
     kind: 'public-intent-replay-checkpoint', sourceTest: 'tests/opening-paths.test.ts',
-    sourceCase: 'physically evacuates six residents before fixed hall loss, preserving natural/skip terminal facts and positions',
-    replay: { skip: false, restore: false, firstPhaseEntry: true },
-    artifact: 'hall-autonomy-1.json', slot: 'mainhall', scenario: snapshot.mission.scenario,
+    sourceCase: fixture.sourceCase,
+    replay: { skip: false, skipScope: 'staged-playback', restore: false, firstPhaseEntry: true },
+    artifact: `${name}.json`, slot: fixture.scenario, scenario: snapshot.mission.scenario,
     phase: snapshot.mission.phase, elapsed: snapshot.mission.elapsed, phaseTime: snapshot.mission.phaseTime,
+    crowds: { hallResidents: snapshot.actors.filter(a => a.id.startsWith('late-civilian-')).length,
+      evacuationResidents: snapshot.actors.filter(a => a.id.startsWith('evac-crowd-')).length },
     sha256: createHash('sha256').update(raw, 'utf8').digest('hex'),
-    note: '正常公开输入回放的开门后检查点；六名居民尚未放行。供恢复后的局部操作验证，不代表人工通关。',
+    note: fixture.note,
   }, null, 2) + '\n', 'utf8');
-  recordedHallFixture = true;
+  recordedVisualFixtures.add(name);
 }
 
 class OpeningReplay {
@@ -76,6 +102,10 @@ class OpeningReplay {
       throw new Error(`${scenario} is not connected to its authored historical hall geometry`);
     }
     this.simulation = new Simulation(scenario, this.environment.solids);
+    expect(this.simulation.actors.filter(a => a.id.startsWith('late-civilian-')).map(a => a.id).sort())
+      .toEqual([...HALL_RESIDENT_IDS].sort());
+    expect(this.simulation.actors.filter(a => a.id.startsWith('evac-crowd-')).map(a => a.id).sort())
+      .toEqual([...EVACUATION_RESIDENT_IDS].sort());
     this.navigation = this.simulation.navigation;
     this.goal = [...this.simulation.player.position];
   }
@@ -106,6 +136,17 @@ class OpeningReplay {
     if (s.mission.failed) throw new Error(`Opening player failed: ${this.summary()}`);
     if (this.scenario === 'childhood' && (s.player.height !== 1.1 || s.player.health !== 100)) {
       throw new Error(`Child viewpoint/health changed: ${this.summary()}`);
+    }
+    if (this.scenario === 'childhood' && (s.actors.find(a => a.id === 'father')!.down
+      || CHILD_UNSEEN_FACTS.some(fact => s.has(fact)))) {
+      throw new Error(`Child viewpoint leaked events after departure: ${this.summary()}`);
+    }
+    if (this.scenario === 'mainhall' && s.mission.phase === 4) {
+      const collapsed = s.has('history-collapse');
+      if (collapsed !== s.has('zhou-pinned') || s.player.height !== (collapsed ? 0.65 : 1.8)
+        || collapsed !== (s.mission.phaseTime >= OPENING_TIMELINE.mainhall.collapse)) {
+        throw new Error(`Hall collapse/height changed outside its timeline: ${this.summary()}`);
+      }
     }
     if (this.phases.at(-1) !== s.mission.phase) this.phases.push(s.mission.phase);
     for (const fact of s.mission.facts) if (!this.factsAt.has(fact)) this.factsAt.set(fact, this.steps);
@@ -168,7 +209,11 @@ class OpeningReplay {
   restoreStagedHall(): void {
     const snapshot = this.simulation.checkpoint, storage = new MemoryStorage();
     expect(snapshot.mission.phase).toBe(4);
-    expect(snapshot.player.height).toBe(0.65);
+    expect(snapshot.mission.phaseTime).toBe(0);
+    expect(snapshot.player.height).toBe(1.8);
+    expect(snapshot.mission.facts).toContain('history-timeline-v2');
+    expect(snapshot.mission.facts).not.toContain('history-collapse');
+    expect(snapshot.mission.facts).not.toContain('zhou-pinned');
     expect(new SaveStore(storage).save('campaign', snapshot, { chapter: 'campaign', stage: 'S02', elapsedBefore: 80 })).toEqual({ ok: true });
     const loaded = new SaveStore(storage).load('campaign');
     expect(loaded.warning).toBeUndefined();
@@ -189,33 +234,54 @@ function terminalActors(s: Simulation, ids: string[]) {
   });
 }
 
+function expectEvacuationCrowdSafe(s: Simulation): void {
+  EVACUATION_RESIDENT_IDS.forEach((id, i) => {
+    const actor = s.actors.find(a => a.id === id)!;
+    expect(actor.safe, id).toBe(true);
+    expect(actor.down, id).toBe(false);
+    expect(distance3(actor.position, H.evacCrowdSafe[i]), id).toBeLessThan(0.001);
+  });
+}
+
 function playChild(replay: OpeningReplay, skip: boolean): void {
   replay.until('S01 work and handover', () => replay.simulation.mission.phase === 3, () => {
     const point = [H.lunch, H.mattress, H.gateOutside][replay.simulation.mission.phase];
     replay.drive(point, { interact: replay.simulation.mission.phase < 2, combat: false });
   });
-  expect(replay.simulation.mission.facts).toEqual(expect.arrayContaining(['lunch-packed', 'mattress-cleared', 'history-gate-open', 'child-handed-over']));
+  expect(replay.simulation.mission.facts).toEqual(expect.arrayContaining(['lunch-packed', 'mattress-cleared', 'history-gate-open']));
+  expect(replay.simulation.mission.facts).not.toContain('child-handed-over');
+  if (!skip) recordVisualFixture(replay.simulation, 'child-timeline-3');
   replay.until('S01 fixed evacuation', () => replay.simulation.mission.complete, () => replay.step({ skip }), 30);
   const s = replay.simulation;
   expect(replay.phases).toEqual([0, 1, 2, 3, 4]);
   expect([...replay.interactionPhases]).toEqual([0, 1]);
   expect(s.player.height).toBe(1.1); expect(s.player.ammo).toBe(0); expect(s.mission.failed).toBe(false);
-  expect(distance3(s.player.position, [H.womanEnd[0] - 0.3, H.womanEnd[1] + 0.45, H.womanEnd[2] + 0.35])).toBeLessThan(0.001);
+  expect(distance3(s.player.position, [H.womanEnd[0] + 0.9, H.womanEnd[1], H.womanEnd[2] + 1])).toBeLessThan(0.001);
   expect(distance3(s.actors.find(a => a.id === 'evacuator')!.position, H.womanEnd)).toBeLessThan(0.001);
   expect(distance3(s.actors.find(a => a.id === 'daughter')!.position, H.childSafe)).toBeLessThan(0.001);
-  expect(s.actors.find(a => a.id === 'father')!.down).toBe(true);
-  expect(s.mission.facts).toEqual(expect.arrayContaining(['father-rifle-collected', 'father-died', 'child-evacuated', 'history-partition-closed']));
-  expect(s.mission.facts).not.toContain('shao-identified-by-zhou');
+  expect(s.actors.find(a => a.id === 'father')!.down).toBe(false);
+  expect(s.actors.find(a => a.id === 'father')!.health).toBeGreaterThan(0);
+  expect(s.mission.facts).toEqual(expect.arrayContaining(['history-heavy-losses', 'child-handed-over',
+    'father-rifle-collected', 'father-charged-defense', 'child-evacuated', 'child-out-of-sight', 'history-partition-closed',
+    'history-dense-crowd-v1']));
+  expectEvacuationCrowdSafe(s);
+  for (const id of HALL_RESIDENT_IDS) expect(s.actors.find(a => a.id === id)!.down, id).toBe(false);
+  for (const fact of CHILD_UNSEEN_FACTS) expect(s.mission.facts).not.toContain(fact);
+  if (!skip) {
+    expect(replay.factsAt.get('history-heavy-losses')!).toBeLessThan(replay.factsAt.get('child-handed-over')!);
+    expect(replay.factsAt.get('child-handed-over')!).toBeLessThan(replay.factsAt.get('father-charged-defense')!);
+    expect(replay.factsAt.get('father-charged-defense')!).toBeLessThan(replay.factsAt.get('child-out-of-sight')!);
+  }
 }
 
-function reachHallCollapse(replay: OpeningReplay): void {
+function reachHallStaging(replay: OpeningReplay, recordTimelineFixture = false): void {
   const s = replay.simulation;
   expect(s.workers.map(a => a.id)).toEqual(Array.from({ length: 6 }, (_, i) => `worker-${i}`));
   expect(s.mission.facts).not.toContain('shao-identified-by-zhou');
   replay.until('S02 gate and connected defense positions', () => s.mission.phase === 3, () => {
     const previous = s.mission.phase;
     replay.drive([H.gatePanel, H.defenseA, H.defenseB][s.mission.phase], { interact: s.mission.phase === 0 });
-    if (previous === 0 && s.mission.phase === 1) recordHallVisualFixture(s);
+    if (previous === 0 && s.mission.phase === 1 && recordTimelineFixture) recordVisualFixture(s, 'hall-autonomy-1');
   });
   expect(s.safeCount).toBeLessThan(6);
   replay.step({ skip: true });
@@ -225,9 +291,19 @@ function reachHallCollapse(replay: OpeningReplay): void {
       .sort((a, b) => distance(a.position, s.player.position) - distance(b.position, s.player.position))[0];
     replay.drive(threat ? [Math.round(threat.position[0]), 0, Math.round(threat.position[2])] : H.defenseB, { range: threat ? 2.5 : 1.6 });
   });
-  expect(s.player.height).toBe(0.65); expect(s.safeCount).toBe(6);
+  expect(s.player.height).toBe(1.8); expect(s.safeCount).toBe(6);
+  expect(s.mission.phaseTime).toBe(0);
   expect([...replay.interactionPhases]).toEqual([0]);
-  expect(s.mission.facts).toEqual(expect.arrayContaining(['zhou-trusts-zhao', 'hall-front-secured', 'hall-side-secured', 'civilians-evacuated', 'history-collapse']));
+  expect(s.mission.facts).toEqual(expect.arrayContaining(['zhou-trusts-zhao', 'hall-front-secured', 'hall-side-secured',
+    'civilians-evacuated', 'child-evacuated', 'child-out-of-sight', 'history-partition-closed', 'history-timeline-v2']));
+  expect(s.has('history-bombardment')).toBe(false);
+  expect(s.has('history-collapse')).toBe(false);
+  expect(s.has('zhou-pinned')).toBe(false);
+  for (const id of ['evacuator', 'daughter', 'young-lu']) {
+    const actor = s.actors.find(a => a.id === id)!;
+    expect(actor.position[0], `${id} has not crossed the partition`).toBeLessThan(H.partitionX);
+    expect(actor.down).toBe(false);
+  }
   for (const worker of s.workers) {
     expect(replay.traveled.get(worker.id), replay.summary()).toBeGreaterThan(20);
     expect(replay.descended.has(worker.id), replay.summary()).toBe(true);
@@ -235,8 +311,9 @@ function reachHallCollapse(replay: OpeningReplay): void {
     expect(arrival.position[0]).toBeLessThan(H.partitionX);
     expect(arrival.position[1]).toBeLessThan(-2.1);
     expect(distance(arrival.position, H.childSafe)).toBeLessThan(5);
-    expect(replay.factsAt.get('history-collapse')!).toBeGreaterThanOrEqual(arrival.step);
+    expect(replay.factsAt.get('civilians-evacuated')!).toBeGreaterThanOrEqual(arrival.step);
   }
+  if (recordTimelineFixture) recordVisualFixture(s, 'hall-timeline-4');
 }
 
 function finishHall(replay: OpeningReplay, skip: boolean): void {
@@ -246,11 +323,22 @@ function finishHall(replay: OpeningReplay, skip: boolean): void {
   expect(replay.phases).toEqual([0, 1, 2, 3, 4, 5]);
   expect(s.mission.failed).toBe(false); expect(s.player.height).toBe(0.65); expect(s.player.health).toBe(42);
   expect(s.safeCount).toBe(6); expect(s.player.name).toBe('周延 · 二十三岁');
-  expect(s.mission.facts).toEqual(expect.arrayContaining(['civilians-evacuated', 'zhao-captured', 'shao-identified-by-zhou', 'zhao-executed', 'zhou-survived-hall']));
+  expect(s.mission.facts).toEqual(expect.arrayContaining(['civilians-evacuated', 'history-bombardment', 'history-collapse',
+    'zhou-pinned', 'history-enemy-breach', 'history-crowd-attacked', 'history-crowd-massacred', 'zhao-reaches-rifle',
+    'zhao-captured', 'shao-identified-by-zhou', 'zhao-defiant-shout', 'zhao-executed', 'zhou-unconscious', 'zhou-survived-hall',
+    'history-dense-crowd-v1']));
+  expectEvacuationCrowdSafe(s);
+  HALL_RESIDENT_IDS.forEach((id, i) => {
+    const actor = s.actors.find(a => a.id === id)!;
+    expect(actor.down, id).toBe(true);
+    expect(actor.health, id).toBe(0);
+    expect(s.has(`history-crowd-victim-${i}`), id).toBe(true);
+  });
   for (const saved of before) {
     const worker = s.workers.find(a => a.id === saved.id)!;
     expect(worker.safe).toBe(true); expect(worker.down).toBe(false);
     expect(distance3(worker.position, saved.position)).toBeLessThan(0.05);
+    expect(replay.factsAt.get('history-collapse')!).toBeGreaterThanOrEqual(replay.safeArrival.get(worker.id)!.step);
   }
   expect(s.actors.find(a => a.id === 'zhao')!.down).toBe(true);
   expect(s.actors.find(a => a.id === 'shao')!.role).toBe('opponent');
@@ -258,8 +346,8 @@ function finishHall(replay: OpeningReplay, skip: boolean): void {
 }
 
 describe('S01/S02 historical hall: public-input scene regressions', () => {
-  it('keeps a late child safe and 1.1m tall, then gives natural/skip the same evacuation ending', () => {
-    const results: unknown[] = [];
+  it(CHILD_CASE, () => {
+    const results: Array<{ facts: string[]; player: Vec3; actors: ReturnType<typeof terminalActors> }> = [];
     for (const skip of [false, true]) {
       const replay = new OpeningReplay('childhood');
       try {
@@ -269,11 +357,22 @@ describe('S01/S02 historical hall: public-input scene regressions', () => {
         expect(replay.simulation.player.health).toBe(100);
         playChild(replay, skip);
         results.push({ facts: storyFacts(replay.simulation), player: replay.simulation.player.position,
-          actors: terminalActors(replay.simulation, ['father', 'evacuator', 'daughter']) });
+          actors: terminalActors(replay.simulation, ['father', 'evacuator', 'daughter', ...CROWD_IDS]) });
         console.info(`OPENING_REPLAY S01 skip=${skip}`, replay.summary());
       } finally { replay.dispose(); }
     }
-    expect(results[1]).toEqual(results[0]);
+    const [natural, skipped] = results;
+    expect(skipped.facts).toEqual(natural.facts);
+    expect(skipped.player).toEqual(natural.player);
+    expect(skipped.actors.map(({ position, ...state }) => state))
+      .toEqual(natural.actors.map(({ position, ...state }) => state));
+    skipped.actors.forEach((actor, i) => {
+      if (actor.id.startsWith('late-civilian-')) {
+        // These living background residents keep their Rapier grounding for
+        // different durations; allow sub-millimetre settling, not a new pose.
+        expect(distance3(actor.position, natural.actors[i].position), actor.id).toBeLessThan(0.001);
+      } else expect(actor.position, actor.id).toEqual(natural.actors[i].position);
+    });
   }, 60_000);
 
   it('uses the in-scene commander for S02 friendly-fire feedback without changing the father’s fate', () => {
@@ -297,14 +396,14 @@ describe('S01/S02 historical hall: public-input scene regressions', () => {
     } finally { replay.dispose(); }
   });
 
-  it('physically evacuates six residents before fixed hall loss, preserving natural/skip terminal facts and positions', () => {
+  it(HALL_CASE, () => {
     const results: unknown[] = [];
     for (const skip of [false, true]) {
       const replay = new OpeningReplay('mainhall');
       try {
-        reachHallCollapse(replay); finishHall(replay, skip);
+        reachHallStaging(replay, !skip); finishHall(replay, skip);
         results.push({ facts: storyFacts(replay.simulation), player: replay.simulation.player.position,
-          actors: terminalActors(replay.simulation, ['father', 'evacuator', 'daughter', 'young-lu', 'zhao', 'shao']) });
+          actors: terminalActors(replay.simulation, ['father', 'evacuator', 'daughter', 'young-lu', 'zhao', 'shao', ...CROWD_IDS]) });
         expect(replay.inputs.fire).toBeGreaterThan(0);
         expect(replay.simulation.hits).toBeGreaterThan(0);
         console.info(`OPENING_REPLAY S02 skip=${skip}`, replay.summary());
@@ -313,13 +412,19 @@ describe('S01/S02 historical hall: public-input scene regressions', () => {
     expect(results[1]).toEqual(results[0]);
   }, 90_000);
 
-  it('restores the genuine 0.65m hall-collapse checkpoint through SaveStore and retains six evacuated residents', () => {
+  it('restores the genuine standing hall-entry checkpoint, then collapses at the authored time with six residents safe', () => {
     const replay = new OpeningReplay('mainhall');
     try {
-      reachHallCollapse(replay); replay.restoreStagedHall();
+      reachHallStaging(replay); replay.restoreStagedHall();
       expect(replay.restored).toBe(true); expect(replay.simulation.safeCount).toBe(6);
+      replay.until('S02 restored standing view before bombardment and collapse',
+        () => replay.simulation.has('history-collapse'), () => replay.step(), 10);
+      expect(replay.simulation.mission.phaseTime).toBeGreaterThanOrEqual(OPENING_TIMELINE.mainhall.collapse);
+      expect(replay.simulation.mission.phaseTime).toBeLessThan(OPENING_TIMELINE.mainhall.collapse + FIXED_DT * 2);
+      expect(replay.simulation.has('zhou-pinned')).toBe(true);
+      expect(replay.simulation.player.height).toBe(0.65);
       finishHall(replay, false);
-      console.info('OPENING_REPLAY S02 restored collapse', replay.summary());
+      console.info('OPENING_REPLAY S02 restored standing entry then collapse', replay.summary());
     } finally { replay.dispose(); }
   }, 60_000);
 
@@ -350,7 +455,7 @@ describe('S01/S02 historical hall: public-input scene regressions', () => {
           expect(a.goals).toEqual(before.goals.slice(before.goals.length - a.goals.length));
         }
       }
-      reachHallCollapse(replay); finishHall(replay, false);
+      reachHallStaging(replay); finishHall(replay, false);
       expect(resumed.safeCount).toBe(6);
       expect([...replay.interactionPhases]).toEqual([0]);
     } finally { replay.dispose(); }

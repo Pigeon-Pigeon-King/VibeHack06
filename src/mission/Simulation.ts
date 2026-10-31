@@ -1,6 +1,7 @@
 import type { CharacterRole, ControlMode, ScenarioId, SolidSpec, Vec3 } from '../contracts';
 import { LAYOUT } from '../content/layout';
 import { NIGHT, WORKERS } from '../content/chapter-layout';
+import { crowdPose } from '../content/crowd-layout';
 import { HISTORY } from '../content/history-layout';
 import { FRONTGATE } from '../content/frontgate-layout';
 import { TRANSFER } from '../content/transfer-layout';
@@ -123,7 +124,7 @@ export class Simulation {
     l.workerSpawns.forEach((p, i) => this.createActor(`worker-${i}`, this.scenario === 'prologue' ? `撤离者 ${i + 1}` : `港务员 ${i + 1}`, 'worker', p));
     if (this.scenario === 'workers') {
       this.actors[0].name = '罗敬';
-      this.actors[0].position = [21, 0, 17]; this.actors[1].position = [24, 0, 17];
+      this.actors[0].position = [21, 0, 17]; this.actors[1].position = [23.6, 0, 17.7];
       this.createActor('zheng', '郑铎', 'ally', WORKERS.zheng);
       this.createActor('meng', '孟齐', 'ally', WORKERS.meng);
       this.say('郑铎', '街角有遮护。右前方那辆军用车上，怎么都是港务的人？先看清楚，报给周延。');
@@ -146,8 +147,10 @@ export class Simulation {
   }
 
   createActor(id: string, name: string, role: CharacterRole, position: Vec3): Actor {
+    const pose = (role === 'worker' || role === 'civilian') && /^(worker|walker|civilian|late-civilian|evac-crowd)-/.test(id)
+      ? crowdPose(this.scenario, id) : { yaw: role === 'enemy' ? Math.PI : 0, walk: 0 };
     const actor: Actor = { id, name, role, position: [...position], health: role === 'enemy' ? 68 : 100,
-      yaw: role === 'enemy' ? Math.PI : 0, goals: [], path: [], walk: 0,
+      yaw: pose.yaw, goals: [], path: [], walk: pose.walk,
       aiming: false, aimTime: 0, cooldown: this.random.between(0.7, 1.4), safe: false, released: false, down: false };
     this.actors.push(actor);
     return actor;
@@ -259,7 +262,8 @@ export class Simulation {
     const canShoot = m.control === 'combat';
     p.ads = canShoot && intent.ads && !intent.sprint;
     p.cooldown = Math.max(0, p.cooldown - dt);
-    if (intent.reload && !p.reload && p.ammo < 25 && p.reserve > 0 && canShoot) {
+    const emptyMagazine = p.ammo === 0 && p.cooldown <= 0;
+    if ((intent.reload || emptyMagazine) && !p.reload && p.ammo < 25 && p.reserve > 0 && canShoot) {
       p.reload = 2.1; this.events.push({ type: 'reload' });
     }
     if (p.reload > 0) {
@@ -268,7 +272,8 @@ export class Simulation {
     }
     const isChild = this.scenario === 'childhood' || this.scenario === 'prologue' && m.phase < 2;
     const desiredHeight = this.scenario === 'rescue' && m.phase >= 6 ? this.has('rescue-medics-arrived') ? 1.1 : 0.65
-      : isChild || this.scenario === 'relief' && m.phase === 7 ? 1.1 : this.scenario === 'mainhall' && m.phase >= 4 ? 0.65 : (intent.crouch ? 1.2 : 1.8);
+      : isChild || this.scenario === 'relief' && m.phase === 7 ? 1.1 : this.scenario === 'mainhall' && m.phase >= 4
+        ? !this.has('history-timeline-v2') || this.has('history-collapse') ? 0.65 : 1.8 : (intent.crouch ? 1.2 : 1.8);
     if (this.physics.setHeight('player', desiredHeight)) p.height = desiredHeight;
     p.crouched = !isChild && p.height < 1.5;
     const speed = m.control === 'cooperative' ? 1.5 : isChild ? 1.55 : p.crouched ? 1.35 : intent.sprint && !p.ads ? 6.3 : p.ads ? 1.65 : 2.1;
@@ -569,11 +574,16 @@ export class Simulation {
     } else if (m.phase === 4 && at(NIGHT.map) && m.phaseTime >= 1) {
       this.fact('fleet-approaching'); this.phase(5, '舰队已经抵近。先带回港务技工，再接通接收中心。护送到站后，我带人回北闸换班。', 'staged', '孟齐');
     } else if (m.phase === 5) {
-      if (m.phaseTime > 4 && !this.has('briefing-zhou-spoke')) {
+      if (m.phaseTime > 7 && !this.has('briefing-zhou-spoke')) {
         this.fact('briefing-zhou-spoke'); this.say('周延', '看到邵原的消息，彼此都说一声。护送的人先接稳——装备我再替你核一遍。');
       }
-      if (m.phaseTime > 9 || input.skip) {
+      if (m.phaseTime > 13 && !this.has('zhou-postponed-family-reply')) {
+        this.fact('zhou-postponed-family-reply');
+        this.say('周延', '家里那条留言还没回。等这趟安排好……先出发吧。', 6);
+      }
+      if (m.phaseTime > 19 || input.skip) {
         this.fact('briefing-zhou-spoke');
+        this.fact('zhou-postponed-family-reply');
         this.fact('sharing-promised'); this.fact('handoff-planned');
         this.phase(6, '明白。消息一起看，护送之后换班。我的装备我自己核。', 'work');
       }
@@ -608,7 +618,7 @@ export class Simulation {
       this.phase(5, '门开了！先清掉院里的威胁，让他们从西侧集合点出来。');
     } else if (m.phase === 5 && m.phaseTime >= 1.5 && !this.exposedThreat(w.release, 30)) {
       this.fact('workers-released');
-      this.workers.forEach((actor, i) => this.route(actor, [[-8, 0, -108 - i % 3 * 0.6], [20 + i % 3 * 2, 0, -111 - Math.floor(i / 3) * 1.5]]));
+      this.workers.forEach((actor, i) => this.route(actor, [[-8, 0, -108 - i % 3 * 0.6], w.workerSafe[i]]));
       this.spawnChapterGroup('E03', w.counterattack, [[27, 0, -110], [30, 0, -108]]); m.nextSpawn = m.elapsed + 14;
       this.phase(6, '转运位在东侧，我把车接过来。留意东北运输道，护送他们到转运位。', 'combat', '孟齐');
     } else if (m.phase === 6 && this.safeCount === this.workers.length && !this.exposedThreat(w.safe, 24)) {

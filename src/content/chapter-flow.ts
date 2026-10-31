@@ -15,7 +15,7 @@ export const CHAPTER_STAGES = [
   { id: 'S12', scenario: 'epilogue', title: '进场之前' },
 ] as const;
 export type ChapterStageId = typeof CHAPTER_STAGES[number]['id'];
-export const NIGHT_CARRY_FACTS = ['fleet-approaching', 'sharing-promised', 'handoff-planned', 'weapon-collected', 'departed-for-port'] as const;
+export const NIGHT_CARRY_FACTS = ['fleet-approaching', 'sharing-promised', 'handoff-planned', 'zhou-postponed-family-reply', 'weapon-collected', 'departed-for-port'] as const;
 export interface ChapterProgress {
   /** L1 is retained for existing 0.2 saves; new progress uses campaign. */
   chapter: 'campaign' | 'L1'; stage: ChapterStageId; elapsedBefore: number;
@@ -39,6 +39,7 @@ const CARRY_FACTS_BY_STAGE: Record<ChapterStageId, readonly string[]> = {
   S01: [],
   // The next viewpoint does not inherit information this character cannot know.
   S02: [],
+  // Ten years later these are settled world facts, not events the child witnessed in S01.
   S03: ['child-evacuated', 'father-died', 'civilians-evacuated', 'zhou-trusts-zhao', 'zhao-executed', 'zhou-survived-hall'],
   S04: NIGHT_CARRY_FACTS,
   S05: [...NIGHT_CARRY_FACTS, 'convoy-reported', 'zhou-adopts-lu-report', 'technicians-received', 'family-escort-promised', 'reception-damage-known'],

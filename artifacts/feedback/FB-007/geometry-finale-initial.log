@@ -1,0 +1,47 @@
+
+> return-to-ganymede@0.6.0 check:finale
+> vitest run --config scripts/finale-checks/vitest.config.ts --maxWorkers=1 --no-isolate
+
+
+ RUN  v5.0.5 /Users/penguin/.codex/worktrees/ganymede-combat-ai/VibeHack06
+
+stdout | scripts/finale-checks/scenes.check.ts > S10 patient body can be carried into cover and both full beds traverse the medical road
+S10 patient road clearance {
+  i: 0,
+  seconds: 69.11666666666403,
+  travel: 374.96020964435536,
+  minY: 0.0010220885276794878,
+  maxY: 0.03200917243957524
+}
+S10 patient road clearance {
+  i: 1,
+  seconds: 69.79999999999733,
+  travel: 375.9324466870377,
+  minY: 0.003679442405700728,
+  maxY: 0.04334371089935307
+}
+
+ ❯ scripts/finale-checks/scenes.check.ts (9 tests | 1 failed) 62758ms
+   × S10 patient body can be carried into cover and both full beds traverse the medical road 36287ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  scripts/finale-checks/scenes.check.ts > S10 patient body can be carried into cover and both full beds traverse the medical road
+Error: Test timed out in 30000ms.
+If this is a long-running test, pass a timeout value as the last argument or configure it globally with "testTimeout".
+ ❯ scripts/finale-checks/scenes.check.ts:95:1
+     93| }));
+     94|
+     95| it('S10 patient body can be carried into cover and both full beds trav…
+       | ^
+     96|   p.addCart('meng', R.junction, -Math.PI / 2);
+     97|   const carry = follow(p, 'meng', [R.cover], 1.5, true);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 1 passed (2)
+      Tests  1 failed | 9 passed (10)
+   Start at  12:36:43
+   Duration  64.94s (tests 98%, transform 1%)
+

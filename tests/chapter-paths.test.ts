@@ -168,7 +168,7 @@ class ChapterReplay {
 }
 
 const NIGHT_FACTS = ['fan-cleared', 'fan-restarted', 'supplies-collected', 'supplies-delivered',
-  'fleet-approaching', 'briefing-zhou-spoke', 'sharing-promised', 'handoff-planned', 'weapon-collected', 'departed-for-port'];
+  'fleet-approaching', 'briefing-zhou-spoke', 'zhou-postponed-family-reply', 'sharing-promised', 'handoff-planned', 'weapon-collected', 'departed-for-port'];
 function advanceNight(replay: ChapterReplay, skip: boolean): void {
   const points = [NIGHT.fan, NIGHT.fanReset, NIGHT.supplies, NIGHT.delivery, NIGHT.map, NIGHT.map, NIGHT.weapons, NIGHT.exit];
   replay.drive(points[replay.simulation.mission.phase], { interact: [0, 1, 2, 3, 6].includes(replay.simulation.mission.phase), skip, combat: false });

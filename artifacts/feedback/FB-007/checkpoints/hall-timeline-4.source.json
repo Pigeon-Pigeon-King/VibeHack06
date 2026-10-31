@@ -1,0 +1,23 @@
+{
+  "kind": "public-intent-replay-checkpoint",
+  "sourceTest": "tests/opening-paths.test.ts",
+  "sourceCase": "physically evacuates six residents before fixed hall loss, preserving natural/skip terminal facts and positions",
+  "replay": {
+    "skip": false,
+    "skipScope": "staged-playback",
+    "restore": false,
+    "firstPhaseEntry": true
+  },
+  "artifact": "hall-timeline-4.json",
+  "slot": "mainhall",
+  "scenario": "mainhall",
+  "phase": 4,
+  "elapsed": 33.08333333333274,
+  "phaseTime": 0,
+  "crowds": {
+    "hallResidents": 32,
+    "evacuationResidents": 12
+  },
+  "sha256": "5c489a45e481b63982191acb8dda9a0abb093dfa0f48c8b3b19438d305e93945",
+  "note": "真实公开输入回放到达 S02 phase 4 首帧；六名居民与孩子已撤出，周延仍站立且尚未轰炸坍塌。供正常速度的局部时间线观察，不代表人工首通。"
+}

@@ -53,6 +53,8 @@ export class Sound {
   shot(enemy = false, pan = 0): void { this.pulse(enemy ? 1200 : 2600, 0.11, enemy ? 0.28 : 0.6, true, pan); this.pulse(95, 0.13, enemy ? 0.07 : 0.25, false, pan); }
   hit(): void { this.pulse(1100, 0.055, 0.16, false); }
   hurt(): void { this.pulse(80, 0.24, 0.25, true); }
+  blast(): void { this.pulse(75, 0.65, 0.3, false); this.pulse(240, 1.0, 0.32, true); }
+  collapse(): void { this.pulse(180, 0.9, 0.3, true); this.pulse(55, 0.5, 0.18, false); }
   reload(): void { this.pulse(1800, 0.08, 0.2, true); }
   objective(): void { this.pulse(660, 0.18, 0.1, false); }
   footstep(): void { this.pulse(400, 0.065, 0.13, true); }
