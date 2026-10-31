@@ -1,0 +1,96 @@
+{
+  "status": "PASS_STRUCTURAL_PLAN_AND_TEXT_ONLY",
+  "baseline": {
+    "main_commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+    "main_version": "0.6.0",
+    "candidate_worktree": "/Users/penguin/VibeHack06-worktree",
+    "candidate_head_at_read": "7877cbf",
+    "candidate_dirty": true,
+    "release_capture_commit": null,
+    "post_read_diff_review_commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+    "post_read_diff_review_scope": "One static review only: menu/DEV import/Input/S10 conditions remain applicable; tactical AI/opening staging/auto reload changed. No capture freeze."
+  },
+  "validation_git_head": "e58da9bfdfb2c800fdda3acf88a9cb492bff7dc2",
+  "shot_count": 16,
+  "video_frames": 1350,
+  "video_seconds": 45,
+  "fps": 30,
+  "title_seconds": 2.5,
+  "approved_subtitle_cues": 5,
+  "candidate_lines_excluded": 7,
+  "subtitles_utf8_parse": "PASS",
+  "srt_vtt_equivalence": "PASS",
+  "subtitle_time_order_no_overlap": "PASS",
+  "protected_texts": "PASS",
+  "subtitle_metrics": [
+    {
+      "id": "A01",
+      "duration_ms": 5000,
+      "max_line_characters": 15,
+      "audio_alignment": "NOT_RUN"
+    },
+    {
+      "id": "A02",
+      "duration_ms": 4900,
+      "max_line_characters": 10,
+      "audio_alignment": "NOT_RUN"
+    },
+    {
+      "id": "A03",
+      "duration_ms": 1600,
+      "max_line_characters": 9,
+      "audio_alignment": "NOT_RUN"
+    },
+    {
+      "id": "A04",
+      "duration_ms": 3600,
+      "max_line_characters": 9,
+      "audio_alignment": "NOT_RUN"
+    },
+    {
+      "id": "A05",
+      "duration_ms": 4400,
+      "max_line_characters": 16,
+      "audio_alignment": "NOT_RUN"
+    }
+  ],
+  "roadshow_allocated_seconds": 180,
+  "roadshow_sections": {
+    "intro_s": 20,
+    "film_s": 45,
+    "gameplay_with_disclosed_transition_s": 95,
+    "outro_s": 20
+  },
+  "actual_human_180s_rehearsal": "NOT_RUN",
+  "voice_timing_listen": "NOT_RUN",
+  "source_video_capture": "NOT_RUN",
+  "final_video_export": "NOT_RUN",
+  "rendered_subtitle_projection_readability": "NOT_RUN",
+  "source_sha256_at_validation": {
+    "design/TRAILER_45S.md": "5e11b192626176e084a4d8d039cc15be5feca29b83828c5bf4a3e17266479376",
+    "design/audio/TRAILER_AUDIO_BRIEF.md": "eedc7c1bbc1fbc7c21ce47065cb417646e27d010f6f3245586a9ab1430bc0f5e",
+    "docs/SUBMISSION_PLAN.md": "ba13e2d074d24ebdf816c2d404414120c9178fb754dbb956b3d1e7589b19bfed",
+    "docs/COMPETITION_COMPLIANCE.md": "1546c43d81c4dd5f54575229ae2a1f57cd823880c5e249d68060c45832fd920f",
+    "docs/handoff/current/03_CHARACTERS_AND_ARCS.md": "d9f9c2b4465824a359656b1d529f09e7d340e61943e6195f2884168bd29ffea5",
+    "docs/handoff/current/04_CAMPAIGN_AND_LEVELS.md": "04ca90678b6a55c42d3ed8fa853aed0a504ed26e009630561633842d8d1038a3",
+    "src/main.ts": "2a522095888135e72d2697289d94301b022569aced3f69e5814de04e2afc375f",
+    "src/ui/GameUI.ts": "694eaccf5a0017211bc316a8d349d10e03d64e0cf0aeb69f74eb3bd20b8ac514",
+    "src/player/Input.ts": "fd5ef0154b8db31f272874d2fd2a2ad63f8ddc73f2f28a679612f6474dbbf1f2",
+    "src/content/chapter-flow.ts": "c87c7e22ddced05db1085c166f61ec8e8458ea4f718659cba88a64633948bbca",
+    "src/mission/Rescue.ts": "6b9c04bce3ef4305a688f030ba6a60ada128ba57863bb7b0e6e3a30b366ac096",
+    "src/mission/Simulation.ts": "faf10b024988bcee5a46858f0af183f4d084e4f30b0cfa8ce9ba47240ce24947",
+    "src/mission/Relief.ts": "7aaa734b0fc06a19b173a9c06760a364c58b2d779f971c5504024b0b46493e8a",
+    "src/content/rescue-layout.ts": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61",
+    "src/presentation/rescue-environment.ts": "7d8a1ea3d80c209d7d3403d0042a4f413ec392420386f2a35c6c60f21b32ae6d",
+    "tests/finale-interactions.test.ts": "b7153005f1cd613e2d4bf177f869f1bf0852b2a1ced5c4a6360539fe55da2717",
+    "tests/fixtures/finale/rescue-4.json": "d7a89cd64aa483b07cf4acb24bf51740edcd43a1a248acf35b2a063b25a26b19",
+    "tests/fixtures/finale/rescue-4.source.json": "d680aa36f1da8ae4ef2e929a65d4476f22f2eece4062a6a7c16b8a73b5018b70",
+    "package.json": "4c5258e78ca56c759b4b2a29126eeeca7cf61f66b1cb697956af6cf2bd0dc8ae",
+    "vite.config.ts": "fbcfeb4f869067f9335c6292bd2314bafceecfc1c63a738897551f026a495081"
+  },
+  "derived_sha256": {
+    "trailer45.approved-text.draft-timing.zh-CN.srt": "db89b940c1b6c214660ce91e2f5cf896fbac065430f7fd0b083345bcff145060",
+    "trailer45.approved-text.draft-timing.zh-CN.vtt": "f24af78410b5e78baf512499577009b17f434143c919dec12e6d69d41516276d",
+    "timeline.csv": "48b4fb48d979443753f445ae2434aa6193568b61e3de48033f513ef452cf6e6a"
+  }
+}

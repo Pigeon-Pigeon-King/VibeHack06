@@ -1,0 +1,638 @@
+{
+  "source": [
+    {
+      "path": "assets/source/WP-AK47/LICENSE",
+      "bytes": 1068,
+      "sha256": "6795e9bfe7d67b87c0233b4fca631435982341efadc55702af61cfb3a71d717e"
+    },
+    {
+      "path": "assets/source/WP-AK47/SOURCE_LICENSE.md",
+      "bytes": 6270,
+      "sha256": "2732d0d34c18bc4eb83248d9dff1226cac1892a0a0f682d3027d349fba08a959"
+    },
+    {
+      "path": "assets/source/WP-AK47/ak47_reloadable_world.glb",
+      "bytes": 2046524,
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/F35B-GPL-3.0.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-airframe.original.md",
+      "bytes": 3929,
+      "sha256": "a4ad413fa45c9787b2382496f2f13f80d5922fe1115c3232122bad71f467f2ba"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-palette.original.js",
+      "bytes": 301,
+      "sha256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-runtime.original.js",
+      "bytes": 10287,
+      "sha256": "3e2b34a62a6a9b6e4d3abd5a25d7ea5524629c96208b73b0377c34bff15fb7c6"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-source-manifest.json",
+      "bytes": 1675,
+      "sha256": "be7a9b3f50839bc707cbac69a68c1c8407298b6f1c7410984474fef59b3f8d2e"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-source.zip",
+      "bytes": 511836,
+      "sha256": "d2f47f7ebf313b8337f655580d4076258878405a757c49e9e28efab046c6c12b"
+    },
+    {
+      "path": "desktop/main.cjs",
+      "bytes": 3151,
+      "sha256": "9ed8c5e9662e11e4b46bdc1336ebf4af64d2e0e3ba714f31a804a86407161735"
+    },
+    {
+      "path": "docs/REUSE_MILITARY_AIR_ASSETS.md",
+      "bytes": 14385,
+      "sha256": "c908c9867d6c7441cea6b0889af6fa0bb0eab7a2f953bbb79ffc43f5c8b4e401"
+    },
+    {
+      "path": "index.html",
+      "bytes": 553,
+      "sha256": "5c939bc476080c5eba3a9d3ad910813ba7f1a8854a361c8e09179d05fc01b316"
+    },
+    {
+      "path": "node_modules/@dimforge/rapier3d-compat/LICENSE",
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    },
+    {
+      "path": "node_modules/three/LICENSE",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 74501,
+      "sha256": "fa28e3418c60653a7be6a2c54e85f86f8dfa174b925cf8cfcb25737da4048f89"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1139,
+      "sha256": "9ae6dffd15a388d9a37ff87ddd221f0ad1531c85726f71d9b8e5bb7f08182918"
+    },
+    {
+      "path": "public/licenses/WP-AK47/LICENSE",
+      "bytes": 1068,
+      "sha256": "6795e9bfe7d67b87c0233b4fca631435982341efadc55702af61cfb3a71d717e"
+    },
+    {
+      "path": "public/licenses/WP-AK47/NOTICE.md",
+      "bytes": 991,
+      "sha256": "5b2de4eeca4d18d8a682f9dfd43fd940432ced7e4b89b5d11c7294fc946eaf70"
+    },
+    {
+      "path": "public/licenses/WP-AK47/SOURCE_LICENSE.md",
+      "bytes": 6270,
+      "sha256": "2732d0d34c18bc4eb83248d9dff1226cac1892a0a0f682d3027d349fba08a959"
+    },
+    {
+      "path": "public/licenses/dependencies/Rapier.txt",
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    },
+    {
+      "path": "public/licenses/dependencies/Three.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "public/licenses/dependencies/manifest.json",
+      "bytes": 481,
+      "sha256": "19462a6cd140fd1808828571697687b84f941b7b3ce920b2ea6cffe7b99ad648"
+    },
+    {
+      "path": "public/licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "public/licenses/reused-aircraft/f35b/NOTICE.md",
+      "bytes": 737,
+      "sha256": "0543f6640095ff1f277b68f65e7145a8c6fcf446c36a2d5ffb6aab9af1106a2d"
+    },
+    {
+      "path": "public/models/weapons/ak47-world-r1.glb",
+      "bytes": 2046524,
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+    },
+    {
+      "path": "public/sources/reused-aircraft/f35b-ganymede-source.zip",
+      "bytes": 1068027,
+      "sha256": "ea9a55900a2bd344ad0662b14697d05ba16d41b36ad015951c5f3c33e7d90280"
+    },
+    {
+      "path": "scripts/inspect-package.mjs",
+      "bytes": 3092,
+      "sha256": "47fa79abd73993a2275ea9bd2bb0ccf88cfe0a8ad77ed96ae02c503a45ad5c8e"
+    },
+    {
+      "path": "scripts/package-reused-aircraft.py",
+      "bytes": 3073,
+      "sha256": "af929be754ac2180d042257d0aebcd6dba852859f097e2d18060928aa8dcedff"
+    },
+    {
+      "path": "scripts/package-windows.mjs",
+      "bytes": 2102,
+      "sha256": "fe6ae9bcb9d51f23dc1e894ef88ee46521bddf20a79db80a7dea3caa1297129d"
+    },
+    {
+      "path": "src/actors/Navigation.ts",
+      "bytes": 3812,
+      "sha256": "23608bf5b23c06c3bb9c237c607705bd04c9a946185a9749a953ea765565df58"
+    },
+    {
+      "path": "src/assets/ModelLibrary.ts",
+      "bytes": 5660,
+      "sha256": "318de00d4b4d511dee3cc4ce6332ddf35f82aa168ca5bad44b191daefca80a42"
+    },
+    {
+      "path": "src/assets/RigAudit.ts",
+      "bytes": 14585,
+      "sha256": "ab2fb76ef4ed47e38710a034464ac75f8d153e61767207eaee7129cf9bb91981"
+    },
+    {
+      "path": "src/assets/model-contracts.ts",
+      "bytes": 1064,
+      "sha256": "1db424599427b9b57b8e5e3640d2693f4c37d41e7ef485ddca32bee494e248a9"
+    },
+    {
+      "path": "src/assets/model-disposal.ts",
+      "bytes": 4300,
+      "sha256": "302385e9d3c511f889ec374feaeb8cd1fe0c7d21a9b0e4e12e786b19cb7b07d8"
+    },
+    {
+      "path": "src/assets/model-loading.ts",
+      "bytes": 7386,
+      "sha256": "90d7c0b6a2ae4af36ea8e9f72a5e42206c2d96041da7b056346c51b32568a1df"
+    },
+    {
+      "path": "src/assets/weapon-catalog.ts",
+      "bytes": 1532,
+      "sha256": "611b339bffcecac2c84784eef60f6716d1b0aa46b8e819cd43a79850c4248456"
+    },
+    {
+      "path": "src/combat/Ballistics.ts",
+      "bytes": 1804,
+      "sha256": "081fe98fac1b3ebb14464d88c12fac25f39026fbfc4bdeb5e2b98ac31c276785"
+    },
+    {
+      "path": "src/content/chapter-flow.ts",
+      "bytes": 6769,
+      "sha256": "ec00c5eb9791cbab8070dd01d73aecaaa256d71e275494f792d15f4699cfca66"
+    },
+    {
+      "path": "src/content/chapter-layout.ts",
+      "bytes": 1579,
+      "sha256": "ddba8ad1b4e9bf5bdda3803425859724abd7e9ed26adcff4da3e9d236725314e"
+    },
+    {
+      "path": "src/content/epilogue-layout.ts",
+      "bytes": 830,
+      "sha256": "f7295d82ad2712ef53232a78c3b5db04fff90abfb32e07c4d069d563e042d66a"
+    },
+    {
+      "path": "src/content/escort-layout.ts",
+      "bytes": 3267,
+      "sha256": "644e6ef5c9d10db2aa68b7016dd52221beaaf8ade74d08d02a005fcdcb1c2a5b"
+    },
+    {
+      "path": "src/content/flank-layout.ts",
+      "bytes": 1853,
+      "sha256": "2bac9f113b6a418095d2ff7a569494e6fa1b9e2fc2d512132cece9ae77e4c51f"
+    },
+    {
+      "path": "src/content/frontgate-layout.ts",
+      "bytes": 1084,
+      "sha256": "11d74d1a628ae01eec2361a14377d59fa8b8ac66a257e1942c31ade73b90b482"
+    },
+    {
+      "path": "src/content/history-layout.ts",
+      "bytes": 1730,
+      "sha256": "8892ef11293729f9900ecaf318a9686a707cb07d7cf91209f232bc2ca28dca1f"
+    },
+    {
+      "path": "src/content/layout.ts",
+      "bytes": 4776,
+      "sha256": "f15f5b2f438391a2cf4001421eb66535aab4697d3b3ce5c6311c292b35e974d2"
+    },
+    {
+      "path": "src/content/medical-layout.ts",
+      "bytes": 873,
+      "sha256": "f47646fe8e64e0cc3a869aa5453838935f66a50cc45f7322d4a5f56ba2b63823"
+    },
+    {
+      "path": "src/content/relief-layout.ts",
+      "bytes": 1524,
+      "sha256": "b98a039cd3695b83e8f4d709e9702ce31bd02896700f554e53b9aeb8571b8db4"
+    },
+    {
+      "path": "src/content/rescue-layout.ts",
+      "bytes": 1233,
+      "sha256": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61"
+    },
+    {
+      "path": "src/content/transfer-layout.ts",
+      "bytes": 1239,
+      "sha256": "4cdef55e133e9606bde4078a3ac40ad35ee5cb7a1838ca4389e019e683b1a5bb"
+    },
+    {
+      "path": "src/contracts.ts",
+      "bytes": 3010,
+      "sha256": "362495bfccacac91b85819cd71ba8984fa190f945ba84cd89b7b3a7cc2fc38ba"
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 33467,
+      "sha256": "c81b6fbabb20a38730424392504350c4063a3fea0fe64b85f7b494b507a248aa"
+    },
+    {
+      "path": "src/mission/Dialogue.ts",
+      "bytes": 1107,
+      "sha256": "95195133acd103175b9358e8209ec05299397a7ab2778de14c85bc1653fa095b"
+    },
+    {
+      "path": "src/mission/Epilogue.ts",
+      "bytes": 6748,
+      "sha256": "ceb5b65caf613a50123f234d55e03eb358dfad42030a69723e07d0184b40c627"
+    },
+    {
+      "path": "src/mission/Escort.ts",
+      "bytes": 13634,
+      "sha256": "a84c57908462b1e7414eb79445b3bd002752bf8279c4c09115f916d96b3f088e"
+    },
+    {
+      "path": "src/mission/Flank.ts",
+      "bytes": 11552,
+      "sha256": "faac7421ccd26420bc2624676cc791b5627a9771f4ef898754cc98c57a2501a5"
+    },
+    {
+      "path": "src/mission/Frontgate.ts",
+      "bytes": 8747,
+      "sha256": "ca243f9d8518f214d82f8259949b74689b206a95eedc99add52fc265510d068c"
+    },
+    {
+      "path": "src/mission/Medical.ts",
+      "bytes": 8635,
+      "sha256": "c28b55dc4249400c0ba409309b58202bb357ff66f9050c4a7cf65f01e1c01216"
+    },
+    {
+      "path": "src/mission/Opening.ts",
+      "bytes": 14713,
+      "sha256": "b86853481e034761908ac608cfefbb67a0a2c56830cbfdee7ea77df59a8e6b0f"
+    },
+    {
+      "path": "src/mission/Relief.ts",
+      "bytes": 9888,
+      "sha256": "62266a76f086056a7f9118188f863b786f6e9733411639700ab0c661697bb048"
+    },
+    {
+      "path": "src/mission/Rescue.ts",
+      "bytes": 13983,
+      "sha256": "1b373538994c304ef66ce9cbeb43ca48aeea72a7db8cc886ac3a469dc8c68e7c"
+    },
+    {
+      "path": "src/mission/Simulation.ts",
+      "bytes": 48450,
+      "sha256": "ac45aa97aa4ef181fdcb80a6f18f0018526f5ab90d857ad8d7f032165a4e21c0"
+    },
+    {
+      "path": "src/mission/Transfer.ts",
+      "bytes": 7067,
+      "sha256": "13128460600b3730d905a753190dcd49ae6c3812dcb92a46f0356f1e7e145bc9"
+    },
+    {
+      "path": "src/persistence/SaveStore.ts",
+      "bytes": 30531,
+      "sha256": "9fe8f1929ec18afcf9cf6f0b59b5dd3ca1ab5b4a920a37936db8e58bcef5900c"
+    },
+    {
+      "path": "src/player/Input.ts",
+      "bytes": 7093,
+      "sha256": "d6887d56021fba972eeb37d60cff8dafd71d813634ec9cc776934f416ebfc6af"
+    },
+    {
+      "path": "src/player/TouchInputState.ts",
+      "bytes": 1904,
+      "sha256": "a2f03a8b9fdd5cd51725f4930499ca8b78f6279af6bc8fdb06ea424a0004c022"
+    },
+    {
+      "path": "src/presentation/CareView.ts",
+      "bytes": 2076,
+      "sha256": "08f65946c5ef1e1083fd0a2e6f45b61c069af43c5a9e9cb83fd677fff0e34ad5"
+    },
+    {
+      "path": "src/presentation/DeferredAirCover.ts",
+      "bytes": 3436,
+      "sha256": "66299d08e1666e61cb27e7dab8b73b81695877a307ca9259d790386573ab23ea"
+    },
+    {
+      "path": "src/presentation/DepartureMonitor.ts",
+      "bytes": 4041,
+      "sha256": "2171df0632d4959961207e991e2239109f20f7f6b1b4476d23b9ba60823035f7"
+    },
+    {
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "bytes": 5303,
+      "sha256": "45226506a69ba1ddb401dba8664392300c5cc65dae544f5d5fee9004ace1f7fd"
+    },
+    {
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "bytes": 5463,
+      "sha256": "9bcda4c5c19d94b72bc75a4cd22352305eab9fa474250f7d0a7825d8939c0c52"
+    },
+    {
+      "path": "src/presentation/Feedback.ts",
+      "bytes": 3214,
+      "sha256": "abd790a47c577c2f76536484abab1fd902d8b6de14097e7fb7a004a00a9983bf"
+    },
+    {
+      "path": "src/presentation/HeldItemMotion.ts",
+      "bytes": 1899,
+      "sha256": "6a98ed8ce5bdb149a2830ab2238527715b1c6a347772e3d4b21b239305a585e9"
+    },
+    {
+      "path": "src/presentation/ImportedWeaponView.ts",
+      "bytes": 13368,
+      "sha256": "789755321d9cec64f91b85d722a0fe2822fb4b6205c373f3a1ede1412cb143b3"
+    },
+    {
+      "path": "src/presentation/IndirectLighting.ts",
+      "bytes": 824,
+      "sha256": "b530a9c087a2eff5519cc7397e03120cee628fc6c722237cbe6bd744a571d7c1"
+    },
+    {
+      "path": "src/presentation/Sound.ts",
+      "bytes": 4047,
+      "sha256": "281f730e427584338be30689eb4e0df5d143a6229fe6c870d4e6bc1b5bf170d9"
+    },
+    {
+      "path": "src/presentation/chapter-environments.ts",
+      "bytes": 21843,
+      "sha256": "d74866ed1c9439eb2ead5a48facaf6efbf71303847483014e8fe52aaa6e63f9a"
+    },
+    {
+      "path": "src/presentation/characters.ts",
+      "bytes": 12276,
+      "sha256": "519e65c7c039bcf3157eaee7ae157dd21e086d39cc086727c0dad5c390f2c92e"
+    },
+    {
+      "path": "src/presentation/environment.ts",
+      "bytes": 12354,
+      "sha256": "b4eacb5c0807f427c9664ddeaba109e515419a51e670acaf1bf3585f5931c8fd"
+    },
+    {
+      "path": "src/presentation/epilogue-environment.ts",
+      "bytes": 5214,
+      "sha256": "8c23a92a148a03b4d5951331a3db11d8e08bab0d0dbee03c09a567c7fd9d4088"
+    },
+    {
+      "path": "src/presentation/escort-environment.ts",
+      "bytes": 13570,
+      "sha256": "e4fbdd1c22a4e42f34c36e532bdf80a860e6a781afa4d7f542124737a7727802"
+    },
+    {
+      "path": "src/presentation/flank-environment.ts",
+      "bytes": 9153,
+      "sha256": "572e3b25ac17cc75087831be841eb5d597282c4d79721a2b069d5017f11497b9"
+    },
+    {
+      "path": "src/presentation/frontgate-environment.ts",
+      "bytes": 10601,
+      "sha256": "3794739890a41e06e7ed194eb6608ef1f9f96197e8afa02022d5bd0e0f0c97bd"
+    },
+    {
+      "path": "src/presentation/history-environments.ts",
+      "bytes": 12742,
+      "sha256": "76dd042fdd9b3b28971037816b3ead8b8fc085c0101c655d4f7f1f8d6d16a094"
+    },
+    {
+      "path": "src/presentation/medical-environment.ts",
+      "bytes": 4689,
+      "sha256": "e39e7c99111c6d072361e27f1b6611f1d9db904918afc2a75541a9b5c0087341"
+    },
+    {
+      "path": "src/presentation/model-tools.ts",
+      "bytes": 3182,
+      "sha256": "f072818ef3833fe6db7789f1b39dbf2ff60604e3e46b937577d5f69dc59c33e9"
+    },
+    {
+      "path": "src/presentation/patient-cart.ts",
+      "bytes": 3623,
+      "sha256": "aa85349798bdd63275d45ff7f944dfab753e5c86d69ad61b7f8a98e1052f542b"
+    },
+    {
+      "path": "src/presentation/port-kit.ts",
+      "bytes": 13382,
+      "sha256": "463e1a09c8ca8a62637615f38c5f617095be567f78100c43690fdaca5cc7035a"
+    },
+    {
+      "path": "src/presentation/relief-environment.ts",
+      "bytes": 8259,
+      "sha256": "fbab7b24b965801020b75b91a2a046537a0e786a203d6676f499471c37cf4b8a"
+    },
+    {
+      "path": "src/presentation/rescue-environment.ts",
+      "bytes": 5015,
+      "sha256": "7d8a1ea3d80c209d7d3403d0042a4f413ec392420386f2a35c6c60f21b32ae6d"
+    },
+    {
+      "path": "src/presentation/reused-aircraft.ts",
+      "bytes": 3526,
+      "sha256": "3160547dcaffcf99578d8dfda58ee2786166d3854aa161ba34cd3b3c760181a7"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-palette.js",
+      "bytes": 301,
+      "sha256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-source.js",
+      "bytes": 3025331,
+      "sha256": "ec554326e57f5ef3f36748af7030b2d7503da828dddf6a10ad7da5415e3de8f2"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.d.ts",
+      "bytes": 360,
+      "sha256": "6027797a540fcd1ffdcb4d45947f544295889f6564b20970b36fdc1b120dbedd"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.js",
+      "bytes": 11374,
+      "sha256": "9e804e42d3b1c8b0cf2c3c9013fe85a409a8d49aad9004b945ce3249d77303c4"
+    },
+    {
+      "path": "src/presentation/transfer-environment.ts",
+      "bytes": 8780,
+      "sha256": "51b01faa2ee56b39a453eb55e3229bc5478d3af16cc76f2635b97a5e01da7a4e"
+    },
+    {
+      "path": "src/runtime/PageLifecycle.ts",
+      "bytes": 812,
+      "sha256": "60520fa2b3cfc61d9a9aa9956198c320fd613a508b4e38cc418c15437fe6b73d"
+    },
+    {
+      "path": "src/runtime/Physics.ts",
+      "bytes": 7777,
+      "sha256": "496967c9437f30eb66cc6cf2eb85628f007b2700b7159adce46269b0a8c652ea"
+    },
+    {
+      "path": "src/runtime/random.ts",
+      "bytes": 360,
+      "sha256": "c1fa182484525fcaa198d529d51ef54bfb0ed9510f5ddc409153770dfac4805e"
+    },
+    {
+      "path": "src/ui/GameUI.ts",
+      "bytes": 22221,
+      "sha256": "d11e16ab44d0d847cad1bcfa1ba014fe3b850558e34f2c616ca4fbc166aa9153"
+    },
+    {
+      "path": "src/ui/ObjectiveIndicator.ts",
+      "bytes": 3115,
+      "sha256": "3d898d26f3374e7f2cbd46afa132d4cd1ffd472ddfd658ba10c246c26f9d8d78"
+    },
+    {
+      "path": "src/ui/SubtitlePresentation.ts",
+      "bytes": 4940,
+      "sha256": "4af0d8adad665b87efedf8dc516e59a27030e21d408e9d579aec006df01a739f"
+    },
+    {
+      "path": "src/ui/TouchControls.ts",
+      "bytes": 13448,
+      "sha256": "f00e0ff6f36a407d279d1e5b0d2d37886ab3b00721bf78773714e331e27683b2"
+    },
+    {
+      "path": "src/ui/objective-indicator.css",
+      "bytes": 885,
+      "sha256": "5ab4cc4d8a8451e17c547d294705daa91ed98536e8cf3831e49c8a5476183337"
+    },
+    {
+      "path": "src/ui/objective-projection.ts",
+      "bytes": 3597,
+      "sha256": "3175bd687ec5f6acd3ee6d5bc5375543e18dd2159016dd51382bca0fe8e82563"
+    },
+    {
+      "path": "src/ui/style.css",
+      "bytes": 20114,
+      "sha256": "730cb4c47c248ece04ab885f030d049a512d0d30366cc1c5e8174e04e24cab0c"
+    },
+    {
+      "path": "src/ui/touch-controls.css",
+      "bytes": 4734,
+      "sha256": "0115d8bb8ef6aeace5e5738ac7895e3e0774644483fbb7b210466030dad92ed7"
+    },
+    {
+      "path": "src/ui/touch-gestures.ts",
+      "bytes": 4319,
+      "sha256": "026bac09fc1606f5310970a56bad37faf336d52441a74a0d19edd0fb9a947873"
+    },
+    {
+      "path": "tests/deferred-air-cover.test.ts",
+      "bytes": 8961,
+      "sha256": "b37a07cc4c0055a52bad307d0417a5a056fe1a40607d84a50a7f47409aa2d1a1"
+    },
+    {
+      "path": "tests/epilogue-air-cover.test.ts",
+      "bytes": 22472,
+      "sha256": "eb4a8f02ef7f18e24e553be61516cc8647a840d40676d5498c170059e915d64a"
+    },
+    {
+      "path": "tests/reused-aircraft.test.ts",
+      "bytes": 11345,
+      "sha256": "5727b1a3eb3807b75d9fbc0d5af4b7530c26a90a50611a37b4011be6882ea8b6"
+    },
+    {
+      "path": "tsconfig.json",
+      "bytes": 341,
+      "sha256": "63d21aae1d346d6f718aad46d19e0baad972d5a1fb2d7a8b14a65fb407f28273"
+    },
+    {
+      "path": "vite.config.ts",
+      "bytes": 261,
+      "sha256": "fbcfeb4f869067f9335c6292bd2314bafceecfc1c63a738897551f026a495081"
+    }
+  ],
+  "web": [
+    {
+      "path": "assets/EpilogueAirCover-C_Zqspkh.js",
+      "bytes": 2724464,
+      "sha256": "45ea4334e7475c5c0f2b8e4af5b421a0e97b1e64289596ec63116038ef89fb7a"
+    },
+    {
+      "path": "assets/index-BkFxWYCf.css",
+      "bytes": 22207,
+      "sha256": "4406f7611a4e8d26ed512e9ffa51f26eda0658d01631a1b7db26ee5105ec6d1c"
+    },
+    {
+      "path": "assets/index-C11eSd1C.js",
+      "bytes": 5433093,
+      "sha256": "796a3ae82f6c3f34849228affa15acb9e789a9b29e58136274c34a9e5e7c71e8"
+    },
+    {
+      "path": "index.html",
+      "bytes": 654,
+      "sha256": "8986b78995cf0a5d352412b8bd28c061015f7a645542dffadb36b1353863b159"
+    },
+    {
+      "path": "licenses/WP-AK47/LICENSE",
+      "bytes": 1068,
+      "sha256": "6795e9bfe7d67b87c0233b4fca631435982341efadc55702af61cfb3a71d717e"
+    },
+    {
+      "path": "licenses/WP-AK47/NOTICE.md",
+      "bytes": 991,
+      "sha256": "5b2de4eeca4d18d8a682f9dfd43fd940432ced7e4b89b5d11c7294fc946eaf70"
+    },
+    {
+      "path": "licenses/WP-AK47/SOURCE_LICENSE.md",
+      "bytes": 6270,
+      "sha256": "2732d0d34c18bc4eb83248d9dff1226cac1892a0a0f682d3027d349fba08a959"
+    },
+    {
+      "path": "licenses/dependencies/Rapier.txt",
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    },
+    {
+      "path": "licenses/dependencies/Three.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "licenses/dependencies/manifest.json",
+      "bytes": 481,
+      "sha256": "19462a6cd140fd1808828571697687b84f941b7b3ce920b2ea6cffe7b99ad648"
+    },
+    {
+      "path": "licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "licenses/reused-aircraft/f35b/NOTICE.md",
+      "bytes": 737,
+      "sha256": "0543f6640095ff1f277b68f65e7145a8c6fcf446c36a2d5ffb6aab9af1106a2d"
+    },
+    {
+      "path": "models/weapons/ak47-world-r1.glb",
+      "bytes": 2046524,
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+    },
+    {
+      "path": "sources/reused-aircraft/f35b-ganymede-source.zip",
+      "bytes": 1068027,
+      "sha256": "ea9a55900a2bd344ad0662b14697d05ba16d41b36ad015951c5f3c33e7d90280"
+    }
+  ],
+  "windows": [],
+  "audio": []
+}

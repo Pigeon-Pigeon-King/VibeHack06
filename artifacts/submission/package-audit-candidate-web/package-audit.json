@@ -1,0 +1,178 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "1.0.1",
+  "toolSha256": "68812f89b293b01d3e55c72e31ff4d8769df3b16303b04a40a7be7297d6f85ee",
+  "label": "candidate-7877cbf-dirty-web",
+  "recordedUtc": "2026-10-31T05:05:29.186977+00:00",
+  "root": "/Users/penguin/VibeHack06-worktree",
+  "python": "3.9.6",
+  "windowsRuntime": "NOT_RUN",
+  "browserRuntime": "NOT_RUN",
+  "sourceBuildCorrespondence": "NOT_REBUILT",
+  "scope": "Static files, headers, references, provenance and package integrity only",
+  "limits": [
+    "No rendering, decoding/playback, first-run, network trace, or target-device test.",
+    "Static JavaScript matching does not resolve arbitrary computed URLs or every bundler transform.",
+    "A source snapshot does not prove these sources compiled to an existing build.",
+    "License/source presence and exact copies do not decide legal sufficiency or the whole-game license.",
+    "Raw provider responses, credential directories, model caches and unlisted originals are not inventoried."
+  ],
+  "checks": {
+    "rapierEmbeddedWasm": [
+      {
+        "bundle": "assets/index-C11eSd1C.js",
+        "bytes": 3082103,
+        "sha256": "17cfa80eebd8de0291b948496dbffba724b98b489687f8272ca236a7bbf1dd4b",
+        "matchesInstalled": true
+      }
+    ],
+    "f35SourceBundle": {
+      "manifestEntriesChecked": 18,
+      "matchCurrentSource": 16,
+      "upstreamFilesMatched": 10,
+      "completeGameSource": false
+    },
+    "web": {
+      "files": 14,
+      "bytes": 11352087,
+      "publicFilesMatched": 10,
+      "fileAudioCount": 0
+    }
+  },
+  "references": [
+    {
+      "from": "index.html",
+      "uri": "./assets/index-C11eSd1C.js",
+      "kind": "html",
+      "resolved": "assets/index-C11eSd1C.js",
+      "status": "PRESENT"
+    },
+    {
+      "from": "index.html",
+      "uri": "./assets/index-BkFxWYCf.css",
+      "kind": "html",
+      "resolved": "assets/index-BkFxWYCf.css",
+      "status": "PRESENT"
+    },
+    {
+      "from": "assets/EpilogueAirCover-C_Zqspkh.js",
+      "uri": "./index-C11eSd1C.js",
+      "kind": "module",
+      "resolved": "assets/index-C11eSd1C.js",
+      "status": "PRESENT"
+    },
+    {
+      "from": "assets/index-C11eSd1C.js",
+      "uri": "./EpilogueAirCover-C_Zqspkh.js",
+      "kind": "loader-literal",
+      "resolved": "assets/EpilogueAirCover-C_Zqspkh.js",
+      "status": "PRESENT"
+    },
+    {
+      "from": "assets/index-C11eSd1C.js",
+      "uri": "models/weapons/ak47-world-r1.glb",
+      "kind": "resource-literal",
+      "resolved": "models/weapons/ak47-world-r1.glb",
+      "status": "PRESENT"
+    }
+  ],
+  "glb": [
+    {
+      "path": "models/weapons/ak47-world-r1.glb",
+      "bytes": 2046524,
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+      "status": "PASS_HEADER",
+      "version": 2,
+      "externalUris": [],
+      "extensions": [
+        "KHR_materials_clearcoat"
+      ],
+      "images": 6,
+      "meshes": 11,
+      "skins": 0,
+      "animations": 0,
+      "decoded": false
+    }
+  ],
+  "audioHeaders": [],
+  "licenseCopies": [
+    {
+      "package": "three",
+      "source": "node_modules/three/LICENSE",
+      "packaged": "licenses/dependencies/Three.txt",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "byteIdentical": true
+    },
+    {
+      "package": "@dimforge/rapier3d-compat",
+      "source": "node_modules/@dimforge/rapier3d-compat/LICENSE",
+      "packaged": "licenses/dependencies/Rapier.txt",
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519",
+      "byteIdentical": true
+    },
+    {
+      "package": "WP-AK47",
+      "source": "assets/source/WP-AK47/LICENSE",
+      "packaged": "licenses/WP-AK47/LICENSE",
+      "sha256": "6795e9bfe7d67b87c0233b4fca631435982341efadc55702af61cfb3a71d717e",
+      "byteIdentical": true
+    },
+    {
+      "package": "WP-AK47",
+      "source": "assets/source/WP-AK47/SOURCE_LICENSE.md",
+      "packaged": "licenses/WP-AK47/SOURCE_LICENSE.md",
+      "sha256": "2732d0d34c18bc4eb83248d9dff1226cac1892a0a0f682d3027d349fba08a959",
+      "byteIdentical": true
+    },
+    {
+      "package": "F-35B",
+      "source": "assets/source/reused-aircraft/vtol-f35b/F35B-GPL-3.0.txt",
+      "packaged": "licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "byteIdentical": true
+    }
+  ],
+  "git": {
+    "head": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+    "trackedDirty": true,
+    "untrackedPathsListed": false
+  },
+  "webInput": "/Users/penguin/VibeHack06-worktree/dist",
+  "status": "FAIL",
+  "exitCode": 1,
+  "findings": [
+    {
+      "severity": "error",
+      "code": "INPUT_CHANGED",
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "message": "Repeated reads differ within this audit; rerun a frozen candidate."
+    },
+    {
+      "severity": "error",
+      "code": "SOURCE_BUNDLE_STALE",
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "message": "Packaged component source differs from selected current source."
+    },
+    {
+      "severity": "error",
+      "code": "SOURCE_BUNDLE_STALE",
+      "path": "tests/epilogue-air-cover.test.ts",
+      "message": "Packaged component source differs from selected current source."
+    },
+    {
+      "severity": "review",
+      "code": "GPL_DISTRIBUTION_SCOPE_REVIEW",
+      "path": "sources/reused-aircraft/f35b-ganymede-source.zip",
+      "message": "GPL-3.0 text and component source are present; overall distribution/corresponding-source sufficiency remains a separate review, not a legal PASS."
+    }
+  ],
+  "findingCounts": {
+    "error": 3,
+    "review": 1
+  },
+  "finishedUtc": "2026-10-31T05:06:07.052308+00:00",
+  "observedInputChanges": true,
+  "atomicFilesystemSnapshot": false,
+  "elapsedSeconds": 37.866,
+  "inventorySha256": "ce5751ef0a0ad20a5a6d4b6d8c504bb5f24903f5e9533bc7eebcf2dfe66820cb"
+}

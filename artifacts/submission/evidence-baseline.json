@@ -1,0 +1,176 @@
+{
+  "schema": "ganymede-submission-evidence-baseline-v1",
+  "recordedAt": "2026-10-31T12:46:11.127917+08:00",
+  "kind": "READING_BASELINE_NOT_A_RELEASE",
+  "mainReadingCommit": "9ec9bc669096991efabe373e8e5307408431a80b",
+  "mainHeadAtRecording": "9ec9bc669096991efabe373e8e5307408431a80b",
+  "candidateHeadBefore": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+  "candidateHeadAfter": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+  "candidateHasTrackedChanges": true,
+  "snapshotAtomic": false,
+  "containsProviderResponses": false,
+  "notes": [
+    "Tracked main files are hashed from immutable Git objects.",
+    "Candidate file hashes describe individual reads during concurrent work; they are not a frozen whole-repository snapshot.",
+    "No application build, package, browser session or performance test was started by this record.",
+    "Future integrated builds must have their own source and artifact inventory."
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "bytes": 3944,
+      "sha256": "0c10b30faafbe921e4e2463a380ab43bad7fc991a33f70008eb6af561567fa22",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "README.md",
+      "bytes": 6294,
+      "sha256": "01455cd551b742b00d35c9df6aadee2a486ac4f5963871eac3a7ffdba95e56aa",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "docs/PROJECT_BLUEPRINT.md",
+      "bytes": 11113,
+      "sha256": "d11b9e2269857395ec52a0a79f83ce344dd09742075c96b4a8ff291835953e85",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "docs/THREEJS_FPS_STANDARDS.md",
+      "bytes": 15369,
+      "sha256": "d867d66aaa345ec0e26c4a93b2869f961165f430f9a505cd31bdf451f5df64bb",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "docs/ASSET_PIPELINE.md",
+      "bytes": 10170,
+      "sha256": "52d8a21a004798f31d2ae5811d70744b90134ad083caf12a74725c229003985f",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "docs/SUBMISSION_PLAN.md",
+      "bytes": 7586,
+      "sha256": "ba13e2d074d24ebdf816c2d404414120c9178fb754dbb956b3d1e7589b19bfed",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "docs/COMPETITION_COMPLIANCE.md",
+      "bytes": 6779,
+      "sha256": "1546c43d81c4dd5f54575229ae2a1f57cd823880c5e249d68060c45832fd920f",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "docs/PARALLEL_WORKSTREAMS.md",
+      "bytes": 3350,
+      "sha256": "a377a71949c9fc10c2b33ab96baa545b8bf806f4133a58c00a5f97cb7b4a06bd",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "design/TRAILER_45S.md",
+      "bytes": 7586,
+      "sha256": "5e11b192626176e084a4d8d039cc15be5feca29b83828c5bf4a3e17266479376",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "artifacts/game-progress.md",
+      "bytes": 18419,
+      "sha256": "d3afb6e1925acdcdb8a986119f5efeaf9715ccb4aec2802fd8fe163fd7251240",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "package.json",
+      "bytes": 1055,
+      "sha256": "4c5258e78ca56c759b4b2a29126eeeca7cf61f66b1cb697956af6cf2bd0dc8ae",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 74501,
+      "sha256": "fa28e3418c60653a7be6a2c54e85f86f8dfa174b925cf8cfcb25737da4048f89",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b"
+    },
+    {
+      "path": "docs/IMPORTED_ASSET_RUNTIME.md",
+      "bytes": 5984,
+      "sha256": "005e5ecc53c2c7eb947a43b24053d820cb2f2aa53e0f6e0261b8296165b4b0e3",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T04:28:35.348267+00:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "docs/MOBILE_WEB_DELIVERY.md",
+      "bytes": 7784,
+      "sha256": "1f65d78a02c8c6bbbb0cf2c8aada43b1b72d0499fde64e5a4a1ba985b722eca2",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T03:40:56.495013+00:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "artifacts/asset-runtime-evidence.md",
+      "bytes": 4635,
+      "sha256": "3e8e5213fc7923b7f53343831109a412ffc9f19872491d326b6261726a769095",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T04:43:58.388123+00:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "package.json",
+      "bytes": 1139,
+      "sha256": "9ae6dffd15a388d9a37ff87ddd221f0ad1531c85726f71d9b8e5bb7f08182918",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T02:58:55.731881+00:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "package-lock.json",
+      "bytes": 74501,
+      "sha256": "fa28e3418c60653a7be6a2c54e85f86f8dfa174b925cf8cfcb25737da4048f89",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T01:05:56.403638+00:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "src/main.ts",
+      "bytes": 33467,
+      "sha256": "9ff5954eea2525a4d21d74342b52777f196ffc18e7b87b414d36820ed3bf4a12",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T04:31:24.146437+00:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "src/contracts.ts",
+      "bytes": 3010,
+      "sha256": "362495bfccacac91b85819cd71ba8984fa190f945ba84cd89b7b3a7cc2fc38ba",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T02:54:17.374942+00:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "src/ui/GameUI.ts",
+      "bytes": 22221,
+      "sha256": "d11e16ab44d0d847cad1bcfa1ba014fe3b850558e34f2c616ca4fbc166aa9153",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T02:55:24.567304+00:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "src/ui/style.css",
+      "bytes": 20114,
+      "sha256": "730cb4c47c248ece04ab885f030d049a512d0d30366cc1c5e8174e04e24cab0c",
+      "origin": "candidate-working-tree",
+      "mtime": "2026-10-31T02:54:17.377294+00:00",
+      "stableWhileRead": true
+    }
+  ]
+}
