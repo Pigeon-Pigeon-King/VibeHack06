@@ -79,11 +79,13 @@ function distantPort(kit: PortKit): void {
     kit.box('pale', [x, height + 0.3, z], [15, 0.6, 17], [0, 0, 0], false);
     kit.cylinder('steel', [x + 3, height + 3, z], 0.75, 6);
   }
+  kit.asset('BG-CRANE', { instanceId: 'front-distant-crane', position: [79, 0, 6], size: [36.64, 28, 17.30] }, () => {
   kit.box('steel', [79, 14, 6], [3.4, 28, 3.4], [0, 0, 0], false);
   kit.beam('pale', [79, 28, 6], [58, 22, 19], 1.1);
   kit.beam('amber', [79, 28, 6], [103, 22, -7], 1.1);
   kit.beam('steel', [79, 20, 6], [62, 23, 16], 0.6);
   kit.cylinder('rubber', [59, 15, 18], 0.055, 14);
+  });
 }
 
 /** Formal E04 front line, separate from the compact northgate validation arena. */

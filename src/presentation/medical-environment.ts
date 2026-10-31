@@ -8,9 +8,11 @@ function block(k: PortKit, id: string, p: Vec3, size: Vec3, surface: Surface = '
   k.box(surface, p, size); k.solid(id, p, size);
 }
 function desk(k: PortKit, id: string, p: Vec3, text: string) {
+  k.asset('PROP-TERMINAL-CONSOLE', { instanceId: id, position: [p[0], 0, p[2] - 1.35], size: [2.6, 1.1, 0.9] }, () => {
   block(k, id, [p[0], 0.52, p[2] - 1.35], [2.6, 1.04, 0.9], 'steel');
   k.box('white', [p[0], 1.075, p[2] - 1.35], [2.7, 0.07, 1.0]);
   k.box('glass', [p[0] + 0.6, 1.32, p[2] - 1.4], [0.65, 0.4, 0.08], [-0.15, 0, 0]);
+  });
   k.label(text, [p[0], 1.9, p[2] - 1.32], 2.4, 0.45);
 }
 
@@ -43,10 +45,17 @@ export function buildMedical(k: PortKit): SceneDynamics {
       k.box('amber', [x, 1.03, z], [1.5, 0.06, 0.8]);
     }
   }
-  block(k, 'medical-rest-bench', [-413.5, 0.43, 63.5], [4.5, 0.86, 0.9], 'pale');
+  k.asset('PROP-BENCH', { instanceId: 'medical-rest-bench', position: [-413.5, 0, 63.5], size: [4.5, 0.86, 0.9] }, () => {
+    block(k, 'medical-rest-bench', [-413.5, 0.43, 63.5], [4.5, 0.86, 0.9], 'pale');
+  });
   block(k, 'medical-rest-back', [-413.5, 1.2, 64], [4.5, 1.0, 0.15], 'paint');
-  k.cylinder('white', [-414.5, 1.15, 60.2], 0.15, 0.25);
+  k.asset('PROP-LIFE-MUG', { instanceId: 'medical-water-mug', position: [-414.5, 0.96, 60.2], size: [0.30, 0.25, 0.24] }, () => {
+    k.cylinder('white', [-414.5, 1.15, 60.2], 0.15, 0.25);
+  });
   block(k, 'medical-water-table', [-414.5, 0.48, 60.2], [1.1, 0.96, 0.8]);
+  k.asset('PROP-MEDICAL-BAG', { instanceId: 'medical-water-table-bag', position: [-414.5, 0.96, 60.48], size: [0.4, 0.3, 0.2] }, () => {
+    k.box('pale', [-414.5, 1.11, 60.48], [0.4, 0.3, 0.2]);
+  });
   k.label('安置 / 休息', [-419.7, 3.0, 62], 6, 0.65, Math.PI / 2);
   k.label('孟齐 · 继续治疗', [-392, 3.4, 36.3], 7, 0.65);
   k.label('救治隔间', [-405, 3.4, 36.3], 7, 0.65);
