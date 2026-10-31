@@ -1,0 +1,939 @@
+{
+  "candidateCommit": "2319a0764ad25a651d6d09aa5f57d50d40b16d42",
+  "cases": [
+    {
+      "case": "FINALE rescue skip=false restore=false",
+      "measured": {
+        "elapsed": 179.83333333336859,
+        "phases": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "allyDamage": 1,
+        "playerDistance": 510.71167344518483,
+        "mengDistance": 501.4106525957668,
+        "maxEnemies": 5,
+        "maxAiming": 2,
+        "carryFrames": 1360,
+        "rejectedShots": 1360,
+        "loadedBedGap": 0
+      }
+    },
+    {
+      "case": "FINALE rescue skip=true restore=false",
+      "measured": {
+        "elapsed": 44.466666666665425,
+        "phases": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          10
+        ],
+        "allyDamage": 1,
+        "playerDistance": 456.32242306990605,
+        "mengDistance": 455.3815149738244,
+        "maxEnemies": 5,
+        "maxAiming": 2,
+        "carryFrames": 998,
+        "rejectedShots": 998,
+        "loadedBedGap": 0
+      }
+    },
+    {
+      "case": "FINALE rescue skip=false restore=true",
+      "measured": {
+        "elapsed": 179.61666666670175,
+        "phases": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ],
+        "allyDamage": 1,
+        "playerDistance": 510.51601699613343,
+        "mengDistance": 501.388498407309,
+        "maxEnemies": 5,
+        "maxAiming": 2,
+        "carryFrames": 1364,
+        "rejectedShots": 1364,
+        "loadedBedGap": 0
+      }
+    },
+    {
+      "case": "ESCORT_REPLAY skip=true restore=false",
+      "measured": {
+        "seconds": 153.5833333333477,
+        "spawned": 17,
+        "kills": 17,
+        "maxActive": 3,
+        "maxAimers": 2,
+        "phases": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "restores": [],
+        "retiredRestored": [],
+        "stagedResources": [
+          {
+            "phase": 2,
+            "start": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            },
+            "end": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            }
+          },
+          {
+            "phase": 4,
+            "start": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            },
+            "end": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            }
+          }
+        ],
+        "terminalResources": {
+          "health": 100,
+          "ammo": 23,
+          "reserve": 50
+        }
+      }
+    },
+    {
+      "case": "ESCORT_CONVOY_CLEARANCE skip=true restore=false",
+      "pairs": [
+        {
+          "pair": "meng/cart-0",
+          "samples": 3193,
+          "minimumMeters": 6.600979618805194,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "meng/cart-1",
+          "samples": 6114,
+          "minimumMeters": 3.5055354437624064,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-0",
+          "samples": 3154,
+          "minimumMeters": 8.943047272508288,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-1",
+          "samples": 6044,
+          "minimumMeters": 4.461602895463171,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-0",
+          "samples": 3022,
+          "minimumMeters": 9.173529281060892,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-1",
+          "samples": 5899,
+          "minimumMeters": 4.455255141577332,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-0",
+          "samples": 3485,
+          "minimumMeters": 3.7699955485777776,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-1",
+          "samples": 6290,
+          "minimumMeters": 4.427817320686469,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-0",
+          "samples": 3473,
+          "minimumMeters": 5.809485764334208,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-1",
+          "samples": 6278,
+          "minimumMeters": 1.0519170847449288,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "meng/cart-2",
+          "samples": 2921,
+          "minimumMeters": 5.135022109560876,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-2",
+          "samples": 2890,
+          "minimumMeters": 7.43183917709366,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-2",
+          "samples": 2877,
+          "minimumMeters": 8.34337354501087,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-2",
+          "samples": 2643,
+          "minimumMeters": 1.6133434468585428,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-2",
+          "samples": 2643,
+          "minimumMeters": 2.4713416374322037,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        }
+      ]
+    },
+    {
+      "case": "ESCORT_REPLAY skip=false restore=false",
+      "measured": {
+        "seconds": 235.51666666674623,
+        "spawned": 17,
+        "kills": 17,
+        "maxActive": 3,
+        "maxAimers": 2,
+        "phases": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "restores": [],
+        "retiredRestored": [],
+        "stagedResources": [
+          {
+            "phase": 2,
+            "start": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            },
+            "end": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            }
+          },
+          {
+            "phase": 4,
+            "start": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            },
+            "end": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            }
+          }
+        ],
+        "terminalResources": {
+          "health": 100,
+          "ammo": 2,
+          "reserve": 50
+        }
+      }
+    },
+    {
+      "case": "ESCORT_CONVOY_CLEARANCE skip=false restore=false",
+      "pairs": [
+        {
+          "pair": "meng/cart-0",
+          "samples": 3186,
+          "minimumMeters": 6.5982443556565435,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "meng/cart-1",
+          "samples": 6094,
+          "minimumMeters": 3.3312069283350194,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-0",
+          "samples": 3154,
+          "minimumMeters": 8.923640917085105,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-1",
+          "samples": 6044,
+          "minimumMeters": 4.46244497964006,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-0",
+          "samples": 3031,
+          "minimumMeters": 9.176355223300618,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-1",
+          "samples": 5908,
+          "minimumMeters": 4.4552695686979895,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-0",
+          "samples": 3485,
+          "minimumMeters": 3.769986227558424,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-1",
+          "samples": 6259,
+          "minimumMeters": 4.427817320686469,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-0",
+          "samples": 3475,
+          "minimumMeters": 4.576551626656407,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-1",
+          "samples": 6247,
+          "minimumMeters": 1.052658877024185,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "meng/cart-2",
+          "samples": 2908,
+          "minimumMeters": 5.135022109560876,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-2",
+          "samples": 2890,
+          "minimumMeters": 7.43183917709366,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-2",
+          "samples": 2877,
+          "minimumMeters": 8.34337354501087,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-2",
+          "samples": 2698,
+          "minimumMeters": 1.633334234108175,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-2",
+          "samples": 2698,
+          "minimumMeters": 1.4020619068361755,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        }
+      ]
+    },
+    {
+      "case": "ESCORT_REPLAY skip=false restore=true",
+      "measured": {
+        "seconds": 237.30000000008098,
+        "spawned": 17,
+        "kills": 17,
+        "maxActive": 3,
+        "maxAimers": 2,
+        "phases": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "restores": [
+          5,
+          8,
+          11,
+          12,
+          14
+        ],
+        "retiredRestored": [],
+        "stagedResources": [
+          {
+            "phase": 2,
+            "start": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            },
+            "end": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            }
+          },
+          {
+            "phase": 4,
+            "start": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            },
+            "end": {
+              "health": 100,
+              "ammo": 25,
+              "reserve": 150
+            }
+          }
+        ],
+        "terminalResources": {
+          "health": 100,
+          "ammo": 23,
+          "reserve": 50
+        }
+      }
+    },
+    {
+      "case": "ESCORT_CONVOY_CLEARANCE skip=false restore=true",
+      "pairs": [
+        {
+          "pair": "meng/cart-0",
+          "samples": 3193,
+          "minimumMeters": 5.7667424922870305,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "meng/cart-1",
+          "samples": 6108,
+          "minimumMeters": 3.460579887510078,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-0",
+          "samples": 3148,
+          "minimumMeters": 7.407412007239084,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-1",
+          "samples": 6037,
+          "minimumMeters": 4.34175752595438,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-0",
+          "samples": 3028,
+          "minimumMeters": 7.901803361369489,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-1",
+          "samples": 5916,
+          "minimumMeters": 4.519297351565976,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-0",
+          "samples": 3550,
+          "minimumMeters": 3.769957210297825,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-1",
+          "samples": 6374,
+          "minimumMeters": 4.923220115631338,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-0",
+          "samples": 3546,
+          "minimumMeters": 1.7699923937613884,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-1",
+          "samples": 6370,
+          "minimumMeters": 1.0521602068227962,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "meng/cart-2",
+          "samples": 2915,
+          "minimumMeters": 5.135022109560876,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-0/cart-2",
+          "samples": 2889,
+          "minimumMeters": 7.43183917709366,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "relief-1/cart-2",
+          "samples": 2888,
+          "minimumMeters": 8.34337527023891,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-0/cart-2",
+          "samples": 2690,
+          "minimumMeters": 1.6020011461043002,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        },
+        {
+          "pair": "walker-1/cart-2",
+          "samples": 2690,
+          "minimumMeters": 2.0830981711643046,
+          "overlapSeconds": 0,
+          "longestOverlapSeconds": 0
+        }
+      ]
+    },
+    {
+      "case": "NPC_PACE route",
+      "measured": {
+        "role": "ally",
+        "seconds": 3,
+        "metres": 12.4500732421875
+      }
+    },
+    {
+      "case": "NPC_PACE route",
+      "measured": {
+        "role": "worker",
+        "seconds": 3,
+        "metres": 12.4500732421875
+      }
+    },
+    {
+      "case": "NPC_PACE route",
+      "measured": {
+        "role": "medic",
+        "seconds": 3,
+        "metres": 12.4500732421875
+      }
+    },
+    {
+      "case": "NPC_PACE route",
+      "measured": {
+        "role": "enemy",
+        "seconds": 3,
+        "metres": 13.197082519533454
+      }
+    },
+    {
+      "case": "NPC_PACE player-comparison",
+      "measured": {
+        "seconds": 3,
+        "measurements": [
+          {
+            "sprint": false,
+            "player": 6.2646484375,
+            "npc": 12.900146484375
+          },
+          {
+            "sprint": true,
+            "player": 18.378570556640625,
+            "npc": 12.900146484375
+          }
+        ]
+      }
+    },
+    {
+      "case": "NPC_PACE tactics",
+      "measured": {
+        "ally": {
+          "movingFrames": 102,
+          "median": 4.500001128413573,
+          "maximum": 4.502150194886988
+        },
+        "enemy": {
+          "movingFrames": 138,
+          "median": 4.499997717535155,
+          "maximum": 4.502207978845364
+        }
+      }
+    },
+    {
+      "case": "NPC_PACE straight-cart",
+      "measured": {
+        "seconds": 3,
+        "metres": 11.866171309082157,
+        "average": 3.955390436360719,
+        "movingFrames": 178,
+        "median": 3.9999961853027344,
+        "maximum": 4.002392946467431
+      }
+    },
+    {
+      "case": "NPC_PACE active-transport",
+      "measured": {
+        "scenario": "transfer",
+        "phase": 2,
+        "seconds": 2,
+        "speeds": [
+          {
+            "id": "cart-0",
+            "metres": 7.47232648991586,
+            "average": 3.73616324495793,
+            "movingFrames": 113,
+            "median": 3.9999389713922118,
+            "maximum": 4.0006256103515625
+          },
+          {
+            "id": "cart-1",
+            "metres": 7.995025129852806,
+            "average": 3.997512564926403,
+            "movingFrames": 120,
+            "median": 3.9999961853027344,
+            "maximum": 4.0005111956236945
+          },
+          {
+            "id": "cart-2",
+            "metres": 6.531289298808457,
+            "average": 3.2656446494042286,
+            "movingFrames": 98,
+            "median": 3.9999961853027344,
+            "maximum": 4.000511169433594
+          },
+          {
+            "id": "xu",
+            "metres": 7.531916611022196,
+            "average": 3.765958305511098,
+            "movingFrames": 114,
+            "median": 3.999996191851102,
+            "maximum": 4.002342230665623
+          }
+        ]
+      }
+    },
+    {
+      "case": "NPC_PACE transfer-throughput",
+      "measured": {
+        "transferSeconds": 9.98333333333349,
+        "phase": 3,
+        "minimumCartGap": 3.6808547973632812,
+        "arrivals": [
+          {
+            "id": "cart-0",
+            "arrivalSeconds": 7.400000000000029,
+            "position": [
+              -41.99996566772461,
+              0.01337908506393437,
+              42.162925720214844
+            ],
+            "target": [
+              -42,
+              0,
+              43
+            ],
+            "remaining": 0.8370742804892186,
+            "metres": 24.16292712589478,
+            "average": 3.265260422418214,
+            "movingFrames": 366,
+            "median": 3.9999389713922118,
+            "maximum": 4.001998907912279,
+            "stoppedFrames": 78,
+            "queuedStopFrames": 0,
+            "longestStopSeconds": 0.25
+          },
+          {
+            "id": "cart-1",
+            "arrivalSeconds": 7.650000000000041,
+            "position": [
+              -42.000022888183594,
+              0.003475594520568892,
+              37.21342086791992
+            ],
+            "target": [
+              -42,
+              0,
+              38
+            ],
+            "remaining": 0.7865791324130827,
+            "metres": 24.21342478407216,
+            "average": 3.1651535665453805,
+            "movingFrames": 364,
+            "median": 3.999939023779906,
+            "maximum": 4.0026859656889515,
+            "stoppedFrames": 95,
+            "queuedStopFrames": 3,
+            "longestStopSeconds": 0.4
+          },
+          {
+            "id": "cart-2",
+            "arrivalSeconds": 8.183333333333401,
+            "position": [
+              -42.000030517578125,
+              0.004674303531646773,
+              32.15700912475586
+            ],
+            "target": [
+              -42,
+              0,
+              33
+            ],
+            "remaining": 0.8429908757965323,
+            "metres": 24.1570096043428,
+            "average": 2.9519767337282445,
+            "movingFrames": 364,
+            "median": 3.999996191851102,
+            "maximum": 4.0017700260767155,
+            "stoppedFrames": 127,
+            "queuedStopFrames": 0,
+            "longestStopSeconds": 0.7
+          },
+          {
+            "id": "xu",
+            "arrivalSeconds": 9.98333333333349,
+            "position": [
+              -39.025367736816406,
+              0.01467785835266111,
+              43.335323333740234
+            ],
+            "target": [
+              -39.5,
+              0,
+              44
+            ],
+            "remaining": 0.8167440577836952,
+            "metres": 38.866710905308665,
+            "average": 3.893159690014224,
+            "movingFrames": 588,
+            "median": 3.999996191851102,
+            "maximum": 4.002514121091004,
+            "stoppedFrames": 11,
+            "queuedStopFrames": 0,
+            "longestStopSeconds": 0.016666666666666666
+          }
+        ]
+      }
+    },
+    {
+      "case": "NPC_PACE active-transport",
+      "measured": {
+        "scenario": "escort",
+        "phase": 6,
+        "seconds": 2,
+        "speeds": [
+          {
+            "id": "cart-0",
+            "metres": 7.732370430218294,
+            "average": 3.866185215109147,
+            "movingFrames": 116,
+            "median": 4.000053405761719,
+            "maximum": 4.002342522306216
+          },
+          {
+            "id": "cart-1",
+            "metres": 7.932970055783017,
+            "average": 3.9664850278915087,
+            "movingFrames": 119,
+            "median": 3.999996185712008,
+            "maximum": 4.00182724039932
+          },
+          {
+            "id": "walker-0",
+            "metres": 7.999849690567919,
+            "average": 3.9999248452839593,
+            "movingFrames": 120,
+            "median": 4.000053405761719,
+            "maximum": 4.00261082223925
+          },
+          {
+            "id": "walker-1",
+            "metres": 7.7280121137106885,
+            "average": 3.8640060568553443,
+            "movingFrames": 118,
+            "median": 3.9999961853027344,
+            "maximum": 4.0020237808174155
+          },
+          {
+            "id": "meng",
+            "metres": 7.99753400827162,
+            "average": 3.99876700413581,
+            "movingFrames": 120,
+            "median": 3.99993896484375,
+            "maximum": 4.002227783203125
+          },
+          {
+            "id": "relief-0",
+            "metres": 7.732730755566258,
+            "average": 3.866365377783129,
+            "movingFrames": 117,
+            "median": 3.99993896484375,
+            "maximum": 4.000854572387799
+          },
+          {
+            "id": "relief-1",
+            "metres": 7.796705951038241,
+            "average": 3.8983529755191206,
+            "movingFrames": 118,
+            "median": 3.99993896484375,
+            "maximum": 4.000626553168099
+          }
+        ]
+      }
+    },
+    {
+      "case": "NPC_PACE childhood-guide",
+      "measured": {
+        "seconds": 2,
+        "fatherMetres": 4.164316843232861,
+        "childMetres": 3.072705009023071,
+        "phase": 1
+      }
+    },
+    {
+      "case": "NPC_PACE S12 natural",
+      "measured": {
+        "seconds": 125.81666666666081,
+        "departure": 26.416666666666448,
+        "arrival": 124.76666666666087,
+        "shoreTransitSeconds": 98.34999999999442,
+        "zhengMetres": 420.73218788756003,
+        "phases": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "zheng": [
+          -4,
+          -0.06318631172180178,
+          12
+        ]
+      }
+    },
+    {
+      "case": "FINALE_INTERACTION cover",
+      "measured": {
+        "zhengMeters": 24.14936591967999,
+        "shotEvents": 2,
+        "ownProjectileSeen": true,
+        "damage": 17,
+        "playerAmmoSpent": 0,
+        "playerHits": 0
+      }
+    }
+  ]
+}
