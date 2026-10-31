@@ -4,12 +4,16 @@
 
 8 页内容包含标题、世界、双主角、取舍、玩法、制作流程、人的故事和45秒视频位置。展示页每页一个标题、一行说明；完整讲稿在备注中。图片目前是代码绘制的布局占位，**不是实机画面**。最后一页没有占位视频或假播放。
 
+备注中的“试玩与源码”提供当前在线入口：[游戏](https://pigeon-pigeon-king.github.io/VibeHack06/)、[Clide备用入口](https://7ja2szw7s.clide.app/)和[公开源码](https://github.com/Pigeon-Pigeon-King/VibeHack06)。点击后在新标签打开；这些链接需要联网，演示本身不自动请求它们。Clide入口加载同一版GitHub Pages游戏。
+
 在 `media-config.js` 设置图片、视频和可选字幕的相对路径。音频试听只放在备注窗口，不会自动播放。备注中的“选择本地视频”仅在本次打开中生效，不上传任何文件。
 
 本包已附45秒配乐＋闻川旁白首版试听 `assets/trailer-audio-preview.mp3`，可在备注窗口“素材与试听”中播放。目前不含实机开火、爆炸或环境音，表演和混音尚待用户听审。完整母带与六句干声由项目声音窗口另行保留。
+
+同一区域现附 `assets/trailer-preedit-45s.mp4`：1920×1080、30 fps的45秒预剪稿，包含11段明确标记的镜头占位、六句旁白字幕及最后4秒的透明片名合成。全程标注“预剪稿·实机镜头待补”，用于检查节奏与声音，不含实机素材或同期SFX。它只在备注工具播放；正式45秒影片槽仍为空。
 
 `assets/title.png` 是本轮由内置 ImageGen 生成的真实透明标题，2172×724 RGBA。可复用母版在项目 `assets/source/branding/ganymede-title-v1.png`，二者摘要一致。其它图片都是程序化占位，不是正式游戏资产。
 
 无需安装依赖，无外部字体、CDN 或网络请求。可连同整个目录复制到演示电脑。不要只复制 HTML，须保留 CSS、JS 和 assets。
 
-当前未完成浏览器视觉验收：本机 Work 设置禁用了浏览器控制。已执行的离线检查范围见项目 `artifacts/submission/presentation-validation.json`；正式使用前在演示设备试翻各页、开备注、全屏并实际计时。
+当前未完成浏览器视觉验收：浏览器工具返回“Local browser use is disabled in Work settings”，但用户截图显示网站浏览已设为“始终允许”；重置连接后错误仍存在，具体原因未查明。不能将此直接归因于用户未授权。已执行的离线检查范围见项目 `artifacts/submission/presentation-validation.json`；正式使用前在演示设备试翻各页、开备注、全屏并实际计时。

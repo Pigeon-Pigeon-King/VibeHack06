@@ -16,5 +16,6 @@ window.GANYMEDE_MEDIA = {
   },
   trailer: null, // 以后替换为 "assets/trailer-45s.mp4"
   trailerCaptions: null, // 可选 WebVTT，例如 "assets/trailer.zh-CN.vtt"
-  audioPreview: "assets/trailer-audio-preview.mp3" // 仅演讲者备注窗口提供试听；不自动播放
+  audioPreview: "assets/trailer-audio-preview.mp3", // 仅演讲者备注窗口提供试听；不自动播放
+  preeditPreview: "assets/trailer-preedit-45s.mp4" // 有占位标记的预剪稿，仅在备注提供；不是实机成片
 };

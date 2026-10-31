@@ -1,0 +1,40 @@
+{
+  "schema": "ganymede-presentation-release-links-v1",
+  "updatedAt": "2026-10-31T18:19:37+08:00",
+  "timezone": "Asia/Shanghai",
+  "source": "Main-window delivery and artifacts/release-20261031/DELIVERY.md; no deployment performed by this window",
+  "gameSourceCommit": "a9030c684655b2d3f35082125055f0e7c84ac2da",
+  "playUrl": "https://pigeon-pigeon-king.github.io/VibeHack06/",
+  "alternatePlayUrl": "https://7ja2szw7s.clide.app/",
+  "fullGameMirrorUrl": "https://return-to-ganymede.muddy-curry-7368.chatgpt.site",
+  "repositoryUrl": "https://github.com/Pigeon-Pigeon-King/VibeHack06",
+  "repositoryVisibility": "public",
+  "collaboratorInvitation": { "username": "Glowin", "status": "pending", "source": "main-window receipt" },
+  "localPlayUrl": "http://127.0.0.1:5188/",
+  "teamUrl": null,
+  "officialSubmittedProjectUrl": null,
+  "websiteEvidence": {
+    "githubPages": {
+      "status": "PUBLISHED_HTTP_AND_HASH_VERIFIED_BY_RELEASE_WINDOW",
+      "deploymentCommit": "91f1166befd28da6a03f5f42a59a05880f35535e",
+      "evidence": "artifacts/release-20261031/github-pages/http-verification.json"
+    },
+    "clide": {
+      "status": "ENTRY_PUBLISHED",
+      "deliveryType": "iframe_entry_loading_same_github_pages_game",
+      "allGameAssetsHostedOnClide": false,
+      "source": "artifacts/release-20261031/clide-entry/site/index.html"
+    },
+    "gptSite": {
+      "status": "DEPLOY_SUCCEEDED_REPORTED_BY_RELEASE_WINDOW",
+      "deliveryType": "complete_game_381_files_matching_frozen_dist",
+      "version": 1,
+      "deployedAt": "2026-10-31T18:19:00+08:00",
+      "evidence": "artifacts/release-20261031/DELIVERY.md"
+    }
+  },
+  "browserGameplayVerificationByThisWindow": "NOT_RUN",
+  "officialFormSubmittedByThisWindow": false,
+  "newGameplayScreenshotsByThisWindow": 0,
+  "newGameplayRecordingByThisWindow": false
+}

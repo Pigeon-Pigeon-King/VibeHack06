@@ -1,6 +1,6 @@
 # 当前版路演材料交接 · 2026-10-31
 
-素材盘点读取基线：`main@b3c88dd50b848c54b6a3016cdff24bc167ae7a0d`。随后本地 HEAD 已到 `a9030c6`；主窗口交接称手机兼容与菜单开发候选清理已完成，并已推送私有仓库，Clide仍在传输。本窗口未重新进行手机或浏览器验收，也不把旧媒体绑定到新提交；新截图应登记真正录制时的构建。
+素材盘点读取基线：`main@b3c88dd50b848c54b6a3016cdff24bc167ae7a0d`。当前发布源码为 `a9030c6`，包含手机兼容与菜单开发候选清理；GitHub仓库后续已由主窗口按用户授权改为公开，GitHub Pages与Clide入口已经交付。本窗口未重新进行手机或浏览器验收，也不把旧媒体绑定到新提交；新截图应登记真正录制时的构建。
 
 ## 先纠正截图归属
 
@@ -23,6 +23,7 @@
 | 两分钟口播 | [SPEECH_2MIN.md](../../docs/submission/SPEECH_2MIN.md) | 沿用用户修订；120秒目标待真人试读 |
 | 透明标题 | [ganymede-title-v1.png](../../assets/source/branding/ganymede-title-v1.png) | 2172×724 RGBA；来源与Alpha已核对 |
 | 45秒音乐＋闻川旁白试听 | [MP3](presentation/assets/trailer-audio-preview.mp3) | 与声音窗口冻结文件摘要一致；不含实机SFX，待用户听审 |
+| 45秒可播放预剪稿 | [MP4](../trailer-45s/v2/preedit-project/output/trailer-45s-preedit.mp4) · [编辑配置](../trailer-45s/v2/preedit-project/project.json) | 已实际编码；11段明确占位、音乐／旁白／字幕／末4秒标题，不是实机成片 |
 | 独立音乐、六句干声、旁白轨及字幕 | `design/audio/trailer45-v2/delivery/` | 三份WAV母带均45.000秒；使用声音窗口实际时码 |
 | S05拍摄与45秒玩法备选 | [S05_CAPTURE_AND_45S.md](S05_CAPTURE_AND_45S.md) | 待实拍清单，不是完成片 |
 
@@ -30,9 +31,11 @@
 
 ## 当前无法完成的实拍
 
-本窗口重新调用 CUA 得到 `browsers: []`，错误为 `Local browser use is disabled in Work settings`。没有可用于实际游戏录制的允许表面；未通过 Playwright、CDP、其它浏览器启动或系统截图绕过设置。
+本窗口调用 CUA 得到 `browsers: []`，直接创建Codex内置浏览器 `iab` 及重置后重试均返回 `Local browser use is disabled in Work settings`。用户随后提供的设置截图明确显示网站浏览为“始终允许”；工具结果与界面设置不一致，原因尚未查明，不能直接解释成用户未授权。当前会话仍未获得可用于实际游戏录制的浏览器表面。
 
 因此新版五张截图与45秒实机视频仍未产出。补拍前需要恢复允许的浏览器控制表面，或由用户提供真实原片；不需要等待完整战役验收，只需在实际S05局部完成这次拍摄。图像占位、旧图与音频不会被拼成冒充实机的成片。
+
+用户要求立即开始视频后，已导出清楚标注占位的45秒预剪MP4并接入HTML备注工具。它用于核对现有音乐、旁白、字幕与片尾合成，正式影片槽仍保留空值；与上文“实机视频未产出”不冲突。
 
 S05是正式 `frontgate`，不是旧 `northgate`。S10专属的Q请求掩护、协作搬运等画面不能在S05中虚构；父亲／班长回忆、护送取舍、接防、救援与结尾守门仍按指定章节补拍。S05普通玩法备选与原剧情版分开记录。
 
@@ -42,6 +45,13 @@ S05是正式 `frontgate`，不是旧 `northgate`。S10专属的Q请求掩护、�
 
 本机游戏入口为 [http://127.0.0.1:5188/](http://127.0.0.1:5188/)，本轮只确认HTTP 200，不据此声明已实际操作新版。
 
-主窗口已交接 [GitHub私有仓库](https://github.com/Pigeon-Pigeon-King/VibeHack06)，报告远端主线为 `a9030c6`、Glowin邀请仍为pending；本窗口没有另行登录核验邀请状态。主窗口另有 [发布简介](../release-20261031/GAME_INTRO.md)，本窗口的介绍补充保留用户要求的十年占领、回归愿望与双复仇线。
+| 用途 | 地址 | 交付状态 |
+| --- | --- | --- |
+| 首选在线试玩 | [GitHub Pages游戏](https://pigeon-pigeon-king.github.io/VibeHack06/) | 主窗口核对入口、JS、CSS、GLB、MP3与清单HTTP 200，摘要匹配冻结构建；不等同浏览器操作验收 |
+| 备用试玩入口 | [Clide](https://7ja2szw7s.clide.app/) | 入口以iframe加载同版GitHub Pages；完整包上传曾返回413，不能声称全部资产托管于Clide |
+| 公开源码 | [GitHub仓库](https://github.com/Pigeon-Pigeon-King/VibeHack06) | 主窗口回执确认公开；远端main为a9030c6，Glowin邀请pending |
+| 完整游戏镜像 | [GPT Site](https://return-to-ganymede.muddy-curry-7368.chatgpt.site) | 主窗口已交接版本1部署成功；381个游戏文件匹配冻结构建，为完整游戏 |
 
-Clide测试地址与最终部署记录仍待主窗口交付。本窗口没有发布或邀请协作者；得到真实链接后可更新交付说明，HTML主画面继续维持少字布局。
+来源为主窗口交接及 [Pages发布回执](../release-20261031/github-pages/README.md)、[HTTP文件核对](../release-20261031/github-pages/http-verification.json)。机器可读地址见 [release-links.json](release-links.json)。本窗口没有另行发布、改变可见性或核验邀请。
+
+主窗口另有 [发布简介](../release-20261031/GAME_INTRO.md)，本窗口的介绍补充保留用户要求的十年占领、回归愿望与双复仇线。HTML仅在演讲者备注里增加试玩与源码链接，主画面继续维持少字布局。

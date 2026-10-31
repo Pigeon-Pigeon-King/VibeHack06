@@ -33,11 +33,18 @@
     <h1 id="note-title"></h1>
     <div id="notes"></div>
     <div class="note-footer"><span id="next-title"></span><p>← → 翻页 · F 全屏 · N 备注<br>触屏可左右滑动；图片是布局占位。</p></div>
+    <details class="media-tools release-links"><summary>试玩与源码</summary>
+      <p><a href="https://pigeon-pigeon-king.github.io/VibeHack06/" target="_blank" rel="noopener noreferrer">打开游戏</a></p>
+      <p><a href="https://7ja2szw7s.clide.app/" target="_blank" rel="noopener noreferrer">备用试玩入口</a></p>
+      <p><a href="https://github.com/Pigeon-Pigeon-King/VibeHack06" target="_blank" rel="noopener noreferrer">查看公开源码</a></p>
+      <p>在线试玩需联网；演示本身可离线使用。</p>
+    </details>
     <details class="media-tools"><summary>素材与试听</summary>
       <p>实机图片与视频路径在 media-config.js 中配置。也可临时载入本地视频，只在本次打开中使用。</p>
       <label class="file-button">选择本地视频<input id="video-file" type="file" accept="video/*"></label>
       <p id="video-status">45秒视频尚未提供</p>
       <div id="audio-preview" hidden><p>音乐＋旁白试听 · 暂不含实机音效</p><audio id="preview-player" controls preload="metadata"></audio></div>
+      <div id="preedit-preview" hidden><p>45秒预剪稿 · 实机镜头待补</p><video id="preedit-player" controls playsinline preload="none"></video></div>
     </details>
     <p class="presenter-status" id="presenter-status" role="status"></p>
   </aside>

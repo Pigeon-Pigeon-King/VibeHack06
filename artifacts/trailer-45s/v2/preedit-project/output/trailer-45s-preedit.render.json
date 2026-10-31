@@ -1,0 +1,217 @@
+{
+  "status": "RENDERED_PREEDIT_NOT_GAMEPLAY_FINAL",
+  "output": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/preedit-project/output/trailer-45s-preedit.mp4",
+  "sha256": "1dfea3cc016a6f271a4f202a3ead010716b430b8838ea1ac3528d7348af795c5",
+  "persistentLabel": "预剪稿 · 实机镜头待补",
+  "renderedFrames": 1350,
+  "fps": 30,
+  "intendedDurationSeconds": 45,
+  "independentMediaInspection": "DECODE_TIMING_AND_SAMPLED_FRAME_REVIEW_PASS",
+  "humanListeningReview": "PENDING",
+  "gameSfxIncluded": false,
+  "audioMaster": "/Users/penguin/VibeHack06/design/audio/trailer45-v2/delivery/preview-music-voice-no-sfx-45s.wav",
+  "audioMasterSha256": "523ad960ca1fd534b737fea00b710c6c9efe69f4198da16236345e86c41e490d",
+  "audioMasterInfo": {
+    "sampleRate": 48000,
+    "sampleFrames": 2160000,
+    "channels": 2,
+    "sampleWidthBytes": 3
+  },
+  "subtitleFile": "/Users/penguin/VibeHack06/design/audio/trailer45-v2/delivery/trailer45.v2.zh-CN.srt",
+  "subtitleSha256": "e08fe632c0d2f5f4c8427ec0902f426da46e539cc65a2f92786e6df064506bc4",
+  "subtitleCues": [
+    {
+      "id": "1",
+      "startSeconds": 0.5,
+      "endSeconds": 3.3,
+      "startFrame": 15,
+      "endFrameExclusive": 99,
+      "text": "我们盼着回归，已经十年了。"
+    },
+    {
+      "id": "2",
+      "startSeconds": 5.3,
+      "endSeconds": 8.82,
+      "startFrame": 159,
+      "endFrameExclusive": 265,
+      "text": "我忘不了爸爸。周延也忘不了他的班长。"
+    },
+    {
+      "id": "3",
+      "startSeconds": 13.0,
+      "endSeconds": 16.92,
+      "startFrame": 390,
+      "endFrameExclusive": 508,
+      "text": "地球的援军正在靠近。邵原，也要逃了。"
+    },
+    {
+      "id": "4",
+      "startSeconds": 18.5,
+      "endSeconds": 20.58,
+      "startFrame": 555,
+      "endFrameExclusive": 618,
+      "text": "追上去，还来得及。"
+    },
+    {
+      "id": "5",
+      "startSeconds": 23.5,
+      "endSeconds": 26.54,
+      "startFrame": 705,
+      "endFrameExclusive": 797,
+      "text": "可我答应过，要把这些人送到。"
+    },
+    {
+      "id": "6",
+      "startSeconds": 37.2,
+      "endSeconds": 40.12,
+      "startFrame": 1116,
+      "endFrameExclusive": 1204,
+      "text": "这一次，换我守住这扇门。"
+    }
+  ],
+  "subtitleFrameRounding": "ceil at 30 fps; original SRT times retained",
+  "titlePng": "/Users/penguin/VibeHack06/assets/source/branding/ganymede-title-v1.png",
+  "titlePngSha256": "e5e10a9ba03df440220bf613093b3cdcd292e4159b8988828ee17969d44822a4",
+  "titleFrames": [
+    1230,
+    1350
+  ],
+  "project": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/preedit-project/project.json",
+  "projectSha256": "41921885f0914cf28d3d07a7cd3b44e8e7a465c6e822b0b32988c07e6c448392",
+  "timelineSha256": "f038094116520a0356a8ff6adf3222f8f5b6a6efeaea26d7983a6f7341c7a14b",
+  "shots": [
+    {
+      "id": "T01",
+      "startFrame": 0,
+      "endFrameExclusive": 150,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T02",
+      "startFrame": 150,
+      "endFrameExclusive": 270,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T03",
+      "startFrame": 270,
+      "endFrameExclusive": 360,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T04",
+      "startFrame": 360,
+      "endFrameExclusive": 540,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T05",
+      "startFrame": 540,
+      "endFrameExclusive": 690,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T06",
+      "startFrame": 690,
+      "endFrameExclusive": 840,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T07",
+      "startFrame": 840,
+      "endFrameExclusive": 930,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T08",
+      "startFrame": 930,
+      "endFrameExclusive": 1020,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T09",
+      "startFrame": 1020,
+      "endFrameExclusive": 1140,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T10",
+      "startFrame": 1140,
+      "endFrameExclusive": 1230,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    },
+    {
+      "id": "T11",
+      "startFrame": 1230,
+      "endFrameExclusive": 1350,
+      "kind": "labelled_placeholder",
+      "sourceClip": null,
+      "sourceSha256": null,
+      "sourceInSeconds": null,
+      "playbackSpeed": null,
+      "sourceAudioUsed": false,
+      "provenance": null
+    }
+  ],
+  "independentMediaInspectionReport": "validation.json"
+}

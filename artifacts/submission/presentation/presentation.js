@@ -207,6 +207,14 @@
     document.querySelector("#audio-preview").hidden=false;
     audio.addEventListener("error", () => { document.querySelector("#presenter-status").textContent="音频试听读取失败，请检查素材路径。"; });
   }
+  if(media.preeditPreview) {
+    const preedit=document.querySelector("#preedit-player");
+    preedit.src=media.preeditPreview;
+    document.querySelector("#preedit-preview").hidden=false;
+    preedit.addEventListener("error", () => { document.querySelector("#presenter-status").textContent="预剪稿读取失败，请检查素材路径。"; });
+    const players=[preedit,document.querySelector("#preview-player"),trailer];
+    players.forEach(player => player.addEventListener("play", () => players.forEach(other => { if(other!==player && !other.paused) other.pause(); })));
+  }
   window.addEventListener("message", e => {
     if(!e.data || e.data.scope!==scope) return;
     const trusted=isPresenter ? e.source===window.opener && !!window.opener : e.source===presenterWindow && !!presenterWindow;

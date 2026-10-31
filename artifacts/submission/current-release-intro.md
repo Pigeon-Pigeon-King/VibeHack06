@@ -44,12 +44,14 @@
 
 - 当前S01—S12功能流程已接通，模型、音乐、音效与对白已有整合记录；完整产品保留双主角、三个主关卡和约一小时目标。约一小时首通、全程真人操作与Windows实机仍待验收。
 - HTML演示、透明标题及45秒音乐／旁白首版已经交付；音频试听不含最终实机SFX混音，也不等于视频成片。实机图片与45秒影片在当前HTML中仍留有占位，音频表演与最终混音仍待听审。
-- 主窗口已交接手机兼容与菜单清理提交 `a9030c6`，并提供下列私有仓库地址；本稿不据代码整合或自动检查结果声明手机真机通过。Clide仍在传输，网页试玩及队伍链接待主窗口补入；下列空值不表示已经发布或提交。
+- 主窗口已交接手机兼容与菜单清理提交 `a9030c6`，公开仓库、GitHub Pages及Clide入口已发布。首选下列play_url；Clide入口加载同版GitHub Pages。本稿不据HTTP文件核对声明手机真机通过；队伍及官网提交回执仍待提供。
 
 ```json
 {
-  "play_url": null,
+  "play_url": "https://pigeon-pigeon-king.github.io/VibeHack06/",
+  "alternate_play_url": "https://7ja2szw7s.clide.app/",
   "github_url": "https://github.com/Pigeon-Pigeon-King/VibeHack06",
+  "repository_visibility": "public",
   "team_url": null
 }
 ```

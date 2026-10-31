@@ -22,7 +22,7 @@
   ],
   "scope": "JavaScript syntax and JSDOM DOM/event checks; no browser rendering, media decoding, popup integration or target-device playback",
   "browserVisualQA": "NOT_RUN",
-  "browserLimitation": "Local browser use is disabled in Work settings",
+  "browserLimitation": "CUA reports Local browser use is disabled in Work settings; user screenshot shows Browse=Always allow; cause unresolved after connection reset.",
   "video": "PLACEHOLDER_ONLY",
   "images": "PROGRAMMATIC_LAYOUT_PLACEHOLDERS",
   "titleAsset": "GENERATED_RGBA",
@@ -32,8 +32,8 @@
   "localDocumentLinksChecked": 37,
   "bundleFiles": {
     "README.md": {
-      "bytes": 1750,
-      "sha256": "6eff18cebdc13db761d3ef43f6b5d264bb1695bd739d573945703cd4e43cb790"
+      "bytes": 2694,
+      "sha256": "bb2b195e1390fad22db618635aac49800d0fba4933b2b2545a680c37fa8c6c40"
     },
     "assets/title.png": {
       "bytes": 1336478,
@@ -43,33 +43,52 @@
       "bytes": 1441580,
       "sha256": "015e7e7d8294dec1603d80795c79f084921fe542d2f40eed9d4b90901c6a7ec1"
     },
+    "assets/trailer-preedit-45s.mp4": {
+      "bytes": 1693948,
+      "sha256": "1dfea3cc016a6f271a4f202a3ead010716b430b8838ea1ac3528d7348af795c5"
+    },
     "content.js": {
       "bytes": 4106,
       "sha256": "a060ff552f7d918b31f147cea72cc2f59cba305c7d77fcc44de6d218eee5f18d"
     },
     "index.html": {
-      "bytes": 3047,
-      "sha256": "2e0259119d1a3df58dba808896a9ab15a7b36c3067cc9f9818a815cba3e157f5"
+      "bytes": 3757,
+      "sha256": "c9ef5aba241982a49d5f9f2bd59f7b62d1398f76653a5beb0bc66004010e7dde"
     },
     "media-config.js": {
-      "bytes": 730,
-      "sha256": "1f07c6a99136846742c061695719d10f08179481f1c8244748844279058e7974"
+      "bytes": 855,
+      "sha256": "a4d0a9800ef36e0dce57af61996b31426acbe79b10515a2586249c15060ffaf4"
     },
     "presentation.js": {
-      "bytes": 19377,
-      "sha256": "25ff58538f19c5b9eac6537c7db827f7b66bdf2815e6b02d92e8b98241c2adc2"
+      "bytes": 19959,
+      "sha256": "a652ab219c69efaf0a250d3ebe5a3e4f7debb8560fc83028e41c2ce29ff79add"
     },
     "styles.css": {
-      "bytes": 11548,
-      "sha256": "08a52a87665063055200acfd89480b823be1fc2c347fc2c211d24de5d5823737"
+      "bytes": 11806,
+      "sha256": "c62c28f0685903421ab395f57aeb2e32b4c560472e25ffca69fb8a75bb4ef50c"
     }
   },
   "audioPreview": "MUSIC_AND_VOICE_NO_GAME_SFX; USER_LISTENING_PENDING",
   "archive": {
     "file": "artifacts/submission/ganymede-presentation.zip",
-    "bytes": 2683790,
-    "sha256": "e740655b233abbc5a0f5584db2d13ee23aca4c676320c48e0ac83a21b7a7f485",
+    "bytes": 4243892,
+    "sha256": "9f3d52001adc94148006b60a5711044d0878ffae1e8eebd65b3d856211bf2dff",
     "crc": "PASS",
     "allMembersMatchSources": true
-  }
+  },
+  "originalChecksRevision": "d3731d7",
+  "latestLimitedCheck": {
+    "date": "2026-10-31",
+    "result": "PASS",
+    "scope": "Offline DOM check of release links and pre-edit preview addition; not browser playback",
+    "checks": [
+      "Eight slides unchanged",
+      "Main view hides notes; presenter view shows notes",
+      "Three release links remain in presenter panel",
+      "Preview video is local, no autoplay, preload none",
+      "Formal trailer remains null",
+      "No remote script or style resources"
+    ]
+  },
+  "preeditVideo": "LABELLED_PREEDIT_WITH_MUSIC_VOICE_SUBTITLES_TITLE; NO_GAMEPLAY_OR_GAME_SFX"
 }
