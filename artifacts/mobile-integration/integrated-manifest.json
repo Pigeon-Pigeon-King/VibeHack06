@@ -1,0 +1,72 @@
+{
+  "status": "integrated-in-backup-not-committed-by-worker",
+  "baseCommit": "b3c88dd",
+  "mobileSource": {
+    "thread": "01a19040-b40c-78c2-9919-c88d68f1adc9",
+    "commit": "50da9c660bb2be27995ff500d0717db4d796a68b",
+    "base": "a408a97",
+    "filesCopiedByteForByte": [
+      "src/ui/TouchControls.ts",
+      "src/ui/touch-controls.css",
+      "tests/touch-mobile.test.ts"
+    ]
+  },
+  "qualitySource": "Previously delivered artifacts/mobile-integration/deferred; unchanged module bodies",
+  "qualitySelection": {
+    "touch": "balanced",
+    "mouseKeyboard": "high",
+    "adaptive": false
+  },
+  "validation": {
+    "typecheck": "passed",
+    "focusedFiles": 8,
+    "focusedTestsPassed": 112,
+    "focusedTestsFailed": 0,
+    "durationSeconds": 2.85,
+    "productionBuild": "not run by this integration worker",
+    "newBrowserQA": "not run",
+    "realPhone": "not run"
+  },
+  "files": [
+    {
+      "path": "src/main.ts",
+      "sha256": "e84a9e051e2749b01d9c7ce690644988c941f3f06a90716e8ee818099762bec4"
+    },
+    {
+      "path": "src/ui/TouchControls.ts",
+      "sha256": "dc7b5a45cb20e9b77080e63e72a80229ce974459213819ff1fb02cd7bb5efea2"
+    },
+    {
+      "path": "src/ui/touch-controls.css",
+      "sha256": "63ef86b4e037bbfd55b08a0c2f94d61ce624352a7954605bfa56222b196e1006"
+    },
+    {
+      "path": "src/mobile-performance/index.ts",
+      "sha256": "a73f660a03a8bc01f826e1f5d4908a16577915fdb2f363038fb5600259fadd8e"
+    },
+    {
+      "path": "src/mobile-performance/RenderQualityPolicy.ts",
+      "sha256": "53f5db3f721edaec27ebbfa8bfa130a63447fcd58202b7e04be8fa7e27219aa7"
+    },
+    {
+      "path": "src/mobile-performance/RendererQualityAdapter.ts",
+      "sha256": "5a1549ae64f819e8cddde20c91f169b99fa6f9549001b12bd9e5f02a0c40e214"
+    },
+    {
+      "path": "tests/touch-mobile.test.ts",
+      "sha256": "f519468d3c53b64f443d982c940310c42d4aeea778d5c9876635f1b8d8c62418"
+    },
+    {
+      "path": "tests/mobile-performance/render-quality-policy.test.ts",
+      "sha256": "c6a809a700cca4775def33f1d5dec8538050c4c7e3136fe05a7c1c8cf768c0c0"
+    },
+    {
+      "path": "tests/mobile-performance/renderer-quality-adapter.test.ts",
+      "sha256": "8732d1ef29b941e120b800921b003076be1deeba253e315a5b2e7d99e5da77c7"
+    },
+    {
+      "path": "tests/chapter-transition/game-host.test.ts",
+      "sha256": "6c3a2427e491538e81193e98195bc05292842f5bb4a562ca3cf447b2f7dace6b"
+    }
+  ]
+}

@@ -1,0 +1,124 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > preserves an existing mid-campaign save through opening and skip until actual resources are ready 130ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > cancels ready opening resources from the real menu callback without replacing the old save 11ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > cancels a pending opening through load and disposes it before its delayed asset completion 9ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > releases a late prepared result even when an asset adapter ignores cancellation 9ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > keeps the old save after a real preparation failure and retries only loading 14ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > rejects entry after the host is disposed and releases its preparation without activating or saving 7ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > blocks a ready skipped opening during manual pause and commits exactly once after resume 11ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > blocks a ready skipped opening during blur pause and commits exactly once after resume 10ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > blocks a ready skipped opening during hidden pause and commits exactly once after resume 16ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > continues an unfinished checkpoint directly without opening narration or rewriting its slot 46ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > continues a completed source checkpoint through its adjacent bridge and preserves it until entry 37ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > drains the real Sound caption queue after completion before starting the bridge, without stepping or re-saving the completed source 20ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > does not bridge epilogue with chapter=true and failed=false 5ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > does not bridge northgate with chapter=false and failed=false 2ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > does not bridge escort with chapter=true and failed=true 6ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > commits S08 → S09 → S10 → S11 elapsed time and whitelist facts once per actual entry 28ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > keeps a real QA checkpoint import isolated through bridge entry, retry and restart 21ms
+ ✓ tests/chapter-transition/game-host.test.ts > Game campaign transition host boundaries (no renderer or audio-device acceptance) > retries and restarts within the current chapter without requesting opening or bridge narration 8ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > starts neutral at the first contact, keeps its centre against a second finger, and relocates on the next contact 17ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > keeps moving while a different firing finger looks, and cancelling fire does not release movement 6ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > releases capture and active toggle on lostpointercapture through the root listener 2ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > clears held controls and pauses once when portrait arrives through resize 5ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > clears held controls and pauses once when portrait arrives through orientationchange 6ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > clears held controls and pauses once when portrait arrives through visualViewport 4ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > shows a portrait guard in the menu without pausing and keeps it through a zero-size intermediate viewport 3ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > does not guard desktop portrait when touch controls are disabled, and disabling touch removes an existing guard 2ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > clears a held landscape contact on resize without pausing and requires a fresh contact 4ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > keeps the rotation notice outside hidden game UI and defers transition pause until synchronous start completes 3ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > abandons pending transition pause after disposal, leaving portrait, disabling touch or leaving transition 4ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > captures portrait taps and game keys before the chapter guard, including modified pointer events, but allows browser key combinations 3ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > dispose restores the prior inert value false, removes overlays and disconnects all input 3ms
+ ✓ tests/touch-mobile.test.ts > TouchControls mobile event wiring (DOM substitute, not device evidence) > dispose restores the prior inert value true, removes overlays and disconnects all input 3ms
+ ✓ tests/touch-input.test.ts > touch action state > keeps fire held across simulation steps and stops on release 3ms
+ ✓ tests/touch-input.test.ts > touch action state > keeps ads held across simulation steps and stops on release 1ms
+ ✓ tests/touch-input.test.ts > touch action state > keeps sprint held across simulation steps and stops on release 0ms
+ ✓ tests/touch-input.test.ts > touch action state > keeps crouch held across simulation steps and stops on release 1ms
+ ✓ tests/touch-input.test.ts > touch action state > retains a quick jump tap until one fixed step consumes it 0ms
+ ✓ tests/touch-input.test.ts > touch action state > retains a quick reload tap until one fixed step consumes it 0ms
+ ✓ tests/touch-input.test.ts > touch action state > retains a quick interact tap until one fixed step consumes it 0ms
+ ✓ tests/touch-input.test.ts > touch action state > retains a quick cover tap until one fixed step consumes it 0ms
+ ✓ tests/touch-input.test.ts > touch action state > retains a quick skip tap until one fixed step consumes it 1ms
+ ✓ tests/touch-input.test.ts > touch action state > combines movement, shooting, aiming and simultaneous one-shot actions 2ms
+ ✓ tests/touch-input.test.ts > touch action state > keeps touch sprint mutually exclusive with aiming or crouching 2ms
+ ✓ tests/touch-input.test.ts > touch action state > preserves analog magnitude and bounds or discards invalid axes 1ms
+ ✓ tests/touch-input.test.ts > touch action state > clears movement, held actions and unconsumed taps together 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > uses the coarse pointer preference (true) by default 2ms
+ ✓ tests/touch-input.test.ts > Input touch integration > uses the coarse pointer preference (false) by default 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > accepts touch input only while both input and touch mode are enabled 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > drops old held input and pending taps when gameplay is disabled 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > can clear only touch state while retaining keyboard input, then clear both 2ms
+ ✓ tests/touch-input.test.ts > Input touch integration > merges keyboard and analog touch axes without exceeding the axis range 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > applies the same touch look at 30, 60 and 120 reads per second 2ms
+ ✓ tests/touch-input.test.ts > Input touch integration > applies signed radians immediately, clamps pitch and rejects invalid look values 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > clears touch and keyboard state on blur before pausing 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > clears touch and keyboard state on visibilitychange before pausing 0ms
+ ✓ tests/touch-input.test.ts > Input touch integration > clears touch and keyboard state on Escape before pausing 0ms
+ ✓ tests/touch-input.test.ts > Input touch integration > does not request pointer lock or show a mouse error in touch mode 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > releases desktop pointer lock without pausing when touch mode is enabled 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > ignores the delayed unlock event even after switching back to keyboard mode 0ms
+ ✓ tests/touch-input.test.ts > Input touch integration > releases a late desktop lock grant after switching to touch mode 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > ignores an old pointer-lock rejection after touch 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > ignores an old pointer-lock rejection after disabled 0ms
+ ✓ tests/touch-input.test.ts > Input touch integration > ignores an old pointer-lock rejection after dispose 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > still reports a current desktop pointer-lock failure once 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > retains the desktop synchronous error fallback 0ms
+ ✓ tests/touch-input.test.ts > Input touch integration > keeps the existing keyboard, mouse and edge mappings across fixed steps 1ms
+ ✓ tests/touch-input.test.ts > Input touch integration > clears held desktop input when pointer lock is lost 0ms
+ ✓ tests/touch-input.test.ts > Input touch integration > removes DOM listeners and touch state when disposed 0ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > render allocation budgets > preserves CSS coordinates and updates the pixel budget for native DPR changes 3ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > render allocation budgets > retains the existing 1080p desktop allocation in high, with an explicit ceiling 0ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > render allocation budgets > bounds large and rotated viewports without imposing a minimum DPR that defeats the cap 2ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > render allocation budgets > honours a smaller native DPR and a hardware dimension limit 1ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > render allocation budgets > does not allocate zero or invalid transient viewports and falls back for invalid DPR 0ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > optional rendering-only downshift guard > does not change a locked selection, even during sustained slow frames 1ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > optional rendering-only downshift guard > warms up, requires two slow windows, then holds the new quality before another change 2ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > optional rendering-only downshift guard > does not accumulate nonconsecutive slow windows or react to one isolated stall 0ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > optional rendering-only downshift guard > discards paused/background history and starts a fresh warmup after return 1ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > optional rendering-only downshift guard > resets after viewport/scene boundaries and never shortens an existing cooldown 0ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > optional rendering-only downshift guard > ignores clock discontinuities instead of treating them as slow gameplay 0ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > optional rendering-only downshift guard > allows deliberate manual selection while disabling automatic changes by default 0ms
+ ✓ tests/mobile-performance/render-quality-policy.test.ts > optional rendering-only downshift guard > treats a steady 30 fps cadence as within the guard band 1ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > applies a new buffer once and ignores identical or invalid plans 6ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > reallocates on rotation and DPR change, not on every frame 1ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > releases old shadow targets once before reducing map dimensions 3ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > disables and releases shadows in low, then can restore them on manual selection 2ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > does not enable lights authored without shadows or dispose retained targets at the same size 1ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > handles a new chapter with the same quality and leaves old-scene teardown to its owner 1ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > can reapply after context restoration and does not double-dispose an aliased target 1ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > invalidates shared and late-attached scene materials only when shadows are enabled or disabled 4ms
+ ✓ tests/mobile-performance/renderer-quality-adapter.test.ts > renderer quality application without a WebGL context > defers program invalidation if quality was applied before a scene was bound 1ms
+ ✓ tests/touch-controls.test.ts > touch gesture ownership and cancellation > keeps two-thumb movement while a firing pointer aims and is cancelled 3ms
+ ✓ tests/touch-controls.test.ts > touch gesture ownership and cancellation > ignores a second finger on the same button without ending the first hold 1ms
+ ✓ tests/touch-controls.test.ts > touch gesture ownership and cancellation > cannot reuse a still-held pointer for another control 0ms
+ ✓ tests/touch-controls.test.ts > touch gesture ownership and cancellation > resets every held action, toggle and stick after blur, resize, mode or epoch changes 1ms
+ ✓ tests/touch-controls.test.ts > touch gesture ownership and cancellation > cancels a newly hidden context control without releasing another live finger 0ms
+ ✓ tests/touch-controls.test.ts > touch gesture ownership and cancellation > releases an interrupted toggle contact while preserving another pointer 0ms
+ ✓ tests/touch-controls.test.ts > touch gesture ownership and cancellation > reads toggle state from Input after another action changed it 0ms
+ ✓ tests/touch-controls.test.ts > analog movement and viewport-scaled look > has a quiet center, gradual movement and bounded diagonal speed 0ms
+ ✓ tests/touch-controls.test.ts > analog movement and viewport-scaled look > uses equivalent angles for the same proportional drag on different viewports 1ms
+ ✓ tests/touch-controls.test.ts > analog movement and viewport-scaled look > rejects invalid contacts and ignores invalid move samples 0ms
+ ✓ tests/chapter-transition/input.test.ts > transition input capture > waits for a released left click before requesting skip and consumes it 5ms
+ ✓ tests/chapter-transition/input.test.ts > transition input capture > drains a click started before automatic entry and allows the next fresh click 1ms
+ ✓ tests/chapter-transition/input.test.ts > transition input capture > blocks gameplay keys, retains native button activation and pauses once per Escape 1ms
+ ✓ tests/chapter-transition/input.test.ts > transition input capture > never skips on right click 1ms
+ ✓ tests/chapter-transition/input.test.ts > transition input capture > blocks held fire repeats across entry until a fresh press, including keys held before start 1ms
+ ✓ tests/chapter-transition/input.test.ts > transition input capture > keeps native control activation without propagating Space or Enter to gameplay 0ms
+ ✓ tests/chapter-transition/input.test.ts > transition input capture > does not turn the last shot from the previous chapter into a skip 1ms
+ ✓ tests/chapter-transition/input.test.ts > transition input capture > accepts keyboard activation only on overlay controls 0ms
+ ✓ tests/page-lifecycle.test.ts > page cache lifecycle > keeps resources for cached returns and restores exactly once per visit 4ms
+ ✓ tests/page-lifecycle.test.ts > page cache lifecycle > disposes an uncached navigation once and never resurrects its renderer 1ms
+ ✓ tests/page-lifecycle.test.ts > page cache lifecycle > can discard a previously cached page without resuming it 1ms
+ ✓ tests/page-lifecycle.test.ts > page cache lifecycle > removes both listeners when the owner is disposed 1ms
+
+ Test Files  8 passed (8)
+      Tests  112 passed (112)
+   Start at  17:27:22
+   Duration  2.85s (tests 41%, transform 30%, import 26%, worker 3%)
+
+    Isolate  8 workers spawned · ~146ms startup each (spawn + environment, per file)
+             at least ~1.02s faster with isolate: false — reuses workers across files instead of one per file
+

@@ -29,6 +29,11 @@ export class TouchControls {
   private readonly hud: HTMLElement[];
   private readonly observer: ResizeObserver;
   private readonly joystick: HTMLElement;
+  private readonly rotationNotice = document.createElement('div');
+  private readonly gameInterface: HTMLElement | null;
+  private portraitBlocked = false;
+  private portraitPauseRequested = false;
+  private previousInterfaceInert = false;
   private readonly pauseButton: HTMLButtonElement;
   private readonly contextActions: HTMLElement;
   private state?: TouchState;
@@ -45,8 +50,11 @@ export class TouchControls {
     this.root.hidden = true;
     this.root.innerHTML = `
       <div class="touch-look-zone" data-touch-control="look" aria-hidden="true"></div>
-      <div class="touch-joystick" data-touch-control="move" role="group" aria-label="移动摇杆">
-        <span class="touch-stick-track" aria-hidden="true"></span><span class="touch-stick-knob" aria-hidden="true">移动</span>
+      <div class="touch-move-zone" data-touch-control="move" role="group" aria-label="左侧拖动移动">
+        <span class="touch-move-hint" aria-hidden="true">拖动移动</span>
+        <div class="touch-joystick" aria-hidden="true" hidden>
+          <span class="touch-stick-track"></span><span class="touch-stick-knob">移动</span>
+        </div>
       </div>
       <div class="touch-action-grid">
         ${(['reload', 'ads', 'fire', 'sprint', 'crouch', 'jump'] as const).map(action => this.button(action)).join('')}
@@ -55,11 +63,26 @@ export class TouchControls {
       <button class="touch-pause" type="button" aria-label="暂停" title="暂停"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg></button>
     `;
     for (const node of this.root.querySelectorAll<HTMLElement>('[data-touch-control]')) this.controls.set(node.dataset.touchControl as TouchControl, node);
-    this.joystick = this.controls.get('move')!;
+    this.joystick = this.root.querySelector<HTMLElement>('.touch-joystick')!;
     this.pauseButton = this.root.querySelector<HTMLButtonElement>('.touch-pause')!;
     this.contextActions = this.root.querySelector<HTMLElement>('.touch-context-actions')!;
+    this.gameInterface = container.querySelector<HTMLElement>('.game-interface');
+    this.rotationNotice.className = 'touch-rotation-notice';
+    this.rotationNotice.hidden = true;
+    this.rotationNotice.tabIndex = -1;
+    this.rotationNotice.setAttribute('role', 'dialog');
+    this.rotationNotice.setAttribute('aria-modal', 'true');
+    this.rotationNotice.setAttribute('aria-label', '横屏游玩');
+    this.rotationNotice.innerHTML = '<svg viewBox="0 0 96 72" aria-hidden="true"><rect x="19" y="18" width="60" height="36" rx="6"/><path d="M69 29v14M12 34V20a12 12 0 0 1 12-12h18M34 2l8 6-8 6M84 38v14a12 12 0 0 1-12 12H54M62 58l-8 6 8 6"/></svg><strong>横屏游玩</strong><p>请将手机横过来</p>';
     container.append(this.root);
+    // Chapter loading hides #game-ui; the portrait guard must remain above it.
+    this.app.append(this.rotationNotice);
     const options = { signal: this.events.signal };
+    // Registered before the chapter overlay's capture handlers. A tap on the
+    // rotate notice must not become a skip/continue underneath it.
+    for (const type of ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'click', 'keydown', 'keyup']) {
+      document.addEventListener(type, this.guardPortrait, { ...options, capture: true });
+    }
     this.root.addEventListener('pointerdown', this.onPointerDown, options);
     this.root.addEventListener('lostpointercapture', this.onPointerEnd, options);
     this.root.addEventListener('contextmenu', event => event.preventDefault(), options);
@@ -73,6 +96,7 @@ export class TouchControls {
     window.addEventListener('blur', this.reset, options);
     window.addEventListener('resize', this.onResize, options);
     window.addEventListener('orientationchange', this.onResize, options);
+    window.visualViewport?.addEventListener('resize', this.onResize, options);
     document.addEventListener('visibilitychange', () => { if (document.hidden) this.reset(); }, options);
     this.hud = [...this.app.querySelectorAll<HTMLElement>('.objective-cluster, .survival-cluster, .ammunition-cluster')];
     this.observer = new ResizeObserver(this.queueLayout);
@@ -89,7 +113,8 @@ export class TouchControls {
     if (old?.interaction !== state.interaction) this.cancel('interact');
     this.state = { ...state };
     this.app.classList.toggle('touch-input', state.enabled);
-    const hidden = !state.enabled || state.mode !== 'playing';
+    this.syncOrientation();
+    const hidden = !state.enabled || state.mode !== 'playing' || this.portraitBlocked;
     if (this.root.hidden !== hidden) this.root.hidden = hidden;
     if (this.root.dataset.control !== state.control) this.root.dataset.control = state.control;
     const movement = state.control !== 'staged';
@@ -119,7 +144,10 @@ export class TouchControls {
     this.observer.disconnect();
     cancelAnimationFrame(this.layoutFrame);
     this.root.remove();
+    this.rotationNotice.remove();
+    if (this.portraitBlocked && this.gameInterface) this.gameInterface.inert = this.previousInterfaceInert;
     this.app.classList.remove('touch-input');
+    this.app.classList.remove('touch-portrait');
     this.app.style.removeProperty('--touch-hud-bottom');
     this.app.style.removeProperty('--touch-context-height');
   }
@@ -129,7 +157,13 @@ export class TouchControls {
     return `<button class="touch-action-button touch-${action}" data-touch-control="${action}" type="button" aria-label="${labels[action]}"${TOUCH_TOGGLES.includes(action) ? ' aria-pressed="false"' : ''}>${icon}<span>${labels[action]}</span></button>`;
   }
 
-  private live(): boolean { return !this.disposed && Boolean(this.state?.enabled) && this.state?.mode === 'playing' && !document.hidden; }
+  private live(): boolean { return !this.disposed && !this.portraitBlocked && Boolean(this.state?.enabled) && this.state?.mode === 'playing' && !document.hidden; }
+
+  private guardPortrait = (event: Event): void => {
+    if (!this.portraitBlocked || this.disposed) return;
+    if ((event.type === 'keydown' || event.type === 'keyup') && ((event as KeyboardEvent).metaKey || (event as KeyboardEvent).ctrlKey)) return;
+    event.preventDefault(); event.stopImmediatePropagation();
+  };
 
   private onPointerDown = (event: PointerEvent): void => {
     if (!this.live() || event.pointerType === 'mouse' && event.button !== 0) return;
@@ -138,8 +172,14 @@ export class TouchControls {
     event.preventDefault(); event.stopPropagation();
     const control = target.dataset.touchControl as TouchControl;
     const bounds = target.getBoundingClientRect();
-    const origin = { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2, radius: Math.min(bounds.width, bounds.height) * 0.3 };
+    // Every new left-thumb contact starts neutral at that touch, not at a fixed
+    // button centre. Keep the established 38.4px travel/deadzone and Input path.
+    const origin = { x: event.clientX, y: event.clientY, radius: 38.4 };
     if (!this.gestures.begin(control, event.pointerId, event.clientX, event.clientY, origin)) return;
+    if (control === 'move') {
+      this.joystick.style.left = `${event.clientX - bounds.left}px`;
+      this.joystick.style.top = `${event.clientY - bounds.top}px`;
+    }
     this.captures.set(event.pointerId, target);
     try { target.setPointerCapture(event.pointerId); } catch { /* Window end listeners still release an interrupted contact. */ }
     this.syncFeedback();
@@ -219,7 +259,10 @@ export class TouchControls {
     if (stick.x !== this.lastStickX) this.joystick.style.setProperty('--stick-x', `${stick.x}px`);
     if (stick.y !== this.lastStickY) this.joystick.style.setProperty('--stick-y', `${stick.y}px`);
     this.lastStickX = stick.x; this.lastStickY = stick.y;
-    this.joystick.classList.toggle('is-held', this.gestures.owner('move') !== undefined);
+    const moving = this.gestures.owner('move') !== undefined;
+    this.joystick.hidden = !moving;
+    this.joystick.classList.toggle('is-held', moving);
+    this.controls.get('move')!.classList.toggle('is-held', moving);
     for (const action of TOUCH_ACTIONS) {
       const node = this.controls.get(action)!;
       node.classList.toggle('is-held', this.gestures.owner(action) !== undefined);
@@ -230,7 +273,42 @@ export class TouchControls {
     }
   }
 
-  private onResize = (): void => { this.reset(); this.queueLayout(); };
+  private onResize = (): void => {
+    this.reset();
+    this.syncOrientation();
+    if (this.state) this.root.hidden = !this.state.enabled || this.state.mode !== 'playing' || this.portraitBlocked;
+    this.queueLayout();
+  };
+
+  private syncOrientation(): void {
+    const width = this.app.clientWidth, height = this.app.clientHeight;
+    // An intermediate zero-size viewport must not dismiss an existing guard.
+    const blocked = Boolean(this.state?.enabled) && (width > 0 && height > 0 ? height > width : this.portraitBlocked);
+    if (blocked !== this.portraitBlocked) {
+      this.portraitBlocked = blocked;
+      this.rotationNotice.hidden = !blocked;
+      this.app.classList.toggle('touch-portrait', blocked);
+      this.reset();
+      if (this.gameInterface) {
+        if (blocked) { this.previousInterfaceInert = this.gameInterface.inert; this.gameInterface.inert = true; }
+        else this.gameInterface.inert = this.previousInterfaceInert;
+      }
+      if (blocked) this.rotationNotice.focus({ preventScroll: true });
+      else if (this.state?.mode === 'paused') this.gameInterface?.querySelector<HTMLButtonElement>('[data-action="resume"]')?.focus({ preventScroll: true });
+    }
+    if (!blocked || this.state?.mode !== 'playing' && this.state?.mode !== 'transition') this.portraitPauseRequested = false;
+    else if (!this.portraitPauseRequested) {
+      this.portraitPauseRequested = true;
+      // Use the existing game pause; never resume combat on rotation alone.
+      if (this.state?.mode === 'transition') {
+        // showTransition renders this view just before transition.start().
+        // Defer until that synchronous setup has finished; don't pause its old run.
+        queueMicrotask(() => {
+          if (!this.disposed && this.portraitBlocked && this.state?.mode === 'transition') this.callbacks.pause();
+        });
+      } else this.callbacks.pause();
+    }
+  }
 
   private queueLayout = (): void => {
     if (this.disposed || this.layoutFrame) return;

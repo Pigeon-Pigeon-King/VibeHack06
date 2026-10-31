@@ -27,7 +27,7 @@ async function openGame() {
   session.defaultSession.setPermissionCheckHandler((contents, permission) => permitted(contents, permission));
   window = new BrowserWindow({
     width: 1366, height: 768, minWidth: 960, minHeight: 640, useContentSize: true,
-    title: '重返木卫三 · 开发候选', backgroundColor: '#17232e',
+    title: '重返木卫三', backgroundColor: '#17232e',
     webPreferences: { nodeIntegration: false, contextIsolation: true, sandbox: true, webSecurity: true },
   });
   window.webContents.setWindowOpenHandler(() => ({ action: 'deny' }));

@@ -138,7 +138,7 @@ function fakeBrowser() {
     querySelector: (selector: string) => selector === '#game-ui' ? ui : {},
   });
   // Rapier's browser timer also reads window.performance when a window exists.
-  const windowTarget = Object.assign(new EventTarget(), { performance });
+  const windowTarget = Object.assign(new EventTarget(), { performance, innerWidth: 1280, innerHeight: 720, devicePixelRatio: 1 });
   vi.stubGlobal('document', documentTarget); vi.stubGlobal('window', windowTarget);
   vi.stubGlobal('matchMedia', () => ({ matches: false }));
   vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => { frames.set(++id, callback); return id; });
@@ -189,7 +189,8 @@ function setup(options: { scenario?: ScenarioId; chapter?: boolean; complete?: b
     touchControls: { render: vi.fn() },
     aimIdentity: { update: vi.fn(), dispose: vi.fn() },
     weapon: { setCharacter: vi.fn(async () => {}), retryArms: vi.fn(async () => {}), armsStatus: { state: 'ready' } },
-    renderer: { domElement: { focus: vi.fn() } },
+    renderer: { domElement: { focus: vi.fn() }, capabilities: { maxTextureSize: 4096 } },
+    renderQuality: { detachScene: vi.fn(), bindScene: vi.fn(), apply: vi.fn() },
     accumulator: 0, ads: 0, lastFootstep: 0, error: '', pointerError: '', saveNotice: '',
     writeErrors: { checkpoint: '', settings: '' },
   });

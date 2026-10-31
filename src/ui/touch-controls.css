@@ -1,7 +1,11 @@
+#app.touch-input {
+  --touch-edge: clamp(32px, 4.8vw, 64px);
+  --touch-left: calc(env(safe-area-inset-left, 0px) + var(--touch-edge));
+  --touch-right: calc(env(safe-area-inset-right, 0px) + var(--touch-edge));
+  --touch-bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
+  --touch-top: calc(env(safe-area-inset-top, 0px) + 16px);
+}
 #app .touch-controls {
-  --touch-left: max(16px, env(safe-area-inset-left));
-  --touch-right: max(16px, env(safe-area-inset-right));
-  --touch-bottom: max(16px, env(safe-area-inset-bottom));
   position: absolute;
   inset: 0;
   z-index: 6;
@@ -11,19 +15,30 @@
   -webkit-touch-callout: none;
 }
 
-#app .touch-look-zone { position: absolute; inset: 0 0 0 42%; pointer-events: auto; touch-action: none; }
-#app .touch-joystick {
+#app .touch-look-zone { position: absolute; inset: var(--touch-top) var(--touch-right) var(--touch-bottom) 42%; pointer-events: auto; touch-action: none; }
+#app .touch-move-zone {
   position: absolute;
   left: var(--touch-left);
+  right: 58%;
+  top: max(32%, calc(var(--touch-hud-bottom, 88px) + 12px));
   bottom: var(--touch-bottom);
+  pointer-events: auto;
+  touch-action: none;
+}
+#app .touch-move-hint { position: absolute; left: 20px; bottom: 44px; color: var(--ui-paper); opacity: .65; font-size: 16px; pointer-events: none; text-shadow: 0 1px 4px var(--ui-ink); }
+#app .touch-move-zone.is-held .touch-move-hint { visibility: hidden; }
+#app .touch-joystick {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
   width: 128px;
   height: 128px;
   border: 1px solid rgb(225 236 230 / 38%);
   border-radius: 50%;
   background: rgb(8 22 30 / 28%);
   box-shadow: inset 0 0 0 12px rgb(220 232 222 / 3%);
-  pointer-events: auto;
-  touch-action: none;
+  pointer-events: none;
 }
 #app .touch-stick-track { position: absolute; inset: 24px; border: 1px solid rgb(222 233 226 / 18%); border-radius: 50%; pointer-events: none; }
 #app .touch-stick-knob {
@@ -92,14 +107,45 @@
   gap: 8px;
 }
 #app .touch-context-actions > button { flex: 1 1 auto; max-width: 360px; min-width: 44px; min-height: 52px; padding: 8px 12px; border-radius: 4px; overflow-wrap: anywhere; font-size: 17px; background: rgb(28 43 45 / 94%); border-color: var(--ui-amber); color: #fff0cf; }
-#app .touch-controls[data-control="staged"] .touch-context-actions { left: max(24px, env(safe-area-inset-left)); right: max(24px, env(safe-area-inset-right)); }
-#app .touch-pause { position: absolute; right: var(--touch-right); top: max(12px, env(safe-area-inset-top)); width: 44px; height: 44px; border-radius: 4px; padding: 10px; }
+#app .touch-controls[data-control="staged"] .touch-context-actions { left: var(--touch-left); right: var(--touch-right); }
+#app .touch-pause { position: absolute; right: var(--touch-right); top: var(--touch-top); width: 44px; height: 44px; border-radius: 4px; padding: 10px; }
 #app .touch-pause svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: square; pointer-events: none; }
 
-@media (orientation: portrait) {
-  #app .touch-controls { --touch-bottom: max(24px, env(safe-area-inset-bottom)); }
-  #app .touch-context-actions { left: var(--touch-left); right: var(--touch-right); bottom: calc(var(--touch-bottom) + 192px); }
-  #app .touch-controls[data-control="staged"] .touch-context-actions { bottom: var(--touch-bottom); }
+/* Extend the same inset to HUD and menus without changing the desktop layout. */
+#app.touch-input .objective-cluster { left: var(--touch-left); top: var(--touch-top); width: min(420px, calc(100% - var(--touch-left) - var(--touch-right) - 310px)); }
+#app.touch-input .survival-cluster { top: var(--touch-top); right: calc(var(--touch-right) + 192px); }
+#app.touch-input .ammunition-cluster { top: var(--touch-top); right: calc(var(--touch-right) + 60px); }
+#app.touch-input .radio-subtitle { left: calc(var(--touch-left) + 144px); right: calc(var(--touch-right) + 200px); bottom: calc(var(--touch-bottom) + var(--touch-context-height, 52px) + 12px + var(--notice-clearance, 0px)); }
+#app.touch-input .game-error { bottom: calc(var(--touch-bottom) + var(--touch-context-height, 52px) + 12px); max-width: calc(100% - var(--touch-left) - var(--touch-right) - 344px); }
+#app.touch-input .sound-state { right: var(--touch-right); top: calc(var(--touch-top) + 76px); }
+#app.touch-input .game-overlay { padding: var(--touch-top) var(--touch-right) var(--touch-bottom) var(--touch-left); }
+#app.touch-input summary { min-height: 44px; padding-block: 10px; }
+#app.touch-input .slider-setting input { min-height: 44px; }
+#app .touch-rotation-notice {
+  position: absolute; inset: 0; z-index: 1100;
+  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
+  padding: calc(env(safe-area-inset-top, 0px) + 24px) calc(env(safe-area-inset-right, 0px) + 24px) calc(env(safe-area-inset-bottom, 0px) + 24px) calc(env(safe-area-inset-left, 0px) + 24px);
+  background: var(--ui-ink); color: var(--ui-paper); text-align: center;
+  pointer-events: auto; touch-action: none;
+}
+#app .touch-rotation-notice svg { width: 96px; height: 72px; fill: none; stroke: var(--ui-amber); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+#app .touch-rotation-notice strong { font-size: 24px; font-weight: 600; }
+#app .touch-rotation-notice p { color: var(--ui-muted); font-size: 18px; }
+#app.touch-portrait .touch-controls { display: none; }
+
+/* Short landscape screens need the full safe width for dialogue. Keeping it
+   between the thumbs made long lines form a tall column over the view. */
+@media (max-height: 500px) and (orientation: landscape) {
+  #app.touch-input .radio-subtitle {
+    top: calc(var(--touch-hud-bottom, 88px) + 10px);
+    bottom: auto;
+    left: var(--touch-left);
+    right: var(--touch-right);
+    text-align: left;
+    padding: 6px 12px 8px;
+  }
+  #app.touch-input .subtitle-speaker { display: inline; margin-right: 8px; }
+  #app.touch-input .radio-subtitle p { display: inline; }
 }
 
 @media (prefers-reduced-motion: reduce) {

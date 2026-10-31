@@ -23,6 +23,7 @@ import { Simulation, distance, type Snapshot } from './mission/Simulation';
 import { GameUI } from './ui/GameUI';
 import { ObjectiveIndicator } from './ui/ObjectiveIndicator';
 import { TouchControls } from './ui/TouchControls';
+import { planRenderQuality, RendererQualityAdapter } from './mobile-performance';
 import { bindPageLifecycle } from './runtime/PageLifecycle';
 import { objectiveFocusOpacity, smoothObjectiveOpacity } from './ui/objective-focus';
 import { HeldItemMotion, type HeldItem } from './presentation/HeldItemMotion';
@@ -63,6 +64,7 @@ export class Game {
   private readonly scene = new Scene();
   private readonly camera = new PerspectiveCamera(75, innerWidth / innerHeight, 0.045, 1000);
   private readonly renderer = new WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
+  private readonly renderQuality = new RendererQualityAdapter(this.renderer);
   private readonly indirectLighting: ReturnType<typeof createIndirectLighting>;
   private readonly sound = new Sound();
   private readonly feedback = new Feedback();
@@ -116,7 +118,6 @@ export class Game {
 
   constructor() {
     const view = document.querySelector<HTMLElement>('#game-view')!;
-    this.renderer.setSize(innerWidth, innerHeight); this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
     this.renderer.toneMapping = ACESFilmicToneMapping; this.renderer.toneMappingExposure = 1.0;
     this.renderer.shadowMap.enabled = true; this.renderer.shadowMap.type = PCFShadowMap;
     this.renderer.outputColorSpace = SRGBColorSpace;
@@ -151,7 +152,7 @@ export class Game {
       menu: () => this.menu(), setSensitivity: value => { this.input.sensitivity = value; this.persistSettings(); },
       importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
       setVolume: value => { this.sound.setVolume(value); this.narration.setVolume(this.sound.volume); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
-      setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.pointerError = ''; this.persistSettings(); },
+      setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.applyRenderQuality(); this.pointerError = ''; this.persistSettings(); },
       retryEquipment: () => { this.weapon.retry(); void this.weapon.retryArms(); },
     });
     this.touchControls = new TouchControls(document.querySelector('#game-ui')!, {
@@ -167,7 +168,7 @@ export class Game {
     this.load('nightshift');
     window.addEventListener('resize', () => {
       this.input.clearTouch();
-      this.camera.aspect = innerWidth / innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(innerWidth, innerHeight);
+      this.camera.aspect = innerWidth / innerHeight; this.camera.updateProjectionMatrix(); this.applyRenderQuality();
       this.weapon.setViewportAspect(this.camera.aspect);
     }, { signal: this.abort.signal });
     bindPageLifecycle(window, {
@@ -178,12 +179,21 @@ export class Game {
       restore: () => {
         if (this.disposed) return;
         this.historySuspended = false; this.accumulator = 0; this.previousTime = performance.now();
+        this.applyRenderQuality();
         this.raf = requestAnimationFrame(this.animate);
       },
       dispose: () => this.dispose(),
     }, this.abort.signal);
     this.renderer.domElement.addEventListener('webglcontextlost', e => { e.preventDefault(); this.error = '图形上下文已失效，请刷新页面重新进入。'; this.pause(); }, { signal: this.abort.signal });
     this.animate();
+  }
+
+  /** Existing fixed budgets only; adaptive frame-based downshifts remain disabled. */
+  private applyRenderQuality(): void {
+    this.renderQuality.apply(planRenderQuality(this.input.touchEnabled ? 'balanced' : 'high', {
+      width: window.innerWidth, height: window.innerHeight, devicePixelRatio: window.devicePixelRatio,
+      maxBufferDimension: this.renderer.capabilities.maxTextureSize,
+    }));
   }
 
   private createTransition(): ChapterTransition<PreparedCampaign> {
@@ -235,6 +245,7 @@ export class Game {
     this.pendingJetApproach = false;
     this.characterAssetErrors.clear();
     if (this.monitor) { this.scene.remove(this.monitor.screen); this.monitor.dispose(); this.monitor = undefined; }
+    this.renderQuality.detachScene();
     this.environment?.root.removeFromParent();
     this.level?.dispose();
     for (const { model } of this.characters.values()) { model.root.removeFromParent(); model.dispose(); }
@@ -253,6 +264,7 @@ export class Game {
     if (monitor) this.scene.add(monitor.screen);
     this.input.yaw = this.sim.player.yaw; this.input.pitch = this.sim.player.pitch;
     this.input.clear(); this.accumulator = 0; this.ads = 0; this.lastFootstep = 0;
+    this.renderQuality.bindScene(this.scene); this.applyRenderQuality();
   }
   private start(id: ScenarioId): void {
     this.qaImported = false;
@@ -632,6 +644,7 @@ export class Game {
     this.transition.dispose(); this.narration.dispose();
     this.objectiveIndicator.dispose(); this.aimIdentity.dispose();
     cancelAnimationFrame(this.raf); this.abort.abort(); this.touchControls.dispose(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
+    this.renderQuality.detachScene();
     this.level?.dispose();
     this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });

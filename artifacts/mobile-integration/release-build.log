@@ -1,0 +1,26 @@
+
+> return-to-ganymede@0.6.0 build
+> tsc --noEmit && vite build
+
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 136 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                               0.63 kB │ gzip:     0.40 kB
+dist/assets/index-uUZyamQ7.css               30.27 kB │ gzip:     6.93 kB
+dist/assets/EpilogueAirCover-ByVKCowj.js  2,724.45 kB │ gzip:   508.10 kB
+dist/assets/index-CyxQ_Iqn.js             6,074.97 kB │ gzip: 2,185.16 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 1800 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 6.54s
+[33m[PLUGIN_TIMINGS] [0mJavaScript callbacks ran for 4.2s of this 6.5s build (65%).
+The slowest callbacks, timed inside each callback (the wait before a callback starts is excluded, the time it awaits is included):
+  - plugin vite:prepare-out-dir renderStart (57%, 3.7s, 1 call)
+Additional callback time came from callbacks under 1s.
+See https://rolldown.rs/reference/InputOptions.checks#bundlertimings for more details.
+

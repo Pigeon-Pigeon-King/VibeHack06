@@ -1,0 +1,1354 @@
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -23,6 +23,7 @@
+ import { GameUI } from './ui/GameUI';
+ import { ObjectiveIndicator } from './ui/ObjectiveIndicator';
+ import { TouchControls } from './ui/TouchControls';
++import { planRenderQuality, RendererQualityAdapter } from './mobile-performance';
+ import { bindPageLifecycle } from './runtime/PageLifecycle';
+ import { objectiveFocusOpacity, smoothObjectiveOpacity } from './ui/objective-focus';
+ import { HeldItemMotion, type HeldItem } from './presentation/HeldItemMotion';
+@@ -63,6 +64,7 @@
+   private readonly scene = new Scene();
+   private readonly camera = new PerspectiveCamera(75, innerWidth / innerHeight, 0.045, 1000);
+   private readonly renderer = new WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
++  private readonly renderQuality = new RendererQualityAdapter(this.renderer);
+   private readonly indirectLighting: ReturnType<typeof createIndirectLighting>;
+   private readonly sound = new Sound();
+   private readonly feedback = new Feedback();
+@@ -116,7 +118,6 @@
+ 
+   constructor() {
+     const view = document.querySelector<HTMLElement>('#game-view')!;
+-    this.renderer.setSize(innerWidth, innerHeight); this.renderer.setPixelRatio(Math.min(devicePixelRatio, 1.5));
+     this.renderer.toneMapping = ACESFilmicToneMapping; this.renderer.toneMappingExposure = 1.0;
+     this.renderer.shadowMap.enabled = true; this.renderer.shadowMap.type = PCFShadowMap;
+     this.renderer.outputColorSpace = SRGBColorSpace;
+@@ -151,7 +152,7 @@
+       menu: () => this.menu(), setSensitivity: value => { this.input.sensitivity = value; this.persistSettings(); },
+       importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
+       setVolume: value => { this.sound.setVolume(value); this.narration.setVolume(this.sound.volume); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
+-      setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.pointerError = ''; this.persistSettings(); },
++      setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.applyRenderQuality(); this.pointerError = ''; this.persistSettings(); },
+       retryEquipment: () => { this.weapon.retry(); void this.weapon.retryArms(); },
+     });
+     this.touchControls = new TouchControls(document.querySelector('#game-ui')!, {
+@@ -167,7 +168,7 @@
+     this.load('nightshift');
+     window.addEventListener('resize', () => {
+       this.input.clearTouch();
+-      this.camera.aspect = innerWidth / innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(innerWidth, innerHeight);
++      this.camera.aspect = innerWidth / innerHeight; this.camera.updateProjectionMatrix(); this.applyRenderQuality();
+       this.weapon.setViewportAspect(this.camera.aspect);
+     }, { signal: this.abort.signal });
+     bindPageLifecycle(window, {
+@@ -178,12 +179,21 @@
+       restore: () => {
+         if (this.disposed) return;
+         this.historySuspended = false; this.accumulator = 0; this.previousTime = performance.now();
++        this.applyRenderQuality();
+         this.raf = requestAnimationFrame(this.animate);
+       },
+       dispose: () => this.dispose(),
+     }, this.abort.signal);
+     this.renderer.domElement.addEventListener('webglcontextlost', e => { e.preventDefault(); this.error = '图形上下文已失效，请刷新页面重新进入。'; this.pause(); }, { signal: this.abort.signal });
+     this.animate();
++  }
++
++  /** Existing fixed budgets only; adaptive frame-based downshifts remain disabled. */
++  private applyRenderQuality(): void {
++    this.renderQuality.apply(planRenderQuality(this.input.touchEnabled ? 'balanced' : 'high', {
++      width: window.innerWidth, height: window.innerHeight, devicePixelRatio: window.devicePixelRatio,
++      maxBufferDimension: this.renderer.capabilities.maxTextureSize,
++    }));
+   }
+ 
+   private createTransition(): ChapterTransition<PreparedCampaign> {
+@@ -235,6 +245,7 @@
+     this.pendingJetApproach = false;
+     this.characterAssetErrors.clear();
+     if (this.monitor) { this.scene.remove(this.monitor.screen); this.monitor.dispose(); this.monitor = undefined; }
++    this.renderQuality.detachScene();
+     this.environment?.root.removeFromParent();
+     this.level?.dispose();
+     for (const { model } of this.characters.values()) { model.root.removeFromParent(); model.dispose(); }
+@@ -253,6 +264,7 @@
+     if (monitor) this.scene.add(monitor.screen);
+     this.input.yaw = this.sim.player.yaw; this.input.pitch = this.sim.player.pitch;
+     this.input.clear(); this.accumulator = 0; this.ads = 0; this.lastFootstep = 0;
++    this.renderQuality.bindScene(this.scene); this.applyRenderQuality();
+   }
+   private start(id: ScenarioId): void {
+     this.qaImported = false;
+@@ -632,6 +644,7 @@
+     this.transition.dispose(); this.narration.dispose();
+     this.objectiveIndicator.dispose(); this.aimIdentity.dispose();
+     cancelAnimationFrame(this.raf); this.abort.abort(); this.touchControls.dispose(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
++    this.renderQuality.detachScene();
+     this.level?.dispose();
+     this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
+     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
+--- a/src/ui/TouchControls.ts
++++ b/src/ui/TouchControls.ts
+@@ -29,6 +29,11 @@
+   private readonly hud: HTMLElement[];
+   private readonly observer: ResizeObserver;
+   private readonly joystick: HTMLElement;
++  private readonly rotationNotice = document.createElement('div');
++  private readonly gameInterface: HTMLElement | null;
++  private portraitBlocked = false;
++  private portraitPauseRequested = false;
++  private previousInterfaceInert = false;
+   private readonly pauseButton: HTMLButtonElement;
+   private readonly contextActions: HTMLElement;
+   private state?: TouchState;
+@@ -45,8 +50,11 @@
+     this.root.hidden = true;
+     this.root.innerHTML = `
+       <div class="touch-look-zone" data-touch-control="look" aria-hidden="true"></div>
+-      <div class="touch-joystick" data-touch-control="move" role="group" aria-label="移动摇杆">
+-        <span class="touch-stick-track" aria-hidden="true"></span><span class="touch-stick-knob" aria-hidden="true">移动</span>
++      <div class="touch-move-zone" data-touch-control="move" role="group" aria-label="左侧拖动移动">
++        <span class="touch-move-hint" aria-hidden="true">拖动移动</span>
++        <div class="touch-joystick" aria-hidden="true" hidden>
++          <span class="touch-stick-track"></span><span class="touch-stick-knob">移动</span>
++        </div>
+       </div>
+       <div class="touch-action-grid">
+         ${(['reload', 'ads', 'fire', 'sprint', 'crouch', 'jump'] as const).map(action => this.button(action)).join('')}
+@@ -55,11 +63,26 @@
+       <button class="touch-pause" type="button" aria-label="暂停" title="暂停"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5v14M16 5v14" /></svg></button>
+     `;
+     for (const node of this.root.querySelectorAll<HTMLElement>('[data-touch-control]')) this.controls.set(node.dataset.touchControl as TouchControl, node);
+-    this.joystick = this.controls.get('move')!;
++    this.joystick = this.root.querySelector<HTMLElement>('.touch-joystick')!;
+     this.pauseButton = this.root.querySelector<HTMLButtonElement>('.touch-pause')!;
+     this.contextActions = this.root.querySelector<HTMLElement>('.touch-context-actions')!;
++    this.gameInterface = container.querySelector<HTMLElement>('.game-interface');
++    this.rotationNotice.className = 'touch-rotation-notice';
++    this.rotationNotice.hidden = true;
++    this.rotationNotice.tabIndex = -1;
++    this.rotationNotice.setAttribute('role', 'dialog');
++    this.rotationNotice.setAttribute('aria-modal', 'true');
++    this.rotationNotice.setAttribute('aria-label', '横屏游玩');
++    this.rotationNotice.innerHTML = '<svg viewBox="0 0 96 72" aria-hidden="true"><rect x="19" y="18" width="60" height="36" rx="6"/><path d="M69 29v14M12 34V20a12 12 0 0 1 12-12h18M34 2l8 6-8 6M84 38v14a12 12 0 0 1-12 12H54M62 58l-8 6 8 6"/></svg><strong>横屏游玩</strong><p>请将手机横过来</p>';
+     container.append(this.root);
++    // Chapter loading hides #game-ui; the portrait guard must remain above it.
++    this.app.append(this.rotationNotice);
+     const options = { signal: this.events.signal };
++    // Registered before the chapter overlay's capture handlers. A tap on the
++    // rotate notice must not become a skip/continue underneath it.
++    for (const type of ['pointerdown', 'pointerup', 'pointercancel', 'mousedown', 'mouseup', 'click', 'keydown', 'keyup']) {
++      document.addEventListener(type, this.guardPortrait, { ...options, capture: true });
++    }
+     this.root.addEventListener('pointerdown', this.onPointerDown, options);
+     this.root.addEventListener('lostpointercapture', this.onPointerEnd, options);
+     this.root.addEventListener('contextmenu', event => event.preventDefault(), options);
+@@ -73,6 +96,7 @@
+     window.addEventListener('blur', this.reset, options);
+     window.addEventListener('resize', this.onResize, options);
+     window.addEventListener('orientationchange', this.onResize, options);
++    window.visualViewport?.addEventListener('resize', this.onResize, options);
+     document.addEventListener('visibilitychange', () => { if (document.hidden) this.reset(); }, options);
+     this.hud = [...this.app.querySelectorAll<HTMLElement>('.objective-cluster, .survival-cluster, .ammunition-cluster')];
+     this.observer = new ResizeObserver(this.queueLayout);
+@@ -89,7 +113,8 @@
+     if (old?.interaction !== state.interaction) this.cancel('interact');
+     this.state = { ...state };
+     this.app.classList.toggle('touch-input', state.enabled);
+-    const hidden = !state.enabled || state.mode !== 'playing';
++    this.syncOrientation();
++    const hidden = !state.enabled || state.mode !== 'playing' || this.portraitBlocked;
+     if (this.root.hidden !== hidden) this.root.hidden = hidden;
+     if (this.root.dataset.control !== state.control) this.root.dataset.control = state.control;
+     const movement = state.control !== 'staged';
+@@ -119,7 +144,10 @@
+     this.observer.disconnect();
+     cancelAnimationFrame(this.layoutFrame);
+     this.root.remove();
++    this.rotationNotice.remove();
++    if (this.portraitBlocked && this.gameInterface) this.gameInterface.inert = this.previousInterfaceInert;
+     this.app.classList.remove('touch-input');
++    this.app.classList.remove('touch-portrait');
+     this.app.style.removeProperty('--touch-hud-bottom');
+     this.app.style.removeProperty('--touch-context-height');
+   }
+@@ -129,7 +157,13 @@
+     return `<button class="touch-action-button touch-${action}" data-touch-control="${action}" type="button" aria-label="${labels[action]}"${TOUCH_TOGGLES.includes(action) ? ' aria-pressed="false"' : ''}>${icon}<span>${labels[action]}</span></button>`;
+   }
+ 
+-  private live(): boolean { return !this.disposed && Boolean(this.state?.enabled) && this.state?.mode === 'playing' && !document.hidden; }
++  private live(): boolean { return !this.disposed && !this.portraitBlocked && Boolean(this.state?.enabled) && this.state?.mode === 'playing' && !document.hidden; }
++
++  private guardPortrait = (event: Event): void => {
++    if (!this.portraitBlocked || this.disposed) return;
++    if ((event.type === 'keydown' || event.type === 'keyup') && ((event as KeyboardEvent).metaKey || (event as KeyboardEvent).ctrlKey)) return;
++    event.preventDefault(); event.stopImmediatePropagation();
++  };
+ 
+   private onPointerDown = (event: PointerEvent): void => {
+     if (!this.live() || event.pointerType === 'mouse' && event.button !== 0) return;
+@@ -138,8 +172,14 @@
+     event.preventDefault(); event.stopPropagation();
+     const control = target.dataset.touchControl as TouchControl;
+     const bounds = target.getBoundingClientRect();
+-    const origin = { x: bounds.left + bounds.width / 2, y: bounds.top + bounds.height / 2, radius: Math.min(bounds.width, bounds.height) * 0.3 };
++    // Every new left-thumb contact starts neutral at that touch, not at a fixed
++    // button centre. Keep the established 38.4px travel/deadzone and Input path.
++    const origin = { x: event.clientX, y: event.clientY, radius: 38.4 };
+     if (!this.gestures.begin(control, event.pointerId, event.clientX, event.clientY, origin)) return;
++    if (control === 'move') {
++      this.joystick.style.left = `${event.clientX - bounds.left}px`;
++      this.joystick.style.top = `${event.clientY - bounds.top}px`;
++    }
+     this.captures.set(event.pointerId, target);
+     try { target.setPointerCapture(event.pointerId); } catch { /* Window end listeners still release an interrupted contact. */ }
+     this.syncFeedback();
+@@ -219,7 +259,10 @@
+     if (stick.x !== this.lastStickX) this.joystick.style.setProperty('--stick-x', `${stick.x}px`);
+     if (stick.y !== this.lastStickY) this.joystick.style.setProperty('--stick-y', `${stick.y}px`);
+     this.lastStickX = stick.x; this.lastStickY = stick.y;
+-    this.joystick.classList.toggle('is-held', this.gestures.owner('move') !== undefined);
++    const moving = this.gestures.owner('move') !== undefined;
++    this.joystick.hidden = !moving;
++    this.joystick.classList.toggle('is-held', moving);
++    this.controls.get('move')!.classList.toggle('is-held', moving);
+     for (const action of TOUCH_ACTIONS) {
+       const node = this.controls.get(action)!;
+       node.classList.toggle('is-held', this.gestures.owner(action) !== undefined);
+@@ -230,7 +273,42 @@
+     }
+   }
+ 
+-  private onResize = (): void => { this.reset(); this.queueLayout(); };
++  private onResize = (): void => {
++    this.reset();
++    this.syncOrientation();
++    if (this.state) this.root.hidden = !this.state.enabled || this.state.mode !== 'playing' || this.portraitBlocked;
++    this.queueLayout();
++  };
++
++  private syncOrientation(): void {
++    const width = this.app.clientWidth, height = this.app.clientHeight;
++    // An intermediate zero-size viewport must not dismiss an existing guard.
++    const blocked = Boolean(this.state?.enabled) && (width > 0 && height > 0 ? height > width : this.portraitBlocked);
++    if (blocked !== this.portraitBlocked) {
++      this.portraitBlocked = blocked;
++      this.rotationNotice.hidden = !blocked;
++      this.app.classList.toggle('touch-portrait', blocked);
++      this.reset();
++      if (this.gameInterface) {
++        if (blocked) { this.previousInterfaceInert = this.gameInterface.inert; this.gameInterface.inert = true; }
++        else this.gameInterface.inert = this.previousInterfaceInert;
++      }
++      if (blocked) this.rotationNotice.focus({ preventScroll: true });
++      else if (this.state?.mode === 'paused') this.gameInterface?.querySelector<HTMLButtonElement>('[data-action="resume"]')?.focus({ preventScroll: true });
++    }
++    if (!blocked || this.state?.mode !== 'playing' && this.state?.mode !== 'transition') this.portraitPauseRequested = false;
++    else if (!this.portraitPauseRequested) {
++      this.portraitPauseRequested = true;
++      // Use the existing game pause; never resume combat on rotation alone.
++      if (this.state?.mode === 'transition') {
++        // showTransition renders this view just before transition.start().
++        // Defer until that synchronous setup has finished; don't pause its old run.
++        queueMicrotask(() => {
++          if (!this.disposed && this.portraitBlocked && this.state?.mode === 'transition') this.callbacks.pause();
++        });
++      } else this.callbacks.pause();
++    }
++  }
+ 
+   private queueLayout = (): void => {
+     if (this.disposed || this.layoutFrame) return;
+--- a/src/ui/touch-controls.css
++++ b/src/ui/touch-controls.css
+@@ -1,7 +1,11 @@
++#app.touch-input {
++  --touch-edge: clamp(32px, 4.8vw, 64px);
++  --touch-left: calc(env(safe-area-inset-left, 0px) + var(--touch-edge));
++  --touch-right: calc(env(safe-area-inset-right, 0px) + var(--touch-edge));
++  --touch-bottom: calc(env(safe-area-inset-bottom, 0px) + 24px);
++  --touch-top: calc(env(safe-area-inset-top, 0px) + 16px);
++}
+ #app .touch-controls {
+-  --touch-left: max(16px, env(safe-area-inset-left));
+-  --touch-right: max(16px, env(safe-area-inset-right));
+-  --touch-bottom: max(16px, env(safe-area-inset-bottom));
+   position: absolute;
+   inset: 0;
+   z-index: 6;
+@@ -11,19 +15,30 @@
+   -webkit-touch-callout: none;
+ }
+ 
+-#app .touch-look-zone { position: absolute; inset: 0 0 0 42%; pointer-events: auto; touch-action: none; }
++#app .touch-look-zone { position: absolute; inset: var(--touch-top) var(--touch-right) var(--touch-bottom) 42%; pointer-events: auto; touch-action: none; }
++#app .touch-move-zone {
++  position: absolute;
++  left: var(--touch-left);
++  right: 58%;
++  top: max(32%, calc(var(--touch-hud-bottom, 88px) + 12px));
++  bottom: var(--touch-bottom);
++  pointer-events: auto;
++  touch-action: none;
++}
++#app .touch-move-hint { position: absolute; left: 20px; bottom: 44px; color: var(--ui-paper); opacity: .65; font-size: 16px; pointer-events: none; text-shadow: 0 1px 4px var(--ui-ink); }
++#app .touch-move-zone.is-held .touch-move-hint { visibility: hidden; }
+ #app .touch-joystick {
+   position: absolute;
+-  left: var(--touch-left);
+-  bottom: var(--touch-bottom);
++  left: 50%;
++  top: 50%;
++  transform: translate(-50%, -50%);
+   width: 128px;
+   height: 128px;
+   border: 1px solid rgb(225 236 230 / 38%);
+   border-radius: 50%;
+   background: rgb(8 22 30 / 28%);
+   box-shadow: inset 0 0 0 12px rgb(220 232 222 / 3%);
+-  pointer-events: auto;
+-  touch-action: none;
++  pointer-events: none;
+ }
+ #app .touch-stick-track { position: absolute; inset: 24px; border: 1px solid rgb(222 233 226 / 18%); border-radius: 50%; pointer-events: none; }
+ #app .touch-stick-knob {
+@@ -92,14 +107,45 @@
+   gap: 8px;
+ }
+ #app .touch-context-actions > button { flex: 1 1 auto; max-width: 360px; min-width: 44px; min-height: 52px; padding: 8px 12px; border-radius: 4px; overflow-wrap: anywhere; font-size: 17px; background: rgb(28 43 45 / 94%); border-color: var(--ui-amber); color: #fff0cf; }
+-#app .touch-controls[data-control="staged"] .touch-context-actions { left: max(24px, env(safe-area-inset-left)); right: max(24px, env(safe-area-inset-right)); }
+-#app .touch-pause { position: absolute; right: var(--touch-right); top: max(12px, env(safe-area-inset-top)); width: 44px; height: 44px; border-radius: 4px; padding: 10px; }
++#app .touch-controls[data-control="staged"] .touch-context-actions { left: var(--touch-left); right: var(--touch-right); }
++#app .touch-pause { position: absolute; right: var(--touch-right); top: var(--touch-top); width: 44px; height: 44px; border-radius: 4px; padding: 10px; }
+ #app .touch-pause svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: square; pointer-events: none; }
+ 
+-@media (orientation: portrait) {
+-  #app .touch-controls { --touch-bottom: max(24px, env(safe-area-inset-bottom)); }
+-  #app .touch-context-actions { left: var(--touch-left); right: var(--touch-right); bottom: calc(var(--touch-bottom) + 192px); }
+-  #app .touch-controls[data-control="staged"] .touch-context-actions { bottom: var(--touch-bottom); }
++/* Extend the same inset to HUD and menus without changing the desktop layout. */
++#app.touch-input .objective-cluster { left: var(--touch-left); top: var(--touch-top); width: min(420px, calc(100% - var(--touch-left) - var(--touch-right) - 310px)); }
++#app.touch-input .survival-cluster { top: var(--touch-top); right: calc(var(--touch-right) + 192px); }
++#app.touch-input .ammunition-cluster { top: var(--touch-top); right: calc(var(--touch-right) + 60px); }
++#app.touch-input .radio-subtitle { left: calc(var(--touch-left) + 144px); right: calc(var(--touch-right) + 200px); bottom: calc(var(--touch-bottom) + var(--touch-context-height, 52px) + 12px + var(--notice-clearance, 0px)); }
++#app.touch-input .game-error { bottom: calc(var(--touch-bottom) + var(--touch-context-height, 52px) + 12px); max-width: calc(100% - var(--touch-left) - var(--touch-right) - 344px); }
++#app.touch-input .sound-state { right: var(--touch-right); top: calc(var(--touch-top) + 76px); }
++#app.touch-input .game-overlay { padding: var(--touch-top) var(--touch-right) var(--touch-bottom) var(--touch-left); }
++#app.touch-input summary { min-height: 44px; padding-block: 10px; }
++#app.touch-input .slider-setting input { min-height: 44px; }
++#app .touch-rotation-notice {
++  position: absolute; inset: 0; z-index: 1100;
++  display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 12px;
++  padding: calc(env(safe-area-inset-top, 0px) + 24px) calc(env(safe-area-inset-right, 0px) + 24px) calc(env(safe-area-inset-bottom, 0px) + 24px) calc(env(safe-area-inset-left, 0px) + 24px);
++  background: var(--ui-ink); color: var(--ui-paper); text-align: center;
++  pointer-events: auto; touch-action: none;
++}
++#app .touch-rotation-notice svg { width: 96px; height: 72px; fill: none; stroke: var(--ui-amber); stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
++#app .touch-rotation-notice strong { font-size: 24px; font-weight: 600; }
++#app .touch-rotation-notice p { color: var(--ui-muted); font-size: 18px; }
++#app.touch-portrait .touch-controls { display: none; }
++
++/* Short landscape screens need the full safe width for dialogue. Keeping it
++   between the thumbs made long lines form a tall column over the view. */
++@media (max-height: 500px) and (orientation: landscape) {
++  #app.touch-input .radio-subtitle {
++    top: calc(var(--touch-hud-bottom, 88px) + 10px);
++    bottom: auto;
++    left: var(--touch-left);
++    right: var(--touch-right);
++    text-align: left;
++    padding: 6px 12px 8px;
++  }
++  #app.touch-input .subtitle-speaker { display: inline; margin-right: 8px; }
++  #app.touch-input .radio-subtitle p { display: inline; }
+ }
+ 
+ @media (prefers-reduced-motion: reduce) {
+--- /dev/null
++++ b/src/mobile-performance/index.ts
+@@ -0,0 +1,3 @@
++export { RENDER_QUALITY_PROFILES, QUALITY_TIMING, RenderQualityPolicy, isRenderQuality, planRenderQuality } from './RenderQualityPolicy';
++export type { RenderQuality, RenderQualityPlan, RenderViewport, QualityBoundary, QualityDownshift } from './RenderQualityPolicy';
++export { RendererQualityAdapter } from './RendererQualityAdapter';
+--- /dev/null
++++ b/src/mobile-performance/RenderQualityPolicy.ts
+@@ -0,0 +1,157 @@
++/** Project starting budgets, not measured device capabilities or Three.js limits. */
++export const RENDER_QUALITY_PROFILES = Object.freeze({
++  low: Object.freeze({ maxDpr: 0.75, maxPixels: 589_824, shadowMapSize: 0 }),
++  balanced: Object.freeze({ maxDpr: 1, maxPixels: 921_600, shadowMapSize: 1024 }),
++  high: Object.freeze({ maxDpr: 1.5, maxPixels: 4_665_600, shadowMapSize: 2048 }),
++});
++
++export type RenderQuality = keyof typeof RENDER_QUALITY_PROFILES;
++export interface RenderViewport {
++  width: number;
++  height: number;
++  devicePixelRatio: number;
++  /** Supply the minimum supported texture/renderbuffer dimension when known. */
++  maxBufferDimension?: number;
++}
++export interface RenderQualityPlan {
++  readonly quality: RenderQuality;
++  readonly cssWidth: number;
++  readonly cssHeight: number;
++  readonly pixelRatio: number;
++  readonly bufferWidth: number;
++  readonly bufferHeight: number;
++  readonly shadowMapSize: number;
++}
++
++export function isRenderQuality(value: unknown): value is RenderQuality {
++  return value === 'low' || value === 'balanced' || value === 'high';
++}
++
++/**
++ * No DOM or GPU work. Call on creation, resize, DPR change or quality change.
++ * A zero/invalid transient viewport returns null: keep the previous allocation.
++ * CSS dimensions stay unchanged, so HUD sizing and input coordinates are not scaled.
++ */
++export function planRenderQuality(quality: RenderQuality, viewport: RenderViewport): RenderQualityPlan | null {
++  const { width, height } = viewport;
++  if (!Number.isFinite(width) || !Number.isFinite(height) || width < 1 || height < 1) return null;
++  const cssWidth = Math.floor(width), cssHeight = Math.floor(height);
++  const area = cssWidth * cssHeight;
++  if (!Number.isSafeInteger(area)) return null;
++  const profile = RENDER_QUALITY_PROFILES[quality];
++  const nativeDpr = Number.isFinite(viewport.devicePixelRatio) && viewport.devicePixelRatio > 0 ? viewport.devicePixelRatio : 1;
++  const requestedDimension = viewport.maxBufferDimension;
++  const maxDimension = requestedDimension !== undefined && Number.isFinite(requestedDimension) && requestedDimension >= 1
++    ? Math.min(4096, Math.floor(requestedDimension)) : 4096;
++  const pixelRatio = Math.min(nativeDpr, profile.maxDpr, Math.sqrt(profile.maxPixels / area),
++    maxDimension / cssWidth, maxDimension / cssHeight);
++  const bufferWidth = Math.floor(cssWidth * pixelRatio), bufferHeight = Math.floor(cssHeight * pixelRatio);
++  if (bufferWidth < 1 || bufferHeight < 1) return null;
++  const shadowMapSize = Math.min(profile.shadowMapSize, 2 ** Math.floor(Math.log2(maxDimension)));
++  return { quality, cssWidth, cssHeight, pixelRatio, bufferWidth, bufferHeight, shadowMapSize };
++}
++
++export const QUALITY_TIMING = Object.freeze({
++  warmupMs: 5000,
++  windowMs: 2000,
++  slowMeanMs: 40,
++  consecutiveSlowWindows: 2,
++  cooldownMs: 15000,
++  maxContiguousFrameMs: 1000,
++});
++
++export type QualityBoundary = 'initial' | 'viewport' | 'scene' | 'lifecycle' | 'context' | 'manual' | 'clock-gap' | 'downshift';
++export interface QualityDownshift {
++  readonly previous: RenderQuality;
++  readonly quality: RenderQuality;
++  readonly reason: 'sustained-slow-frames';
++  readonly meanFrameMs: number;
++  readonly samples: number;
++}
++
++/**
++ * Optional downshift guard; disabled by default until the lead opts in.
++ * It observes raw consecutive RAF timestamps, not the clamped simulation delta.
++ * Frame cadence alone cannot classify CPU/GPU bottlenecks or certify performance.
++ * It owns no RAF, event listener, timer, renderer, physics clock or game state.
++ */
++export class RenderQualityPolicy {
++  private quality: RenderQuality;
++  private adaptive: boolean;
++  private previousTime: number | undefined;
++  private eligible = false;
++  private holdRemainingMs: number = QUALITY_TIMING.warmupMs;
++  private windowMs = 0;
++  private windowSamples = 0;
++  private slowWindows = 0;
++  private boundary: QualityBoundary = 'initial';
++
++  constructor(options: { quality?: RenderQuality; adaptive?: boolean } = {}) {
++    this.quality = options.quality ?? 'balanced';
++    this.adaptive = options.adaptive ?? false;
++  }
++
++  get currentQuality(): RenderQuality { return this.quality; }
++  get state(): Readonly<{ quality: RenderQuality; adaptive: boolean; holdRemainingMs: number; slowWindows: number; boundary: QualityBoundary }> {
++    return { quality: this.quality, adaptive: this.adaptive, holdRemainingMs: this.holdRemainingMs,
++      slowWindows: this.slowWindows, boundary: this.boundary };
++  }
++
++  /** Manual selections lock the level unless the caller explicitly opts in again. */
++  setQuality(quality: RenderQuality, adaptive = false): void {
++    this.quality = quality;
++    this.adaptive = adaptive;
++    this.invalidate('manual');
++  }
++
++  /** Keep the chosen level; discard stale observations and restart settling time. */
++  invalidate(reason: QualityBoundary): void {
++    this.previousTime = undefined;
++    this.eligible = false;
++    const hold = reason === 'downshift' ? QUALITY_TIMING.cooldownMs : QUALITY_TIMING.warmupMs;
++    // Rotating, switching chapters or hiding the page cannot shorten a cooldown.
++    this.holdRemainingMs = reason === 'manual' ? hold : Math.max(this.holdRemainingMs, hold);
++    this.windowMs = 0;
++    this.windowSamples = 0;
++    this.slowWindows = 0;
++    this.boundary = reason;
++  }
++
++  /** eligible = visible && playing && !historySuspended && !contextLost. */
++  recordFrame(timestampMs: number, eligible: boolean): QualityDownshift | null {
++    if (!eligible || !Number.isFinite(timestampMs) || timestampMs < 0) {
++      if (this.eligible || this.previousTime !== undefined) this.invalidate('lifecycle');
++      return null;
++    }
++    if (!this.eligible || this.previousTime === undefined) {
++      this.eligible = true;
++      this.previousTime = timestampMs;
++      return null;
++    }
++    const elapsed = timestampMs - this.previousTime;
++    this.previousTime = timestampMs;
++    if (elapsed <= 0 || elapsed > QUALITY_TIMING.maxContiguousFrameMs) {
++      this.invalidate('clock-gap');
++      this.eligible = true;
++      this.previousTime = timestampMs;
++      return null;
++    }
++    if (!this.adaptive || this.quality === 'low') return null;
++    if (this.holdRemainingMs > 0) {
++      this.holdRemainingMs = Math.max(0, this.holdRemainingMs - elapsed);
++      return null;
++    }
++    this.windowMs += elapsed;
++    this.windowSamples++;
++    if (this.windowMs < QUALITY_TIMING.windowMs) return null;
++    const meanFrameMs = this.windowMs / this.windowSamples, samples = this.windowSamples;
++    this.slowWindows = meanFrameMs >= QUALITY_TIMING.slowMeanMs ? this.slowWindows + 1 : 0;
++    this.windowMs = 0;
++    this.windowSamples = 0;
++    if (this.slowWindows < QUALITY_TIMING.consecutiveSlowWindows) return null;
++    const previous = this.quality;
++    this.quality = previous === 'high' ? 'balanced' : 'low';
++    this.invalidate('downshift');
++    return { previous, quality: this.quality, reason: 'sustained-slow-frames', meanFrameMs, samples };
++  }
++}
+--- /dev/null
++++ b/src/mobile-performance/RendererQualityAdapter.ts
+@@ -0,0 +1,94 @@
++import type { DirectionalLight, Material, Object3D, WebGLRenderer } from 'three';
++import type { RenderQualityPlan } from './RenderQualityPolicy';
++
++type RendererPort = Pick<WebGLRenderer, 'setDrawingBufferSize' | 'domElement' | 'shadowMap'>;
++
++/**
++ * Renderer-only adapter for this project's current directional shadow light.
++ * The environment remains the owner of lights and their final teardown.
++ * Bind once after constructing a scene; apply only when the plan may change.
++ * No asset substitution, simulation throttling, context recreation or own loop.
++ */
++export class RendererQualityAdapter {
++  private viewport: RenderQualityPlan | undefined;
++  private lights: DirectionalLight[] = [];
++  private root: Object3D | undefined;
++  private appliedShadowSize: number | undefined;
++  private shadowProgramsDirty = false;
++
++  constructor(private readonly renderer: RendererPort) {}
++
++  bindScene(root: Object3D): void {
++    // Supply the complete Game.scene, including camera/viewmodel and actors.
++    this.root = root;
++    this.lights = [];
++    root.traverse(object => {
++      const light = object as DirectionalLight;
++      if (light.isDirectionalLight && light.castShadow) this.lights.push(light);
++    });
++    this.appliedShadowSize = undefined;
++  }
++
++  /** Drop references before the environment owner disposes/replaces its scene. */
++  detachScene(): void {
++    this.root = undefined;
++    this.lights = [];
++    this.appliedShadowSize = undefined;
++  }
++
++  /** Use after a restored context; this method does not restore a lost context. */
++  invalidate(): void { this.viewport = undefined; this.appliedShadowSize = undefined; }
++
++  apply(plan: RenderQualityPlan | null): { viewportChanged: boolean; shadowsChanged: boolean } {
++    if (!plan) return { viewportChanged: false, shadowsChanged: false };
++    const previous = this.viewport;
++    const viewportChanged = !previous || previous.cssWidth !== plan.cssWidth || previous.cssHeight !== plan.cssHeight
++      || previous.pixelRatio !== plan.pixelRatio;
++    if (viewportChanged) {
++      // One allocation/viewport update, unlike setPixelRatio followed by setSize.
++      // Supported by the installed Three.js version; this project has no renderer effects pipeline.
++      this.renderer.setDrawingBufferSize(plan.cssWidth, plan.cssHeight, plan.pixelRatio);
++      this.renderer.domElement.style.width = `${plan.cssWidth}px`;
++      this.renderer.domElement.style.height = `${plan.cssHeight}px`;
++      this.viewport = plan;
++    }
++
++    const enabled = plan.shadowMapSize > 0;
++    const enabledChanged = this.renderer.shadowMap.enabled !== enabled;
++    const shadowsChanged = this.appliedShadowSize !== plan.shadowMapSize || enabledChanged;
++    if (shadowsChanged) {
++      for (const light of this.lights) {
++        const shadow = light.shadow;
++        if (!enabled || shadow.mapSize.x !== plan.shadowMapSize || shadow.mapSize.y !== plan.shadowMapSize) {
++          // Dispose the old targets before replacing their dimensions; do not leave
++          // a disposed target referenced for the next renderer or environment pass.
++          shadow.map?.dispose();
++          if (shadow.mapPass !== shadow.map) shadow.mapPass?.dispose();
++          shadow.map = null;
++          shadow.mapPass = null;
++          if (enabled) shadow.mapSize.set(plan.shadowMapSize, plan.shadowMapSize);
++        }
++        if (enabled) shadow.needsUpdate = true;
++      }
++      this.renderer.shadowMap.enabled = enabled;
++      if (enabledChanged) this.shadowProgramsDirty = true;
++      if (enabled) this.renderer.shadowMap.needsUpdate = true;
++      this.appliedShadowSize = plan.shadowMapSize;
++    }
++    if (this.shadowProgramsDirty && this.root) {
++      // Three.js 0.186 includes shadowMap.enabled in program parameters, but
++      // setProgram does not automatically invalidate a material when only this
++      // flag changes. Refresh all current scene materials once, including late
++      // actor/viewmodel attachments and currently hidden meshes.
++      const materials = new Set<Material>();
++      this.root.traverse(object => {
++        const material = (object as Object3D & { material?: Material | Material[] }).material;
++        if (Array.isArray(material)) material.forEach(value => materials.add(value));
++        else if (material) materials.add(material);
++      });
++      for (const material of materials) material.needsUpdate = true;
++      this.shadowProgramsDirty = false;
++    }
++    return { viewportChanged, shadowsChanged };
++  }
++}
+--- /dev/null
++++ b/tests/touch-mobile.test.ts
+@@ -0,0 +1,391 @@
++import { afterEach, describe, expect, it, vi } from 'vitest';
++import { Input } from '../src/player/Input';
++import { TouchControls } from '../src/ui/TouchControls';
++import { TransitionInputGuard } from '../src/chapter-transition/TransitionInputGuard';
++
++// A deliberately small DOM adapter: native EventTarget/AbortSignal run the real
++// TouchControls listeners. It parses the component's own markup, models bubbling,
++// capture ownership and focus, but provides NO browser layout or CSS validation.
++class TestStyle {
++  private values = new Map<string, string>();
++  left = ''; top = '';
++  setProperty(name: string, value: string): void { this.values.set(name, value); }
++  getPropertyValue(name: string): string { return this.values.get(name) ?? ''; }
++  removeProperty(name: string): void { this.values.delete(name); }
++}
++
++class TestTarget extends EventTarget {
++  private readonly captures = new EventTarget();
++  override addEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: boolean | AddEventListenerOptions): void {
++    if (typeof options === 'boolean' ? options : options?.capture) this.captures.addEventListener(type, callback, options);
++    else super.addEventListener(type, callback, options);
++  }
++  override removeEventListener(type: string, callback: EventListenerOrEventListenerObject | null, options?: boolean | EventListenerOptions): void {
++    if (typeof options === 'boolean' ? options : options?.capture) this.captures.removeEventListener(type, callback, options);
++    else super.removeEventListener(type, callback, options);
++  }
++  capture(event: Event): void { this.captures.dispatchEvent(event); }
++}
++
++class TestElement extends TestTarget {
++  readonly children: TestElement[] = [];
++  readonly dataset: Record<string, string> = {};
++  readonly style = new TestStyle();
++  private attrs = new Map<string, string>();
++  private ownText = '';
++  private pointerCaptures = new Set<number>();
++  parentElement: TestElement | null = null;
++  hidden = false; inert = false; tabIndex = 0;
++  bounds = { x: 0, y: 0, width: 100, height: 52 };
++  constructor(readonly ownerDocument: TestDocument, readonly tagName = 'DIV') { super(); }
++  get className(): string { return this.attrs.get('class') ?? ''; }
++  set className(value: string) { this.attrs.set('class', value); }
++  readonly classList = {
++    contains: (token: string): boolean => this.className.split(/\s+/).includes(token),
++    toggle: (token: string, force?: boolean): boolean => {
++      const tokens = new Set(this.className.split(/\s+/).filter(Boolean));
++      const added = force ?? !tokens.has(token);
++      if (added) tokens.add(token); else tokens.delete(token);
++      this.className = [...tokens].join(' '); return added;
++    },
++    remove: (...tokens: string[]): void => { for (const token of tokens) this.classList.toggle(token, false); },
++  };
++  setAttribute(name: string, value: string): void {
++    this.attrs.set(name, value);
++    if (name === 'hidden') this.hidden = true;
++    if (name.startsWith('data-')) this.dataset[name.slice(5).replace(/-([a-z])/g, (_, c: string) => c.toUpperCase())] = value;
++  }
++  getAttribute(name: string): string | null { return this.attrs.get(name) ?? null; }
++  get textContent(): string { return this.ownText + this.children.map(node => node.textContent).join(''); }
++  set textContent(value: string) { this.children.splice(0); this.ownText = value; }
++  set innerHTML(value: string) {
++    this.children.splice(0); this.ownText = '';
++    const stack: TestElement[] = [this];
++    for (const token of value.matchAll(/<([^>]+)>|([^<]+)/g)) {
++      if (token[2]) { stack.at(-1)!.ownText += token[2]; continue; }
++      const tag = token[1];
++      if (tag.startsWith('/')) { stack.pop(); continue; }
++      const name = tag.match(/^([\w-]+)/)?.[1];
++      if (!name) continue;
++      const node = this.ownerDocument.createElement(name);
++      for (const attr of tag.slice(name.length).matchAll(/([^\s=/]+)(?:="([^"]*)")?/g)) node.setAttribute(attr[1], attr[2] ?? '');
++      stack.at(-1)!.append(node);
++      if (!tag.endsWith('/') && !['input', 'br', 'img', 'hr'].includes(name)) stack.push(node);
++    }
++  }
++  append(...nodes: TestElement[]): void {
++    for (const node of nodes) { node.remove(); node.parentElement = this; this.children.push(node); }
++  }
++  remove(): void {
++    if (!this.parentElement) return;
++    const siblings = this.parentElement.children;
++    siblings.splice(siblings.indexOf(this), 1); this.parentElement = null;
++  }
++  matches(selector: string): boolean {
++    if (selector.startsWith('.')) return this.classList.contains(selector.slice(1));
++    if (selector.startsWith('#')) return this.getAttribute('id') === selector.slice(1);
++    const attr = selector.match(/^\[([^=\]]+)(?:="([^"]*)")?\]$/);
++    if (attr) return this.getAttribute(attr[1]) !== null && (attr[2] === undefined || this.getAttribute(attr[1]) === attr[2]);
++    if (/^[a-z]+$/.test(selector)) return this.tagName === selector.toUpperCase();
++    throw new Error(`Unsupported test selector: ${selector}`);
++  }
++  closest(selector: string): TestElement | null {
++    for (let node: TestElement | null = this; node; node = node.parentElement) if (node.matches(selector)) return node;
++    return null;
++  }
++  contains(node: TestElement): boolean {
++    for (let current: TestElement | null = node; current; current = current.parentElement) if (current === this) return true;
++    return false;
++  }
++  querySelectorAll(selector: string): TestElement[] {
++    const selectors = selector.split(',').map(part => part.trim()), result: TestElement[] = [];
++    for (const child of this.children) {
++      if (selectors.some(part => child.matches(part))) result.push(child);
++      result.push(...child.querySelectorAll(selector));
++    }
++    return result;
++  }
++  querySelector(selector: string): TestElement | null { return this.querySelectorAll(selector)[0] ?? null; }
++  get clientWidth(): number { return this.bounds.width; }
++  get clientHeight(): number { return this.bounds.height; }
++  getBoundingClientRect() { const r = this.bounds; return { ...r, left: r.x, top: r.y, right: r.x + r.width, bottom: r.y + r.height }; }
++  getClientRects() {
++    for (let node: TestElement | null = this; node; node = node.parentElement) if (node.hidden) return [];
++    return [this.getBoundingClientRect()];
++  }
++  setPointerCapture(id: number): void { this.pointerCaptures.add(id); }
++  hasPointerCapture(id: number): boolean { return this.pointerCaptures.has(id); }
++  releasePointerCapture(id: number): void {
++    if (this.pointerCaptures.delete(id)) emit(this, 'lostpointercapture', { pointerId: id });
++  }
++  focus(): void { this.ownerDocument.activeElement = this; }
++  requestPointerLock(): void { /* Touch tests never require mouse lock. */ }
++}
++
++class TestDocument extends TestTarget {
++  hidden = false;
++  activeElement: TestElement | null = null;
++  pointerLockElement: TestElement | null = null;
++  createElement(tagName: string): TestElement { return new TestElement(this, tagName.toUpperCase()); }
++  exitPointerLock(): void { this.pointerLockElement = null; }
++}
++class TestResizeObserver {
++  observe = vi.fn();
++  disconnect = vi.fn();
++}
++
++// Use each leaf as event.target while walking its ancestor path. This catches
++// missing root/window handlers instead of directly calling private methods.
++function emit(target: EventTarget, type: string, values: Record<string, unknown> = {}): Event {
++  const event = Object.assign(new Event(type, { bubbles: true, cancelable: true }), values);
++  Object.defineProperty(event, 'target', { value: target });
++  let stopped = false;
++  const stop = event.stopPropagation.bind(event);
++  const stopImmediate = event.stopImmediatePropagation.bind(event);
++  event.stopPropagation = () => { stopped = true; stop(); };
++  event.stopImmediatePropagation = () => { stopped = true; stopImmediate(); };
++  const path: EventTarget[] = [target];
++  if (target instanceof TestElement) {
++    for (let parent = target.parentElement; parent; parent = parent.parentElement) path.push(parent);
++    path.push(target.ownerDocument, window);
++  } else if (target === document) {
++    path.push(window);
++  }
++  for (const node of [...path].reverse()) { if (node instanceof TestTarget) node.capture(event); if (stopped) return event; }
++  for (const node of path) { node.dispatchEvent(event); if (stopped) break; }
++  return event;
++}
++
++type State = Parameters<TouchControls['render']>[0];
++const fixtures: Array<{ controls: TouchControls; input: Input }> = [];
++function fixture({ width = 844, height = 390, enabled = true, mode = 'playing' as State['mode'], priorInert = false } = {}) {
++  const doc = new TestDocument();
++  const viewport = new TestTarget();
++  const win = Object.assign(new TestTarget(), { visualViewport: viewport, matchMedia: () => ({ matches: false }) });
++  const frames = new Map<number, FrameRequestCallback>(); let frameId = 0;
++  vi.stubGlobal('document', doc); vi.stubGlobal('window', win);
++  vi.stubGlobal('Element', TestElement); vi.stubGlobal('HTMLElement', TestElement);
++  vi.stubGlobal('ResizeObserver', TestResizeObserver);
++  vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => { frames.set(++frameId, callback); return frameId; });
++  vi.stubGlobal('cancelAnimationFrame', (id: number) => frames.delete(id));
++  const app = doc.createElement('main'); app.setAttribute('id', 'app'); app.bounds = { x: 0, y: 0, width, height };
++  const container = doc.createElement('div'), gameInterface = doc.createElement('div'), canvas = doc.createElement('canvas');
++  gameInterface.className = 'game-interface'; gameInterface.inert = priorInert;
++  const resume = doc.createElement('button'); resume.setAttribute('data-action', 'resume');
++  gameInterface.append(resume); container.append(gameInterface); app.append(canvas, container);
++  const pause = vi.fn(() => { input.enabled = false; input.clear(); });
++  const input = new Input(canvas as unknown as HTMLCanvasElement, pause, vi.fn());
++  input.setTouchEnabled(enabled); input.enabled = mode === 'playing';
++  const move = vi.fn((forward: number, right: number) => input.setTouchMove(forward, right));
++  const look = vi.fn((yaw: number, pitch: number) => input.addTouchLook(yaw, pitch));
++  const controls = new TouchControls(container as unknown as HTMLElement, {
++    move, look, pause,
++    action: (action, down) => input.setTouchAction(action, down),
++    active: action => input.isTouchActionDown(action),
++  });
++  fixtures.push({ controls, input });
++  let state: State = { enabled, mode, control: 'combat', interaction: '交互', coverAvailable: true, skipAvailable: false, epoch: 1 };
++  const render = (change: Partial<State> = {}) => { state = { ...state, ...change }; controls.render(state); };
++  const node = (selector: string): TestElement => { const found = app.querySelector(selector); if (!found) throw Error(`Missing ${selector}`); return found; };
++  const control = (name: string) => node(`[data-touch-control="${name}"]`);
++  control('move').bounds = { x: 40, y: 130, width: 310, height: 236 };
++  const pointer = (name: string, id: number, x: number, y: number, type = 'pointerdown') =>
++    emit(control(name), type, { pointerId: id, pointerType: 'touch', button: 0, clientX: x, clientY: y });
++  const drag = (id: number, x: number, y: number) => emit(win, 'pointermove', { pointerId: id, pointerType: 'touch', clientX: x, clientY: y });
++  const end = (id: number, type = 'pointerup') => emit(win, type, { pointerId: id, pointerType: 'touch' });
++  const resize = (w: number, h: number, type = 'resize', target: EventTarget = win) => {
++    app.bounds.width = w; app.bounds.height = h; emit(target, type);
++  };
++  const flushLayout = () => { for (const [id, fn] of [...frames]) { frames.delete(id); fn(0); } };
++  render();
++  return { controls, input, doc, win, viewport, app, container, gameInterface, resume, move, look, pause, render, node, control, pointer, drag, end, resize, frames, flushLayout };
++}
++
++afterEach(() => {
++  for (const item of fixtures.splice(0)) { item.controls.dispose(); item.input.dispose(); }
++  vi.unstubAllGlobals();
++});
++
++describe('TouchControls mobile event wiring (DOM substitute, not device evidence)', () => {
++  it('starts neutral at the first contact, keeps its centre against a second finger, and relocates on the next contact', () => {
++    const c = fixture();
++    const stick = c.node('.touch-joystick');
++    expect(stick.hidden).toBe(true);
++    expect(c.pointer('move', 11, 120, 260).defaultPrevented).toBe(true);
++    expect(c.input.read(1 / 60)).toMatchObject({ forward: 0, right: 0 });
++    expect(stick.style.left).toBe('80px'); expect(stick.style.top).toBe('130px');
++    expect(stick.hidden).toBe(false); expect(c.control('move').hasPointerCapture(11)).toBe(true);
++    c.drag(11, 120, 221.6);
++    expect(c.input.read(1 / 60)).toMatchObject({ forward: 1, right: 0 });
++    c.pointer('move', 22, 260, 310); c.drag(22, 300, 350); c.end(22);
++    expect(stick.style.left).toBe('80px'); expect(stick.style.top).toBe('130px');
++    expect(c.control('move').hasPointerCapture(22)).toBe(false);
++    expect(c.input.read(1 / 60).forward).toBe(1);
++    c.end(11);
++    expect(stick.hidden).toBe(true); expect(c.control('move').hasPointerCapture(11)).toBe(false);
++    expect(c.input.read(1 / 60)).toMatchObject({ forward: 0, right: 0 });
++    c.pointer('move', 33, 280, 290);
++    expect(stick.style.left).toBe('240px'); expect(stick.style.top).toBe('160px');
++    expect(c.input.read(1 / 60)).toMatchObject({ forward: 0, right: 0 });
++    c.drag(33, 260.8, 290);
++    expect(c.input.read(1 / 60).right).toBeCloseTo(-(0.5 - 0.15) / 0.85);
++  });
++
++  it('keeps moving while a different firing finger looks, and cancelling fire does not release movement', () => {
++    const c = fixture();
++    c.pointer('move', 11, 110, 250); c.drag(11, 110, 211.6);
++    c.pointer('fire', 12, 710, 250); c.drag(12, 749, 230.5);
++    expect(c.input.read(1 / 60)).toMatchObject({ forward: 1, fire: true });
++    expect(c.input.yaw).toBeCloseTo(-0.26); expect(c.input.pitch).toBeCloseTo(0.13);
++    c.end(12, 'pointercancel');
++    expect(c.input.read(1 / 60)).toMatchObject({ forward: 1, fire: false });
++    expect(c.control('move').hasPointerCapture(11)).toBe(true);
++    expect(c.control('fire').hasPointerCapture(12)).toBe(false);
++    c.end(11);
++    expect(c.input.read(1 / 60).forward).toBe(0);
++  });
++
++  it('releases capture and active toggle on lostpointercapture through the root listener', () => {
++    const c = fixture(); c.pointer('ads', 15, 650, 240);
++    expect(c.input.isTouchActionDown('ads')).toBe(true);
++    c.control('ads').releasePointerCapture(15);
++    expect(c.input.isTouchActionDown('ads')).toBe(false);
++    expect(c.control('ads').classList.contains('is-held')).toBe(false);
++  });
++
++  it.each(['resize', 'orientationchange', 'visualViewport'])('clears held controls and pauses once when portrait arrives through %s', trigger => {
++    const c = fixture();
++    c.pointer('move', 11, 120, 260); c.drag(11, 120, 221.6);
++    c.pointer('ads', 12, 650, 240); c.end(12);
++    c.pointer('fire', 13, 710, 250);
++    expect(c.input.read(1 / 60)).toMatchObject({ forward: 1, ads: true, fire: true });
++    c.resize(390, 844, trigger === 'visualViewport' ? 'resize' : trigger, trigger === 'visualViewport' ? c.viewport : c.win);
++    expect(c.pause).toHaveBeenCalledTimes(1);
++    expect(c.input.read(1 / 60)).toMatchObject({ forward: 0, right: 0, fire: false, ads: false });
++    expect(c.node('.touch-joystick').hidden).toBe(true);
++    expect(c.control('move').hasPointerCapture(11)).toBe(false); expect(c.control('fire').hasPointerCapture(13)).toBe(false);
++    expect(c.node('.touch-controls').hidden).toBe(true); expect(c.node('.touch-rotation-notice').hidden).toBe(false);
++    expect(c.gameInterface.inert).toBe(true); expect(c.doc.activeElement).toBe(c.node('.touch-rotation-notice'));
++    emit(c.win, 'resize'); emit(c.win, 'orientationchange'); emit(c.viewport, 'resize'); c.render();
++    expect(c.pause).toHaveBeenCalledTimes(1);
++    c.pointer('move', 21, 120, 260); c.drag(11, 100, 180); c.drag(21, 100, 180);
++    expect(c.node('.touch-joystick').hidden).toBe(true);
++    c.render({ mode: 'paused' }); c.resize(844, 390);
++    expect(c.pause).toHaveBeenCalledTimes(1); expect(c.input.enabled).toBe(false);
++    expect(c.node('.touch-rotation-notice').hidden).toBe(true); expect(c.node('.touch-controls').hidden).toBe(true);
++    expect(c.gameInterface.inert).toBe(false); expect(c.doc.activeElement).toBe(c.resume);
++    c.pointer('fire', 31, 710, 250);
++    expect(c.input.read(1 / 60).fire).toBe(false);
++  });
++
++  it('shows a portrait guard in the menu without pausing and keeps it through a zero-size intermediate viewport', () => {
++    const c = fixture({ width: 390, height: 844, mode: 'menu' });
++    expect(c.node('.touch-rotation-notice').hidden).toBe(false); expect(c.gameInterface.inert).toBe(true);
++    expect(c.pause).not.toHaveBeenCalled();
++    c.resize(0, 0);
++    expect(c.node('.touch-rotation-notice').hidden).toBe(false); expect(c.gameInterface.inert).toBe(true);
++    c.resize(844, 390);
++    expect(c.node('.touch-rotation-notice').hidden).toBe(true); expect(c.gameInterface.inert).toBe(false);
++    expect(c.pause).not.toHaveBeenCalled();
++  });
++
++  it('does not guard desktop portrait when touch controls are disabled, and disabling touch removes an existing guard', () => {
++    const c = fixture({ width: 390, height: 844, enabled: false });
++    expect(c.node('.touch-rotation-notice').hidden).toBe(true); expect(c.gameInterface.inert).toBe(false);
++    c.resize(390, 844); expect(c.pause).not.toHaveBeenCalled();
++    c.input.setTouchEnabled(true); c.render({ enabled: true });
++    expect(c.pause).toHaveBeenCalledTimes(1); expect(c.gameInterface.inert).toBe(true);
++    c.input.setTouchEnabled(false); c.render({ enabled: false, mode: 'paused' });
++    expect(c.node('.touch-rotation-notice').hidden).toBe(true); expect(c.gameInterface.inert).toBe(false);
++    expect(c.app.classList.contains('touch-portrait')).toBe(false);
++    c.resize(390, 844); expect(c.pause).toHaveBeenCalledTimes(1);
++  });
++
++  it('clears a held landscape contact on resize without pausing and requires a fresh contact', () => {
++    const c = fixture(); c.pointer('move', 11, 120, 260); c.drag(11, 120, 221.6);
++    c.resize(667, 375);
++    expect(c.pause).not.toHaveBeenCalled(); expect(c.input.enabled).toBe(true);
++    expect(c.input.read(1 / 60).forward).toBe(0); expect(c.node('.touch-joystick').hidden).toBe(true);
++    c.drag(11, 110, 180); expect(c.input.read(1 / 60).forward).toBe(0);
++    c.pointer('move', 12, 100, 240); c.drag(12, 100, 201.6);
++    expect(c.input.read(1 / 60).forward).toBe(1);
++  });
++
++  it('keeps the rotation notice outside hidden game UI and defers transition pause until synchronous start completes', async () => {
++    const c = fixture({ width: 390, height: 844, mode: 'transition' });
++    c.container.hidden = true; c.container.inert = true;
++    const notice = c.node('.touch-rotation-notice');
++    expect(notice.parentElement).toBe(c.app); expect(notice.getClientRects()).toHaveLength(1);
++    expect(c.node('.touch-controls').getClientRects()).toHaveLength(0);
++    let transitionStarted = false;
++    c.pause.mockImplementation(() => { expect(transitionStarted).toBe(true); c.input.clear(); });
++    expect(c.pause).not.toHaveBeenCalled();
++    transitionStarted = true;
++    await Promise.resolve();
++    expect(c.pause).toHaveBeenCalledTimes(1);
++    c.render(); emit(c.viewport, 'resize'); await Promise.resolve();
++    expect(c.pause).toHaveBeenCalledTimes(1);
++    c.resize(844, 390); await Promise.resolve();
++    expect(notice.hidden).toBe(true); expect(c.pause).toHaveBeenCalledTimes(1);
++    expect(c.input.enabled).toBe(false);
++  });
++
++  it('abandons pending transition pause after disposal, leaving portrait, disabling touch or leaving transition', async () => {
++    for (const change of ['dispose', 'landscape', 'disable', 'menu'] as const) {
++      const c = fixture({ width: 390, height: 844, mode: 'transition' });
++      if (change === 'dispose') c.controls.dispose();
++      else if (change === 'landscape') c.resize(844, 390);
++      else if (change === 'disable') c.render({ enabled: false });
++      else c.render({ mode: 'menu' });
++      await Promise.resolve();
++      expect(c.pause, change).not.toHaveBeenCalled();
++      c.controls.dispose(); c.input.dispose();
++    }
++  });
++
++  it('captures portrait taps and game keys before the chapter guard, including modified pointer events, but allows browser key combinations', async () => {
++    const c = fixture({ width: 390, height: 844, mode: 'transition' });
++    const skip = vi.fn(), togglePause = vi.fn();
++    const transition = new TransitionInputGuard(c.doc, { click: skip, togglePause });
++    transition.setActive(true);
++    const notice = c.node('.touch-rotation-notice');
++    try {
++      for (const modifiers of [{}, { ctrlKey: true }, { metaKey: true }]) {
++        for (const type of ['pointerdown', 'pointerup', 'click']) {
++          expect(emit(notice, type, { pointerId: 71, pointerType: 'touch', button: 0, detail: 1, ...modifiers }).defaultPrevented).toBe(true);
++        }
++        expect(skip).not.toHaveBeenCalled();
++      }
++      for (const code of ['Escape', 'Enter', 'Space', 'KeyW']) {
++        expect(emit(notice, 'keydown', { code, repeat: false }).defaultPrevented).toBe(true);
++        expect(emit(notice, 'keyup', { code }).defaultPrevented).toBe(true);
++      }
++      expect(togglePause).not.toHaveBeenCalled();
++      transition.setActive(false);
++      const browserKey = vi.fn(); c.doc.addEventListener('keydown', browserKey, { capture: true });
++      expect(emit(notice, 'keydown', { code: 'KeyL', metaKey: true, repeat: false }).defaultPrevented).toBe(false);
++      expect(emit(notice, 'keydown', { code: 'KeyR', ctrlKey: true, repeat: false }).defaultPrevented).toBe(false);
++      expect(browserKey).toHaveBeenCalledTimes(2);
++      await Promise.resolve();
++      expect(c.pause).toHaveBeenCalledTimes(1);
++    } finally { transition.dispose(); }
++  });
++
++  it.each([false, true])('dispose restores the prior inert value %s, removes overlays and disconnects all input', priorInert => {
++    const c = fixture({ priorInert });
++    c.pointer('move', 11, 120, 260); c.drag(11, 120, 221.6);
++    c.resize(390, 844); const root = c.node('.touch-controls'), zone = c.control('move');
++    const notice = c.node('.touch-rotation-notice'); const moveCalls = c.move.mock.calls.length;
++    c.controls.dispose(); const afterDisposeMoves = c.move.mock.calls.length;
++    expect(afterDisposeMoves).toBeGreaterThanOrEqual(moveCalls);
++    expect(c.gameInterface.inert).toBe(priorInert);
++    expect(root.parentElement).toBe(null); expect(notice.parentElement).toBe(null); expect(c.frames.size).toBe(0);
++    expect(c.app.classList.contains('touch-input')).toBe(false); expect(c.app.classList.contains('touch-portrait')).toBe(false);
++    emit(zone, 'pointerdown', { pointerId: 21, pointerType: 'touch', clientX: 100, clientY: 230 });
++    c.resize(844, 390); c.resize(390, 844); emit(c.viewport, 'resize');
++    c.controls.render({ enabled: true, mode: 'playing', control: 'combat', interaction: '', coverAvailable: false, skipAvailable: false, epoch: 2 });
++    expect(c.pause).toHaveBeenCalledTimes(1); expect(c.move).toHaveBeenCalledTimes(afterDisposeMoves);
++    expect(zone.hasPointerCapture(21)).toBe(false); expect(c.gameInterface.inert).toBe(priorInert);
++    c.controls.dispose(); expect(c.move).toHaveBeenCalledTimes(afterDisposeMoves);
++  });
++});
+--- /dev/null
++++ b/tests/mobile-performance/render-quality-policy.test.ts
+@@ -0,0 +1,153 @@
++import { describe, expect, it } from 'vitest';
++import { isRenderQuality, planRenderQuality, RENDER_QUALITY_PROFILES, RenderQualityPolicy, type QualityDownshift, type RenderQuality } from '../../src/mobile-performance/RenderQualityPolicy';
++
++describe('render allocation budgets', () => {
++  it('preserves CSS coordinates and updates the pixel budget for native DPR changes', () => {
++    const small = planRenderQuality('high', { width: 844, height: 390, devicePixelRatio: 1 })!;
++    const retina = planRenderQuality('high', { width: 844, height: 390, devicePixelRatio: 3 })!;
++    expect([small.cssWidth, small.cssHeight, retina.cssWidth, retina.cssHeight]).toEqual([844, 390, 844, 390]);
++    expect([small.pixelRatio, retina.pixelRatio]).toEqual([1, 1.5]);
++    expect([retina.bufferWidth, retina.bufferHeight]).toEqual([1266, 585]);
++  });
++
++  it('retains the existing 1080p desktop allocation in high, with an explicit ceiling', () => {
++    const plan = planRenderQuality('high', { width: 1920, height: 1080, devicePixelRatio: 3 })!;
++    expect([plan.bufferWidth, plan.bufferHeight, plan.shadowMapSize]).toEqual([2880, 1620, 2048]);
++  });
++
++  it('bounds large and rotated viewports without imposing a minimum DPR that defeats the cap', () => {
++    for (const quality of ['low', 'balanced', 'high'] as const) {
++      for (const [width, height] of [[844, 390], [390, 844], [2560, 1440], [7680, 4320], [4320, 7680]]) {
++        const plan = planRenderQuality(quality, { width, height, devicePixelRatio: 4 })!;
++        expect(plan.bufferWidth * plan.bufferHeight).toBeLessThanOrEqual(RENDER_QUALITY_PROFILES[quality].maxPixels);
++        expect(plan.pixelRatio).toBeLessThanOrEqual(RENDER_QUALITY_PROFILES[quality].maxDpr);
++        expect(Math.max(plan.bufferWidth, plan.bufferHeight)).toBeLessThanOrEqual(4096);
++        expect([plan.cssWidth, plan.cssHeight]).toEqual([width, height]);
++      }
++    }
++    expect(planRenderQuality('low', { width: 7680, height: 4320, devicePixelRatio: 4 })!.pixelRatio).toBeLessThan(0.5);
++  });
++
++  it('honours a smaller native DPR and a hardware dimension limit', () => {
++    expect(planRenderQuality('balanced', { width: 844, height: 390, devicePixelRatio: 0.8 })!.pixelRatio).toBe(0.8);
++    const plan = planRenderQuality('high', { width: 1920, height: 1080, devicePixelRatio: 3, maxBufferDimension: 1024 })!;
++    expect(plan.bufferWidth).toBe(1024);
++    expect(plan.bufferHeight).toBe(576);
++    expect(plan.shadowMapSize).toBe(1024);
++  });
++
++  it('does not allocate zero or invalid transient viewports and falls back for invalid DPR', () => {
++    for (const width of [0, -1, NaN, Infinity, Number.MAX_SAFE_INTEGER]) {
++      expect(planRenderQuality('balanced', { width, height: 390, devicePixelRatio: 2 })).toBeNull();
++    }
++    expect(planRenderQuality('balanced', { width: 844, height: 0, devicePixelRatio: 2 })).toBeNull();
++    expect(planRenderQuality('balanced', { width: 844, height: 390, devicePixelRatio: NaN })!.pixelRatio).toBe(1);
++    expect(planRenderQuality('low', { width: 1_000_000, height: 1, devicePixelRatio: 1 })).toBeNull();
++    expect(isRenderQuality('balanced')).toBe(true);
++    expect(isRenderQuality('constructor')).toBe(false);
++    expect(isRenderQuality(null)).toBe(false);
++  });
++});
++
++function frames(policy: RenderQualityPolicy, clock: { now: number }, ms: number, stepMs: number, eligible = true): QualityDownshift[] {
++  const changes: QualityDownshift[] = [];
++  for (let elapsed = 0; elapsed < ms; elapsed += stepMs) {
++    clock.now += stepMs;
++    const change = policy.recordFrame(clock.now, eligible);
++    if (change) changes.push(change);
++  }
++  return changes;
++}
++
++describe('optional rendering-only downshift guard', () => {
++  it('does not change a locked selection, even during sustained slow frames', () => {
++    const policy = new RenderQualityPolicy({ quality: 'high' });
++    expect(frames(policy, { now: 0 }, 60_000, 50)).toEqual([]);
++    expect(policy.currentQuality).toBe('high');
++  });
++
++  it('warms up, requires two slow windows, then holds the new quality before another change', () => {
++    const policy = new RenderQualityPolicy({ quality: 'high', adaptive: true }), clock = { now: 0 };
++    policy.recordFrame(0, true);
++    expect(frames(policy, clock, 5000, 50)).toEqual([]);
++    expect(frames(policy, clock, 2000, 50)).toEqual([]);
++    expect(policy.state.slowWindows).toBe(1);
++    expect(frames(policy, clock, 2000, 50)).toEqual([
++      { previous: 'high', quality: 'balanced', reason: 'sustained-slow-frames', meanFrameMs: 50, samples: 40 },
++    ]);
++    expect(frames(policy, clock, 15_000, 50)).toEqual([]);
++    expect(policy.currentQuality).toBe('balanced');
++    expect(frames(policy, clock, 4100, 50).map(change => change.quality)).toEqual(['low']);
++    expect(frames(policy, clock, 60_000, 10)).toEqual([]);
++    expect(policy.currentQuality).toBe('low');
++  });
++
++  it('does not accumulate nonconsecutive slow windows or react to one isolated stall', () => {
++    const policy = new RenderQualityPolicy({ quality: 'high', adaptive: true }), clock = { now: 0 };
++    policy.recordFrame(0, true);
++    frames(policy, clock, 7000, 50);
++    expect(policy.state.slowWindows).toBe(1);
++    frames(policy, clock, 2100, 30);
++    expect(policy.state.slowWindows).toBe(0);
++    clock.now += 200;
++    expect(policy.recordFrame(clock.now, true)).toBeNull();
++    expect(frames(policy, clock, 2100, 16)).toEqual([]);
++    expect(policy.currentQuality).toBe('high');
++  });
++
++  it('discards paused/background history and starts a fresh warmup after return', () => {
++    const policy = new RenderQualityPolicy({ quality: 'balanced', adaptive: true }), clock = { now: 0 };
++    policy.recordFrame(0, true);
++    frames(policy, clock, 7000, 50);
++    expect(policy.state.slowWindows).toBe(1);
++    frames(policy, clock, 60_000, 1000, false);
++    expect(policy.state.slowWindows).toBe(0);
++    expect(frames(policy, clock, 7050, 50)).toEqual([]);
++    expect(policy.currentQuality).toBe('balanced');
++    expect(frames(policy, clock, 2000, 50).map(change => change.quality)).toEqual(['low']);
++  });
++
++  it('resets after viewport/scene boundaries and never shortens an existing cooldown', () => {
++    const policy = new RenderQualityPolicy({ quality: 'high', adaptive: true }), clock = { now: 0 };
++    policy.recordFrame(0, true);
++    frames(policy, clock, 9000, 50);
++    expect(policy.currentQuality).toBe('balanced');
++    expect(policy.state.holdRemainingMs).toBe(15_000);
++    policy.invalidate('viewport');
++    expect(policy.state.holdRemainingMs).toBe(15_000);
++    frames(policy, clock, 5000, 50);
++    const remaining = policy.state.holdRemainingMs;
++    policy.invalidate('scene');
++    expect(policy.state.holdRemainingMs).toBe(remaining);
++    expect(policy.state.slowWindows).toBe(0);
++    expect(frames(policy, clock, remaining, 50)).toEqual([]);
++  });
++
++  it('ignores clock discontinuities instead of treating them as slow gameplay', () => {
++    const policy = new RenderQualityPolicy({ quality: 'high', adaptive: true }), clock = { now: 0 };
++    policy.recordFrame(0, true);
++    frames(policy, clock, 7000, 50);
++    expect(policy.recordFrame(clock.now + 120_000, true)).toBeNull();
++    expect(policy.state.boundary).toBe('clock-gap');
++    expect(policy.state.slowWindows).toBe(0);
++    expect(policy.recordFrame(1, true)).toBeNull();
++    expect(policy.recordFrame(NaN, true)).toBeNull();
++    expect(policy.currentQuality).toBe('high');
++  });
++
++  it('allows deliberate manual selection while disabling automatic changes by default', () => {
++    const policy = new RenderQualityPolicy({ quality: 'balanced', adaptive: true });
++    policy.setQuality('high');
++    expect(policy.state.adaptive).toBe(false);
++    expect(frames(policy, { now: 0 }, 60_000, 50)).toEqual([]);
++    expect(policy.currentQuality).toBe('high');
++  });
++
++  it('treats a steady 30 fps cadence as within the guard band', () => {
++    for (const quality of ['balanced', 'high'] as RenderQuality[]) {
++      const policy = new RenderQualityPolicy({ quality, adaptive: true });
++      expect(frames(policy, { now: 0 }, 60_000, 1000 / 30)).toEqual([]);
++      expect(policy.currentQuality).toBe(quality);
++    }
++  });
++});
+--- /dev/null
++++ b/tests/mobile-performance/renderer-quality-adapter.test.ts
+@@ -0,0 +1,150 @@
++import { describe, expect, it, vi } from 'vitest';
++import { BoxGeometry, DirectionalLight, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, WebGLRenderTarget, type WebGLRenderer } from 'three';
++import { RendererQualityAdapter } from '../../src/mobile-performance/RendererQualityAdapter';
++import { planRenderQuality, type RenderQuality } from '../../src/mobile-performance/RenderQualityPolicy';
++
++const plan = (quality: RenderQuality, width = 844, height = 390, devicePixelRatio = 3) =>
++  planRenderQuality(quality, { width, height, devicePixelRatio })!;
++
++function rendererDouble() {
++  const renderer = {
++    setDrawingBufferSize: vi.fn(),
++    domElement: { style: { width: '', height: '' } },
++    shadowMap: { enabled: true, needsUpdate: false },
++  };
++  return { renderer, adapter: new RendererQualityAdapter(renderer as unknown as WebGLRenderer) };
++}
++
++function sceneWithShadow() {
++  const root = new Group(), light = new DirectionalLight();
++  light.castShadow = true;
++  light.shadow.mapSize.set(2048, 2048);
++  light.shadow.map = new WebGLRenderTarget(2048, 2048);
++  light.shadow.mapPass = new WebGLRenderTarget(2048, 2048);
++  const disposeMap = vi.spyOn(light.shadow.map, 'dispose'), disposePass = vi.spyOn(light.shadow.mapPass, 'dispose');
++  root.add(light);
++  return { root, light, disposeMap, disposePass };
++}
++
++describe('renderer quality application without a WebGL context', () => {
++  it('applies a new buffer once and ignores identical or invalid plans', () => {
++    const { renderer, adapter } = rendererDouble();
++    expect(adapter.apply(plan('balanced')).viewportChanged).toBe(true);
++    expect(renderer.setDrawingBufferSize).toHaveBeenCalledWith(844, 390, 1);
++    expect(renderer.domElement.style).toEqual({ width: '844px', height: '390px' });
++    expect(adapter.apply(plan('balanced'))).toEqual({ viewportChanged: false, shadowsChanged: false });
++    expect(adapter.apply(null)).toEqual({ viewportChanged: false, shadowsChanged: false });
++    expect(renderer.setDrawingBufferSize).toHaveBeenCalledTimes(1);
++  });
++
++  it('reallocates on rotation and DPR change, not on every frame', () => {
++    const { renderer, adapter } = rendererDouble();
++    adapter.apply(plan('high', 844, 390, 1));
++    adapter.apply(plan('high', 844, 390, 3));
++    adapter.apply(plan('high', 390, 844, 3));
++    for (let i = 0; i < 100; i++) adapter.apply(plan('high', 390, 844, 3));
++    expect(renderer.setDrawingBufferSize).toHaveBeenCalledTimes(3);
++    expect(renderer.domElement.style).toEqual({ width: '390px', height: '844px' });
++  });
++
++  it('releases old shadow targets once before reducing map dimensions', () => {
++    const { renderer, adapter } = rendererDouble(), scene = sceneWithShadow();
++    adapter.bindScene(scene.root);
++    adapter.apply(plan('balanced'));
++    expect(scene.disposeMap).toHaveBeenCalledTimes(1);
++    expect(scene.disposePass).toHaveBeenCalledTimes(1);
++    expect(scene.light.shadow.map).toBeNull();
++    expect(scene.light.shadow.mapPass).toBeNull();
++    expect(scene.light.shadow.mapSize.toArray()).toEqual([1024, 1024]);
++    expect(scene.light.castShadow).toBe(true);
++    expect(renderer.shadowMap).toEqual({ enabled: true, needsUpdate: true });
++    adapter.apply(plan('balanced'));
++    scene.light.shadow.dispose();
++    expect(scene.disposeMap).toHaveBeenCalledTimes(1);
++    expect(scene.disposePass).toHaveBeenCalledTimes(1);
++  });
++
++  it('disables and releases shadows in low, then can restore them on manual selection', () => {
++    const { renderer, adapter } = rendererDouble(), scene = sceneWithShadow();
++    adapter.bindScene(scene.root);
++    adapter.apply(plan('low'));
++    expect(renderer.shadowMap.enabled).toBe(false);
++    expect(scene.disposeMap).toHaveBeenCalledTimes(1);
++    expect(scene.light.castShadow).toBe(true);
++    adapter.apply(plan('high'));
++    expect(renderer.shadowMap.enabled).toBe(true);
++    expect(scene.light.shadow.needsUpdate).toBe(true);
++    expect(scene.light.shadow.mapSize.toArray()).toEqual([2048, 2048]);
++  });
++
++  it('does not enable lights authored without shadows or dispose retained targets at the same size', () => {
++    const { adapter } = rendererDouble(), scene = sceneWithShadow();
++    const unshadowed = new DirectionalLight();
++    scene.root.add(unshadowed);
++    adapter.bindScene(scene.root);
++    adapter.apply(plan('high'));
++    expect(scene.disposeMap).not.toHaveBeenCalled();
++    expect(scene.disposePass).not.toHaveBeenCalled();
++    expect(unshadowed.castShadow).toBe(false);
++    expect(unshadowed.shadow.mapSize.toArray()).toEqual([512, 512]);
++  });
++
++  it('handles a new chapter with the same quality and leaves old-scene teardown to its owner', () => {
++    const { renderer, adapter } = rendererDouble(), oldScene = sceneWithShadow(), nextScene = sceneWithShadow();
++    adapter.bindScene(oldScene.root);
++    adapter.apply(plan('high'));
++    adapter.detachScene();
++    adapter.bindScene(nextScene.root);
++    adapter.apply(plan('balanced'));
++    expect(oldScene.disposeMap).not.toHaveBeenCalled();
++    expect(nextScene.disposeMap).toHaveBeenCalledTimes(1);
++    expect(renderer.setDrawingBufferSize).toHaveBeenCalledTimes(2);
++  });
++
++  it('can reapply after context restoration and does not double-dispose an aliased target', () => {
++    const { renderer, adapter } = rendererDouble(), scene = sceneWithShadow();
++    scene.light.shadow.mapPass?.dispose();
++    scene.light.shadow.mapPass = scene.light.shadow.map;
++    adapter.bindScene(scene.root);
++    adapter.apply(plan('balanced'));
++    expect(scene.disposeMap).toHaveBeenCalledTimes(1);
++    adapter.invalidate();
++    adapter.apply(plan('balanced'));
++    expect(renderer.setDrawingBufferSize).toHaveBeenCalledTimes(2);
++    expect(scene.disposeMap).toHaveBeenCalledTimes(1);
++  });
++
++  it('invalidates shared and late-attached scene materials only when shadows are enabled or disabled', () => {
++    const { adapter } = rendererDouble(), scene = sceneWithShadow();
++    const geometry = new BoxGeometry(), shared = new MeshStandardMaterial(), unlit = new MeshBasicMaterial();
++    const hidden = new Mesh(geometry, shared); hidden.visible = false;
++    scene.root.add(new Mesh(geometry, shared), hidden);
++    adapter.bindScene(scene.root);
++    // A viewmodel/actor can arrive after bindScene; traverse current contents at the switch.
++    scene.root.add(new Mesh(geometry, [shared, unlit]));
++    adapter.apply(plan('high'));
++    expect([shared.version, unlit.version]).toEqual([0, 0]);
++    adapter.apply(plan('low'));
++    expect([shared.version, unlit.version]).toEqual([1, 1]);
++    adapter.apply(plan('low'));
++    expect([shared.version, unlit.version]).toEqual([1, 1]);
++    adapter.apply(plan('high'));
++    expect([shared.version, unlit.version]).toEqual([2, 2]);
++    adapter.apply(plan('balanced'));
++    expect([shared.version, unlit.version]).toEqual([2, 2]);
++    geometry.dispose(); shared.dispose(); unlit.dispose();
++  });
++
++  it('defers program invalidation if quality was applied before a scene was bound', () => {
++    const { adapter } = rendererDouble(), root = new Group();
++    const geometry = new BoxGeometry(), material = new MeshStandardMaterial();
++    root.add(new Mesh(geometry, material));
++    adapter.apply(plan('low'));
++    adapter.bindScene(root);
++    adapter.apply(plan('low'));
++    expect(material.version).toBe(1);
++    adapter.apply(plan('low'));
++    expect(material.version).toBe(1);
++    geometry.dispose(); material.dispose();
++  });
++});
+--- a/tests/chapter-transition/game-host.test.ts
++++ b/tests/chapter-transition/game-host.test.ts
+@@ -138,7 +138,7 @@
+     querySelector: (selector: string) => selector === '#game-ui' ? ui : {},
+   });
+   // Rapier's browser timer also reads window.performance when a window exists.
+-  const windowTarget = Object.assign(new EventTarget(), { performance });
++  const windowTarget = Object.assign(new EventTarget(), { performance, innerWidth: 1280, innerHeight: 720, devicePixelRatio: 1 });
+   vi.stubGlobal('document', documentTarget); vi.stubGlobal('window', windowTarget);
+   vi.stubGlobal('matchMedia', () => ({ matches: false }));
+   vi.stubGlobal('requestAnimationFrame', (callback: FrameRequestCallback) => { frames.set(++id, callback); return id; });
+@@ -189,7 +189,8 @@
+     touchControls: { render: vi.fn() },
+     aimIdentity: { update: vi.fn(), dispose: vi.fn() },
+     weapon: { setCharacter: vi.fn(async () => {}), retryArms: vi.fn(async () => {}), armsStatus: { state: 'ready' } },
+-    renderer: { domElement: { focus: vi.fn() } },
++    renderer: { domElement: { focus: vi.fn() }, capabilities: { maxTextureSize: 4096 } },
++    renderQuality: { detachScene: vi.fn(), bindScene: vi.fn(), apply: vi.fn() },
+     accumulator: 0, ads: 0, lastFootstep: 0, error: '', pointerError: '', saveNotice: '',
+     writeErrors: { checkpoint: '', settings: '' },
+   });

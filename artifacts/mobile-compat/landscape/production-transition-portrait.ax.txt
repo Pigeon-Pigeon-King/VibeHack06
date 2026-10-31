@@ -1,0 +1,21 @@
+The following is a diff from the previous accessibility tree for Window: "移动横屏独立验收" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+~					132 文本 {
+  "at": "2026-10-31T08:36:16.705Z",
+  "environment": "Safari desktop iframe / no physical phone",
+  "url": "http://127.0.0.1:5295/dist/",
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.2 Safari/605.1.15",
+  "viewport": [
+    390,
+    844
+  ],
+  "dpr": 2,
+  "mode": "menu",
+  "touch": true,
+  "portrait": true,
+  "simulatedSafeInsets": false,
+  "held": [],
+  "stick": "--stick-x: 0px; --stick-y: 0px;",
+  "ammo": "0",
+  "objective": "清除风机堵塞",
+  "l
+The focused UI element is 116 container 横屏游玩

@@ -1,0 +1,117 @@
+The following is a diff from the previous accessibility tree for Window: "移动横屏独立验收" with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 3-17, 32, 62-69, 72-86
++			62 unknown
++				63 滚动区
++					64 HTML内容 Description: 移动横屏独立验收, URL: 127.0.0.1:5295/preview.html?game=dist/
++						65 container
++							66 标题 移动横屏 · 独立候选, Value: 1
++								67 文本 移动横屏 · 独立候选
++							68 按钮 844 × 390
++							69 按钮 667 × 375
++							70 按钮 竖屏 390 × 844
++							71 按钮 1024 × 768
++							72 按钮 刘海安全区模拟：开
++							73 按钮 保存检查记录
++						74 滚动区
++							75 HTML内容 Description: 重返木卫三独立候选, URL: 127.0.0.1:5295/dist/
++								76 container 重返木卫三
++									77 图像 游戏画面
++									78 container 战斗状态
++										79 文本 01 · 北路接敌
++										80 文本 接通称重台撤离线
++										81 文本 已到达 0 / 7
++										82 container
++											83 text 郑铎 北门有人。到称重台接通撤离线，我守住后路。
++										84 文本 100
++										85 文本 生命
++										86 文本 25
++										87 text / 150 弹药
++									88 container 触屏操作
++										89 container 左侧拖动移动
++										90 按钮 换弹
++										91 开关按钮 瞄准, Value: off
++										92 按钮 开火
++										93 开关按钮 冲刺, Value: off
++										94 开关按钮 蹲伏, Value: off
++										95 按钮 跳跃
++										96 按钮 暂停
++						97 文本 {
+  "at": "2026-10-31T08:36:51.811Z",
+  "environment": "Safari desktop iframe / no physical phone",
+  "url": "http://127.0.0.1:5295/dist/",
+  "ua": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/26.6.2 Safari/605.1.15",
+  "viewport": [
+    667,
+    375
+  ],
+  "dpr": 2,
+  "mode": "playing",
+  "touch": true,
+  "portrait": false,
+  "simulatedSafeInsets": true,
+  "held": [],
+  "stick": "--stick-x: 0px; --stick-y: 0px;",
+  "ammo": "25",
+  "objective": "接通称重台撤离线",
+  "layout": {
+    ".touch-move-zone": {
+      "x": 76,
+      "y": 120,
+      "width": 204.1,
+      "height": 210
+    },
+    ".touch-joystick": null,
+    ".touch-look-zone": {
+      "x": 280.1,
+      "y": 16,
+      "width": 310.9,
+      "height": 314
+    },
+    ".touch-action-grid": {
+      "x": 419,
+      "y": 158,
+      "width": 172,
+      "height": 172
+    },
+    ".touch-context-actions": {
+      "x": 220,
+      "y": 330,
+      "width": 171,
+      "height": 0
+    },
+    ".radio-subtitle": {
+      "x": 76,
+      "y": 103,
+      "width": 515,
+      "height": 41
+    },
+    ".objective-cluster": {
+      "x": 76,
+      "y": 16,
+      "width": 205,
+      "height": 77
+    },
+    ".survival-cluster": {
+      "x": 295,
+      "y": 16,
+      "width": 104,
+      "height": 44
+    },
+    ".ammunition-cluster": {
+      "x": 423,
+      "y": 16,
+      "width": 108,
+      "height": 58
+    },
+    ".touch-pause": {
+      "x": 547,
+      "y": 16,
+      "width": 44,
+      "height": 44
+    },
+    ".touch-rotation-notice": null
+  }
+}
++					98 滚动条 (settable, float) 0
+~			42 按钮 显示阅读器, ID: AssistantButton
+The focused UI element is 77 图像 游戏画面

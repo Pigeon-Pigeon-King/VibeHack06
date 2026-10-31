@@ -61,7 +61,6 @@ export class GameUI {
 
       <section class="game-overlay menu-overlay" data-ui="menu" role="dialog" aria-modal="true" aria-labelledby="game-title" hidden>
         <div class="menu-content">
-          <p class="build-label"><span aria-hidden="true"></span>开发候选</p>
           <h1 id="game-title">重返木卫三</h1>
           <p class="menu-intent">把眼前的人，交给下一班。</p>
           <div class="chapter-entry">
