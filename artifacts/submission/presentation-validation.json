@@ -1,0 +1,75 @@
+{
+  "date": "2026-10-31",
+  "kind": "offline-HTML-and-DOM-check",
+  "result": "PASS",
+  "pageCount": 8,
+  "checks": [
+    "8 pages; exactly one active",
+    "Each slide has one title and one caption",
+    "Default view hides notes",
+    "Every page button navigates",
+    "Home, arrows, Space and End",
+    "Bounds and honest empty video slot",
+    "No missing-image requests; title exists",
+    "Unique SVG IDs and valid gradient references",
+    "Updated story and linear participation in notes",
+    "Speech matches all seven note paragraphs",
+    "All scripts and styles are local",
+    "Popup-blocked fallback",
+    "Timer start and reset",
+    "Standalone presenter notes and navigation",
+    "Audio preview is locally wired, has no autoplay, and stays inside hidden presenter notes"
+  ],
+  "scope": "JavaScript syntax and JSDOM DOM/event checks; no browser rendering, media decoding, popup integration or target-device playback",
+  "browserVisualQA": "NOT_RUN",
+  "browserLimitation": "Local browser use is disabled in Work settings",
+  "video": "PLACEHOLDER_ONLY",
+  "images": "PROGRAMMATIC_LAYOUT_PLACEHOLDERS",
+  "titleAsset": "GENERATED_RGBA",
+  "speechTargetSeconds": 120,
+  "speechHumanTimed": false,
+  "fixDuringCheck": "Graceful hash navigation when file URL rejects history.replaceState",
+  "localDocumentLinksChecked": 37,
+  "bundleFiles": {
+    "README.md": {
+      "bytes": 1750,
+      "sha256": "6eff18cebdc13db761d3ef43f6b5d264bb1695bd739d573945703cd4e43cb790"
+    },
+    "assets/title.png": {
+      "bytes": 1336478,
+      "sha256": "e5e10a9ba03df440220bf613093b3cdcd292e4159b8988828ee17969d44822a4"
+    },
+    "assets/trailer-audio-preview.mp3": {
+      "bytes": 1441580,
+      "sha256": "015e7e7d8294dec1603d80795c79f084921fe542d2f40eed9d4b90901c6a7ec1"
+    },
+    "content.js": {
+      "bytes": 4106,
+      "sha256": "a060ff552f7d918b31f147cea72cc2f59cba305c7d77fcc44de6d218eee5f18d"
+    },
+    "index.html": {
+      "bytes": 3047,
+      "sha256": "2e0259119d1a3df58dba808896a9ab15a7b36c3067cc9f9818a815cba3e157f5"
+    },
+    "media-config.js": {
+      "bytes": 730,
+      "sha256": "1f07c6a99136846742c061695719d10f08179481f1c8244748844279058e7974"
+    },
+    "presentation.js": {
+      "bytes": 19377,
+      "sha256": "25ff58538f19c5b9eac6537c7db827f7b66bdf2815e6b02d92e8b98241c2adc2"
+    },
+    "styles.css": {
+      "bytes": 11548,
+      "sha256": "08a52a87665063055200acfd89480b823be1fc2c347fc2c211d24de5d5823737"
+    }
+  },
+  "audioPreview": "MUSIC_AND_VOICE_NO_GAME_SFX; USER_LISTENING_PENDING",
+  "archive": {
+    "file": "artifacts/submission/ganymede-presentation.zip",
+    "bytes": 2683790,
+    "sha256": "e740655b233abbc5a0f5584db2d13ee23aca4c676320c48e0ac83a21b7a7f485",
+    "crc": "PASS",
+    "allMembersMatchSources": true
+  }
+}

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="color-scheme" content="dark">
+  <meta name="description" content="重返木卫三 · 两分钟宣讲与45秒预告片演示">
+  <title>重返木卫三 · 宣讲演示</title>
+  <link rel="stylesheet" href="styles.css">
+  <script src="media-config.js" defer></script>
+  <script src="content.js" defer></script>
+  <script src="presentation.js" defer></script>
+</head>
+<body>
+  <main class="stage" aria-label="重返木卫三演示">
+    <div id="slides"></div>
+    <div class="grain" aria-hidden="true"></div>
+    <nav class="controls" aria-label="演示控制">
+      <button id="previous" type="button" title="上一页 · ←" aria-label="上一页"><svg viewBox="0 0 24 24"><path d="m14 5-7 7 7 7"/></svg></button>
+      <div class="progress" id="progress" aria-label="页面选择"></div>
+      <button id="next" type="button" title="下一页 · →" aria-label="下一页"><svg viewBox="0 0 24 24"><path d="m10 5 7 7-7 7"/></svg></button>
+      <span class="control-divider"></span>
+      <button id="presenter" type="button" title="演讲者备注 · N" aria-label="打开演讲者备注"><svg viewBox="0 0 24 24"><path d="M5 3h14v18H5zM8 7h8M8 11h8M8 15h5"/></svg></button>
+      <button id="fullscreen" type="button" title="全屏 · F" aria-label="进入或退出全屏"><svg viewBox="0 0 24 24"><path d="M8 3H3v5m13-5h5v5M3 16v5h5m13-5v5h-5"/></svg></button>
+    </nav>
+    <div id="announce" class="sr-only" role="status" aria-live="polite"></div>
+  </main>
+  <aside class="presenter-panel" id="presenter-panel" hidden>
+    <header><span>演讲者备注</span><span id="page-number"></span></header>
+    <div class="timer"><output id="clock">02:00</output><span>宣讲目标 · 不自动翻页</span></div>
+    <div class="presenter-actions"><button id="timer-toggle" type="button">开始计时</button><button id="timer-reset" type="button">重置</button></div>
+    <p class="cue" id="cue"></p>
+    <h1 id="note-title"></h1>
+    <div id="notes"></div>
+    <div class="note-footer"><span id="next-title"></span><p>← → 翻页 · F 全屏 · N 备注<br>触屏可左右滑动；图片是布局占位。</p></div>
+    <details class="media-tools"><summary>素材与试听</summary>
+      <p>实机图片与视频路径在 media-config.js 中配置。也可临时载入本地视频，只在本次打开中使用。</p>
+      <label class="file-button">选择本地视频<input id="video-file" type="file" accept="video/*"></label>
+      <p id="video-status">45秒视频尚未提供</p>
+      <div id="audio-preview" hidden><p>音乐＋旁白试听 · 暂不含实机音效</p><audio id="preview-player" controls preload="metadata"></audio></div>
+    </details>
+    <p class="presenter-status" id="presenter-status" role="status"></p>
+  </aside>
+  <noscript>此演示需要启用 JavaScript。所有资源均在本地，无需联网。</noscript>
+</body>
+</html>

@@ -1,0 +1,28 @@
+{
+  "assetId": "BRAND-TITLE-01",
+  "version": 1,
+  "text": "重返木卫三",
+  "tool": "built-in image_gen",
+  "modelId": "not_exposed_by_tool",
+  "generatedSource": "/Users/penguin/.codex/generated_images/01a19041-2dd4-7e33-8807-76286f112776/exec-f62c66b8-bc00-4443-973f-da2bf25b386a.png",
+  "master": "assets/source/branding/ganymede-title-v1.png",
+  "presentationCopy": "artifacts/submission/presentation/assets/title.png",
+  "dimensions": [
+    2172,
+    724
+  ],
+  "mode": "RGBA",
+  "alphaExtrema": [
+    0,
+    255
+  ],
+  "alphaBoundingBox": [
+    17,
+    9,
+    2144,
+    708
+  ],
+  "transparentPixels": 1023202,
+  "sha256": "e5e10a9ba03df440220bf613093b3cdcd292e4159b8988828ee17969d44822a4",
+  "visualReview": "Five Chinese characters inspected in returned tool image; game integration not performed."
+}

@@ -1,5 +1,7 @@
 # 交付窗口 → 主窗口整合交接
 
+**本地演示与标题已交付：** [HTML入口](../../artifacts/submission/presentation/index.html) · [说明与素材替换](HTML_PRESENTATION.md) · [标题母版](../../assets/source/branding/ganymede-title-v1.png)。标题尚未接入游戏。用户修订稿已同步到当前口播和演讲者备注；实机图片、影片保持占位。声音窗口已产出45秒音乐、六句闻川旁白、分轨和字幕首版，独立保存在 `design/audio/trailer45-v2/`；MP3试听已收入HTML包，等待用户听审。本机浏览器控制禁用，目前仅有离线DOM／文件检查，不作为实际播放或舞台排练证明。
+
 > 本轮更新：2026-10-31 用户已将展示改为 **120 秒宣讲＋45 秒影片，另留 15 秒切换**。当前入口为 [制作规划 v2](CREATIVE_PRESENTATION_PLAN.md)、[两分钟讲稿](SPEECH_2MIN.md) 与 [新版剪辑稿](../../artifacts/trailer-45s/v2/EDIT_PLAN.md)。大背景按本轮用户裁决使用“地球联合政府领土、外环资产集团占领十年、居民盼望回归”；公开表达含蓄。新旁白、独立配乐、透明标题及 HTML 仅完成规划，未生成或录制。下面保留第一批材料的历史交接，旧运行状态与 180 秒现场操作结构不可直接覆盖新版。
 
 2026-10-31。此包完成比赛材料与审计工具准备，正式录制、最终打包、发布和提交状态仍按各自证据记录。全部新增文件限定在 `docs/submission/`、`artifacts/submission/`、`artifacts/trailer-45s/`、`scripts/submission/`；未改主入口、资产、原分镜或公共进度。

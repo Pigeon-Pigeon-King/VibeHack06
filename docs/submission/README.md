@@ -2,7 +2,9 @@
 
 本目录是 2026-10-31 比赛交付窗口的工作成果。材料可供主窗口审查和整合；作品发布、官网提交、完整宣传片和 Windows 实机验收没有因为这些文档存在而完成。
 
-**本轮当前方案：120 秒宣讲＋45 秒实机预告片，合计 165 秒。** 核心为“AI发展的时代，人是讲一个好故事的核心”；以木卫三被占领十年、居民盼望回归为大背景，公开措辞保持含蓄。完整内容见 [制作规划 v2](CREATIVE_PRESENTATION_PLAN.md)、[两分钟讲稿](SPEECH_2MIN.md) 和 [45 秒新版剪辑稿](../../artifacts/trailer-45s/v2/EDIT_PLAN.md)。本轮只准备文字，媒体与 HTML 待后续制作。旧版三分钟现场操作和 16 镜剪辑材料保留为历史备选，不与本版混用。
+**HTML 演示现已制作：** [打开本地演示](../../artifacts/submission/presentation/index.html) · [使用说明](HTML_PRESENTATION.md) · [用户修订原文](SPEECH_USER_REVISION.md)。8 页以画面为主，每页一个标题、一行说明；实机图片与45秒视频保留占位。透明标题已生成，音频制作已交给已有声音窗口；当前交付状态与离线检查见 [演示记录](../../artifacts/submission/presentation-validation.json)。本机浏览器控制被 Work 设置禁用，尚无浏览器视觉验收。
+
+**当前结构：120 秒宣讲＋45 秒实机预告片，合计 165 秒。** 核心为“AI发展的时代，人是讲一个好故事的核心”；以木卫三被占领十年、居民盼望回归为大背景，公开措辞保持含蓄。完整内容见 [制作规划 v2](CREATIVE_PRESENTATION_PLAN.md)、[两分钟讲稿](SPEECH_2MIN.md) 和 [45 秒新版剪辑稿](../../artifacts/trailer-45s/v2/EDIT_PLAN.md)。旧版三分钟现场操作和 16 镜剪辑材料保留为历史备选，不与本版混用。
 
 ## 从这里使用
 
@@ -11,7 +13,7 @@
 | 填写官网 | [表单草稿](FORM_DRAFT.md) · [结构化草稿](../../artifacts/submission/form-draft.json) | 先更新最终构建状态和真实链接，再复制文案；空字段不是已提交内容 |
 | 核对比赛要求 | [规则与缺口](RULES_AND_GAPS.md) · [来源核查](../../artifacts/submission/rules-source-audit.json) | 区分公开官网、本仓库既有摘要和待登录表单字段；以文内核查日期为准 |
 | 当前宣讲 | [两分钟讲稿](SPEECH_2MIN.md) · [整体制作规划](CREATIVE_PRESENTATION_PLAN.md) | 人物、世界背景、Codex 协调的制作流程；120 秒目标待真人计时 |
-| 当前影片 | [45 秒 v2 剪辑稿](../../artifacts/trailer-45s/v2/EDIT_PLAN.md) · [结构化时间线](../../artifacts/trailer-45s/v2/timeline.json) | 新镜头、闻川旁白、独立音乐、实机音效与透明标题；全部媒体待制作 |
+| 当前影片 | [45 秒 v2 剪辑稿](../../artifacts/trailer-45s/v2/EDIT_PLAN.md) · [结构化时间线](../../artifacts/trailer-45s/v2/timeline.json) | 实机视频待制作；标题与音频首版已交付，实际配音时码以声音窗口输出为准 |
 | 历史现场备选 | [旧 180 秒路演稿](ROADSHOW_3MIN.md) · [本地备演操作卡](LOCAL_DEMO_RUNBOOK.md) | 旧结构含 95 秒现场玩法；本轮 165 秒结构不包含此段 |
 | 检查交付包 | [打包审计](PACKAGING_AUDIT.md) · [第三方来源](THIRD_PARTY_SOURCES.md) · [审计工具](../../scripts/submission/) | 分开审计旧主线产物和待整合候选；资源扫描不等于目标设备运行通过 |
 | 冻结最终版本 | [交付记录模板](../../artifacts/submission/release-record.template.json) | 复制后填入实际 commit、包散列、设备记录和提交回执；模板不得当成完成记录 |

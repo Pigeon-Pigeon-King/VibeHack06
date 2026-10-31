@@ -1,0 +1,46 @@
+{
+  "date": "2026-10-31",
+  "authorization": "用户明确要求调用项目已有音频窗口制作音频",
+  "threadId": "01a18f81-fcc4-7e90-94e0-1dfccd9e5594",
+  "threadTitle": "重返木卫三 · 音乐、音效与配音",
+  "status": "AUDIO_PREVIEW_DELIVERED; USER_LISTENING_PENDING",
+  "sourcePreview": "design/audio/trailer45-v2/delivery/preview-music-voice-no-sfx-45s.mp3",
+  "presentationCopy": "artifacts/submission/presentation/assets/trailer-audio-preview.mp3",
+  "previewSha256": "015e7e7d8294dec1603d80795c79f084921fe542d2f40eed9d4b90901c6a7ec1",
+  "mastersRead": [
+    {
+      "file": "design/audio/trailer45-v2/delivery/music-45s.wav",
+      "sha256": "ce5739df2ee4746a2b22ee96f37c6140d9ac34ba8b5499699a2e1475ff262245",
+      "rateHz": 48000,
+      "frames": 2160000,
+      "seconds": 45.0,
+      "channels": 2,
+      "bits": 24
+    },
+    {
+      "file": "design/audio/trailer45-v2/delivery/narration-45s.wav",
+      "sha256": "0e139800cc48e1811ec5f9751b4ae57508c8f15c6d376187f0eccac629823344",
+      "rateHz": 48000,
+      "frames": 2160000,
+      "seconds": 45.0,
+      "channels": 1,
+      "bits": 24
+    },
+    {
+      "file": "design/audio/trailer45-v2/delivery/preview-music-voice-no-sfx-45s.wav",
+      "sha256": "523ad960ca1fd534b737fea00b710c6c9efe69f4198da16236345e86c41e490d",
+      "rateHz": 48000,
+      "frames": 2160000,
+      "seconds": 45.0,
+      "channels": 2,
+      "bits": 24
+    }
+  ],
+  "narrationCueCount": 6,
+  "lastNarrationSpeechEndSeconds": 40.07,
+  "gameSfxIncluded": false,
+  "humanListeningApproval": false,
+  "narrationTiming": "design/audio/trailer45-v2/delivery/narration-timing.json",
+  "subtitleFile": "design/audio/trailer45-v2/delivery/trailer45.v2.zh-CN.srt",
+  "runtimeModified": false
+}
