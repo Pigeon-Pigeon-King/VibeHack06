@@ -1,0 +1,121 @@
+{
+  "schemaVersion": 1,
+  "startedAt": "2026-10-31T11:01:21.654Z",
+  "html": "/Users/penguin/VibeHack06/artifacts/submission/presentation/index.html",
+  "method": "fresh throwaway headless Playwright context; file://; no personal browser",
+  "viewport": {
+    "width": 1920,
+    "height": 1080
+  },
+  "expectedPages": 8,
+  "pages": [
+    {
+      "id": "slide-1",
+      "title": "1 / 8 · 重返木卫三",
+      "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/01-slide-1.png",
+      "imageCount": 1,
+      "failedImages": []
+    },
+    {
+      "id": "slide-2",
+      "title": "2 / 8 · 十年，始终盼着回归",
+      "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/02-slide-2.png",
+      "imageCount": 1,
+      "failedImages": []
+    },
+    {
+      "id": "slide-3",
+      "title": "3 / 8 · 两个人，十年前的伤",
+      "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/03-slide-3.png",
+      "imageCount": 1,
+      "failedImages": []
+    },
+    {
+      "id": "slide-4",
+      "title": "4 / 8 · 把更多的人送到",
+      "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/04-slide-4.png",
+      "imageCount": 0,
+      "failedImages": []
+    },
+    {
+      "id": "slide-5",
+      "title": "5 / 8 · 亲手经历，推动故事",
+      "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/05-slide-5.png",
+      "imageCount": 1,
+      "failedImages": []
+    },
+    {
+      "id": "slide-6",
+      "title": "6 / 8 · Codex 协调制作",
+      "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/06-slide-6.png",
+      "imageCount": 0,
+      "failedImages": []
+    },
+    {
+      "id": "slide-7",
+      "title": "7 / 8 · 故事，仍由人来讲述",
+      "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/07-slide-7.png",
+      "imageCount": 1,
+      "failedImages": []
+    },
+    {
+      "id": "slide-8",
+      "title": "8 / 8 · 走进他们的故事",
+      "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/08-slide-8.png",
+      "imageCount": 1,
+      "failedImages": []
+    }
+  ],
+  "consoleErrors": [],
+  "pageErrors": [],
+  "requestFailures": [
+    {
+      "url": "file:///Users/penguin/VibeHack06/artifacts/submission/presentation/assets/trailer-audio-preview.mp3",
+      "error": "net::ERR_ABORTED",
+      "type": "media"
+    },
+    {
+      "url": "file:///Users/penguin/VibeHack06/artifacts/submission/presentation/assets/trailer-45s.mp4",
+      "error": "net::ERR_ABORTED",
+      "type": "media"
+    }
+  ],
+  "failedImages": [],
+  "configuredSlotFailures": [],
+  "unconfiguredImageSlots": [
+    "zhou",
+    "promise",
+    "carry",
+    "door"
+  ],
+  "video": {
+    "src": "file:///Users/penguin/VibeHack06/artifacts/submission/presentation/assets/trailer-45s.mp4",
+    "duration": 45,
+    "currentTime": 0,
+    "readyState": 4,
+    "videoWidth": 1920,
+    "videoHeight": 1080,
+    "error": null,
+    "durationToleranceSeconds": 0.15,
+    "before": {
+      "currentTime": 0.019772,
+      "performanceMs": 9133.70000000298
+    },
+    "after": {
+      "currentTime": 1.396624,
+      "performanceMs": 10554.60000000149,
+      "paused": false,
+      "readyState": 4,
+      "duration": 45,
+      "error": null
+    },
+    "advancedSeconds": 1.3768520000000002,
+    "screenshot": "/Users/penguin/VibeHack06/artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/09-trailer-playing.png",
+    "playbackAdvanced": true
+  },
+  "failures": [],
+  "passed": true,
+  "scope": "Eight arrow-navigated pages and PNGs; image/console errors; ~45s video metadata and playback time progression. No full-game test or 45s end-to-end viewing claim.",
+  "actualPages": 8,
+  "finishedAt": "2026-10-31T11:01:33.647Z"
+}

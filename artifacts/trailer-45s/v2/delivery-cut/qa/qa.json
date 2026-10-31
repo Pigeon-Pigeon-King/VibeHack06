@@ -1,0 +1,48 @@
+{
+  "checkedAt": "2026-10-31T11:02:22.291034+00:00",
+  "status": "PASS_FOR_DECODE_AND_SIX_FRAME_VISUAL_CHECK",
+  "source": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/delivery-cut/ganymede-story-trailer-45s.mp4",
+  "sourceSha256": "91c3046576891418a2f900f0e1ea0f73528bb60a86f8e254b2569721342544d9",
+  "originalVideoModified": false,
+  "fullDecode": {
+    "returnCode": 0,
+    "frames": 1350,
+    "outputTimeSeconds": 45.0,
+    "duplicateFrames": 0,
+    "droppedFrames": 0,
+    "decodeErrorsObserved": false
+  },
+  "video": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "codec": "H.264 High",
+    "pixelFormat": "yuv420p",
+    "containerDurationSeconds": 45.0
+  },
+  "audio": {
+    "codec": "AAC LC",
+    "sampleRate": 48000,
+    "channels": 2,
+    "decodesSuccessfully": true,
+    "listeningReview": "NOT_RUN",
+    "gameSfxIncludedAsDeclaredByProducer": false
+  },
+  "visualReview": {
+    "sampleSeconds": [
+      0.5,
+      6,
+      15,
+      25,
+      38,
+      43
+    ],
+    "contactSheet": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/delivery-cut/qa/contact-sheet.png",
+    "chineseSubtitlesComplete": true,
+    "titleText": "重返木卫三",
+    "fiveTitleCharactersComplete": true,
+    "noSubtitleOrTitleClippingObserved": true,
+    "minorNote": "部分源截图裁切边缘露出少量原HUD弹药数字；正式字幕与片名完整。"
+  },
+  "scope": "Existing 3.6-second actual recording plus labelled S01/S05 still images and title; not a continuous combat demonstration. No new capture or source changes."
+}

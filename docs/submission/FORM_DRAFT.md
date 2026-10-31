@@ -2,7 +2,9 @@
 
 > 本轮宣讲与故事表述已更新，参见 [制作规划 v2](CREATIVE_PRESENTATION_PLAN.md) 和 [两分钟讲稿](SPEECH_2MIN.md)。下方表单是旧读取时点的草稿；其音频／资产状态须在正式填写时按冻结版更新，不宜直接照读为当前状态。本轮未更改正式报名记录或提交表单。
 
-当前版发布介绍优先使用 [current-release-intro.md](../../artifacts/submission/current-release-intro.md)。Clide与GitHub真实地址由主窗口交付；截图场景／版本问题见 [新交接记录](../../artifacts/submission/RELEASE_HANDOFF_20261031.md)，不把历史候选填作本版实拍。
+当前版发布介绍优先使用 [current-release-intro.md](../../artifacts/submission/current-release-intro.md)。当前可填[游戏链接](https://pigeon-pigeon-king.github.io/VibeHack06/)与[公开源码](https://github.com/Pigeon-Pigeon-King/VibeHack06)；[Clide](https://7ja2szw7s.clide.app/)是备用入口，[GPT Site](https://return-to-ganymede.muddy-curry-7368.chatgpt.site)是完整游戏镜像。地址、交付方式与来源统一记录在 [release-links.json](../../artifacts/submission/release-links.json)。截图场景／版本问题见 [新交接记录](../../artifacts/submission/RELEASE_HANDOFF_20261031.md)，不把历史候选填作本版实拍。
+
+**下方为第一批草稿的历史记录。** 其中待发布、私库、资源尚未集成等状态不能覆盖上述当前交付信息；机器可读旧稿 `form-draft.json` 保留原始时点，正式填写使用当前介绍和release-links。
 
 准备时间：2026-10-31T12:53:15+08:00（北京时间）。状态：**文案可审阅，尚未提交**。网站、GitHub、队伍与笔记链接均待补；机器可读稿见 [form-draft.json](../../artifacts/submission/form-draft.json)。
 

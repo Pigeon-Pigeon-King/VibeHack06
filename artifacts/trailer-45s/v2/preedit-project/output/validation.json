@@ -1,0 +1,49 @@
+{
+  "status": "DECODE_TIMING_AND_SAMPLED_FRAME_REVIEW_PASS",
+  "mediaKind": "LABELLED_PREEDIT_NOT_GAMEPLAY_FINAL",
+  "path": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/preedit-project/output/trailer-45s-preedit.mp4",
+  "sha256": "1dfea3cc016a6f271a4f202a3ead010716b430b8838ea1ac3528d7348af795c5",
+  "bytes": 1693948,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "decodedVideoFrames": 1350,
+  "containerDurationSeconds": 45,
+  "videoCodec": "h264",
+  "audioCodec": "aac",
+  "audioSampleRate": 48000,
+  "audioChannels": 2,
+  "decodedAudioSamplesPerChannel": 2160640,
+  "aacPaddingNote": "AAC decode may include terminal frame padding; MP4 playback duration is 45 seconds; source PCM is exactly 2160000 samples.",
+  "contactSheet": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/preedit-project/output/preedit-contact-sheet.jpg",
+  "sampleFrames": [
+    60,
+    180,
+    405,
+    735,
+    1155,
+    1290
+  ],
+  "gameplayFootageIncluded": false,
+  "actualGameSfxIncluded": false,
+  "browserPlayback": "NOT_RUN",
+  "humanListening": "PENDING",
+  "sampledFrameReview": {
+    "result": "PASS",
+    "frames": [
+      60,
+      180,
+      405,
+      735,
+      1155,
+      1290
+    ],
+    "checked": [
+      "Chinese glyphs readable",
+      "Placeholder label visible including title card",
+      "Subtitles remain within safe frame",
+      "Transparent title is not clipped"
+    ],
+    "scope": "Six extracted video frames; not real-time browser playback or human audio listening"
+  }
+}

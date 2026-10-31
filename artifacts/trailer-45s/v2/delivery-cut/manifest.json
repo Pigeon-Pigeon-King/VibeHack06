@@ -1,0 +1,213 @@
+{
+  "status": "DELIVERED_STORY_CUT_FROM_EXISTING_MEDIA",
+  "output": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/delivery-cut/ganymede-story-trailer-45s.mp4",
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "frames": 1350,
+  "durationSeconds": 45,
+  "sha256": "91c3046576891418a2f900f0e1ea0f73528bb60a86f8e254b2569721342544d9",
+  "actualRecordingSeconds": 3.6,
+  "screenshotAndTitleSeconds": 41.4,
+  "gameSfxIncluded": false,
+  "dedicatedMusicAndNarrationIncluded": true,
+  "userDecision": "Stop all new recording; finish editing and HTML immediately. Game SFX optional.",
+  "notClaimed": [
+    "continuous combat demonstration",
+    "movement or firing footage",
+    "S02/S08/S12 captured",
+    "human playthrough"
+  ],
+  "runtimeBaseline": "a9030c6",
+  "titleAlphaPreserved": true,
+  "titleSeconds": [
+    41,
+    45
+  ],
+  "sources": {
+    "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png": "c439b3e746a22b5f8131d973aed6a097d40705a09f2a252cd733517ba45e077f",
+    "/Users/penguin/VibeHack06/artifacts/submission/captured-scenes/story-scenes-02/s01-father-memory-hud.png": "692de91d46c444b435d3f74a65962127fa8265ff6485783f611761ccdcfcb3dd",
+    "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-raw.webm": "683f60550ce9c195bdcfbed91e215d0e341320141cc1724150641189bf5cdd5a",
+    "/Users/penguin/VibeHack06/design/audio/trailer45-v2/delivery/preview-music-voice-no-sfx-45s.wav": "523ad960ca1fd534b737fea00b710c6c9efe69f4198da16236345e86c41e490d",
+    "/Users/penguin/VibeHack06/assets/source/branding/ganymede-title-v1.png": "e5e10a9ba03df440220bf613093b3cdcd292e4159b8988828ee17969d44822a4",
+    "/Users/penguin/VibeHack06/design/audio/trailer45-v2/delivery/trailer45.v2.zh-CN.srt": "e08fe632c0d2f5f4c8427ec0902f426da46e539cc65a2f92786e6df064506bc4"
+  },
+  "shots": [
+    {
+      "id": "T01",
+      "start": 0,
+      "end": 5,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": {
+        "file": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-raw.webm",
+        "sourceIn": 132,
+        "duration": 3.6
+      }
+    },
+    {
+      "id": "T02",
+      "start": 5,
+      "end": 9,
+      "image": "/Users/penguin/VibeHack06/artifacts/submission/captured-scenes/story-scenes-02/s01-father-memory-hud.png",
+      "scene": "S01",
+      "imageCrop": [
+        0,
+        140,
+        1280,
+        560
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T03",
+      "start": 9,
+      "end": 12,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T04",
+      "start": 12,
+      "end": 18,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T05",
+      "start": 18,
+      "end": 23,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T06",
+      "start": 23,
+      "end": 28,
+      "image": "/Users/penguin/VibeHack06/artifacts/submission/captured-scenes/story-scenes-02/s01-father-memory-hud.png",
+      "scene": "S01",
+      "imageCrop": [
+        0,
+        140,
+        1280,
+        560
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T07",
+      "start": 28,
+      "end": 31,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T08",
+      "start": 31,
+      "end": 34,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T09",
+      "start": 34,
+      "end": 38,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T10",
+      "start": 38,
+      "end": 41,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    },
+    {
+      "id": "T11",
+      "start": 41,
+      "end": 45,
+      "image": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "scene": "S05",
+      "imageCrop": [
+        0,
+        190,
+        1280,
+        630
+      ],
+      "imageTreatment": "slow editorial zoom and pan; not camera input",
+      "actualRecording": null
+    }
+  ],
+  "humanListeningReview": "PENDING",
+  "validation": {
+    "media": "qa/qa.json",
+    "browser": "artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/result.json",
+    "decodePassed": true,
+    "browserPlaybackPassed": true
+  }
+}

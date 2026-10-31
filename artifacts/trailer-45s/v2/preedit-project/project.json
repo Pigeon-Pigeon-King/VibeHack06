@@ -1,0 +1,32 @@
+{
+  "schemaVersion": 1,
+  "id": "ganymede-45s-labelled-preedit-v1",
+  "status": "PREEDIT_WITH_PLACEHOLDERS_NOT_GAMEPLAY_FINAL",
+  "timeline": "artifacts/trailer-45s/v2/timeline.json",
+  "audioMix": "design/audio/trailer45-v2/delivery/preview-music-voice-no-sfx-45s.wav",
+  "musicStemReferenceOnly": "design/audio/trailer45-v2/delivery/music-45s.wav",
+  "narrationStemReferenceOnly": "design/audio/trailer45-v2/delivery/narration-45s.wav",
+  "subtitles": "design/audio/trailer45-v2/delivery/trailer45.v2.zh-CN.srt",
+  "titlePng": "assets/source/branding/ganymede-title-v1.png",
+  "notes": [
+    "Use only the shot boundaries from timeline.json; its old audio and asset production statuses are historical.",
+    "Subtitle timing comes exclusively from the actual delivery SRT.",
+    "The existing audioMix already contains music and narration. Do not mix the reference stems into it again.",
+    "No game SFX are fabricated. sourceClip audio is currently ignored.",
+    "All sourceClip values are null because no actual gameplay source footage has been supplied.",
+    "The renderer always retains the visible pre-edit label, including on title and sourceClip replacements."
+  ],
+  "shots": [
+    {"id":"T01","cardTitle":"占领十年的港区","cardDetail":"待补：木星下的工业港口与通路","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T02","cardTitle":"父亲与班长留下的记忆","cardDetail":"待补：S01 父亲守门／S02 周延与班长","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T03","cardTitle":"成年闻川与周延","cardDetail":"待补：两位主角的真实人物镜头","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T04","cardTitle":"从掩体进入交火","cardDetail":"待补：原速瞄准、开火与实际命中","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T05","cardTitle":"追上去，还来得及","cardDetail":"待补：S07—S08 情报与追击机会","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T06","cardTitle":"转身，继续护送","cardDetail":"待补：S08 闻川选择护送的实际动作","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T07","cardTitle":"把阵位交给下一班","cardDetail":"待补：S09 接替者到位，周延接受保护","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T08","cardTitle":"同伴在侧面接住火线","cardDetail":"待补：S10 请求后真实换位与开火","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T09","cardTitle":"一起把孟齐带回去","cardDetail":"待补：S10 受碰撞与间距限制的协作搬运","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T10","cardTitle":"这一次，换闻川守门","cardDetail":"待补：S12 守住入口，首批人员通过","sourceClip":null,"sourceInSeconds":0,"provenance":null},
+    {"id":"T11","cardTitle":"片名合成预览","cardDetail":"实机底片待补；复用已生成透明片名","sourceClip":null,"sourceInSeconds":0,"provenance":null}
+  ]
+}
