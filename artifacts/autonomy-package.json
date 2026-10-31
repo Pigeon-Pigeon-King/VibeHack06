@@ -1,0 +1,12 @@
+{
+  "version": "0.6.0",
+  "sourceCommit": "12459dc",
+  "path": "release/ReturnToGanymede-autonomy-finale-preview-win-x64.zip",
+  "bytes": 160042607,
+  "sha256": "2a922436e3fd1c480b7496665cfdcc9300ee6fce14fec1ebe58ad996f5a571e3",
+  "files": 74,
+  "archiveIntegrity": "PASS",
+  "verifiedBaselineSourceFiles": 92,
+  "runtimeVerifiedOnWindows": false,
+  "scope": "Verified autonomy/finale baseline from spare checkout. Independent in-progress HUD changes on main are not included."
+}

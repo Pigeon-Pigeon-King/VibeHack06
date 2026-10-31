@@ -1,6 +1,6 @@
 {
   "candidate": "autonomy-finale-preview-2026-10-31",
-  "recordedAt": "2026-10-31T01:06:46.029Z",
+  "recordedAt": "2026-10-31T01:13:18.646Z",
   "node": "v22.14.0",
   "target": "Windows x64 portable directory",
   "entry": "release/ReturnToGanymede-win32-x64/ReturnToGanymede.exe",
@@ -50,7 +50,7 @@
     "src/content/rescue-layout.ts": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61",
     "src/content/transfer-layout.ts": "4cdef55e133e9606bde4078a3ac40ad35ee5cb7a1838ca4389e019e683b1a5bb",
     "src/contracts.ts": "fcd8e718f19e5f48dcb037ad975fb8c1d4bd18b7736db2c9462b483071b696ff",
-    "src/main.ts": "a1d9a895dd85ad51dc81685b6f1d8bad487f19f4beb393e928640c20cc3cfd87",
+    "src/main.ts": "28850c94681aaf2e35a7871a757f617a97afe705bc4e29dd89605a25b1455565",
     "src/mission/Dialogue.ts": "95195133acd103175b9358e8209ec05299397a7ab2778de14c85bc1653fa095b",
     "src/mission/Epilogue.ts": "ceb5b65caf613a50123f234d55e03eb358dfad42030a69723e07d0184b40c627",
     "src/mission/Escort.ts": "a84c57908462b1e7414eb79445b3bd002752bf8279c4c09115f916d96b3f088e",
@@ -86,6 +86,9 @@
     "src/runtime/Physics.ts": "496967c9437f30eb66cc6cf2eb85628f007b2700b7159adce46269b0a8c652ea",
     "src/runtime/random.ts": "c1fa182484525fcaa198d529d51ef54bfb0ed9510f5ddc409153770dfac4805e",
     "src/ui/GameUI.ts": "2896e0d2c0ef1700246fa521b6b49abd041dd1453fc86f035f924598fd6efe0d",
+    "src/ui/ObjectiveIndicator.ts": "42f37abd8a841160a9ee7b70ce1d0be775e716cc9bdfc8898104f4ab67d1969f",
+    "src/ui/objective-indicator.css": "5ab4cc4d8a8451e17c547d294705daa91ed98536e8cf3831e49c8a5476183337",
+    "src/ui/objective-projection.ts": "3175bd687ec5f6acd3ee6d5bc5375543e18dd2159016dd51382bca0fe8e82563",
     "src/ui/style.css": "8ff6ba80010af328ae00419b3963302b6400bc08ae3ccc3546cba1fb5c40ec7b",
     "tests/chapter-paths.test.ts": "3b06cf4ae5ae7c0ba4bd8b40d3d745b474cbf2b4709188dc26db7e1bd5c63303",
     "tests/escort-paths.test.ts": "43a1b45004fc7c297a5b474675a522b0024ebaf43a5a983b2785229010468163",
@@ -102,6 +105,7 @@
     "tests/midcampaign-autonomy.test.ts": "89367dda4ef837482e690c2ab27cd720d384a6b73f21aa758ceb67b2c50d3744",
     "tests/mission-state.test.ts": "60985c4154cc951a20044b44970c37793fe8f709ce108aef4d96f3ab77867b21",
     "tests/navigation.test.ts": "c18d152f38580376270fdb6ebc3542f743998b824a457c199291b64d9f83ed29",
+    "tests/objective-indicator.test.ts": "9d1a0c5faea3255b7f23325addbce3b8d6c347f0443887599a79b8cff74f3d20",
     "tests/opening-autonomy.test.ts": "2d4ace980eeb94fdaba9f2d42464a228755f103886f92d54b2b3dbff406c2a6d",
     "tests/opening-paths.test.ts": "0e95d847774abdac4bb467fda2e53efbdec0696baad64c70da3e930063482dd7",
     "tests/physics-ballistics.test.ts": "c322d4b925a8f98d2d368bc1e83f69f1da20efde8dda4c795fa9963f217a0ff1",
@@ -113,10 +117,10 @@
     "vite.config.ts": "fbcfeb4f869067f9335c6292bd2314bafceecfc1c63a738897551f026a495081"
   },
   "distSha256": {
-    "dist/assets/index-BX6zSE41.css": "56b4bd32e550d496947487cc2c43e762fa397c08af15bc4d8882c3425ee5d5e7",
-    "dist/assets/index-FkGOe_1b.js": "0ec2b3f43631b19d3b3737526886f7256d0cb71aebf6ba5df057a90be2abf4e9",
-    "dist/index.html": "9d8f15c775fc202a8fc69dfa78e44e513129daccfa558b2e30d7a2daac8f1742"
+    "dist/assets/index-CryM-vs1.js": "49f441b96c4521819752687755d231f8d86424da09b90a00417ea354c0f24152",
+    "dist/assets/index-DtQAjqY9.css": "2c1162da05ff65b58463868578688b400ebaceb919110cebb1807c9949ba4a5e",
+    "dist/index.html": "c7dbe020d630d0b28914fa66890b551d327188b96c93b43959b5e15eb1e8af5d"
   },
-  "appAsarSha256": "d9f2e1e837b46b4d546a92f236e74d5f4635759eca85c6f0da1c0d0df6dea0dc",
-  "executableSha256": "c88db89cd7a864b79d2d2212c31013e1217586bf0601507a4b3c5df30109c38d"
+  "appAsarSha256": "3848fdfc4d0256e956410dc51fe7bc97d0a704f62baed280fdb6a667dcb57209",
+  "executableSha256": "3625c4923aa5c643e3e5c92f5c30dc3c8b7cd5f9cf52efc492e96c17f1c37b78"
 }

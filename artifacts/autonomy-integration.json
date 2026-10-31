@@ -1,0 +1,21 @@
+{
+  "baselineCommit": "12459dc",
+  "integrationCommit": "705e894",
+  "baselineTests": 126,
+  "independentSceneChecks": 28,
+  "baselineSourceFiles": 92,
+  "mainPackageBuild": "PASS",
+  "mainPackageStaticInspection": "PASS",
+  "mainVersusBaselineChanged": [
+    "src/main.ts"
+  ],
+  "mainVersusBaselineAdded": [
+    "src/ui/ObjectiveIndicator.ts",
+    "src/ui/objective-indicator.css",
+    "src/ui/objective-projection.ts",
+    "tests/objective-indicator.test.ts"
+  ],
+  "mainRuntime": "http://127.0.0.1:5188/",
+  "runtimeVerifiedOnWindows": false,
+  "note": "main working build includes the feedback window HUD integration. Its own acceptance is separate from the baseline 126 tests. Portable baseline ZIP is sourced from the verified spare checkout."
+}
