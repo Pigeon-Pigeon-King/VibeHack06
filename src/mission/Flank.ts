@@ -1,5 +1,6 @@
 import type { Vec3 } from '../contracts';
 import { FLANK as F } from '../content/flank-layout';
+import { FLANK_DIALOGUE_TIMING as D } from '../content/flank-dialogue-timing';
 import { CROWD_STAGING_FACT, LEGACY_CROWD_STOPS } from '../content/crowd-layout';
 import type { Intent } from '../player/Input';
 import { distance, type Simulation } from './Simulation';
@@ -9,17 +10,17 @@ const actor = (s: Simulation, id: string) => s.actors.find(a => a.id === id)!;
 const at = (s: Simulation, p: Vec3, range = 2.8) => distance(s.player.position, p) < range && Math.abs(s.player.position[1] - p[1]) < 0.6;
 const quiet = (s: Simulation, p: Vec3) => !s.exposedThreat(p, 52);
 const ADMISSION: readonly DialogueLine[] = [
-  [0, '孟齐 · 无线电', '这批过了，两边名单对得上。医院最后两辆车还要一点时间。'],
-  [6, '周延', '刚才的预告，是我故意没转给你。我想等护送结束，再跟你商量。'],
-  [12, '陆闻川 · 无线电', '我知道你怎么想的。包括你觉得我不该知道的，以后也会给我？'],
-  [18, '周延', '包括。我答应过你，应该先把消息给你。后面我们一起看，你有办法也直接说。'],
+  [D.admission[0], '孟齐 · 无线电', '这批过了，两边名单对得上。医院最后两辆车还要一点时间。'],
+  [D.admission[1], '周延', '刚才的预告，是我故意没转给你。我想等护送结束，再跟你商量。'],
+  [D.admission[2], '陆闻川 · 无线电', '我知道你怎么想的。包括你觉得我不该知道的，以后也会给我？'],
+  [D.admission[3], '周延', '包括。我答应过你，应该先把消息给你。后面我们一起看，你有办法也直接说。'],
 ];
 const REPORT: readonly DialogueLine[] = [
-  [0, '周延', '已核实：邵原的人正在准备转移，随行护卫有限。来源和收到时间一并发给你。'],
-  [6, '周延', '尚未确认：实际发车。机动部队留在港区，可能拖住我们，也可能回援。'],
-  [12, '周延', '北闸仍有压力。接收中心两人已到另一头照应；医院还剩两辆车，能走的人已分到侧道。'],
-  [18, '陆闻川 · 无线电', '升降机试完能腾出几个人？这批到站后，还要接着送第二段吗？'],
-  [24, '周延', '第二段的接手结果还没回来，郑铎去确认。我把已知和缺项都写上，不替你省掉。'],
+  [D.report[0], '周延', '已核实：邵原的人正在准备转移，随行护卫有限。来源和收到时间一并发给你。'],
+  [D.report[1], '周延', '尚未确认：实际发车。机动部队留在港区，可能拖住我们，也可能回援。'],
+  [D.report[2], '周延', '北闸仍有压力。接收中心两人已到另一头照应；医院还剩两辆车，能走的人已分到侧道。'],
+  [D.report[3], '陆闻川 · 无线电', '升降机试完能腾出几个人？这批到站后，还要接着送第二段吗？'],
+  [D.report[4], '周延', '第二段的接手结果还没回来，郑铎去确认。我把已知和缺项都写上，不替你省掉。'],
 ];
 const REPORT_FACTS = ['full-report-shared', 'lu-has-full-report', 'departure-unconfirmed-shared',
   'mobile-force-role-shared', 'escort-staffing-shared', 'uncertainty-explicit', 'source-timestamp-shared'];
@@ -108,31 +109,31 @@ export function updateFlank(s: Simulation, input: Intent): void {
     }
   } else if (m.phase === 5) {
     lookWithin(s, F.meng); playDialogue(s, 'admission-line', ADMISSION);
-    if (input.skip || m.phaseTime >= 25) {
+    if (input.skip || m.phaseTime >= D.admissionEnd) {
       finishDialogue(s, 'admission-line', ADMISSION); s.fact('zhou-apology-without-excuse');
       s.player.health = 100; s.player.hurtAt = m.elapsed - 7;
       s.phase(6, '把原文、核实情况和仍缺的答复一起发过去。', 'work', '周延');
     }
   } else if (m.phase === 6) {
-    if (!s.has('full-report-transmission') && input.interact && at(s, F.report)) {
+    if (!s.has('full-report-transmission') && m.phaseTime >= D.reportReady && input.interact && at(s, F.report)) {
       s.fact('full-report-transmission'); s.phase(6, REPORT[0][2], 'work', REPORT[0][1]);
     }
     if (s.has('full-report-transmission')) {
       playDialogue(s, 'report-line', REPORT);
-      if (m.phaseTime >= 31) {
+      if (m.phaseTime >= D.reportEnd) {
         REPORT_FACTS.forEach(f => s.fact(f));
         s.phase(7, '你先换一下位置。总蹲那条腿，站起来又得扶墙。水在这儿，通讯我接着听。', 'work', '郑铎');
       }
     }
   } else if (m.phase === 7) {
-    if (!s.has('zhou-asks-relief') && input.interact && at(s, F.water) && distance(actor(s, 'zheng').position, F.water) < 1.2) {
+    if (!s.has('zhou-asks-relief') && m.phaseTime >= D.reliefReady && input.interact && at(s, F.water) && distance(actor(s, 'zheng').position, F.water) < 1.2) {
       ['zhou-asks-rest', 'zhou-asks-relief', 'zhou-on-withdrawal-list', 'backup-radio-handed-to-zheng'].forEach(f => s.fact(f));
       s.phase(7, '缩回去我得缓两分钟。备用机给你。换班名单……把我也加上，通讯和伤员转移都要有人接。', 'work', '周延');
     }
-    if (s.has('zhou-asks-relief') && m.phaseTime >= 7 && !s.has('family-medicine-reported')) {
+    if (s.has('zhou-asks-relief') && m.phaseTime >= D.medicineReport && !s.has('family-medicine-reported')) {
       s.fact('family-medicine-reported'); s.say('孟齐 · 已转给闻川', '罗敬妻子缺的药找到替代包装了，交给医师确认。最难的窄口已经过去，家属名单还在核对。', 8);
     }
-    if (s.has('family-medicine-reported') && m.phaseTime >= 15 && at(s, F.exit)) {
+    if (s.has('family-medicine-reported') && m.phaseTime >= D.exitReady && at(s, F.exit)) {
       s.phase(8, '', 'work'); s.finish('维修组已退回，孟齐的分流路线实际走通。闻川收到完整情况与缺项；周延说明伤腿和休息需要，把自己列进接替名单。');
     }
   }
@@ -151,8 +152,8 @@ export function flankObjective(s: Simulation) {
   } else if (p === 3) { text = '查看孟齐已经踏勘的路线'; detail = '车走主廊，能步行的人走铺板梯；两边各留名单。'; action = '采用孟齐的分流方案'; }
   else if (p === 4) { text = '照看患者与家属分流'; detail = `患者车 ${s.actors.filter(a => a.role === 'cart' && a.safe).length}/2 · 步行家属 ${s.actors.filter(a => a.id.startsWith('walker-') && a.safe).length}/2。两路到齐后孟齐会报回名单。`; }
   else if (p === 5) { text = '向闻川说明扣下预告的事'; detail = '可以环顾。Enter 跳过此段对话。'; }
-  else if (p === 6) { text = '共享完整报告与缺项'; detail = '核实项、未确认项、人手和接应成本都要说明。'; action = s.has('full-report-transmission') ? '' : '发送原文和完整情况'; }
-  else if (p === 7 && !s.has('zhou-asks-relief')) { text = '与郑铎交接通讯，提出换班需要'; detail = '郑铎在内侧等你。喝口水，把自己也写进撤回名单。'; action = distance(actor(s, 'zheng').position, point) < 1.2 ? '交出备用机，提出接替' : ''; }
+  else if (p === 6) { text = '共享完整报告与缺项'; detail = '核实项、未确认项、人手和接应成本都要说明。'; action = s.has('full-report-transmission') || s.mission.phaseTime < D.reportReady ? '' : '发送原文和完整情况'; }
+  else if (p === 7 && !s.has('zhou-asks-relief')) { text = '与郑铎交接通讯，提出换班需要'; detail = '郑铎在内侧等你。喝口水，把自己也写进撤回名单。'; action = s.mission.phaseTime >= D.reliefReady && distance(actor(s, 'zheng').position, point) < 1.2 ? '交出备用机，提出接替' : ''; }
   else { point = F.exit; text = '沿内门转回接应区'; detail = '现场仍由同伴接着守，接防安排正在执行。'; }
   return { phase: 'S07 · 交给别人', text, detail, point, interaction: action && at(s, point) ? action : '' };
 }

@@ -1,7 +1,10 @@
 import { ACESFilmicToneMapping, BoxGeometry, CanvasTexture, Color, ConeGeometry, FogExp2, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PCFShadowMap, PerspectiveCamera, RingGeometry, Scene, Sprite, SpriteMaterial, SRGBColorSpace, Vector3, WebGLRenderer } from 'three';
 import type { CharacterModel, EnvironmentModel, RunMode, ScenarioId, UiState, Vec3 } from './contracts';
 import { buildEnvironment } from './presentation/environment';
-import { createCharacter } from './presentation/characters';
+import { createImportedCharacter } from './presentation/ImportedCharacter';
+import { GeneratedSceneAssets } from './presentation/GeneratedSceneAssets';
+import type { MissionAudioState } from './audio/contracts';
+import { dialogueCues, dialogueSkipAvailable } from './audio/dialogue-events';
 import { ImportedWeaponView } from './presentation/ImportedWeaponView';
 import { createIndirectLighting } from './presentation/IndirectLighting';
 import { ModelLibrary } from './assets/ModelLibrary';
@@ -85,6 +88,10 @@ class Game {
   private readonly markerMaterials: Array<{ material: MeshBasicMaterial | SpriteMaterial; opacity: number }> = [];
   private markerOpacity = 1;
   private environment!: EnvironmentModel;
+  private generatedScenery?: GeneratedSceneAssets;
+  private readonly sceneAssetErrors = new Set<string>();
+  private readonly characterAssetErrors = new Set<string>();
+  private pendingJetApproach = false;
   private sim!: Simulation;
   private mode: RunMode = 'menu';
   private lowMotion = false;
@@ -186,16 +193,30 @@ class Game {
 
   private load(id: ScenarioId, saved?: Snapshot, priorFacts: readonly string[] = []): void {
     this.presentationEpoch++;
+    this.pendingJetApproach = false;
+    this.generatedScenery?.dispose(); this.generatedScenery = undefined; this.sceneAssetErrors.clear();
+    this.characterAssetErrors.clear();
     this.sim?.dispose();
     if (this.monitor) { this.scene.remove(this.monitor.screen); this.monitor.dispose(); this.monitor = undefined; }
     if (this.environment) { this.scene.remove(this.environment.root); this.environment.dispose(); }
     for (const { model, label: tag } of this.characters.values()) { this.scene.remove(model.root); model.dispose(); if (tag) { this.scene.remove(tag); disposeLabel(tag); } }
     this.characters.clear(); this.crowd.clear(); this.feedback.clear(); this.sound.stopTransient();
     this.environment = buildEnvironment(id); this.scene.add(this.environment.root);
+    const sceneEpoch = this.presentationEpoch;
+    this.generatedScenery = new GeneratedSceneAssets(this.modelLibrary, {
+      parent: this.environment.root, scenario: id, baseURL: document.baseURI,
+      onStatus: status => {
+        if (this.disposed || sceneEpoch !== this.presentationEpoch) return;
+        if (status.state === 'error') this.sceneAssetErrors.add(status.id);
+        else this.sceneAssetErrors.delete(status.id);
+      },
+    });
     // S12 opens onto the distant arrival corridor; the combat-area haze hid
     // the incoming escorts at a few hundred metres. Restore it in other scenes.
     this.scene.fog = new FogExp2(0x677e8d, id === 'epilogue' ? 0.004 : 0.008);
     this.sim = new Simulation(id, this.environment.solids, saved, priorFacts);
+    this.sound.setScene(this.presentationEpoch, this.missionAudioState());
+    if (!saved) this.speakCurrentLine();
     this.heldItems.reset(this.heldItem);
     if (id === 'escort') { this.monitor = new DepartureMonitor(); this.scene.add(this.monitor.screen); }
     this.input.yaw = this.sim.player.yaw; this.input.pitch = this.sim.player.pitch;
@@ -244,10 +265,11 @@ class Game {
   }
   private resume(): void {
     if (this.mode !== 'paused') return;
-    this.mode = 'playing'; this.input.enabled = true; this.input.clear(); this.renderer.domElement.focus(); this.input.lock(); void this.sound.unlock();
+    this.mode = 'playing'; this.input.enabled = true; this.input.clear(); this.renderer.domElement.focus(); this.input.lock();
+    void this.sound.unlock().catch(() => { this.error = '音频未能恢复；字幕和视觉反馈仍可用。'; });
   }
   private retry(): void { const saved = this.sim.checkpoint; this.load(this.sim.scenario, saved); this.mode = 'paused'; this.resume(); }
-  private menu(): void { this.pause(); this.mode = 'menu'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.pause(); this.refreshCampaign(); }
+  private menu(): void { this.pause(); this.mode = 'menu'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.stopTransient(); this.sound.pause(); this.refreshCampaign(); }
   private refreshCampaign(): void {
     const result = this.store?.load('campaign');
     this.savedCampaign = result?.save;
@@ -285,10 +307,48 @@ class Game {
     } catch (error) { this.error = error instanceof Error ? error.message : '检查点无法读取。'; }
   }
 
+  private missionAudioState(): MissionAudioState {
+    const m = this.sim.mission;
+    return { scenario: this.sim.scenario, phase: m.phase, control: m.control, facts: m.facts, elapsed: m.elapsed };
+  }
+  private speakCurrentLine(): void {
+    const m = this.sim.mission;
+    // Only genuinely new scenes enqueue their initial line; restored scenes do not.
+    this.sound.say({ epoch: this.presentationEpoch, revision: m.subtitleUntil, scenario: this.sim.scenario,
+      speaker: m.speaker, text: m.subtitle, elapsed: m.elapsed, expiresAt: m.subtitleUntil });
+  }
+  private finishPresentation(): void {
+    this.mode = this.sim.mission.failed ? 'failed' : 'complete';
+    this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.pause();
+  }
+  private canSkipPresentation(): boolean {
+    return this.sim.mission.complete || dialogueSkipAvailable(this.sim);
+  }
   private simulate(): void {
     const oldPhase = this.sim.mission.phase;
+    const hadFirstWave = this.sim.has('first-wave-approaching');
     const bombarded = this.sim.has('history-bombardment'), collapsed = this.sim.has('history-collapse');
-    this.sim.step(this.input.read(FIXED_DT));
+    const intent = this.input.read(FIXED_DT);
+    // Mission completion is already saved. Drain only its presentation here;
+    // Simulation.step would otherwise leave the previous step's events intact.
+    if (this.sim.mission.complete) {
+      if (intent.skip) this.sound.stopTransient();
+      this.sound.advanceDialogue(FIXED_DT);
+      if (!this.sound.hasPendingDialogue()) this.finishPresentation();
+      return;
+    }
+    const requestedSkip = intent.skip && this.sim.mission.control === 'staged';
+    const allowedBeforeStep = intent.skip && this.canSkipPresentation();
+    if (allowedBeforeStep) this.sound.stopTransient();
+    this.sim.step(intent);
+    this.sound.updateMission(this.missionAudioState());
+    const m = this.sim.mission;
+    // Arrival can satisfy a skip prerequisite during this very simulation step.
+    const skipped = allowedBeforeStep || requestedSkip && (m.phase !== oldPhase || m.complete);
+    if (skipped && !allowedBeforeStep) this.sound.stopTransient();
+    for (const cue of dialogueCues(this.sim.events, m, this.presentationEpoch, skipped)) this.sound.say(cue);
+    this.sound.advanceDialogue(FIXED_DT);
+    if (!hadFirstWave && this.sim.has('first-wave-approaching')) this.pendingJetApproach = true;
     const liveHall = this.sim.scenario === 'mainhall' && oldPhase === 4 && this.sim.mission.phase === 4 && this.sim.has('history-timeline-v2');
     if (liveHall && !bombarded && this.sim.has('history-bombardment')) this.sound.blast();
     if (liveHall && !collapsed && this.sim.has('history-collapse')) this.sound.collapse();
@@ -298,20 +358,26 @@ class Game {
     }
     for (const e of this.sim.events) {
       if (e.type === 'shot') {
-        const relative = e.position ? (e.position[0] - this.sim.player.position[0]) / 20 : 0;
+        const listener = this.sim.player;
+        const relative = e.position ? ((e.position[0] - listener.position[0]) * Math.cos(listener.yaw)
+          - (e.position[2] - listener.position[2]) * Math.sin(listener.yaw)) / 20 : 0;
         this.sound.shot(e.enemy, relative);
       } else if (e.type === 'impact' && e.position) this.feedback.impact(e.position, e.enemy);
-      else if (e.type === 'hit') this.sound.hit();
+      else if (e.type === 'hit') this.sound.hit(e.killed);
       else if (e.type === 'hurt') this.sound.hurt();
       else if (e.type === 'reload') this.sound.reload();
-      else if (e.type === 'objective') this.sound.objective();
+      else if (e.type === 'objective' && intent.interact) this.sound.objective();
       else if (e.type === 'checkpoint') this.persistCheckpoint();
     }
     const step = Math.floor(this.sim.player.walk / Math.PI);
-    if (step !== this.lastFootstep) { this.lastFootstep = step; this.sound.footstep(); }
+    if (step !== this.lastFootstep) {
+      this.lastFootstep = step;
+      if (this.sim.physics.bodies.get('player')?.grounded) this.sound.footstep();
+    }
     if (this.sim.mission.failed || this.sim.mission.complete) {
       if (this.sim.mission.complete) this.persistCheckpoint(this.sim.snapshot());
-      this.mode = this.sim.mission.failed ? 'failed' : 'complete'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.pause();
+      if (this.sim.mission.failed) this.sound.stopTransient();
+      if (this.sim.mission.failed || !this.sound.hasPendingDialogue()) this.finishPresentation();
     }
   }
 
@@ -341,6 +407,14 @@ class Game {
     this.supply.rotation.x = (1 - pose.supply) * 0.16;
     this.environment.setFacts?.(m.facts);
     this.environment.update(m.elapsed, this.camera.position, sceneFrame);
+    if (active && this.pendingJetApproach && this.environment.root.userData.airCoverStatus === 'ready') {
+      const aircraft = this.environment.root.getObjectByName('epilogue-air-cover-1');
+      if (aircraft?.visible) {
+        const relative = aircraft.getWorldPosition(new Vector3()).sub(this.camera.position).normalize();
+        const right = new Vector3(1, 0, 0).applyQuaternion(this.camera.quaternion);
+        this.sound.jetApproach(relative.dot(right)); this.pendingJetApproach = false;
+      }
+    }
     const seated = sim.scenario === 'relief' && m.phase === 7;
     const transferring = sim.scenario === 'escort' && m.phase === 11;
     const transferProgress = transferring ? Math.min(1, m.phaseTime / 8) : 0;
@@ -363,9 +437,15 @@ class Game {
         this.characters.delete(actor.id); item = undefined;
       }
       if (!item) {
+        const epoch = this.presentationEpoch;
         const crowdActor = (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
           && actor.role === 'civilian' && /^(late-civilian-|evac-crowd-|civilian-)/.test(actor.id);
-        const model = crowdActor ? this.crowd.create() : createCharacter(actor.id.startsWith('hall-invader-') ? 'enemy' : actor.role);
+        const model = crowdActor ? this.crowd.create() : createImportedCharacter(this.modelLibrary,
+          { id: actor.id, name: actor.name, role: actor.id.startsWith('hall-invader-') ? 'enemy' : actor.role }, document.baseURI, status => {
+            if (epoch !== this.presentationEpoch) return;
+            if (status.state === 'error') this.characterAssetErrors.add(actor.id);
+            else this.characterAssetErrors.delete(actor.id);
+          });
         const anonymous = /^(hall-invader-|hall-defender-|late-civilian-|evac-crowd-|civilian-)/.test(actor.id);
         const tag = actor.role !== 'enemy' && !anonymous ? label(actor.name, actor.role === 'worker' ? '#efc78b' : '#c5e3dc') : undefined;
         item = { model, label: tag, name: actor.name, role: actor.role }; this.characters.set(actor.id, item); this.scene.add(model.root); if (tag) this.scene.add(tag);
@@ -447,6 +527,7 @@ class Game {
       : sim.scenario === 'epilogue' ? sim.actors.filter(a => a.id.startsWith('worker-') || a.id === 'supply-cart')
       : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-'))
       : sim.scenario === 'escort' ? [...escortPatients(sim), ...sim.actors.filter(a => a.id.startsWith('walker-'))] : sim.workers;
+    const dialogue = this.sound.getDialoguePresentation({ text: m.subtitle, speaker: m.speaker, elapsed: m.elapsed, expiresAt: m.subtitleUntil });
     const state: UiState = {
       mode: this.mode, control: m.control, scenario: sim.scenario, scenarioName: LAYOUT[sim.scenario].name,
       availableScenarios: ['northgate', 'prologue', 'handover', ...(import.meta.env.DEV ? CHAPTER_STAGES.map(stage => stage.scenario) : [])], phaseName: objective.phase,
@@ -454,8 +535,8 @@ class Game {
       health: p.health, ammo: p.ammo, reserve: p.reserve, reload: p.reload > 0 ? 1 - p.reload / 2.1 : 0,
       storyInjury: sim.scenario === 'rescue' && sim.has('rescue-zhou-wounded'),
       workersSafe: evacuees.filter(a => a.safe).length, workerTotal: evacuees.length, elapsed: m.elapsed + (this.chapter?.elapsedBefore ?? 0), interaction: objective.interaction,
-      presentationEpoch: this.presentationEpoch, subtitleTime: m.elapsed, subtitleRevision: m.subtitleUntil,
-      subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
+      presentationEpoch: this.presentationEpoch, subtitleTime: this.sound.getDialogueTime(), subtitleRevision: dialogue?.until ?? this.sound.getDialogueTime(),
+      subtitle: dialogue?.text ?? '', speaker: dialogue?.speaker ?? '', checkpoint: m.checkpointLabel,
       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, killFlash: sim.killFlash, hurtFlash: sim.hurtFlash,
       blackout: history.blackout,
       lowMotion: this.lowMotion, touchControls: this.input.touchEnabled, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,
@@ -465,15 +546,13 @@ class Game {
       continueLabel: this.savedCampaign ? `继续 · ${stageFor(this.savedCampaign.snapshot.mission.scenario)?.title ?? '第一关'}` : undefined,
       nextLabel: this.chapter && nextStage(sim.scenario) ? `继续 · ${nextStage(sim.scenario)!.title}` : undefined,
       error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings,
-        this.equipment.state === 'error' ? `装备载入失败。${this.mode === 'playing' ? '可在暂停菜单重试。' : ''}` : ''].filter(Boolean).join(' '), diagnostics,
+        this.equipment.state === 'error' ? `装备载入失败。${this.mode === 'playing' ? '可在暂停菜单重试。' : ''}` : '',
+        this.sceneAssetErrors.size ? '部分场景素材未能载入，已保留临时模型。' : '',
+        this.characterAssetErrors.size ? '部分人物素材未能载入，已保留临时模型。' : '',
+        this.sound.getStatus().errors.length ? '部分声音素材未能载入；字幕和任务仍可继续。' : ''].filter(Boolean).join(' '), diagnostics,
     };
     this.ui.render(state);
-    // Every current staged sequence supports skip; these three first wait for an
-    // authored event or an actor to arrive. Match the mission's existing guards.
-    const skipAvailable = m.control === 'staged'
-      && !(sim.scenario === 'rescue' && m.phase === 1 && !sim.has('rescue-meng-wounded'))
-      && !(sim.scenario === 'medical' && m.phase === 8 && sim.actors.find(a => a.id === 'xu')?.goals.length)
-      && !(sim.scenario === 'relief' && m.phase === 7 && sim.actors.find(a => a.id === 'zheng')?.goals.length);
+    const skipAvailable = this.canSkipPresentation();
     this.touchControls.render({ enabled: this.input.touchEnabled, mode: this.mode, control: m.control,
       interaction: objective.interaction, epoch: this.presentationEpoch, skipAvailable,
       coverAvailable: sim.scenario === 'rescue' && (m.phase === 0 || m.phase === 2)
@@ -499,9 +578,11 @@ class Game {
     this.disposed = true;
     this.objectiveIndicator.dispose();
     cancelAnimationFrame(this.raf); this.abort.abort(); this.touchControls.dispose(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
-    this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.modelLibrary.dispose(); this.care.dispose(); this.monitor?.dispose();
+    this.generatedScenery?.dispose();
+    this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
     for (const { model, label: tag } of this.characters.values()) { model.dispose(); if (tag) disposeLabel(tag); }
+    this.modelLibrary.dispose();
     this.crowd.dispose();
     disposeLabel(this.markerLabel);
     this.marker.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshBasicMaterial).dispose(); } });

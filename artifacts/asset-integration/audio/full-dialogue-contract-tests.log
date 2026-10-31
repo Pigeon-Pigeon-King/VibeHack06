@@ -1,0 +1,13 @@
+
+> return-to-ganymede@0.6.0 test
+> vitest run tests/asset-audio.test.ts tests/asset-audio-files.test.ts tests/dialogue-events.test.ts
+
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+
+ Test Files  3 passed (3)
+      Tests  56 passed (56)
+   Start at  15:05:06
+   Duration  1.25s (tests 85%, transform 9%, import 5%)
+

@@ -5,6 +5,7 @@ import { OPENING_TIMELINE as T, openingCrowdHitTime, openingHallTime } from '../
 import { emptyIntent, Simulation, type Snapshot } from '../src/mission/Simulation';
 import { SaveStore, type StorageLike } from '../src/persistence/SaveStore';
 import { initializePhysics } from '../src/runtime/Physics';
+import { DIALOGUE_CATALOG } from '../src/audio/catalog';
 
 beforeAll(initializePhysics);
 
@@ -20,7 +21,7 @@ function tick(s: Simulation, input: Partial<typeof emptyIntent> = {}): void {
   s.step({ ...emptyIntent, yaw: s.player.yaw, pitch: s.player.pitch, ...input });
 }
 function until(s: Simulation, time: number): void {
-  for (let n = 0; n < 1800 && !s.mission.complete && s.mission.phaseTime < time; n++) tick(s);
+  for (let n = 0; n < Math.ceil((T.mainhall.finish + 1) / dt) && !s.mission.complete && s.mission.phaseTime < time; n++) tick(s);
 }
 function stagedBoundary(scenario: 'childhood' | 'mainhall'): Simulation {
   const seed = new Simulation(scenario, solids), saved = seed.snapshot(); seed.dispose();
@@ -78,6 +79,13 @@ function persisted(snapshot: Snapshot): Snapshot {
 }
 
 describe('opening chronology and perspective boundary', () => {
+  it('leaves room for the approved complete opening, warning, pinned line and last shout before their next story boundary', () => {
+    const duration = (text: string) => DIALOGUE_CATALOG.find(line => line.scenario === 'mainhall' && line.text === text)!.duration;
+    expect(T.mainhall.bombardment).toBeGreaterThan(duration('最后一批过去了。闻川也在隔断后面，正门的人往柱后收！') + 0.25);
+    expect(T.mainhall.collapse - T.mainhall.bombardment).toBeGreaterThan(duration('趴下！离开吊顶下面！') + 0.25);
+    expect(T.mainhall.breach - T.mainhall.collapse).toBeGreaterThan(duration('腿被压住了……枪够不着。') + 0.12);
+    expect(T.mainhall.execution - T.mainhall.roar).toBeGreaterThan(duration('他们是避难的群众！把枪放下！') + 0.25);
+  });
   it('shows defense, evacuation and losses before the child leaves; he never witnesses the later killings', () => {
     const s = stagedBoundary('childhood');
     const order = ['history-defense-active', 'history-evacuation-underway', 'history-defender-0-down',
@@ -158,7 +166,7 @@ describe('opening chronology and perspective boundary', () => {
       const nearest = Math.min(...H.crowd.map(p => Math.hypot(p[0] - H.rubblePlayer[0], p[2] - H.rubblePlayer[2])));
       expect(nearest).toBeGreaterThanOrEqual(5); expect(nearest).toBeLessThanOrEqual(8);
       expect(H.crowd.every(p => Math.abs(p[2] - H.zhaoCaptured[2]) > 2)).toBe(true);
-      for (let n = 0; n < 1800 && !s.mission.complete; n++) {
+      for (let n = 0; n < Math.ceil((T.mainhall.finish + 1) / dt) && !s.mission.complete; n++) {
         tick(s, { fire: true, reload: true });
         order.forEach(f => { if (s.has(f) && !first.has(f)) first.set(f, n * dt); });
         shots += s.events.filter(e => e.type === 'shot' && e.enemy).length;
@@ -186,7 +194,7 @@ describe('opening chronology and perspective boundary', () => {
         expect(s.has(`history-crowd-victim-${i}`)).toBe(true); expect(a.down).toBe(true);
       });
       expect(falls.get(31)! - falls.get(0)!).toBeGreaterThan(5);
-      expect(s.mission.complete).toBe(true); expect(s.mission.elapsed).toBeLessThan(90);
+      expect(s.mission.complete).toBe(true); expect(s.mission.elapsed).toBeLessThan(60 + T.mainhall.finish + dt * 3);
       expect(s.player.health).toBe(42); expect(s.mission.subtitle).toContain('失去意识');
       expect(s.mission.subtitle).not.toMatch(/获救|救起|父亲/);
     } finally { s.dispose(); }
@@ -236,13 +244,13 @@ describe('opening chronology and perspective boundary', () => {
     } finally { s.dispose(); }
   }, 15000);
 
-  it.each([2, 5, 9.3, 17.2])('restores the S02 performance at %s seconds without replaying previous shots or changing its ending', time => {
+  it.each([T.mainhall.bombardment + 0.5, T.mainhall.collapse + 0.5, T.mainhall.recognition + 0.3, T.mainhall.execution + 0.2])('restores the S02 performance at %s seconds without replaying previous shots or changing its ending', time => {
     const original = stagedBoundary('mainhall');
     let restored: Simulation | undefined;
     try {
       until(original, time);
       const snapshot = original.snapshot();
-      if (time === 9.3) {
+      if (time === T.mainhall.recognition + 0.3) {
         // The former five-person version had no added crowd or their past cues.
         snapshot.actors = snapshot.actors.filter(a => !a.id.startsWith('evac-crowd-')
           && (!a.id.startsWith('late-civilian-') || Number(a.id.slice('late-civilian-'.length)) < 5));
@@ -288,7 +296,7 @@ describe('opening chronology and perspective boundary', () => {
         expect(H.crowd.every((_, i) => person(s, `late-civilian-${i}`).down)).toBe(true);
       }
       let futureShots = 0;
-      for (let n = 0; n < 1800 && !s.mission.complete; n++) {
+      for (let n = 0; n < Math.ceil((T.mainhall.finish + 1) / dt) && !s.mission.complete; n++) {
         tick(s); expect(s.player.height).toBe(0.65);
         futureShots += s.events.filter(e => e.type === 'shot').length;
       }
@@ -297,16 +305,34 @@ describe('opening chronology and perspective boundary', () => {
     } finally { s.dispose(); }
   }, 15000);
 
+  it.each([
+    { oldTime: 4.5, current: T.mainhall.collapse + 0.5, fact: 'history-collapse' },
+    { oldTime: 8, current: T.mainhall.capture + 0.1, fact: 'zhao-captured' },
+    { oldTime: 17.2, current: T.mainhall.execution + 0.2, fact: 'zhao-executed' },
+  ])('continues an existing v2 $fact checkpoint from the shorter timeline without replaying past dialogue or shots', ({ oldTime, current, fact }) => {
+    const original = stagedBoundary('mainhall'); let restored: Simulation | undefined;
+    try {
+      until(original, current); const snapshot = original.snapshot();
+      expect(snapshot.mission.facts).toContain(fact);
+      snapshot.mission.phaseTime = oldTime;
+      restored = new Simulation('mainhall', solids, persisted(snapshot)); tick(restored);
+      expect(restored.events.filter(event => event.type === 'dialogue' || event.type === 'shot')).toEqual([]);
+      expect(restored.player.height).toBe(0.65); expect(restored.has(fact)).toBe(true);
+      tick(original, { skip: true }); until(restored, T.mainhall.finish + dt);
+      expect(terminal(restored)).toEqual(terminal(original));
+    } finally { original.dispose(); restored?.dispose(); }
+  }, 15000);
+
   it('uses saved milestones as a monotonic clock floor while preserving later valid time', () => {
     expect(openingHallTime(0, ['history-collapse'])).toBe(T.mainhall.collapse);
     expect(openingHallTime(2, ['zhao-executed', 'history-collapse'])).toBe(T.mainhall.execution);
-    expect(openingHallTime(19, ['zhao-executed'])).toBe(19);
+    expect(openingHallTime(T.mainhall.execution + 2, ['zhao-executed'])).toBe(T.mainhall.execution + 2);
     expect(openingHallTime(NaN, ['zhou-unconscious'])).toBe(T.mainhall.unconscious);
     expect(openingHallTime(-1, [])).toBe(0);
     expect(openingHallTime(0, ['history-crowd-victim-31'])).toBe(T.mainhall.massacreEnd);
-    expect(openingCrowdHitTime(0)).toBe(7.2); expect(openingCrowdHitTime(31)).toBe(12.4);
-    expect(openingCrowdHitTime(-2)).toBe(7.2); expect(openingCrowdHitTime(Infinity)).toBe(7.2);
-    expect(openingCrowdHitTime(50)).toBe(12.4); expect(openingCrowdHitTime(0, 1)).toBe(7.2);
+    expect(openingCrowdHitTime(0)).toBe(T.mainhall.crowdAttack); expect(openingCrowdHitTime(31)).toBe(T.mainhall.massacreEnd);
+    expect(openingCrowdHitTime(-2)).toBe(T.mainhall.crowdAttack); expect(openingCrowdHitTime(Infinity)).toBe(T.mainhall.crowdAttack);
+    expect(openingCrowdHitTime(50)).toBe(T.mainhall.massacreEnd); expect(openingCrowdHitTime(0, 1)).toBe(T.mainhall.crowdAttack);
     expect(H.crowd.every((_, i) => !i || openingCrowdHitTime(i) > openingCrowdHitTime(i - 1))).toBe(true);
     expect(new Set(H.civilianSafe.map(point => point.join(','))).size).toBe(6);
     expect(H.civilianSafe.every(point => Math.hypot(point[0] - H.childSafe[0], point[2] - H.childSafe[2]) < 5)).toBe(true);

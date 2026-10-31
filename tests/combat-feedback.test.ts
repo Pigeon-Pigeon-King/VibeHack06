@@ -40,8 +40,10 @@ it('confirms only real player impacts: nonlethal hit first, red-priority kill se
       for (let i = 0; i < 4 && sim.ballistics.projectiles.some(p => p.owner === 'player'); i++) sim.step(emptyIntent);
     };
     fire(); expect(target.health).toBe(34); expect(sim.hitFlash).toBeGreaterThan(0); expect(sim.killFlash).toBe(0);
+    expect(sim.events.find(event => event.type === 'hit')?.killed).toBe(false);
     for (let i = 0; i < 15; i++) sim.step(emptyIntent);
     fire(); expect(target.down).toBe(true); expect(sim.kills).toBe(1); expect(sim.killFlash).toBeGreaterThan(0);
+    expect(sim.events.find(event => event.type === 'hit')?.killed).toBe(true);
     for (let i = 0; i < 40; i++) sim.step(emptyIntent);
     expect(sim.hitFlash).toBe(0); expect(sim.killFlash).toBe(0);
     const retry = new Simulation('northgate', [floor], sim.checkpoint);

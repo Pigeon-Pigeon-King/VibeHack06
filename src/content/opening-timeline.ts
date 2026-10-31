@@ -5,9 +5,11 @@ export const OPENING_TIMELINE = {
     rifle: 7, departure: 8, charge: 9, sightLost: 18, finish: 20,
   },
   mainhall: {
-    bombardment: 1.5, collapse: 4, breach: 6.5, weaponReach: 7,
-    crowdAttack: 7.2, capture: 7.6, recognition: 9, massacreEnd: 12.4,
-    roar: 14, execution: 17, unconscious: 21, finish: 24,
+    // Authored against the approved full recordings: opening 6.40 s, warning
+    // 2.96 s, pinned 2.56 s, final shout 3.52 s. Facts never wait on audio I/O.
+    bombardment: 7, collapse: 10.4, breach: 13.2, weaponReach: 13.7,
+    crowdAttack: 13.9, capture: 14.3, recognition: 16, massacreEnd: 19.1,
+    roar: 20.7, execution: 24.6, unconscious: 28.6, finish: 31.6,
   },
 } as const;
 

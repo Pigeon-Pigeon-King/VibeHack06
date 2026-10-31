@@ -1,0 +1,2076 @@
+{
+  "evidence": "Actual Simulation public-input traces replayed through the real Sound queue; controllable Web Audio device uses approved measured durations. No browser rendering or audible human acceptance is claimed.",
+  "runs": [
+    {
+      "scenario": "nightshift",
+      "test": "S03/S04 authored geometry: public-input simulation regressions > S03 work, actual box carry, conversation, equipment and departure preserve normal/skip facts",
+      "file": "chapter-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 59.98333333333121,
+      "skips": 0,
+      "maxQueue": 4,
+      "completionQueue": 2,
+      "completionTailSeconds": 8,
+      "played": 10,
+      "uniquePlayed": 10,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s03.xu.00a52eebe4",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.2c59ad2f9f",
+          "time": 7.399999999999974,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.42c2ec14a8",
+          "time": 10.650000000000103,
+          "offset": 0
+        },
+        {
+          "id": "s03.xu.fbd8222bbb",
+          "time": 13.566666666666915,
+          "offset": 0
+        },
+        {
+          "id": "s03.xu.4ce9212cb3",
+          "time": 28.799999999999642,
+          "offset": 0
+        },
+        {
+          "id": "s03.meng.5761e25007",
+          "time": 34.36666666666535,
+          "offset": 0
+        },
+        {
+          "id": "s03.zhou.a33.f561465b72",
+          "time": 42.96666666666449,
+          "offset": 0
+        },
+        {
+          "id": "s03.zhou.a33.857f74466f",
+          "time": 52.36666666666363,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.b007fab8ff",
+          "time": 57.533333333329615,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.5a6d4110f5",
+          "time": 63.33333333332897,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "nightshift",
+      "test": "S03/S04 authored geometry: public-input simulation regressions > S03 work, actual box carry, conversation, equipment and departure preserve normal/skip facts",
+      "file": "chapter-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 41.26666666666561,
+      "skips": 1,
+      "maxQueue": 4,
+      "completionQueue": 1,
+      "completionTailSeconds": 3.383,
+      "played": 7,
+      "uniquePlayed": 7,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s03.xu.00a52eebe4",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.2c59ad2f9f",
+          "time": 7.399999999999974,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.42c2ec14a8",
+          "time": 10.650000000000103,
+          "offset": 0
+        },
+        {
+          "id": "s03.xu.fbd8222bbb",
+          "time": 13.566666666666915,
+          "offset": 0
+        },
+        {
+          "id": "s03.xu.4ce9212cb3",
+          "time": 28.799999999999642,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.b007fab8ff",
+          "time": 34.199999999998695,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.5a6d4110f5",
+          "time": 39.999999999998295,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "nightshift",
+      "test": "S03/S04 authored geometry: public-input simulation regressions > S03 real carry checkpoint survives SaveStore reload and finishes the remaining route",
+      "file": "chapter-paths.test.ts.json",
+      "startPhase": 3,
+      "startElapsed": 6.816666666666648,
+      "elapsed": 59.94999999999788,
+      "skips": 0,
+      "maxQueue": 3,
+      "completionQueue": 2,
+      "completionTailSeconds": 8.233,
+      "played": 6,
+      "uniquePlayed": 6,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s03.xu.4ce9212cb3",
+          "time": 22.183333333333355,
+          "offset": 0
+        },
+        {
+          "id": "s03.meng.5761e25007",
+          "time": 27.749999999999055,
+          "offset": 0
+        },
+        {
+          "id": "s03.zhou.a33.f561465b72",
+          "time": 36.34999999999819,
+          "offset": 0
+        },
+        {
+          "id": "s03.zhou.a33.857f74466f",
+          "time": 45.749999999997335,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.b007fab8ff",
+          "time": 50.91666666666332,
+          "offset": 0
+        },
+        {
+          "id": "s03.lu.a19.5a6d4110f5",
+          "time": 56.71666666666269,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "workers",
+      "test": "S03/S04 authored geometry: public-input simulation regressions > S04 observes, climbs/descends and hands off nine stable IDs (restore doors=false)",
+      "file": "chapter-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 145.41666666667453,
+      "skips": 0,
+      "maxQueue": 2,
+      "completionQueue": 1,
+      "completionTailSeconds": 0.167,
+      "played": 14,
+      "uniquePlayed": 9,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s04.zheng.3dea5190cf",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s04.zhou.a33.f27f49ece7",
+          "time": 13.216666666666903,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.8bf142d87c",
+          "time": 23.350000000000033,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.634fec787b",
+          "time": 28.74999999999934,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.8adc6efdc8",
+          "time": 34.74999999999858,
+          "offset": 0
+        },
+        {
+          "id": "s04.lu.a19.485b7c85a7",
+          "time": 49.59999999999759,
+          "offset": 0
+        },
+        {
+          "id": "s04.meng.53f12d6ef0",
+          "time": 55.08333333332925,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 64.38333333332872,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 76.39999999999397,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 88.4166666666591,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 100.43333333332423,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 112.44999999998936,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 124.46666666665449,
+          "offset": 0
+        },
+        {
+          "id": "s04.luo.93d1930e8d",
+          "time": 139.81666666666283,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "workers",
+      "test": "S03/S04 authored geometry: public-input simulation regressions > S04 observes, climbs/descends and hands off nine stable IDs (restore doors=true)",
+      "file": "chapter-paths.test.ts.json",
+      "startPhase": 5,
+      "startElapsed": 49.81666666666512,
+      "elapsed": 145.81666666667485,
+      "skips": 0,
+      "maxQueue": 1,
+      "completionQueue": 1,
+      "completionTailSeconds": 0.017,
+      "played": 8,
+      "uniquePlayed": 3,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s04.meng.53f12d6ef0",
+          "time": 3.099999999999994,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 14.116666666666775,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 26.133333333332207,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 38.14999999999734,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 50.166666666662465,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 62.18333333332759,
+          "offset": 0
+        },
+        {
+          "id": "s04.zheng.13b0479aaa",
+          "time": 74.19999999999271,
+          "offset": 0
+        },
+        {
+          "id": "s04.luo.93d1930e8d",
+          "time": 90.24999999999095,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "escort",
+      "test": "S08 escort: public-input convoy and cooperative transfer > walks both bridge stairs and escorts the same two patients and two attendants; natural/skip endings converge",
+      "file": "escort-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 309.3833333333806,
+      "skips": 2,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 13,
+      "uniquePlayed": 13,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s08.luo.0d8f034dfe",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s08.luo.352e50a85c",
+          "time": 4.683333333333322,
+          "offset": 0
+        },
+        {
+          "id": "s08.zhou.a33.d2c84d3f7e",
+          "time": 5.783333333333315,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.2e278111b8",
+          "time": 8.216666666666656,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.d09fb21b51",
+          "time": 16.716666666667003,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.7408c38687",
+          "time": 28.10000000000003,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.842fe50bb0",
+          "time": 74.28333333332675,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.38db39b957",
+          "time": 91.64999999999114,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.3b6da49c78",
+          "time": 99.24999999999052,
+          "offset": 0
+        },
+        {
+          "id": "s08.lu.a19.1a2d8f4eeb",
+          "time": 152.26666666669374,
+          "offset": 0
+        },
+        {
+          "id": "s08.escort_medic.504ec695ea",
+          "time": 170.68333333337515,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.cc1191565d",
+          "time": 277.5833333334378,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.9cafa9f093",
+          "time": 287.8666666668128,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "escort",
+      "test": "S08 escort: public-input convoy and cooperative transfer > walks both bridge stairs and escorts the same two patients and two attendants; natural/skip endings converge",
+      "file": "escort-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 392.8499999999714,
+      "skips": 0,
+      "maxQueue": 3,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 23,
+      "uniquePlayed": 23,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s08.luo.0d8f034dfe",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s08.luo.352e50a85c",
+          "time": 4.683333333333322,
+          "offset": 0
+        },
+        {
+          "id": "s08.luo.49eb40e8f1",
+          "time": 11.600000000000152,
+          "offset": 0
+        },
+        {
+          "id": "s08.lu.a19.3ce1311008",
+          "time": 19.483333333333828,
+          "offset": 0
+        },
+        {
+          "id": "s08.zhou.a33.ad886df558",
+          "time": 25.53333333333316,
+          "offset": 0
+        },
+        {
+          "id": "s08.lu.a19.2ce9c99284",
+          "time": 32.46666666666565,
+          "offset": 0
+        },
+        {
+          "id": "s08.zhou.a33.d2c84d3f7e",
+          "time": 39.63333333333191,
+          "offset": 0
+        },
+        {
+          "id": "s08.lu.a19.08c76e9f9f",
+          "time": 44.883333333330974,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.1301b9ac8f",
+          "time": 51.96666666666347,
+          "offset": 0
+        },
+        {
+          "id": "s08.zhou.a33.37e54a99e9",
+          "time": 60.966666666662526,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.e3a50eea6a",
+          "time": 69.16666666666164,
+          "offset": 0
+        },
+        {
+          "id": "s08.lu.a19.235799130c",
+          "time": 76.24999999999415,
+          "offset": 0
+        },
+        {
+          "id": "s08.zhou.a33.1d1ce9fb89",
+          "time": 82.29999999999337,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.2e278111b8",
+          "time": 90.21666666665959,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.d09fb21b51",
+          "time": 98.73333333332535,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.7408c38687",
+          "time": 110.23333333332421,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.842fe50bb0",
+          "time": 157.63333333336342,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.38db39b957",
+          "time": 174.8833333333923,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.3b6da49c78",
+          "time": 182.4333333334009,
+          "offset": 0
+        },
+        {
+          "id": "s08.lu.a19.1a2d8f4eeb",
+          "time": 235.8500000001602,
+          "offset": 0
+        },
+        {
+          "id": "s08.escort_medic.504ec695ea",
+          "time": 254.20000000017492,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.cc1191565d",
+          "time": 361.05000000009517,
+          "offset": 0
+        },
+        {
+          "id": "s08.meng.9cafa9f093",
+          "time": 371.3333333333278,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "escort",
+      "test": "S08 escort: public-input convoy and cooperative transfer > restores real combat, exchange and return checkpoints including living enemies that already left the field",
+      "file": "escort-paths.test.ts.json",
+      "startPhase": 14,
+      "startElapsed": 363.19999999999834,
+      "elapsed": 392.7666666666381,
+      "skips": 0,
+      "maxQueue": 0,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 0,
+      "uniquePlayed": 0,
+      "errors": [],
+      "playback": []
+    },
+    {
+      "scenario": "rescue",
+      "test": "final campaign whitebox through public intent > rescue: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 230.633333333409,
+      "skips": 0,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 15,
+      "uniquePlayed": 15,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s10.meng.c69108efac",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.62b1c35241",
+          "time": 8.199999999999987,
+          "offset": 0
+        },
+        {
+          "id": "s10.zhou.a33.3a06e7ae26",
+          "time": 13.68333333333368,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.c760dcad4d",
+          "time": 34.56666666666607,
+          "offset": 0
+        },
+        {
+          "id": "s10.meng.498f6598c2",
+          "time": 38.299999999998306,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.e078ac1223",
+          "time": 42.833333333331204,
+          "offset": 0
+        },
+        {
+          "id": "s10.zhou.a33.a94aee3fde",
+          "time": 48.633333333330555,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.1d53c234b5",
+          "time": 55.48333333332984,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.e8e7755611",
+          "time": 69.53333333332904,
+          "offset": 0
+        },
+        {
+          "id": "s10.zhou.a33.916326edad",
+          "time": 76.54999999999369,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.0b1123bf96",
+          "time": 81.31666666665983,
+          "offset": 0
+        },
+        {
+          "id": "s10.rescue_medic.0d317d3a83",
+          "time": 106.28333333332507,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.6ab5a8df4e",
+          "time": 116.28333333332323,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.1350213b48",
+          "time": 143.45000000000087,
+          "offset": 0
+        },
+        {
+          "id": "s10.receiving_medic.c9ddeb4e9d",
+          "time": 158.4500000000247,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "rescue",
+      "test": "final campaign whitebox through public intent > rescue: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 60.56666666666451,
+      "skips": 3,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 8,
+      "uniquePlayed": 8,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s10.meng.c69108efac",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.62b1c35241",
+          "time": 8.199999999999987,
+          "offset": 0
+        },
+        {
+          "id": "s10.zhou.a33.3a06e7ae26",
+          "time": 13.68333333333368,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.c760dcad4d",
+          "time": 34.56666666666607,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.e078ac1223",
+          "time": 37.58333333333174,
+          "offset": 0
+        },
+        {
+          "id": "s10.zhou.a33.a94aee3fde",
+          "time": 43.79999999999798,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.1d53c234b5",
+          "time": 43.816666666664325,
+          "offset": 0
+        },
+        {
+          "id": "s10.zheng.e8e7755611",
+          "time": 60.53333333333004,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "rescue",
+      "test": "final campaign whitebox through public intent > rescue: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 9,
+      "startElapsed": 143.55000000000638,
+      "elapsed": 230.4000000000755,
+      "skips": 0,
+      "maxQueue": 1,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 1,
+      "uniquePlayed": 1,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s10.receiving_medic.c9ddeb4e9d",
+          "time": 14.983333333333658,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "medical",
+      "test": "final campaign whitebox through public intent > medical: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 136.18333333333385,
+      "skips": 0,
+      "maxQueue": 5,
+      "completionQueue": 1,
+      "completionTailSeconds": 4.283,
+      "played": 18,
+      "uniquePlayed": 18,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s11.zheng.f59d8fe014",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s11.registration_nurse.1365334bb3",
+          "time": 6.849999999999968,
+          "offset": 0
+        },
+        {
+          "id": "s11.registration_nurse.e574f58d65",
+          "time": 11.133333333333452,
+          "offset": 0
+        },
+        {
+          "id": "s11.doctor.9c43d15e4a",
+          "time": 16.78333333333395,
+          "offset": 0
+        },
+        {
+          "id": "s11.doctor.4c37f62533",
+          "time": 22.116666666666788,
+          "offset": 0
+        },
+        {
+          "id": "s11.lu.a19.8a41e77f52",
+          "time": 32.1666666666659,
+          "offset": 0
+        },
+        {
+          "id": "s11.zhou.a33.b95a6f54af",
+          "time": 38.36666666666512,
+          "offset": 0
+        },
+        {
+          "id": "s11.doctor.bba36decba",
+          "time": 39.84999999999837,
+          "offset": 0
+        },
+        {
+          "id": "s11.xu.4c1067327c",
+          "time": 46.049999999998015,
+          "offset": 0
+        },
+        {
+          "id": "s11.nurse.5e53ee9d11",
+          "time": 52.099999999996925,
+          "offset": 0
+        },
+        {
+          "id": "s11.xu.1e1972500c",
+          "time": 64.7499999999962,
+          "offset": 0
+        },
+        {
+          "id": "s11.doctor.d7769c8d8d",
+          "time": 86.7666666666597,
+          "offset": 0
+        },
+        {
+          "id": "s11.doctor.9a41283112",
+          "time": 94.7666666666584,
+          "offset": 0
+        },
+        {
+          "id": "s11.lu.a19.1135ba1c6d",
+          "time": 104.59999999999036,
+          "offset": 0
+        },
+        {
+          "id": "s11.xu.c990896527",
+          "time": 112.18333333332302,
+          "offset": 0
+        },
+        {
+          "id": "s11.zheng.588dff1867",
+          "time": 118.16666666665569,
+          "offset": 0
+        },
+        {
+          "id": "s11.xu.3d53fcba04",
+          "time": 124.16666666665502,
+          "offset": 0
+        },
+        {
+          "id": "s11.luo.0b745b9607",
+          "time": 132.61666666665806,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "medical",
+      "test": "final campaign whitebox through public intent > medical: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 32.99999999999941,
+      "skips": 3,
+      "maxQueue": 5,
+      "completionQueue": 1,
+      "completionTailSeconds": 4.283,
+      "played": 6,
+      "uniquePlayed": 6,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s11.zheng.f59d8fe014",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s11.xu.4c1067327c",
+          "time": 5.749999999999972,
+          "offset": 0
+        },
+        {
+          "id": "s11.nurse.5e53ee9d11",
+          "time": 16.750000000000316,
+          "offset": 0
+        },
+        {
+          "id": "s11.lu.a19.1135ba1c6d",
+          "time": 19.400000000000386,
+          "offset": 0
+        },
+        {
+          "id": "s11.xu.3d53fcba04",
+          "time": 20.983333333333483,
+          "offset": 0
+        },
+        {
+          "id": "s11.luo.0b745b9607",
+          "time": 29.433333333332698,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "medical",
+      "test": "final campaign whitebox through public intent > medical: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 9,
+      "startElapsed": 123.94999999999425,
+      "elapsed": 135.95000000000033,
+      "skips": 0,
+      "maxQueue": 1,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 1,
+      "uniquePlayed": 1,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s11.luo.0b745b9607",
+          "time": 3.9999999999999907,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "epilogue",
+      "test": "final campaign whitebox through public intent > epilogue: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 144.3666666666737,
+      "skips": 0,
+      "maxQueue": 3,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 13,
+      "uniquePlayed": 13,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s12.zheng.f056aa1e54",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s12.lu.a19.19d268fe5a",
+          "time": 8.85000000000006,
+          "offset": 0
+        },
+        {
+          "id": "s12.lu.a19.44c4702c63",
+          "time": 16.41666666666721,
+          "offset": 0
+        },
+        {
+          "id": "s12.zheng.5b7a2f42b9",
+          "time": 17.416666666667155,
+          "offset": 0
+        },
+        {
+          "id": "s12.lu.a19.e37993128f",
+          "time": 24.666666666666757,
+          "offset": 0
+        },
+        {
+          "id": "s12.zheng.7a79e815bc",
+          "time": 29.266666666665998,
+          "offset": 0
+        },
+        {
+          "id": "s12.zheng.531bba91d6",
+          "time": 33.716666666665745,
+          "offset": 0
+        },
+        {
+          "id": "s12.luo.3edcbb8ed7",
+          "time": 92.84999999999111,
+          "offset": 0
+        },
+        {
+          "id": "s12.luo.249c1706e8",
+          "time": 98.01666666665739,
+          "offset": 0
+        },
+        {
+          "id": "s12.fleet_liaison.357d0099c5",
+          "time": 105.66666666665657,
+          "offset": 0
+        },
+        {
+          "id": "s12.luo.38084a6fc4",
+          "time": 111.06666666665593,
+          "offset": 0
+        },
+        {
+          "id": "s12.luo.3d7b502797",
+          "time": 116.23333333332178,
+          "offset": 0
+        },
+        {
+          "id": "s12.lu.a19.5b92705ad1",
+          "time": 121.48333333332148,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "epilogue",
+      "test": "final campaign whitebox through public intent > epilogue: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 99.76666666666229,
+      "skips": 2,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 6,
+      "uniquePlayed": 6,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s12.zheng.f056aa1e54",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s12.zheng.7a79e815bc",
+          "time": 0.8166666666666675,
+          "offset": 0
+        },
+        {
+          "id": "s12.zheng.531bba91d6",
+          "time": 5.266666666666647,
+          "offset": 0
+        },
+        {
+          "id": "s12.luo.3edcbb8ed7",
+          "time": 67.04999999999399,
+          "offset": 0
+        },
+        {
+          "id": "s12.luo.3d7b502797",
+          "time": 68.01666666666048,
+          "offset": 0
+        },
+        {
+          "id": "s12.lu.a19.5b92705ad1",
+          "time": 73.26666666666,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "epilogue",
+      "test": "final campaign whitebox through public intent > epilogue: real actions, natural/skip results and persisted phase restore",
+      "file": "finale-paths.test.ts.json",
+      "startPhase": 7,
+      "startElapsed": 114.01666666666148,
+      "elapsed": 144.3666666666737,
+      "skips": 0,
+      "maxQueue": 0,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 0,
+      "uniquePlayed": 0,
+      "errors": [],
+      "playback": []
+    },
+    {
+      "scenario": "flank",
+      "test": "S07 flank: public-input stairs, combat and split routes > physically uses both platform stairs and the split routes before full disclosure and natural/skip endings converge",
+      "file": "flank-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 213.81666666672896,
+      "skips": 1,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 16,
+      "uniquePlayed": 16,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s07.zheng.cb6a9d9e14",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s07.zheng.5e731a2ea1",
+          "time": 6.883333333333314,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.298a875819",
+          "time": 27.083333333333226,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.adf7974def",
+          "time": 35.533333333332,
+          "offset": 0
+        },
+        {
+          "id": "s07.meng.016c48e444",
+          "time": 71.26666666666283,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.8e895b69b2",
+          "time": 81.31666666666084,
+          "offset": 0
+        },
+        {
+          "id": "s07.meng.903bc9cfaa",
+          "time": 138.51666666666654,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.2fdbed83bd",
+          "time": 138.5333333333409,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.a956f90d2f",
+          "time": 143.80000000001175,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.7cb4a50a7e",
+          "time": 153.2000000000234,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.5d49a79a73",
+          "time": 162.200000000038,
+          "offset": 0
+        },
+        {
+          "id": "s07.lu.a19.288fc41669",
+          "time": 171.81666666671944,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.149b3531d8",
+          "time": 177.01666666673117,
+          "offset": 0
+        },
+        {
+          "id": "s07.zheng.c4cd351104",
+          "time": 186.31666666674272,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.0db42c61f0",
+          "time": 193.20000000008886,
+          "offset": 0
+        },
+        {
+          "id": "s07.meng.c5782d9829",
+          "time": 204.10000000010302,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "flank",
+      "test": "S07 flank: public-input stairs, combat and split routes > physically uses both platform stairs and the split routes before full disclosure and natural/skip endings converge",
+      "file": "flank-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 241.41666666675093,
+      "skips": 0,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 19,
+      "uniquePlayed": 19,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s07.zheng.cb6a9d9e14",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s07.zheng.5e731a2ea1",
+          "time": 6.883333333333314,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.298a875819",
+          "time": 27.083333333333226,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.adf7974def",
+          "time": 35.533333333332,
+          "offset": 0
+        },
+        {
+          "id": "s07.meng.016c48e444",
+          "time": 71.26666666666283,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.8e895b69b2",
+          "time": 81.31666666666084,
+          "offset": 0
+        },
+        {
+          "id": "s07.meng.903bc9cfaa",
+          "time": 138.51666666666654,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.f9d7f153ac",
+          "time": 144.93333333334598,
+          "offset": 0
+        },
+        {
+          "id": "s07.lu.a19.368e84c7f1",
+          "time": 152.51666666669044,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.69a23bffd7",
+          "time": 157.3166666667003,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.2fdbed83bd",
+          "time": 166.03333333337773,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.a956f90d2f",
+          "time": 171.40000000005557,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.7cb4a50a7e",
+          "time": 180.8000000000673,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.5d49a79a73",
+          "time": 189.8000000000819,
+          "offset": 0
+        },
+        {
+          "id": "s07.lu.a19.288fc41669",
+          "time": 199.41666666676335,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.149b3531d8",
+          "time": 204.61666666677507,
+          "offset": 0
+        },
+        {
+          "id": "s07.zheng.c4cd351104",
+          "time": 213.91666666678663,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.0db42c61f0",
+          "time": 220.80000000013277,
+          "offset": 0
+        },
+        {
+          "id": "s07.meng.c5782d9829",
+          "time": 231.70000000014693,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "flank",
+      "test": "S07 flank: public-input stairs, combat and split routes > restores actual withdrawal, split-route and report checkpoints without erasing participants or prior facts",
+      "file": "flank-paths.test.ts.json",
+      "startPhase": 6,
+      "startElapsed": 166.116666666691,
+      "elapsed": 241.41666666675093,
+      "skips": 0,
+      "maxQueue": 1,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 8,
+      "uniquePlayed": 8,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s07.zhou.a33.a956f90d2f",
+          "time": 5.28333333333332,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.7cb4a50a7e",
+          "time": 14.683333333337874,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.5d49a79a73",
+          "time": 23.683333333344937,
+          "offset": 0
+        },
+        {
+          "id": "s07.lu.a19.288fc41669",
+          "time": 33.300000000018194,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.149b3531d8",
+          "time": 38.500000000025494,
+          "offset": 0
+        },
+        {
+          "id": "s07.zheng.c4cd351104",
+          "time": 47.800000000029115,
+          "offset": 0
+        },
+        {
+          "id": "s07.zhou.a33.0db42c61f0",
+          "time": 54.68333333336942,
+          "offset": 0
+        },
+        {
+          "id": "s07.meng.c5782d9829",
+          "time": 65.5833333333743,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "frontgate",
+      "test": "S05 continuous northgate encounter > uses no E input to move both groups behind cover, receive a real relief and preserve withheld knowledge on natural/skip/restore playback",
+      "file": "frontgate-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 118.69999999999455,
+      "skips": 0,
+      "maxQueue": 3,
+      "completionQueue": 1,
+      "completionTailSeconds": 1.067,
+      "played": 9,
+      "uniquePlayed": 9,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s05.zheng.49a847d2cc",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s05.zhou.a33.88cfb64fde",
+          "time": 6.533333333333311,
+          "offset": 0
+        },
+        {
+          "id": "s05.zheng.975e54aa91",
+          "time": 15.300000000000335,
+          "offset": 0
+        },
+        {
+          "id": "s05.zheng.ff0c1b5833",
+          "time": 39.066666666665725,
+          "offset": 0
+        },
+        {
+          "id": "s05.zheng.6cf4e4ff2f",
+          "time": 46.76666666666482,
+          "offset": 0
+        },
+        {
+          "id": "s05.relief_team.fa19be7c86",
+          "time": 82.06666666666261,
+          "offset": 0
+        },
+        {
+          "id": "s05.frontgate_liaison.857fa508b1",
+          "time": 101.58333333332689,
+          "offset": 0
+        },
+        {
+          "id": "s05.lu.a19.d53e201d98",
+          "time": 109.31666666665829,
+          "offset": 0
+        },
+        {
+          "id": "s05.zhou.a33.b9812e5b53",
+          "time": 111.99999999999126,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "frontgate",
+      "test": "S05 continuous northgate encounter > uses no E input to move both groups behind cover, receive a real relief and preserve withheld knowledge on natural/skip/restore playback",
+      "file": "frontgate-paths.test.ts.json",
+      "startPhase": 3,
+      "startElapsed": 46.78333333333196,
+      "elapsed": 104.94999999999533,
+      "skips": 1,
+      "maxQueue": 1,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 2,
+      "uniquePlayed": 2,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s05.relief_team.fa19be7c86",
+          "time": 35.33333333333261,
+          "offset": 0
+        },
+        {
+          "id": "s05.frontgate_liaison.857fa508b1",
+          "time": 54.84999999999689,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "childhood",
+      "test": "S01/S02 historical hall: public-input scene regressions > keeps a late child safe and 1.1m tall, then gives natural/skip the same evacuation ending",
+      "file": "opening-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 87.34999999999633,
+      "skips": 0,
+      "maxQueue": 3,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 7,
+      "uniquePlayed": 7,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s01.lu_jianping.09f2e5d6ac",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s01.lu_jianping.50b13ff931",
+          "time": 59.999999999997875,
+          "offset": 0
+        },
+        {
+          "id": "s01.lu_jianping.01463ba524",
+          "time": 65.79999999999727,
+          "offset": 0
+        },
+        {
+          "id": "s01.zhao.3ab18e748a",
+          "time": 71.04999999999674,
+          "offset": 0
+        },
+        {
+          "id": "s01.zhao.72298e7c75",
+          "time": 74.78333333332958,
+          "offset": 0
+        },
+        {
+          "id": "s01.lu_jianping.00e1e4f438",
+          "time": 78.51666666666247,
+          "offset": 0
+        },
+        {
+          "id": "s01.evacuator.0038448428",
+          "time": 81.68333333332896,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "childhood",
+      "test": "S01/S02 historical hall: public-input scene regressions > keeps a late child safe and 1.1m tall, then gives natural/skip the same evacuation ending",
+      "file": "opening-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 67.36666666666413,
+      "skips": 1,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 3,
+      "uniquePlayed": 3,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s01.lu_jianping.09f2e5d6ac",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s01.lu_jianping.50b13ff931",
+          "time": 59.999999999997875,
+          "offset": 0
+        },
+        {
+          "id": "s01.lu_jianping.01463ba524",
+          "time": 65.79999999999727,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "mainhall",
+      "test": "S01/S02 historical hall: public-input scene regressions > physically evacuates six residents before fixed hall loss, preserving natural/skip terminal facts and positions",
+      "file": "opening-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 64.69999999999762,
+      "skips": 0,
+      "maxQueue": 3,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 11,
+      "uniquePlayed": 11,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s02.zhao.e5c858721f",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhou.a23.2155707692",
+          "time": 8.600000000000003,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.40fab2fa0a",
+          "time": 15.116666666667339,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.0b0e9ca28f",
+          "time": 22.91666666666704,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.0ad2290e72",
+          "time": 33.066666666666464,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.e402dc63ac",
+          "time": 40.083333333331474,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhou.a23.d522c287da",
+          "time": 43.46666666666424,
+          "offset": 0
+        },
+        {
+          "id": "s02.hall_resident.2412435f5c",
+          "time": 46.96666666666367,
+          "offset": 0
+        },
+        {
+          "id": "s02.shao.8ee24e2c47",
+          "time": 48.13333333333022,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhou.a23.1ca4b57c7f",
+          "time": 49.6166666666634,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.8c3552ee7c",
+          "time": 53.76666666666305,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "mainhall",
+      "test": "S01/S02 historical hall: public-input scene regressions > physically evacuates six residents before fixed hall loss, preserving natural/skip terminal facts and positions",
+      "file": "opening-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 33.099999999999405,
+      "skips": 1,
+      "maxQueue": 3,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 5,
+      "uniquePlayed": 5,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s02.zhao.e5c858721f",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhou.a23.2155707692",
+          "time": 8.600000000000003,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.40fab2fa0a",
+          "time": 15.116666666667339,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.0b0e9ca28f",
+          "time": 22.91666666666704,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.0ad2290e72",
+          "time": 33.066666666666464,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "mainhall",
+      "test": "S01/S02 historical hall: public-input scene regressions > restores the genuine standing hall-entry checkpoint, then collapses at the authored time with six residents safe",
+      "file": "opening-paths.test.ts.json",
+      "startPhase": 4,
+      "startElapsed": 33.08333333333274,
+      "elapsed": 64.69999999999762,
+      "skips": 0,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 6,
+      "uniquePlayed": 6,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s02.zhao.e402dc63ac",
+          "time": 6.9999999999999805,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhou.a23.d522c287da",
+          "time": 10.383333333333049,
+          "offset": 0
+        },
+        {
+          "id": "s02.hall_resident.2412435f5c",
+          "time": 13.883333333332853,
+          "offset": 0
+        },
+        {
+          "id": "s02.shao.8ee24e2c47",
+          "time": 15.049999999999502,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhou.a23.1ca4b57c7f",
+          "time": 16.533333333332767,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.8c3552ee7c",
+          "time": 20.683333333332413,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "mainhall",
+      "test": "S01/S02 historical hall: public-input scene regressions > restores residents already walking through the gate without releasing them again or requiring E",
+      "file": "opening-paths.test.ts.json",
+      "startPhase": 2,
+      "startElapsed": 5.18333333333332,
+      "elapsed": 64.69999999999762,
+      "skips": 0,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 8,
+      "uniquePlayed": 8,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s02.zhao.0b0e9ca28f",
+          "time": 4.266666666666657,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.0ad2290e72",
+          "time": 27.883333333333432,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.e402dc63ac",
+          "time": 34.89999999999844,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhou.a23.d522c287da",
+          "time": 38.28333333333121,
+          "offset": 0
+        },
+        {
+          "id": "s02.hall_resident.2412435f5c",
+          "time": 41.78333333333064,
+          "offset": 0
+        },
+        {
+          "id": "s02.shao.8ee24e2c47",
+          "time": 42.94999999999719,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhou.a23.1ca4b57c7f",
+          "time": 44.43333333333037,
+          "offset": 0
+        },
+        {
+          "id": "s02.zhao.8c3552ee7c",
+          "time": 48.58333333333002,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "relief",
+      "test": "S09 relief: public-input handover and actual covering fire > physically hands over the posts, crosses under allied fire and accepts care; natural/skip endings converge",
+      "file": "relief-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 190.93333333337742,
+      "skips": 2,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 10,
+      "uniquePlayed": 10,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s09.zheng.4f87a36835",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.e743c8d208",
+          "time": 7.649999999999978,
+          "offset": 0
+        },
+        {
+          "id": "s09.meng.ddf06bc6f3",
+          "time": 56.89999999999805,
+          "offset": 0
+        },
+        {
+          "id": "s09.meng.7e571872d7",
+          "time": 57.91666666666455,
+          "offset": 0
+        },
+        {
+          "id": "s09.meng.04f3f9df35",
+          "time": 65.58333333333056,
+          "offset": 0
+        },
+        {
+          "id": "s09.zheng.23a8e2055e",
+          "time": 80.64999999999618,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.0bd334ebdb",
+          "time": 89.79999999999441,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.219c46afe9",
+          "time": 89.98333333332731,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.8817233bfe",
+          "time": 96.11666666666028,
+          "offset": 0
+        },
+        {
+          "id": "s09.lu.a19.e9a5ced215",
+          "time": 106.79999999999247,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "relief",
+      "test": "S09 relief: public-input handover and actual covering fire > physically hands over the posts, crosses under allied fire and accepts care; natural/skip endings converge",
+      "file": "relief-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 255.3000000000953,
+      "skips": 0,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 18,
+      "uniquePlayed": 18,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s09.zheng.4f87a36835",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.e743c8d208",
+          "time": 7.649999999999978,
+          "offset": 0
+        },
+        {
+          "id": "s09.meng.ddf06bc6f3",
+          "time": 56.89999999999805,
+          "offset": 0
+        },
+        {
+          "id": "s09.meng.f7305e6354",
+          "time": 64.29999999999752,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.925d1520a9",
+          "time": 71.14999999999677,
+          "offset": 0
+        },
+        {
+          "id": "s09.meng.71d32bf439",
+          "time": 77.28333333332938,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.f0f4cf3ca7",
+          "time": 83.48333333332864,
+          "offset": 0
+        },
+        {
+          "id": "s09.meng.7e571872d7",
+          "time": 90.56666666666098,
+          "offset": 0
+        },
+        {
+          "id": "s09.meng.04f3f9df35",
+          "time": 96.36666666666045,
+          "offset": 0
+        },
+        {
+          "id": "s09.zheng.23a8e2055e",
+          "time": 108.64999999999308,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.0bd334ebdb",
+          "time": 117.79999999999131,
+          "offset": 0
+        },
+        {
+          "id": "s09.zheng.1a3bae1366",
+          "time": 124.9833333333238,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.da2dbe04c8",
+          "time": 130.96666666665894,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou_sister.message.37e741ca84",
+          "time": 136.9666666666659,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou_sister.message.9c2ce2c675",
+          "time": 146.9833333333453,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.219c46afe9",
+          "time": 155.98333333336035,
+          "offset": 0
+        },
+        {
+          "id": "s09.zhou.a33.8817233bfe",
+          "time": 162.10000000003902,
+          "offset": 0
+        },
+        {
+          "id": "s09.lu.a19.e9a5ced215",
+          "time": 172.783333333388,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "relief",
+      "test": "S09 relief: public-input handover and actual covering fire > restores actual incoming-team, handover, seated-care and final-report snapshots without replaying or erasing facts",
+      "file": "relief-paths.test.ts.json",
+      "startPhase": 9,
+      "startElapsed": 156.01666666668297,
+      "elapsed": 254.8833333334283,
+      "skips": 0,
+      "maxQueue": 1,
+      "completionQueue": 0,
+      "completionTailSeconds": 0,
+      "played": 1,
+      "uniquePlayed": 1,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s09.lu.a19.e9a5ced215",
+          "time": 8.98333333333336,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "transfer",
+      "test": "S06 transfer: public-input routes and causality > moves all three patients and Xu through the physical gate before natural/skip argument endings converge",
+      "file": "transfer-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 44.98333333333206,
+      "skips": 1,
+      "maxQueue": 3,
+      "completionQueue": 1,
+      "completionTailSeconds": 6.85,
+      "played": 8,
+      "uniquePlayed": 8,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s06.hospital_liaison.63aee8ae13",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s06.hospital_liaison.74beac1d4a",
+          "time": 6.049999999999983,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.6bddc5cdbb",
+          "time": 15.300000000000457,
+          "offset": 0
+        },
+        {
+          "id": "s06.xu.b5757e7b9e",
+          "time": 18.466666666667017,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.8a01f63b82",
+          "time": 34.633333333332764,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.f935c2a652",
+          "time": 39.51666666666504,
+          "offset": 0
+        },
+        {
+          "id": "s06.luo.c9cba769e7",
+          "time": 39.53333333333144,
+          "offset": 0
+        },
+        {
+          "id": "s06.zhou.a33.00b4379821",
+          "time": 44.7833333333311,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "transfer",
+      "test": "S06 transfer: public-input routes and causality > moves all three patients and Xu through the physical gate before natural/skip argument endings converge",
+      "file": "transfer-paths.test.ts.json",
+      "startPhase": 0,
+      "startElapsed": 0,
+      "elapsed": 115.98333333332803,
+      "skips": 0,
+      "maxQueue": 3,
+      "completionQueue": 1,
+      "completionTailSeconds": 6.85,
+      "played": 18,
+      "uniquePlayed": 18,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s06.hospital_liaison.63aee8ae13",
+          "time": 0,
+          "offset": 0
+        },
+        {
+          "id": "s06.hospital_liaison.74beac1d4a",
+          "time": 6.049999999999983,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.6bddc5cdbb",
+          "time": 15.300000000000457,
+          "offset": 0
+        },
+        {
+          "id": "s06.xu.b5757e7b9e",
+          "time": 18.466666666667017,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.8a01f63b82",
+          "time": 34.633333333332764,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.f935c2a652",
+          "time": 39.51666666666504,
+          "offset": 0
+        },
+        {
+          "id": "s06.zhou.a33.8a96e1929d",
+          "time": 45.5333333333311,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.ab3962e338",
+          "time": 52.93333333333003,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.974b5426c4",
+          "time": 58.3333333333294,
+          "offset": 0
+        },
+        {
+          "id": "s06.zhou.a33.cc26a0d38b",
+          "time": 64.86666666666204,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.b894eb0885",
+          "time": 71.1499999999947,
+          "offset": 0
+        },
+        {
+          "id": "s06.zhou.a33.6f36b63b4f",
+          "time": 76.39999999999408,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.b372e487a6",
+          "time": 82.68333333332673,
+          "offset": 0
+        },
+        {
+          "id": "s06.zhou.a33.dc17fe847b",
+          "time": 88.5333333333264,
+          "offset": 0
+        },
+        {
+          "id": "s06.lu.a19.0100c113e9",
+          "time": 95.53333333332561,
+          "offset": 0
+        },
+        {
+          "id": "s06.zhou.a33.1f7e2055f1",
+          "time": 103.53333333332478,
+          "offset": 0
+        },
+        {
+          "id": "s06.luo.c9cba769e7",
+          "time": 110.53333333332395,
+          "offset": 0
+        },
+        {
+          "id": "s06.zhou.a33.00b4379821",
+          "time": 115.78333333332323,
+          "offset": 0
+        }
+      ]
+    },
+    {
+      "scenario": "transfer",
+      "test": "S06 transfer: public-input routes and causality > rebuilds actual open-gate and argument checkpoints, then resumes the work and hand-care sequence",
+      "file": "transfer-paths.test.ts.json",
+      "startPhase": 5,
+      "startElapsed": 110.54999999999501,
+      "elapsed": 115.98333333332803,
+      "skips": 0,
+      "maxQueue": 1,
+      "completionQueue": 1,
+      "completionTailSeconds": 2.367,
+      "played": 1,
+      "uniquePlayed": 1,
+      "errors": [],
+      "playback": [
+        {
+          "id": "s06.zhou.a33.00b4379821",
+          "time": 0.7500000000000007,
+          "offset": 0
+        }
+      ]
+    }
+  ]
+}

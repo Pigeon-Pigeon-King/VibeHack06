@@ -1,0 +1,59 @@
+{
+  "recordedAtUtc": "2026-10-31T07:08:42.204525+00:00",
+  "counts": {
+    "music": 11,
+    "sfx": 18,
+    "voice": 175
+  },
+  "dialogueMappings": 184,
+  "bytes": 38451844,
+  "copiedAudioUnchanged": true,
+  "routedTraces": 34,
+  "uniqueTriggeredVoiceIds": 170,
+  "maxQueue": 5,
+  "maxCompletionTailSeconds": 8.233,
+  "flank": [
+    {
+      "startPhase": 0,
+      "skips": 1,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0
+    },
+    {
+      "startPhase": 0,
+      "skips": 0,
+      "maxQueue": 2,
+      "completionQueue": 0,
+      "completionTailSeconds": 0
+    },
+    {
+      "startPhase": 6,
+      "skips": 0,
+      "maxQueue": 1,
+      "completionQueue": 0,
+      "completionTailSeconds": 0
+    }
+  ],
+  "sourceSha256": {
+    "src/audio/contracts.ts": "e0ddc8eb591ffcec47f0fb3c160832a9868390a4600967b1df9f02644f67189f",
+    "src/audio/catalog.ts": "65e6996f4a24f4b393702e4cfad62e2c0028a0082dd77a3a58e4cbde1871ae09",
+    "src/audio/dialogue-events.ts": "85263d0da4fe72586c6c7ea1fda7783742783b8db813cfaa7c9daab3025fdee5",
+    "src/presentation/Sound.ts": "de223ff9e7ba5883dfca906f59a7cf361834535a7e2f955ba39897fd9ea0dfa5",
+    "src/content/opening-timeline.ts": "57042996012b92fd3d1e390e54b0a080074d67f992bd16698ca5db8fdb0fe301",
+    "src/content/flank-dialogue-timing.ts": "671c2909b9ce17c4c639af4593a3aab16e510db3aebdc1c8978fbad0a5ebb703",
+    "src/mission/Flank.ts": "c7822cc7571b88f5e7598419e7963a5adfeaff6b388069f536384cfb6a4bb3e5",
+    "tests/asset-audio.test.ts": "d39a9eea8017a84ba9c0b16c6575d0c21e1c2200dd683e51abb0c67cabee2db4",
+    "tests/asset-audio-files.test.ts": "c699beaefebb47a2036826e2b1b8a31d7667daef54b8344f2082211e1a851f2d",
+    "tests/dialogue-events.test.ts": "8d3d5db9f2fc30126af6095c05f624ec6fe2289eb5cc7f0506457f95bb06f4ba",
+    "tests/opening-timeline.test.ts": "80110cd56d6b4936aa7df482303454d8452e803db60795a55490f059ada80b1d",
+    "tests/opening-presentation.test.ts": "1aa490a6a2ec3059adbec743ff7fc78f99fac73bab0396db627d80898d839293",
+    "tests/opening-paths.test.ts": "3ede6abedc577bd713f35d4fd826b40979748611bee9112ff6151558ec89a69c",
+    "tests/flank-paths.test.ts": "d56d952fde4cafc755116c7237517a6416160079477b3144797440d76b70b74f"
+  },
+  "mainOwnership": "Main window applied the shared entry changes; not edited by audio window.",
+  "verificationLimits": [
+    "Web Audio boundary is a controllable test device. Actual voice bytes were hash checked and every MP3 frame parsed.",
+    "No real browser audio/rendering or Windows executable acceptance in this integration batch; browser control disabled in Work settings."
+  ]
+}

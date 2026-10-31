@@ -1,0 +1,13 @@
+
+> return-to-ganymede@0.6.0 test
+> vitest run --config artifacts/asset-integration/audio/trace/replay.config.ts
+
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  15:08:41
+   Duration  390ms (tests 86%, transform 7%, import 6%, worker 1%)
+

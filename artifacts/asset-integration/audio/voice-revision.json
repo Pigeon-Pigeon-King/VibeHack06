@@ -1,0 +1,323 @@
+{
+  "recordedAtUtc": "2026-10-31T06:21:17.670835+00:00",
+  "initialSelectionSha256": "47774a7af8c773a9d1c7a0923d18ac5e459240ba0824f17f14fe137420c9cb65",
+  "previousVoiceCount": 147,
+  "selectedVoiceCount": 122,
+  "removed": [
+    {
+      "id": "s02.zhao.40fab2fa0a",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "2f9685b45bf01c65ec7bce1bf534499f9ecd1f53e4a4baa762c7b0ff120eb930"
+    },
+    {
+      "id": "s02.zhao.8c3552ee7c",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "9213bcb0485c74fc14980293790b056eefc9c48de3b4176e850bcae762bf4a00"
+    },
+    {
+      "id": "s02.zhou.a23.1ca4b57c7f",
+      "reasons": [
+        "asr-needs-review-or-incomplete",
+        "unresolved-asr-flags",
+        "asr-listenback-required"
+      ],
+      "previousSha256": "d89b6a18be33d19f3f800520ce6ba3634f2d11e20912b44be6a9fb669cacbae8"
+    },
+    {
+      "id": "s03.meng.5761e25007",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "c6d692c8a7ae259a06ead4557f3e420963fe617e343f8252664b33da54c27063"
+    },
+    {
+      "id": "s03.xu.00a52eebe4",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "4ea1345f3dce95c1cf536968b9ac1fc05d567e0bddd1a436722e380ff45e9fef"
+    },
+    {
+      "id": "s03.zhou.a33.f561465b72",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "0fc0427bc4747d8d7293822af5a1525e284920390eecb6c72fb71779a419116b"
+    },
+    {
+      "id": "s04.zhou.a33.f27f49ece7",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "2f41fc1191a5e7dc093d382a7bfa5f8f225724ff62b7fc8fc66e4f08aa714887"
+    },
+    {
+      "id": "s05.lu.a19.d53e201d98",
+      "reasons": [
+        "asr-needs-review-or-incomplete",
+        "unresolved-asr-flags",
+        "asr-listenback-required"
+      ],
+      "previousSha256": "4e0b1aa5d6c449cf2c2d62d29c39fe6e2e8f57436120554f9dc0b4c8e1f70a12"
+    },
+    {
+      "id": "s05.zhou.a33.88cfb64fde",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "fc291aa32aae932f5eca90d0e8aa03b239c8ad825a1a170e9ada75dfb16a964d"
+    },
+    {
+      "id": "s05.zhou.a33.b9812e5b53",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "8b994c6909c025f22529c679db01a5b4da591901eef7bd582982289446d81b9c"
+    },
+    {
+      "id": "s06.hospital_liaison.74beac1d4a",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "26a7d10ff2ade44c7813d043a6bfb7344f930a45622e33588a6ab37ae8bb2b0b"
+    },
+    {
+      "id": "s06.lu.a19.974b5426c4",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "04c845886241e9f03a78fdb09bfb2b7f409cfa0c0e33e1ab042e5551db705e5e"
+    },
+    {
+      "id": "s06.zhou.a33.6f36b63b4f",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "057d25370660b364d1081adf452117105b5166de8a5b6ea26b2c3e128da95cf4"
+    },
+    {
+      "id": "s06.zhou.a33.8a96e1929d",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "8434a3f0dd21149c199fccf755b7b31c0d1ccf2ad3c7dbbcb95956477e1064bd"
+    },
+    {
+      "id": "s06.zhou.a33.cc26a0d38b",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "f0822a20562ae78ade4011bc92c19dfda14bab1b63a350948abfc89155a9a59e"
+    },
+    {
+      "id": "s07.meng.016c48e444",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "cc135c2a1478c25fd061c3ea41b9d213d6d493b1bd9796c5a25e7533699995cb"
+    },
+    {
+      "id": "s07.meng.c5782d9829",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "a4114d3ed029ec4924b29c1160a848b8224a578dbd330dd1a8c8f22ccb834f4d"
+    },
+    {
+      "id": "s07.zhou.a33.0db42c61f0",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "9dcd6ae0c73c8a143d6a7832d012657fc3f19be10cb7f4fc39af151fdeeb0b2d"
+    },
+    {
+      "id": "s07.zhou.a33.149b3531d8",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "a7e9a8ad8029747f954894dcc37e1bbfad3e7741273112e1629b0bb494942883"
+    },
+    {
+      "id": "s07.zhou.a33.298a875819",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "6619441436f721aa30873aedba83e556612a004b15ccd3e7520376a1adbf1ce2"
+    },
+    {
+      "id": "s07.zhou.a33.5d49a79a73",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "5a06f2783f1ddd35db55b9862faafa77a404937a1503ad0161545c4e0624b8d4"
+    },
+    {
+      "id": "s07.zhou.a33.69a23bffd7",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "2e4b499bbc9bcb683ffbdf4e3ec8dd01c60642c8637e7ab32a1c11c3370a1e1b"
+    },
+    {
+      "id": "s07.zhou.a33.7cb4a50a7e",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "ae4aa4dcfaf0c8a748fc40226b1226b408e5d6d08f90241656db5ce63dfc8c4e"
+    },
+    {
+      "id": "s07.zhou.a33.8e895b69b2",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "8d0c357a171a707b6f5bed1296a9102a24d83ea194858603c85a7783d6303f1a"
+    },
+    {
+      "id": "s07.zhou.a33.a956f90d2f",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "2c33abc9ef6c3276850657e6973489b7963c379b98e7f66f348c2c7c681fdb31"
+    },
+    {
+      "id": "s07.zhou.a33.f9d7f153ac",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "ed89b18117ded5e0ed405c23e714e3c8122b8818d052f9a6491c9808d9a86ba0"
+    },
+    {
+      "id": "s08.luo.49eb40e8f1",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "c0af46951fb3a4d7d85e9dafd13bc50a899f001d785e55f5a713b4c65f6f9415"
+    },
+    {
+      "id": "s08.meng.1301b9ac8f",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "ad81b423e89944507f5b8c6f2a19d34d6337daf94a1e1c2ace0087816fcb8d54"
+    },
+    {
+      "id": "s08.meng.3b6da49c78",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "7817882611f3bde79e31e7e3cf78d4fe37fdb7696af88c4da8b964d8d4831b3f"
+    },
+    {
+      "id": "s08.meng.cc1191565d",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "ceaeef27cebba2ce48c22ff9413c6febef10e5635638d2aa39023a0fe994e63a"
+    },
+    {
+      "id": "s08.zhou.a33.ad886df558",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "b7e1b034335d869a6140b6b62064d4b065f7efed485a1fa257d4b881918fbc08"
+    },
+    {
+      "id": "s09.meng.ddf06bc6f3",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "ffd0b642ba69f2afb615162020c8a039a03eb3c99e3b50f80c88e28fc3d83638"
+    },
+    {
+      "id": "s09.zhou.a33.8817233bfe",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "28e41df22e3a57fb8a995c04a5b945fe0fd86fa92cf61fc82940f065e64a249a"
+    },
+    {
+      "id": "s09.zhou.a33.e743c8d208",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "1b46a6866c49bafa88a08a4bfcda49b65da39d91a85f1b8846e00c1a0a3dd71c"
+    },
+    {
+      "id": "s11.doctor.4c37f62533",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "85dabc50e48183cfeb73da02901523df64e78288b97a10542b7e09332e65cc74"
+    },
+    {
+      "id": "s11.xu.3d53fcba04",
+      "reasons": [
+        "timing-needs-review"
+      ],
+      "previousSha256": "877eaa84e500c1f7ff65d2c2c0a76f7d50ca6288841a56ac5a3b837acd98f668"
+    }
+  ],
+  "added": [
+    {
+      "id": "s12.fleet_liaison.357d0099c5",
+      "sha256": "f6469bbd26c6cb271267f81448ff42b2cd4119cda7c295d25a07d593221339b7"
+    },
+    {
+      "id": "s12.lu.a19.19d268fe5a",
+      "sha256": "dd9020a79cd74ebddd6bea4201a85a81dad7632e773f137e965639c74f102bd9"
+    },
+    {
+      "id": "s12.lu.a19.44c4702c63",
+      "sha256": "52ab3e75ceba7fd941e48bbf697e14ed0d278f23622cabd1d946f2cfd7455a0b"
+    },
+    {
+      "id": "s12.lu.a19.5b92705ad1",
+      "sha256": "5c2d3646a27150ed99060f470ad539ef3d3ee4c51048a361d805f901a9e1a2b2"
+    },
+    {
+      "id": "s12.lu.a19.e37993128f",
+      "sha256": "d9caa81fc61933946a9d87c6b371736c00752cffbbea43ff1c6f2f8a759d728b"
+    },
+    {
+      "id": "s12.luo.38084a6fc4",
+      "sha256": "f71238801eac21544b74888d7f02cd3120a51dd95088a72bb09c4bfee441c2c4"
+    },
+    {
+      "id": "s12.luo.3d7b502797",
+      "sha256": "88f717244a90bc025a4575e633f7e297f58700128983eb1d3774b270c0624351"
+    },
+    {
+      "id": "s12.luo.3edcbb8ed7",
+      "sha256": "c8b4d0bae8e391888407619a19f2123da7e68a24a720199d4d7b00101d3769ac"
+    },
+    {
+      "id": "s12.zheng.5b7a2f42b9",
+      "sha256": "122610fb2c76eee737d91d5002f480070c23f70f4ca51262a9e692a55c8ac090"
+    },
+    {
+      "id": "s12.zheng.7a79e815bc",
+      "sha256": "98784696d5f36aaf443e1c8fb58aabb22c8ffadb7144e39782edb6bff2b73bea"
+    },
+    {
+      "id": "s12.zheng.f056aa1e54",
+      "sha256": "7a58fd3f18365d2a2666aec4e15ea887f35184428f0d2f6f052ed4c4bd1f72f6"
+    }
+  ],
+  "replaced": [],
+  "screeningCounts": {
+    "initialAsrFlags": 9,
+    "unresolvedAsr": 3,
+    "timingOccurrences": 184,
+    "timingFlaggedLineIds": 42
+  },
+  "limits": [
+    "ASR is machine screening, not audible pronunciation/acting approval.",
+    "No transcript, timeline, source audio or producer review disposition was modified.",
+    "All music/SFX bytes remain identical to initial selection.",
+    "Runtime must still drop a selected line if actual remaining subtitle time is shorter than decoded audio."
+  ]
+}

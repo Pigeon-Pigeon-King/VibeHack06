@@ -318,7 +318,7 @@ function reachHallStaging(replay: OpeningReplay, recordTimelineFixture = false):
 
 function finishHall(replay: OpeningReplay, skip: boolean): void {
   const before = replay.simulation.workers.map(a => ({ id: a.id, position: [...a.position] as Vec3 }));
-  replay.until('S02 fixed loss after evacuation', () => replay.simulation.mission.complete, () => replay.step({ skip }), 30);
+  replay.until('S02 fixed loss after evacuation', () => replay.simulation.mission.complete, () => replay.step({ skip }), OPENING_TIMELINE.mainhall.finish + 2);
   const s = replay.simulation;
   expect(replay.phases).toEqual([0, 1, 2, 3, 4, 5]);
   expect(s.mission.failed).toBe(false); expect(s.player.height).toBe(0.65); expect(s.player.health).toBe(42);
@@ -418,7 +418,7 @@ describe('S01/S02 historical hall: public-input scene regressions', () => {
       reachHallStaging(replay); replay.restoreStagedHall();
       expect(replay.restored).toBe(true); expect(replay.simulation.safeCount).toBe(6);
       replay.until('S02 restored standing view before bombardment and collapse',
-        () => replay.simulation.has('history-collapse'), () => replay.step(), 10);
+        () => replay.simulation.has('history-collapse'), () => replay.step(), OPENING_TIMELINE.mainhall.collapse + 1);
       expect(replay.simulation.mission.phaseTime).toBeGreaterThanOrEqual(OPENING_TIMELINE.mainhall.collapse);
       expect(replay.simulation.mission.phaseTime).toBeLessThan(OPENING_TIMELINE.mainhall.collapse + FIXED_DT * 2);
       expect(replay.simulation.has('zhou-pinned')).toBe(true);

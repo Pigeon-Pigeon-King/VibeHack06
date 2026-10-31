@@ -1,0 +1,13 @@
+
+> return-to-ganymede@0.6.0 test
+> vitest run tests/finale-paths.test.ts tests/relief-paths.test.ts --config artifacts/asset-integration/audio/trace/vitest.config.ts
+
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+
+ Test Files  2 passed (2)
+      Tests  6 passed (6)
+   Start at  15:05:05
+   Duration  15.23s (tests 99%)
+

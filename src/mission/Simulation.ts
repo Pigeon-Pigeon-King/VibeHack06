@@ -46,7 +46,11 @@ export interface Mission {
 export interface Snapshot {
   schema: 1; player: Player; actors: Actor[]; mission: Mission; random: number; hits: number; kills: number;
 }
-export interface GameEvent { type: 'shot' | 'impact' | 'hit' | 'hurt' | 'reload' | 'objective' | 'checkpoint'; position?: Vec3; enemy?: boolean }
+export interface GameEvent {
+  type: 'shot' | 'impact' | 'hit' | 'hurt' | 'reload' | 'objective' | 'checkpoint' | 'dialogue';
+  position?: Vec3; enemy?: boolean; killed?: boolean;
+  dialogue?: { speaker: string; text: string; expiresAt: number };
+}
 export function distance(a: Vec3, b: Vec3): number { return Math.hypot(a[0] - b[0], a[2] - b[2]); }
 function eye(foot: Vec3, height = 1.8): Vec3 { return [foot[0], foot[1] + height - 0.14, foot[2]]; }
 function clone<T>(value: T): T { return structuredClone(value); }
@@ -224,7 +228,13 @@ export class Simulation {
   fact(id: string): void { if (!this.mission.facts.includes(id)) this.mission.facts.push(id); }
   has(id: string): boolean { return this.mission.facts.includes(id); }
   say(speaker: string, subtitle: string, seconds = 7): void {
+    const repeatedActiveLine = this.mission.speaker === speaker && this.mission.subtitle === subtitle
+      && this.mission.subtitleUntil > this.mission.elapsed;
     Object.assign(this.mission, { speaker, subtitle, subtitleUntil: this.mission.elapsed + seconds });
+    // phase() and playDialogue(at=0) may name the same opening line. It is
+    // one utterance; extending its subtitle window must not restart its audio.
+    if (!repeatedActiveLine) this.events.push({ type: 'dialogue',
+      dialogue: { speaker, text: subtitle, expiresAt: this.mission.subtitleUntil } });
   }
   phase(phase: number, subtitle: string, control: ControlMode = 'combat', speaker = this.player.name): void {
     Object.assign(this.mission, { phase, phaseTime: 0, control });
@@ -326,7 +336,7 @@ export class Simulation {
           if (!playerShot && this.scenario === 'rescue') {
             this.fact('rescue-cover-hit'); actor.aimTime = 0; actor.cooldown = Math.max(actor.cooldown, 1.8);
           }
-          if (playerShot) { this.hits++; this.hitFlash = 1; this.events.push({ type: 'hit' }); }
+          if (playerShot) { this.hits++; this.hitFlash = 1; this.events.push({ type: 'hit', killed: actor.health <= 0 }); }
           if (actor.health <= 0) {
             this.clearCombat(actor); actor.down = true; actor.aiming = false; this.physics.remove(actor.id);
             if (playerShot) { this.kills++; this.killFlash = 1; }

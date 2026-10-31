@@ -1,0 +1,98 @@
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -4,6 +4,7 @@
+ import { createImportedCharacter } from './presentation/ImportedCharacter';
+ import { GeneratedSceneAssets } from './presentation/GeneratedSceneAssets';
+ import type { MissionAudioState } from './audio/contracts';
++import { dialogueCues } from './audio/dialogue-events';
+ import { ImportedWeaponView } from './presentation/ImportedWeaponView';
+ import { createIndirectLighting } from './presentation/IndirectLighting';
+ import { ModelLibrary } from './assets/ModelLibrary';
+@@ -268,7 +269,7 @@
+     void this.sound.unlock().catch(() => { this.error = '音频未能恢复；字幕和视觉反馈仍可用。'; });
+   }
+   private retry(): void { const saved = this.sim.checkpoint; this.load(this.sim.scenario, saved); this.mode = 'paused'; this.resume(); }
+-  private menu(): void { this.pause(); this.mode = 'menu'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.pause(); this.refreshCampaign(); }
++  private menu(): void { this.pause(); this.mode = 'menu'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.stopTransient(); this.sound.pause(); this.refreshCampaign(); }
+   private refreshCampaign(): void {
+     const result = this.store?.load('campaign');
+     this.savedCampaign = result?.save;
+@@ -312,20 +313,34 @@
+   }
+   private speakCurrentLine(): void {
+     const m = this.sim.mission;
+-    // Empty or expired utterances also cancel a previous voice. Sound owns
+-    // availability and deadline checks; the mission never waits for playback.
++    // Only genuinely new scenes enqueue their initial line; restored scenes do not.
+     this.sound.say({ epoch: this.presentationEpoch, revision: m.subtitleUntil, scenario: this.sim.scenario,
+       speaker: m.speaker, text: m.subtitle, elapsed: m.elapsed, expiresAt: m.subtitleUntil });
++  }
++  private finishPresentation(): void {
++    this.mode = this.sim.mission.failed ? 'failed' : 'complete';
++    this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.pause();
+   }
+   private simulate(): void {
+     const oldPhase = this.sim.mission.phase;
+     const hadFirstWave = this.sim.has('first-wave-approaching');
+     const bombarded = this.sim.has('history-bombardment'), collapsed = this.sim.has('history-collapse');
+     const intent = this.input.read(FIXED_DT);
+-    if (intent.skip) this.sound.stopTransient();
++    // Mission completion is already saved. Drain only its presentation here;
++    // Simulation.step would otherwise leave the previous step's events intact.
++    if (this.sim.mission.complete) {
++      if (intent.skip) this.sound.stopTransient();
++      this.sound.advanceDialogue(FIXED_DT);
++      if (!this.sound.hasPendingDialogue()) this.finishPresentation();
++      return;
++    }
++    const skipped = intent.skip && this.sim.mission.control === 'staged';
++    if (skipped) this.sound.stopTransient();
+     this.sim.step(intent);
+     this.sound.updateMission(this.missionAudioState());
+     const m = this.sim.mission;
++    for (const cue of dialogueCues(this.sim.events, m, this.presentationEpoch, skipped)) this.sound.say(cue);
++    this.sound.advanceDialogue(FIXED_DT);
+     if (!hadFirstWave && this.sim.has('first-wave-approaching')) this.pendingJetApproach = true;
+     const liveHall = this.sim.scenario === 'mainhall' && oldPhase === 4 && this.sim.mission.phase === 4 && this.sim.has('history-timeline-v2');
+     if (liveHall && !bombarded && this.sim.has('history-bombardment')) this.sound.blast();
+@@ -335,10 +350,7 @@
+       this.input.pitch = this.sim.player.pitch; this.input.yaw = this.sim.player.yaw;
+     }
+     for (const e of this.sim.events) {
+-      if (e.type === 'dialogue' && e.dialogue?.text === m.subtitle && e.dialogue.speaker === m.speaker) {
+-        // Only the current utterance survives a same-step skip or timeline catch-up.
+-        this.speakCurrentLine();
+-      } else if (e.type === 'shot') {
++      if (e.type === 'shot') {
+         const listener = this.sim.player;
+         const relative = e.position ? ((e.position[0] - listener.position[0]) * Math.cos(listener.yaw)
+           - (e.position[2] - listener.position[2]) * Math.sin(listener.yaw)) / 20 : 0;
+@@ -357,7 +369,8 @@
+     }
+     if (this.sim.mission.failed || this.sim.mission.complete) {
+       if (this.sim.mission.complete) this.persistCheckpoint(this.sim.snapshot());
+-      this.mode = this.sim.mission.failed ? 'failed' : 'complete'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.pause();
++      if (this.sim.mission.failed) this.sound.stopTransient();
++      if (this.sim.mission.failed || !this.sound.hasPendingDialogue()) this.finishPresentation();
+     }
+   }
+ 
+@@ -507,6 +520,7 @@
+       : sim.scenario === 'epilogue' ? sim.actors.filter(a => a.id.startsWith('worker-') || a.id === 'supply-cart')
+       : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-'))
+       : sim.scenario === 'escort' ? [...escortPatients(sim), ...sim.actors.filter(a => a.id.startsWith('walker-'))] : sim.workers;
++    const dialogue = this.sound.getDialoguePresentation();
+     const state: UiState = {
+       mode: this.mode, control: m.control, scenario: sim.scenario, scenarioName: LAYOUT[sim.scenario].name,
+       availableScenarios: ['northgate', 'prologue', 'handover', ...(import.meta.env.DEV ? CHAPTER_STAGES.map(stage => stage.scenario) : [])], phaseName: objective.phase,
+@@ -514,8 +528,8 @@
+       health: p.health, ammo: p.ammo, reserve: p.reserve, reload: p.reload > 0 ? 1 - p.reload / 2.1 : 0,
+       storyInjury: sim.scenario === 'rescue' && sim.has('rescue-zhou-wounded'),
+       workersSafe: evacuees.filter(a => a.safe).length, workerTotal: evacuees.length, elapsed: m.elapsed + (this.chapter?.elapsedBefore ?? 0), interaction: objective.interaction,
+-      presentationEpoch: this.presentationEpoch, subtitleTime: m.elapsed, subtitleRevision: m.subtitleUntil,
+-      subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
++      presentationEpoch: this.presentationEpoch, subtitleTime: dialogue?.time ?? m.elapsed, subtitleRevision: dialogue?.until ?? m.subtitleUntil,
++      subtitle: dialogue?.text ?? (m.elapsed < m.subtitleUntil ? m.subtitle : ''), speaker: dialogue?.speaker ?? m.speaker, checkpoint: m.checkpointLabel,
+       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, killFlash: sim.killFlash, hurtFlash: sim.hurtFlash,
+       blackout: history.blackout,
+       lowMotion: this.lowMotion, touchControls: this.input.touchEnabled, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,

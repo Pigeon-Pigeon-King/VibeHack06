@@ -57,6 +57,8 @@ nativue analyze .
 
 ## 文档或代码变更后的刷新
 
+本轮资产整合后，需把“人物运行仍占位”“模型未制作”和“触控缺失”等历史节点改为实际范围：13 套人物、8 件场景、共享 AK 与声音已经进入运行候选；完整地图、正式接触、目标设备及连续战役仍待验。共享资源与骨骼数值检查可以指向具体证据，新模型实景不能标 verified。本轮真实导入状态以最新 `.nativue` 快照为准，准备脚本或草稿不等于已经刷新。
+
 1. 运行 `nativue scan .` 和 `nativue analyze .`。
 2. 读取 `.nativue/analysis-request.json`，按其中真实 inputId、文件索引和项目变更重新分析。
 3. 将 schemaVersion 为 1 的 modules、edges、journeys 保存到 `.nativue/analysis-response.json`。所有证据引用现存且被索引的路径与行号。

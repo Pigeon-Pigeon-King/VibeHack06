@@ -1,0 +1,14 @@
+{
+  "algorithm": "SHA-256 of sorted id\\0sha256\\0file\\0bytes\\n UTF-8 rows",
+  "selectedSetSha256": "6cc7601c972a923fa69f29a4bdaf4c4dc1471f3410c8a3e2cd064c0b4cdd1b51",
+  "counts": {
+    "music": 11,
+    "sfx": 18,
+    "voice": 122
+  },
+  "totalFiles": 151,
+  "audioBytes": 29659176,
+  "catalogSha256": "1d071457fd8f08bf47192034a56ca84d9c64dde552d2278404beb88d799229be",
+  "provenanceSha256": "cace2e59e394d3e245b43a239320ce4c9caae33a9d40388682581ccf9e014c1b",
+  "selectionSha256": "cace2e59e394d3e245b43a239320ce4c9caae33a9d40388682581ccf9e014c1b"
+}

@@ -112,6 +112,12 @@ def main():
         audit = mod.Audit(root, "fixture")
         audit.scan_text(root, "app.js", b'new URL("rapier_wasm3d_bg.wasm","<deleted>")', {})
         check("unproven WASM fallback is not exempt", any(f["code"] == "RESOURCE_MISSING" for f in audit.findings))
+        audit = mod.Audit(root, "fixture")
+        audit.scan_text(root, "assets/app.js", b'const base = new URL("./", document.baseURI);', {"index.html": {}})
+        check("document-relative directory base is not a missing JS-adjacent file", not audit.findings)
+        audit = mod.Audit(root, "fixture")
+        audit.scan_text(root, "assets/app.js", b'fetch("./"); new URL("./missing.glb", document.baseURI);', {"index.html": {}})
+        check("directory fetch and missing actual file still fail", len([f for f in audit.findings if f["code"] == "RESOURCE_MISSING"]) == 2)
         buf = io.BytesIO()
         with wave.open(buf, "wb") as w:
             w.setnchannels(1); w.setsampwidth(2); w.setframerate(48000); w.writeframes(b"\0\0" * 100)
