@@ -1,0 +1,13 @@
+{
+  "recordedAt": "2026-10-31T11:53:34.383618+00:00",
+  "mergedSourceCommit": "846bdf88d8276e54111a76a95fcc7e9936bb8e28",
+  "repairCommit": "85b0f9c",
+  "auditCommit": "865bcb3",
+  "preservedDeliveryCommit": "8f81ff5",
+  "runtimeBuildFilesCompared": 140,
+  "runtimeDriftFromTestedCandidate": [],
+  "publicAssetsDiffFromBaseline": [],
+  "trackedMainChangesAfterMerge": "",
+  "mainDistOverwritten": false,
+  "note": "Main source matches tested isolated candidate; main dist remains under delivery chat ownership. The pre-existing untracked audit copy was byte-identical to this chat’s tracked 14-file audit, and preserved outside the worktree before fast-forward."
+}

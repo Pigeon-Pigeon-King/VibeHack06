@@ -4,7 +4,7 @@
 
 修复前完成130个运行源码文件、22,466行的全文阅读或生成数据结构核对，15个入口均执行实际环境构造器与旧选择器。完整证据固定在[审计目录](../asset-audit-20261031/README.md)，基线 `a9030c6`。其中 `coverage-remaining.json` 是中间检查的文件列表，最终覆盖结果以 `coverage-complete.json`（未覆盖为空）为准。
 
-根因是模型目录有引用，但许多场景的真实物件没有绑定；部分已产模型只放在边界外或陈列位。S04不是缓存错版，也不是远景LOD故意变回白盒。修复开始时交付窗口仍在发布，因此在基于 `0b3b05b` 的 `codex/asset-coverage-fix` 隔离树完成，该窗口已确认前次交付完成；本批验证后合回main，由它更新站点。
+根因是模型目录有引用，但许多场景的真实物件没有绑定；部分已产模型只放在边界外或陈列位。S04不是缓存错版，也不是远景LOD故意变回白盒。修复开始时交付窗口仍在发布，因此在基于 `0b3b05b` 的 `codex/asset-coverage-fix` 隔离树完成，该窗口已确认前次交付完成；本批已合回main（运行提交 `846bdf8`，含修复 `85b0f9c`），保留该窗口的 `8f81ff5` 交付；已通知它按固定清单更新站点。
 
 ## 本批接入
 
@@ -45,5 +45,7 @@
 ## 复现和交付
 
 `tests/architecture-coverage.test.ts` 和固化的原solid散列覆盖15入口；`collect-architecture-remaining.mjs` 重新收集真实实例调用栈。离线图脚本在 `../asset-coverage-fix/`，中间大型geometry JSON可由脚本重建，不进入生产包。
+
+[合并复核](merge-verification.json)确认main的140个运行/构建输入与受测候选完全一致；[人物离线检查](../asset-coverage-fix/character-visual/README.md)记录实际图检范围。
 
 提交只改变运行源码、测试、说明与离线证据，不覆盖运行GLB。网页由原交付窗口按最终dist manifest与现网a9030c6差量更新；本窗口不覆盖它的既有dist和站点。Windows安装包未在本批重打或验收。
