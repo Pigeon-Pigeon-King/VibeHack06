@@ -8,6 +8,7 @@ import { Input } from './player/Input';
 import { initializePhysics, FIXED_DT } from './runtime/Physics';
 import { Simulation, distance, type Snapshot } from './mission/Simulation';
 import { GameUI } from './ui/GameUI';
+import { ObjectiveIndicator } from './ui/ObjectiveIndicator';
 import { LAYOUT } from './content/layout';
 import { carryFacts, CHAPTER_STAGES, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
 import { SAVE_KEY_PREFIX, SaveStore, type SavedGame, type SaveSlot } from './persistence/SaveStore';
@@ -50,6 +51,7 @@ class Game {
   private readonly care = new CareView();
   private monitor?: DepartureMonitor;
   private readonly ui: GameUI;
+  private readonly objectiveIndicator: ObjectiveIndicator;
   private readonly input: Input;
   private readonly characters = new Map<string, { model: CharacterModel; label?: Sprite; name: string; role: string }>();
   private readonly marker = new Group();
@@ -106,6 +108,7 @@ class Game {
       importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
       setVolume: value => { this.sound.setVolume(value); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
     });
+    this.objectiveIndicator = new ObjectiveIndicator(document.querySelector('#game-ui')!);
     this.load('nightshift');
     window.addEventListener('resize', () => {
       this.camera.aspect = innerWidth / innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(innerWidth, innerHeight);
@@ -359,6 +362,7 @@ class Game {
       error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings].filter(Boolean).join(' '), diagnostics,
     };
     this.ui.render(state);
+    this.objectiveIndicator.update(this.camera, objective.point, p.position, this.mode, m.control);
     if (this.monitor && distance(p.position, ESCORT.monitor) < 30) this.monitor.render(this.renderer, m.phaseTime, m.phase === 4, sim.has('shaoyuan-departure-confirmed'));
     this.renderer.render(this.scene, this.camera);
   }
@@ -373,6 +377,7 @@ class Game {
     this.present(dt); this.frame++; this.raf = requestAnimationFrame(this.animate);
   };
   dispose(): void {
+    this.objectiveIndicator.dispose();
     cancelAnimationFrame(this.raf); this.abort.abort(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
     this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
