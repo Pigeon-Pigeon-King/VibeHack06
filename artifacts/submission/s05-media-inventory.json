@@ -1,0 +1,1831 @@
+{
+  "schemaVersion": 1,
+  "recordedAtUtc": "2026-10-31T09:33:20.772143+00:00",
+  "projectRoot": "/Users/penguin/VibeHack06",
+  "requestedBaseline": "b3c88dd50b848c54b6a3016cdff24bc167ae7a0d",
+  "observedHeadAtRead": "b3c88dd50b848c54b6a3016cdff24bc167ae7a0d",
+  "purpose": "Read-only existing S05 image/video inventory; no capture, media transform, game test, build or publication.",
+  "browserStatus": {
+    "status": "disabled_in_Work_settings",
+    "newBrowserAutomation": false,
+    "bypassAttempted": false,
+    "basis": "Parent reconfirmed browsers=[] / Work disabled; existing screenshot-owner manifest records same blocker."
+  },
+  "criticalSceneCorrections": [
+    {
+      "releaseCopyPath": "artifacts/release-20261031/screenshots/03-s05-ads-cover-line-LEGACY.jpg",
+      "originalPath": "artifacts/asset-runtime-browser/ak47-ads-desktop.png",
+      "observedScene": "northgate/legacy-validation",
+      "suggestedTitle": "旧 northgate 白盒 · AK-47 瞄准与掩体线",
+      "action": "Owner should correct scenario/caption and optionally filename; this audit does not mutate their media or manifest.",
+      "proof": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "startLine": 625,
+        "endLine": 628
+      }
+    },
+    {
+      "releaseCopyPath": "artifacts/release-20261031/screenshots/04-s05-evacuation-task-LEGACY.jpg",
+      "originalPath": "artifacts/asset-runtime-browser/touch-terminal-and-subtitle.png",
+      "observedScene": "northgate/legacy-validation",
+      "suggestedTitle": "旧 northgate 白盒 · 称重台撤离任务",
+      "action": "Owner should correct scenario/caption and optionally filename; this audit does not mutate their media or manifest.",
+      "proof": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "startLine": 625,
+        "endLine": 628
+      }
+    },
+    {
+      "releaseCopyPath": "artifacts/release-20261031/screenshots/05-s05-objective-direction-LEGACY.jpg",
+      "originalPath": "artifacts/asset-runtime-browser/touch-look-edge-marker.png",
+      "observedScene": "northgate/legacy-validation",
+      "suggestedTitle": "旧 northgate 白盒 · 目标方位反馈",
+      "action": "Owner should correct scenario/caption and optionally filename; this audit does not mutate their media or manifest.",
+      "proof": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "startLine": 625,
+        "endLine": 628
+      }
+    }
+  ],
+  "summary": {
+    "filesInspected": 46,
+    "s05UniqueOriginals": 3,
+    "s05WithHistoricalBaseline": 2,
+    "s05VersionUnverified": 1,
+    "legacyNorthgateUniqueOriginals": 8,
+    "releaseDuplicateCopies": 5,
+    "currentReleaseEligibleImages": 0,
+    "existingVideoFilesInSelectedScopes": 0,
+    "existingVideoFilesInNearbyTrailerScope": 0,
+    "newImagesCreated": 0,
+    "newVideosCreated": 0
+  },
+  "scopes": {
+    "mediaRoots": [
+      "artifacts/release-20261031",
+      "artifacts/asset-jobs/production-20261031/qa",
+      "artifacts/asset-runtime-browser"
+    ],
+    "topLevelGlob": "artifacts/*northgate*",
+    "nearbyVideoOnlyRoot": "artifacts/trailer-45s",
+    "excludedSearchAreas": [
+      "provider raw responses",
+      "concept/source models",
+      "model caches",
+      "complete repository media crawl",
+      "complete release package audit"
+    ],
+    "notFoundIsBoundedToTheseScopes": true
+  },
+  "timestampPolicy": "No filesystem mtime or archive date is used as capture-version proof. Precise capture timestamps were not recorded for these selected images.",
+  "media": [
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/BG-CRANE-threejs.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/BG-CRANE-threejs.png",
+      "type": "image",
+      "bytes": 37535,
+      "sha256": "8b1a833a328de29646456648fc4928b5f045fac9d42110f9a2d25dc4bc95a927",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 574,
+      "height": 714,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": true,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Independent asset inspection/animation view; no evidence of an S05 game camera.",
+      "provenance": {
+        "context": "production asset QA; sampled CH-LU/common-walk and BG-CRANE image inspections visibly show the standalone asset viewer."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/BG-HEAT-threejs.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/BG-HEAT-threejs.png",
+      "type": "image",
+      "bytes": 42228,
+      "sha256": "5230f848d2d39c841b8e1f45d9e9680f50f9ee0e28b6d0e5ec03717e90e0fb9e",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 574,
+      "height": 714,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Independent asset inspection/animation view; no evidence of an S05 game camera.",
+      "provenance": {
+        "context": "production asset QA; sampled CH-LU/common-walk and BG-CRANE image inspections visibly show the standalone asset viewer."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/BG-SHIP-threejs.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/BG-SHIP-threejs.png",
+      "type": "image",
+      "bytes": 40576,
+      "sha256": "3c0d557e657c24733d0befbf2544079047ce33c1f71ab4fb96544850a4489849",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 574,
+      "height": 714,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Independent asset inspection/animation view; no evidence of an S05 game camera.",
+      "provenance": {
+        "context": "production asset QA; sampled CH-LU/common-walk and BG-CRANE image inspections visibly show the standalone asset viewer."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/CH-LU-common-walk.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/CH-LU-common-walk.png",
+      "type": "image",
+      "bytes": 73425,
+      "sha256": "5c9e0c9614391b604bf97d67054de77003021013802837e11e155c6f6e4a4fd3",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": true,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Independent asset inspection/animation view; no evidence of an S05 game camera.",
+      "provenance": {
+        "context": "production asset QA; sampled CH-LU/common-walk and BG-CRANE image inspections visibly show the standalone asset viewer."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/CH-ZHOU-common-walk.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/CH-ZHOU-common-walk.png",
+      "type": "image",
+      "bytes": 35609,
+      "sha256": "d2b62e5275df6683a4ecbc0d7a03a35a14fa0205f054e079f65f0f116460862e",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 574,
+      "height": 714,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Independent asset inspection/animation view; no evidence of an S05 game camera.",
+      "provenance": {
+        "context": "production asset QA; sampled CH-LU/common-walk and BG-CRANE image inspections visibly show the standalone asset viewer."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/ENV-LIGHTKIT-POLE-threejs.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/ENV-LIGHTKIT-POLE-threejs.png",
+      "type": "image",
+      "bytes": 41393,
+      "sha256": "4de4e44bcb332af5d7298a5f4da08edde7cc4a4de0952a95f11b998521067778",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 574,
+      "height": 714,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Independent asset inspection/animation view; no evidence of an S05 game camera.",
+      "provenance": {
+        "context": "production asset QA; sampled CH-LU/common-walk and BG-CRANE image inspections visibly show the standalone asset viewer."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/ENV-WALLKIT-PANEL-threejs.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/ENV-WALLKIT-PANEL-threejs.png",
+      "type": "image",
+      "bytes": 43103,
+      "sha256": "759b901922e8fb4799a259c4e9c83de7348a395f986a208fcd6e3e0a1f8ed460",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 574,
+      "height": 714,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Independent asset inspection/animation view; no evidence of an S05 game camera.",
+      "provenance": {
+        "context": "production asset QA; sampled CH-LU/common-walk and BG-CRANE image inspections visibly show the standalone asset viewer."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/S05-before-generated-assets.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/S05-before-generated-assets.png",
+      "type": "image",
+      "bytes": 87832,
+      "sha256": "20472ba39dd68479ebec3d2d9ad419aab8317bcabf0bd7da5d4e1854776c5318",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "version_unverified",
+      "scene": "S05/frontgate",
+      "observedContent": "S05入口、郑铎代理、代理枪与白盒场地；有开发诊断。文件名表示接入前，但没有对应精确构建或capture清单。",
+      "observedHud": [
+        "S05 · 北闸的预告",
+        "靠近观察位，查看北路",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-before-comparison"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": null,
+        "limit": "S05 is visible in the image. No matching capture manifest or exact code/build baseline found in the bounded search; filename and mtime are not version proof."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "files": [
+          {
+            "file": "src/content/chapter-flow.ts",
+            "line": 8
+          },
+          {
+            "file": "src/mission/Frontgate.ts",
+            "line": 144
+          }
+        ],
+        "basis": "S05 maps to frontgate; HUD explicitly says S05 · 北闸的预告."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/S05-generated-first-view.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/S05-generated-first-view.png",
+      "type": "image",
+      "bytes": 94595,
+      "sha256": "c8ed757770796f33b1dae142b33e5723ce12314b26834be6fdc5ea444862f167",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "S05/frontgate",
+      "observedContent": "S05入口工业场地、生成牵引车与远景起重机；代理枪、白盒、开发诊断和锁鼠标失败提示仍在画面。",
+      "observedHud": [
+        "S05 · 北闸的预告",
+        "靠近观察位，查看北路",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "overview"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/runtime/integration-handoff.md",
+        "reportedHistoricalCandidate": "823273d",
+        "currentReplacementDecision": "574ac27",
+        "mediaInGit": false,
+        "limit": "Handoff explicitly names this screenshot and old candidate; no independent per-shot frozen build digest."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "files": [
+          {
+            "file": "src/content/chapter-flow.ts",
+            "line": 8
+          },
+          {
+            "file": "src/mission/Frontgate.ts",
+            "line": 144
+          }
+        ],
+        "basis": "S05 maps to frontgate; HUD explicitly says S05 · 北闸的预告."
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/S11-generated-entry.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/S11-generated-entry.png",
+      "type": "image",
+      "bytes": 68761,
+      "sha256": "a9218ed404d239912dd4f3182a1248a6ae5131b1a754fd1c31cf017bc4beab1e",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S11/medical",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "S11 asset-integration screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/runtime/integration-handoff.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/S11-generated-rest-area.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/S11-generated-rest-area.png",
+      "type": "image",
+      "bytes": 58481,
+      "sha256": "38678f98540b15eda0758913dd1c248d64717d4e2b1f59c32f9c374da6e21542",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S11/medical",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "S11 asset-integration screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/runtime/integration-handoff.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/S11-generated-table-props.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/S11-generated-table-props.png",
+      "type": "image",
+      "bytes": 81546,
+      "sha256": "4684a793352cffd6c644fc8ad3cfedb4e463320a24ebfd31273433d6cc25cef8",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S11/medical",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "S11 asset-integration screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/runtime/integration-handoff.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-DOCTOR/back.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-DOCTOR/back.png",
+      "type": "image",
+      "bytes": 1482422,
+      "sha256": "6f390f3545ff5514d86aad43f2e959aeb114151f96856bd4227443f52159eb8b",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "PNG",
+      "width": 1600,
+      "height": 600,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Offline Cycles static character-pose renders, not an in-game scene or gameplay video.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-DOCTOR/front.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-DOCTOR/front.png",
+      "type": "image",
+      "bytes": 1480719,
+      "sha256": "ff1bd458c76be480e6972eafddc1d14fa336092515fd94084b98fb8789739a25",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "PNG",
+      "width": 1600,
+      "height": 600,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Offline Cycles static character-pose renders, not an in-game scene or gameplay video.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-LU/back.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-LU/back.png",
+      "type": "image",
+      "bytes": 1532137,
+      "sha256": "fcc7496ade94def0f198627893f502e5c3915be98fa0ce37064633ddbea1d5c4",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "PNG",
+      "width": 1600,
+      "height": 600,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Offline Cycles static character-pose renders, not an in-game scene or gameplay video.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-LU/front.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-LU/front.png",
+      "type": "image",
+      "bytes": 1522935,
+      "sha256": "04597e05e0a89807b5c7eb7b517b8d9c3114d74498999641aeed6b1c3cba8b38",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "PNG",
+      "width": 1600,
+      "height": 600,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Offline Cycles static character-pose renders, not an in-game scene or gameplay video.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-SHAO/back.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-SHAO/back.png",
+      "type": "image",
+      "bytes": 1483370,
+      "sha256": "e2f0c1535583de085c73527e657e7b77df75b92f76ffd0d70c099d6dc4e6fea5",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "PNG",
+      "width": 1600,
+      "height": 600,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Offline Cycles static character-pose renders, not an in-game scene or gameplay video.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-SHAO/front.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-SHAO/front.png",
+      "type": "image",
+      "bytes": 1470274,
+      "sha256": "1fdccdd24acae657380b4638ab6ce1f0e04f7055bf0c82d8e6a217084b483796",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "PNG",
+      "width": 1600,
+      "height": 600,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Offline Cycles static character-pose renders, not an in-game scene or gameplay video.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-ZHOU/back.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-ZHOU/back.png",
+      "type": "image",
+      "bytes": 1517561,
+      "sha256": "eef9672c65041e6b84759deb0f2c75575ef49db7864655a8ebbfe727cb021ca1",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "PNG",
+      "width": 1600,
+      "height": 600,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Offline Cycles static character-pose renders, not an in-game scene or gameplay video.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      }
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-ZHOU/front.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-ZHOU/front.png",
+      "type": "image",
+      "bytes": 1505995,
+      "sha256": "bcd4d68f31deb14ccff8b676175409b4694f8f709066715ee3f08173dcf262cf",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "PNG",
+      "width": 1600,
+      "height": 600,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": null,
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Offline Cycles static character-pose renders, not an in-game scene or gameplay video.",
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/ak47-ads-desktop.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/ak47-ads-desktop.png",
+      "type": "image",
+      "bytes": 77484,
+      "sha256": "ab40d2678edef1b77c88f94315bfeac468e445362df5efe474b7378cbd774b60",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1366,
+      "height": 768,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate白盒实际AK-47瞄准，25发制武器与触控HUD、北闸掩体；不属于正式S05。",
+      "observedHud": [
+        "01 · 北路接敌",
+        "接通称重台撤离线",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-ads"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/ak47-portrait-final.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/ak47-portrait-final.png",
+      "type": "image",
+      "bytes": 46932,
+      "sha256": "b8855d4890b567cf4d9f0f857453d2433aae875060692dbc13e5d7d7d8e068bf",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 390,
+      "height": 844,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "S05/frontgate",
+      "observedContent": "S05竖屏入口与郑铎对白，AK-47、旧触控界面、人物代理；不是当前正式人物展示。",
+      "observedHud": [
+        "S05 · 北闸的预告",
+        "靠近观察位，查看北路",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "companion",
+        "portrait-ui"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "files": [
+          {
+            "file": "src/content/chapter-flow.ts",
+            "line": 8
+          },
+          {
+            "file": "src/mission/Frontgate.ts",
+            "line": 144
+          }
+        ],
+        "basis": "S05 maps to frontgate; HUD explicitly says S05 · 北闸的预告."
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/ak47-touch-landscape.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/ak47-touch-landscape.png",
+      "type": "image",
+      "bytes": 40082,
+      "sha256": "dd0e9c93c05c48d899b539d6306610792592de0c5246c418db666fad1cbc1fc5",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 844,
+      "height": 390,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate横屏旧触控界面与AK-47腰射视点；不属于正式S05。",
+      "observedHud": [
+        "01 · 北路接敌",
+        "接通称重台撤离线",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-touch"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-exterior-inspection-later.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-exterior-inspection-later.png",
+      "type": "image",
+      "bytes": 25557,
+      "sha256": "5036267e1750d8f49e3ba1e91218da0d58e6929698f5ea364a9ee8e556e72bc4",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1366,
+      "height": 768,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-exterior-inspection.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-exterior-inspection.png",
+      "type": "image",
+      "bytes": 25557,
+      "sha256": "5036267e1750d8f49e3ba1e91218da0d58e6929698f5ea364a9ee8e556e72bc4",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1366,
+      "height": 768,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-approach-first.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-approach-first.png",
+      "type": "image",
+      "bytes": 59250,
+      "sha256": "1c96625c4cc691805e8b2f00fe58cabc0fc2915fb538db2d95e47e6b3cad5f56",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-00.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-00.png",
+      "type": "image",
+      "bytes": 37917,
+      "sha256": "59a82c7377ab9cc8863cc710ea656103c0ce4b07f129743f436a57f2ccd434f4",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-01.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-01.png",
+      "type": "image",
+      "bytes": 35809,
+      "sha256": "85bd649f19a204d6553218a2026675d11f24363bd0bffbf9a708b03408f4344c",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-02.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-02.png",
+      "type": "image",
+      "bytes": 37887,
+      "sha256": "cdbeda9518df0c9fea7e1ac32665142e94678f4b80e614e869967cb1f8a88572",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-03.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-03.png",
+      "type": "image",
+      "bytes": 35802,
+      "sha256": "d6e4da26b942dd39157e9630fc6c1fefd4110fc1590fa88654fb8dbf44aaaa10",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-04.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-04.png",
+      "type": "image",
+      "bytes": 37908,
+      "sha256": "2f40dc033b655a83c47425a266b193619697a308d74db995e6ac7b9a20d61944",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-05.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-05.png",
+      "type": "image",
+      "bytes": 37895,
+      "sha256": "8e4d7a6c93322e04474755c77429d8735079fb29d2763fe58c0e2d782370cbad",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-06.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-06.png",
+      "type": "image",
+      "bytes": 37895,
+      "sha256": "cd14de5d1131ca3af3975fd0042b6469373ba150445a9b335ebbe9ea295c74a4",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-07.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-07.png",
+      "type": "image",
+      "bytes": 37893,
+      "sha256": "76c62686e549fcab2cbe305e243ccdef9989cd2bbf9289791ff99da5bfe35044",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/s12-north-pass-08.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/s12-north-pass-08.png",
+      "type": "image",
+      "bytes": 35821,
+      "sha256": "d1aab4fecfcfce07a947aeb07f6337cf8caba0ed62ac63f29c7ab08091276cc5",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "excluded",
+      "visuallyInspected": false,
+      "scene": "S12/epilogue",
+      "useForCurrentDelivery": "NO — no S05 gameplay provenance",
+      "exclusionReason": "Historical S12 inspection screenshots, not S05.",
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md"
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/touch-look-edge-marker.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/touch-look-edge-marker.png",
+      "type": "image",
+      "bytes": 39960,
+      "sha256": "e11de4386f70d0006d5862ca30da79d372480a4c4daf4ef37adcf6796c1eedf2",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 844,
+      "height": 390,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate转向画面，目标方向“身后13m”；不属于正式S05。",
+      "observedHud": [
+        "01 · 北路接敌",
+        "接通称重台撤离线",
+        "身后 13 m"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-objective-feedback"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/touch-move-forward.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/touch-move-forward.png",
+      "type": "image",
+      "bytes": 40829,
+      "sha256": "4e5c8ef5146d4e7c0ed8caefb9ebca565893a9ba66b06091f2d5f882c4f61947",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 844,
+      "height": 390,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate前进后的掩体线、旧触控HUD；单张静态图不能证明连续移动。",
+      "observedHud": [
+        "01 · 北路接敌",
+        "接通称重台撤离线",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-touch"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/touch-portrait-retry.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/touch-portrait-retry.png",
+      "type": "image",
+      "bytes": 48712,
+      "sha256": "aa5145038853bbf26f2133584d09035a900c5502ae4f310fcbc5be87276ad618",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 390,
+      "height": 844,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate称重台撤离检查点竖屏，周延字幕、人群和偏出的旧持枪画面；不属于正式S05。",
+      "observedHud": [
+        "02 · 称重台撤离",
+        "掩护港务员南撤 · 0/7",
+        "身后 23 m"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-retry"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/asset-runtime-browser/touch-terminal-and-subtitle.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/asset-runtime-browser/touch-terminal-and-subtitle.png",
+      "type": "image",
+      "bytes": 45999,
+      "sha256": "d62dbfd512bb02e7927d5bd6ab1252cd380db630264254a40f4693ab2f277596",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 844,
+      "height": 390,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate接通终端后的称重台撤离，0/7、人物代理与周延字幕；不是S05自动撤离场。",
+      "observedHud": [
+        "02 · 称重台撤离",
+        "掩护港务员南撤 · 0/7",
+        "身后 23 m"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-evacuation"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/northgate-active.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/northgate-active.png",
+      "type": "image",
+      "bytes": 102971,
+      "sha256": "257c8d098e244b76ff8ae7aa4a9cba3f6e25138d464519a01b07df808f62d2cc",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1366,
+      "height": 768,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "0.1.0白盒北闸撤离，陆闻川视点、代理枪、人群、诊断面板；不是正式S05。",
+      "observedHud": [
+        "02 · 称重台撤离",
+        "掩护港务员南撤 · 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-development"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/final-evidence.md",
+        "reportedImplementationCommit": "ed4395e91373ca40c5e375c59a350dbfdc0fe062",
+        "candidate": "whitebox-2026-10-31 / 0.1.0",
+        "limit": "Report names original V2 northgate validation; some UI changes occurred after capture. Implementation/archive commit is not an exact capture build."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/northgate-result.png",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/northgate-result.png",
+      "type": "image",
+      "bytes": 67160,
+      "sha256": "23105338f5e2ce98124145d94329b4f45bc94d4162332eebab47e747eedf7c56",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1366,
+      "height": 768,
+      "frames": 1,
+      "extensionMatchesEncoding": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "0.1.0独立白盒完成页，7/7，行动用时02:53；不是完整S05通关，也不是视频时长。",
+      "observedHud": [
+        "本场行动完成",
+        "人员到达 7/7",
+        "当前为开发验证段落，完整战役仍在制作。"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": false,
+      "roleHints": [
+        "historical-development"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/final-evidence.md",
+        "reportedImplementationCommit": "ed4395e91373ca40c5e375c59a350dbfdc0fe062",
+        "candidate": "whitebox-2026-10-31 / 0.1.0",
+        "limit": "Report names original V2 northgate validation; some UI changes occurred after capture. Implementation/archive commit is not an exact capture build."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/release-20261031/screenshots/01-s05-overview-LEGACY.jpg",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/release-20261031/screenshots/01-s05-overview-LEGACY.jpg",
+      "type": "image",
+      "bytes": 94595,
+      "sha256": "c8ed757770796f33b1dae142b33e5723ce12314b26834be6fdc5ea444862f167",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1280,
+      "height": 720,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "copyOf": "artifacts/asset-jobs/production-20261031/qa/S05-generated-first-view.png",
+      "newCapture": false,
+      "copyBytesMatch": true,
+      "ownerManifestSceneAtRead": "S05/frontgate",
+      "ownerManifestCurrentReleaseScreenshot": false,
+      "classification": "historical",
+      "scene": "S05/frontgate",
+      "observedContent": "S05入口工业场地、生成牵引车与远景起重机；代理枪、白盒、开发诊断和锁鼠标失败提示仍在画面。",
+      "observedHud": [
+        "S05 · 北闸的预告",
+        "靠近观察位，查看北路",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": true,
+      "roleHints": [
+        "overview"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-jobs/production-20261031/runtime/integration-handoff.md",
+        "reportedHistoricalCandidate": "823273d",
+        "currentReplacementDecision": "574ac27",
+        "mediaInGit": false,
+        "limit": "Handoff explicitly names this screenshot and old candidate; no independent per-shot frozen build digest."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "files": [
+          {
+            "file": "src/content/chapter-flow.ts",
+            "line": 8
+          },
+          {
+            "file": "src/mission/Frontgate.ts",
+            "line": 144
+          }
+        ],
+        "basis": "S05 maps to frontgate; HUD explicitly says S05 · 北闸的预告."
+      }
+    },
+    {
+      "path": "artifacts/release-20261031/screenshots/02-s05-companion-portrait-LEGACY.jpg",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/release-20261031/screenshots/02-s05-companion-portrait-LEGACY.jpg",
+      "type": "image",
+      "bytes": 46932,
+      "sha256": "b8855d4890b567cf4d9f0f857453d2433aae875060692dbc13e5d7d7d8e068bf",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 390,
+      "height": 844,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "copyOf": "artifacts/asset-runtime-browser/ak47-portrait-final.png",
+      "newCapture": false,
+      "copyBytesMatch": true,
+      "ownerManifestSceneAtRead": "S05/frontgate",
+      "ownerManifestCurrentReleaseScreenshot": false,
+      "classification": "historical",
+      "scene": "S05/frontgate",
+      "observedContent": "S05竖屏入口与郑铎对白，AK-47、旧触控界面、人物代理；不是当前正式人物展示。",
+      "observedHud": [
+        "S05 · 北闸的预告",
+        "靠近观察位，查看北路",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": true,
+      "roleHints": [
+        "companion",
+        "portrait-ui"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "files": [
+          {
+            "file": "src/content/chapter-flow.ts",
+            "line": 8
+          },
+          {
+            "file": "src/mission/Frontgate.ts",
+            "line": 144
+          }
+        ],
+        "basis": "S05 maps to frontgate; HUD explicitly says S05 · 北闸的预告."
+      }
+    },
+    {
+      "path": "artifacts/release-20261031/screenshots/03-s05-ads-cover-line-LEGACY.jpg",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/release-20261031/screenshots/03-s05-ads-cover-line-LEGACY.jpg",
+      "type": "image",
+      "bytes": 77484,
+      "sha256": "ab40d2678edef1b77c88f94315bfeac468e445362df5efe474b7378cbd774b60",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 1366,
+      "height": 768,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "copyOf": "artifacts/asset-runtime-browser/ak47-ads-desktop.png",
+      "newCapture": false,
+      "copyBytesMatch": true,
+      "ownerManifestSceneAtRead": "S05/frontgate",
+      "ownerManifestCurrentReleaseScreenshot": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate白盒实际AK-47瞄准，25发制武器与触控HUD、北闸掩体；不属于正式S05。",
+      "observedHud": [
+        "01 · 北路接敌",
+        "接通称重台撤离线",
+        "已到达 0/7"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": true,
+      "roleHints": [
+        "historical-ads"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/release-20261031/screenshots/04-s05-evacuation-task-LEGACY.jpg",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/release-20261031/screenshots/04-s05-evacuation-task-LEGACY.jpg",
+      "type": "image",
+      "bytes": 45999,
+      "sha256": "d62dbfd512bb02e7927d5bd6ab1252cd380db630264254a40f4693ab2f277596",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 844,
+      "height": 390,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "copyOf": "artifacts/asset-runtime-browser/touch-terminal-and-subtitle.png",
+      "newCapture": false,
+      "copyBytesMatch": true,
+      "ownerManifestSceneAtRead": "S05/frontgate",
+      "ownerManifestCurrentReleaseScreenshot": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate接通终端后的称重台撤离，0/7、人物代理与周延字幕；不是S05自动撤离场。",
+      "observedHud": [
+        "02 · 称重台撤离",
+        "掩护港务员南撤 · 0/7",
+        "身后 23 m"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": true,
+      "roleHints": [
+        "historical-evacuation"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    },
+    {
+      "path": "artifacts/release-20261031/screenshots/05-s05-objective-direction-LEGACY.jpg",
+      "absolutePath": "/Users/penguin/VibeHack06/artifacts/release-20261031/screenshots/05-s05-objective-direction-LEGACY.jpg",
+      "type": "image",
+      "bytes": 39960,
+      "sha256": "e11de4386f70d0006d5862ca30da79d372480a4c4daf4ef37adcf6796c1eedf2",
+      "durationSeconds": null,
+      "exactCaptureTimestamp": null,
+      "currentDeliveryEligible": false,
+      "mtimeUsedAsEvidence": false,
+      "encoding": "JPEG",
+      "width": 844,
+      "height": 390,
+      "frames": 1,
+      "extensionMatchesEncoding": true,
+      "copyOf": "artifacts/asset-runtime-browser/touch-look-edge-marker.png",
+      "newCapture": false,
+      "copyBytesMatch": true,
+      "ownerManifestSceneAtRead": "S05/frontgate",
+      "ownerManifestCurrentReleaseScreenshot": false,
+      "classification": "historical",
+      "scene": "northgate/legacy-validation",
+      "observedContent": "独立northgate转向画面，目标方向“身后13m”；不属于正式S05。",
+      "observedHud": [
+        "01 · 北路接敌",
+        "接通称重台撤离线",
+        "身后 13 m"
+      ],
+      "visuallyInspected": true,
+      "visualInspectionViaOriginal": true,
+      "roleHints": [
+        "historical-objective-feedback"
+      ],
+      "useForCurrentDelivery": "NO — current release visual state is not proved",
+      "historicalUse": "Only with explicit historical version/scene labeling",
+      "exactCaptureCommit": null,
+      "exactCaptureBuildSha256": null,
+      "provenance": {
+        "report": "artifacts/asset-runtime-evidence.md",
+        "manifest": "artifacts/asset-runtime-candidate.json",
+        "baseCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+        "candidateSnapshotCreatedAt": "2026-10-31T05:36:06.098381+00:00",
+        "candidateSourceSetSHA256": "55ad40deafd043d5d6ff0eb6b7de617be08a7da475f90ed543cfe3880b0b0d48",
+        "candidateMediaHashMatches": true,
+        "archivalCommit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "archivalCommitIsCaptureCommit": false,
+        "limit": "Candidate snapshot binds these media bytes to a historical evidence set; it does not record exact capture time or prove b3c88dd rendering."
+      },
+      "sceneEvidence": {
+        "commit": "828d2e5f38c47e24c70a2be8a73ba4ce4c7d0710",
+        "file": "src/mission/Simulation.ts",
+        "lines": [
+          625,
+          626,
+          627,
+          628
+        ],
+        "basis": "Observed HUD strings are generated inside the northgate branch, while frontgate uses a separate objective function."
+      }
+    }
+  ],
+  "videoInventory": [],
+  "nearbyTrailerVideoInventory": [],
+  "videoGap": {
+    "status": "NO_ACTUAL_VIDEO_FOUND_IN_BOUNDED_SCOPE",
+    "durationSeconds": null,
+    "sha256": null,
+    "evidence": "artifacts/trailer-45s/validation.json explicitly marks source_video_capture and final_video_export NOT_RUN; v2/EDIT_PLAN.md still says real footage/video pending. Its 45 seconds/1350 frames are plan values, not observed video metadata.",
+    "requiredNext": "Capture normal-speed current S05/frontgate gameplay once browser use is available/authorized, preserve raw recording, build hash, scene and input/camera method. Do not convert screenshots/concepts to a claimed gameplay clip."
+  },
+  "fiveCurrentScreenshotRoles": [
+    {
+      "id": "S05-01",
+      "role": "当前S05全景",
+      "mustShow": "正式S05/frontgate入口、工业空间和有辨识度的实际资产；一眼可读的目标。",
+      "historicalReference": "artifacts/asset-jobs/production-20261031/qa/S05-generated-first-view.png",
+      "gap": "只有823273d历史入口图；当前60生产ID组合没有对应实拍。"
+    },
+    {
+      "id": "S05-02",
+      "role": "正式同伴与对白",
+      "mustShow": "S05中的郑铎或实际同伴中近景、正式模型、实际姿态和短对白；保持游戏内视点。",
+      "historicalReference": "artifacts/asset-runtime-browser/ak47-portrait-final.png",
+      "gap": "现存S05竖屏图仍为人物代理；独立人物查看器不能替代正式角色在关卡的画面。"
+    },
+    {
+      "id": "S05-03",
+      "role": "掩体交火",
+      "mustShow": "正式S05掩体与敌我位置、第一人称ADS或开火反馈；原连续录像保留真实输入与命中因果。",
+      "historicalReference": null,
+      "gap": "现有ADS备选属于northgate验证场，需当前frontgate新拍；静态图不能单独证明命中。"
+    },
+    {
+      "id": "S05-04",
+      "role": "工人撤离",
+      "mustShow": "S05首批/末批工人在实际安全后路移动，任务进度与画面对象对应。",
+      "historicalReference": null,
+      "gap": "现有称重台0/7图属于northgate手动终端路线，不能替代正式S05自动撤离。"
+    },
+    {
+      "id": "S05-05",
+      "role": "任务反馈与结果",
+      "mustShow": "S05当前目标切换、到位/交接或后撤提示；字幕、方向与操作区可读。手机展示需最终触控版实拍。",
+      "historicalReference": null,
+      "gap": "现有方向图及完成页属于northgate；尚无当前S05后段或最终手机布局证据。"
+    }
+  ],
+  "evidenceFiles": [
+    {
+      "path": "artifacts/release-20261031/screenshots/manifest.json",
+      "bytes": 8396,
+      "sha256": "7b87e4ae86a1ddf595a77e7c60fa199636b0d6fe174dac1581e983ce11ebd9e8"
+    },
+    {
+      "path": "artifacts/release-20261031/screenshots/captions.md",
+      "bytes": 2535,
+      "sha256": "06b76adf82940a1c4e1de377e6ecda23f300ba6fdc8d5898bf8ba32ec97dc4d5"
+    },
+    {
+      "path": "artifacts/asset-runtime-evidence.md",
+      "bytes": 5565,
+      "sha256": "5fa21242c43f4b12121657e76997882d2bf5b30e222b43377352312182981cd7"
+    },
+    {
+      "path": "artifacts/asset-runtime-candidate.json",
+      "bytes": 35989,
+      "sha256": "94ae953dcc41158aa70ce1031a3cc53337c3f48e18ba7199d7e310a162a8dff1"
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/runtime/integration-handoff.md",
+      "bytes": 2531,
+      "sha256": "9955ec1fb0621800cb4f12b808eb2b4cde3dd46f52a69edcaec3542ff8217d72"
+    },
+    {
+      "path": "artifacts/final-evidence.md",
+      "bytes": 6806,
+      "sha256": "329d61221492bc9a05ac37f1083ddee36d63a825aa04927ddf2aa3d1f7500e8c"
+    },
+    {
+      "path": "artifacts/asset-integration/README.md",
+      "bytes": 5184,
+      "sha256": "7665ddfbce234d1557307240b69e4d81c08f80ab7400f42a538334712165c267"
+    },
+    {
+      "path": "artifacts/trailer-45s/validation.json",
+      "bytes": 4478,
+      "sha256": "62f59e2dd07458515fffa10fd4c1a23fd6c5785f8e7c004e223a50cc0eeb9a3d"
+    },
+    {
+      "path": "artifacts/trailer-45s/v2/EDIT_PLAN.md",
+      "bytes": 12936,
+      "sha256": "63d8db5a236fa80693378d860d05c5bdf8a468bd997f63d30a9f75077e01aad7"
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json",
+      "bytes": 1809,
+      "sha256": "23ef04862a8d40d5ebeef64a30793f677823f73cbc691b3e5cc8d60ca524ebc0"
+    }
+  ],
+  "gitSourceEvidence": [
+    {
+      "commit": "828d2e5",
+      "path": "src/mission/Simulation.ts",
+      "sha256": "ac45aa97aa4ef181fdcb80a6f18f0018526f5ab90d857ad8d7f032165a4e21c0"
+    },
+    {
+      "commit": "828d2e5",
+      "path": "src/mission/Frontgate.ts",
+      "sha256": "ca243f9d8518f214d82f8259949b74689b206a95eedc99add52fc265510d068c"
+    },
+    {
+      "commit": "828d2e5",
+      "path": "src/content/chapter-flow.ts",
+      "sha256": "ec00c5eb9791cbab8070dd01d73aecaaa256d71e275494f792d15f4699cfca66"
+    },
+    {
+      "commit": "823273d",
+      "path": "src/mission/Frontgate.ts",
+      "sha256": "895124ed8c8beff9903c7ed13ba4645eb6d52672531458a5ccbac42e1ea53846"
+    }
+  ],
+  "limitations": [
+    "Every selected historical image is ineligible as a b3c88dd/current-release screenshot. Current menu/mobile changes will require their own final capture baseline.",
+    "Image hashes bind file bytes, not the renderer commit that produced them.",
+    "Historical candidate sourceSet hashes and Git archival commits do not provide an exact shutter-time build.",
+    "No browser was opened; no original image was renamed, copied, cropped or edited; no fake placeholder media was made.",
+    "Release screenshot files/manifest belong to the screenshot agent; corrections are reported only."
+  ]
+}

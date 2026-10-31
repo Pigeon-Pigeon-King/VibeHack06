@@ -1,0 +1,47 @@
+# 当前版路演材料交接 · 2026-10-31
+
+素材盘点读取基线：`main@b3c88dd50b848c54b6a3016cdff24bc167ae7a0d`。随后本地 HEAD 已到 `a9030c6`；主窗口交接称手机兼容与菜单开发候选清理已完成，并已推送私有仓库，Clide仍在传输。本窗口未重新进行手机或浏览器验收，也不把旧媒体绑定到新提交；新截图应登记真正录制时的构建。
+
+## 先纠正截图归属
+
+盘点时，`artifacts/release-20261031/screenshots/` 中以下三张 LEGACY 副本来自旧的独立 `northgate` 验证场，不是正式战役 S05 的 `frontgate`：
+
+- `03-s05-ads-cover-line-LEGACY.jpg`
+- `04-s05-evacuation-task-LEGACY.jpg`
+- `05-s05-objective-direction-LEGACY.jpg`
+
+请由截图清单负责人纠正其场景标题与 manifest。旧图中“接通称重台撤离线”的 HUD 属于旧独立验证场；不能因两处均叫北闸，就按当前 S05 交付。固定版本代码证据、原图路径与摘要见 [S05素材盘点](s05-media-inventory.md)。本窗口没有覆盖或更名截图代理的文件。
+
+01／02 对应历史 S05，仍没有绑定当前交付构建。限定范围内检查46个图片文件，可证明属于盘点基线 `b3c88dd` 的截图为0张，实际玩法视频为0个；后续也未新增 `a9030c6` 的实拍证据。不能将这五张历史副本填作新版实拍完成。
+
+## 已可直接使用
+
+| 材料 | 位置 | 状态 |
+| --- | --- | --- |
+| 游戏短简介、故事引入、S05试玩说明 | [current-release-intro.md](current-release-intro.md) | 可复制；未将完整战役或设备验收写成完成 |
+| 8页HTML演示 | [index.html](presentation/index.html) · [离线ZIP](ganymede-presentation.zip) | 图片与45秒视频保留占位；文字、标题、备注与计时已完成 |
+| 两分钟口播 | [SPEECH_2MIN.md](../../docs/submission/SPEECH_2MIN.md) | 沿用用户修订；120秒目标待真人试读 |
+| 透明标题 | [ganymede-title-v1.png](../../assets/source/branding/ganymede-title-v1.png) | 2172×724 RGBA；来源与Alpha已核对 |
+| 45秒音乐＋闻川旁白试听 | [MP3](presentation/assets/trailer-audio-preview.mp3) | 与声音窗口冻结文件摘要一致；不含实机SFX，待用户听审 |
+| 独立音乐、六句干声、旁白轨及字幕 | `design/audio/trailer45-v2/delivery/` | 三份WAV母带均45.000秒；使用声音窗口实际时码 |
+| S05拍摄与45秒玩法备选 | [S05_CAPTURE_AND_45S.md](S05_CAPTURE_AND_45S.md) | 待实拍清单，不是完成片 |
+
+路演继续使用 **120秒宣讲＋45秒影片时槽＋15秒切换余量**。原95秒现场操作段不恢复；本次短介绍是介绍页／另行口播的备选，不额外塞入两分钟正文。
+
+## 当前无法完成的实拍
+
+本窗口重新调用 CUA 得到 `browsers: []`，错误为 `Local browser use is disabled in Work settings`。没有可用于实际游戏录制的允许表面；未通过 Playwright、CDP、其它浏览器启动或系统截图绕过设置。
+
+因此新版五张截图与45秒实机视频仍未产出。补拍前需要恢复允许的浏览器控制表面，或由用户提供真实原片；不需要等待完整战役验收，只需在实际S05局部完成这次拍摄。图像占位、旧图与音频不会被拼成冒充实机的成片。
+
+S05是正式 `frontgate`，不是旧 `northgate`。S10专属的Q请求掩护、协作搬运等画面不能在S05中虚构；父亲／班长回忆、护送取舍、接防、救援与结尾守门仍按指定章节补拍。S05普通玩法备选与原剧情版分开记录。
+
+原BGM静音、保留实机SFX的底层分组接口存在，但当前UI没有独立入口，章节旁白还有独立播放器。录制预设须由运行负责人接入并确认。本窗口不修改 `src` 或 `public`；该音频入口缺口不妨碍将来先拍静态截图。
+
+## 链接与版本接手
+
+本机游戏入口为 [http://127.0.0.1:5188/](http://127.0.0.1:5188/)，本轮只确认HTTP 200，不据此声明已实际操作新版。
+
+主窗口已交接 [GitHub私有仓库](https://github.com/Pigeon-Pigeon-King/VibeHack06)，报告远端主线为 `a9030c6`、Glowin邀请仍为pending；本窗口没有另行登录核验邀请状态。主窗口另有 [发布简介](../release-20261031/GAME_INTRO.md)，本窗口的介绍补充保留用户要求的十年占领、回归愿望与双复仇线。
+
+Clide测试地址与最终部署记录仍待主窗口交付。本窗口没有发布或邀请协作者；得到真实链接后可更新交付说明，HTML主画面继续维持少字布局。

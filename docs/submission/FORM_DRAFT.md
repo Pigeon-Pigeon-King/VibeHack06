@@ -2,6 +2,8 @@
 
 > 本轮宣讲与故事表述已更新，参见 [制作规划 v2](CREATIVE_PRESENTATION_PLAN.md) 和 [两分钟讲稿](SPEECH_2MIN.md)。下方表单是旧读取时点的草稿；其音频／资产状态须在正式填写时按冻结版更新，不宜直接照读为当前状态。本轮未更改正式报名记录或提交表单。
 
+当前版发布介绍优先使用 [current-release-intro.md](../../artifacts/submission/current-release-intro.md)。Clide与GitHub真实地址由主窗口交付；截图场景／版本问题见 [新交接记录](../../artifacts/submission/RELEASE_HANDOFF_20261031.md)，不把历史候选填作本版实拍。
+
 准备时间：2026-10-31T12:53:15+08:00（北京时间）。状态：**文案可审阅，尚未提交**。网站、GitHub、队伍与笔记链接均待补；机器可读稿见 [form-draft.json](../../artifacts/submission/form-draft.json)。
 
 本稿以主线 `9ec9bc6`／0.6.0 为原始读取基线；`1ebd8fa` 仅表示该基线内最后一次运行代码变更，不代表当前 main 的最新实现。备用 `7877cbf` 加未提交改动只作为当时的候选材料读取；正式人物、声音与其他窗口素材不因文件存在就计入可玩版本。证据与规则分级见 [规则与缺口](RULES_AND_GAPS.md)。

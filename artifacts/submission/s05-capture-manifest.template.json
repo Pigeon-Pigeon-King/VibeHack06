@@ -1,0 +1,231 @@
+{
+  "schema_version": 1,
+  "document_type": "capture_manifest_template",
+  "status": "PLANNED_NOT_CAPTURED",
+  "planning_date": "2026-10-31",
+  "instructions": [
+    "Copy this template for actual capture records; null means unknown, not passed.",
+    "Paths are relative to the project root unless explicitly recorded otherwise.",
+    "Create one actual source_takes entry per uncut recording; source_take_id links every selected segment to its version, input, timing and audio facts.",
+    "Do not fill actual_* fields from planned_* values without checking the source.",
+    "S05 is frontgate, not legacy northgate. No footage, screenshot or finished video is asserted to exist by this template."
+  ],
+  "planning_basis": {
+    "parent_supplied_main_revision": "b3c88dd",
+    "independently_queried_head": false,
+    "working_tree_frozen": false,
+    "parent_reported_local_url": "http://127.0.0.1:5188/",
+    "url_visited_by_this_task": false,
+    "scenario_id": "frontgate",
+    "chapter_id": "S05",
+    "source_references": [
+      "src/content/chapter-flow.ts",
+      "src/content/frontgate-layout.ts",
+      "src/mission/Frontgate.ts",
+      "src/presentation/frontgate-environment.ts",
+      "src/presentation/Sound.ts",
+      "src/chapter-transition/HtmlNarrationPlayer.ts",
+      "src/ui/GameUI.ts",
+      "src/main.ts",
+      "artifacts/trailer-45s/v2/EDIT_PLAN.md",
+      "artifacts/submission/audio-production-handoff.json",
+      "artifacts/submission/title-asset-v1.json"
+    ]
+  },
+  "presentation_seconds": {
+    "speech": 120,
+    "film": 45,
+    "switch_allowance": 15,
+    "total": 180
+  },
+  "existing_reusable_assets": {
+    "music": {
+      "path": "design/audio/trailer45-v2/delivery/music-45s.wav",
+      "sha256_from_existing_handoff": "ce5739df2ee4746a2b22ee96f37c6140d9ac34ba8b5499699a2e1475ff262245",
+      "sample_rate_hz": 48000,
+      "sample_frames": 2160000,
+      "duration_seconds": 45,
+      "channels": 2,
+      "bits_per_sample": 24,
+      "human_listening_approval": "PENDING",
+      "contains_game_sfx": false,
+      "regenerated_by_this_task": false
+    },
+    "transparent_title": {
+      "path": "assets/source/branding/ganymede-title-v1.png",
+      "sha256_from_existing_handoff": "e5e10a9ba03df440220bf613093b3cdcd292e4159b8988828ee17969d44822a4",
+      "text": "重返木卫三",
+      "dimensions_px": [2172, 724],
+      "mode": "RGBA",
+      "regenerated_by_this_task": false
+    },
+    "story_assets_excluded_from_this_variant": [
+      "design/audio/trailer45-v2/delivery/narration-45s.wav",
+      "design/audio/trailer45-v2/delivery/preview-music-voice-no-sfx-45s.wav",
+      "design/audio/trailer45-v2/delivery/preview-music-voice-no-sfx-45s.mp3",
+      "design/audio/trailer45-v2/delivery/trailer45.v2.zh-CN.srt"
+    ]
+  },
+  "capture_constraints": {
+    "browser_automation_allowed_now": false,
+    "bypass_disabled_browser_with_os_or_devtools": false,
+    "actual_recording_done_by_this_task": false,
+    "preferred_input": "human_keyboard_mouse",
+    "allowed_input_classifications": [
+      "human_keyboard_mouse",
+      "human_touch",
+      "scripted_automatic_replay",
+      "authored_staged_sequence",
+      "mixed_explicitly_described"
+    ],
+    "allowed_entry_classifications": [
+      "normal_campaign_progress",
+      "development_independent_chapter",
+      "development_checkpoint_import",
+      "normal_existing_checkpoint"
+    ],
+    "planned_playback_speed": 1,
+    "speed_ramps_allowed": false,
+    "freeze_frames_allowed": false,
+    "still_image_fake_gameplay_allowed": false,
+    "injected_mission_facts_allowed": false,
+    "full_campaign_verification_required_before_local_capture": false,
+    "claim_full_campaign_completion": false
+  },
+  "audio_capture_plan": {
+    "status": "RUNTIME_OPERATOR_INTERFACE_PENDING",
+    "existing_public_method": "Sound.setGroupVolume(group, value)",
+    "existing_group_names": ["sfx", "voice", "music", "ambience"],
+    "group_control_found_in_current_ui": false,
+    "group_method_call_sites_found_in_src": 0,
+    "separate_game_stem_export_exists": false,
+    "master_volume": "audible_nonzero_actual_value_to_record",
+    "planned_music_volume": 0,
+    "planned_voice_volume": 0,
+    "planned_sfx_volume": "nonzero_actual_value_to_record",
+    "planned_ambience_volume": "choose_and_record_actual_value",
+    "chapter_transition_narration": "avoid_transitions_or_control_HtmlNarrationPlayer_separately",
+    "expected_game_capture_format": "one_synced_game_output_mix_with_bgm_and_dialogue_muted",
+    "actual_capture_format": null,
+    "short_recording_listening_check": "NOT_RUN",
+    "note": "These are integration requirements, not currently available browser commands or confirmed exported stems."
+  },
+  "source_take_entry_template": {
+    "take_id": null,
+    "status": "NOT_CAPTURED",
+    "actual_file": null,
+    "actual_sha256": null,
+    "recorded_at_with_timezone": null,
+    "operator": null,
+    "capture_method_and_app_version": null,
+    "capture_surface_authorized": null,
+    "build": {
+      "actual_commit": null,
+      "branch": null,
+      "dirty": null,
+      "dirty_file_paths_and_sha256": [],
+      "frozen_build_or_source_snapshot_path": null,
+      "build_type_dev_or_production": null,
+      "build_artifact_sha256": null,
+      "url_or_app_build": null,
+      "device_os_browser": null
+    },
+    "entry": {
+      "classification": null,
+      "visible_entry_label": null,
+      "actual_chapter_id": null,
+      "actual_scenario_id": null,
+      "checkpoint_file_if_used": null,
+      "checkpoint_sha256_if_used": null,
+      "checkpoint_provenance": null,
+      "is_continuous_from_campaign_start": null
+    },
+    "input": {
+      "classification": null,
+      "human_controls_description": null,
+      "scripted_replay_details_if_any": null,
+      "authored_staged_sequence_ranges_seconds": [],
+      "retries_or_loads_with_time_seconds": [],
+      "state_injection_or_teleport_used": null
+    },
+    "video": {
+      "width_px": null,
+      "height_px": null,
+      "actual_frame_rate": null,
+      "constant_or_variable_frame_rate": null,
+      "duration_seconds": null,
+      "frame_count": null,
+      "actual_simulation_speed": null,
+      "uncut_original_retained": null,
+      "hud_visible": null,
+      "device_or_capture_frame_loss_notes": null
+    },
+    "audio": {
+      "recorded": null,
+      "channels": null,
+      "sample_rate_hz": null,
+      "sample_frames": null,
+      "actual_master_volume": null,
+      "actual_group_volumes": {"music": null, "sfx": null, "voice": null, "ambience": null},
+      "actual_chapter_narration_volume_or_avoidance": null,
+      "actual_mute_control_used": null,
+      "original_bgm_absent_listening_confirmed": null,
+      "sfx_audible_and_synced_confirmed": null,
+      "voice_absent_listening_confirmed": null,
+      "mixed_output_or_true_stems": null,
+      "clipping_or_other_audio_notes": null
+    },
+    "phase_and_event_log": [],
+    "limitations": []
+  },
+  "source_takes": [],
+  "screenshots": [
+    {"id":"S05-SS01","purpose":"S05 northgate establishing view","planned_position_hint":[-8,0,40],"status":"NOT_CAPTURED","actual_file":null,"actual_sha256":null,"capture_method":null,"source_take_id":null,"source_time_seconds":null,"actual_build_reference":null,"actual_phase":null,"observed_state":null,"unmodified_master_file":null},
+    {"id":"S05-SS02","purpose":"real player cover fire, not proof of Q or ally damage","planned_position_hint":[-8,0,12],"status":"NOT_CAPTURED","actual_file":null,"actual_sha256":null,"capture_method":null,"source_take_id":null,"source_time_seconds":null,"actual_build_reference":null,"actual_phase":null,"observed_state":null,"unmodified_master_file":null},
+    {"id":"S05-SS03","purpose":"actual workers moving in the west corridor","planned_position_hint":[-36,0,36],"status":"NOT_CAPTURED","actual_file":null,"actual_sha256":null,"capture_method":null,"source_take_id":null,"source_time_seconds":null,"actual_build_reference":null,"actual_phase":null,"observed_state":null,"unmodified_master_file":null},
+    {"id":"S05-SS04","purpose":"real east-road threat and flank response","planned_position_hint":[16,0,-2],"status":"NOT_CAPTURED","actual_file":null,"actual_sha256":null,"capture_method":null,"source_take_id":null,"source_time_seconds":null,"actual_build_reference":null,"actual_phase":null,"observed_state":null,"unmodified_master_file":null},
+    {"id":"S05-SS05","purpose":"Zheng actually returning to the S05 rear post","planned_position_hint":[-5,0,25],"status":"NOT_CAPTURED","actual_file":null,"actual_sha256":null,"capture_method":null,"source_take_id":null,"source_time_seconds":null,"actual_build_reference":null,"actual_phase":null,"observed_state":null,"unmodified_master_file":null}
+  ],
+  "edit_plan": {
+    "variant_id": "S05_GAMEPLAY_45S_ALTERNATIVE",
+    "public_label": "S05 北闸实机玩法剪辑",
+    "planned_duration_seconds": 45,
+    "planned_fps": 30,
+    "planned_frame_count": 1350,
+    "time_intervals": "start_inclusive_end_exclusive",
+    "source_time_units": "seconds_from_start_of_uncut_original; record_exact_source_frames_after_capture",
+    "planned_target_resolution_px": [1920,1080],
+    "no_upscale_claim": true,
+    "narration_track": null,
+    "narration_subtitle_file": null,
+    "game_hud_and_subtitles": "retain_truthful_in_game_state; no_script_replacement",
+    "title_overlay": {"asset_reference":"existing_reusable_assets.transparent_title","start_frame":1230,"end_frame_exclusive":1350,"background":"continuing_actual_S05_gameplay_not_a_still"},
+    "segments": [
+      {"id":"S05-V01","start_frame":0,"end_frame_exclusive":150,"duration_seconds":5,"intended_content":"walk and look north from actual S05 spawn","planned_phase":0,"status":"NOT_CAPTURED","source_take_id":null,"source_in_seconds":null,"source_out_seconds":null,"source_in_frame":null,"source_out_frame_exclusive":null,"actual_build_reference":null,"actual_input_classification":null,"actual_speed":null,"actual_audio_status":null,"observed_event_evidence":null,"substitution_note":null},
+      {"id":"S05-V02","start_frame":150,"end_frame_exclusive":420,"duration_seconds":9,"intended_content":"continuous north-road aiming, fire and real feedback","planned_phase":1,"status":"NOT_CAPTURED","source_take_id":null,"source_in_seconds":null,"source_out_seconds":null,"source_in_frame":null,"source_out_frame_exclusive":null,"actual_build_reference":null,"actual_input_classification":null,"actual_speed":null,"actual_audio_status":null,"observed_event_evidence":null,"substitution_note":null},
+      {"id":"S05-V03","start_frame":420,"end_frame_exclusive":660,"duration_seconds":8,"intended_content":"first group of actual workers moving through west corridor","planned_phase":1,"status":"NOT_CAPTURED","source_take_id":null,"source_in_seconds":null,"source_out_seconds":null,"source_in_frame":null,"source_out_frame_exclusive":null,"actual_build_reference":null,"actual_input_classification":null,"actual_speed":null,"actual_audio_status":null,"observed_event_evidence":null,"substitution_note":null},
+      {"id":"S05-V04","start_frame":660,"end_frame_exclusive":960,"duration_seconds":10,"intended_content":"actual east-road threat, player reorientation and fire","planned_phase":2,"status":"NOT_CAPTURED","source_take_id":null,"source_in_seconds":null,"source_out_seconds":null,"source_in_frame":null,"source_out_frame_exclusive":null,"actual_build_reference":null,"actual_input_classification":null,"actual_speed":null,"actual_audio_status":null,"observed_event_evidence":null,"substitution_note":null},
+      {"id":"S05-V05","start_frame":960,"end_frame_exclusive":1230,"duration_seconds":9,"intended_content":"actual S05 relief movement or Zheng returning to rear","planned_phase":3,"status":"NOT_CAPTURED","source_take_id":null,"source_in_seconds":null,"source_out_seconds":null,"source_in_frame":null,"source_out_frame_exclusive":null,"actual_build_reference":null,"actual_input_classification":null,"actual_speed":null,"actual_audio_status":null,"observed_event_evidence":null,"substitution_note":null},
+      {"id":"S05-V06","start_frame":1230,"end_frame_exclusive":1350,"duration_seconds":4,"intended_content":"live inner-exit view after radio naturally ends; title composited over it","planned_phase":5,"status":"NOT_CAPTURED","source_take_id":null,"source_in_seconds":null,"source_out_seconds":null,"source_in_frame":null,"source_out_frame_exclusive":null,"actual_build_reference":null,"actual_input_classification":null,"actual_speed":null,"actual_audio_status":null,"observed_event_evidence":null,"substitution_note":null}
+    ]
+  },
+  "actual_export": {
+    "status": "NOT_CREATED",
+    "file": null,
+    "sha256": null,
+    "frame_count": null,
+    "fps": null,
+    "duration_seconds": null,
+    "audio_sample_rate_hz": null,
+    "audio_sample_frames": null,
+    "audio_duration_seconds": null,
+    "all_selected_sources_traceable": null,
+    "all_speeds_confirmed_1x": null,
+    "no_freeze_or_fake_gameplay": null,
+    "bgm_muted_sfx_retained_listening_result": null,
+    "title_41_to_45_confirmed": null,
+    "no_story_narration_or_story_srt_loaded": null,
+    "browser_playback_result": "NOT_RUN",
+    "human_presentation_timing_result": "NOT_RUN"
+  }
+}
