@@ -156,6 +156,17 @@ export class Physics {
     if (delta.y < desired.y - 0.001 && body.verticalSpeed > 0) body.verticalSpeed = 0;
   }
 
+  /** A loaded patient rides inside the larger bed's collision-checked step.
+   * This is ordinary kinematic motion, not teleportation or an arrival shortcut.
+   * Call only once the passenger is already aboard the carrier. */
+  ride(passengerId: string, carrierId: string): void {
+    const passenger = this.bodies.get(passengerId)!, carrier = this.bodies.get(carrierId)!;
+    const next = carrier.rigid.nextTranslation();
+    passenger.rigid.setNextKinematicTranslation({ x: next.x,
+      y: next.y - carrier.height / 2 + passenger.height / 2, z: next.z });
+    passenger.grounded = carrier.grounded; passenger.verticalSpeed = carrier.verticalSpeed;
+  }
+
   step(): void { this.world.step(); }
 
   trace(from: Vec3, to: Vec3, exclude = '', onlySolids = false): TraceHit | null {

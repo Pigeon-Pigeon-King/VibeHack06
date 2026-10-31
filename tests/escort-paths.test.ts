@@ -47,6 +47,17 @@ const cartSeparation = (a: Actor, b: Actor) => {
     + Math.abs(axis[0] * basis[1][0] + axis[1] * basis[1][1]) * 1.2;
   return Math.max(...[...aa, ...bb].map(axis => Math.abs(dx * axis[0] + dz * axis[1]) - radius(axis, aa) - radius(axis, bb)));
 };
+// Signed horizontal clearance: the real 0.28m person capsule against the full
+// 0.9m by 2.4m oriented bed. Negative values are footprint overlap, not a visual verdict.
+const personCartClearance = (person: Actor, cart: Actor) => {
+  const dx = person.position[0] - cart.position[0], dz = person.position[2] - cart.position[2];
+  const x = Math.abs(dx * Math.cos(cart.yaw) - dz * Math.sin(cart.yaw)) - 0.45;
+  const z = Math.abs(dx * Math.sin(cart.yaw) + dz * Math.cos(cart.yaw)) - 1.2;
+  return Math.hypot(Math.max(0, x), Math.max(0, z)) + Math.min(0, Math.max(x, z)) - 0.28;
+};
+const convoyGuards = ['meng', 'relief-0', 'relief-1'];
+const convoyPeople = ['walker-0', 'walker-1', ...convoyGuards];
+const clearanceTolerance = 0.005;
 
 // Deterministic headless input driver, not human/browser acceptance. Neither the
 // mission nor its actors are edited. The raised combat bridge uses its actual
@@ -64,6 +75,10 @@ function playEscort(skip: boolean, restore: boolean) {
   let maxActive = 0, maxAimers = 0, fireInputs = 0, cooperativeStart = 0, readyFrames = 0;
   let deniedSkip = false, repairStart = 0, repairEnd = 0, decisionStart = 0, decisionEnd = 0;
   const retiredRestored = new Set<string>(), retreatStarts = new Map<string, Vec3>();
+  const resources = () => ({ health: s.player.health, ammo: s.player.ammo, reserve: s.player.reserve });
+  const stagedResources = new Map<number, { start: ReturnType<typeof resources>; end?: ReturnType<typeof resources> }>();
+  const convoyClearances = new Map<string, { minimum: number; samples: number; overlapFrames: number; consecutive: number; longest: number;
+    worst: { phase: number; elapsed: number; person: Vec3; cart: Vec3; yaw: number } }>();
   const summary = () => JSON.stringify({ phase: s.mission.phase, time: s.mission.elapsed, player: s.player.position,
     health: s.player.health, ammo: [s.player.ammo, s.player.reserve], objective: s.objective, next: path[0], climb, descend,
     facts: s.mission.facts, actors: s.actors.map(a => ({ id: a.id, name: a.name, p: a.position, safe: a.safe, down: a.down,
@@ -129,6 +144,8 @@ function playEscort(skip: boolean, restore: boolean) {
         yaw = Math.atan2(-dx, -dz); pitch = Math.atan2(target.position[1] + 1.62 - s.playerEye[1], Math.hypot(dx, dz));
       }
       const before = new Map(s.actors.filter(a => a.role !== 'enemy').map(a => [a.id, [...a.position] as Vec3]));
+      const guardsWithConvoyGoals = new Set(phase >= 6 && phase <= 13
+        ? s.actors.filter(a => convoyGuards.includes(a.id) && a.goals.length).map(a => a.id) : []);
       const medic = s.actors.find(a => a.id === 'medic')!;
       if (phase === 11 && distance(s.player.position, E.changeAssist) < 1.2 && !medic.goals.length && medic.released && distance(medic.position, E.medic) < 1.2) readyFrames++;
       else readyFrames = 0;
@@ -163,6 +180,11 @@ function playEscort(skip: boolean, restore: boolean) {
         if (phase === 2) repairEnd = steps;
         if (s.mission.phase === 4) decisionStart = steps;
         if (phase === 4) decisionEnd = steps;
+        if ([2, 4].includes(s.mission.phase)) stagedResources.set(s.mission.phase, { start: resources() });
+        if ([2, 4].includes(phase)) {
+          const segment = stagedResources.get(phase)!; segment.end = resources();
+          expect(segment.end, `phase ${phase} ${skip ? 'skip' : 'natural'} must not grant health or ammunition`).toEqual(segment.start);
+        }
         if (phase === 7) { checkLeg(0); check(s.player.position[1] > 2.2 && climb === 2, 'upper bridge was bypassed'); }
         if (phase === 8) check(descend === 2 && s.player.position[1] < 0.2, 'upper bridge descent was bypassed');
         if (s.mission.phase === 11) { checkLeg(1); cooperativeStart = steps; }
@@ -178,6 +200,30 @@ function playEscort(skip: boolean, restore: boolean) {
       }
       if (denyingCooperation) check(s.mission.phase === 11 && !s.has('escort-patient-transferred'), 'Enter skipped the cooperative transfer');
       if (phase === 11 && !denyingCooperation) deniedSkip = true;
+      // Equal speeds require separate lanes. Test complete person/bed footprints
+      // while travelling, including the final movement frame that consumes a goal.
+      // Guards' free tactical moves and phase-14 return are outside this contract.
+      const convoyPhase = s.mission.phase >= 6 && s.mission.phase <= 13;
+      if (convoyPhase || phase >= 6 && phase <= 13) {
+        for (const person of s.actors.filter(a => convoyPeople.includes(a.id))) {
+          for (const cart of escortPatients(s)) {
+            const key = `${person.id}/${cart.id}`;
+            const inTransit = convoyGuards.includes(person.id)
+              ? guardsWithConvoyGoals.has(person.id) || convoyPhase && person.goals.length > 0
+              : person.goals.length > 0 || cart.goals.length > 0;
+            if (!inTransit) { const metric = convoyClearances.get(key); if (metric) metric.consecutive = 0; continue; }
+            const clearance = personCartClearance(person, cart);
+            const sample = { phase: s.mission.phase, elapsed: s.mission.elapsed, person: [...person.position] as Vec3,
+              cart: [...cart.position] as Vec3, yaw: cart.yaw };
+            const metric = convoyClearances.get(key) ?? { minimum: Infinity, samples: 0, overlapFrames: 0, consecutive: 0, longest: 0, worst: sample };
+            metric.samples++;
+            if (clearance < metric.minimum) { metric.minimum = clearance; metric.worst = sample; }
+            if (clearance < 0) { metric.overlapFrames++; metric.consecutive++; metric.longest = Math.max(metric.longest, metric.consecutive); }
+            else metric.consecutive = 0;
+            convoyClearances.set(key, metric);
+          }
+        }
+      }
       check(escortPatients(s).every((patient, i) => patient.name === initialPatientNames[i]),
         'the same two patients must retain their names and order when their physical cart changes');
       if (s.mission.phase < 12) {
@@ -234,15 +280,29 @@ function playEscort(skip: boolean, restore: boolean) {
     expect(factAt.get('escort-patient-transferred')!).toBeLessThan(factAt.get('escort-convoy-arrived')!);
     expect(factAt.get('escort-manifest-checked')!).toBeLessThan(factAt.get('meng-returned-for-relief')!);
     if (!skip) { expect((repairEnd - repairStart) * FIXED_DT).toBeGreaterThanOrEqual(24); expect((decisionEnd - decisionStart) * FIXED_DT).toBeGreaterThanOrEqual(58); }
+    expect([...stagedResources.keys()]).toEqual([2, 4]);
+    for (const segment of stagedResources.values()) expect(segment.end).toBeDefined();
+    for (const person of convoyPeople) for (const cart of ['cart-0', 'cart-1', 'cart-2']) {
+      const pair = `${person}/${cart}`, metric = convoyClearances.get(pair);
+      expect(metric?.samples, `${pair} transit must be checked`).toBeGreaterThan(0);
+      // Each violation fails the test, while soft assertions let every replay
+      // finish and report all affected pairs instead of hiding later crossings.
+      expect.soft(metric!.minimum, `${pair} penetrated an occupied bed; ${JSON.stringify(metric!.worst)}`).toBeGreaterThanOrEqual(-clearanceTolerance);
+    }
     if (restore) {
-      expect([...restores].filter(x => typeof x === 'number')).toEqual([5, 8, 11, 12, 14]); expect(retiredRestored.size).toBeGreaterThan(0);
+      expect([...restores].filter(x => typeof x === 'number')).toEqual([5, 8, 11, 12, 14]);
       for (const id of retiredRestored) expect(distance(retreatStarts.get(id)!, s.actors.find(a => a.id === id)!.position), `${id} actually walked out`).toBeGreaterThan(0.2);
     }
     const result = { facts: [...s.mission.facts].sort(), player: { position: [...s.player.position] as Vec3,
       health: s.player.health, ammo: s.player.ammo, reserve: s.player.reserve }, actors: s.actors.filter(a => a.role !== 'enemy').map(a => ({ id: a.id,
       position: [...a.position] as Vec3, health: a.health, safe: a.safe, down: a.down, goals: a.goals, path: a.path })) };
     console.info(`ESCORT_REPLAY skip=${skip} restore=${restore}`, JSON.stringify({ seconds: s.mission.elapsed, spawned: s.mission.spawned,
-      kills: s.kills, maxActive, maxAimers, phases, restores: [...restores], retiredRestored: [...retiredRestored] }));
+      kills: s.kills, maxActive, maxAimers, phases, restores: [...restores], retiredRestored: [...retiredRestored],
+      stagedResources: [...stagedResources].map(([phase, segment]) => ({ phase, ...segment })), terminalResources: resources() }));
+    console.info(`ESCORT_CONVOY_CLEARANCE skip=${skip} restore=${restore}`, JSON.stringify([...convoyClearances].map(([pair, metric]) => ({
+      pair, samples: metric.samples, minimumMeters: metric.minimum, overlapSeconds: metric.overlapFrames * FIXED_DT,
+      longestOverlapSeconds: metric.longest * FIXED_DT, worst: metric.worst,
+    }))));
     return result;
   } finally { s.dispose(); env.dispose(); }
 }
@@ -251,14 +311,61 @@ describe('S08 escort: public-input convoy and cooperative transfer', () => {
   it('walks both bridge stairs and escorts the same two patients and two attendants; natural/skip endings converge', () => {
     const actual = playEscort(true, false), expected = playEscort(false, false);
     expect(actual.facts).toEqual(expected.facts);
-    const { position: pa, ...sa } = actual.player, { position: pb, ...sb } = expected.player;
-    expect(sa).toEqual(sb); expect.soft(d3(pa, pb), 'player terminal pose').toBeLessThan(0.02);
+    // Staged resource invariance is checked at each segment above. Later live
+    // combat has different timing after a skip, so its ammunition expenditure may differ.
+    expect(actual.player.health).toBe(expected.player.health);
+    expect.soft(d3(actual.player.position, expected.player.position), 'player terminal pose').toBeLessThan(0.02);
     actual.actors.forEach((a, i) => {
       const { position: xa, ...aa } = a, { position: xb, ...ab } = expected.actors[i];
       expect(aa).toEqual(ab); expect.soft(d3(xa, xb), `${a.id}: ${JSON.stringify([xa, xb])}`).toBeLessThan(0.02);
     });
   }, 120_000);
-  it('restores real combat, exchange and return checkpoints including living enemies that already left the field', () => {
+  it('restores real combat, exchange and return checkpoints reached by public inputs', () => {
     playEscort(false, true);
   }, 120_000);
+  it('synthetic retreat boundary: a living old-sector enemy physically exits and stays absent after SaveStore restore', () => {
+    const env = buildEnvironment('escort'), source = new Simulation('escort', env.solids);
+    const fixture = source.snapshot(); source.dispose();
+    // Explicit boundary fixture, not a reached campaign checkpoint. Only the
+    // initial old-sector situation is seeded; retreat, movement and retirement
+    // are produced by the normal update loop, without assigning safe/down or exit facts.
+    const enemyId = 'enemy-E06-0', start: Vec3 = [-70, 0, -31];
+    fixture.player.position = [-180, 0, 14];
+    Object.assign(fixture.mission, { phase: 10, control: 'work', spawned: 1, nextSpawn: 10000 });
+    fixture.mission.facts.push(`escort-sector-0-${enemyId}`);
+    fixture.actors.push({ ...structuredClone(fixture.actors.find(a => a.id === 'meng')!), id: enemyId,
+      name: '撤出边界测试敌人', role: 'enemy', position: [...start] });
+    let s = new Simulation('escort', env.solids, fixture), frames = 0, traveled = 0, maxStep = 0;
+    try {
+      const killsBefore = s.kills;
+      expect(s.has(`escort-retreat-${enemyId}`)).toBe(false);
+      expect(s.actors.find(a => a.id === enemyId)!.safe).toBe(false);
+      while (!s.actors.find(a => a.id === enemyId)!.safe && frames < 45 / FIXED_DT) {
+        const previous = [...s.actors.find(a => a.id === enemyId)!.position] as Vec3;
+        expect(s.physics.bodies.has(enemyId)).toBe(true);
+        s.step({ ...emptyIntent, yaw: s.player.yaw }); frames++;
+        const enemy = s.actors.find(a => a.id === enemyId)!;
+        maxStep = Math.max(maxStep, d3(previous, enemy.position)); traveled += distance(previous, enemy.position);
+        expect(enemy.down).toBe(false); expect(enemy.health).toBeGreaterThan(0);
+        expect(d3(previous, enemy.position), 'retirement must not teleport to an entrance').toBeLessThan(0.1);
+      }
+      const retired = s.actors.find(a => a.id === enemyId)!;
+      expect(s.has(`escort-retreat-${enemyId}`)).toBe(true); expect(retired.safe).toBe(true);
+      expect(retired.goals).toEqual([]); expect(s.physics.bodies.has(enemyId)).toBe(false);
+      expect(Math.min(...E.enemyEntries.flat().map(p => distance(retired.position, p)))).toBeLessThan(0.85);
+      expect(distance(start, retired.position)).toBeGreaterThan(20); expect(traveled).toBeGreaterThan(20);
+      expect(s.kills).toBe(killsBefore);
+      const snapshot = s.snapshot(), store = new SaveStore(new Memory());
+      expect(store.save('escort', snapshot)).toEqual({ ok: true });
+      const loaded = store.load('escort'); expect(loaded.warning).toBeUndefined();
+      const replacement = new Simulation('escort', env.solids, loaded.save!.snapshot);
+      expect(replacement.snapshot()).toEqual(snapshot); s.dispose(); s = replacement;
+      for (let frame = 0; frame < 60; frame++) s.step({ ...emptyIntent, yaw: s.player.yaw });
+      expect(s.physics.bodies.has(enemyId)).toBe(false);
+      expect(s.aliveEnemies.some(a => a.id === enemyId)).toBe(false);
+      expect(s.actors.find(a => a.id === enemyId)).toEqual(retired); expect(s.kills).toBe(killsBefore);
+      console.info('ESCORT_SYNTHETIC_RETREAT', JSON.stringify({ frames, seconds: frames * FIXED_DT,
+        traveled, maxStep, from: start, to: retired.position, health: retired.health, killsBefore, killsAfter: s.kills }));
+    } finally { s.dispose(); env.dispose(); }
+  }, 30_000);
 });

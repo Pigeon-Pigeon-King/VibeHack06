@@ -149,7 +149,9 @@ describe('physical combat tactics', () => {
     try {
       s.mission.nextSpawn = 10000;
       const a = s.aliveEnemies[0];
-      s.physics.teleport(a.id, [0, 0, -10]); a.position = [0, 0, -10]; s.route(a, [[4, 0, -10]]);
+      // At 4.5 m/s a four-metre approach ends before the 0.8s enemy
+      // reaction window. Keep the route long enough to observe fire in motion.
+      s.physics.teleport(a.id, [0, 0, -10]); a.position = [0, 0, -10]; s.route(a, [[12, 0, -10]]);
       s.physics.teleport('player', [0, 0, 10]); s.player.position = [0, 0, 10];
       let shotsOnRoute = 0;
       for (let i = 0; i < 240; i++) {
@@ -157,9 +159,10 @@ describe('physical combat tactics', () => {
         if (routing && s.events.some(e => e.type === 'shot' && e.enemy)) shotsOnRoute++;
       }
       expect(shotsOnRoute).toBeGreaterThan(0); expect(a.goals).toHaveLength(0);
-      s.route(a, [[4, 0, -15]]); expect(a.combat).toBeUndefined();
-      for (let i = 0; i < 240; i++) s.step(emptyIntent);
-      expect(a.goals).toHaveLength(0); expect(distance(a.position, [4, 0, -15])).toBeLessThan(2);
+      s.route(a, [[12, 0, -15]]); expect(a.combat).toBeUndefined();
+      // Inspect actual arrival before unrestricted combat starts a new bound.
+      for (let i = 0; i < 240 && a.goals.length; i++) s.step(emptyIntent);
+      expect(a.goals).toHaveLength(0); expect(distance(a.position, [12, 0, -15])).toBeLessThan(0.86);
     } finally { s.dispose(); }
   });
   it('round-trips tactical state, restores crouched collision, accepts older saves and rejects malformed plans', () => {

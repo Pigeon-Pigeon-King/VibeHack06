@@ -39,9 +39,21 @@ function convoy(s: Simulation, leg: number): void {
     const bypass: Vec3[] = leg === 2 && i === 1 ? [[cart.position[0], 0, E.changeBay[2] + 5], [E.changeBay[0] - 8, 0, E.changeBay[2] + 5]] : [];
     s.route(cart, [...bypass, ...route.via, route.cartStops[i]]);
   });
-  [0, 1].forEach(i => { const walker = a(s, `walker-${i}`); walker.safe = false; s.route(walker, [...route.via, walkerStops(s, leg)[i]]); });
-  [a(s, 'meng'), a(s, 'relief-0'), a(s, 'relief-1')].forEach((person, i) =>
-    s.route(person, [...route.via, [route.cartStops[1][0] + [-0.8, 1.7, 3.6][i], route.cartStops[1][1], route.cartStops[1][2] - [2.1, 1.5, 3.2][i]]]));
+  // Equal-paced people need their own lanes: sharing the bed centreline can
+  // otherwise keep an attendant inside a patient cart for an entire bridge.
+  const lane = (offset: number): Vec3[] => route.via.map(p => [p[0], p[1], p[2] + offset]);
+  [0, 1].forEach(i => { const walker = a(s, `walker-${i}`); walker.safe = false; s.route(walker, [...lane([4.5, 2.5][i]), walkerStops(s, leg)[i]]); });
+  // Keep the guards on the same outside of the medical bend as the walkers.
+  // The inner side meets the diagonal screen and funnels back across the beds.
+  // Their waiting posts stay on that side too, so docking does not cross traffic.
+  [a(s, 'meng'), a(s, 'relief-0'), a(s, 'relief-1')].forEach((person, i) => {
+    // At the exchange bay, step out behind the moving beds before taking the
+    // outside bend. A simple offset of its diagonal nav path still intersects
+    // the full bed boxes as they turn out of the bay.
+    const via: Vec3[] = leg === 2 ? [[-222 + i * 1.5, 0, 24 + i * 1.2], [-254, 0, 30 + i * 1.2],
+      ...[-280, -300, -358, -382].map(x => [x, 0, 34 + i * 0.9] as Vec3)] : lane([6, 4.5, 6][i]);
+    s.route(person, [...via, [route.cartStops[1][0] + [-0.8, 1.7, 3.6][i], route.cartStops[1][1], route.cartStops[1][2] + [6.5, 7, 4.8][i]]]);
+  });
 }
 function convoyReady(s: Simulation, leg: number, mark = true): boolean {
   const route = E.convoyLegs[leg];

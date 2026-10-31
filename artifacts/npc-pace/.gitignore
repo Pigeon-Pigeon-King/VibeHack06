@@ -1,0 +1,5 @@
+*.log
+*.json
+!regression.json
+!supplementary-*.json
+!source-manifest.json

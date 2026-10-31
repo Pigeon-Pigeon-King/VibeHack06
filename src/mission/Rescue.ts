@@ -1,5 +1,6 @@
 import type { Vec3 } from '../contracts';
 import { RESCUE as R } from '../content/rescue-layout';
+import { npcTravelSpeed } from '../actors/Locomotion';
 import type { Intent } from '../player/Input';
 import { distance, type Actor, type Simulation } from './Simulation';
 import { lookWithin } from './Dialogue';
@@ -66,7 +67,7 @@ export function rescueMotion(s: Simulation, dt: number): void {
     const dx = target[0] - p[0], dz = target[2] - p[2], len = Math.hypot(dx, dz);
     const scale = len > 0.002 ? Math.min(speed, len / dt) / len : 0;
     s.physics.move(id, dx * scale, dz * scale, dt);
-    if (id !== 'player') { const a = actor(s, id); a.yaw = -Math.PI / 2; a.walk += len > 0.02 ? dt * speed * 4 : 0; s.physics.orient(id, a.yaw); }
+    if (id !== 'player') { const a = actor(s, id); a.yaw = -Math.PI / 2; s.physics.orient(id, a.yaw); }
   };
   if (phase === 4) {
     moveTo('meng', plus(s.player.position, 2), 1.5);
@@ -74,7 +75,17 @@ export function rescueMotion(s: Simulation, dt: number): void {
   } else if (phase === 5) moveTo('player', R.injury, 1.0);
   else if (phase >= 7 && phase <= 9) {
     const bed = actor(s, 'zhou-cart');
-    if (s.has('rescue-medics-arrived')) moveTo('player', bed.position, phase >= 9 ? 6 : 1.5);
+    // Once loaded, the patient viewpoint must keep up with the same physical
+    // bed in both transport legs. Loading and the earlier two-person carry
+    // retain their separate, slower contact motion.
+    if (s.has('rescue-medics-arrived')) {
+      // The loaded 1.1m patient collider fits inside the 1.15m bed box. Once
+      // aboard, use that box's collision-checked motion, rather than asking a
+      // second ground controller to chase it and accumulate contact delays.
+      // A displaced older checkpoint still approaches physically before riding.
+      if (phase >= 8 && distance(s.player.position, bed.position) < 0.2) s.physics.ride('player', bed.id);
+      else moveTo('player', bed.position, phase >= 8 ? npcTravelSpeed(bed, s.scenario, phase) + 0.5 : 1.5);
+    }
   }
 }
 

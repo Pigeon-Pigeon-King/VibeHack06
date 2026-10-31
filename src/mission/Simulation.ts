@@ -25,6 +25,7 @@ import { Random } from '../runtime/random';
 import { Ballistics } from '../combat/Ballistics';
 import { Navigation, type NavBounds } from '../actors/Navigation';
 import { CombatTactics, COVER_HEIGHT, type CombatState } from '../actors/CombatTactics';
+import { NPC_TRAVEL_SPEED, npcTravelSpeed } from '../actors/Locomotion';
 import type { Intent } from '../player/Input';
 
 export interface Actor {
@@ -288,7 +289,14 @@ export class Simulation {
     const previous = p.position;
     p.position = this.physics.foot('player');
     p.walk += distance(previous, p.position) * 4;
-    for (const actor of this.actors) if (this.physics.bodies.has(actor.id)) actor.position = this.physics.foot(actor.id);
+    for (const actor of this.actors) if (this.physics.bodies.has(actor.id)) {
+      const next = this.physics.foot(actor.id);
+      // The pose phase measures actual travel, including docking, blocked routes
+      // and cooperative carry. Scripted opening poses keep their own phase below.
+      const traveled = distance(actor.position, next);
+      if (traveled > 0.001) actor.walk += traveled * 4; // ignore sub-mm resting-contact jitter
+      actor.position = next;
+    }
     if (canShoot && intent.fire && !p.reload && !p.cooldown && p.ammo > 0) {
       p.ammo--; p.cooldown = 0.115; p.recoil = Math.min(1, p.recoil + 0.45);
       const spread = p.ads ? 0.002 : 0.008;
@@ -351,12 +359,10 @@ export class Simulation {
     const occupants = [...this.actors, { id: 'player', position: this.player.position }];
     for (const a of this.actors) {
       if (a.down || !this.physics.bodies.has(a.id)) { this.clearCombat(a); continue; }
-      let speed = a.role === 'enemy' ? 1.5 : a.role === 'cart' ? this.scenario === 'escort' ? 1.7 : 1.25 : 2.1;
+      let speed = npcTravelSpeed(a, this.scenario, m.phase);
       if (this.scenario === 'rescue' && a.role !== 'enemy') {
-        if (m.phase === 9) speed = 5.5;
         if (a.id === 'meng' && m.phase >= 1 && m.phase < 4) speed = 0;
       }
-      if (this.scenario === 'transfer' && a.id === 'xu') speed = 1.2;
       if (this.scenario === 'epilogue' && m.phase === 7 && (a.id.startsWith('worker-') || a.id === 'supply-cart')
         && distance(this.player.position, EPILOGUE.holdDoor) > 1.3) speed = 0;
       a.cooldown = Math.max(0, a.cooldown - dt);
@@ -375,7 +381,7 @@ export class Simulation {
       const tactical = combat && !a.goals.length ? this.tactics.update(a, visible,
         targets.some(target => target.id === a.combat?.targetId), {
           physics: this.physics, navigation: this.navigation, actors: occupants,
-          now: m.elapsed, dt, leash: this.combatLeash(a), speed: a.role === 'enemy' ? 1.9 : 2.1,
+          now: m.elapsed, dt, leash: this.combatLeash(a), speed: NPC_TRAVEL_SPEED,
           // Q promises fire once Zheng reaches the side post, before selecting a new bound.
           openingFireWindow: this.scenario === 'rescue' && a.id === 'zheng' ? 1.2 : 0,
         }) : undefined;
@@ -404,13 +410,13 @@ export class Simulation {
             const dx = next[0] - a.position[0], dz = next[2] - a.position[2], len = Math.hypot(dx, dz);
             const travelSpeed = Math.min(speed, len / dt);
             vx = dx / len * travelSpeed; vz = dz / len * travelSpeed;
-            a.yaw = Math.atan2(vx, vz); a.walk += dt * speed * 4;
+            a.yaw = Math.atan2(vx, vz);
           }
         }
       }
       if (tactical) {
         vx = tactical.vx; vz = tactical.vz;
-        if (vx || vz) { a.yaw = Math.atan2(vx, vz); a.walk += Math.hypot(vx, vz) * dt * 4; }
+        if (vx || vz) a.yaw = Math.atan2(vx, vz);
       }
       const mayFire = combat && visible && (tactical?.canFire ?? true) && (a.role !== 'enemy' || closest.includes(a))
         && !(this.scenario === 'rescue' && a.role === 'ally' && a.goals.length);
@@ -444,7 +450,7 @@ export class Simulation {
           const ahead = x * dx + z * dz;
           return ahead > 0 && ahead < 3.6 && Math.abs(x * dz - z * dx) < 1.0;
         });
-        if (queueAhead) { vx = 0; vz = 0; a.walk -= dt * speed * 4; }
+        if (queueAhead) { vx = 0; vz = 0; }
         this.physics.orient(a.id, a.yaw, this.scenario === 'rescue' ? 0.025 : 0);
       }
       this.physics.move(a.id, vx, vz, dt);

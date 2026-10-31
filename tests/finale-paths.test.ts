@@ -40,7 +40,7 @@ function play(id: 'rescue' | 'medical' | 'epilogue', skip = false, restore = fal
   const env = buildEnvironment(id); let s = new Simulation(id, env.solids, undefined, facts);
   let steps = 0, path: Vec3[] = [], key = '', allyDamage = 0, heldFrames = 0;
   const phases = [0], restored = new Set<number>(), seenFacts = new Map<string, number>();
-  const metrics = { playerDistance: 0, mengDistance: 0, maxEnemies: 0, maxAiming: 0, carryFrames: 0, rejectedShots: 0 };
+  const metrics = { playerDistance: 0, mengDistance: 0, maxEnemies: 0, maxAiming: 0, carryFrames: 0, rejectedShots: 0, loadedBedGap: 0 };
   const summary = () => JSON.stringify({ id, phase: s.mission.phase, time: s.mission.phaseTime, elapsed: s.mission.elapsed,
     p: s.player.position, hp: s.player.health, objective: s.objective, path: path.slice(0, 3), facts: s.mission.facts,
     actors: s.actors.map(a => ({ id: a.id, pos: a.position, goals: a.goals, path: a.path.slice(0, 2), health: a.health })) });
@@ -75,7 +75,11 @@ function play(id: 'rescue' | 'medical' | 'epilogue', skip = false, restore = fal
       const noPlayerBullet = !s.ballistics.projectiles.some(p => p.owner === 'player');
       s.step({ ...emptyIntent, yaw, pitch, forward: -Math.sin(yaw) * mx - Math.cos(yaw) * mz,
         right: Math.cos(yaw) * mx - Math.sin(yaw) * mz, sprint: !target && s.mission.control !== 'cooperative', ads: !!target,
-        fire: fire || (id === 'rescue' && phase >= 3), cover: steps % 120 === 0, reload: !s.player.ammo && !s.player.reload,
+        // Ask for cover at each eligible phase entry. A global two-second
+        // polling interval can miss phase 2 once Zheng's approach is faster.
+        fire: fire || (id === 'rescue' && phase >= 3),
+        cover: id === 'rescue' && (phase === 0 || phase === 2) && !s.has(`rescue-cover-call-${phase}`),
+        reload: !s.player.ammo && !s.player.reload,
         interact: steps % 12 === 0 && (id === 'rescue' ? phase === 2 || R.ammo.some(p => distance(p, s.player.position) < 1.5) : id === 'medical' ? [0, 1, 2, 7].includes(phase) : [0, 2, 4, 6].includes(phase)), skip });
       steps++; env.setFacts?.(s.mission.facts);
       metrics.playerDistance += distance(before.player.position, s.player.position);
@@ -84,6 +88,11 @@ function play(id: 'rescue' | 'medical' | 'epilogue', skip = false, restore = fal
       if (id === 'rescue' && phase >= 3 && phase < 5) {
         metrics.carryFrames++; check(s.player.ammo === before.player.ammo, 'occupied hands fired');
         if (beforeFired === s.ballistics.fired) metrics.rejectedShots++;
+      }
+      if (id === 'rescue' && (phase === 8 || phase === 9) && !s.mission.complete) {
+        const gap = distance(s.player.position, s.actors.find(a => a.id === 'zhou-cart')!.position);
+        metrics.loadedBedGap = Math.max(metrics.loadedBedGap, gap);
+        check(gap < 0.3, 'loaded patient viewpoint fell behind its moving bed');
       }
       if (id === 'rescue' && noPlayerBullet && !fire && s.actors.some(a => a.role === 'enemy'
         && a.health < (before.actors.find(b => b.id === a.id)?.health ?? a.health))) allyDamage++;
@@ -109,6 +118,7 @@ function play(id: 'rescue' | 'medical' | 'epilogue', skip = false, restore = fal
     }
     check(s.mission.complete && !s.mission.failed, 'public input route did not complete');
     if (id === 'rescue') {
+      expect(s.has('rescue-cover-call-0')).toBe(true); expect(s.has('rescue-cover-call-2')).toBe(true);
       expect(s.mission.spawned).toBeLessThanOrEqual(40); expect(s.has('rescue-cover-fired')).toBe(true); expect(s.has('rescue-cover-hit')).toBe(true);
       expect(allyDamage, 'ally damage while player not firing and with no old player bullet').toBeGreaterThan(0);
       expect(metrics.carryFrames).toBeGreaterThan(30); expect(metrics.rejectedShots).toBeGreaterThan(30);
