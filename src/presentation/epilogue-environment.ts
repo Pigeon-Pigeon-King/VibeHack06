@@ -21,15 +21,13 @@ function shoreLeg(k: PortKit, a: Vec3, b: Vec3) {
 export function buildEpilogue(k: PortKit): SceneDynamics {
   k.root.name = 'S12-safe-shore-and-reception-placeholder';
   addGround(k.root, E.bounds);
-  block(k, 'epilogue-ground', [-200, -0.2, 45], [460, 0.4, 110]);
+  k.solid('epilogue-ground', [-200, -0.2, 45], [460, 0.4, 110]);
   for (const x of [-430, 30]) block(k, `epilogue-boundary-x-${x}`, [x, 1.4, 45], [0.5, 2.8, 110]);
   for (const z of [-10, 100]) block(k, `epilogue-boundary-z-${z}`, [-200, 1.4, z], [460, 2.8, 0.5]);
   k.workshop(-414, 64, 18, 24);
-  k.label('旧检修站 · 接收联络', [-405, 4.1, 77], 16, 0.8);
-  for (const [id, p, title] of [['report', E.report, '损失与接收报告'], ['needs', E.needs, '医疗物资需求']] as const) {
+  for (const [id, p] of [['report', E.report], ['needs', E.needs]] as const) {
     block(k, `epilogue-${id}-desk`, [p[0], 0.5, p[2] - 1.4], [2.8, 1, 1], 'steel');
     k.box('glass', [p[0], 1.3, p[2] - 1.5], [0.8, 0.5, 0.1]);
-    k.label(title, [p[0], 2.0, p[2] - 1.5], 3, 0.5);
   }
   const route = [E.needs, ...E.shoreVia];
   route.slice(1).forEach((b, i) => shoreLeg(k, route[i], b));
@@ -38,7 +36,6 @@ export function buildEpilogue(k: PortKit): SceneDynamics {
     k.workshop(x, z, 34, 20); k.tank(x - 24, z, 5, 11);
   }
   for (const [x, z] of [[-354, 85], [-250, 77], [-150, 62], [-64, 42]]) {
-    k.label('接收中心 →', [x, 2.7, z + 5], 8, 0.65, Math.PI);
     k.box('steel', [x, 1.3, z + 5], [0.12, 2.6, 0.12]);
   }
   // The eastern reception recovers the broad S08 C03 silhouette with an active
@@ -46,19 +43,18 @@ export function buildEpilogue(k: PortKit): SceneDynamics {
   block(k, 'epilogue-reception-wall-west', [-14, 2.6, 5.5], [0.4, 5.2, 19], 'paint');
   block(k, 'epilogue-reception-wall-east', [20, 2.6, 8], [0.4, 5.2, 24], 'paint');
   block(k, 'epilogue-shore-entry-lintel', [-14, 4.4, 17.5], [0.6, 1.6, 5], 'steel');
-  k.label('岸路入口', [-14.35, 4.3, 17.5], 4.5, 0.65, -Math.PI / 2);
+  k.sign('岸路入口', [-14.35, 4.3, 17.5], 4.5, 0.65, -Math.PI / 2);
   for (const [x, w] of [[-10.5, 7], [9.5, 21]]) block(k, `epilogue-door-wall-${x}`, [x, 2.6, 1], [w, 5.2, 0.45], 'pale');
   block(k, 'epilogue-door-lintel', [-4, 4.3, 1], [6, 1.8, 0.6], 'steel');
   // South side stays open for the shoreline arrival and incoming work crews.
   for (const x of [-14, 20]) block(k, `epilogue-reception-south-post-${x}`, [x, 2.6, 20], [0.6, 5.2, 0.6], 'steel');
   block(k, 'epilogue-reception-roof', [3, 5.4, 8], [35, 0.4, 25], 'pale');
   k.part('arch', 'pale', [3, 5.65, 8], [35, 7, 25]);
-  k.label('C03 接收中心 / 首批进场', [-4, 4.35, 1.35], 6, 0.65);
+  k.sign('接收中心', [-4, 4.35, 1.35], 6, 0.65);
   k.visualSlot('epilogue-reception-console', slot => {
     block(slot, 'epilogue-reception-table', [2.2, 0.5, 6], [4, 1, 1.2], 'steel');
     slot.box('glass', [2.2, 1.3, 6], [0.8, 0.5, 0.08]);
   });
-  k.label('泊位与接收终端', [2.2, 2.05, 6], 4, 0.55);
   k.box('signal', [3, 5.0, 10], [23, 0.08, 0.28]);
   const light = new PointLight(0xffdbad, 70, 32, 2); light.position.set(2, 4.7, 10); k.root.add(light);
   k.solid('epilogue-reception-door', [-4, 1.7, 1], [6, 3.4, 0.24], 0, 'reception-door-open');

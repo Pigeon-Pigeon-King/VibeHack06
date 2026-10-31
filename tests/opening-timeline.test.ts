@@ -163,9 +163,7 @@ describe('opening chronology and perspective boundary', () => {
     let shots = 0, fledBeforeShots = false;
     try {
       expect(crowd).toHaveLength(32); expect(crowd.every(a => a.role === 'civilian')).toBe(true);
-      const nearest = Math.min(...H.crowd.map(p => Math.hypot(p[0] - H.rubblePlayer[0], p[2] - H.rubblePlayer[2])));
-      expect(nearest).toBeGreaterThanOrEqual(5); expect(nearest).toBeLessThanOrEqual(8);
-      expect(H.crowd.every(p => Math.abs(p[2] - H.zhaoCaptured[2]) > 2)).toBe(true);
+      expect(Math.hypot(H.zhaoCaptured[0] - H.rubblePlayer[0], H.zhaoCaptured[2] - H.rubblePlayer[2])).toBeLessThan(9);
       for (let n = 0; n < Math.ceil((T.mainhall.finish + 1) / dt) && !s.mission.complete; n++) {
         tick(s, { fire: true, reload: true });
         order.forEach(f => { if (s.has(f) && !first.has(f)) first.set(f, n * dt); });
@@ -173,6 +171,11 @@ describe('opening chronology and perspective boundary', () => {
         crowd.forEach((a, i) => { if (a.down && !falls.has(i)) falls.set(i, s.mission.phaseTime); });
         if (s.mission.phaseTime > T.mainhall.breach && s.mission.phaseTime < T.mainhall.crowdAttack) {
           fledBeforeShots ||= crowd.some((a, i) => Math.hypot(a.position[0] - H.crowd[i][0], a.position[2] - H.crowd[i][2]) > 0.3);
+          const nearest = Math.min(...crowd.map(a => Math.hypot(a.position[0] - H.rubblePlayer[0], a.position[2] - H.rubblePlayer[2])));
+          expect(nearest).toBeGreaterThan(7); expect(nearest).toBeLessThan(10.5);
+          expect(crowd.every(a => a.position[0] < H.gateX + 6)).toBe(true);
+          // Actual desktop/portrait projection and solid occlusion, including
+          // the nearby bench, are checked in opening-crowd-jam.test.ts.
         }
         expect(s.player.ammo).toBe(ammo); expect(s.safeCount).toBe(6);
         expect(s.workers.every(a => !a.down && a.safe)).toBe(true);

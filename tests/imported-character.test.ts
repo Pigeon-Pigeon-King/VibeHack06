@@ -152,7 +152,9 @@ describe('the exact 13 production characters, not extrapolated LU/ZHOU coverage'
     character.setPose({ walk: 5.3, aiming: false, down: false }); const frozen = poseSnapshot(character.root);
     character.setPose({ walk: 5.3, aiming: false, down: false }); expect(poseSnapshot(character.root)).toEqual(frozen);
     character.setPose({ walk: 0, aiming: false, down: false, armed: false }); expect(poseSnapshot(character.root)).toEqual(idle);
-    writeFileSync(new URL(`${asset.id}-rig-audit.json`, directory), JSON.stringify({ id: asset.id, sourceSHA256: asset.sourceSha256, runtimeSHA256: asset.sha256,
+    // Historical audit artifacts are not fixtures to overwrite during every
+    // regression run. Re-export only when an evidence update is requested.
+    if (process.env.WRITE_CHARACTER_AUDIT === '1') writeFileSync(new URL(`${asset.id}-rig-audit.json`, directory), JSON.stringify({ id: asset.id, sourceSHA256: asset.sourceSha256, runtimeSHA256: asset.sha256,
       bodyPlan: asset.bodyPlan, numericalChecks: 'passed', bones: rig.bones.size, boneNames: [...rig.bones.keys()], vertices: weights.count,
       invalidWeights, maxWeightError, restPositionError, restAngleErrorRadians: restAngleError, restScaleError, restEnvelopeError,
       walk: { samples: 49, tracks: clip.tracks.length, activeBones, nonFinite, minDeterminant, maxQuaternionError, maxAdjacentAngleRadians: maxAdjacentAngle,

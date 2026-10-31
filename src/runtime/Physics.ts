@@ -152,7 +152,9 @@ export class Physics {
     const delta = this.controller.computedMovement();
     const p = body.rigid.translation();
     body.rigid.setNextKinematicTranslation({ x: p.x + delta.x, y: p.y + delta.y, z: p.z + delta.z });
-    body.grounded = this.controller.computedGrounded();
+    // Rapier can report the departure contact during the first upward step.
+    // Do not let that stale contact cancel the jump on the next fixed tick.
+    body.grounded = this.controller.computedGrounded() && body.verticalSpeed <= 0;
     if (delta.y < desired.y - 0.001 && body.verticalSpeed > 0) body.verticalSpeed = 0;
   }
 

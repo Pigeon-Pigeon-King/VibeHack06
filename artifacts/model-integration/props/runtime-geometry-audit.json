@@ -1,0 +1,3263 @@
+{
+  "scope": "Actual GLTFLoader vertex/node/material parsing. Image-to-Texture decode substituted in Node. No rendered-image, gameplay or Windows acceptance.",
+  "assets": [
+    {
+      "id": "BG-CRANE",
+      "bytes": 3154172,
+      "runtimeSha256": "bfec243ec25cf469ae3f2eb36a373f4d9737ff92cdfc8cdb2937811f4f1b2ca5",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 43180,
+      "triangles": 19718,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999998553073943,
+        1.0000001620336911
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.44521310925483704,
+          -0.7250379323959351,
+          -0.9443587064743042
+        ],
+        "max": [
+          0.44664904475212097,
+          0.7188607454299927,
+          0.9452332258224487
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "ENV-LIGHTKIT-POLE",
+      "bytes": 1393544,
+      "runtimeSha256": "afe2b14a3580fe5445f4cef5441acf9532a5b25c9f127236cfb3d6fa9e0f220d",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 11335,
+      "triangles": 11374,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999998547490575,
+        1.0000001470245603
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.435163289308548,
+          -0.9479645490646362,
+          -0.17805664241313934
+        ],
+        "max": [
+          0.43270257115364075,
+          0.9481470584869385,
+          0.17822511494159698
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-BENCH",
+      "bytes": 1256928,
+      "runtimeSha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 3064,
+      "triangles": 4592,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999662984992,
+        1.0000000383217327
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.12602274119853973,
+          -0.1408012956380844,
+          -0.5
+        ],
+        "max": [
+          0.12602274119853973,
+          0.1408012956380844,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-LIFE-MUG",
+      "bytes": 834268,
+      "runtimeSha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 2610,
+      "triangles": 3626,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999598652148,
+        1.000000040006683
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.43909358978271484,
+          -0.3714621067047119,
+          -0.5
+        ],
+        "max": [
+          0.43909358978271484,
+          0.3714621067047119,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "bytes": 1569588,
+      "runtimeSha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 4030,
+      "triangles": 5518,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999605944471,
+        1.0000000405937857
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.2999960780143738,
+          -0.35750243067741394,
+          -0.5
+        ],
+        "max": [
+          0.2999960780143738,
+          0.35750243067741394,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TANK",
+      "bytes": 1690788,
+      "runtimeSha256": "03f4f654a3101d91247dcd0fc5dd7170999367c477075c470b4fd3ebe663bb1b",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 17986,
+      "triangles": 15130,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999998523645174,
+        1.0000001526837194
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.8136574029922485,
+          -0.9513395428657532,
+          -0.809900164604187
+        ],
+        "max": [
+          0.8130090236663818,
+          0.947274386882782,
+          0.8106244802474976
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TERMINAL-CONSOLE",
+      "bytes": 1617188,
+      "runtimeSha256": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 7466,
+      "triangles": 9819,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.999999959356786,
+        1.0000000405194964
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.15724784135818481,
+          -0.19664359092712402,
+          -0.5
+        ],
+        "max": [
+          0.15724784135818481,
+          0.19664359092712402,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-VEH-TUG",
+      "bytes": 2185792,
+      "runtimeSha256": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 13832,
+      "triangles": 18122,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999594901637,
+        1.0000000405262781
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.5,
+          -0.23017218708992004,
+          -0.26132938265800476
+        ],
+        "max": [
+          0.5,
+          0.23017218708992004,
+          0.26132938265800476
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TRANSFER",
+      "bytes": 1647596,
+      "runtimeSha256": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 12338,
+      "triangles": 17042,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999603464993,
+        1.0000000393042685
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.5,
+          -0.23441840708255768,
+          -0.25887173414230347
+        ],
+        "max": [
+          0.5,
+          0.23441840708255768,
+          0.25887173414230347
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-STRETCHER",
+      "bytes": 1350900,
+      "runtimeSha256": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 5178,
+      "triangles": 7168,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999623927371,
+        1.000000037926427
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.5,
+          -0.031084980815649033,
+          -0.17940440773963928
+        ],
+        "max": [
+          0.5,
+          0.031084980815649033,
+          0.17940440773963928
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-DOOR-LEAF",
+      "bytes": 1604400,
+      "runtimeSha256": "e01e2ebd2db78d58ee372e3588fd7cc42e4d71ee48157a21e9c32f77141931b1",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 8336,
+      "triangles": 8730,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999614789105,
+        1.0000000390717037
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.1281512826681137,
+          -0.5,
+          -0.3024097979068756
+        ],
+        "max": [
+          0.1281512826681137,
+          0.5,
+          0.3024097979068756
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-DOOR-LOCK",
+      "bytes": 1402304,
+      "runtimeSha256": "e786f8eddae672f6f23599fdab5efc84ad05844aa55cdf6f2e06ea4929de1955",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 3667,
+      "triangles": 4691,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999640571213,
+        1.000000038831398
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.25948432087898254,
+          -0.15692640841007233,
+          -0.5
+        ],
+        "max": [
+          0.25948432087898254,
+          0.15692640841007233,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TERMINAL-HANDHELD",
+      "bytes": 1576612,
+      "runtimeSha256": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 3185,
+      "triangles": 4196,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999627083094,
+        1.0000000359072734
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.1957043707370758,
+          -0.5,
+          -0.3151775896549225
+        ],
+        "max": [
+          0.1957043707370758,
+          0.5,
+          0.3151775896549225
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-VEH-TRANSPORT",
+      "bytes": 1785076,
+      "runtimeSha256": "4fa477429e68cc40f8cd65d6ec3ee9c288cbaaeb652c8d91318a230020092a10",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 13753,
+      "triangles": 17959,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999607613052,
+        1.0000000389034096
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.5,
+          -0.2035214751958847,
+          -0.19288723170757294
+        ],
+        "max": [
+          0.5,
+          0.2035214751958847,
+          0.19288723170757294
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-FILTER",
+      "bytes": 1611708,
+      "runtimeSha256": "c5b51ec1c1bc3f0fc34e20b0485077047f03bea2a742a920660180d701e5256f",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 9187,
+      "triangles": 10809,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999607098103,
+        1.0000000392368424
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.23325049877166748,
+          -0.2907179296016693,
+          -0.5
+        ],
+        "max": [
+          0.23325049877166748,
+          0.2907179296016693,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-CARGO",
+      "bytes": 1880176,
+      "runtimeSha256": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 3881,
+      "triangles": 5039,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999596987067,
+        1.0000000432530962
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.31533247232437134,
+          -0.33937782049179077,
+          -0.5
+        ],
+        "max": [
+          0.31533247232437134,
+          0.33937782049179077,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-PUMP",
+      "bytes": 1842348,
+      "runtimeSha256": "ea37539ae6da8e0c56cd99001471de30b7ab55f8eab2586549dba0c66c392890",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 9494,
+      "triangles": 10485,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999581922703,
+        1.0000000402133944
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.2847839295864105,
+          -0.23878398537635803,
+          -0.5
+        ],
+        "max": [
+          0.2847839295864105,
+          0.23878398537635803,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-FAN",
+      "bytes": 1460432,
+      "runtimeSha256": "8a0b1f1ad9bfcac49d8aa0587ad94409f758e5ffc34a2c8e5f5f956b19d97910",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 9041,
+      "triangles": 9437,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999623272686,
+        1.0000000394406459
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.25746995210647583,
+          -0.497150719165802,
+          -0.5
+        ],
+        "max": [
+          0.25746995210647583,
+          0.497150719165802,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TOOL-BAG",
+      "bytes": 1652892,
+      "runtimeSha256": "936b657dd2151be5ae36c3a65b7625b6fc1752299a7e35716a03ab5153d31650",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 4500,
+      "triangles": 5496,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999621666253,
+        1.0000000377149398
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.31173914670944214,
+          -0.397460013628006,
+          -0.5
+        ],
+        "max": [
+          0.31173914670944214,
+          0.397460013628006,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TOOL-ROLL",
+      "bytes": 1682284,
+      "runtimeSha256": "ca5d918c44c649e0149d63b3eb68c6e5a61981b16c3d4e25509a8fe64a1722bd",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 3393,
+      "triangles": 4787,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999608764193,
+        1.000000037408774
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.23423536121845245,
+          -0.20957869291305542,
+          -0.5
+        ],
+        "max": [
+          0.23423536121845245,
+          0.20957869291305542,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TOOL-LUNCHBOX",
+      "bytes": 1649228,
+      "runtimeSha256": "b84562c1a10554721ab50b58e7f0d2f9b8ad1eae03d04d19efca2738376e63b4",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 2668,
+      "triangles": 3328,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999612229626,
+        1.0000000390905186
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.3599480986595154,
+          -0.40197446942329407,
+          -0.5
+        ],
+        "max": [
+          0.3599480986595154,
+          0.40197446942329407,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-RADIO-PACK",
+      "bytes": 1417512,
+      "runtimeSha256": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 5326,
+      "triangles": 7124,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999589136118,
+        1.0000000392290513
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.21003249287605286,
+          -0.5,
+          -0.3248141407966614
+        ],
+        "max": [
+          0.21003249287605286,
+          0.5,
+          0.3248141407966614
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-RADIO-HEADSET",
+      "bytes": 1349396,
+      "runtimeSha256": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 3104,
+      "triangles": 4656,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999629103684,
+        1.0000000379007994
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.21589766442775726,
+          -0.40636977553367615,
+          -0.5
+        ],
+        "max": [
+          0.21589766442775726,
+          0.40636977553367615,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-CHEST",
+      "bytes": 1219540,
+      "runtimeSha256": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 5000,
+      "triangles": 7063,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999612438614,
+        1.0000000369484547
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.39480137825012207,
+          -0.5,
+          -0.4739276170730591
+        ],
+        "max": [
+          0.39480137825012207,
+          0.5,
+          0.4739276170730591
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-LEFT-BRACE",
+      "bytes": 1320340,
+      "runtimeSha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 4671,
+      "triangles": 5641,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999627077625,
+        1.0000000402395726
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.31692633032798767,
+          -0.5,
+          -0.25358349084854126
+        ],
+        "max": [
+          0.31692633032798767,
+          0.5,
+          0.25358349084854126
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-HELMET",
+      "bytes": 1278600,
+      "runtimeSha256": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 4168,
+      "triangles": 6138,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999614395602,
+        1.00000004004487
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.3688441812992096,
+          -0.5,
+          -0.42772576212882996
+        ],
+        "max": [
+          0.3688441812992096,
+          0.5,
+          0.42772576212882996
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-SAMPLE-CABINET",
+      "bytes": 1607528,
+      "runtimeSha256": "40eca6cd7e558e0668df0f3791f487eabf6f5a13ceb876cf05fad40087d8b165",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 5581,
+      "triangles": 7407,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999605508691,
+        1.000000037603645
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.21986743807792664,
+          -0.5,
+          -0.3536636531352997
+        ],
+        "max": [
+          0.21986743807792664,
+          0.5,
+          0.3536636531352997
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-SAMPLE-CORECASE",
+      "bytes": 1638668,
+      "runtimeSha256": "341ff92746ab75956402abf21604c5aaf186ee14fd5e4fc6177a9386dd82edf6",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 3326,
+      "triangles": 4416,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999627719495,
+        1.0000000481978357
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.19621585309505463,
+          -0.17366966605186462,
+          -0.5
+        ],
+        "max": [
+          0.19621585309505463,
+          0.17366966605186462,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "id": "front-background-crane",
+      "scenario": "frontgate",
+      "assetId": "BG-CRANE",
+      "role": "background",
+      "sourceScale": 20.77708114891474,
+      "yaw": 1.5707963267948966,
+      "position": [
+        78,
+        0,
+        60
+      ],
+      "dimensions": [
+        39.26020491566423,
+        30,
+        18.530292347448466
+      ],
+      "bounds": {
+        "min": [
+          58.36989754216789,
+          0,
+          50.73485382627577
+        ],
+        "max": [
+          97.63010245783212,
+          30,
+          69.26514617372423
+        ]
+      },
+      "support": "outside front-boundary-x-54 and front-boundary-z-52",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-background-crane",
+      "scenario": "transfer",
+      "assetId": "BG-CRANE",
+      "role": "background",
+      "sourceScale": 20.77708114891474,
+      "yaw": 1.5707963267948966,
+      "position": [
+        78,
+        0,
+        60
+      ],
+      "dimensions": [
+        39.26020491566423,
+        30,
+        18.530292347448466
+      ],
+      "bounds": {
+        "min": [
+          58.36989754216789,
+          0,
+          50.73485382627577
+        ],
+        "max": [
+          97.63010245783212,
+          30,
+          69.26514617372423
+        ]
+      },
+      "support": "outside front-boundary-x-54 and front-boundary-z-52",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-background-crane",
+      "scenario": "flank",
+      "assetId": "BG-CRANE",
+      "role": "background",
+      "sourceScale": 20.77708114891474,
+      "yaw": 1.5707963267948966,
+      "position": [
+        78,
+        0,
+        60
+      ],
+      "dimensions": [
+        39.26020491566423,
+        30,
+        18.530292347448466
+      ],
+      "bounds": {
+        "min": [
+          58.36989754216789,
+          0,
+          50.73485382627577
+        ],
+        "max": [
+          97.63010245783212,
+          30,
+          69.26514617372423
+        ]
+      },
+      "support": "outside front-boundary-x-54 and front-boundary-z-52",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-background-light",
+      "scenario": "frontgate",
+      "assetId": "ENV-LIGHTKIT-POLE",
+      "role": "background",
+      "sourceScale": 2.6369755767997423,
+      "yaw": 0,
+      "position": [
+        58,
+        0,
+        36
+      ],
+      "dimensions": [
+        2.2885410779770865,
+        5,
+        0.9395062926037312
+      ],
+      "bounds": {
+        "min": [
+          56.85572946101146,
+          0,
+          35.53024685369814
+        ],
+        "max": [
+          59.14427053898854,
+          5,
+          36.46975314630187
+        ]
+      },
+      "support": "outside front-boundary-x-54",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-background-light",
+      "scenario": "transfer",
+      "assetId": "ENV-LIGHTKIT-POLE",
+      "role": "background",
+      "sourceScale": 2.6369755767997423,
+      "yaw": 0,
+      "position": [
+        58,
+        0,
+        36
+      ],
+      "dimensions": [
+        2.2885410779770865,
+        5,
+        0.9395062926037312
+      ],
+      "bounds": {
+        "min": [
+          56.85572946101146,
+          0,
+          35.53024685369814
+        ],
+        "max": [
+          59.14427053898854,
+          5,
+          36.46975314630187
+        ]
+      },
+      "support": "outside front-boundary-x-54",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-background-light",
+      "scenario": "flank",
+      "assetId": "ENV-LIGHTKIT-POLE",
+      "role": "background",
+      "sourceScale": 2.6369755767997423,
+      "yaw": 0,
+      "position": [
+        58,
+        0,
+        36
+      ],
+      "dimensions": [
+        2.2885410779770865,
+        5,
+        0.9395062926037312
+      ],
+      "bounds": {
+        "min": [
+          56.85572946101146,
+          0,
+          35.53024685369814
+        ],
+        "max": [
+          59.14427053898854,
+          5,
+          36.46975314630187
+        ]
+      },
+      "support": "outside front-boundary-x-54",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-bench-left",
+      "scenario": "medical",
+      "assetId": "PROP-BENCH",
+      "role": "replacement",
+      "sourceScale": 1.8,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -414.5,
+        0,
+        63.5
+      ],
+      "dimensions": [
+        1.7999999999999545,
+        0.5068846642971039,
+        0.4536818683147459
+      ],
+      "bounds": {
+        "min": [
+          -415.4,
+          0,
+          63.27315906584263
+        ],
+        "max": [
+          -413.6,
+          0.5068846642971039,
+          63.72684093415737
+        ]
+      },
+      "support": "medical-ground / calibrated left bench solid",
+      "fallbackSlot": "medical-rest-bench"
+    },
+    {
+      "id": "medical-bench-right",
+      "scenario": "medical",
+      "assetId": "PROP-BENCH",
+      "role": "replacement",
+      "sourceScale": 1.8,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -412.5,
+        0,
+        63.5
+      ],
+      "dimensions": [
+        1.7999999999999545,
+        0.5068846642971039,
+        0.4536818683147459
+      ],
+      "bounds": {
+        "min": [
+          -413.4,
+          0,
+          63.27315906584263
+        ],
+        "max": [
+          -411.6,
+          0.5068846642971039,
+          63.72684093415737
+        ]
+      },
+      "support": "medical-ground / calibrated right bench solid",
+      "fallbackSlot": "medical-rest-bench"
+    },
+    {
+      "id": "medical-water-mug",
+      "scenario": "medical",
+      "assetId": "PROP-LIFE-MUG",
+      "role": "surface-prop",
+      "sourceScale": 0.13460323165546126,
+      "yaw": 0,
+      "position": [
+        -414.16,
+        0.962,
+        60.39
+      ],
+      "dimensions": [
+        0.11820683236794594,
+        0.10000000000000009,
+        0.1346032316554613
+      ],
+      "bounds": {
+        "min": [
+          -414.219103416184,
+          0.962,
+          60.32269838417227
+        ],
+        "max": [
+          -414.10089658381605,
+          1.062,
+          60.45730161582773
+        ]
+      },
+      "support": "medical-water-table top y=0.96; clear of existing vessel at [-414.5,60.2]",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-supply-bag",
+      "scenario": "medical",
+      "assetId": "PROP-MEDICAL-BAG",
+      "role": "surface-prop",
+      "sourceScale": 0.4,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -417,
+        1.062,
+        56
+      ],
+      "dimensions": [
+        0.39999999999997726,
+        0.28600194454193106,
+        0.23999686241150187
+      ],
+      "bounds": {
+        "min": [
+          -417.2,
+          1.062,
+          55.88000156879425
+        ],
+        "max": [
+          -416.8,
+          1.3480019445419311,
+          56.11999843120575
+        ]
+      },
+      "support": "medical-supply-bin--417-56 amber lid top y=1.06",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-east-tank",
+      "scenario": "frontgate",
+      "assetId": "PROP-TANK",
+      "role": "replacement",
+      "sourceScale": 3.8114759722038096,
+      "yaw": 0,
+      "position": [
+        43,
+        0,
+        10
+      ],
+      "dimensions": [
+        6.199999999999996,
+        7.236521373727994,
+        6.176590746216307
+      ],
+      "bounds": {
+        "min": [
+          39.900000000000006,
+          0,
+          6.911704626891845
+        ],
+        "max": [
+          46.1,
+          7.236521373727994,
+          13.088295373108153
+        ]
+      },
+      "support": "front-ground / existing tank solid",
+      "fallbackSlot": "front-east-tank"
+    },
+    {
+      "id": "front-east-tank",
+      "scenario": "transfer",
+      "assetId": "PROP-TANK",
+      "role": "replacement",
+      "sourceScale": 3.8114759722038096,
+      "yaw": 0,
+      "position": [
+        43,
+        0,
+        10
+      ],
+      "dimensions": [
+        6.199999999999996,
+        7.236521373727994,
+        6.176590746216307
+      ],
+      "bounds": {
+        "min": [
+          39.900000000000006,
+          0,
+          6.911704626891845
+        ],
+        "max": [
+          46.1,
+          7.236521373727994,
+          13.088295373108153
+        ]
+      },
+      "support": "front-ground / existing tank solid",
+      "fallbackSlot": "front-east-tank"
+    },
+    {
+      "id": "front-east-tank",
+      "scenario": "flank",
+      "assetId": "PROP-TANK",
+      "role": "replacement",
+      "sourceScale": 3.8114759722038096,
+      "yaw": 0,
+      "position": [
+        43,
+        0,
+        10
+      ],
+      "dimensions": [
+        6.199999999999996,
+        7.236521373727994,
+        6.176590746216307
+      ],
+      "bounds": {
+        "min": [
+          39.900000000000006,
+          0,
+          6.911704626891845
+        ],
+        "max": [
+          46.1,
+          7.236521373727994,
+          13.088295373108153
+        ]
+      },
+      "support": "front-ground / existing tank solid",
+      "fallbackSlot": "front-east-tank"
+    },
+    {
+      "id": "epilogue-reception-console",
+      "scenario": "epilogue",
+      "assetId": "PROP-TERMINAL-CONSOLE",
+      "role": "replacement",
+      "sourceScale": 3.5,
+      "yaw": 1.5707963267948966,
+      "position": [
+        2.2,
+        0,
+        6
+      ],
+      "dimensions": [
+        3.5,
+        1.3765051364898682,
+        1.1007348895072937
+      ],
+      "bounds": {
+        "min": [
+          0.4500000000000002,
+          0,
+          5.449632555246353
+        ],
+        "max": [
+          3.95,
+          1.3765051364898682,
+          6.550367444753647
+        ]
+      },
+      "support": "epilogue-ground / existing reception-table solid",
+      "fallbackSlot": "epilogue-reception-console"
+    },
+    {
+      "id": "front-tug",
+      "scenario": "frontgate",
+      "assetId": "PROP-VEH-TUG",
+      "role": "replacement",
+      "sourceScale": 4.35,
+      "yaw": 1.4207963267948966,
+      "position": [
+        21,
+        0,
+        20
+      ],
+      "dimensions": [
+        2.679485412977016,
+        2.002498027682304,
+        4.523980155629129
+      ],
+      "bounds": {
+        "min": [
+          19.63716502438902,
+          0,
+          17.756481298294112
+        ],
+        "max": [
+          22.316650437366036,
+          2.002498027682304,
+          22.28046145392324
+        ]
+      },
+      "support": "front-ground / existing tractor solid",
+      "fallbackSlot": "front-tug"
+    },
+    {
+      "id": "front-tug",
+      "scenario": "transfer",
+      "assetId": "PROP-VEH-TUG",
+      "role": "replacement",
+      "sourceScale": 4.35,
+      "yaw": 1.4207963267948966,
+      "position": [
+        21,
+        0,
+        20
+      ],
+      "dimensions": [
+        2.679485412977016,
+        2.002498027682304,
+        4.523980155629129
+      ],
+      "bounds": {
+        "min": [
+          19.63716502438902,
+          0,
+          17.756481298294112
+        ],
+        "max": [
+          22.316650437366036,
+          2.002498027682304,
+          22.28046145392324
+        ]
+      },
+      "support": "front-ground / existing tractor solid",
+      "fallbackSlot": "front-tug"
+    },
+    {
+      "id": "front-tug",
+      "scenario": "flank",
+      "assetId": "PROP-VEH-TUG",
+      "role": "replacement",
+      "sourceScale": 4.35,
+      "yaw": 1.4207963267948966,
+      "position": [
+        21,
+        0,
+        20
+      ],
+      "dimensions": [
+        2.679485412977016,
+        2.002498027682304,
+        4.523980155629129
+      ],
+      "bounds": {
+        "min": [
+          19.63716502438902,
+          0,
+          17.756481298294112
+        ],
+        "max": [
+          22.316650437366036,
+          2.002498027682304,
+          22.28046145392324
+        ]
+      },
+      "support": "front-ground / existing tractor solid",
+      "fallbackSlot": "front-tug"
+    },
+    {
+      "id": "medical-spare-trolley",
+      "scenario": "medical",
+      "assetId": "PROP-TRANSFER",
+      "role": "replacement",
+      "sourceScale": 2.3,
+      "yaw": 0,
+      "position": [
+        -387,
+        0,
+        62
+      ],
+      "dimensions": [
+        2.2999999999999545,
+        1.0783246725797653,
+        1.1908099770545988
+      ],
+      "bounds": {
+        "min": [
+          -388.15,
+          0,
+          61.4045950114727
+        ],
+        "max": [
+          -385.85,
+          1.0783246725797653,
+          62.5954049885273
+        ]
+      },
+      "support": "medical-ground / dedicated parked trolley solid; no patient or task ownership",
+      "fallbackSlot": "medical-spare-trolley"
+    },
+    {
+      "id": "medical-spare-stretcher",
+      "scenario": "medical",
+      "assetId": "PROP-STRETCHER",
+      "role": "surface-prop",
+      "sourceScale": 2.1,
+      "yaw": 0,
+      "position": [
+        -387,
+        1.062,
+        68
+      ],
+      "dimensions": [
+        2.1000000000000227,
+        0.13055691942572611,
+        0.7534985125064964
+      ],
+      "bounds": {
+        "min": [
+          -388.05,
+          1.062,
+          67.62325074374675
+        ],
+        "max": [
+          -385.95,
+          1.1925569194257262,
+          68.37674925625325
+        ]
+      },
+      "support": "medical-supply-bin--387-68 lid top 1.06; stretcher has 0.25m handle overhang at each end",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-spare-door",
+      "scenario": "frontgate",
+      "assetId": "PROP-DOOR-LEAF",
+      "role": "background",
+      "sourceScale": 2.7,
+      "yaw": 1.5707963267948966,
+      "position": [
+        59,
+        0,
+        -49
+      ],
+      "dimensions": [
+        1.6330129086971255,
+        2.7,
+        0.6920169264078169
+      ],
+      "bounds": {
+        "min": [
+          58.18349354565144,
+          0,
+          -49.34600846320391
+        ],
+        "max": [
+          59.81650645434856,
+          2.7,
+          -48.65399153679609
+        ]
+      },
+      "support": "spare door awaiting repair beyond east boundary; not the mission door",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-spare-door",
+      "scenario": "transfer",
+      "assetId": "PROP-DOOR-LEAF",
+      "role": "background",
+      "sourceScale": 2.7,
+      "yaw": 1.5707963267948966,
+      "position": [
+        59,
+        0,
+        -49
+      ],
+      "dimensions": [
+        1.6330129086971255,
+        2.7,
+        0.6920169264078169
+      ],
+      "bounds": {
+        "min": [
+          58.18349354565144,
+          0,
+          -49.34600846320391
+        ],
+        "max": [
+          59.81650645434856,
+          2.7,
+          -48.65399153679609
+        ]
+      },
+      "support": "spare door awaiting repair beyond east boundary; not the mission door",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-spare-door",
+      "scenario": "flank",
+      "assetId": "PROP-DOOR-LEAF",
+      "role": "background",
+      "sourceScale": 2.7,
+      "yaw": 1.5707963267948966,
+      "position": [
+        59,
+        0,
+        -49
+      ],
+      "dimensions": [
+        1.6330129086971255,
+        2.7,
+        0.6920169264078169
+      ],
+      "bounds": {
+        "min": [
+          58.18349354565144,
+          0,
+          -49.34600846320391
+        ],
+        "max": [
+          59.81650645434856,
+          2.7,
+          -48.65399153679609
+        ]
+      },
+      "support": "spare door awaiting repair beyond east boundary; not the mission door",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-spare-door-lock",
+      "scenario": "frontgate",
+      "assetId": "PROP-DOOR-LOCK",
+      "role": "surface-prop",
+      "sourceScale": 0.55,
+      "yaw": 1.5707963267948966,
+      "position": [
+        59,
+        1.2,
+        -48.55
+      ],
+      "dimensions": [
+        0.5499999999999972,
+        0.17261904925107974,
+        0.28543275296688364
+      ],
+      "bounds": {
+        "min": [
+          58.725,
+          1.2,
+          -48.69271637648344
+        ],
+        "max": [
+          59.275,
+          1.3726190492510797,
+          -48.407283623516555
+        ]
+      },
+      "support": "mounted against spare door front face; no independent motion",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-spare-door-lock",
+      "scenario": "transfer",
+      "assetId": "PROP-DOOR-LOCK",
+      "role": "surface-prop",
+      "sourceScale": 0.55,
+      "yaw": 1.5707963267948966,
+      "position": [
+        59,
+        1.2,
+        -48.55
+      ],
+      "dimensions": [
+        0.5499999999999972,
+        0.17261904925107974,
+        0.28543275296688364
+      ],
+      "bounds": {
+        "min": [
+          58.725,
+          1.2,
+          -48.69271637648344
+        ],
+        "max": [
+          59.275,
+          1.3726190492510797,
+          -48.407283623516555
+        ]
+      },
+      "support": "mounted against spare door front face; no independent motion",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-spare-door-lock",
+      "scenario": "flank",
+      "assetId": "PROP-DOOR-LOCK",
+      "role": "surface-prop",
+      "sourceScale": 0.55,
+      "yaw": 1.5707963267948966,
+      "position": [
+        59,
+        1.2,
+        -48.55
+      ],
+      "dimensions": [
+        0.5499999999999972,
+        0.17261904925107974,
+        0.28543275296688364
+      ],
+      "bounds": {
+        "min": [
+          58.725,
+          1.2,
+          -48.69271637648344
+        ],
+        "max": [
+          59.275,
+          1.3726190492510797,
+          -48.407283623516555
+        ]
+      },
+      "support": "mounted against spare door front face; no independent motion",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-record-handheld",
+      "scenario": "medical",
+      "assetId": "PROP-TERMINAL-HANDHELD",
+      "role": "surface-prop",
+      "sourceScale": 0.24,
+      "yaw": 0,
+      "position": [
+        -397.5,
+        1.112,
+        53.7
+      ],
+      "dimensions": [
+        0.09393809795381003,
+        0.2400000000000002,
+        0.15128524303436564
+      ],
+      "bounds": {
+        "min": [
+          -397.5469690489769,
+          1.112,
+          53.62435737848282
+        ],
+        "max": [
+          -397.4530309510231,
+          1.3520000000000003,
+          53.775642621517186
+        ]
+      },
+      "support": "medical-record-desk top 1.11; resting upright",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-transport-parked",
+      "scenario": "frontgate",
+      "assetId": "PROP-VEH-TRANSPORT",
+      "role": "background",
+      "sourceScale": 7.5,
+      "yaw": 1.5707963267948966,
+      "position": [
+        62,
+        0,
+        -62
+      ],
+      "dimensions": [
+        2.893308475613594,
+        3.0528221279382706,
+        7.5
+      ],
+      "bounds": {
+        "min": [
+          60.5533457621932,
+          0,
+          -65.75
+        ],
+        "max": [
+          63.4466542378068,
+          3.0528221279382706,
+          -58.25
+        ]
+      },
+      "support": "parked beyond front-boundary-x-54; vehicle remains static",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-transport-parked",
+      "scenario": "transfer",
+      "assetId": "PROP-VEH-TRANSPORT",
+      "role": "background",
+      "sourceScale": 7.5,
+      "yaw": 1.5707963267948966,
+      "position": [
+        62,
+        0,
+        -62
+      ],
+      "dimensions": [
+        2.893308475613594,
+        3.0528221279382706,
+        7.5
+      ],
+      "bounds": {
+        "min": [
+          60.5533457621932,
+          0,
+          -65.75
+        ],
+        "max": [
+          63.4466542378068,
+          3.0528221279382706,
+          -58.25
+        ]
+      },
+      "support": "parked beyond front-boundary-x-54; vehicle remains static",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-transport-parked",
+      "scenario": "flank",
+      "assetId": "PROP-VEH-TRANSPORT",
+      "role": "background",
+      "sourceScale": 7.5,
+      "yaw": 1.5707963267948966,
+      "position": [
+        62,
+        0,
+        -62
+      ],
+      "dimensions": [
+        2.893308475613594,
+        3.0528221279382706,
+        7.5
+      ],
+      "bounds": {
+        "min": [
+          60.5533457621932,
+          0,
+          -65.75
+        ],
+        "max": [
+          63.4466542378068,
+          3.0528221279382706,
+          -58.25
+        ]
+      },
+      "support": "parked beyond front-boundary-x-54; vehicle remains static",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-filter-0",
+      "scenario": "frontgate",
+      "assetId": "PROP-FILTER",
+      "role": "replacement",
+      "sourceScale": 3.4,
+      "yaw": 0,
+      "position": [
+        22.9,
+        0.402,
+        3.65
+      ],
+      "dimensions": [
+        1.5861033916473417,
+        1.9768819212913513,
+        3.3999999999999995
+      ],
+      "bounds": {
+        "min": [
+          22.106948304176328,
+          0.40200000000000014,
+          1.95
+        ],
+        "max": [
+          23.69305169582367,
+          2.3788819212913515,
+          5.35
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-filter-1",
+      "scenario": "frontgate",
+      "assetId": "PROP-FILTER",
+      "role": "replacement",
+      "sourceScale": 3.4,
+      "yaw": 0,
+      "position": [
+        25.1,
+        0.402,
+        3.65
+      ],
+      "dimensions": [
+        1.5861033916473417,
+        1.9768819212913513,
+        3.3999999999999995
+      ],
+      "bounds": {
+        "min": [
+          24.30694830417633,
+          0.40200000000000014,
+          1.95
+        ],
+        "max": [
+          25.893051695823672,
+          2.3788819212913515,
+          5.35
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-filter-0",
+      "scenario": "transfer",
+      "assetId": "PROP-FILTER",
+      "role": "replacement",
+      "sourceScale": 3.4,
+      "yaw": 0,
+      "position": [
+        22.9,
+        0.402,
+        3.65
+      ],
+      "dimensions": [
+        1.5861033916473417,
+        1.9768819212913513,
+        3.3999999999999995
+      ],
+      "bounds": {
+        "min": [
+          22.106948304176328,
+          0.40200000000000014,
+          1.95
+        ],
+        "max": [
+          23.69305169582367,
+          2.3788819212913515,
+          5.35
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-filter-1",
+      "scenario": "transfer",
+      "assetId": "PROP-FILTER",
+      "role": "replacement",
+      "sourceScale": 3.4,
+      "yaw": 0,
+      "position": [
+        25.1,
+        0.402,
+        3.65
+      ],
+      "dimensions": [
+        1.5861033916473417,
+        1.9768819212913513,
+        3.3999999999999995
+      ],
+      "bounds": {
+        "min": [
+          24.30694830417633,
+          0.40200000000000014,
+          1.95
+        ],
+        "max": [
+          25.893051695823672,
+          2.3788819212913515,
+          5.35
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-filter-0",
+      "scenario": "flank",
+      "assetId": "PROP-FILTER",
+      "role": "replacement",
+      "sourceScale": 3.4,
+      "yaw": 0,
+      "position": [
+        22.9,
+        0.402,
+        3.65
+      ],
+      "dimensions": [
+        1.5861033916473417,
+        1.9768819212913513,
+        3.3999999999999995
+      ],
+      "bounds": {
+        "min": [
+          22.106948304176328,
+          0.40200000000000014,
+          1.95
+        ],
+        "max": [
+          23.69305169582367,
+          2.3788819212913515,
+          5.35
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-filter-1",
+      "scenario": "flank",
+      "assetId": "PROP-FILTER",
+      "role": "replacement",
+      "sourceScale": 3.4,
+      "yaw": 0,
+      "position": [
+        25.1,
+        0.402,
+        3.65
+      ],
+      "dimensions": [
+        1.5861033916473417,
+        1.9768819212913513,
+        3.3999999999999995
+      ],
+      "bounds": {
+        "min": [
+          24.30694830417633,
+          0.40200000000000014,
+          1.95
+        ],
+        "max": [
+          25.893051695823672,
+          2.3788819212913515,
+          5.35
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-service-cargo",
+      "scenario": "frontgate",
+      "assetId": "PROP-CARGO",
+      "role": "surface-prop",
+      "sourceScale": 1.1,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -33.8,
+        2.502,
+        -31
+      ],
+      "dimensions": [
+        1.0999999999999943,
+        0.7466312050819397,
+        0.6937314391136198
+      ],
+      "bounds": {
+        "min": [
+          -34.349999999999994,
+          2.502,
+          -31.34686571955681
+        ],
+        "max": [
+          -33.25,
+          3.2486312050819395,
+          -30.65313428044319
+        ]
+      },
+      "support": "workers-parts-rack top 2.5",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-service-cargo",
+      "scenario": "transfer",
+      "assetId": "PROP-CARGO",
+      "role": "surface-prop",
+      "sourceScale": 1.1,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -33.8,
+        2.502,
+        -31
+      ],
+      "dimensions": [
+        1.0999999999999943,
+        0.7466312050819397,
+        0.6937314391136198
+      ],
+      "bounds": {
+        "min": [
+          -34.349999999999994,
+          2.502,
+          -31.34686571955681
+        ],
+        "max": [
+          -33.25,
+          3.2486312050819395,
+          -30.65313428044319
+        ]
+      },
+      "support": "workers-parts-rack top 2.5",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-service-cargo",
+      "scenario": "flank",
+      "assetId": "PROP-CARGO",
+      "role": "surface-prop",
+      "sourceScale": 1.1,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -33.8,
+        2.502,
+        -31
+      ],
+      "dimensions": [
+        1.0999999999999943,
+        0.7466312050819397,
+        0.6937314391136198
+      ],
+      "bounds": {
+        "min": [
+          -34.349999999999994,
+          2.502,
+          -31.34686571955681
+        ],
+        "max": [
+          -33.25,
+          3.2486312050819395,
+          -30.65313428044319
+        ]
+      },
+      "support": "workers-parts-rack top 2.5",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-pump-0",
+      "scenario": "frontgate",
+      "assetId": "PROP-PUMP",
+      "role": "replacement",
+      "sourceScale": 2.5,
+      "yaw": 0,
+      "position": [
+        22.9,
+        0.402,
+        6.8
+      ],
+      "dimensions": [
+        1.4239196479320526,
+        1.1939199268817902,
+        2.500000000000001
+      ],
+      "bounds": {
+        "min": [
+          22.188040176033972,
+          0.402,
+          5.55
+        ],
+        "max": [
+          23.611959823966025,
+          1.5959199268817903,
+          8.05
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-pump-1",
+      "scenario": "frontgate",
+      "assetId": "PROP-PUMP",
+      "role": "replacement",
+      "sourceScale": 2.5,
+      "yaw": 0,
+      "position": [
+        25.1,
+        0.402,
+        6.8
+      ],
+      "dimensions": [
+        1.4239196479320526,
+        1.1939199268817902,
+        2.500000000000001
+      ],
+      "bounds": {
+        "min": [
+          24.388040176033975,
+          0.402,
+          5.55
+        ],
+        "max": [
+          25.811959823966028,
+          1.5959199268817903,
+          8.05
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-pump-0",
+      "scenario": "transfer",
+      "assetId": "PROP-PUMP",
+      "role": "replacement",
+      "sourceScale": 2.5,
+      "yaw": 0,
+      "position": [
+        22.9,
+        0.402,
+        6.8
+      ],
+      "dimensions": [
+        1.4239196479320526,
+        1.1939199268817902,
+        2.500000000000001
+      ],
+      "bounds": {
+        "min": [
+          22.188040176033972,
+          0.402,
+          5.55
+        ],
+        "max": [
+          23.611959823966025,
+          1.5959199268817903,
+          8.05
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-pump-1",
+      "scenario": "transfer",
+      "assetId": "PROP-PUMP",
+      "role": "replacement",
+      "sourceScale": 2.5,
+      "yaw": 0,
+      "position": [
+        25.1,
+        0.402,
+        6.8
+      ],
+      "dimensions": [
+        1.4239196479320526,
+        1.1939199268817902,
+        2.500000000000001
+      ],
+      "bounds": {
+        "min": [
+          24.388040176033975,
+          0.402,
+          5.55
+        ],
+        "max": [
+          25.811959823966028,
+          1.5959199268817903,
+          8.05
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-pump-0",
+      "scenario": "flank",
+      "assetId": "PROP-PUMP",
+      "role": "replacement",
+      "sourceScale": 2.5,
+      "yaw": 0,
+      "position": [
+        22.9,
+        0.402,
+        6.8
+      ],
+      "dimensions": [
+        1.4239196479320526,
+        1.1939199268817902,
+        2.500000000000001
+      ],
+      "bounds": {
+        "min": [
+          22.188040176033972,
+          0.402,
+          5.55
+        ],
+        "max": [
+          23.611959823966025,
+          1.5959199268817903,
+          8.05
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-pump-1",
+      "scenario": "flank",
+      "assetId": "PROP-PUMP",
+      "role": "replacement",
+      "sourceScale": 2.5,
+      "yaw": 0,
+      "position": [
+        25.1,
+        0.402,
+        6.8
+      ],
+      "dimensions": [
+        1.4239196479320526,
+        1.1939199268817902,
+        2.500000000000001
+      ],
+      "bounds": {
+        "min": [
+          24.388040176033975,
+          0.402,
+          5.55
+        ],
+        "max": [
+          25.811959823966028,
+          1.5959199268817903,
+          8.05
+        ]
+      },
+      "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+      "fallbackSlot": "front-filter-machinery"
+    },
+    {
+      "id": "front-cooling-fan",
+      "scenario": "frontgate",
+      "assetId": "PROP-FAN",
+      "role": "surface-prop",
+      "sourceScale": 1.2,
+      "yaw": 1.5707963267948966,
+      "position": [
+        48,
+        3.402,
+        -32
+      ],
+      "dimensions": [
+        1.2000000000000028,
+        1.1931617259979248,
+        0.6179278850555399
+      ],
+      "bounds": {
+        "min": [
+          47.4,
+          3.402,
+          -32.30896394252777
+        ],
+        "max": [
+          48.6,
+          4.595161725997925,
+          -31.69103605747223
+        ]
+      },
+      "support": "front-east-staging-block top 3.4",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-cooling-fan",
+      "scenario": "transfer",
+      "assetId": "PROP-FAN",
+      "role": "surface-prop",
+      "sourceScale": 1.2,
+      "yaw": 1.5707963267948966,
+      "position": [
+        48,
+        3.402,
+        -32
+      ],
+      "dimensions": [
+        1.2000000000000028,
+        1.1931617259979248,
+        0.6179278850555399
+      ],
+      "bounds": {
+        "min": [
+          47.4,
+          3.402,
+          -32.30896394252777
+        ],
+        "max": [
+          48.6,
+          4.595161725997925,
+          -31.69103605747223
+        ]
+      },
+      "support": "front-east-staging-block top 3.4",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-cooling-fan",
+      "scenario": "flank",
+      "assetId": "PROP-FAN",
+      "role": "surface-prop",
+      "sourceScale": 1.2,
+      "yaw": 1.5707963267948966,
+      "position": [
+        48,
+        3.402,
+        -32
+      ],
+      "dimensions": [
+        1.2000000000000028,
+        1.1931617259979248,
+        0.6179278850555399
+      ],
+      "bounds": {
+        "min": [
+          47.4,
+          3.402,
+          -32.30896394252777
+        ],
+        "max": [
+          48.6,
+          4.595161725997925,
+          -31.69103605747223
+        ]
+      },
+      "support": "front-east-staging-block top 3.4",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-service-bag",
+      "scenario": "frontgate",
+      "assetId": "PROP-TOOL-BAG",
+      "role": "surface-prop",
+      "sourceScale": 0.4,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -34.8,
+        1.352,
+        -30.36
+      ],
+      "dimensions": [
+        0.4000000000000057,
+        0.3179680109024048,
+        0.2493913173675537
+      ],
+      "bounds": {
+        "min": [
+          -35,
+          1.352,
+          -30.484695658683776
+        ],
+        "max": [
+          -34.599999999999994,
+          1.6699680109024049,
+          -30.235304341316223
+        ]
+      },
+      "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-service-bag",
+      "scenario": "transfer",
+      "assetId": "PROP-TOOL-BAG",
+      "role": "surface-prop",
+      "sourceScale": 0.4,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -34.8,
+        1.352,
+        -30.36
+      ],
+      "dimensions": [
+        0.4000000000000057,
+        0.3179680109024048,
+        0.2493913173675537
+      ],
+      "bounds": {
+        "min": [
+          -35,
+          1.352,
+          -30.484695658683776
+        ],
+        "max": [
+          -34.599999999999994,
+          1.6699680109024049,
+          -30.235304341316223
+        ]
+      },
+      "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-service-bag",
+      "scenario": "flank",
+      "assetId": "PROP-TOOL-BAG",
+      "role": "surface-prop",
+      "sourceScale": 0.4,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -34.8,
+        1.352,
+        -30.36
+      ],
+      "dimensions": [
+        0.4000000000000057,
+        0.3179680109024048,
+        0.2493913173675537
+      ],
+      "bounds": {
+        "min": [
+          -35,
+          1.352,
+          -30.484695658683776
+        ],
+        "max": [
+          -34.599999999999994,
+          1.6699680109024049,
+          -30.235304341316223
+        ]
+      },
+      "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-service-tools",
+      "scenario": "frontgate",
+      "assetId": "PROP-TOOL-ROLL",
+      "role": "surface-prop",
+      "sourceScale": 0.3,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -33.8,
+        1.352,
+        -30.38
+      ],
+      "dimensions": [
+        0.29999999999999716,
+        0.12574721574783343,
+        0.1405412167310729
+      ],
+      "bounds": {
+        "min": [
+          -33.949999999999996,
+          1.352,
+          -30.450270608365535
+        ],
+        "max": [
+          -33.65,
+          1.4777472157478335,
+          -30.309729391634463
+        ]
+      },
+      "support": "workers-parts-rack middle shelf top 1.35",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-service-tools",
+      "scenario": "transfer",
+      "assetId": "PROP-TOOL-ROLL",
+      "role": "surface-prop",
+      "sourceScale": 0.3,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -33.8,
+        1.352,
+        -30.38
+      ],
+      "dimensions": [
+        0.29999999999999716,
+        0.12574721574783343,
+        0.1405412167310729
+      ],
+      "bounds": {
+        "min": [
+          -33.949999999999996,
+          1.352,
+          -30.450270608365535
+        ],
+        "max": [
+          -33.65,
+          1.4777472157478335,
+          -30.309729391634463
+        ]
+      },
+      "support": "workers-parts-rack middle shelf top 1.35",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-service-tools",
+      "scenario": "flank",
+      "assetId": "PROP-TOOL-ROLL",
+      "role": "surface-prop",
+      "sourceScale": 0.3,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -33.8,
+        1.352,
+        -30.38
+      ],
+      "dimensions": [
+        0.29999999999999716,
+        0.12574721574783343,
+        0.1405412167310729
+      ],
+      "bounds": {
+        "min": [
+          -33.949999999999996,
+          1.352,
+          -30.450270608365535
+        ],
+        "max": [
+          -33.65,
+          1.4777472157478335,
+          -30.309729391634463
+        ]
+      },
+      "support": "workers-parts-rack middle shelf top 1.35",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-worker-lunch",
+      "scenario": "frontgate",
+      "assetId": "PROP-TOOL-LUNCHBOX",
+      "role": "surface-prop",
+      "sourceScale": 0.22,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -32.8,
+        2.202,
+        -30.38
+      ],
+      "dimensions": [
+        0.21999999999999886,
+        0.1768687665462494,
+        0.15837716341018648
+      ],
+      "bounds": {
+        "min": [
+          -32.91,
+          2.202,
+          -30.459188581705092
+        ],
+        "max": [
+          -32.69,
+          2.3788687665462493,
+          -30.300811418294906
+        ]
+      },
+      "support": "workers-parts-rack upper shelf top 2.2",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-worker-lunch",
+      "scenario": "transfer",
+      "assetId": "PROP-TOOL-LUNCHBOX",
+      "role": "surface-prop",
+      "sourceScale": 0.22,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -32.8,
+        2.202,
+        -30.38
+      ],
+      "dimensions": [
+        0.21999999999999886,
+        0.1768687665462494,
+        0.15837716341018648
+      ],
+      "bounds": {
+        "min": [
+          -32.91,
+          2.202,
+          -30.459188581705092
+        ],
+        "max": [
+          -32.69,
+          2.3788687665462493,
+          -30.300811418294906
+        ]
+      },
+      "support": "workers-parts-rack upper shelf top 2.2",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-worker-lunch",
+      "scenario": "flank",
+      "assetId": "PROP-TOOL-LUNCHBOX",
+      "role": "surface-prop",
+      "sourceScale": 0.22,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -32.8,
+        2.202,
+        -30.38
+      ],
+      "dimensions": [
+        0.21999999999999886,
+        0.1768687665462494,
+        0.15837716341018648
+      ],
+      "bounds": {
+        "min": [
+          -32.91,
+          2.202,
+          -30.459188581705092
+        ],
+        "max": [
+          -32.69,
+          2.3788687665462493,
+          -30.300811418294906
+        ]
+      },
+      "support": "workers-parts-rack upper shelf top 2.2",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-radio-pack",
+      "scenario": "medical",
+      "assetId": "PROP-RADIO-PACK",
+      "role": "surface-prop",
+      "sourceScale": 0.4,
+      "yaw": 0,
+      "position": [
+        -400.6,
+        1.112,
+        68.65
+      ],
+      "dimensions": [
+        0.16802599430081955,
+        0.3999999999999999,
+        0.2598513126373234
+      ],
+      "bounds": {
+        "min": [
+          -400.68401299715043,
+          1.112,
+          68.52007434368134
+        ],
+        "max": [
+          -400.5159870028496,
+          1.512,
+          68.77992565631867
+        ]
+      },
+      "support": "medical-radio-table top 1.11; clear of screen",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-radio-headset",
+      "scenario": "medical",
+      "assetId": "PROP-RADIO-HEADSET",
+      "role": "surface-prop",
+      "sourceScale": 0.2,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -400,
+        1.112,
+        68.72
+      ],
+      "dimensions": [
+        0.20000000000004547,
+        0.16254791021347037,
+        0.08635906577109154
+      ],
+      "bounds": {
+        "min": [
+          -400.1,
+          1.112,
+          68.67682046711445
+        ],
+        "max": [
+          -399.9,
+          1.2745479102134705,
+          68.76317953288554
+        ]
+      },
+      "support": "medical-radio-table top 1.11; stowed beside radio",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-equipment-chest",
+      "scenario": "medical",
+      "assetId": "PROP-ARMOR-CHEST",
+      "role": "surface-prop",
+      "sourceScale": 0.55,
+      "yaw": 3.141592653589793,
+      "position": [
+        -405.7,
+        1.112,
+        56.65
+      ],
+      "dimensions": [
+        0.4342815160750888,
+        0.5499999999999998,
+        0.5213203787803593
+      ],
+      "bounds": {
+        "min": [
+          -405.91714075803753,
+          1.112,
+          56.38933981060982
+        ],
+        "max": [
+          -405.48285924196244,
+          1.662,
+          56.91066018939018
+        ]
+      },
+      "support": "medical-equipment-table top 1.11; stowed armor, not a character attachment",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-equipment-brace",
+      "scenario": "medical",
+      "assetId": "PROP-ARMOR-LEFT-BRACE",
+      "role": "surface-prop",
+      "sourceScale": 0.42,
+      "yaw": 3.141592653589793,
+      "position": [
+        -405.05,
+        1.112,
+        56.7
+      ],
+      "dimensions": [
+        0.266218117475546,
+        0.41999999999999993,
+        0.21301013231277466
+      ],
+      "bounds": {
+        "min": [
+          -405.1831090587378,
+          1.112,
+          56.593494933843616
+        ],
+        "max": [
+          -404.91689094126224,
+          1.532,
+          56.80650506615639
+        ]
+      },
+      "support": "medical-equipment-table top 1.11; stowed spare brace",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-equipment-helmet",
+      "scenario": "medical",
+      "assetId": "PROP-ARMOR-HELMET",
+      "role": "surface-prop",
+      "sourceScale": 0.35,
+      "yaw": 3.141592653589793,
+      "position": [
+        -387,
+        1.062,
+        56
+      ],
+      "dimensions": [
+        0.2581909269094922,
+        0.3500000000000001,
+        0.29940803349018097
+      ],
+      "bounds": {
+        "min": [
+          -387.12909546345475,
+          1.062,
+          55.85029598325491
+        ],
+        "max": [
+          -386.87090453654525,
+          1.4120000000000001,
+          56.14970401674509
+        ]
+      },
+      "support": "medical-supply-bin--387-56 lid top 1.06; recovered equipment",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-sample-cabinet-0",
+      "scenario": "medical",
+      "assetId": "PROP-SAMPLE-CABINET",
+      "role": "replacement",
+      "sourceScale": 2,
+      "yaw": 0,
+      "position": [
+        -388.05,
+        0,
+        39
+      ],
+      "dimensions": [
+        0.8794697523117065,
+        2,
+        1.4146546125411987
+      ],
+      "bounds": {
+        "min": [
+          -388.48973487615586,
+          0,
+          38.2926726937294
+        ],
+        "max": [
+          -387.61026512384416,
+          2,
+          39.7073273062706
+        ]
+      },
+      "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint",
+      "fallbackSlot": "medical-sample-cabinets"
+    },
+    {
+      "id": "medical-sample-cabinet-1",
+      "scenario": "medical",
+      "assetId": "PROP-SAMPLE-CABINET",
+      "role": "replacement",
+      "sourceScale": 2,
+      "yaw": 0,
+      "position": [
+        -387,
+        0,
+        39
+      ],
+      "dimensions": [
+        0.8794697523117065,
+        2,
+        1.4146546125411987
+      ],
+      "bounds": {
+        "min": [
+          -387.43973487615585,
+          0,
+          38.2926726937294
+        ],
+        "max": [
+          -386.56026512384415,
+          2,
+          39.7073273062706
+        ]
+      },
+      "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint",
+      "fallbackSlot": "medical-sample-cabinets"
+    },
+    {
+      "id": "medical-sample-cabinet-2",
+      "scenario": "medical",
+      "assetId": "PROP-SAMPLE-CABINET",
+      "role": "replacement",
+      "sourceScale": 2,
+      "yaw": 0,
+      "position": [
+        -385.95,
+        0,
+        39
+      ],
+      "dimensions": [
+        0.8794697523117065,
+        2,
+        1.4146546125411987
+      ],
+      "bounds": {
+        "min": [
+          -386.38973487615584,
+          0,
+          38.2926726937294
+        ],
+        "max": [
+          -385.51026512384414,
+          2,
+          39.7073273062706
+        ]
+      },
+      "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint",
+      "fallbackSlot": "medical-sample-cabinets"
+    },
+    {
+      "id": "medical-sample-corecase",
+      "scenario": "medical",
+      "assetId": "PROP-SAMPLE-CORECASE",
+      "role": "surface-prop",
+      "sourceScale": 0.45,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -387,
+        1.062,
+        50
+      ],
+      "dimensions": [
+        0.4500000000000455,
+        0.15630269944667807,
+        0.17659426778554632
+      ],
+      "bounds": {
+        "min": [
+          -387.225,
+          1.062,
+          49.91170286610723
+        ],
+        "max": [
+          -386.775,
+          1.2183026994466781,
+          50.08829713389277
+        ]
+      },
+      "support": "medical-supply-bin--387-50 lid top 1.06; maintenance sample storage",
+      "fallbackSlot": null
+    }
+  ]
+}

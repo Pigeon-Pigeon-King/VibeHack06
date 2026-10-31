@@ -1,0 +1,2323 @@
+{
+  "productionProps": 25,
+  "newProps": 20,
+  "newRuntimeBytes": 30977540,
+  "allProductionPropBytes": 38441304,
+  "mapping": [
+    {
+      "id": "PROP-BENCH",
+      "name": "工业长凳",
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-BENCH.glb",
+        "sha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+        "bytes": 1256928,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "bafcb58d9cd1d40badbbbf4a7bc05ad19b0e5df657a2dae423d156b82cd01022",
+        "bytes": 11641764
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-bench-left",
+          "scenario": "medical",
+          "assetId": "PROP-BENCH",
+          "role": "replacement",
+          "sourceScale": 1.8,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -414.5,
+            0,
+            63.5
+          ],
+          "dimensions": [
+            1.7999999999999545,
+            0.5068846642971039,
+            0.4536818683147459
+          ],
+          "bounds": {
+            "min": [
+              -415.4,
+              0,
+              63.27315906584263
+            ],
+            "max": [
+              -413.6,
+              0.5068846642971039,
+              63.72684093415737
+            ]
+          },
+          "support": "medical-ground / calibrated left bench solid",
+          "fallbackSlot": "medical-rest-bench"
+        },
+        {
+          "id": "medical-bench-right",
+          "scenario": "medical",
+          "assetId": "PROP-BENCH",
+          "role": "replacement",
+          "sourceScale": 1.8,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -412.5,
+            0,
+            63.5
+          ],
+          "dimensions": [
+            1.7999999999999545,
+            0.5068846642971039,
+            0.4536818683147459
+          ],
+          "bounds": {
+            "min": [
+              -413.4,
+              0,
+              63.27315906584263
+            ],
+            "max": [
+              -411.6,
+              0.5068846642971039,
+              63.72684093415737
+            ]
+          },
+          "support": "medical-ground / calibrated right bench solid",
+          "fallbackSlot": "medical-rest-bench"
+        }
+      ]
+    },
+    {
+      "id": "PROP-LIFE-MUG",
+      "name": "生活杯",
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+        "sha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+        "bytes": 834268,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+        "bytes": 8377524
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-water-mug",
+          "scenario": "medical",
+          "assetId": "PROP-LIFE-MUG",
+          "role": "surface-prop",
+          "sourceScale": 0.13460323165546126,
+          "yaw": 0,
+          "position": [
+            -414.16,
+            0.962,
+            60.39
+          ],
+          "dimensions": [
+            0.11820683236794594,
+            0.10000000000000009,
+            0.1346032316554613
+          ],
+          "bounds": {
+            "min": [
+              -414.219103416184,
+              0.962,
+              60.32269838417227
+            ],
+            "max": [
+              -414.10089658381605,
+              1.062,
+              60.45730161582773
+            ]
+          },
+          "support": "medical-water-table top y=0.96; clear of existing vessel at [-414.5,60.2]",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "name": "护理包",
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+        "sha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+        "bytes": 1569588,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+        "bytes": 17454464
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-supply-bag",
+          "scenario": "medical",
+          "assetId": "PROP-MEDICAL-BAG",
+          "role": "surface-prop",
+          "sourceScale": 0.4,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -417,
+            1.062,
+            56
+          ],
+          "dimensions": [
+            0.39999999999997726,
+            0.28600194454193106,
+            0.23999686241150187
+          ],
+          "bounds": {
+            "min": [
+              -417.2,
+              1.062,
+              55.88000156879425
+            ],
+            "max": [
+              -416.8,
+              1.3480019445419311,
+              56.11999843120575
+            ]
+          },
+          "support": "medical-supply-bin--417-56 amber lid top y=1.06",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-TERMINAL-CONSOLE",
+      "name": "港务控制台",
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+        "sha256": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+        "bytes": 1617188,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "8213a3b4a182c5df399dd56e06f7a9de31e1745d18aaafdf2f4bb36dbdf415a2",
+        "bytes": 10952596
+      },
+      "scenarios": [
+        "epilogue"
+      ],
+      "placements": [
+        {
+          "id": "epilogue-reception-console",
+          "scenario": "epilogue",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "role": "replacement",
+          "sourceScale": 3.5,
+          "yaw": 1.5707963267948966,
+          "position": [
+            2.2,
+            0,
+            6
+          ],
+          "dimensions": [
+            3.5,
+            1.3765051364898682,
+            1.1007348895072937
+          ],
+          "bounds": {
+            "min": [
+              0.4500000000000002,
+              0,
+              5.449632555246353
+            ],
+            "max": [
+              3.95,
+              1.3765051364898682,
+              6.550367444753647
+            ]
+          },
+          "support": "epilogue-ground / existing reception-table solid",
+          "fallbackSlot": "epilogue-reception-console"
+        }
+      ]
+    },
+    {
+      "id": "PROP-VEH-TUG",
+      "name": "港区牵引维修车",
+      "runtime": {
+        "path": "assets/generated/production-20261031/PROP-VEH-TUG.glb",
+        "sha256": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+        "bytes": 2185792,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "41012891d28356f8e57810b96b1620af34aa81ea59ab98f386411ad408d428da",
+        "bytes": 14286384
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-tug",
+          "scenario": "frontgate",
+          "assetId": "PROP-VEH-TUG",
+          "role": "replacement",
+          "sourceScale": 4.35,
+          "yaw": 1.4207963267948966,
+          "position": [
+            21,
+            0,
+            20
+          ],
+          "dimensions": [
+            2.679485412977016,
+            2.002498027682304,
+            4.523980155629129
+          ],
+          "bounds": {
+            "min": [
+              19.63716502438902,
+              0,
+              17.756481298294112
+            ],
+            "max": [
+              22.316650437366036,
+              2.002498027682304,
+              22.28046145392324
+            ]
+          },
+          "support": "front-ground / existing tractor solid",
+          "fallbackSlot": "front-tug"
+        },
+        {
+          "id": "front-tug",
+          "scenario": "transfer",
+          "assetId": "PROP-VEH-TUG",
+          "role": "replacement",
+          "sourceScale": 4.35,
+          "yaw": 1.4207963267948966,
+          "position": [
+            21,
+            0,
+            20
+          ],
+          "dimensions": [
+            2.679485412977016,
+            2.002498027682304,
+            4.523980155629129
+          ],
+          "bounds": {
+            "min": [
+              19.63716502438902,
+              0,
+              17.756481298294112
+            ],
+            "max": [
+              22.316650437366036,
+              2.002498027682304,
+              22.28046145392324
+            ]
+          },
+          "support": "front-ground / existing tractor solid",
+          "fallbackSlot": "front-tug"
+        },
+        {
+          "id": "front-tug",
+          "scenario": "flank",
+          "assetId": "PROP-VEH-TUG",
+          "role": "replacement",
+          "sourceScale": 4.35,
+          "yaw": 1.4207963267948966,
+          "position": [
+            21,
+            0,
+            20
+          ],
+          "dimensions": [
+            2.679485412977016,
+            2.002498027682304,
+            4.523980155629129
+          ],
+          "bounds": {
+            "min": [
+              19.63716502438902,
+              0,
+              17.756481298294112
+            ],
+            "max": [
+              22.316650437366036,
+              2.002498027682304,
+              22.28046145392324
+            ]
+          },
+          "support": "front-ground / existing tractor solid",
+          "fallbackSlot": "front-tug"
+        }
+      ]
+    },
+    {
+      "id": "PROP-TRANSFER",
+      "name": "转运车",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb",
+        "sha256": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+        "bytes": 1647596,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "3f029558fb380a475fae91e5ed09700224445dc445fdae4f7d8495338ed9a56d",
+        "bytes": 9200768
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-spare-trolley",
+          "scenario": "medical",
+          "assetId": "PROP-TRANSFER",
+          "role": "replacement",
+          "sourceScale": 2.3,
+          "yaw": 0,
+          "position": [
+            -387,
+            0,
+            62
+          ],
+          "dimensions": [
+            2.2999999999999545,
+            1.0783246725797653,
+            1.1908099770545988
+          ],
+          "bounds": {
+            "min": [
+              -388.15,
+              0,
+              61.4045950114727
+            ],
+            "max": [
+              -385.85,
+              1.0783246725797653,
+              62.5954049885273
+            ]
+          },
+          "support": "medical-ground / dedicated parked trolley solid; no patient or task ownership",
+          "fallbackSlot": "medical-spare-trolley"
+        }
+      ]
+    },
+    {
+      "id": "PROP-STRETCHER",
+      "name": "手提担架",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb",
+        "sha256": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+        "bytes": 1350900,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "f82188ebd6f314a80a28f1719f466dd6a61c4873afa29c617a20c9281538a8a6",
+        "bytes": 10915136
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-spare-stretcher",
+          "scenario": "medical",
+          "assetId": "PROP-STRETCHER",
+          "role": "surface-prop",
+          "sourceScale": 2.1,
+          "yaw": 0,
+          "position": [
+            -387,
+            1.062,
+            68
+          ],
+          "dimensions": [
+            2.1000000000000227,
+            0.13055691942572611,
+            0.7534985125064964
+          ],
+          "bounds": {
+            "min": [
+              -388.05,
+              1.062,
+              67.62325074374675
+            ],
+            "max": [
+              -385.95,
+              1.1925569194257262,
+              68.37674925625325
+            ]
+          },
+          "support": "medical-supply-bin--387-68 lid top 1.06; stretcher has 0.25m handle overhang at each end",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-DOOR-LEAF",
+      "name": "滑动门叶",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb",
+        "sha256": "e01e2ebd2db78d58ee372e3588fd7cc42e4d71ee48157a21e9c32f77141931b1",
+        "bytes": 1604400,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "df28de7339fc37401088b2deeadae2aac7779c61d344134b4f55c79ec0bb75f3",
+        "bytes": 11420968
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-spare-door",
+          "scenario": "frontgate",
+          "assetId": "PROP-DOOR-LEAF",
+          "role": "background",
+          "sourceScale": 2.7,
+          "yaw": 1.5707963267948966,
+          "position": [
+            59,
+            0,
+            -49
+          ],
+          "dimensions": [
+            1.6330129086971255,
+            2.7,
+            0.6920169264078169
+          ],
+          "bounds": {
+            "min": [
+              58.18349354565144,
+              0,
+              -49.34600846320391
+            ],
+            "max": [
+              59.81650645434856,
+              2.7,
+              -48.65399153679609
+            ]
+          },
+          "support": "spare door awaiting repair beyond east boundary; not the mission door",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-spare-door",
+          "scenario": "transfer",
+          "assetId": "PROP-DOOR-LEAF",
+          "role": "background",
+          "sourceScale": 2.7,
+          "yaw": 1.5707963267948966,
+          "position": [
+            59,
+            0,
+            -49
+          ],
+          "dimensions": [
+            1.6330129086971255,
+            2.7,
+            0.6920169264078169
+          ],
+          "bounds": {
+            "min": [
+              58.18349354565144,
+              0,
+              -49.34600846320391
+            ],
+            "max": [
+              59.81650645434856,
+              2.7,
+              -48.65399153679609
+            ]
+          },
+          "support": "spare door awaiting repair beyond east boundary; not the mission door",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-spare-door",
+          "scenario": "flank",
+          "assetId": "PROP-DOOR-LEAF",
+          "role": "background",
+          "sourceScale": 2.7,
+          "yaw": 1.5707963267948966,
+          "position": [
+            59,
+            0,
+            -49
+          ],
+          "dimensions": [
+            1.6330129086971255,
+            2.7,
+            0.6920169264078169
+          ],
+          "bounds": {
+            "min": [
+              58.18349354565144,
+              0,
+              -49.34600846320391
+            ],
+            "max": [
+              59.81650645434856,
+              2.7,
+              -48.65399153679609
+            ]
+          },
+          "support": "spare door awaiting repair beyond east boundary; not the mission door",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-DOOR-LOCK",
+      "name": "滑动门锁杆",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb",
+        "sha256": "e786f8eddae672f6f23599fdab5efc84ad05844aa55cdf6f2e06ea4929de1955",
+        "bytes": 1402304,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "52ff81fdb82013c7f52c31a36ae2277d234d8358a745bfb6a42211f4ea59e8d5",
+        "bytes": 11095424
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-spare-door-lock",
+          "scenario": "frontgate",
+          "assetId": "PROP-DOOR-LOCK",
+          "role": "surface-prop",
+          "sourceScale": 0.55,
+          "yaw": 1.5707963267948966,
+          "position": [
+            59,
+            1.2,
+            -48.55
+          ],
+          "dimensions": [
+            0.5499999999999972,
+            0.17261904925107974,
+            0.28543275296688364
+          ],
+          "bounds": {
+            "min": [
+              58.725,
+              1.2,
+              -48.69271637648344
+            ],
+            "max": [
+              59.275,
+              1.3726190492510797,
+              -48.407283623516555
+            ]
+          },
+          "support": "mounted against spare door front face; no independent motion",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-spare-door-lock",
+          "scenario": "transfer",
+          "assetId": "PROP-DOOR-LOCK",
+          "role": "surface-prop",
+          "sourceScale": 0.55,
+          "yaw": 1.5707963267948966,
+          "position": [
+            59,
+            1.2,
+            -48.55
+          ],
+          "dimensions": [
+            0.5499999999999972,
+            0.17261904925107974,
+            0.28543275296688364
+          ],
+          "bounds": {
+            "min": [
+              58.725,
+              1.2,
+              -48.69271637648344
+            ],
+            "max": [
+              59.275,
+              1.3726190492510797,
+              -48.407283623516555
+            ]
+          },
+          "support": "mounted against spare door front face; no independent motion",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-spare-door-lock",
+          "scenario": "flank",
+          "assetId": "PROP-DOOR-LOCK",
+          "role": "surface-prop",
+          "sourceScale": 0.55,
+          "yaw": 1.5707963267948966,
+          "position": [
+            59,
+            1.2,
+            -48.55
+          ],
+          "dimensions": [
+            0.5499999999999972,
+            0.17261904925107974,
+            0.28543275296688364
+          ],
+          "bounds": {
+            "min": [
+              58.725,
+              1.2,
+              -48.69271637648344
+            ],
+            "max": [
+              59.275,
+              1.3726190492510797,
+              -48.407283623516555
+            ]
+          },
+          "support": "mounted against spare door front face; no independent motion",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-TERMINAL-HANDHELD",
+      "name": "手持终端",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb",
+        "sha256": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+        "bytes": 1576612,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "234b2bea3fc26466eae954075d9cc9e02db6fa0e9d6f2dc68666fad19c614c3d",
+        "bytes": 15435756
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-record-handheld",
+          "scenario": "medical",
+          "assetId": "PROP-TERMINAL-HANDHELD",
+          "role": "surface-prop",
+          "sourceScale": 0.24,
+          "yaw": 0,
+          "position": [
+            -397.5,
+            1.112,
+            53.7
+          ],
+          "dimensions": [
+            0.09393809795381003,
+            0.2400000000000002,
+            0.15128524303436564
+          ],
+          "bounds": {
+            "min": [
+              -397.5469690489769,
+              1.112,
+              53.62435737848282
+            ],
+            "max": [
+              -397.4530309510231,
+              1.3520000000000003,
+              53.775642621517186
+            ]
+          },
+          "support": "medical-record-desk top 1.11; resting upright",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-VEH-TRANSPORT",
+      "name": "人员货物运输车",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb",
+        "sha256": "4fa477429e68cc40f8cd65d6ec3ee9c288cbaaeb652c8d91318a230020092a10",
+        "bytes": 1785076,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "cc936c5892774b3c6d569ba9181a7b72cf1c56da32b5293b632031643c4e9864",
+        "bytes": 11384668
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-transport-parked",
+          "scenario": "frontgate",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "role": "background",
+          "sourceScale": 7.5,
+          "yaw": 1.5707963267948966,
+          "position": [
+            62,
+            0,
+            -62
+          ],
+          "dimensions": [
+            2.893308475613594,
+            3.0528221279382706,
+            7.5
+          ],
+          "bounds": {
+            "min": [
+              60.5533457621932,
+              0,
+              -65.75
+            ],
+            "max": [
+              63.4466542378068,
+              3.0528221279382706,
+              -58.25
+            ]
+          },
+          "support": "parked beyond front-boundary-x-54; vehicle remains static",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-transport-parked",
+          "scenario": "transfer",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "role": "background",
+          "sourceScale": 7.5,
+          "yaw": 1.5707963267948966,
+          "position": [
+            62,
+            0,
+            -62
+          ],
+          "dimensions": [
+            2.893308475613594,
+            3.0528221279382706,
+            7.5
+          ],
+          "bounds": {
+            "min": [
+              60.5533457621932,
+              0,
+              -65.75
+            ],
+            "max": [
+              63.4466542378068,
+              3.0528221279382706,
+              -58.25
+            ]
+          },
+          "support": "parked beyond front-boundary-x-54; vehicle remains static",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-transport-parked",
+          "scenario": "flank",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "role": "background",
+          "sourceScale": 7.5,
+          "yaw": 1.5707963267948966,
+          "position": [
+            62,
+            0,
+            -62
+          ],
+          "dimensions": [
+            2.893308475613594,
+            3.0528221279382706,
+            7.5
+          ],
+          "bounds": {
+            "min": [
+              60.5533457621932,
+              0,
+              -65.75
+            ],
+            "max": [
+              63.4466542378068,
+              3.0528221279382706,
+              -58.25
+            ]
+          },
+          "support": "parked beyond front-boundary-x-54; vehicle remains static",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-FILTER",
+      "name": "滤芯维护机组",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-FILTER.glb",
+        "sha256": "c5b51ec1c1bc3f0fc34e20b0485077047f03bea2a742a920660180d701e5256f",
+        "bytes": 1611708,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "232bf081736435438f871a860680232a47287f12616bfa8e880acced07d1c6e2",
+        "bytes": 11934652
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-filter-0",
+          "scenario": "frontgate",
+          "assetId": "PROP-FILTER",
+          "role": "replacement",
+          "sourceScale": 3.4,
+          "yaw": 0,
+          "position": [
+            22.9,
+            0.402,
+            3.65
+          ],
+          "dimensions": [
+            1.5861033916473417,
+            1.9768819212913513,
+            3.3999999999999995
+          ],
+          "bounds": {
+            "min": [
+              22.106948304176328,
+              0.40200000000000014,
+              1.95
+            ],
+            "max": [
+              23.69305169582367,
+              2.3788819212913515,
+              5.35
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-filter-1",
+          "scenario": "frontgate",
+          "assetId": "PROP-FILTER",
+          "role": "replacement",
+          "sourceScale": 3.4,
+          "yaw": 0,
+          "position": [
+            25.1,
+            0.402,
+            3.65
+          ],
+          "dimensions": [
+            1.5861033916473417,
+            1.9768819212913513,
+            3.3999999999999995
+          ],
+          "bounds": {
+            "min": [
+              24.30694830417633,
+              0.40200000000000014,
+              1.95
+            ],
+            "max": [
+              25.893051695823672,
+              2.3788819212913515,
+              5.35
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-filter-0",
+          "scenario": "transfer",
+          "assetId": "PROP-FILTER",
+          "role": "replacement",
+          "sourceScale": 3.4,
+          "yaw": 0,
+          "position": [
+            22.9,
+            0.402,
+            3.65
+          ],
+          "dimensions": [
+            1.5861033916473417,
+            1.9768819212913513,
+            3.3999999999999995
+          ],
+          "bounds": {
+            "min": [
+              22.106948304176328,
+              0.40200000000000014,
+              1.95
+            ],
+            "max": [
+              23.69305169582367,
+              2.3788819212913515,
+              5.35
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-filter-1",
+          "scenario": "transfer",
+          "assetId": "PROP-FILTER",
+          "role": "replacement",
+          "sourceScale": 3.4,
+          "yaw": 0,
+          "position": [
+            25.1,
+            0.402,
+            3.65
+          ],
+          "dimensions": [
+            1.5861033916473417,
+            1.9768819212913513,
+            3.3999999999999995
+          ],
+          "bounds": {
+            "min": [
+              24.30694830417633,
+              0.40200000000000014,
+              1.95
+            ],
+            "max": [
+              25.893051695823672,
+              2.3788819212913515,
+              5.35
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-filter-0",
+          "scenario": "flank",
+          "assetId": "PROP-FILTER",
+          "role": "replacement",
+          "sourceScale": 3.4,
+          "yaw": 0,
+          "position": [
+            22.9,
+            0.402,
+            3.65
+          ],
+          "dimensions": [
+            1.5861033916473417,
+            1.9768819212913513,
+            3.3999999999999995
+          ],
+          "bounds": {
+            "min": [
+              22.106948304176328,
+              0.40200000000000014,
+              1.95
+            ],
+            "max": [
+              23.69305169582367,
+              2.3788819212913515,
+              5.35
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-filter-1",
+          "scenario": "flank",
+          "assetId": "PROP-FILTER",
+          "role": "replacement",
+          "sourceScale": 3.4,
+          "yaw": 0,
+          "position": [
+            25.1,
+            0.402,
+            3.65
+          ],
+          "dimensions": [
+            1.5861033916473417,
+            1.9768819212913513,
+            3.3999999999999995
+          ],
+          "bounds": {
+            "min": [
+              24.30694830417633,
+              0.40200000000000014,
+              1.95
+            ],
+            "max": [
+              25.893051695823672,
+              2.3788819212913515,
+              5.35
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        }
+      ]
+    },
+    {
+      "id": "PROP-CARGO",
+      "name": "货箱",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-CARGO.glb",
+        "sha256": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+        "bytes": 1880176,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "a036cefdf7c9a92edb81f5908986b9b2701245511f3bece3540a68b8d52581ef",
+        "bytes": 17572088
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-service-cargo",
+          "scenario": "frontgate",
+          "assetId": "PROP-CARGO",
+          "role": "surface-prop",
+          "sourceScale": 1.1,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -33.8,
+            2.502,
+            -31
+          ],
+          "dimensions": [
+            1.0999999999999943,
+            0.7466312050819397,
+            0.6937314391136198
+          ],
+          "bounds": {
+            "min": [
+              -34.349999999999994,
+              2.502,
+              -31.34686571955681
+            ],
+            "max": [
+              -33.25,
+              3.2486312050819395,
+              -30.65313428044319
+            ]
+          },
+          "support": "workers-parts-rack top 2.5",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-service-cargo",
+          "scenario": "transfer",
+          "assetId": "PROP-CARGO",
+          "role": "surface-prop",
+          "sourceScale": 1.1,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -33.8,
+            2.502,
+            -31
+          ],
+          "dimensions": [
+            1.0999999999999943,
+            0.7466312050819397,
+            0.6937314391136198
+          ],
+          "bounds": {
+            "min": [
+              -34.349999999999994,
+              2.502,
+              -31.34686571955681
+            ],
+            "max": [
+              -33.25,
+              3.2486312050819395,
+              -30.65313428044319
+            ]
+          },
+          "support": "workers-parts-rack top 2.5",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-service-cargo",
+          "scenario": "flank",
+          "assetId": "PROP-CARGO",
+          "role": "surface-prop",
+          "sourceScale": 1.1,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -33.8,
+            2.502,
+            -31
+          ],
+          "dimensions": [
+            1.0999999999999943,
+            0.7466312050819397,
+            0.6937314391136198
+          ],
+          "bounds": {
+            "min": [
+              -34.349999999999994,
+              2.502,
+              -31.34686571955681
+            ],
+            "max": [
+              -33.25,
+              3.2486312050819395,
+              -30.65313428044319
+            ]
+          },
+          "support": "workers-parts-rack top 2.5",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-PUMP",
+      "name": "泵组",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-PUMP.glb",
+        "sha256": "ea37539ae6da8e0c56cd99001471de30b7ab55f8eab2586549dba0c66c392890",
+        "bytes": 1842348,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "4de2d7d9a2fc84316ae24c8fe9c512a64a3d8eb2284137035467b8f9e50ef7c9",
+        "bytes": 13377124
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-pump-0",
+          "scenario": "frontgate",
+          "assetId": "PROP-PUMP",
+          "role": "replacement",
+          "sourceScale": 2.5,
+          "yaw": 0,
+          "position": [
+            22.9,
+            0.402,
+            6.8
+          ],
+          "dimensions": [
+            1.4239196479320526,
+            1.1939199268817902,
+            2.500000000000001
+          ],
+          "bounds": {
+            "min": [
+              22.188040176033972,
+              0.402,
+              5.55
+            ],
+            "max": [
+              23.611959823966025,
+              1.5959199268817903,
+              8.05
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-pump-1",
+          "scenario": "frontgate",
+          "assetId": "PROP-PUMP",
+          "role": "replacement",
+          "sourceScale": 2.5,
+          "yaw": 0,
+          "position": [
+            25.1,
+            0.402,
+            6.8
+          ],
+          "dimensions": [
+            1.4239196479320526,
+            1.1939199268817902,
+            2.500000000000001
+          ],
+          "bounds": {
+            "min": [
+              24.388040176033975,
+              0.402,
+              5.55
+            ],
+            "max": [
+              25.811959823966028,
+              1.5959199268817903,
+              8.05
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-pump-0",
+          "scenario": "transfer",
+          "assetId": "PROP-PUMP",
+          "role": "replacement",
+          "sourceScale": 2.5,
+          "yaw": 0,
+          "position": [
+            22.9,
+            0.402,
+            6.8
+          ],
+          "dimensions": [
+            1.4239196479320526,
+            1.1939199268817902,
+            2.500000000000001
+          ],
+          "bounds": {
+            "min": [
+              22.188040176033972,
+              0.402,
+              5.55
+            ],
+            "max": [
+              23.611959823966025,
+              1.5959199268817903,
+              8.05
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-pump-1",
+          "scenario": "transfer",
+          "assetId": "PROP-PUMP",
+          "role": "replacement",
+          "sourceScale": 2.5,
+          "yaw": 0,
+          "position": [
+            25.1,
+            0.402,
+            6.8
+          ],
+          "dimensions": [
+            1.4239196479320526,
+            1.1939199268817902,
+            2.500000000000001
+          ],
+          "bounds": {
+            "min": [
+              24.388040176033975,
+              0.402,
+              5.55
+            ],
+            "max": [
+              25.811959823966028,
+              1.5959199268817903,
+              8.05
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-pump-0",
+          "scenario": "flank",
+          "assetId": "PROP-PUMP",
+          "role": "replacement",
+          "sourceScale": 2.5,
+          "yaw": 0,
+          "position": [
+            22.9,
+            0.402,
+            6.8
+          ],
+          "dimensions": [
+            1.4239196479320526,
+            1.1939199268817902,
+            2.500000000000001
+          ],
+          "bounds": {
+            "min": [
+              22.188040176033972,
+              0.402,
+              5.55
+            ],
+            "max": [
+              23.611959823966025,
+              1.5959199268817903,
+              8.05
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        },
+        {
+          "id": "front-pump-1",
+          "scenario": "flank",
+          "assetId": "PROP-PUMP",
+          "role": "replacement",
+          "sourceScale": 2.5,
+          "yaw": 0,
+          "position": [
+            25.1,
+            0.402,
+            6.8
+          ],
+          "dimensions": [
+            1.4239196479320526,
+            1.1939199268817902,
+            2.500000000000001
+          ],
+          "bounds": {
+            "min": [
+              24.388040176033975,
+              0.402,
+              5.55
+            ],
+            "max": [
+              25.811959823966028,
+              1.5959199268817903,
+              8.05
+            ]
+          },
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained",
+          "fallbackSlot": "front-filter-machinery"
+        }
+      ]
+    },
+    {
+      "id": "PROP-FAN",
+      "name": "风机",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-FAN.glb",
+        "sha256": "8a0b1f1ad9bfcac49d8aa0587ad94409f758e5ffc34a2c8e5f5f956b19d97910",
+        "bytes": 1460432,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "247508f6c9680631d86e679e3370d1caa069c36562fd36a81eade680775816a6",
+        "bytes": 10345464
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-cooling-fan",
+          "scenario": "frontgate",
+          "assetId": "PROP-FAN",
+          "role": "surface-prop",
+          "sourceScale": 1.2,
+          "yaw": 1.5707963267948966,
+          "position": [
+            48,
+            3.402,
+            -32
+          ],
+          "dimensions": [
+            1.2000000000000028,
+            1.1931617259979248,
+            0.6179278850555399
+          ],
+          "bounds": {
+            "min": [
+              47.4,
+              3.402,
+              -32.30896394252777
+            ],
+            "max": [
+              48.6,
+              4.595161725997925,
+              -31.69103605747223
+            ]
+          },
+          "support": "front-east-staging-block top 3.4",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-cooling-fan",
+          "scenario": "transfer",
+          "assetId": "PROP-FAN",
+          "role": "surface-prop",
+          "sourceScale": 1.2,
+          "yaw": 1.5707963267948966,
+          "position": [
+            48,
+            3.402,
+            -32
+          ],
+          "dimensions": [
+            1.2000000000000028,
+            1.1931617259979248,
+            0.6179278850555399
+          ],
+          "bounds": {
+            "min": [
+              47.4,
+              3.402,
+              -32.30896394252777
+            ],
+            "max": [
+              48.6,
+              4.595161725997925,
+              -31.69103605747223
+            ]
+          },
+          "support": "front-east-staging-block top 3.4",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-cooling-fan",
+          "scenario": "flank",
+          "assetId": "PROP-FAN",
+          "role": "surface-prop",
+          "sourceScale": 1.2,
+          "yaw": 1.5707963267948966,
+          "position": [
+            48,
+            3.402,
+            -32
+          ],
+          "dimensions": [
+            1.2000000000000028,
+            1.1931617259979248,
+            0.6179278850555399
+          ],
+          "bounds": {
+            "min": [
+              47.4,
+              3.402,
+              -32.30896394252777
+            ],
+            "max": [
+              48.6,
+              4.595161725997925,
+              -31.69103605747223
+            ]
+          },
+          "support": "front-east-staging-block top 3.4",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-TOOL-BAG",
+      "name": "维修包",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb",
+        "sha256": "936b657dd2151be5ae36c3a65b7625b6fc1752299a7e35716a03ab5153d31650",
+        "bytes": 1652892,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "b1e5648ce9369f954f910e4b93aa4d1d2005cbf38f88ece011cc790100ebf2b7",
+        "bytes": 17039144
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-service-bag",
+          "scenario": "frontgate",
+          "assetId": "PROP-TOOL-BAG",
+          "role": "surface-prop",
+          "sourceScale": 0.4,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -34.8,
+            1.352,
+            -30.36
+          ],
+          "dimensions": [
+            0.4000000000000057,
+            0.3179680109024048,
+            0.2493913173675537
+          ],
+          "bounds": {
+            "min": [
+              -35,
+              1.352,
+              -30.484695658683776
+            ],
+            "max": [
+              -34.599999999999994,
+              1.6699680109024049,
+              -30.235304341316223
+            ]
+          },
+          "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-service-bag",
+          "scenario": "transfer",
+          "assetId": "PROP-TOOL-BAG",
+          "role": "surface-prop",
+          "sourceScale": 0.4,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -34.8,
+            1.352,
+            -30.36
+          ],
+          "dimensions": [
+            0.4000000000000057,
+            0.3179680109024048,
+            0.2493913173675537
+          ],
+          "bounds": {
+            "min": [
+              -35,
+              1.352,
+              -30.484695658683776
+            ],
+            "max": [
+              -34.599999999999994,
+              1.6699680109024049,
+              -30.235304341316223
+            ]
+          },
+          "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-service-bag",
+          "scenario": "flank",
+          "assetId": "PROP-TOOL-BAG",
+          "role": "surface-prop",
+          "sourceScale": 0.4,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -34.8,
+            1.352,
+            -30.36
+          ],
+          "dimensions": [
+            0.4000000000000057,
+            0.3179680109024048,
+            0.2493913173675537
+          ],
+          "bounds": {
+            "min": [
+              -35,
+              1.352,
+              -30.484695658683776
+            ],
+            "max": [
+              -34.599999999999994,
+              1.6699680109024049,
+              -30.235304341316223
+            ]
+          },
+          "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-TOOL-ROLL",
+      "name": "工具卷",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb",
+        "sha256": "ca5d918c44c649e0149d63b3eb68c6e5a61981b16c3d4e25509a8fe64a1722bd",
+        "bytes": 1682284,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "56c03b2ce98ca994e5ef6c98348c3a86e15f7fba19dc684c82ddd39e48b4b4b3",
+        "bytes": 16894308
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-service-tools",
+          "scenario": "frontgate",
+          "assetId": "PROP-TOOL-ROLL",
+          "role": "surface-prop",
+          "sourceScale": 0.3,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -33.8,
+            1.352,
+            -30.38
+          ],
+          "dimensions": [
+            0.29999999999999716,
+            0.12574721574783343,
+            0.1405412167310729
+          ],
+          "bounds": {
+            "min": [
+              -33.949999999999996,
+              1.352,
+              -30.450270608365535
+            ],
+            "max": [
+              -33.65,
+              1.4777472157478335,
+              -30.309729391634463
+            ]
+          },
+          "support": "workers-parts-rack middle shelf top 1.35",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-service-tools",
+          "scenario": "transfer",
+          "assetId": "PROP-TOOL-ROLL",
+          "role": "surface-prop",
+          "sourceScale": 0.3,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -33.8,
+            1.352,
+            -30.38
+          ],
+          "dimensions": [
+            0.29999999999999716,
+            0.12574721574783343,
+            0.1405412167310729
+          ],
+          "bounds": {
+            "min": [
+              -33.949999999999996,
+              1.352,
+              -30.450270608365535
+            ],
+            "max": [
+              -33.65,
+              1.4777472157478335,
+              -30.309729391634463
+            ]
+          },
+          "support": "workers-parts-rack middle shelf top 1.35",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-service-tools",
+          "scenario": "flank",
+          "assetId": "PROP-TOOL-ROLL",
+          "role": "surface-prop",
+          "sourceScale": 0.3,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -33.8,
+            1.352,
+            -30.38
+          ],
+          "dimensions": [
+            0.29999999999999716,
+            0.12574721574783343,
+            0.1405412167310729
+          ],
+          "bounds": {
+            "min": [
+              -33.949999999999996,
+              1.352,
+              -30.450270608365535
+            ],
+            "max": [
+              -33.65,
+              1.4777472157478335,
+              -30.309729391634463
+            ]
+          },
+          "support": "workers-parts-rack middle shelf top 1.35",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-TOOL-LUNCHBOX",
+      "name": "饭盒",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb",
+        "sha256": "b84562c1a10554721ab50b58e7f0d2f9b8ad1eae03d04d19efca2738376e63b4",
+        "bytes": 1649228,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "b78ffa416f0e2995970011de78a1865ef5f247f96e33a1071fc0c7a215212925",
+        "bytes": 17181560
+      },
+      "scenarios": [
+        "flank",
+        "frontgate",
+        "transfer"
+      ],
+      "placements": [
+        {
+          "id": "front-worker-lunch",
+          "scenario": "frontgate",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "role": "surface-prop",
+          "sourceScale": 0.22,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -32.8,
+            2.202,
+            -30.38
+          ],
+          "dimensions": [
+            0.21999999999999886,
+            0.1768687665462494,
+            0.15837716341018648
+          ],
+          "bounds": {
+            "min": [
+              -32.91,
+              2.202,
+              -30.459188581705092
+            ],
+            "max": [
+              -32.69,
+              2.3788687665462493,
+              -30.300811418294906
+            ]
+          },
+          "support": "workers-parts-rack upper shelf top 2.2",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-worker-lunch",
+          "scenario": "transfer",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "role": "surface-prop",
+          "sourceScale": 0.22,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -32.8,
+            2.202,
+            -30.38
+          ],
+          "dimensions": [
+            0.21999999999999886,
+            0.1768687665462494,
+            0.15837716341018648
+          ],
+          "bounds": {
+            "min": [
+              -32.91,
+              2.202,
+              -30.459188581705092
+            ],
+            "max": [
+              -32.69,
+              2.3788687665462493,
+              -30.300811418294906
+            ]
+          },
+          "support": "workers-parts-rack upper shelf top 2.2",
+          "fallbackSlot": null
+        },
+        {
+          "id": "front-worker-lunch",
+          "scenario": "flank",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "role": "surface-prop",
+          "sourceScale": 0.22,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -32.8,
+            2.202,
+            -30.38
+          ],
+          "dimensions": [
+            0.21999999999999886,
+            0.1768687665462494,
+            0.15837716341018648
+          ],
+          "bounds": {
+            "min": [
+              -32.91,
+              2.202,
+              -30.459188581705092
+            ],
+            "max": [
+              -32.69,
+              2.3788687665462493,
+              -30.300811418294906
+            ]
+          },
+          "support": "workers-parts-rack upper shelf top 2.2",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-RADIO-PACK",
+      "name": "通信背包",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb",
+        "sha256": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+        "bytes": 1417512,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "0ec3cb9ff4b2b28dae7f4957b72d7d2b7ef3c3324c12e2d01bb01025842d48f6",
+        "bytes": 12347788
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-radio-pack",
+          "scenario": "medical",
+          "assetId": "PROP-RADIO-PACK",
+          "role": "surface-prop",
+          "sourceScale": 0.4,
+          "yaw": 0,
+          "position": [
+            -400.6,
+            1.112,
+            68.65
+          ],
+          "dimensions": [
+            0.16802599430081955,
+            0.3999999999999999,
+            0.2598513126373234
+          ],
+          "bounds": {
+            "min": [
+              -400.68401299715043,
+              1.112,
+              68.52007434368134
+            ],
+            "max": [
+              -400.5159870028496,
+              1.512,
+              68.77992565631867
+            ]
+          },
+          "support": "medical-radio-table top 1.11; clear of screen",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-RADIO-HEADSET",
+      "name": "单耳耳麦",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb",
+        "sha256": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+        "bytes": 1349396,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "115f17e668682f67f14bda4855885065bcd43dd6f570fd2982fb2dd0af208304",
+        "bytes": 11850600
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-radio-headset",
+          "scenario": "medical",
+          "assetId": "PROP-RADIO-HEADSET",
+          "role": "surface-prop",
+          "sourceScale": 0.2,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -400,
+            1.112,
+            68.72
+          ],
+          "dimensions": [
+            0.20000000000004547,
+            0.16254791021347037,
+            0.08635906577109154
+          ],
+          "bounds": {
+            "min": [
+              -400.1,
+              1.112,
+              68.67682046711445
+            ],
+            "max": [
+              -399.9,
+              1.2745479102134705,
+              68.76317953288554
+            ]
+          },
+          "support": "medical-radio-table top 1.11; stowed beside radio",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-CHEST",
+      "name": "可拆轻胸甲",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb",
+        "sha256": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+        "bytes": 1219540,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "fbdac8521d6078cb7c6aed001d81042bd0d7e180e0b0a3800dd7079675a63079",
+        "bytes": 10557232
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-equipment-chest",
+          "scenario": "medical",
+          "assetId": "PROP-ARMOR-CHEST",
+          "role": "surface-prop",
+          "sourceScale": 0.55,
+          "yaw": 3.141592653589793,
+          "position": [
+            -405.7,
+            1.112,
+            56.65
+          ],
+          "dimensions": [
+            0.4342815160750888,
+            0.5499999999999998,
+            0.5213203787803593
+          ],
+          "bounds": {
+            "min": [
+              -405.91714075803753,
+              1.112,
+              56.38933981060982
+            ],
+            "max": [
+              -405.48285924196244,
+              1.662,
+              56.91066018939018
+            ]
+          },
+          "support": "medical-equipment-table top 1.11; stowed armor, not a character attachment",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-LEFT-BRACE",
+      "name": "左膝旧支具",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+        "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+        "bytes": 1320340,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "28cdb4035899713a36fe5e73e9279819bee8f2f2a9da10b536c2168a5f6953fb",
+        "bytes": 10709188
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-equipment-brace",
+          "scenario": "medical",
+          "assetId": "PROP-ARMOR-LEFT-BRACE",
+          "role": "surface-prop",
+          "sourceScale": 0.42,
+          "yaw": 3.141592653589793,
+          "position": [
+            -405.05,
+            1.112,
+            56.7
+          ],
+          "dimensions": [
+            0.266218117475546,
+            0.41999999999999993,
+            0.21301013231277466
+          ],
+          "bounds": {
+            "min": [
+              -405.1831090587378,
+              1.112,
+              56.593494933843616
+            ],
+            "max": [
+              -404.91689094126224,
+              1.532,
+              56.80650506615639
+            ]
+          },
+          "support": "medical-equipment-table top 1.11; stowed spare brace",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-HELMET",
+      "name": "敌兵头盔",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb",
+        "sha256": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+        "bytes": 1278600,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "45793603d143012d6683072156e1a209fc325512bba8b0c3dcc84b01555d8185",
+        "bytes": 12420076
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-equipment-helmet",
+          "scenario": "medical",
+          "assetId": "PROP-ARMOR-HELMET",
+          "role": "surface-prop",
+          "sourceScale": 0.35,
+          "yaw": 3.141592653589793,
+          "position": [
+            -387,
+            1.062,
+            56
+          ],
+          "dimensions": [
+            0.2581909269094922,
+            0.3500000000000001,
+            0.29940803349018097
+          ],
+          "bounds": {
+            "min": [
+              -387.12909546345475,
+              1.062,
+              55.85029598325491
+            ],
+            "max": [
+              -386.87090453654525,
+              1.4120000000000001,
+              56.14970401674509
+            ]
+          },
+          "support": "medical-supply-bin--387-56 lid top 1.06; recovered equipment",
+          "fallbackSlot": null
+        }
+      ]
+    },
+    {
+      "id": "PROP-SAMPLE-CABINET",
+      "name": "样本柜",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb",
+        "sha256": "40eca6cd7e558e0668df0f3791f487eabf6f5a13ceb876cf05fad40087d8b165",
+        "bytes": 1607528,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "e6668bbf6876af59b36f8d6e423fb6c3c8355550c325668d0eeff5911e728dad",
+        "bytes": 12946880
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-sample-cabinet-0",
+          "scenario": "medical",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "role": "replacement",
+          "sourceScale": 2,
+          "yaw": 0,
+          "position": [
+            -388.05,
+            0,
+            39
+          ],
+          "dimensions": [
+            0.8794697523117065,
+            2,
+            1.4146546125411987
+          ],
+          "bounds": {
+            "min": [
+              -388.48973487615586,
+              0,
+              38.2926726937294
+            ],
+            "max": [
+              -387.61026512384416,
+              2,
+              39.7073273062706
+            ]
+          },
+          "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint",
+          "fallbackSlot": "medical-sample-cabinets"
+        },
+        {
+          "id": "medical-sample-cabinet-1",
+          "scenario": "medical",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "role": "replacement",
+          "sourceScale": 2,
+          "yaw": 0,
+          "position": [
+            -387,
+            0,
+            39
+          ],
+          "dimensions": [
+            0.8794697523117065,
+            2,
+            1.4146546125411987
+          ],
+          "bounds": {
+            "min": [
+              -387.43973487615585,
+              0,
+              38.2926726937294
+            ],
+            "max": [
+              -386.56026512384415,
+              2,
+              39.7073273062706
+            ]
+          },
+          "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint",
+          "fallbackSlot": "medical-sample-cabinets"
+        },
+        {
+          "id": "medical-sample-cabinet-2",
+          "scenario": "medical",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "role": "replacement",
+          "sourceScale": 2,
+          "yaw": 0,
+          "position": [
+            -385.95,
+            0,
+            39
+          ],
+          "dimensions": [
+            0.8794697523117065,
+            2,
+            1.4146546125411987
+          ],
+          "bounds": {
+            "min": [
+              -386.38973487615584,
+              0,
+              38.2926726937294
+            ],
+            "max": [
+              -385.51026512384414,
+              2,
+              39.7073273062706
+            ]
+          },
+          "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint",
+          "fallbackSlot": "medical-sample-cabinets"
+        }
+      ]
+    },
+    {
+      "id": "PROP-SAMPLE-CORECASE",
+      "name": "冰芯匣",
+      "runtime": {
+        "path": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb",
+        "sha256": "341ff92746ab75956402abf21604c5aaf186ee14fd5e4fc6177a9386dd82edf6",
+        "bytes": 1638668,
+        "textureMaxEdge": 1024
+      },
+      "source": {
+        "kind": "供应商静态 GLB",
+        "sha256": "a8ea25df78c93292849e83ea11ba2393fad6b0944281e8f9526843ca921b7a7d",
+        "bytes": 14024928
+      },
+      "scenarios": [
+        "medical"
+      ],
+      "placements": [
+        {
+          "id": "medical-sample-corecase",
+          "scenario": "medical",
+          "assetId": "PROP-SAMPLE-CORECASE",
+          "role": "surface-prop",
+          "sourceScale": 0.45,
+          "yaw": 1.5707963267948966,
+          "position": [
+            -387,
+            1.062,
+            50
+          ],
+          "dimensions": [
+            0.4500000000000455,
+            0.15630269944667807,
+            0.17659426778554632
+          ],
+          "bounds": {
+            "min": [
+              -387.225,
+              1.062,
+              49.91170286610723
+            ],
+            "max": [
+              -386.775,
+              1.2183026994466781,
+              50.08829713389277
+            ]
+          },
+          "support": "medical-supply-bin--387-50 lid top 1.06; maintenance sample storage",
+          "fallbackSlot": null
+        }
+      ]
+    }
+  ],
+  "scope": "Actual local chapter placements, exact GLTF vertices and bounds checked. Static equipment use/storage; mechanical parts, worn attachments and real renderer/device acceptance are not claimed."
+}

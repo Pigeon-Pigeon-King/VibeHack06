@@ -1,6 +1,7 @@
 #!/usr/bin/env python3
 """Small audit fixtures only. Writes exclusively below the required --out."""
 import argparse
+import copy
 import importlib.util
 import io
 import json
@@ -127,6 +128,91 @@ def main():
         put(root, "audio-empty/manifest.json", '{"assets":[]}')
         code, report = cli("empty-audio", "--audio-manifest", "audio-empty/manifest.json")
         check("empty audio manifest is not PASS", code == 1)
+        # The independent narration batch is distinct from the existing SFX/music schema.
+        audio_base = "audio/chapter-bridge-01/"
+        manifest_name = "public/" + audio_base + "manifest.json"
+        mp3 = b"\xff\xfb\xb4\xc0" + b"\0" * 572  # one synthetic MPEG frame; no listening claim
+        source_digest, voice_digest = mod.sha(b"fixture source"), mod.sha(b"fixture voice")
+        assets = []
+        for index in (1, 2):
+            cue = f"opening-fixture-{index:02d}"
+            text = f"Fixture line {index}."
+            assets.append({"cueId": cue, "sequenceId": "opening-fixture", "text": text,
+                           "file": f"audio/opening-fixture/{cue}.t01.mp3", "durationSeconds": 0.024,
+                           "bytes": len(mp3), "sha256": mod.sha(mp3), "sourceTextSha256": mod.sha(text.encode()),
+                           "sourceFileSha256": source_digest, "referenceSha256": voice_digest, "speakerId": "fixture"})
+        narration = {"schemaVersion": 1, "batch": "chapter-bridge-01", "expectedCueCount": 2, "complete": True,
+                     "sourceTextSha256": source_digest, "sourceTextHashes": [{"path": "src/narration.json", "sha256": source_digest}],
+                     "productionListSha256": mod.sha(b"fixture production list"),
+                     "voice": {"speakerId": "fixture", "selection": "fixture", "referenceSha256": voice_digest},
+                     "producer": {"model": "fixture", "revision": "fixture", "method": "fixture"},
+                     "authorization": {"userMessage": "Synthetic selftest only", "scope": "Synthetic selftest only"}, "assets": assets}
+        for prefix in ("public/", "dist/"):
+            put(root, prefix + audio_base + "README.txt", "Synthetic narration fixture, not a production asset.\n")
+            for asset in assets:
+                put(root, prefix + audio_base + asset["file"], mp3)
+        def write_narration(value):
+            for prefix in ("public/", "dist/"):
+                put(root, prefix + audio_base + "manifest.json", json.dumps(value))
+        app = 'const files=' + json.dumps([a["file"] for a in assets]) + '; function base(e=document.baseURI){return new URL("' + audio_base + '",e)}'
+        put(root, "dist/assets/app.js", app)
+        write_narration(narration)
+        code, report = cli("narration-valid", "--web", "dist", "--audio-manifest", manifest_name)
+        check("explicit narration schema maps exact relative files and a real directory base", code == 0 and report["checks"]["audioManifest"]["buildComparisons"][0]["matchedFiles"] == 4)
+        check("narration manifest does not require unrelated SFX/music metadata", not any(f["code"] == "MISSING_FILE" for f in report["findings"]))
+        code, report = cli("narration-no-explicit-manifest", "--web", "dist")
+        check("catalog remapping is not inferred without an explicit validated manifest", code == 1 and any(f["code"] == "RESOURCE_MISSING" for f in report["findings"]))
+        target = assets[0]["file"]
+        (root / ("public/" + audio_base + target)).unlink()
+        code, report = cli("narration-missing-original", "--web", "dist", "--audio-manifest", manifest_name)
+        check("missing source MP3 fails", code == 1 and any(f["code"] == "MISSING_FILE" for f in report["findings"]))
+        put(root, "public/" + audio_base + target, mp3)
+        (root / ("dist/" + audio_base + target)).unlink()
+        code, report = cli("narration-missing-build", "--web", "dist", "--audio-manifest", manifest_name)
+        check("missing packaged MP3 fails", code == 1 and any(f["code"] == "AUDIO_BUILD_MISSING" for f in report["findings"]))
+        put(root, "dist/" + audio_base + target, mp3 + b"changed")
+        code, report = cli("narration-changed-build", "--web", "dist", "--audio-manifest", manifest_name)
+        check("packaged MP3 hash/bytes mismatch fails", code == 1 and any(f["code"] == "AUDIO_BUILD_MISMATCH" for f in report["findings"]))
+        put(root, "dist/" + audio_base + target, mp3)
+        mutations = [
+            ("duplicate-cue", lambda m: m["assets"][1].update(cueId=m["assets"][0]["cueId"]), "AUDIO_DUPLICATE_ID"),
+            ("wrong-sha", lambda m: m["assets"][0].update(sha256="0" * 64), "AUDIO_MANIFEST_MISMATCH"),
+            ("wrong-bytes", lambda m: m["assets"][0].update(bytes=1), "AUDIO_MANIFEST_MISMATCH"),
+            ("escape", lambda m: m["assets"][0].update(file="../outside.mp3"), "AUDIO_RUNTIME_PATH"),
+            ("encoded-escape", lambda m: m["assets"][0].update(file="%2e%2e/outside.mp3"), "AUDIO_RUNTIME_PATH"),
+            ("remote", lambda m: m["assets"][0].update(file="https://provider.test/file.mp3"), "AUDIO_RUNTIME_PATH"),
+            ("unknown-schema", lambda m: m.update(batch="unknown-narration"), "NARRATION_MANIFEST_SCHEMA"),
+            ("credential", lambda m: m.update(api_key="fixture-secret-do-not-print"), "SENSITIVE_METADATA_FIELD"),
+            ("signed-url", lambda m: m.update(note="https://provider.test/file?token=fixture-secret-do-not-print"), "SENSITIVE_PAYLOAD_PATTERN"),
+        ]
+        for name, mutate, error in mutations:
+            bad = copy.deepcopy(narration); mutate(bad); write_narration(bad)
+            code, report = cli("narration-" + name, "--web", "dist", "--audio-manifest", manifest_name)
+            check("narration rejects " + name, code == 1 and any(f["code"] == error for f in report["findings"]))
+            check("narration failure does not expose secret values: " + name, "fixture-secret-do-not-print" not in json.dumps(report))
+        write_narration(narration)
+        for name, extra in (
+            ("directory-fetch", 'fetch("' + audio_base + '");'),
+            ("missing-slash", 'new URL("' + audio_base.rstrip("/") + '",document.baseURI);'),
+            ("arbitrary-directory", 'new URL("' + audio_base + 'audio/",document.baseURI);'),
+            ("remote-directory-origin", 'new URL("' + audio_base + '","https://provider.test/");'),
+            ("unknown-directory-origin", 'new URL("' + audio_base + '",unknownBase);'),
+            ("unknown-file", 'const other="audio/unknown.mp3";'),
+        ):
+            put(root, "dist/assets/app.js", app + extra)
+            code, report = cli("narration-" + name, "--web", "dist", "--audio-manifest", manifest_name)
+            check("narration mapping does not exempt " + name, code == 1 and any(f["code"] == "RESOURCE_MISSING" for f in report["findings"]))
+        put(root, "dist/assets/app.js", app)
+        legacy = {"assets": [{"id": "legacy-sfx", "cueId": "legacy-event", "file": "sample.mp3", "sha256": mod.sha(mp3), "bytes": len(mp3),
+                              "sources": [{"author": "fixture", "license": "fixture", "source_id": "fixture"}]}]}
+        put(root, "legacy-audio/manifest.json", json.dumps(legacy)); put(root, "legacy-audio/sample.mp3", mp3)
+        for path in ("CREDITS.md", "README.md", "sfx-provenance.json", "music-provenance.json"):
+            put(root, "legacy-audio/" + path, "{}")
+        code, report = cli("legacy-audio-unchanged", "--audio-manifest", "legacy-audio/manifest.json")
+        check("legacy id plus cueId remains the SFX/music schema", code == 0)
+        (root / "legacy-audio/CREDITS.md").unlink()
+        code, report = cli("legacy-audio-missing-credit", "--audio-manifest", "legacy-audio/manifest.json")
+        check("legacy metadata requirements are not relaxed", code == 1 and any(f["code"] == "MISSING_FILE" for f in report["findings"]))
         buf = io.BytesIO()
         with zipfile.ZipFile(buf, "w") as z:
             z.writestr("../escape.txt", "not read")

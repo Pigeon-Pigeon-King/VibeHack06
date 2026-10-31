@@ -1,0 +1,21 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+ × tests/rescue-cover-start.test.ts > autonomous S10 companions cover without Q while Q remains a physical side-post order 499ms
+   → expected [] to include 'zheng'
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/rescue-cover-start.test.ts > autonomous S10 companions cover without Q while Q remains a physical side-post order
+AssertionError: expected [] to include 'zheng'
+ ❯ tests/rescue-cover-start.test.ts:26:24
+
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed (1)
+      Tests  1 failed (1)
+   Start at  16:45:46
+   Duration  803ms (tests 78%, transform 11%, import 10%)
+

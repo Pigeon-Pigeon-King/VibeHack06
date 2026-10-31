@@ -51,7 +51,11 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   block(kit, 'history-west-boundary', [-48, 1.0, -1], [0.5, 6.8, 54]);
   block(kit, 'history-east-boundary', [34, 3.9, -1], [0.5, 7.8, 54]);
   for (const z of [-28, 26]) block(kit, `history-boundary-${z}`, [-7, 2.7, z], [82, 10.2, 0.5]);
-  block(kit, 'history-west-foundation', [-22, -1.2, -1], [0.7, 2.4, 54]);
+  kit.solid('history-west-foundation', [-22, -1.2, -1], [0.7, 2.4, 54]);
+  // The main floor owns x >= -22; the landing owns the doorway span z = 3..9.
+  for (const [a, b] of [[-28, 3], [9, 26]]) {
+    kit.box('concrete', [-22.175, -1.2, (a + b) / 2], [0.35, 2.4, b - a]);
+  }
   // Hall shell: an east public entrance and north vestibule face the same connected defensive area.
   for (const [a, b] of [[-28, 4], [8, 26]]) block(kit, `history-west-wall-${a}`, [-22, 3.9, (a + b) / 2], [0.7, 7.8, b - a], 'paint');
   block(kit, 'history-west-door-header', [-22, 5.7, 6], [0.8, 4.2, 4.2], 'pale');
@@ -127,10 +131,9 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   kit.box('steel', [-0.2, 3.55, 21.44], [0.13, 2.2, 0.04]);
   kit.box('amber', [0.65, 4.25, 21.43], [2.1, 0.12, 0.04], [0, 0, 0.22]);
   for (const x of [3.4, 4.1, 4.8, 5.5, 6.2]) kit.box('signal', [x, 3.38, 21.42], [0.18, 0.06, 0.03], [0, 0, 0], false);
-  kit.label('港区公共画面  04:12', [4, 4.65, 21.38], 8.8, 0.44, Math.PI);
-  kit.label('公共等候厅', [-2, 5.5, 21.48], 9, 0.85, Math.PI);
-  kit.label('正门', [29.58, 5.0, -2], 4, 0.7, -Math.PI / 2);
-  kit.label('检修出口  ←', [-21.56, 3.97, 6], 4.1, 0.55, Math.PI / 2);
+  kit.sign('公共等候厅', [-2, 5.8, 21.68], 7, 0.6, Math.PI);
+  kit.sign('正门', [29.58, 5.0, -2], 4, 0.7, -Math.PI / 2);
+  kit.sign('检修出口 ←', [-21.56, 3.97, 6], 4.1, 0.55, Math.PI / 2);
 
   // A toppled transport cabinet and the west column provide connected, physically different positions.
   block(kit, 'history-toppled-cabinet', [6, 0.58, -3], [1.55, 1.16, 5.2], 'steel');
@@ -171,6 +174,8 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   partition.flush(); partition.root.position.y = 6.8; kit.root.add(partition.root);
   // This shutter and collapse are staged visuals; the scripts have already ended free traversal.
   const rubble = new PortKit(); rubble.root.name = 'history-collapse-debris'; rubble.root.visible = false;
+  // Keep the authored leg-pinning debris with the southern S02 observer.
+  rubble.root.position.set(H.rubblePlayer[0] + 10, 0, H.rubblePlayer[2] - 4);
   // Pin the legs below the low eye line; keep nearby civilians visible above the debris.
   rubble.beam('steel', [-13, 0.26, 4.95], [-7.0, 0.44, 5.35], 0.32);
   rubble.beam('pale', [-11.5, 0.20, 5.1], [-8.9, 0.72, 6.15], 0.22);
@@ -180,6 +185,7 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   }
   rubble.flush(); kit.root.add(rubble.root);
   const rafter = new PortKit(); rafter.root.name = 'history-intact-rafter';
+  rafter.root.position.set(H.rubblePlayer[0] + 10, 0, H.rubblePlayer[2] - 4);
   rafter.box('steel', [-8, 7.3, 4.8], [15, 0.32, 0.32]); rafter.flush(); kit.root.add(rafter.root);
   const sourceRifle = rifleModel(kit.root, 'history-source-rifle', H.rifle); sourceRifle.visible = false;
   const droppedRifle = rifleModel(kit.root, 'history-fallen-rifle', [-12.4, 0.015, 9.8]); droppedRifle.visible = false;

@@ -16,13 +16,15 @@ function screen(k: PortKit, id: string, a: Vec3, b: Vec3, height = 2.8, thicknes
 }
 function bridge(k: PortKit, i: number, r: { minX: number; maxX: number; minZ: number; maxZ: number }): void {
   const x = (r.minX + r.maxX) / 2, z = (r.minZ + r.maxZ) / 2, w = r.maxX - r.minX, d = r.maxZ - r.minZ;
-  block(k, `escort-bridge-${i}-deck`, [x, -0.23, z], [w + 0.12, 0.46, d], 'steel');
+  // Keep the collision overlap at each bank without drawing two coplanar surfaces.
+  k.box('steel', [x, -0.23, z], [w, 0.46, d]);
+  k.solid(`escort-bridge-${i}-deck`, [x, -0.23, z], [w + 0.12, 0.46, d]);
   for (let bx = r.minX + 0.8; bx < r.maxX; bx += 2) k.box('pale', [bx, 0.008, z], [0.06, 0.016, d - 0.2], [0, 0, 0], false);
   for (const bz of [r.minZ, r.maxZ]) {
     block(k, `escort-bridge-${i}-rail-${bz}`, [x, 0.6, bz], [w, 1.2, 0.32], 'paint');
     k.box('amber', [x, 1.22, bz], [w, 0.08, 0.36]);
     for (let bx = r.minX; bx <= r.maxX; bx += 7) {
-      k.box('steel', [bx, -2.4, bz], [0.3, 4.8, 0.3]);
+      k.box('steel', [bx, -2.63, bz], [0.3, 4.34, 0.3]);
       if (bx + 7 <= r.maxX) {
         k.beam('pale', [bx, -3.8, bz], [bx + 7, -0.4, bz], 0.22);
         k.beam('steel', [bx, -0.4, bz], [bx + 7, -3.8, bz], 0.16);
@@ -68,20 +70,17 @@ function reception(k: PortKit) {
   block(k, 'escort-reception-south', [3, 2.5, r.maxZ], [34, 5, 0.5], 'paint');
   for (const [a, b] of [[-14, -11], [-3, 20]]) block(k, `escort-reception-north-${a}`, [(a + b) / 2, 2.5, -4], [b - a, 5, 0.5], 'paint');
   block(k, 'escort-reception-north-lintel', [-7, 4.5, -4], [8, 1, 0.5], 'steel');
-  k.label('货运坪 / 战斗通路', [-7, 4.46, -3.7], 6.5, 0.5);
+  k.sign('货运坪', [-7, 4.46, -3.7], 6.5, 0.5);
   block(k, 'escort-reception-west', [-14, 2.5, 3], [0.5, 5, 14], 'pale');
   block(k, 'escort-reception-west-lintel', [-14, 4.5, 15], [0.5, 1, 10], 'steel');
   block(k, 'escort-reception-roof', [3, 5.1, 8], [35, 0.3, 25], 'pale');
   k.part('arch', 'pale', [3, 5.1, 8], [35, 6.2, 25]);
   k.terminal(E.reception); k.terminal(E.luoDesk);
-  k.label('接收状态 / 升降机', [10.45, 2.15, 3.9], 3.7, 0.45);
-  k.label('罗敬值班台', [4.45, 2.15, 4.9], 2.5, 0.4);
   // The independent monitor renderer owns the flat display surface; this factory only supplies its bezel and desk.
   block(k, 'escort-monitor-desk', [-7, 0.6, 2.1], [3.8, 1.2, 1.15], 'steel');
   for (const x of [-8.72, -5.28]) k.box('pale', [x, 2.05, 2.17], [0.18, 2.15, 0.18]);
   for (const y of [1.04, 3.06]) k.box('pale', [-7, y, 2.17], [3.6, 0.18, 0.18]);
   k.box('rubber', [-7, 2.05, 2.06], [3.22, 1.82, 0.12]);
-  k.label('港务监控 / 远端画面', [-7, 3.48, 2.2], 4.5, 0.43);
   block(k, 'escort-reception-battery', [15, 1.2, -1.5], [3, 2.4, 2], 'steel');
   for (const z of [10, 15]) {
     block(k, `escort-reception-bench-${z}`, [17, 0.43, z], [1.3, 0.86, 3.5], 'pale');
@@ -93,7 +92,7 @@ function reception(k: PortKit) {
   door.flush(); k.root.add(door.root);
   k.solid('escort-loading-door', [-14, 1.8, 15], [0.4, 3.6, 10], 0, 'escort-convoy-started');
   const lamp = new PointLight(0xffd9aa, 65, 23, 2); lamp.position.set(3, 4.4, 8); k.root.add(lamp);
-  k.label('西货廊 / 护送出口', [-14.3, 4.48, 15], 8, 0.5, -Math.PI / 2);
+  k.sign('西货廊', [-14.3, 4.48, 15], 8, 0.5, -Math.PI / 2);
   return door.root;
 }
 function shelterRoutes(k: PortKit): void {
@@ -118,8 +117,6 @@ function shelterRoutes(k: PortKit): void {
     k.solid(`escort-wait-canopy-${x}`, [x, 5.15, 16], [20, 1.7, 14]);
     for (const sx of [-9.5, 9.5]) block(k, `escort-wait-leg-${x}-${sx}`, [x + sx, 2.15, 22.4], [0.20, 4.3, 0.20], 'steel');
   }
-  k.label('第一桥前等待区', [-110, 3.7, 21.5], 9.5, 0.6, Math.PI);
-  k.label('换车湾 / 医疗支路', [-238, 4.3, 21.5], 10, 0.65, Math.PI);
 }
 function sidePlatform(k: PortKit): void {
   block(k, 'escort-upper-deck', [-153.8, 2.2, -13.5], [20.4, 0.4, 15], 'steel');
@@ -143,8 +140,6 @@ function sidePlatform(k: PortKit): void {
     k.beam('pale', [-164, 3.45, z], [-173.6, 1.05, z], 0.075);
   }
   k.located([0, 2.4, 0], 0, () => { k.cover(-151.3, -15, 5); k.cover(-156, -6.8, 3, Math.PI / 2); });
-  k.label('桥侧检修台', [-143.3, 3.6, -13], 8, 0.6, Math.PI / 2);
-  k.label('西货廊一号桥', [-128, 4.2, 14], 9, 0.7, Math.PI / 2);
 }
 function industrialFields(k: PortKit): void {
   // Distinct groups frame 30–50m engagements; none occupies an actor's authored station.
@@ -172,7 +167,6 @@ function industrialFields(k: PortKit): void {
   for (const [i, p] of E.ammo.entries()) {
     block(k, `escort-ammo-${i}`, [p[0] + 1.3, 0.5, p[2]], [1.3, 1, 0.8], 'steel');
     k.box('amber', [p[0] + 1.3, 1.04, p[2]], [1.25, 0.08, 0.75]);
-    k.label('补给', [p[0] + 1.3, 1.65, p[2] + 0.43], 1.4, 0.35);
   }
 }
 function medicalStation(k: PortKit) {
@@ -180,8 +174,6 @@ function medicalStation(k: PortKit) {
   k.solid('escort-station-roof', [-398, 6.4, 36], [44, 3.6, 30]);
   block(k, 'escort-station-west-wall', [-420, 2.3, 36], [0.5, 4.6, 30], 'paint');
   for (const x of [-418, -378]) for (const z of [23.5, 49]) block(k, `escort-station-leg-${x}-${z}`, [x, 2.3, z], [0.24, 4.6, 0.24], 'steel');
-  k.label('旧检修站 / 医疗接收', [-377.8, 4.3, 35], 18, 0.85, Math.PI / 2);
-  k.label('第二医疗桥', [-305, 3.5, 30], 8.5, 0.65, Math.PI / 2);
   k.terminal(E.manifest);
   for (const z of [30, 37, 44]) {
     block(k, `escort-station-store-${z}`, [-416, 1.25, z], [3, 2.5, 3.2], 'steel');
@@ -189,7 +181,6 @@ function medicalStation(k: PortKit) {
     k.box('white', [-414.44, 1.4, z], [0.08, 1.6, 0.35]);
   }
   for (const x of [-407, -386]) block(k, `escort-station-bench-${x}`, [x, 0.43, 41.5], [5, 0.86, 0.9], 'pale');
-  k.label('接防队 / 北闸后线', [-366, 3.2, 48], 9, 0.6, Math.PI);
   block(k, 'escort-change-tray', [-241.1, 0.5, 20.6], [2.2, 1, 1.1], 'pale');
   const pillow = new PortKit(); pillow.root.name = 'escort-patient-pillow';
   pillow.box('white', [-241.1, 1.14, 20.6], [0.65, 0.22, 0.42], [0, 0.14, 0]);

@@ -1,0 +1,214 @@
+{
+  "status": "PASS",
+  "scope": "Audit tool fixtures, not game tests",
+  "checks": [
+    {
+      "name": "valid build incl. license URL and non-loader strings",
+      "pass": true
+    },
+    {
+      "name": "missing runtime reference is failure",
+      "pass": true
+    },
+    {
+      "name": "empty directory is not PASS",
+      "pass": true
+    },
+    {
+      "name": "missing build is INCOMPLETE",
+      "pass": true
+    },
+    {
+      "name": "missing project is INCOMPLETE",
+      "pass": true
+    },
+    {
+      "name": "missing input selection has usage exit 3",
+      "pass": true
+    },
+    {
+      "name": "reports cannot overwrite selected build",
+      "pass": true
+    },
+    {
+      "name": "report symlink is rejected without touching target",
+      "pass": true
+    },
+    {
+      "name": "GLB generator metadata URL is not a dependency",
+      "pass": true
+    },
+    {
+      "name": "approved runtime may use a vendor-named directory",
+      "pass": true
+    },
+    {
+      "name": "GLB external dependency blocked: https://example.test/texture.png",
+      "pass": true
+    },
+    {
+      "name": "GLB external dependency blocked: ../texture.png",
+      "pass": true
+    },
+    {
+      "name": "GLB external dependency blocked: /Users/example/texture.png",
+      "pass": true
+    },
+    {
+      "name": "corrupt GLB is failure",
+      "pass": true
+    },
+    {
+      "name": "remote, site-absolute and escaping references fail",
+      "pass": true
+    },
+    {
+      "name": "Rapier compat exemption needs exact embedded WASM",
+      "pass": true
+    },
+    {
+      "name": "unproven WASM fallback is not exempt",
+      "pass": true
+    },
+    {
+      "name": "document-relative directory base is not a missing JS-adjacent file",
+      "pass": true
+    },
+    {
+      "name": "directory fetch and missing actual file still fail",
+      "pass": true
+    },
+    {
+      "name": "audio manifest discrepancy fails",
+      "pass": true
+    },
+    {
+      "name": "empty audio manifest is not PASS",
+      "pass": true
+    },
+    {
+      "name": "explicit narration schema maps exact relative files and a real directory base",
+      "pass": true
+    },
+    {
+      "name": "narration manifest does not require unrelated SFX/music metadata",
+      "pass": true
+    },
+    {
+      "name": "catalog remapping is not inferred without an explicit validated manifest",
+      "pass": true
+    },
+    {
+      "name": "missing source MP3 fails",
+      "pass": true
+    },
+    {
+      "name": "missing packaged MP3 fails",
+      "pass": true
+    },
+    {
+      "name": "packaged MP3 hash/bytes mismatch fails",
+      "pass": true
+    },
+    {
+      "name": "narration rejects duplicate-cue",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: duplicate-cue",
+      "pass": true
+    },
+    {
+      "name": "narration rejects wrong-sha",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: wrong-sha",
+      "pass": true
+    },
+    {
+      "name": "narration rejects wrong-bytes",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: wrong-bytes",
+      "pass": true
+    },
+    {
+      "name": "narration rejects escape",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: escape",
+      "pass": true
+    },
+    {
+      "name": "narration rejects encoded-escape",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: encoded-escape",
+      "pass": true
+    },
+    {
+      "name": "narration rejects remote",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: remote",
+      "pass": true
+    },
+    {
+      "name": "narration rejects unknown-schema",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: unknown-schema",
+      "pass": true
+    },
+    {
+      "name": "narration rejects credential",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: credential",
+      "pass": true
+    },
+    {
+      "name": "narration rejects signed-url",
+      "pass": true
+    },
+    {
+      "name": "narration failure does not expose secret values: signed-url",
+      "pass": true
+    },
+    {
+      "name": "narration mapping does not exempt directory-fetch",
+      "pass": true
+    },
+    {
+      "name": "narration mapping does not exempt missing-slash",
+      "pass": true
+    },
+    {
+      "name": "narration mapping does not exempt arbitrary-directory",
+      "pass": true
+    },
+    {
+      "name": "narration mapping does not exempt unknown-file",
+      "pass": true
+    },
+    {
+      "name": "legacy id plus cueId remains the SFX/music schema",
+      "pass": true
+    },
+    {
+      "name": "legacy metadata requirements are not relaxed",
+      "pass": true
+    },
+    {
+      "name": "unsafe/private archive members never inventoried",
+      "pass": true
+    }
+  ]
+}

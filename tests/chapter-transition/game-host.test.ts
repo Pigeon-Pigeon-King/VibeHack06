@@ -22,6 +22,13 @@ vi.mock('../../src/chapter-transition/TransitionOverlay', () => ({
   },
 }));
 vi.mock('../../src/presentation/environment', () => ({ buildEnvironment: boundaries.environment }));
+vi.mock('../../src/presentation/GeneratedArchitecture', () => ({
+  GeneratedArchitecture: class {
+    readonly ready = Promise.resolve([]);
+    update = vi.fn();
+    dispose = vi.fn();
+  },
+}));
 vi.mock('../../src/presentation/GeneratedSceneAssets', () => ({
   GeneratedSceneAssets: class {
     readonly ready: Promise<readonly GeneratedSceneAssetStatus[]>;
@@ -40,6 +47,7 @@ import { EPILOGUE } from '../../src/content/epilogue-layout';
 import { emptyIntent, Simulation, type Snapshot } from '../../src/mission/Simulation';
 import { SaveStore, SAVE_KEY_PREFIX, type SavedGame, type StorageLike } from '../../src/persistence/SaveStore';
 import { Sound } from '../../src/presentation/Sound';
+import { CharacterMotionTracker } from '../../src/presentation/CharacterMotionTracker';
 import { initializePhysics } from '../../src/runtime/Physics';
 
 /**
@@ -175,9 +183,12 @@ function setup(options: { scenario?: ScenarioId; chapter?: boolean; complete?: b
     mode: 'menu', qaImported: false, disposed: false, presentationEpoch: 0,
     transitionPlan: undefined, pendingJetApproach: false,
     characterAssetErrors: new Set<string>(), characters: new Map(),
+    motionTracker: new CharacterMotionTracker(),
     crowd: { clear: vi.fn() }, feedback: { clear: vi.fn() }, heldItems: { reset: vi.fn() },
     input: { enabled: false, touchEnabled: false, yaw: 0, pitch: 0, clear: vi.fn(), lock: vi.fn(), unlock: vi.fn(), read: vi.fn(() => ({ ...emptyIntent })) },
     touchControls: { render: vi.fn() },
+    aimIdentity: { update: vi.fn(), dispose: vi.fn() },
+    weapon: { setCharacter: vi.fn(async () => {}), retryArms: vi.fn(async () => {}), armsStatus: { state: 'ready' } },
     renderer: { domElement: { focus: vi.fn() } },
     accumulator: 0, ads: 0, lastFootstep: 0, error: '', pointerError: '', saveNotice: '',
     writeErrors: { checkpoint: '', settings: '' },

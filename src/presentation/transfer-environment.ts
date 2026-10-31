@@ -17,7 +17,7 @@ export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {
   block(kit, 'transfer-east-bulkhead', [-34.5, 1.85, 24], [9, 3.7, 0.55], 'paint');
   for (const x of [-45.25, -38.75]) block(kit, `transfer-jamb-${x}`, [x, 2.1, 24], [0.4, 4.2, 0.75], 'pale');
   block(kit, 'transfer-gate-header', [-42, 4.05, 24], [7, 0.7, 0.9], 'steel');
-  kit.label('西货廊转接门', [-42, 4.05, 23.52], 5.9, 0.48, Math.PI);
+  kit.sign('西货廊', [-42, 4.05, 23.52], 5.9, 0.48, Math.PI);
   // The gate slides into the solid east pocket, so open visuals and disabled collision agree immediately.
   const shutter = new PortKit(); shutter.root.name = 'transfer-shutter'; shutter.root.userData.openFact = 'transfer-gate-open';
   shutter.box('steel', [-42, 1.8, 24], [6, 3.6, 0.32]);
@@ -48,7 +48,6 @@ export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {
   const rod = new PortKit(); rod.root.name = 'transfer-lock-rod';
   rod.cylinder('pale', [-36.5, 0.97, 21.97], 0.07, 0.66, [0, 0, Math.PI / 2]);
   rod.box('amber', [-36.19, 0.97, 21.97], [0.09, 0.20, 0.11]); rod.flush(); kit.root.add(rod.root);
-  kit.label('门机 / 手动锁杆', [-36.5, 2.02, 21.93], 2.1, 0.35, Math.PI);
   const gateLampMaterial = new MeshStandardMaterial({ color: 0xd7a468, emissive: 0xd7a468, emissiveIntensity: 1, roughness: 0.4 });
   const gateLamp = new Mesh(new CylinderGeometry(0.11, 0.11, 0.05, 12), gateLampMaterial);
   gateLamp.name = 'transfer-gate-indicator'; gateLamp.rotation.x = Math.PI / 2; gateLamp.position.set(-36.5, 2.35, 21.95); kit.root.add(gateLamp);
@@ -63,8 +62,8 @@ export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {
   for (const [a, b] of [[-25, -20], [-14, -9]]) block(kit, `D02-south-wall-${a}`, [(a + b) / 2, 2.3, 40], [b - a, 4.6, 0.4], 'pale');
   block(kit, 'D02-south-lintel', [-17, 4.0, 40], [6, 1.2, 0.6], 'steel');
   block(kit, 'D02-roof', [-17, 4.75, 34], [16.5, 0.3, 12.5], 'pale');
-  kit.label('二号设备间', [-25.32, 4.0, 35], 5.5, 0.52, -Math.PI / 2);
-  kit.label('D02 地方供热 / 门机', [-17, 4.0, 40.32], 5.3, 0.52);
+  kit.sign('设备间', [-25.32, 4.0, 35], 5.5, 0.52, -Math.PI / 2);
+  kit.sign('设备间', [-17, 4.0, 40.32], 5.3, 0.52);
   for (const x of [-22, -12]) {
     kit.cylinder('amber', [x, 4.0, 34], 0.13, 11, [Math.PI / 2, 0, 0]);
     kit.box('signal', [x, 4.52, 34], [3.5, 0.08, 0.20], [0, 0, 0], false);
@@ -89,7 +88,6 @@ export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {
   kit.box('paint', [-22.70, 1.19, 29.90], [0.07, 0.22, 0.018]);
   const bandage = new PortKit(); bandage.root.name = 'transfer-clean-dressing';
   bandage.cylinder('white', [-23.05, 1.10, 29.6], 0.09, 0.15, [Math.PI / 2, 0, 0]); bandage.flush(); kit.root.add(bandage.root);
-  kit.label('洗净 / 包扎', [-23.2, 1.85, 28.26], 2.7, 0.4);
   // Water and a spare radio remain available for the subsequent S07 rest and handover.
   block(kit, 'D02-water-table', [-22.6, 0.50, 33.5], [1.0, 1, 0.9], 'pale');
   kit.cylinder('white', [-22.65, 1.22, 33.5], 0.12, 0.42);

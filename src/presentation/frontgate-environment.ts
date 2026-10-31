@@ -19,19 +19,20 @@ function gantry(kit: PortKit, x: number, z: number, width: number, text: string)
   kit.box('amber', [x, 6.20, z + 0.35], [2.5, 0.55, 0.65]);
   kit.cylinder('rubber', [x, 5.15, z], 0.045, 1.5);
   kit.box('steel', [x, 4.40, z], [0.42, 0.20, 0.35]);
-  kit.label(text, [x, 6.70, z + 0.52], width - 1.8, 0.53);
+  kit.sign(text, [x, 6.65, z + 0.52], width - 1.8, 0.45);
 }
 
 function filterBank(kit: PortKit): void {
   block(kit, 'front-filter-base', [24, 0.20, 5], [4.8, 0.40, 6.2]);
-  for (const x of [22.9, 25.1]) {
-    kit.cylinder('pale', [x, 1.30, 5], 0.90, 5.5, [Math.PI / 2, 0, 0]);
-    for (const z of [2.45, 3.8, 6.2, 7.55]) kit.cylinder('steel', [x, 1.30, z], 0.95, 0.12, [Math.PI / 2, 0, 0]);
-    kit.cylinder('amber', [x, 1.30, 7.9], 0.22, 0.55, [Math.PI / 2, 0, 0]);
-    for (const z of [3.2, 6.8]) kit.box('steel', [x, 0.6, z], [1.5, 0.65, 0.5]);
-  }
+  kit.visualSlot('front-filter-machinery', slot => {
+    for (const x of [22.9, 25.1]) {
+      slot.cylinder('pale', [x, 1.30, 5], 0.90, 5.5, [Math.PI / 2, 0, 0]);
+      for (const z of [2.45, 3.8, 6.2, 7.55]) slot.cylinder('steel', [x, 1.30, z], 0.95, 0.12, [Math.PI / 2, 0, 0]);
+      slot.cylinder('amber', [x, 1.30, 7.9], 0.22, 0.55, [Math.PI / 2, 0, 0]);
+      for (const z of [3.2, 6.8]) slot.box('steel', [x, 0.6, z], [1.5, 0.65, 0.5]);
+    }
+  });
   kit.solid('front-filter-bank', [24, 1.2, 5], [4.2, 2.4, 6.4]);
-  kit.label('空滤检修机组', [24, 2.65, 8.05], 4.8, 0.52);
 }
 
 function workerBackRoute(kit: PortKit): void {
@@ -60,10 +61,9 @@ function workerBackRoute(kit: PortKit): void {
     kit.box('white', [-42.35, 0.02, z], [0.09, 0.018, 0.95], [0, 0.55, 0], false);
     kit.box('white', [-41.65, 0.02, z], [0.09, 0.018, 0.95], [0, -0.55, 0], false);
   }
-  kit.label('维修人员后侧通道  ↓', [-30.42, 2.6, -19], 6.5, 0.55, -Math.PI / 2);
+  kit.sign('人员通道 ↓', [-30.42, 2.6, -19], 6.5, 0.55, -Math.PI / 2);
   for (const x of [-46, -34]) block(kit, `workers-safe-frame-${x}`, [x, 2.3, 42], [0.25, 4.6, 0.3], 'pale');
   kit.box('steel', [-40, 4.6, 42], [12.6, 0.35, 0.5]);
-  kit.label('内侧接应', [-40, 4.6, 41.7], 9.4, 0.55, Math.PI);
   kit.box('amber', [-40, 0.02, 40], [9.5, 0.02, 0.12], [0, 0, 0], false);
   const lamp = new PointLight(0xffd4a3, 50, 20, 2); lamp.position.set(-40, 4.0, 40); kit.root.add(lamp);
 }
@@ -114,14 +114,13 @@ export function buildFrontGate(kit: PortKit): SceneDynamics {
   kit.cover(15, -36.7, 4.4);
   kit.cover(-8, -31.7, 4.2);
   kit.cover(7, -26.6, 3.8);
-  kit.label('内陆公路', [1, 5.4, -75], 9, 0.65);
   for (const x of [-4, 6]) kit.box('steel', [x, 4.1, -75.1], [0.12, 2.6, 0.12]);
 
   // Load scale with two flanking firing positions; anchors remain at ground level alongside the low deck.
   block(kit, 'front-weigh-deck', [1, 0.06, -15], [8, 0.12, 22], 'steel');
   for (let z = -25; z < -4; z += 1.3) kit.box('pale', [1, 0.125, z], [7.8, 0.025, 0.035], [0, 0, 0], false);
   for (const x of [-2.8, 4.8]) kit.box('amber', [x, 0.13, -15], [0.10, 0.02, 21], [0, 0, 0], false);
-  gantry(kit, 0, -24, 28, '01 查验称重');
+  gantry(kit, 0, -24, 28, '查验口');
   kit.workshop(-21, -13, 10, 12);
   kit.box('glass', [-15.92, 2.4, -13], [0.08, 1.3, 3.4]);
   kit.box('signal', [-15.85, 2.8, -13], [0.035, 0.14, 2.5], [0, 0, 0], false);
@@ -129,7 +128,6 @@ export function buildFrontGate(kit: PortKit): SceneDynamics {
   kit.cover(F.weighB[0], F.weighB[2] - 2.3, 5.5);
   kit.cover(F.observe[0], F.observe[2] - 2.5, 6.0);
   kit.cover(F.rearPost[0], F.rearPost[2] - 2.7, 6.2);
-  kit.label('02 查验线', [11, 3.8, -13.6], 4.4, 0.6);
   kit.box('steel', [13.5, 1.9, -13.7], [0.10, 3.8, 0.10]);
   kit.visualSlot('front-tug', slot => slot.tractor(21, 20, -0.15));
   kit.container(29, 26, Math.PI / 2, 'pale');
@@ -138,7 +136,7 @@ export function buildFrontGate(kit: PortKit): SceneDynamics {
   block(kit, 'front-east-staging-block', [48, 1.7, -32], [4, 3.4, 10], 'steel');
   for (const z of [-42, -22]) block(kit, `east-entry-post-${z}`, [40, 3.6, z], [0.65, 7.2, 0.65], 'pale');
   block(kit, 'east-entry-header', [40, 7.15, -32], [0.8, 0.6, 20.6], 'steel');
-  kit.label('03 东货道', [39.53, 6.55, -32], 13.5, 0.65, -Math.PI / 2);
+  kit.sign('东货道', [39.53, 7.15, -32], 13.5, 0.48, -Math.PI / 2);
   kit.cover(26, -35, 4.2, Math.PI / 2);
   kit.cover(26.7, -22, 4.0, Math.PI / 2);
   kit.cover(21.7, -14, 4.0, Math.PI / 2);
@@ -153,10 +151,9 @@ export function buildFrontGate(kit: PortKit): SceneDynamics {
   const scaleLight = new PointLight(0xffd3a2, 22, 14, 2); scaleLight.position.set(-17, 4.0, -12); kit.root.add(scaleLight);
 
   // Inner gate frames the end of the player's withdrawal, beyond the last north-facing cover.
-  gantry(kit, -8, 46.8, 18, '内门接防');
+  gantry(kit, -8, 46.8, 18, '内门');
   kit.box('amber', [-8, 0.02, 45], [11, 0.02, 0.15], [0, 0, 0], false);
   kit.workshop(16, 43, 16, 12);
-  kit.label('后线通信', [-5, 3.1, 28], 5, 0.58);
   kit.box('steel', [-7.7, 1.6, 28], [0.10, 3.2, 0.10]);
   kit.box('steel', [39.9, 5.7, -32], [0.4, 0.6, 0.5]);
   kit.box('steel', [40, 6.45, -32], [0.12, 1.5, 0.12]);

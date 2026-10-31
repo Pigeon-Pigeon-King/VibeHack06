@@ -1,0 +1,143 @@
+{
+  "method": "Fresh real environment + Simulation, public Intent only, no fact/health/actor/phase mutation",
+  "normal": {
+    "phase": 0,
+    "phaseTime": 16.000000000000373,
+    "elapsed": 16.000000000000373,
+    "health": 100,
+    "player": [
+      -6.067413806915283,
+      0.015094065666198753,
+      188.76406860351562
+    ],
+    "facts": [
+      "rescue-inland-direction-known"
+    ],
+    "shots": [],
+    "first": {},
+    "enemies": [
+      {
+        "id": "enemy-E09-0",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-1",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-2",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-3",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-4",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-5",
+        "health": 68
+      }
+    ],
+    "allies": [
+      {
+        "id": "meng",
+        "position": [
+          -9.999994277954102,
+          0.01496378183364866,
+          185.99998474121094
+        ],
+        "moved": 0.00001629639386237627,
+        "goals": [],
+        "aiming": false
+      },
+      {
+        "id": "zheng",
+        "position": [
+          -13.000007629394531,
+          0.01509270668029783,
+          188
+        ],
+        "moved": 0.00000762939453125,
+        "goals": [],
+        "aiming": false
+      }
+    ]
+  },
+  "requested": {
+    "phase": 0,
+    "phaseTime": 16.000000000000373,
+    "elapsed": 16.000000000000373,
+    "health": 91,
+    "player": [
+      -6.067413806915283,
+      0.015094065666198753,
+      188.76406860351562
+    ],
+    "facts": [
+      "rescue-inland-direction-known",
+      "rescue-cover-requested",
+      "rescue-cover-call-0",
+      "rescue-cover-fired",
+      "rescue-cover-hit"
+    ],
+    "shots": [
+      "zheng"
+    ],
+    "first": {
+      "zheng": 4.433333333333323
+    },
+    "enemies": [
+      {
+        "id": "enemy-E09-0",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-1",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-2",
+        "health": 17
+      },
+      {
+        "id": "enemy-E09-3",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-4",
+        "health": 68
+      },
+      {
+        "id": "enemy-E09-5",
+        "health": 68
+      }
+    ],
+    "allies": [
+      {
+        "id": "meng",
+        "position": [
+          -9.999994277954102,
+          0.01496378183364866,
+          185.99998474121094
+        ],
+        "moved": 0.00001629639386237627,
+        "goals": [],
+        "aiming": false
+      },
+      {
+        "id": "zheng",
+        "position": [
+          -28.94735336303711,
+          0.014996266365051247,
+          209.99998474121094
+        ],
+        "moved": 27.171996759514844,
+        "goals": [],
+        "aiming": false
+      }
+    ]
+  }
+}

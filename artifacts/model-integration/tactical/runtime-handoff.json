@@ -1,0 +1,43 @@
+{
+  "status": "runtime-frozen-for-main-integration",
+  "runtimeModified": [
+    "src/presentation/ImportedCharacter.ts"
+  ],
+  "newModules": [
+    "src/assets/tactical-catalog.ts",
+    "src/presentation/TacticalAnimations.ts"
+  ],
+  "clipsPresent": 17,
+  "clipsEnabled": [
+    "idle",
+    "ready_idle",
+    "run",
+    "crouch_idle",
+    "crouch_walk"
+  ],
+  "stableFallbackAssets": [
+    "CH-SHAO",
+    "CH-DOCTOR",
+    "CH-SHEN",
+    "CH-LU-CHILD"
+  ],
+  "gates": "Finite simulation animationTime; moving clips use distance; special interactions keep procedural control.",
+  "tests": {
+    "existingAndAssetFocusedPassed": 58,
+    "tacticalStatePassed": 5,
+    "typecheck": "passed"
+  },
+  "fileSHA256": {
+    "src/presentation/ImportedCharacter.ts": "166a6903c47b5dc6bec665e9ad0607eb1f969104c550998b2d01ab7fc2d1729f",
+    "src/assets/tactical-catalog.ts": "990191a5ab853ff6dc800dc31147fbeda9af60a1a598e12c096500e76893db73",
+    "src/presentation/TacticalAnimations.ts": "504eb034fee9466dfed287637bf2e7fabe52d38d21c8cfe161b4d2d46ae0e890",
+    "tests/tactical-assets.test.ts": "a3ca8c8688e46f8419e54d12f22acf5f5af3ed064bd86f09fe80930bf05c6247",
+    "tests/tactical-character-state.test.ts": "746f1724929d8c8916004b4e41c49c767d9723ccae0cb8a0290c9fb42e900587"
+  },
+  "limitations": [
+    "No new browser/Windows acceptance.",
+    "Upper body keeps the stable procedural weapon/interaction overlay; precise grip/shoulder contacts remain pending.",
+    "Other pack clip semantics require real controller/event triggers; aiming is not a shot event; no invented NPC reload."
+  ],
+  "git": "No commit performed by this window; main owner consolidates."
+}

@@ -1,0 +1,8 @@
+{
+  "extends": "../../../tsconfig.json",
+  "include": [
+    "../../../src/presentation/GeneratedArchitecture.ts",
+    "../../../tests/architecture-transactions.test.ts",
+    "../../../tests/architecture-integration.test.ts"
+  ]
+}

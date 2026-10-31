@@ -1,0 +1,15 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+stdout | tests/finale-interactions.test.ts > finale functional interactions rather than subtitle-only progression > a Q request makes Zheng move, fire his own projectiles and damage enemies while the player never shoots
+FINALE_INTERACTION cover {"zhengMeters":15.811388300841898,"shotEvents":1,"ownProjectileSeen":true,"damage":51,"playerAmmoSpent":0,"playerHits":0}
+
+ ↓ tests/finale-interactions.test.ts > finale functional interactions rather than subtitle-only progression > blocks occupied-hand shots, stops for a blocked patient, and permits backing out; the unblocked input reaches cover
+ ↓ tests/finale-interactions.test.ts > finale functional interactions rather than subtitle-only progression > halts actual workers and supplies while the player leaves the door, then resumes real passage on return
+ ✓ tests/finale-interactions.test.ts > finale functional interactions rather than subtitle-only progression > a Q request makes Zheng move, fire his own projectiles and damage enemies while the player never shoots 622ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed | 2 skipped (3)
+   Start at  16:48:12
+   Duration  1.04s (tests 74%, transform 14%, import 12%)
+

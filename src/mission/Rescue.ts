@@ -199,14 +199,14 @@ export function rescueObjective(s: Simulation) {
   if (phase === 0) {
     point = s.has('rescue-entry-cleared') ? R.playerAssist : R.entry;
     text = s.has('rescue-entry-cleared') ? '沿设备廊与同伴撤向西货廊' : '压住设备廊交叉口';
-    detail = 'Q 请求郑铎掩护；他到位后会实际开火。清近处火线，再带同伴通过。';
+    detail = '同伴会自行还击；Q 让郑铎换到侧面掩护。清近处火线，再带同伴通过。';
     detail += ' 火线受控后同伴自行通过。';
   } else if (phase === 1) {
     point = R.junction;
     text = s.has('rescue-meng-wounded') ? '孟齐在交叉口负伤' : '随同伴穿过交叉口';
     detail = s.has('rescue-meng-wounded') ? '同伴正在寻找遮护。' : '留意侧面火线，跟紧队伍。';
   }
-  else if (phase === 2) { point = R.playerAssist; text = '清伤员附近威胁，等郑铎到另一侧'; detail = 'Q 请求掩护。火线稳住后，郑铎会接近伤员；贴近担架左端协作。'; if (quiet(s) && ready(actor(s, 'zheng'), R.zhengAssist) && at(s, point, 0.45)) action = '协助转移孟齐'; }
+  else if (phase === 2) { point = R.playerAssist; text = '清伤员附近威胁，等郑铎到另一侧'; detail = '郑铎会自行掩护；Q 指定侧面阵位。火线稳住后，他会接近伤员；贴近担架左端协作。'; if (quiet(s) && ready(actor(s, 'zheng'), R.zhengAssist) && at(s, point, 0.45)) action = '协助转移孟齐'; }
   else if (phase === 3) { point = R.junction; text = '与郑铎接住孟齐'; detail = '双手正在接手担架。Enter 跳过起手动作。'; }
   else if (phase === 4) { point = R.carryEnd; text = '共同抬到西侧硬遮护'; detail = 'WASD 缓慢移动，保持队形。担架和同伴随你前进。'; }
   else if (phase === 5) { point = R.injury; text = '同伴已进遮护，继续撤入缺口'; detail = '固定剧情演出 · Enter 跳过至两人送达。'; }

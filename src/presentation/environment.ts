@@ -98,7 +98,7 @@ function northGate(kit: PortKit): void {
   kit.box('paint', [0, 6.15, -18], [33, 1.25, 1.2]);
   kit.box('signal', [0, 5.45, -17.35], [15, 0.08, 0.10], [0, 0, 0], false);
   kit.solid('gate-header', [0, 6.15, -18], [33, 1.25, 1.2]);
-  kit.label('北闸 04  /  NORTH GATE', [0, 6.2, -17.38], 13, 1.0);
+  kit.sign('北闸 04', [0, 6.2, -17.38], 13, 1.0);
   // Flush weighing deck: workers can cross it with no artificial step or nav blocker.
   kit.box('rubber', [0.5, 0.014, -5], [19, 0.022, 8.6], [0, 0, 0], false);
   for (let x = -8; x <= 9; x += 1.1) kit.box('pale', [x, 0.031, -5], [0.06, 0.018, 8.4], [0, 0, 0], false);
@@ -109,10 +109,8 @@ function northGate(kit: PortKit): void {
   kit.cover(7, -18, 3.2);
   kit.cover(17.5, -9, 3, Math.PI / 2);
   kit.terminal(LAYOUT.northgate.terminal);
-  kit.label('称重控制', [1.45, 2.15, 4.42], 0.95, 0.24);
-  kit.label('人员后路  ↓', [-12, 3.2, 30.2], 5.8, 1.0);
+  kit.sign('人员通道 ↓', [-12, 3.2, 30.2], 5.8, 1);
   kit.box('pale', [-12, 3.2, 30], [6.2, 1.1, 0.28]);
-  kit.label('南侧撤离', [0, 3.5, 32.7], 5, 0.8);
   // Pipes and elbows break the orthogonal silhouette without crossing the walking lane.
   kit.cylinder('amber', [-27.5, 3.0, 4], 0.19, 22, [Math.PI / 2, 0, 0]);
   kit.cylinder('pale', [-27.5, 1.3, -7.9], 0.19, 2.6);
@@ -141,14 +139,12 @@ function prologueHall(kit: PortKit): void {
   }
   kit.box('pale', [-4, 3.65, 10], [6.5, 0.50, 0.6]);
   kit.solid('maintenance-door-header', [-4, 3.65, 10], [6.5, 0.50, 0.6]);
-  kit.label('检修门  /  07', [-4, 3.68, 10.32], 4.8, 0.4);
+  kit.sign('检修门 07', [-4, 3.68, 10.32], 4.8, 0.4);
   kit.box('amber', [-4, 0.03, 10], [5.8, 0.02, 0.4], [0, 0, 0], false);
   kit.container(13, -6, 0, 'pale');
   kit.cover(6, 3, 4.8);
   kit.cover(-13, -10, 4.8);
   kit.workshop(23.5, 13, 9, 11);
-  kit.label('主厅  /  转运通道', [0, 5.3, -20], 10, 0.9);
-  kit.label('避难集合点', [-8, 3.0, 26], 5, 0.8);
   kit.box('white', [-8, 0.02, 23], [5, 0.02, 0.1], [0, 0, 0], false);
   for (let i = 0; i < 7; i++) {
     kit.box('concrete', [22 + i % 3 * 1.6, 0.25, -22 + Math.floor(i / 3) * 2.2], [1.7, 0.5, 1.3], [0.12, i * 0.4, 0.15]);
@@ -166,11 +162,9 @@ function handoverSite(kit: PortKit): void {
   kit.cover(10, -22, 3.2, Math.PI / 2);
   kit.cover(21, -17, 4.0);
   kit.terminal(LAYOUT.handover.terminal);
-  kit.label('港区联络', [-12.5, 2.2, 15.4], 1.2, 0.28);
   kit.box('amber', [0, 0.02, 0], [3.0, 0.025, 0.12], [0, 0, 0], false);
   kit.box('amber', [-1.5, 0.02, 0.6], [0.12, 0.025, 1.3], [0, 0, 0], false);
   kit.box('amber', [1.5, 0.02, 0.6], [0.12, 0.025, 1.3], [0, 0, 0], false);
-  kit.label('接防线', [0, 3.8, -2.2], 4.5, 0.75);
   for (const x of [-3.0, 3.0]) kit.box('steel', [x, 1.9, -2.4], [0.10, 3.8, 0.10]);
   // Medical shelter stays open on its north face; the safe/exit anchors lie inside it.
   for (const x of [9, 19]) {
@@ -182,8 +176,6 @@ function handoverSite(kit: PortKit): void {
   for (const z of [22, 27, 32]) kit.part('arch', 'steel', [14, 3.60, z], [10.5, 3.1, 0.12]);
   kit.box('pale', [14, 1.8, 31.9], [10, 3.6, 0.20]);
   kit.solid('medical-back', [14, 1.8, 31.9], [10, 3.6, 0.2]);
-  kit.label('医疗转运', [14, 3.2, 21.9], 5, 0.8, Math.PI);
-  kit.label('医疗转运', [14, 3.2, 22.0], 5, 0.8);
   kit.box('signal', [14, 3.9, 24], [3.6, 0.08, 0.20], [0, 0, 0], false);
   kit.box('pale', [10.4, 0.65, 28.5], [2, 1.3, 1.7]);
   kit.solid('medical-cabinet', [10.4, 0.65, 28.5], [2, 1.3, 1.7]);

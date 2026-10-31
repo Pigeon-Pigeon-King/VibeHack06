@@ -57,18 +57,16 @@ function maintenancePlatform(kit: PortKit): void {
     kit.cover(8, 8, 4, Math.PI / 2);
     kit.cover(0, 2, 4.8);
   });
-  kit.label('检修台 / 东侧观察', [3, 3.7, 14.65], 6.4, 0.5);
   kit.box('steel', [-0.6, 2.1, 15], [0.09, 3.8, 0.09]);
   kit.box('steel', [6.6, 2.1, 15], [0.09, 3.8, 0.09]);
   kit.box('signal', [3, 2.20, 14.62], [3.2, 0.07, 0.08], [0, 0, 0], false);
-  kit.label('泵房外侧  ↑', [8, 3.2, -0.2], 3.4, 0.4, Math.PI);
   const lamp = new PointLight(0xffd6a3, 23, 12, 2); lamp.position.set(3, 4.2, 11); kit.root.add(lamp);
 }
 
 function pumpAndTanks(kit: PortKit): void {
   // The west working face is at x=20; the standing/interaction point at x=18 is clear.
   kit.workshop(24, -29, 8, 5);
-  kit.label('D01 供热泵房', [19.95, 3.8, -29], 4.3, 0.55, -Math.PI / 2);
+  kit.sign('泵房', [19.95, 3.8, -29], 4.3, 0.55, -Math.PI / 2);
   kit.box('glass', [19.94, 2.6, -29], [0.08, 1, 2.4]);
   for (const z of [-30.5, -27.5]) {
     kit.cylinder('amber', [27, 6.3, z], 0.22, 4.6, [0, 0, Math.PI / 2]);
@@ -78,7 +76,6 @@ function pumpAndTanks(kit: PortKit): void {
   }
   kit.cover(F.eastPost[0] + 2.3, F.eastPost[2], 6, Math.PI / 2);
   kit.cover(F.northPost[0], F.northPost[2] - 2.3, 5.2);
-  kit.label('储罐基座 / 内门方向', [36, 3.1, 29.1], 5.4, 0.5);
   kit.box('steel', [33.1, 1.7, 29], [0.09, 3.4, 0.09]);
   kit.box('steel', [38.9, 1.7, 29], [0.09, 3.4, 0.09]);
   for (let z = -26; z < 24; z += 6) kit.box('white', [33, 0.019, z], [0.08, 0.02, 2.4], [0, 0, 0], false);
@@ -114,16 +111,12 @@ function separatedTransport(kit: PortKit): void {
   kit.box('steel', [-35, 0.3, -11], [1.3, 0.6, 6.6]);
   kit.solid('flank-walker-under-trough', [-35, 0.3, -11], [1.3, 0.6, 6.6]);
   for (const x of [-35.35, -34.65]) kit.cylinder('amber', [x, 0.72, -11], 0.13, 6.4, [Math.PI / 2, 0, 0]);
-  kit.label('仅限步行 / 临时铺板梯', [-35, 2.75, -20.1], 4.1, 0.45, Math.PI);
   kit.box('steel', [-33.2, 1.45, -20.1], [0.08, 2.9, 0.08]);
-  kit.label('患者车 / 保持主廊', [-42, 3.35, -14], 4.4, 0.5, Math.PI);
   for (const z of [-23, -18, -13, -8, -3, 2]) {
     kit.box('white', [-42, 0.021, z], [0.1, 0.02, 1.4], [0, 0, 0], false);
   }
   for (const z of [-23, -1, 2, 6, 10, 14]) kit.box('amber', [-35, 0.02, z], [0.85, 0.02, 0.06], [0, 0, 0], false);
-  kit.label('通道观察位', [-44.83, 2.45, 20], 3.2, 0.45, Math.PI / 2);
   kit.box('amber', [F.routeWatch[0], 0.02, F.routeWatch[2]], [0.9, 0.02, 0.9], [0, 0, 0], false);
-  kit.label('两路到站核对', [-36.1, 3.5, 38], 4.8, 0.5, Math.PI);
   const lamp = new PointLight(0xffd3a3, 28, 16, 2); lamp.position.set(-35, 3.6, -10); kit.root.add(lamp);
 }
 

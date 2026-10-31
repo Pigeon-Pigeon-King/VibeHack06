@@ -1,0 +1,3 @@
+动作资产模块已接入备用工作树，13份无几何包与rig/weapon合同全部项目内。loadTacticalAnimations使用ModelLibrary.acquire，严格原件sourceSHA与实际参考骨架/逆绑定验证；输出17个骨名clip，不UUID、不旧retarget。root必须在归一化/挂载/播放前传入。错误reject，调用方fallback；成功返回dispose释放lease。
+
+专项3/3通过，全项目tsc退出0。已在真实13个压贴图模型上检查，未做本次浏览器视觉验收。来源权重高应变风险保留，不标通用合格。CharacterAsset成人1.75m、儿童1.15m与原动作标定1.8m/1.25m不同，catalog暴露authoredHeightMeters供武器尺度适配。没有修改主线入口/他人文件或Git，无新API。

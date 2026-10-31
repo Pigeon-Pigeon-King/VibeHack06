@@ -3,7 +3,9 @@ import type { WeaponModel } from '../contracts';
 import type { ModelLibrary } from '../assets/ModelLibrary';
 import type { ModelLease, ModelLoadProgress, ModelSource } from '../assets/model-contracts';
 import { AK47_ASSET } from '../assets/weapon-catalog';
+import type { CharacterIdentity } from '../assets/character-catalog';
 import { createWeaponView } from './characters';
+import { FirstPersonArms, type FirstPersonArmsStatus } from './FirstPersonArms';
 
 export interface WeaponLoadStatus {
   state: 'loading' | 'ready' | 'error';
@@ -18,6 +20,7 @@ interface LoadedWeapon {
   muzzle: Object3D;
   magazine: Object3D;
   handle: Object3D;
+  magazineGrip: Object3D;
   magazineRest: RestPose;
   handleRest: RestPose;
   aim: Vector3;
@@ -112,17 +115,20 @@ function prepareWeapon(lease: ModelLease): LoadedWeapon {
     sourceRearNotch: rearPoint.toArray(), rearNotchBottom: notchBottom, rearNotchTop: rearBounds.max.y,
     sourceFiringGrip: grip.toArray(), sourceSupportGrip: support.toArray(),
     supplierAnimationClips: lease.animations.length,
-    animation: 'Project procedural magazine and charging-handle motion; placeholder block hands',
+    animation: 'Project procedural magazine and charging-handle motion; production character arms when ready, placeholder fallback',
   };
   source.traverse(object => {
     object.renderOrder = 2;
     if (object instanceof Mesh) { object.castShadow = false; object.receiveShadow = false; }
   });
   const magazine = requireNode(source, 'Magazine'), handle = requireNode(source, 'ChargingHandle');
-  return { lease, mount, muzzle, magazine, handle, magazineRest: restPose(magazine), handleRest: restPose(handle), aim, support: toView(support) };
+  const magazineGrip = new Group(); magazineGrip.name = 'ganymede-magazine-grip';
+  const magazineCenter = new Box3().setFromPoints(pointsInRoot(source, magazine)).getCenter(new Vector3());
+  magazineGrip.position.copy(magazine.worldToLocal(source.localToWorld(magazineCenter))); magazine.add(magazineGrip);
+  return { lease, mount, muzzle, magazine, handle, magazineGrip, magazineRest: restPose(magazine), handleRest: restPose(handle), aim, support: toView(support) };
 }
 
-/** Imported gun body with the existing block arms and stable held-item/muzzle interfaces. */
+/** Imported gun and optional current-protagonist arms, with stable held-item/muzzle interfaces. */
 export class ImportedWeaponView implements WeaponModel {
   private readonly placeholder = createWeaponView();
   readonly root = this.placeholder.root;
@@ -132,6 +138,7 @@ export class ImportedWeaponView implements WeaponModel {
   private readonly leftHand = this.root.getObjectByName('left-support-arm')!;
   private readonly rightRest = restPose(this.rightHand);
   private readonly temporaryRotation = new Quaternion();
+  private readonly arms: FirstPersonArms;
   private request?: AbortController;
   private loaded?: LoadedWeapon;
   private generation = 0;
@@ -143,7 +150,23 @@ export class ImportedWeaponView implements WeaponModel {
     private readonly onStatus: (status: WeaponLoadStatus) => void) {
     this.muzzle.name = 'viewmodel-muzzle'; this.muzzle.userData.forward = '-Z';
     this.placeholder.muzzle.add(this.muzzle);
+    this.arms = new FirstPersonArms(library, status => {
+      this.rightHand.visible = this.leftHand.visible = status.state !== 'ready';
+      this.root.userData.armsStatus = status.state; this.root.userData.armsAssetId = status.assetId;
+      this.updateAssetStatus();
+    });
+    this.root.add(this.arms.root);
     this.retry();
+  }
+
+  /** Call on protagonist/scenario changes, using identity rather than crouched eye height. */
+  setCharacter(identity: CharacterIdentity, baseURL: string): Promise<void> { return this.arms.setCharacter(identity, baseURL); }
+  get armsReady(): Promise<void> { return this.arms.ready; }
+  get armsStatus(): FirstPersonArmsStatus { return this.arms.status; }
+  retryArms(): Promise<void> { return this.arms.retry(); }
+
+  private updateAssetStatus(): void {
+    this.root.userData.assetStatus = this.loaded ? this.arms.status.state === 'ready' ? 'imported-weapon-character-arms' : 'imported-weapon-placeholder-arms' : 'placeholder';
   }
 
   retry(): void {
@@ -171,7 +194,10 @@ export class ImportedWeaponView implements WeaponModel {
     // or the independently calibrated iron-sight line at full ADS.
     const hipX = Math.min(0.22, this.viewportAspect * 0.20);
     const loaded = this.loaded;
-    if (!loaded) { this.root.position.x -= (0.22 - hipX) * (1 - this.pose[2]); return; }
+    if (!loaded) {
+      this.root.position.x -= (0.22 - hipX) * (1 - this.pose[2]);
+      this.arms.setPose({ rightGrip: gripTarget, leftSupport: new Vector3(-0.055, -0.085, -0.48), reloadFraction: this.pose[1] }); return;
+    }
     const [kick, phase, aim, stride] = this.pose;
     const reload = phase > 0 ? Math.sin(Math.PI * phase) : 0;
     // Re-establish the base pose each frame. HeldItemMotion may then lower this root.
@@ -191,12 +217,16 @@ export class ImportedWeaponView implements WeaponModel {
     const charge = phase > 0 ? Math.sin(Math.PI * MathUtils.clamp((phase - 0.78) / 0.20, 0, 1)) : 0;
     loaded.handle.position.copy(loaded.handleRest.position); loaded.handle.position.z += Math.max(kick, charge) * 0.08;
     loaded.handle.quaternion.copy(loaded.handleRest.quaternion);
+    this.root.updateWorldMatrix(true, true);
+    const magazineGrip = this.root.worldToLocal(loaded.magazineGrip.getWorldPosition(new Vector3()));
+    this.arms.setPose({ rightGrip: gripTarget, leftSupport: loaded.support, magazineGrip, reloadFraction: phase });
   }
 
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true; ++this.generation;
     this.request?.abort(); this.request = undefined;
+    this.arms.dispose();
     this.releaseImported();
     this.muzzle.removeFromParent();
     // The imported subtree was detached and its lease released before this owning
@@ -223,7 +253,7 @@ export class ImportedWeaponView implements WeaponModel {
       this.proxyGun.visible = false;
       loaded.muzzle.add(this.muzzle);
       this.muzzle.position.set(0, 0, 0); this.muzzle.quaternion.identity(); this.muzzle.scale.setScalar(1);
-      this.root.userData.assetStatus = 'imported-weapon-placeholder-arms';
+      this.updateAssetStatus();
       this.root.userData.weaponSource = { id: this.source.id, revision: this.source.revision };
       this.setPose(...this.pose);
       this.request = undefined;
@@ -246,7 +276,7 @@ export class ImportedWeaponView implements WeaponModel {
     this.muzzle.position.set(0, 0, 0); this.muzzle.quaternion.identity(); this.muzzle.scale.setScalar(1);
     this.proxyGun.visible = true;
     this.rightHand.position.copy(this.rightRest.position); this.rightHand.quaternion.copy(this.rightRest.quaternion);
-    this.root.userData.assetStatus = 'placeholder';
+    this.updateAssetStatus();
     delete this.root.userData.weaponSource;
     if (!this.disposed) this.setPose(...this.pose);
   }

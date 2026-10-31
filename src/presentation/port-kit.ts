@@ -116,7 +116,8 @@ export class PortKit {
     build();
     this.origin = old;
   }
-  label(text: string, at: Vec3, width: number, height: number, yaw = 0): void {
+  /** Short wayfinding text on an existing wall, lintel or solid signboard. */
+  sign(text: string, at: Vec3, width: number, height: number, yaw = 0): void {
     if (typeof document === 'undefined') return;
     const canvas = document.createElement('canvas');
     canvas.width = 1024; canvas.height = 256;

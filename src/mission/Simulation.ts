@@ -8,7 +8,7 @@ import { TRANSFER } from '../content/transfer-layout';
 import { FLANK } from '../content/flank-layout';
 import { ESCORT } from '../content/escort-layout';
 import { RELIEF } from '../content/relief-layout';
-import { openingObjective, populateOpening, updateOpening } from './Opening';
+import { openingEnemyCombatLeash, openingObjective, populateOpening, restoreOpeningEnemies, updateOpening } from './Opening';
 import { frontgateObjective, populateFrontgate, updateFrontgate } from './Frontgate';
 import { populateTransfer, transferObjective, updateTransfer } from './Transfer';
 import { flankObjective, populateFlank, updateFlank } from './Flank';
@@ -102,6 +102,7 @@ export class Simulation {
       if (actor.role === 'cart') this.physics.addCart(actor.id, actor.position, actor.yaw);
       else this.physics.add(actor.id, actor.position, actor.role === 'child' ? 1.1 : actor.combat?.crouched ? COVER_HEIGHT : 1.8);
     }
+    restoreOpeningEnemies(this);
     this.syncTopology(false);
     this.physics.step();
     if (!saved) this.saveCheckpoint('进入区域');
@@ -183,6 +184,8 @@ export class Simulation {
   private actorEye(actor: Actor): Vec3 { return eye(actor.position, this.physics.bodies.get(actor.id)?.height ?? 1.8); }
   /** Narrative/arrival posts retain their real position; unrestricted defenders can bound within 8 m. */
   private combatLeash(actor: Actor): number {
+    const openingLeash = openingEnemyCombatLeash(this, actor);
+    if (openingLeash !== undefined) return openingLeash;
     const p = this.mission.phase;
     if (actor.role === 'enemy') return 8;
     if (this.scenario === 'frontgate' && (p === 3 || p === 1 && !this.exposedThreat(FRONTGATE.weighB, 52))
@@ -198,8 +201,8 @@ export class Simulation {
     if (this.scenario === 'flank' && actor.id === 'meng') return false;
     if (this.scenario === 'relief' && actor.id === 'zheng' && this.mission.phase >= 6) return false;
     if (this.scenario === 'rescue') return actor.id === 'zheng'
-      ? this.has('rescue-cover-requested') && !this.has('rescue-zheng-approaching')
-      : false; // Meng follows the authored withdrawal/injury sequence; Q assigns Zheng to cover.
+      ? (this.mission.phase === 0 || this.mission.phase === 2) && !this.has('rescue-zheng-approaching')
+      : actor.id === 'meng' && this.mission.phase === 0; // Self-defence is autonomous; Q only assigns Zheng's side post.
     return true;
   }
   private syncTopology(clearPaths = true): void {

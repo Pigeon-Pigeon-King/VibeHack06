@@ -1,6 +1,8 @@
 import type { Vec3 } from '../contracts';
 import { HISTORY as H } from '../content/history-layout';
 import { OPENING_TIMELINE, openingCrowdHitTime, openingHallTime } from '../content/opening-timeline';
+import { openingCrowdPlan } from '../content/OpeningCrowd';
+import { OPENING_JAM_VERSION, openingHallGaze, openingShaoPosition } from '../content/OpeningStaging';
 import type { Intent } from '../player/Input';
 import { distance, type Actor, type Simulation } from './Simulation';
 
@@ -45,10 +47,19 @@ function sayOnce(s: Simulation, mark: string, who: string, text: string, seconds
 const ESCAPE = [H.womanStart, H.stairsStart, H.stairsEnd, H.womanEnd];
 const C = OPENING_TIMELINE.childhood, T = OPENING_TIMELINE.mainhall;
 const DENSE_CROWD = 'history-dense-crowd-v1';
+const ENEMY_STAGING = 'history-enemy-staging-v1';
 const crowdReady = new WeakSet<Simulation>();
+const crowdPlan = (s: Simulation) => openingCrowdPlan(s.solids);
 const DEFENDERS: Vec3[] = [H.rifle, [9, 0, -5]];
-const INVADER_STARTS: Vec3[] = [[10, 0, 7], [22, 0, 5]];
-const INVADER_ENDS: Vec3[] = [[H.zhaoCaptured[0] + 1.2, 0, H.zhaoCaptured[2] - 1.2], [14, 0, 11]];
+// The east/public and north entrances are separate from the west evacuation
+// door. All combat anchors remain beyond the hall wall until the authored breach.
+const ENEMY_POSTS: Vec3[] = [...H.enemyEntries, [32, 0, -3.5], [32, 0, 3], [14, 0, -26], [19, 0, -26]];
+const ENEMY_LEASH = 0.9;
+const SHAO_ENTRY: Vec3 = [32.8, 0, -4];
+const INVADER_STARTS: Vec3[] = [[31.2, 0, -2], [31.2, 0, 2.8]];
+// The first invader denies Zhao's rifle at gunpoint from inside the entrance.
+// Reaching Zhao's side from outside in breach→capture would require a 24m/s dash.
+const INVADER_ENDS: Vec3[] = [[24.5, 0, -1.5], [14, 0, 11]];
 const DEPARTURE_FACTS = ['history-defense-active', 'history-evacuation-underway', 'history-defender-0-down',
   'history-defender-1-down', 'history-heavy-losses', 'child-handed-over', 'father-rifle-collected',
   'father-charged-defense', 'father-cover-shot', 'child-evacuated', 'child-out-of-sight', 'history-partition-closed'];
@@ -58,6 +69,60 @@ const HALL_FACTS = [...DEPARTURE_FACTS, 'civilians-evacuated', 'history-bombardm
   'zhao-captured', 'shao-identified-by-zhou', 'zhao-defiant-shout', 'zhao-executed', 'zhou-unconscious',
   'father-died', 'zhou-survived-hall', 'hall-bombardment-line', 'hall-collapse-line', 'hall-crowd-line',
   'hall-zhao-plea', 'hall-recognition', 'hall-shao-line', ...H.crowd.map((_, i) => `history-crowd-victim-${i}`)];
+
+const isHallEnemy = (a: Actor) => a.role === 'enemy' && a.id.startsWith('enemy-E00-');
+
+/** Only the playable adult defense uses AI. The child and later atrocity stay authored. */
+export function openingEnemyCombatLeash(s: Simulation, a: Actor): number | undefined {
+  return s.scenario === 'mainhall' && s.mission.phase <= 3 && isHallEnemy(a) ? ENEMY_LEASH : undefined;
+}
+
+function availableEnemyPosts(s: Simulation, count: number): Vec3[] {
+  const selected: Vec3[] = [];
+  for (const point of ENEMY_POSTS) {
+    if (s.aliveEnemies.some(a => distance(a.position, point) < 2.4)
+      || selected.some(other => distance(other, point) < 2.4)) continue;
+    selected.push(point);
+    if (selected.length === count) break;
+  }
+  return selected;
+}
+
+/** Run after restored actor bodies are built, before the first physics/AI step. */
+export function restoreOpeningEnemies(s: Simulation): void {
+  if (s.scenario !== 'mainhall') return;
+  // Build before the first rendered frame, not on the phase-4 transition.
+  crowdPlan(s);
+  if (s.has(ENEMY_STAGING)) return;
+  s.fact(ENEMY_STAGING);
+  const beforeBreach = s.mission.phase < 4 || s.mission.phase === 4
+    && openingHallTime(s.mission.phaseTime, s.mission.facts) < T.breach;
+  let post = 0;
+  for (const a of s.actors) {
+    if (!isHallEnemy(a) || a.down) continue;
+    // Only the incompatible old ingress is migrated. Current snapshots retain
+    // their tactical target, cooldown, body, and exact in-progress local move.
+    a.goals = []; a.path = []; a.aiming = false; a.aimTime = 0; a.walk = 0;
+    delete a.combat;
+    if (beforeBreach) {
+      const point = ENEMY_POSTS[post++ % ENEMY_POSTS.length];
+      a.position = [...point];
+      a.yaw = Math.atan2(H.defenseA[0] - point[0], H.defenseA[2] - point[2]);
+      if (s.physics.bodies.has(a.id)) s.physics.teleport(a.id, point);
+    }
+    if (s.physics.bodies.has(a.id)) s.physics.setHeight(a.id, 1.8);
+  }
+  // The old entry checkpoint has not spawned a wave yet. Put it outside now,
+  // without spawning a duplicate wave after the player opens the west door.
+  if (s.mission.phase === 0 && s.mission.spawned === 0) {
+    s.spawnChapterGroup('E00', H.enemyEntries);
+    for (const a of s.aliveEnemies) a.yaw = Math.atan2(H.defenseA[0] - a.position[0], H.defenseA[2] - a.position[2]);
+  }
+  if (s.mission.phase === 4 && beforeBreach) {
+    const positions: Array<[string, Vec3]> = [['shao', SHAO_ENTRY], ...INVADER_STARTS.map((p, i) => [`hall-invader-${i}`, p] as [string, Vec3])];
+    for (const [id, point] of positions) if (s.actors.some(a => a.id === id)) pose(s, id, point, -Math.PI / 2);
+  }
+}
 
 function childBeside(woman: Vec3): Vec3 {
   const x = woman[0] + 0.9;
@@ -82,18 +147,6 @@ function evacuationFacing(index: number, route: Vec3[], progress: number, time: 
   const moving = mixYaw(H.evacCrowdFacing[index], heading, (time - start) / 0.45);
   return mixYaw(moving, H.evacCrowdSafeFacing[index], (time - end + 0.55) / 0.55);
 }
-function fleeingCrowdPosition(index: number, time: number): Vec3 {
-  const start = H.crowd[index];
-  const end: Vec3 = [start[0] - 1 - index % 4 * 0.25, start[1],
-    start[2] + Math.sign(start[2] - H.zhaoCaptured[2]) * (0.35 + index % 3 * 0.15)];
-  const reaction = T.breach + H.crowdReactionDelay[index];
-  return mix(start, end, (time - reaction) / Math.min(1.5, openingCrowdHitTime(index, H.crowd.length) - reaction));
-}
-function fleeingCrowdFacing(index: number, time: number): number {
-  const start = H.crowd[index], end = fleeingCrowdPosition(index, T.massacreEnd);
-  const heading = Math.atan2(end[0] - start[0], end[2] - start[2]);
-  return mixYaw(H.crowdFacing[index], heading, (time - T.breach - H.crowdReactionDelay[index]) / 0.35);
-}
 function settleEvacuationCrowd(s: Simulation): void {
   H.evacCrowdSafe.forEach((point, i) => {
     const a = pose(s, `evac-crowd-${i}`, point, H.evacCrowdSafeFacing[i]);
@@ -117,8 +170,9 @@ function ensureCrowds(s: Simulation, addBodies = true): void {
     const id = `late-civilian-${i}`, mark = `history-crowd-victim-${i}`;
     const alreadyStruck = s.has(mark) || inHallPerformance && t >= openingCrowdHitTime(i, H.crowd.length);
     if (!ids.has(id)) {
-      const a = s.createActor(id, '主厅居民', 'civilian', inHallPerformance ? fleeingCrowdPosition(i, t) : point);
-      a.yaw = inHallPerformance ? fleeingCrowdFacing(i, t) : H.crowdFacing[i];
+      const motion = inHallPerformance ? crowdPlan(s).sample(i, t) : undefined;
+      const a = s.createActor(id, '主厅居民', 'civilian', motion?.position ?? point);
+      a.yaw = motion?.yaw ?? H.crowdFacing[i];
       a.down = alreadyStruck; if (a.down) a.health = 0;
       if (addBodies && !a.down) s.physics.add(id, a.position);
     }
@@ -190,6 +244,11 @@ export function populateOpening(s: Simulation): void {
   } else {
     s.createActor('young-lu', '男孩', 'child', H.fatherStart);
     H.civilians.forEach((p, i) => s.createActor(`worker-${i}`, `撤离居民 ${i + 1}`, 'worker', p));
+    H.enemyEntries.forEach(point => {
+      const a = s.createActor(`enemy-E00-${s.mission.spawned++}`, '敌方步枪兵', 'enemy', point);
+      a.yaw = Math.atan2(H.defenseA[0] - point[0], H.defenseA[2] - point[2]);
+    });
+    s.fact(ENEMY_STAGING);
     s.say('赵启明', '西边由你处理。你看着办，开了以后带他们到下一道隔断。正门我在。', 10);
   }
   ensureCrowds(s, false);
@@ -216,7 +275,7 @@ function playChildhood(s: Simulation, input: Intent): void {
   const t = s.mission.phaseTime;
   s.fact('history-defense-active'); s.fact(DENSE_CROWD);
   DEFENDERS.forEach((_, i) => { const a = actor(s, `hall-defender-${i}`); if (!a.down) { a.aiming = true; a.yaw = Math.PI / 2; } });
-  if (t >= 0.6) stagedShot(s, 'history-defense-shot', actor(s, 'hall-defender-1'), H.enemyPosts[0]);
+  if (t >= 0.6) stagedShot(s, 'history-defense-shot', actor(s, 'hall-defender-1'), H.enemyEntries[0]);
   if (t >= C.evacuation && !s.has('history-evacuation-underway')) {
     s.fact('history-evacuation-underway');
     H.civilians.forEach((_, i) => { const a = s.actors.find(a => a.id === `civilian-${i}`); if (a) s.route(a, [...H.civilianVia, H.civilianSafe[i]]); });
@@ -244,7 +303,7 @@ function playChildhood(s: Simulation, input: Intent): void {
   if (t >= C.departure) { s.fact('child-handed-over'); sayOnce(s, 'childhood-evacuator-line', '女人', '跟紧我，顺着人群走。', 4); }
   if (t >= C.charge) s.fact('father-charged-defense');
   if (t >= C.charge + 2) {
-    stagedShot(s, 'father-cover-shot', father, H.enemyPosts[1]);
+    stagedShot(s, 'father-cover-shot', father, H.enemyEntries[1]);
   }
   if (t >= C.sightLost && s.player.position[0] < H.partitionX - 1) {
     s.fact('child-evacuated'); s.fact('child-out-of-sight'); s.fact('history-partition-closed');
@@ -270,7 +329,7 @@ function residentRouteClear(s: Simulation, first: number, end: number): boolean 
 }
 function ensureInvaders(s: Simulation): void {
   if (!s.actors.some(a => a.id === 'shao')) {
-    const shao = s.createActor('shao', '邵原', 'opponent', H.shaoStart); s.physics.add(shao.id, shao.position);
+    const shao = s.createActor('shao', '邵原', 'opponent', SHAO_ENTRY); s.physics.add(shao.id, shao.position);
   }
   INVADER_STARTS.forEach((position, i) => {
     const id = `hall-invader-${i}`;
@@ -280,36 +339,47 @@ function ensureInvaders(s: Simulation): void {
 }
 function beginHallCollapse(s: Simulation): void {
   s.fact('civilians-evacuated'); s.fact('history-timeline-v2'); s.fact(DENSE_CROWD);
+  s.fact(OPENING_JAM_VERSION);
   DEPARTURE_FACTS.forEach(f => s.fact(f));
   s.ballistics.clear();
-  for (const a of s.actors) { a.goals = []; a.path = []; a.aiming = false; }
+  for (const a of s.actors) {
+    a.goals = []; a.path = []; a.aiming = false; a.aimTime = 0;
+    if (a.combat && s.physics.bodies.has(a.id)) s.physics.setHeight(a.id, 1.8);
+    delete a.combat;
+  }
   settleEvacuationCrowd(s);
   ensureInvaders(s);
   s.physics.setHeight('player', 1.8); s.player.height = 1.8; s.player.crouched = false;
   playerAt(s, H.rubblePlayer);
-  s.player.yaw = Math.atan2(H.rubblePlayer[0] - H.zhaoCaptured[0], H.rubblePlayer[2] - H.zhaoCaptured[2]);
-  s.player.pitch = 0;
+  Object.assign(s.player, openingHallGaze(0));
   s.phase(4, '最后一批过去了。闻川也在隔断后面，正门的人往柱后收！', 'staged', '赵启明');
 }
 function hallTableau(s: Simulation, t: number): void {
   defenderFalls(s, 0); defenderFalls(s, 1);
-  const zhao = pose(s, 'zhao', mix(H.zhaoStart, H.zhaoCaptured, (t - T.collapse) / (T.weaponReach - T.collapse)), Math.PI / 2,
+  const previousZhao = actor(s, 'zhao');
+  const zhao = pose(s, 'zhao', previousZhao.down ? previousZhao.position
+    : mix(H.zhaoStart, H.zhaoCaptured, (t - T.bombardment) / (T.weaponReach - T.bombardment)), previousZhao.down ? previousZhao.yaw : Math.PI / 2,
     t >= T.execution || s.has('zhao-executed'));
-  zhao.walk = t >= T.collapse && t < T.weaponReach ? t * 4 : 0;
-  const shaoEnd: Vec3 = [H.zhaoCaptured[0] + 2.8, 0, H.zhaoCaptured[2] + 2.6];
-  const shao = pose(s, 'shao', mix(H.shaoStart, shaoEnd, (t - T.breach) / 6), -Math.PI / 2);
+  zhao.walk = !zhao.down && t >= T.bombardment && t < T.weaponReach ? (t - T.bombardment) * distance(H.zhaoStart, H.zhaoCaptured) / (T.weaponReach - T.bombardment) * 4 : 0;
+  const shao = pose(s, 'shao', openingShaoPosition(t), -Math.PI / 2);
   shao.aiming = t >= T.execution - 1 && t < T.unconscious;
   if (shao.aiming) shao.yaw = Math.atan2(H.zhaoCaptured[0] - shao.position[0], H.zhaoCaptured[2] - shao.position[2]);
-  shao.walk = t > T.breach && t < T.breach + 6 ? t * 4 : 0;
+  shao.walk = t > T.breach && t < T.breach + 8.5 ? (t - T.breach) * 4 * distance(SHAO_ENTRY, openingShaoPosition(T.finish)) / 8.5 : 0;
   INVADER_STARTS.forEach((position, i) => {
-    const duration = i === 0 ? T.capture - T.breach : 3;
-    const a = pose(s, `hall-invader-${i}`, mix(position, INVADER_ENDS[i], (t - T.breach) / duration), -Math.PI / 2);
-    a.walk = t > T.breach && t < T.breach + duration ? t * 5 : 0;
+    const duration = i === 0 ? T.capture - T.breach : 4.1;
+    // The crowd gunner skirts the actual east bench before turning into the
+    // aisle. The old straight chord intersected its seat/back after capture.
+    const route = i === 0 ? [position, INVADER_ENDS[i]] : [position, [19, 0, 6.1] as Vec3, INVADER_ENDS[i]];
+    const progress = (t - T.breach) / duration, point = along(route, progress);
+    const heading = along(route, progress + 0.01), behind = along(route, progress - 0.01);
+    const a = pose(s, `hall-invader-${i}`, point, Math.atan2(heading[0] - behind[0], heading[2] - behind[2]));
+    const routeLength = route.slice(1).reduce((total, point, index) => total + distance(point, route[index]), 0);
+    a.walk = t > T.breach && t < T.breach + duration ? (t - T.breach) * routeLength / duration * 4 : 0;
     a.aiming = i === 0 ? t >= T.capture && t < T.unconscious : t >= T.crowdAttack && t <= T.massacreEnd;
     if (a.aiming) {
       const victim = Math.max(0, Math.min(H.crowd.length - 1,
         Math.ceil((t - T.crowdAttack) / (T.massacreEnd - T.crowdAttack) * (H.crowd.length - 1))));
-      const target = i === 0 ? H.zhaoCaptured : fleeingCrowdPosition(victim, t);
+      const target = i === 0 ? H.zhaoCaptured : crowdPlan(s).sample(victim, t).position;
       a.yaw = Math.atan2(target[0] - a.position[0], target[2] - a.position[2]);
     }
   });
@@ -320,27 +390,29 @@ function hallTableau(s: Simulation, t: number): void {
   settleEvacuationCrowd(s);
   H.crowd.forEach((_, i) => {
     const a = actor(s, `late-civilian-${i}`), hit = openingCrowdHitTime(i, H.crowd.length);
-    // Preserve a legacy body's original landing place. Living people try to
-    // flee a short distance before the individually timed burst catches them.
-    const point = a.down ? a.position : fleeingCrowdPosition(i, t);
-    pose(s, a.id, point, a.down ? a.yaw : fleeingCrowdFacing(i, t), t >= hit || s.has(`history-crowd-victim-${i}`));
-    const reaction = T.breach + H.crowdReactionDelay[i];
-    if (!a.down && t > reaction && t < Math.min(reaction + 1.5, hit)) a.walk = t * (4.8 + i % 4 * 0.13) + i * 1.73;
+    // Exact hit-time sampling makes normal playback and skip share positions.
+    // Existing corpses retain their saved position, including pre-jam saves.
+    const motion = crowdPlan(s).sample(i, t);
+    pose(s, a.id, a.down ? a.position : motion.position, a.down ? a.yaw : motion.yaw, t >= hit || s.has(`history-crowd-victim-${i}`));
+    if (!a.down && motion.speed > 0.03) a.walk = motion.distance * 4;
   });
   if (t >= T.collapse || s.has('history-collapse')) {
     s.physics.setHeight('player', 0.65); s.player.height = 0.65; s.player.crouched = true;
     s.player.health = 42; s.player.hurtAt = s.mission.elapsed;
   }
   playerAt(s, H.rubblePlayer);
-  viewAt(s, H.zhaoCaptured, 1.1);
+  Object.assign(s.player, openingHallGaze(t));
 }
 function finishHall(s: Simulation): void {
   HALL_FACTS.forEach(f => s.fact(f)); hallTableau(s, T.finish);
-  s.player.yaw = -Math.PI / 2; s.player.pitch = 0.15;
+  Object.assign(s.player, openingHallGaze(T.finish));
   s.phase(5, '', 'staged'); s.finish('六名居民已经越过隔断。赵启明怒吼后被击杀，周延在瓦砾下失去意识。');
 }
 function playHall(s: Simulation, input: Intent): void {
   ensureInvaders(s);
+  // An old live prisoner can use the new fall. Already executed old saves keep
+  // their terminal body pose instead of replaying the impact on the next frame.
+  if (!actor(s, 'zhao').down && !s.has('zhao-executed')) s.fact(OPENING_JAM_VERSION);
   const rawTime = s.mission.phaseTime, t = openingHallTime(rawTime, s.mission.facts);
   // A legacy snapshot already contains the collapse/capture. Catch up facts silently, without replaying its effects.
   const legacyCatchUp = !s.has('history-timeline-v2') && !s.has('history-bombardment');
@@ -411,7 +483,7 @@ function updateHallDeparture(s: Simulation): void {
   }
   if (s.has('father-charged-defense') && !father.goals.length && distance(father.position, H.fatherFall) < 1) {
     father.aiming = true; father.yaw = Math.PI / 2;
-    stagedShot(s, 'father-cover-shot', father, H.enemyPosts[1]);
+    stagedShot(s, 'father-cover-shot', father, H.enemyEntries[1]);
   }
   const family = ['evacuator', 'daughter', 'young-lu'].map(id => actor(s, id));
   if (s.safeCount === s.workers.length && family.every(a => !a.goals.length && a.position[0] < H.partitionX - 1 && a.position[1] < -1.8)) {
@@ -421,6 +493,7 @@ function updateHallDeparture(s: Simulation): void {
 
 export function updateOpening(s: Simulation, input: Intent): void {
   const m = s.mission;
+  restoreOpeningEnemies(s);
   ensureDefenders(s); ensureCrowds(s);
   const at = (p: Vec3) => distance(s.player.position, p) < 2.8 && Math.abs(s.player.position[1] - p[1]) < 1;
   if (s.scenario === 'childhood') {
@@ -441,14 +514,14 @@ export function updateOpening(s: Simulation, input: Intent): void {
   if (m.phase === 0 && input.interact && at(H.gatePanel)) {
     s.fact('zhou-trusts-zhao'); s.fact('history-gate-open'); s.fact('mattress-cleared');
     s.route(actor(s, 'father'), [H.fatherStart]);
-    s.spawnChapterGroup('E00', H.enemyPosts.slice(0, 4)); m.nextSpawn = m.elapsed + 14;
+    m.nextSpawn = m.elapsed + 14;
     s.phase(1, '拉环就在红线旁边，谢谢。门已经开了——班长，西侧我来守。', 'combat', '周延');
-  } else if (m.phase === 1 && !s.exposedThreat(H.defenseA, 20) && residentRouteClear(s, 0, 3)) {
+  } else if (m.phase === 1 && !s.exposedThreat(H.defenseA, 52) && residentRouteClear(s, 0, 3)) {
     s.fact('hall-front-secured'); releaseResidents(s, 0, 3);
     s.phase(2, '前面这三位，沿西边过去。周延，换到柱后接住侧通道；正门我守着。', 'combat', '赵启明');
-    s.spawnChapterGroup('E00', H.enemyEntries.slice(0, 2), H.enemyPosts.slice(4)); m.nextSpawn = m.elapsed + 14;
+    s.spawnChapterGroup('E00', availableEnemyPosts(s, 2)); m.nextSpawn = m.elapsed + 14;
   } else if (m.phase === 2 && s.workers.slice(0, 3).every(a => a.position[0] < H.gateX - 0.5 || a.safe)
-    && !s.exposedThreat(H.defenseB, 18) && residentRouteClear(s, 3, s.workers.length)) {
+    && !s.exposedThreat(H.defenseB, 52) && residentRouteClear(s, 3, s.workers.length)) {
     s.fact('hall-side-secured'); releaseResidents(s, 3, s.workers.length);
     defenderFalls(s, 0); defenderFalls(s, 1); s.fact('child-handed-over');
     s.route(actor(s, 'father'), [H.rifle]);
@@ -460,8 +533,7 @@ export function updateOpening(s: Simulation, input: Intent): void {
     && s.has('father-cover-shot')) beginHallCollapse(s);
   else if (m.phase === 4) playHall(s, input);
   if (m.phase >= 1 && m.phase <= 3 && m.elapsed >= m.nextSpawn && m.spawned < 18 && s.aliveEnemies.length < 8) {
-    const n = m.spawned % H.enemyEntries.length;
-    s.spawnChapterGroup('E00', [H.enemyEntries[n]], [H.enemyPosts[m.spawned % H.enemyPosts.length]]);
+    s.spawnChapterGroup('E00', availableEnemyPosts(s, 1));
     m.nextSpawn = m.elapsed + 12;
   }
 }

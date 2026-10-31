@@ -7,18 +7,17 @@ import { addGround, PortKit, type Surface } from './port-kit';
 function block(k: PortKit, id: string, p: Vec3, size: Vec3, surface: Surface = 'pale') {
   k.box(surface, p, size); k.solid(id, p, size);
 }
-function desk(k: PortKit, id: string, p: Vec3, text: string) {
+function desk(k: PortKit, id: string, p: Vec3) {
   block(k, id, [p[0], 0.52, p[2] - 1.35], [2.6, 1.04, 0.9], 'steel');
   k.box('white', [p[0], 1.075, p[2] - 1.35], [2.7, 0.07, 1.0]);
   k.box('glass', [p[0] + 0.6, 1.32, p[2] - 1.4], [0.65, 0.4, 0.08], [-0.15, 0, 0]);
-  k.label(text, [p[0], 1.9, p[2] - 1.32], 2.4, 0.45);
 }
 
 /** Functional ward spaces are separate; task-controlled patient actors own both beds. */
 export function buildMedical(k: PortKit): SceneDynamics {
   k.root.name = 'S11-old-maintenance-medical-station-placeholder';
   addGround(k.root, M.bounds);
-  block(k, 'medical-ground', [-402, -0.2, 58], [44, 0.4, 52]);
+  k.solid('medical-ground', [-402, -0.2, 58], [44, 0.4, 52]);
   for (const x of [-424, -380]) block(k, `medical-boundary-x-${x}`, [x, 1.5, 58], [0.5, 3, 52]);
   for (const z of [32, 84]) block(k, `medical-boundary-z-${z}`, [-402, 1.5, z], [44, 3, 0.5]);
   block(k, 'medical-west-wall', [-420, 2.8, 56], [0.5, 5.6, 40], 'paint');
@@ -28,21 +27,35 @@ export function buildMedical(k: PortKit): SceneDynamics {
   block(k, 'medical-entry-lintel', [-398, 4.7, 76], [10, 1.8, 0.7], 'steel');
   block(k, 'medical-roof', [-402, 5.8, 56], [37, 0.4, 41]);
   k.part('arch', 'pale', [-402, 6, 56], [37, 7.5, 41]);
-  k.label('旧检修站 / 医疗接收', [-398, 4.8, 76.4], 9, 0.9);
+  k.sign('医疗站', [-398, 4.8, 76.4], 9, 0.9);
   // The maintenance floor has become a working medical station, not an empty
   // room built only for one scripted death.
-  desk(k, 'medical-registration-desk', M.registration, '入站登记');
-  desk(k, 'medical-equipment-table', M.equipment, '随身装备交接');
-  desk(k, 'medical-record-desk', M.recordDesk, '伤情与转运记录');
-  desk(k, 'medical-radio-table', M.radio, '接收通信');
+  desk(k, 'medical-registration-desk', M.registration);
+  desk(k, 'medical-equipment-table', M.equipment);
+  desk(k, 'medical-record-desk', M.recordDesk);
+  desk(k, 'medical-radio-table', M.radio);
   for (const x of [-417, -387]) {
-    block(k, `medical-supply-locker-${x}`, [x, 1.3, 39], [3.2, 2.6, 1.5], 'steel');
-    k.box('white', [x, 1.9, 39.78], [0.5, 0.75, 0.03]);
+    const locker = (slot: PortKit) => {
+      block(slot, `medical-supply-locker-${x}`, [x, 1.3, 39], [3.2, 2.6, 1.5], 'steel');
+      slot.box('white', [x, 1.9, 39.78], [0.5, 0.75, 0.03]);
+    };
+    if (x === -387) k.visualSlot('medical-sample-cabinets', locker);
+    else locker(k);
     for (const z of [50, 56, 68]) {
       block(k, `medical-supply-bin-${x}-${z}`, [x, 0.5, z], [1.6, 1, 1.2], 'pale');
       k.box('amber', [x, 1.03, z], [1.5, 0.06, 0.8]);
     }
   }
+  // Empty reserve equipment remains east of every treatment/escort route.
+  // Its physical proxy matches the uniformly scaled production trolley bounds.
+  k.visualSlot('medical-spare-trolley', slot => {
+    slot.box('steel', [-387, 0.74, 62], [2.3, 0.16, 1.190809977054596]);
+    for (const dx of [-0.8, 0.8]) for (const dz of [-0.4, 0.4]) {
+      slot.cylinder('rubber', [-387 + dx, 0.15, 62 + dz], 0.15, 0.12, [Math.PI / 2, 0, 0]);
+      slot.box('steel', [-387 + dx, 0.45, 62 + dz], [0.06, 0.6, 0.06]);
+    }
+    slot.solid('medical-spare-trolley', [-387, 0.5391623362898827, 62], [2.3, 1.0783246725797654, 1.190809977054596]);
+  });
   k.visualSlot('medical-rest-bench', slot => {
     // Match the two approved stools' actual uniform-scale envelopes.
     block(slot, 'medical-rest-bench', [-414.5, 0.25344233214855194, 63.5], [1.8, 0.5068846642971039, 0.45368186831474306], 'pale');
@@ -51,9 +64,6 @@ export function buildMedical(k: PortKit): SceneDynamics {
   block(k, 'medical-rest-back', [-413.5, 1.2, 64], [4.5, 1.0, 0.15], 'paint');
   k.cylinder('white', [-414.5, 1.15, 60.2], 0.15, 0.25);
   block(k, 'medical-water-table', [-414.5, 0.48, 60.2], [1.1, 0.96, 0.8]);
-  k.label('安置 / 休息', [-419.7, 3.0, 62], 6, 0.65, Math.PI / 2);
-  k.label('孟齐 · 继续治疗', [-392, 3.4, 36.3], 7, 0.65);
-  k.label('救治隔间', [-405, 3.4, 36.3], 7, 0.65);
   // No static mattress duplicates the actor-controlled beds at z44.
   for (const x of [-407, -390]) {
     k.cylinder('steel', [x, 1.3, 42], 0.035, 2.6);

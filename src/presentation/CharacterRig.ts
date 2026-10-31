@@ -127,6 +127,42 @@ export function restoreCharacterRig(rig: CharacterRig): void {
   }
 }
 
+/**
+ * Absolute pose sampling for simulation-owned distance/phase. Every track is
+ * written on every call, including repeated render frames and constant tracks.
+ * AnimationMixer's PropertyMixer cache deliberately skips unchanged values;
+ * that cache cannot observe the bind-pose restore and procedural overlays here.
+ * Each sampler owns its interpolants; the immutable clip buffers remain shared.
+ */
+export class CharacterClipSampler {
+  readonly duration: number;
+  private readonly tracks: Array<{ bone: Bone; rest: RigNode; property: 'position' | 'quaternion' | 'scale'; interpolant: Interpolant }>;
+
+  constructor(clip: AnimationClip, rig: CharacterRig) {
+    this.duration = clip.duration;
+    if (!(this.duration > 0) || !Number.isFinite(this.duration)) throw new Error('人物动画时长无效。');
+    const rest = new Map(rig.nodes.map(node => [node.name, node]));
+    this.tracks = clip.tracks.map(track => {
+      const parsed = PropertyBinding.parseTrackName(track.name), bone = rig.bones.get(parsed.nodeName);
+      const property = parsed.propertyName;
+      if (!bone || !['position', 'quaternion', 'scale'].includes(property)) throw new Error(`不支持的人物轨道：${track.name}`);
+      return { bone, rest: rest.get(parsed.nodeName)!, property: property as 'position' | 'quaternion' | 'scale',
+        interpolant: (track as KeyframeTrack & { createInterpolant(): Interpolant }).createInterpolant() };
+    });
+  }
+
+  sample(time: number, loop = true, weight = 1): void {
+    const finiteTime = Number.isFinite(time) ? time : 0;
+    const at = loop ? ((finiteTime % this.duration) + this.duration) % this.duration : Math.max(0, Math.min(this.duration, finiteTime));
+    const restWeight = 1 - Math.max(0, Math.min(1, Number.isFinite(weight) ? weight : 1));
+    for (const { bone, rest, property, interpolant } of this.tracks) {
+      const values = interpolant.evaluate(at);
+      if (property === 'quaternion') bone.quaternion.fromArray(values).normalize().slerp(rest.quaternion, restWeight).normalize();
+      else bone[property].fromArray(values).lerp(rest[property], restWeight);
+    }
+  }
+}
+
 /** Bone directions are expressed in the game's +Z-forward character frame. */
 export class CharacterBonePoser {
   private rest = new Map<string, RigNode>();
@@ -134,21 +170,23 @@ export class CharacterBonePoser {
   private gameToSource = this.sourceToGame.clone().invert();
   constructor(private root: Object3D, private rig: CharacterRig) { for (const node of rig.nodes) this.rest.set(node.name, node); }
 
-  aim(name: string, child: string, direction: Vector3): void {
+  aim(name: string, child: string, direction: Vector3, weight = 1): void {
     const rootQ = this.root.getWorldQuaternion(new Quaternion());
-    this.aimWorld(name, child, direction.clone().applyQuaternion(this.gameToSource).applyQuaternion(rootQ));
+    this.aimWorld(name, child, direction.clone().applyQuaternion(this.gameToSource).applyQuaternion(rootQ), weight);
   }
-  private aimWorld(name: string, child: string, worldDirection: Vector3): void {
+  private aimWorld(name: string, child: string, worldDirection: Vector3, weight = 1): void {
     const rest = this.rest.get(name)!, end = this.rest.get(child)!;
     const initial = new Vector3().setFromMatrixPosition(end.world).sub(new Vector3().setFromMatrixPosition(rest.world)).normalize();
     const rootQ = this.root.getWorldQuaternion(new Quaternion());
     const localDirection = worldDirection.clone().applyQuaternion(rootQ.clone().invert()).normalize();
     const rotation = new Quaternion().setFromUnitVectors(initial, localDirection).multiply(qAt(rest.world));
-    this.worldRotation(name, rootQ.multiply(rotation));
+    this.worldRotation(name, rootQ.multiply(rotation), weight);
   }
-  private worldRotation(name: string, quaternion: Quaternion): void {
+  private worldRotation(name: string, quaternion: Quaternion, weight = 1): void {
     const bone = this.rig.bones.get(name)!;
-    bone.quaternion.copy(bone.parent!.getWorldQuaternion(new Quaternion()).invert().multiply(quaternion).normalize());
+    const target = bone.parent!.getWorldQuaternion(new Quaternion()).invert().multiply(quaternion).normalize();
+    if (weight >= 1) bone.quaternion.copy(target);
+    else bone.quaternion.slerp(target, Math.max(0, weight)).normalize();
     bone.updateWorldMatrix(false, true);
   }
   head(yaw: number, pitch: number): void {
@@ -159,13 +197,21 @@ export class CharacterBonePoser {
     const nod = new Quaternion().setFromAxisAngle(new Vector3(1, 0, 0).applyQuaternion(this.gameToSource), pitch);
     this.worldRotation('Head', rootQ.multiply(turn).multiply(nod).multiply(current));
   }
+  /** Lean the trunk above the pelvis; tilting the whole character moves the planted hip/feet. */
+  lean(pitch: number): void {
+    const bone = this.rig.bones.get('Waist')!, rootQ = this.root.getWorldQuaternion(new Quaternion());
+    const current = rootQ.clone().invert().multiply(bone.getWorldQuaternion(new Quaternion()));
+    const lean = new Quaternion().setFromAxisAngle(new Vector3(1, 0, 0).applyQuaternion(this.gameToSource), pitch);
+    this.worldRotation('Waist', rootQ.multiply(lean).multiply(current));
+  }
   side(name: string): number {
     const point = new Vector3().setFromMatrixPosition(this.rest.get(name)!.world).sub(this.rig.origin).applyQuaternion(this.sourceToGame);
     return Math.sign(point.x) || 1;
   }
   /** Analytic two-link knee bend, keeping the authored ankle target and segment lengths. */
-  leg(side: 'L' | 'R', target: Vector3, pole: Vector3): void {
+  leg(side: 'L' | 'R', target: Vector3, pole: Vector3, weight = 1): void {
     const thigh = this.rig.bones.get(`${side}_Thigh`)!, calf = this.rig.bones.get(`${side}_Calf`)!, foot = this.rig.bones.get(`${side}_Foot`)!;
+    const before = weight < 1 ? [thigh, calf, foot].map(bone => bone.quaternion.clone()) : undefined;
     const hip = thigh.getWorldPosition(new Vector3()), knee = calf.getWorldPosition(new Vector3()), ankle = foot.getWorldPosition(new Vector3());
     const a = hip.distanceTo(knee), b = knee.distanceTo(ankle), direction = target.clone().sub(hip);
     const distance = Math.max(Math.abs(a - b) + 1e-5, Math.min(a + b - 1e-5, direction.length())); direction.normalize();
@@ -174,6 +220,15 @@ export class CharacterBonePoser {
     const desiredKnee = hip.clone().addScaledVector(direction, along).addScaledVector(bend, Math.sqrt(Math.max(0, a * a - along * along)));
     this.aimWorld(thigh.name, calf.name, desiredKnee.sub(hip));
     this.aimWorld(calf.name, foot.name, target.clone().sub(calf.getWorldPosition(new Vector3())));
-    this.worldRotation(foot.name, this.root.getWorldQuaternion(new Quaternion()).multiply(qAt(this.rest.get(foot.name)!.world)));
+    // A leaning torso must not tilt planted soles into the floor. This project
+    // uses world +Y gravity; pole is the character's horizontal forward vector.
+    const groundFrame = new Quaternion().setFromAxisAngle(new Vector3(0, 1, 0), Math.atan2(pole.x, pole.z))
+      .multiply(this.sourceToGame);
+    this.worldRotation(foot.name, groundFrame.multiply(qAt(this.rest.get(foot.name)!.world)));
+    if (before) {
+      [thigh, calf, foot].forEach((bone, index) => bone.quaternion.copy(before[index].slerp(bone.quaternion, Math.max(0, weight)).normalize()));
+      thigh.updateWorldMatrix(false, true);
+    }
   }
+
 }

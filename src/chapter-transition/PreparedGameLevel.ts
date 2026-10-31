@@ -1,11 +1,12 @@
 import type { EnvironmentModel, ScenarioId } from '../contracts';
 import type { ModelLibrary } from '../assets/ModelLibrary';
 import type { ModelLease, ModelSource } from '../assets/model-contracts';
-import { canonicalWalkSource, characterAssetFor, characterSource } from '../assets/character-catalog';
+import { canonicalWalkSource, characterAssetFor, characterSource, playerCharacterIdentity } from '../assets/character-catalog';
 import { ak47Source } from '../assets/weapon-catalog';
 import { Simulation, type Snapshot } from '../mission/Simulation';
 import { buildEnvironment } from '../presentation/environment';
 import { GeneratedSceneAssets } from '../presentation/GeneratedSceneAssets';
+import { GeneratedArchitecture } from '../presentation/GeneratedArchitecture';
 
 export interface GameLevelOptions {
   readonly scenario: ScenarioId;
@@ -36,7 +37,9 @@ export class PreparedGameLevel {
   readonly environment: EnvironmentModel;
   readonly sim: Simulation;
   readonly scenery: GeneratedSceneAssets;
+  readonly architecture: GeneratedArchitecture;
   readonly sceneAssetErrors = new Set<string>();
+  readonly architectureAssetErrors = new Set<string>();
   /** Failed warm sources may fall back to the existing procedural character/gun. */
   readonly warmAssetErrors = new Set<string>();
   private readonly warmLeases = new Set<ModelLease>();
@@ -49,10 +52,10 @@ export class PreparedGameLevel {
     this.baseURL = new URL(options.baseURL).href;
     if (options.saved && options.saved.mission.scenario !== options.scenario) throw new Error('检查点与准备关卡不一致。');
     const environment = buildEnvironment(options.scenario);
-    let sim: Simulation | undefined;
+    let sim: Simulation | undefined, scenery: GeneratedSceneAssets | undefined, architecture: GeneratedArchitecture | undefined;
     try {
       sim = new Simulation(options.scenario, environment.solids, options.saved, options.facts);
-      const scenery = new GeneratedSceneAssets(library, {
+      scenery = new GeneratedSceneAssets(library, {
         parent: environment.root, scenario: options.scenario, baseURL: this.baseURL,
         onStatus: status => {
           if (this.disposed) return;
@@ -60,12 +63,27 @@ export class PreparedGameLevel {
           else this.sceneAssetErrors.delete(status.id);
         },
       });
-      this.environment = environment; this.sim = sim; this.scenery = scenery;
+      architecture = new GeneratedArchitecture(library, {
+        parent: environment.root, scenario: options.scenario, baseURL: this.baseURL,
+        onStatus: status => {
+          if (this.disposed) return;
+          if (status.state === 'error') this.architectureAssetErrors.add(status.id);
+          else this.architectureAssetErrors.delete(status.id);
+        },
+      });
+      this.environment = environment; this.sim = sim; this.scenery = scenery; this.architecture = architecture;
       // Synchronous callers need not await this promise. Keep it rejected for an
       // async preparer, while avoiding an unhandled rejection in the sync path.
       void scenery.ready.catch(() => { if (!this.disposed) this.sceneAssetErrors.add('scenery'); });
+      void architecture.ready.catch(() => { if (!this.disposed) this.architectureAssetErrors.add('architecture'); });
     } catch (error) {
-      releaseAll([() => sim?.dispose(), () => environment.root.removeFromParent(), () => environment.dispose()]);
+      this.disposed = true;
+      // Construction can fail after one asynchronous resource owner exists.
+      // Stop it before the environment traverses its borrowed model children.
+      releaseAll([() => architecture?.dispose(), () => scenery?.dispose(), () => sim?.dispose(),
+        () => environment.root.removeFromParent(), () => environment.dispose()]);
+      void scenery?.ready.catch(() => {});
+      void architecture?.ready.catch(() => {});
       throw error;
     }
   }
@@ -91,12 +109,12 @@ export class PreparedGameLevel {
   private initialModelSources(): ModelSource[] {
     const sources = new Map<string, ModelSource>();
     const add = (source: ModelSource) => sources.set(JSON.stringify([source.id, source.revision, source.url]), source);
+    const playerAsset = characterAssetFor(playerCharacterIdentity(this.sim.scenario, this.sim.player.name));
+    if (playerAsset) add(characterSource(playerAsset, this.baseURL));
     let needsWalk = false, needsAK = false;
     for (const actor of this.sim.actors) {
-      // Match the current host's anonymous opening-crowd route; do not decode
-      // a formal human skin for an actor that will use CrowdView or a patient cart.
-      if ((this.sim.scenario === 'childhood' || this.sim.scenario === 'mainhall') && actor.role === 'civilian'
-        && /^(late-civilian-|evac-crowd-|civilian-)/.test(actor.id)) continue;
+      // Anonymous residents now use the same imported-character path. The map
+      // keeps one warm lease per source; carts still have no human skin.
       const asset = characterAssetFor(actor);
       if (asset) { add(characterSource(asset, this.baseURL)); needsWalk = true; }
       if (actor.id.startsWith('hall-invader-') || ['ally', 'enemy', 'opponent', 'father'].includes(actor.role)) needsAK = true;
@@ -109,7 +127,7 @@ export class PreparedGameLevel {
   private async waitUntilReady(signal: AbortSignal, onProgress: (fraction: number) => void): Promise<void> {
     const check = () => { if (signal.aborted || this.disposed) throw abortError(); };
     check();
-    const sources = this.initialModelSources(), total = sources.length + 1;
+    const sources = this.initialModelSources(), total = sources.length + 2;
     let completed = 0, cursor = 0;
     const report = () => {
       if (signal.aborted || this.disposed) return;
@@ -135,7 +153,16 @@ export class PreparedGameLevel {
         }
         finish();
       });
-      // Count completed tasks (one scenery batch and each distinct model), never
+      const architecture = this.architecture.ready.then(statuses => {
+        check();
+        for (const status of statuses) {
+          if (status.state === 'cancelled') throw abortError();
+          if (status.state === 'pending' || status.state === 'loading') throw new Error('建筑资源准备未结束。');
+          if (status.state === 'error') this.architectureAssetErrors.add(status.id);
+        }
+        finish();
+      });
+      // Count completed tasks (two environment batches and each distinct model), never
       // elapsed wall time. Two warm workers bound extra decode pressure.
       const workers = Array.from({ length: Math.min(2, sources.length) }, async () => {
         while (cursor < sources.length) {
@@ -155,7 +182,7 @@ export class PreparedGameLevel {
           finish();
         }
       });
-      await Promise.race([Promise.all([scenery, ...workers]), cancelled]);
+      await Promise.race([Promise.all([scenery, architecture, ...workers]), cancelled]);
       check();
     } finally {
       signal.removeEventListener('abort', cancel);
@@ -169,7 +196,8 @@ export class PreparedGameLevel {
     this.lifetime.abort();
     const leases = [...this.warmLeases]; this.warmLeases.clear();
     releaseAll([
-      // Borrowed scenery leaves the environment before its generic tree traversal.
+      // Borrowed architecture/scenery leave before the generic environment traversal.
+      () => this.architecture.dispose(),
       () => this.scenery.dispose(),
       ...leases.map(lease => () => { lease.root.removeFromParent(); lease.dispose(); }),
       () => this.sim.dispose(),
@@ -179,7 +207,7 @@ export class PreparedGameLevel {
   }
 }
 
-/** Normal synchronous level construction; only GeneratedSceneAssets starts its usual async work. */
+/** Normal synchronous level construction; environment asset owners start their usual async work. */
 export function createGameLevel(library: SharedModels, options: GameLevelOptions): PreparedGameLevel {
   return new PreparedGameLevel(library, options);
 }

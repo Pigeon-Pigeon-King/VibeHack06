@@ -63,9 +63,9 @@ export const HISTORY = {
   partitionX: -36,
   defenseA: [-1, 0, -4] as Vec3,
   defenseB: [-11, 0, 4] as Vec3,
-  rubblePlayer: [-10, 0, 4] as Vec3,
+  rubblePlayer: [-14, 0, 16] as Vec3,
   zhaoStart: [13, 0, -3] as Vec3,
-  zhaoCaptured: [4, 0, 4] as Vec3,
+  zhaoCaptured: [-5.5, 0, 14] as Vec3,
   shaoStart: [18, 0, -2] as Vec3,
   // Only these six people are the playable protection objective. Both background crowds stay separate.
   civilians: [[-9, 0, 7], [-5, 0, 8], [-14, 0, 15], [-6, 0, 17], [1, 0, 12], [3, 0, 17]] as Vec3[],

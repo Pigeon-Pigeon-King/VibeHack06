@@ -1,10 +1,14 @@
 import { Color, DynamicDrawUsage, Group, InstancedMesh, Matrix4, Mesh } from 'three';
 import type { CharacterModel } from '../contracts';
+import type { ModelLibrary } from '../assets/ModelLibrary';
+import type { CharacterIdentity } from '../assets/character-catalog';
 import { createCharacter } from './characters';
+import { ImportedCharacter, type CharacterLoadStatus } from './ImportedCharacter';
 
 const hidden = new Matrix4().makeScale(0, 0, 0);
+export interface CrowdAssets { library: ModelLibrary; baseURL: string }
 
-/** Shares the existing civilian body parts. Population increases instances, not draw calls. */
+/** Production people share GLB resources; an unconfigured preview keeps the small instanced fallback. */
 export class CrowdView {
   readonly root = new Group();
   private readonly prototype = createCharacter('civilian');
@@ -13,10 +17,13 @@ export class CrowdView {
   private nextSlot = 0;
   private epoch = 0;
   private disposed = false;
+  private readonly imported = new Set<ImportedCharacter>();
+  private readonly statuses = new Map<number, CharacterLoadStatus['state']>();
 
-  constructor(private readonly capacity = 64) {
-    this.root.name = 'instanced-opening-crowd';
-    this.root.userData.assetStatus = 'placeholder';
+  constructor(private readonly capacity = 64, private readonly assets?: CrowdAssets) {
+    this.root.name = assets ? 'imported-opening-crowd' : 'instanced-opening-crowd';
+    this.root.userData.assetStatus = assets ? 'empty' : 'placeholder';
+    if (assets) return;
     this.prototype.root.traverse(object => { if (object instanceof Mesh) this.parts.push(object); });
     for (const part of this.parts) {
       const batch = new InstancedMesh(part.geometry, part.material, capacity);
@@ -29,9 +36,22 @@ export class CrowdView {
     }
   }
 
-  create(): CharacterModel {
+  create(identity?: CharacterIdentity, onStatus: (status: CharacterLoadStatus) => void = () => {}): CharacterModel {
     if (this.disposed || this.nextSlot >= this.capacity) throw new Error('CrowdView capacity exceeded or disposed');
-    const slot = this.nextSlot++, epoch = this.epoch, root = new Group();
+    const slot = this.nextSlot++, epoch = this.epoch;
+    if (this.assets) {
+      const person = new ImportedCharacter(this.assets.library, identity ?? { id: `civilian-${slot}`, name: '撤离居民', role: 'civilian' }, this.assets.baseURL, status => {
+        if (this.disposed || epoch !== this.epoch) return;
+        this.statuses.set(slot, status.state);
+        const values = [...this.statuses.values()];
+        this.root.userData.assetStatus = values.includes('error') ? 'error' : values.every(state => state === 'ready') ? 'ready' : 'loading';
+        this.root.userData.population = { total: this.nextSlot, ready: values.filter(state => state === 'ready').length };
+        onStatus(status);
+      });
+      this.imported.add(person);
+      return person;
+    }
+    const root = new Group();
     root.name = `crowd-person-${slot}`; root.userData.assetStatus = 'placeholder';
     const tint = new Color([0xffffff, 0xe3eaf3, 0xf0e2ce, 0xe4dded][slot % 4]);
     for (const batch of this.batches) {
@@ -68,6 +88,10 @@ export class CrowdView {
 
   clear(): void {
     this.epoch++; this.nextSlot = 0;
+    for (const person of this.imported) person.dispose();
+    this.imported.clear(); this.statuses.clear();
+    this.root.userData.assetStatus = this.assets ? 'empty' : 'placeholder';
+    this.root.userData.population = { total: 0, ready: 0 };
     this.batches.forEach(batch => { batch.count = 0; });
   }
 

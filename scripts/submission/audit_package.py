@@ -11,6 +11,7 @@ import base64
 import hashlib
 import io
 import json
+import math
 import os
 import posixpath
 import re
@@ -28,7 +29,7 @@ from html.parser import HTMLParser
 from pathlib import Path, PurePosixPath
 from urllib.parse import unquote, urlsplit
 
-VERSION = "1.0.1"
+VERSION = "1.0.2"
 MAX_TEXT = 24 * 1024 * 1024
 MAX_MEMBER = 768 * 1024 * 1024
 MAX_ARCHIVE = 3 * 1024 * 1024 * 1024
@@ -80,6 +81,9 @@ class Audit:
         self.root = root
         self.findings = []
         self.seen = {}
+        self.audio_build_candidates = {}
+        self.audio_resource_map = {}
+        self.audio_directory_bases = set()
         self.inventory = {"source": [], "web": [], "windows": [], "audio": []}
         self.result = {
             "schemaVersion": 1, "toolVersion": VERSION, "toolSha256": sha(Path(__file__).read_bytes()), "label": label,
@@ -214,7 +218,17 @@ class Audit:
             candidates = [target]
             if kind in {"catalog", "resource-literal"}:
                 candidates.append(posixpath.normpath(decoded))
+                mapped = self.audio_resource_map.get(uri)
+                if mapped:
+                    candidates.insert(0, mapped)
+                    row["mapping"] = "validated-explicit-audio-manifest"
             hit = next((p for p in candidates if safe_name(p) and p in available), None)
+            if kind == "manifest-directory-base" and uri.endswith("/") and uri in self.audio_directory_bases:
+                # The prefix is backed by a digest-checked packaged manifest/file,
+                # never by a wildcard exemption for an audio directory.
+                directory = posixpath.normpath(decoded)
+                if safe_name(directory) and any(p.startswith(directory + "/") for p in available):
+                    hit = directory + "/"
             row["resolved"] = hit or target
             row["status"] = "PRESENT" if hit else "MISSING"
             if not hit:
@@ -284,6 +298,22 @@ class Audit:
                     found.add(uri)
                     self.check_ref(base, "index.html", "index.html", "document-directory-base", available)
                     continue
+                if re.match(r"\bnew\s+URL\s*\(", call) and uri.endswith("/") and uri in self.audio_directory_bases:
+                    tail = text[m.end():]
+                    document_base = re.match(r"\s*,\s*document\.baseURI\s*\)", tail)
+                    argument = re.match(r"\s*,\s*([A-Za-z_$][\w$]*)\s*\)", tail)
+                    # Recognize the compiled one-argument helper only when that
+                    # parameter defaults to document.baseURI immediately before
+                    # this return. An arbitrary variable/remote base is not proven.
+                    if argument:
+                        parameter = re.escape(argument.group(1))
+                        document_base = re.search(r"\bfunction(?:\s+[\w$]+)?\s*\(\s*" + parameter
+                                                  + r"\s*=\s*document\.baseURI\s*\)\s*\{\s*return\s*$",
+                                                  text[max(0, m.start() - 300):m.start()])
+                    if document_base:
+                        found.add(uri)
+                        self.check_ref(base, name, uri, "manifest-directory-base", available)
+                        continue
                 if re.match(r"\.(?:load|loadAsync)\s*\(", call) and not RESOURCE_EXT.search(uri) and "/" not in uri:
                     continue  # e.g. the application's save.load('campaign') is not a fetch.
                 if uri == "rapier_wasm3d_bg.wasm" and embedded_rapier:
@@ -528,6 +558,7 @@ class Audit:
     def web(self, base: Path):
         self.result["webInput"] = str(base)
         files = self.tree(base, "web")
+        self.prepare_audio_build(files, "web")
         if "index.html" not in files:
             self.finding("error", "WEB_ENTRY_MISSING", "index.html", "Selected web build has no entry; no product is not PASS.")
         if not any(p.endswith(".js") for p in files):
@@ -549,7 +580,8 @@ class Audit:
                         self.finding("review", "GLB_SOURCE_LICENSE_REVIEW", name, "New GLB is permitted; add its explicit source/digest/license mapping before release review.")
                 elif ext in AUDIO_EXT:
                     self.audio_header(name, data)
-                    self.finding("review", "AUDIO_PROVENANCE_MAPPING_REQUIRED", name, "File audio is packaged; check its explicit source/manifest using --audio-manifest.")
+                    if name not in self.audio_resource_map.values():
+                        self.finding("review", "AUDIO_PROVENANCE_MAPPING_REQUIRED", name, "File audio is packaged; check its explicit source/manifest using --audio-manifest.")
         public = self.root / "public"
         public_count = 0
         if public.is_dir():
@@ -702,6 +734,7 @@ class Audit:
                 if row["path"].startswith("desktop/") and asar_inventory.get(row["path"], {}).get("sha256") != row["sha256"]:
                     self.finding("error", "WINDOWS_DESKTOP_MISMATCH", row["path"], "Packaged desktop code differs from selected source.")
             packaged_web = {p[5:]: row for p, row in asar_inventory.items() if p.startswith("dist/")}
+            self.prepare_audio_build(packaged_web, "windows-asar")
             if "index.html" not in packaged_web:
                 self.finding("error", "WINDOWS_WEB_ENTRY_MISSING", "dist/index.html", "Windows package has no web entry.")
             for p in packaged_web:
@@ -716,6 +749,124 @@ class Audit:
         except (ValueError, KeyError, TypeError, UnicodeDecodeError, struct.error, zipfile.BadZipFile, RuntimeError, OSError):
             self.finding("error", "WINDOWS_PACKAGE_INVALID", "Windows input", "Could not validate ZIP/ASAR/PE structure; no runtime inference is made.")
 
+    def prepare_audio_build(self, files, label):
+        """Enable exact catalog mappings only after checking selected build bytes."""
+        self.audio_resource_map = {}
+        self.audio_directory_bases = set()
+        if not self.audio_build_candidates:
+            return
+        matched = 0
+        for relative, expected in self.audio_build_candidates.items():
+            target = expected["buildPath"]
+            row = files.get(target)
+            if row is None:
+                self.finding("error", "AUDIO_BUILD_MISSING", target, "Explicit narration manifest file is absent in the selected build.")
+            elif row.get("sha256") != expected["sha256"] or row.get("bytes") != expected["bytes"]:
+                self.finding("error", "AUDIO_BUILD_MISMATCH", target, "Selected build bytes differ from the validated narration delivery.")
+            else:
+                matched += 1
+                if relative not in {"manifest.json", "README.txt"}:
+                    self.audio_resource_map[relative] = target
+                    self.audio_directory_bases.add(expected["base"])
+        self.result["checks"]["audioManifest"].setdefault("buildComparisons", []).append({
+            "build": label, "expectedFiles": len(self.audio_build_candidates), "matchedFiles": matched,
+            "catalogMappings": len(self.audio_resource_map),
+        })
+
+    def narration_manifest(self, name, data, manifest):
+        """Known independent chapter-narration v1 delivery, not an SFX/music bundle."""
+        errors_before = sum(f["severity"] == "error" for f in self.findings)
+        digest = lambda value: isinstance(value, str) and re.fullmatch(r"[0-9a-f]{64}", value) is not None
+        nonempty = lambda value: isinstance(value, str) and bool(value.strip())
+        def invalid(message):
+            self.finding("error", "NARRATION_MANIFEST_SCHEMA", name, message)
+        if type(manifest.get("schemaVersion")) is not int or manifest["schemaVersion"] != 1 or manifest.get("batch") != "chapter-bridge-01" or PurePosixPath(name).name != "manifest.json":
+            invalid("Unsupported narration manifest version/batch; no schema exemption applied.")
+            return
+        assets = manifest["assets"]
+        if type(manifest.get("expectedCueCount")) is not int or manifest["expectedCueCount"] != len(assets) or manifest.get("complete") is not True:
+            invalid("Narration requires a complete delivery with an exact expected cue count.")
+        voice, producer, authorization = (manifest.get(key) for key in ("voice", "producer", "authorization"))
+        if not isinstance(voice, dict) or not all(nonempty(voice.get(key)) for key in ("speakerId", "selection")) or not digest(voice.get("referenceSha256")):
+            invalid("Narration voice identity and reference digest are required.")
+        if not isinstance(producer, dict) or not all(nonempty(producer.get(key)) for key in ("model", "revision", "method")):
+            invalid("Narration production model, revision and method must be recorded.")
+        if not isinstance(authorization, dict) or not all(nonempty(authorization.get(key)) for key in ("userMessage", "scope")):
+            invalid("Narration authorization record is missing; no approval is inferred.")
+        source_hashes = manifest.get("sourceTextHashes")
+        if not isinstance(source_hashes, list) or not source_hashes or any(
+            not isinstance(entry, dict) or not isinstance(entry.get("path"), str) or not safe_name(entry["path"])
+            or forbidden(entry["path"]) or not digest(entry.get("sha256")) for entry in source_hashes
+        ):
+            invalid("Narration requires safe text-source paths and SHA-256 digests.")
+            source_hashes = []
+        known_sources = {entry["sha256"] for entry in source_hashes}
+        if not digest(manifest.get("productionListSha256")) or not digest(manifest.get("sourceTextSha256")) or manifest["sourceTextSha256"] not in known_sources:
+            invalid("Narration production-list and text-source digests are required.")
+        # Preserve generic secret/signed-URL checks even when no web build was selected.
+        self.scan_text(self.root, name, data, {})
+        def secret_fields(value):
+            if isinstance(value, dict):
+                for key, item in value.items():
+                    if SECRET_KEYS.fullmatch(key) and isinstance(item, str) and item:
+                        self.finding("error", "SENSITIVE_METADATA_FIELD", name, "Potential credential field in narration metadata; value omitted.")
+                    secret_fields(item)
+            elif isinstance(value, list):
+                for item in value:
+                    secret_fields(item)
+        secret_fields(manifest)
+        base = (self.root / name).parent
+        ids, paths, bodies = set(), set(), {"manifest.json": data}
+        for asset in assets:
+            if not isinstance(asset, dict):
+                invalid("Narration asset entries must be objects.")
+                continue
+            cue_id, path = asset.get("cueId"), asset.get("file")
+            if not nonempty(cue_id):
+                invalid("Narration assets require a nonempty cueId.")
+            elif cue_id in ids:
+                self.finding("error", "AUDIO_DUPLICATE_ID", name, "Manifest contains duplicate cue IDs.")
+            else:
+                ids.add(cue_id)
+            if not isinstance(path, str) or not safe_name(path) or forbidden(path) or unquote(path) != path or ":" in path or "?" in path or "#" in path or any(ord(c) < 32 for c in path) or Path(path).suffix.lower() not in AUDIO_EXT:
+                self.finding("error", "AUDIO_RUNTIME_PATH", name, "Narration file must be a safe local path relative to this manifest; value omitted.")
+                continue
+            if path in paths:
+                self.finding("error", "AUDIO_DUPLICATE_FILE", name, "Narration cues must not share the same file path.")
+            paths.add(path)
+            if not digest(asset.get("sha256")) or type(asset.get("bytes")) is not int or asset["bytes"] <= 0:
+                self.finding("error", "AUDIO_MANIFEST_DIGEST_MISSING", path, "Manifest needs positive bytes and a full SHA-256.")
+            if not nonempty(asset.get("text")) or not nonempty(asset.get("sequenceId")) or sha(asset.get("text", "").encode()) != asset.get("sourceTextSha256") or not digest(asset.get("sourceFileSha256")) or asset["sourceFileSha256"] not in known_sources:
+                invalid("Narration text, sequence and recorded source digests must agree.")
+            if not isinstance(voice, dict) or asset.get("speakerId") != voice.get("speakerId") or asset.get("referenceSha256") != voice.get("referenceSha256"):
+                invalid("Narration per-cue voice reference must match the batch.")
+            duration = asset.get("durationSeconds")
+            if type(duration) not in {int, float} or not math.isfinite(duration) or duration <= 0:
+                invalid("Narration durationSeconds must be finite and positive.")
+            body = self.read(base, path)
+            if body is not None:
+                bodies[path] = body
+                self.record("audio", path, body)
+                self.audio_header(path, body, asset)
+        readme = self.read(base, "README.txt", MAX_TEXT)
+        if readme is not None:
+            bodies["README.txt"] = readme
+            self.record("source", (Path(name).parent / "README.txt").as_posix(), readme)
+            self.scan_text(base, "README.txt", readme, {})
+        valid = errors_before == sum(f["severity"] == "error" for f in self.findings)
+        self.result["checks"]["audioManifest"] = {
+            "path": name, "schema": "chapter-narration-v1", "entries": len(assets), "uniqueFiles": len(paths),
+            "bytes": sum(len(body) for path, body in bodies.items() if Path(path).suffix.lower() in AUDIO_EXT),
+            "validated": valid, "productionEvidence": "recorded-in-manifest; no legal sufficiency inference",
+            "gameIntegration": "NOT_TESTED", "decodePlayback": "NOT_RUN",
+        }
+        # Only an explicit manifest under public has a defined Vite build location.
+        parent = PurePosixPath(name).parent
+        if valid and parent.parts and parent.parts[0] == "public":
+            build_base = parent.relative_to("public").as_posix().rstrip("/") + "/"
+            for relative, body in bodies.items():
+                self.audio_build_candidates[relative] = {"buildPath": build_base + relative, "base": build_base, "bytes": len(body), "sha256": sha(body)}
+
     def audio_manifest(self, name):
         if not safe_name(name) or forbidden(name):
             self.finding("error", "AUDIO_MANIFEST_PATH", "<redacted>", "Manifest must be a safe project-relative path.")
@@ -726,9 +877,15 @@ class Audit:
             self.finding("error", "AUDIO_MANIFEST_EMPTY", name, "Expected a nonempty assets list; no audio is not PASS.")
             return
         self.record("source", name, data)
+        if manifest.get("batch") == "chapter-bridge-01" or "expectedCueCount" in manifest or any(isinstance(a, dict) and "cueId" in a and "id" not in a for a in manifest["assets"]):
+            self.narration_manifest(name, data, manifest)
+            return
         base = (self.root / name).parent
         ids, paths, sources, music = set(), set(), {}, 0
         for a in manifest["assets"]:
+            if not isinstance(a, dict) or not isinstance(a.get("id"), str) or not a["id"]:
+                self.finding("error", "AUDIO_MANIFEST_SCHEMA", name, "Legacy audio entries require explicit nonempty id values.")
+                continue
             p = a.get("file", "")
             if a.get("id") in ids:
                 self.finding("error", "AUDIO_DUPLICATE_ID", name, "Manifest contains duplicate asset IDs.")
@@ -813,11 +970,11 @@ def main(argv=None):
         else:
             if args.web or args.windows:
                 audit.source_snapshot()
+            if args.audio_manifest:
+                audit.audio_manifest(args.audio_manifest)
             web_files = audit.web((root / args.web).resolve()) if args.web else {}
             if args.windows:
                 audit.windows((root / args.windows).resolve(), web_files)
-            if args.audio_manifest:
-                audit.audio_manifest(args.audio_manifest)
     except Exception as exc:
         # Do not print input values or raw exception messages, which may contain secrets.
         audit.finding("error", "AUDITOR_INCOMPLETE", "auditor", "Unexpected " + type(exc).__name__ + "; audit is incomplete.")

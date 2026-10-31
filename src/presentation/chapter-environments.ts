@@ -86,7 +86,6 @@ function fan(kit: PortKit): { rotor: Group; obstruction: Group; lamp: MeshStanda
   signal.name = 'night-fan-status'; signal.rotation.x = Math.PI / 2;
   signal.position.set(at[0] + 1.6, 2.8, at[2] + 1.23); kit.root.add(signal);
   kit.terminal(NIGHT.fanReset);
-  kit.label('循环风机  /  维护中', [at[0], 3.18, at[2] + 1.26], 2.8, 0.40);
   return { rotor, obstruction, lamp };
 }
 
@@ -111,7 +110,7 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
   kit.solid('night-toolbench', [-19, 0.55, 35], [5.6, 1.1, 1.3]);
   for (const x of [-21.4, -16.6]) kit.box('steel', [x, 0.45, 35], [0.18, 0.9, 1.1]);
   for (let i = 0; i < 5; i++) kit.box(i % 2 ? 'steel' : 'amber', [-20.5 + i * 0.65, 1.07, 35], [0.42, 0.08, 0.15], [0, i * 0.2, 0]);
-  kit.label('B01 维修廊', [-3.70, 4.15, 30], 4.4, 0.65, Math.PI / 2);
+  kit.sign('维修廊', [-3.70, 4.15, 30], 4.4, 0.65, Math.PI / 2);
 
   // Supply rack stands behind the interaction point; the authored source crate is reversible by facts.
   const rack: Vec3 = [NIGHT.supplies[0], 1.5, NIGHT.supplies[2] - 1.7];
@@ -124,7 +123,7 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
     kit.box('paint', [x, 1.34, 13.8], [2.15, 0.10, 2.25]);
     kit.solid(`night-stores-${x}`, [x, 0.7, 13.8], [2.15, 1.4, 2.25]);
   }
-  kit.label('B02 物资领取', [3.70, 4.15, 18], 4.5, 0.65, -Math.PI / 2);
+  kit.sign('物资室', [3.70, 4.15, 18], 4.5, 0.65, -Math.PI / 2);
   light(kit, [12, 3.8, 20], 0xffd4a1, 35, 13);
 
   kit.box('pale', [11.3, 0.84, -6.1], [3.0, 0.16, 1.4]);
@@ -139,13 +138,12 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
   kit.box('white', [19.5, 0.80, -7.7], [1.25, 0.16, 2.2]);
   kit.box('paint', [19.5, 0.91, -7.7], [1.1, 0.12, 2]);
   kit.solid('night-transfer-bed', [19.5, 0.5, -7.7], [1.4, 1.0, 2.3]);
-  kit.label('护理交接', [14.7, 2.1, -9.7], 3.6, 0.60);
-  kit.label('B02 护理后勤', [3.70, 4.15, -4], 4.5, 0.65, -Math.PI / 2);
+  kit.sign('护理室', [3.70, 4.15, -4], 4.5, 0.65, -Math.PI / 2);
   light(kit, [13, 3.8, -3], 0xffd9ae, 45, 15);
 
   // Port map faces east so it does not hide either Meng or Zhou at the shared meeting anchors.
   wall(kit, 'night-port-map', [-14.5, 1.8, -23.8], [0.18, 2.8, 5.4], 'steel');
-  kit.label('港务院 → 北闸 → 接收', [-14.39, 2.05, -23.8], 4.8, 0.9, Math.PI / 2);
+  kit.sign('北闸 →', [-14.39, 2.05, -23.8], 4.8, 0.9, Math.PI / 2);
   for (let i = 0; i < 5; i++) kit.box(i % 2 ? 'amber' : 'white', [-14.38, 1.14, -25.6 + i * 0.9], [0.025, 0.22, 0.38], [0, 0, 0], false);
   kit.box('pale', [-21.5, 1.0, -25], [5.3, 0.18, 2]);
   kit.solid('night-sample-bench', [-21.5, 0.55, -25], [5.3, 1.1, 2]);
@@ -153,7 +151,6 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
     kit.cylinder('ice', [-23.1 + i * 0.95, 1.30, -25], 0.16, 1.45, [Math.PI / 2, 0, 0]);
     for (const z of [-25.75, -24.25]) kit.cylinder('steel', [-23.1 + i * 0.95, 1.30, z], 0.18, 0.12, [Math.PI / 2, 0, 0]);
   }
-  kit.label('冰芯留样  /  B03', [-21.5, 2.3, -26.0], 4.4, 0.65);
   wall(kit, 'night-weapon-rack', [-10, 1.4, -34], [5.0, 2.8, 0.55], 'steel');
   for (let i = 0; i < 4; i++) {
     const x = -11.5 + i;
@@ -162,15 +159,12 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
     kit.cylinder('rubber', [x - 0.06, 2.02, -33.65], 0.035, 0.50);
     kit.box('amber', [x + 0.15, 1.32, -33.62], [0.17, 0.10, 0.08]);
   }
-  kit.label('装备确认', [-10, 2.75, -33.68], 3.2, 0.4);
-  kit.label('B03 旧样本室', [-3.70, 4.15, -24], 4.5, 0.65, Math.PI / 2);
+  kit.sign('样本室', [-3.70, 4.15, -24], 4.5, 0.65, Math.PI / 2);
   light(kit, [-12, 4.0, -25], 0xc8e1e6, 55, 16);
   for (const x of [-4.0, 4.0]) wall(kit, `night-departure-frame-${x}`, [x, 2.4, -55], [0.30, 4.8, 0.55], 'pale');
   kit.box('paint', [0, 4.6, -55], [8.5, 0.8, 0.60]);
-  kit.label('前往外部检修线  ↑', [0, 4.56, -54.66], 7.0, 0.65);
+  kit.sign('出口 ↑', [0, 4.56, -54.66], 7.0, 0.65);
   kit.box('white', [0, 0.02, NIGHT.exit[2]], [5.5, 0.02, 0.15], [0, 0, 0], false);
-  // Small civic screen and old covered signs establish occupied everyday infrastructure.
-  kit.label('夜班服务  /  护理与转运', [0, 3.0, 41.6], 7, 0.85, Math.PI);
   let running = false;
   return {
     bounds: NIGHT.bounds,
@@ -248,7 +242,6 @@ function transferBus(kit: PortKit): void {
     }
     kit.solid('workers-transfer-bus', [0, 1.5, 0], [3.3, 3.0, 7.0]);
   });
-  kit.label('港务转运', [31.3, 2.15, -114.45], 2.55, 0.50);
 }
 
 function stairAndGallery(kit: PortKit): void {
@@ -288,7 +281,6 @@ function stairAndGallery(kit: PortKit): void {
     kit.cover(-22, -47.5, 2.8);
     kit.cover(-11, -55.2, 3.0);
   });
-  kit.label('C02  上层检修线', [-16.5, 5.0, -47.0], 10, 0.8);
   kit.box('steel', [-24.8, 4.0, -47.2], [0.12, 2.0, 0.12]);
   kit.box('steel', [-8.2, 4.0, -47.2], [0.12, 2.0, 0.12]);
 }
@@ -327,7 +319,7 @@ export function buildWorkersSector(kit: PortKit): SceneDynamics {
   militaryTruck(kit, 26, 12);
   // Workers beside this military vehicle are persistent simulation actors, not decorative copies.
   kit.box('amber', [22, 0.02, 19.8], [7.4, 0.02, 0.12], [0, 0, 0], false);
-  kit.label('通勤检查口  /  C05', [0, 4.15, 0.46], 8.6, 0.65);
+  kit.sign('检查口', [0, 4.15, 0.46], 8.6, 0.48);
   crossWall(kit, 'checkpoint-line', 0, 10);
   const checkpointGate = slidingGate(kit, 'checkpoint-gate', 0, 10, 'checkpoint-open');
   kit.terminal(WORKERS.checkpoint);
@@ -341,13 +333,12 @@ export function buildWorkersSector(kit: PortKit): SceneDynamics {
   kit.cover(-25.8, -20.8, 3.6);
   kit.cover(-10.3, -25.2, 3.8);
   kit.box('rubber', [-18, 0.017, -28], [8, 0.02, 7], [0, 0, 0], false);
-  kit.label('C02  检修线入口', [-18, 3.6, -32.2], 7.4, 0.75);
   kit.cylinder('amber', [-31, 2.5, -42], 0.24, 28, [Math.PI / 2, 0, 0]);
   kit.cylinder('pale', [-29.8, 2.2, -42], 0.18, 28, [Math.PI / 2, 0, 0]);
   stairAndGallery(kit);
   kit.cover(-7.5, -67, 4.2);
   kit.workshop(15, -62, 21, 16);
-  kit.label('C01  宿舍后门', [0, 4.15, -77.54], 8.6, 0.65);
+  kit.sign('宿舍后门', [0, 4.15, -77.54], 8.6, 0.48);
   crossWall(kit, 'yard-line', -78, 10);
   const yardGate = slidingGate(kit, 'yard-gate', -78, 10, 'yard-open');
   kit.terminal(WORKERS.yardGate);
@@ -355,7 +346,7 @@ export function buildWorkersSector(kit: PortKit): SceneDynamics {
   // East transport lane is continuous at x42–46, entered at z17 and rejoining behind the yard at z-130.
   wall(kit, 'transport-separation', [38, 1.4, -58], [0.35, 2.8, 136], 'steel');
   for (let z = -122; z <= 8; z += 8) kit.box('pale', [37.8, 2.9, z], [0.20, 0.18, 1.1]);
-  kit.label('运输专线', [38.2, 2.1, 4], 4, 0.7, Math.PI / 2);
+  kit.sign('运输通道', [38.2, 2.1, 4], 4, 0.7, Math.PI / 2);
 
   // Three distinct building faces make a residential court instead of a cleared rectangular arena.
   kit.workshop(-43, -96, 16, 28);
@@ -365,7 +356,6 @@ export function buildWorkersSector(kit: PortKit): SceneDynamics {
     kit.box('glass', [-34.94, y, z], [0.10, 1.0, 1.7]);
     kit.box('pale', [-34.86, y - 0.55, z], [0.20, 0.10, 2.0]);
   }
-  kit.label('港务宿舍  /  生活院', [-19, 4.1, -114.94], 12, 0.85);
   kit.cover(-8, -88.0, 3.8);
   kit.cover(9, -92.2, 3.5);
   kit.cover(6, -100.3, 3.4);
@@ -384,7 +374,6 @@ export function buildWorkersSector(kit: PortKit): SceneDynamics {
   kit.solid('yard-greenhouse-roof', [-42, 4.05, -118], [12.5, 1.7, 8.4]);
   for (let x = -46; x <= -38; x += 2) kit.box('signal', [x, 2.2, -113.9], [0.15, 0.08, 0.12], [0, 0, 0], false);
   transferBus(kit);
-  kit.label('安全转运  →', [22, 3.4, -115.2], 7, 0.8);
   kit.box('amber', [22, 0.02, -112], [7, 0.02, 0.12], [0, 0, 0], false);
   kit.box('white', [40, 0.02, -116], [0.18, 0.02, 6], [0, 0, 0], false);
   light(kit, [22, 5.5, -112], 0xffd6a3, 55, 18);

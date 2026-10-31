@@ -5,6 +5,7 @@ import { AnimationMixer, Box3, BoxGeometry, Group, Mesh, MeshStandardMaterial, T
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import type { ScenarioId } from '../src/contracts';
 import { ModelLibrary } from '../src/assets/ModelLibrary';
+import { Navigation } from '../src/actors/Navigation';
 import type { ModelAcquireOptions, ModelLease, ModelSource, ModelTemplate } from '../src/assets/model-contracts';
 import { generatedScenePlacements, SCENE_ASSETS, sceneAssetSource, type SceneAssetId } from '../src/assets/scene-asset-catalog';
 import { GeneratedSceneAssets } from '../src/presentation/GeneratedSceneAssets';
@@ -63,15 +64,50 @@ function deferredLibrary() {
 }
 
 describe('generated runtime assets and real geometry', () => {
-  it('ships eight self-contained local models with frozen source and resized runtime checksums', () => {
+  it('maps every one of the 25 Tripo production props into a real campaign chapter', () => {
+    const props = Object.entries(SCENE_ASSETS).filter(([, asset]) => asset.provider === 'Tripo');
+    expect(props).toHaveLength(25);
+    const placements = ['frontgate', 'medical', 'epilogue'].flatMap(scenario => generatedScenePlacements(scenario as ScenarioId));
+    for (const [id] of props) expect(placements.some(placement => placement.assetId === id), id).toBe(true);
+    for (const scenario of ['frontgate', 'medical', 'epilogue'] as ScenarioId[]) {
+      const entries = generatedScenePlacements(scenario);
+      expect(new Set(entries.map(placement => placement.id)).size).toBe(entries.length);
+    }
+    const licenses = JSON.parse(readFileSync(new URL('../public/licenses/generated-assets/manifest.json', import.meta.url), 'utf8'));
+    expect(licenses.assets.filter((asset: { category: string }) => asset.category === 'character')).toHaveLength(13);
+    for (const [id] of props) expect(licenses.assets.filter((asset: { id: string }) => asset.id === id)).toHaveLength(1);
+  });
+
+  it('keeps all medical destinations and actor routes navigable around the new parked trolley', () => {
+    const environment = own(buildEnvironment('medical'));
+    const navigation = new Navigation(environment.solids, MEDICAL.bounds);
+    const destinations = [MEDICAL.registration, MEDICAL.equipment, MEDICAL.recordDesk, MEDICAL.zhouVisit, MEDICAL.mengVisit,
+      MEDICAL.doctor, MEDICAL.doctorTalk, MEDICAL.xu, MEDICAL.rest, MEDICAL.radio, MEDICAL.exit, MEDICAL.nurse,
+      ...MEDICAL.nurseRoute, ...MEDICAL.doctorRoute];
+    for (const point of destinations) {
+      expect(navigation.isOpen(point), `open ${point}`).toBe(true);
+      expect(navigation.path(MEDICAL.spawn, point).length, `route ${point}`).toBeGreaterThan(0);
+    }
+    expect(navigation.isOpen([-387, 0, 62])).toBe(false);
+    const trolley = environment.solids.find(solid => solid.id === 'medical-spare-trolley')!;
+    const source = SCENE_ASSETS['PROP-TRANSFER'].sourceBounds;
+    expect(trolley.size).toEqual(source.max.map((value, axis) => expect.closeTo((value - source.min[axis]) * 2.3, 6)));
+    expect(environment.solids.find(solid => solid.id === 'medical-supply-locker--387')).toMatchObject({ position: [-387, 1.3, 39], size: [3.2, 2.6, 1.5] });
+  });
+
+  it('ships 25 production props and three retained map models with frozen checksums', () => {
     const manifest = JSON.parse(readFileSync(new URL('../public/assets/generated/production-20261031/manifest.json', import.meta.url), 'utf8'));
+    const additions = JSON.parse(readFileSync(new URL('../public/assets/generated/production-20261031-props-r1/manifest.json', import.meta.url), 'utf8'));
     const originalManifest = readFileSync(new URL('../artifacts/asset-integration/scenery/source-manifest.json', import.meta.url));
     expect(createHash('sha256').update(originalManifest).digest('hex')).toBe(manifest.sourceManifestSha256);
     expect(manifest.assets).toHaveLength(8);
+    expect(additions.assets).toHaveLength(20);
+    expect(Object.keys(SCENE_ASSETS)).toHaveLength(28);
+    const allRecords = [...manifest.assets, ...additions.assets];
     for (const id of Object.keys(SCENE_ASSETS) as SceneAssetId[]) {
       const asset = SCENE_ASSETS[id], raw = bytes(id);
       const glb = JSON.parse(raw.subarray(20, 20 + raw.readUInt32LE(12)).toString());
-      const record = manifest.assets.find((entry: { id: string }) => entry.id === id);
+      const record = allRecords.find((entry: { id: string }) => entry.id === id);
       expect(createHash('sha256').update(raw).digest('hex')).toBe(asset.sha256);
       expect(raw.length).toBe(asset.bytes); expect(record.sha256).toBe(asset.sha256);
       expect(record.sourceSha256).toBe(asset.sourceSha256);
@@ -151,7 +187,9 @@ describe('generated runtime assets and real geometry', () => {
         for (const point of [FRONTGATE.spawn, FRONTGATE.observe, FRONTGATE.weighA, FRONTGATE.weighB, FRONTGATE.eastPost, FRONTGATE.rearPost, ...FRONTGATE.workerVia, ...FRONTGATE.workerSafe]) {
           expect(distanceXZ(bounds, point)).toBeGreaterThan(1.5);
         }
-        expect(bounds.min.x).toBeGreaterThan(16); // Keep the entire central north/south lane free.
+        // Dressing stays in the eastern industrial strip or against the western
+        // maintenance rack, preserving the full central lane and worker corridor.
+        expect(bounds.min.x > 16 || bounds.max.x < -31).toBe(true);
       }
     }
     controller.dispose();
@@ -160,7 +198,7 @@ describe('generated runtime assets and real geometry', () => {
       if (placement.fallbackSlot) expect(environment.root.getObjectByName(`generated-fallback:${placement.fallbackSlot}`)!.visible).toBe(true);
     }
     expect(JSON.stringify(environment.solids)).toBe(solidsBefore);
-  });
+  }, 20000); // Real GLB decoding now covers all 25 props; preserve the full assertions.
 });
 
 describe('generated scene lease ownership and cancellation', () => {

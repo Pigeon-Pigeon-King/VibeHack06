@@ -15,8 +15,7 @@ function yard(k: PortKit): void {
   // The old inner-gate silhouette is north of this new playable courtyard.
   for (const x of [-17, 1]) k.box('pale', [x, 3.3, R.northGateLandmark[2]], [0.45, 6.6, 0.7]);
   k.box('steel', [-8, 6.65, R.northGateLandmark[2]], [19, 0.6, 1]);
-  k.label('北闸内门 / 前沿', [-8, 6.7, 47.35], 15, 0.65);
-  k.label('后线接防院', [19, 5.5, 57], 14, 0.75);
+  k.sign('北闸内门', [-8, 6.65, 47.35], 15, 0.45);
   for (const x of [11, 27]) k.box('steel', [x, 2.8, 57], [0.12, 5.6, 0.12]);
   for (const x of [-62, 61]) for (const z of [64, 100, 140, 180]) k.light(x, z, 7);
   for (let z = 54; z < 186; z += 7) k.box('white', [34, 0.015, z], [0.12, 0.02, 3], [0, 0, 0], false);
@@ -47,11 +46,8 @@ function protectedArrival(k: PortKit): void {
   k.part('arch', 'pale', [-51, 4.4, 137], [30, 5, 24]);
   k.solid('relief-arrival-roof', [-51, 5.7, 137], [30, 2.6, 24]);
   for (const x of [-65, -37]) for (const z of [125.5, 148.5]) block(k, `relief-arrival-leg-${x}-${z}`, [x, 2.2, z], [0.25, 4.4, 0.25], 'steel');
-  k.label('旧检修站来路 / 接防入口', [-50, 4.4, 125], 21, 0.65, Math.PI);
-  k.label('设备人员内撤', [-30.3, 2.7, 75], 12, 0.55, -Math.PI / 2);
   for (let z = 65; z < 130; z += 6) k.box('amber', [-45, 0.018, z], [0.1, 0.02, 2.8], [0, 0, 0], false);
   k.box('amber', [-26, 0.02, 132], [8, 0.02, 0.12], [0, 0, 0], false);
-  k.label('维修人员接应', [-32, 3.2, 135.5], 9, 0.6);
 }
 function firingAndWithdrawal(k: PortKit): void {
   k.cover(R.post[0], R.post[2] - 2.5, 7);
@@ -64,16 +60,12 @@ function firingAndWithdrawal(k: PortKit): void {
   block(k, 'relief-crossing-two-screen', [17, 1.2, 122], [46, 2.4, 0.65], 'paint');
   k.cover(22, 101.5, 6);
   k.cover(-22, 125.5, 6);
-  k.label('交接阵位', [-8, 3.1, 80.3], 6, 0.6);
   k.box('steel', [-11.5, 1.5, 80.2], [0.08, 3, 0.08]);
-  k.label('横向撤回  →', [-1, 3.6, 101.6], 11, 0.6, Math.PI);
-  k.label('内门  ←', [15, 3.6, 121.6], 11, 0.6, Math.PI);
   for (let x = -8; x < 22; x += 5) k.box('white', [x, 0.018, 104], [2.3, 0.02, 0.10], [0, 0, 0], false);
   for (let x = -22; x < 22; x += 5) k.box('white', [x, 0.018, 128], [2.3, 0.02, 0.10], [0, 0, 0], false);
   for (const [i, p] of R.ammo.entries()) {
     block(k, `relief-ammo-${i}`, [p[0] + 1.4, 0.5, p[2]], [1.5, 1, 0.9], 'steel');
     k.box('amber', [p[0] + 1.4, 1.05, p[2]], [1.4, 0.10, 0.85]);
-    k.label('补给', [p[0] + 1.4, 1.7, p[2] + 0.48], 1.5, 0.38);
   }
 }
 function restShelter(k: PortKit) {
@@ -86,8 +78,8 @@ function restShelter(k: PortKit) {
   block(k, 'relief-rest-back-lintel', [-8, 4.3, 176], [8, 1.4, 0.6], 'steel');
   block(k, 'relief-rest-roof', [-5, 5.2, 161], [49, 0.4, 31], 'pale');
   k.part('arch', 'pale', [-5, 5.4, 161], [49, 6.2, 31]);
-  k.label('内门休息 / 接替通信', [-29.36, 4.25, 161], 9, 0.6, -Math.PI / 2);
-  k.label('设备交叉口方向', [-8, 4.2, 176.35], 7, 0.55);
+  k.sign('休息室', [-29.36, 4.25, 161], 9, 0.6, -Math.PI / 2);
+  k.sign('出口', [-8, 4.2, 176.35], 7, 0.55);
   // The seat is behind the authored foot position; it does not embed a standing/restoring player capsule.
   block(k, 'relief-rest-seat', [-8, 0.43, 160.85], [3.2, 0.86, 0.8], 'pale');
   block(k, 'relief-rest-seat-back', [-8, 1.1, 161.25], [3.2, 0.8, 0.16], 'paint');

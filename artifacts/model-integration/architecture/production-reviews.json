@@ -1,0 +1,474 @@
+[
+  {
+    "asset": "ARCH-BEAM-STEEL",
+    "review": {
+      "id": "ARCH-BEAM-STEEL",
+      "reviewer": "primary-agent",
+      "result": "passed-offline-silhouette-and-material-review",
+      "evidence": [
+        "front.png",
+        "back.png"
+      ],
+      "notes": "Slender beam remains closed and recognizable across levels. Source long axis is Z; do not assume X.",
+      "limitations": [
+        "1200x420 offline inspection at 6 samples, not in-game lighting or close-up texture acceptance.",
+        "Metric assembly and collider agreement remain integration checks."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.591160+00:00",
+      "levelSHA256": [
+        "54ba70eca4ca5909fa0342f00986cab283a14008429eb24173edf38f40224cf7",
+        "3bfe14616e6a4431c27e65df8e0a9097d7f9c33afd5f5d07fe14552a64ef057e",
+        "8da454dce22168b30956fc62ced32766cf23125fc676d3826bbcd30321d8fb41"
+      ]
+    }
+  },
+  {
+    "asset": "ARCH-CARGO-CONTAINER",
+    "review": {
+      "id": "ARCH-CARGO-CONTAINER",
+      "result": "front-back-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png",
+        "back.png"
+      ],
+      "notes": "Rebuilt with locked texture seams. Corrugated sides/roof and locking-bar arrangement remain recognizable; lower LODs retain 2668/2056 triangles instead of forcing 1500/384.",
+      "limitations": [
+        "Closed exterior only; doors are fused, no enterable interior.",
+        "Colliders and actual game view remain integration checks."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.592192+00:00",
+      "levelSHA256": [
+        "6f96d868d16de630ea1b0f874b73ebc32ee50d3132d84990ae2ba08ad8e6aa13",
+        "1516574a2b3e58ea5068a4e65812a15beb54bb98027ee885d6772d4a952d2668",
+        "3a30b67ebe18ed2f3cba81ecc78febdd2158cc28427eff74710f662eec72032f"
+      ]
+    }
+  },
+  {
+    "asset": "ARCH-COVER-CONCRETE",
+    "review": {
+      "id": "ARCH-COVER-CONCRETE",
+      "result": "front-back-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png",
+        "back.png"
+      ],
+      "notes": "Low concrete cover silhouette, warning stripe and panel faces retained at all three levels.",
+      "limitations": [
+        "Actual collider/cover height and assembly seams require runtime checks."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.592621+00:00",
+      "levelSHA256": [
+        "2006a6be5eefda3acbfdf91ac0243105cf81e06a4936a882c8f63f27be108adf",
+        "5786b1ce790497559118de9f4dccd18859e95b391c2bcd989d273fc8800cd645",
+        "c8a7558c651aa09ffd82c888deacd3b339ed2944ab564a9a9ceb4c1efeb460e3"
+      ]
+    }
+  },
+  {
+    "asset": "ARCH-FLOOR-METAL",
+    "review": {
+      "id": "ARCH-FLOOR-METAL",
+      "reviewer": "primary-agent",
+      "result": "passed-offline-silhouette-and-material-review",
+      "evidence": [
+        "front.png",
+        "back.png"
+      ],
+      "notes": "Top surface, border and thickness remain coherent at both reduced levels; flat industrial tile, no props baked into it.",
+      "limitations": [
+        "1200x420 offline inspection at 6 samples, not in-game lighting or close-up texture acceptance.",
+        "Metric assembly and collider agreement remain integration checks."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.593307+00:00",
+      "levelSHA256": [
+        "62e35537871fc9682c992f5803b0f8ff856148f76711775bf88cbfc7d70ce6e9",
+        "3a2ea3914d39624fb4042ab62b02e9c7ce8adb2c9ed1c0a2faf7c48f15c0db92",
+        "19c3c590f76da54633918f7492c18b2b89fefc4ec91ed90cea40a9af627fbc76"
+      ]
+    }
+  },
+  {
+    "asset": "ARCH-ROOF-METAL",
+    "review": {
+      "id": "ARCH-ROOF-METAL",
+      "reviewer": "primary-agent",
+      "result": "passed-offline-silhouette-and-material-review",
+      "evidence": [
+        "front.png",
+        "back.png"
+      ],
+      "notes": "Panel seams and slab outline retained; separate reusable roof tile with no fused actors or props.",
+      "limitations": [
+        "1200x420 offline inspection at 6 samples, not in-game lighting or close-up texture acceptance.",
+        "Metric assembly and collider agreement remain integration checks."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.593777+00:00",
+      "levelSHA256": [
+        "6c07afa048e756e63f1184626af2e3f504179ea78652a4f9bcbce65ff7c16fbb",
+        "b3c8a9819faf43e32a7fd6c6672f8073c2e6a96706184f43edce8cb6fd7f87f3",
+        "4203a37821c652db6409ed8ace83598170b32d42125c03d5aeb64250138f9851"
+      ]
+    }
+  },
+  {
+    "asset": "ARCH-WALL-PAINT",
+    "review": {
+      "id": "ARCH-WALL-PAINT",
+      "reviewer": "primary-agent",
+      "result": "passed-offline-silhouette-and-material-review",
+      "evidence": [
+        "front.png",
+        "back.png"
+      ],
+      "notes": "Front/back panels and seam lines retained. Actual width/height is about 2.02; use measured ratio when tiling, not the concept 4:3.",
+      "limitations": [
+        "1200x420 offline inspection at 6 samples, not in-game lighting or close-up texture acceptance.",
+        "Metric assembly and collider agreement remain integration checks."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.594950+00:00",
+      "levelSHA256": [
+        "c7a7430ae5a1cd94d5bed073daa25a8f74fa203981402241e13e88acd9d3325b",
+        "74d919b16c807ece96c91bacd9fc0836472aec582eacd034ce971922e814b3a4",
+        "ba07e29e45b42a963a069c21ca4c2a0e71b52c96a2a5a3281aeed210ae6e1d90"
+      ]
+    }
+  },
+  {
+    "asset": "BG-CRANE",
+    "review": {
+      "id": "BG-CRANE",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.595207+00:00",
+      "levelSHA256": [
+        "988917110226e797d0466d8669118ac4ea66ef208c6d80717080c4dc6a684a55",
+        "bd4dbce7f84764dbf10c6f8e284ed748c55a319be37facd6effb71812978524d",
+        "ca6a8dace6b273f73318e76bc209ec73dfd090cd075c6970c13efbda96b3f452"
+      ]
+    }
+  },
+  {
+    "asset": "BG-HEAT",
+    "review": {
+      "id": "BG-HEAT",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.597754+00:00",
+      "levelSHA256": [
+        "eb3452143786ad8636ac015800d3e109f5edc4a755a21d5f3d71cb5a111cc422",
+        "aa857ebe94b8cd45ee5accfd1446f94e8cbd91f8991bcaaf8f0764cfa8366d84",
+        "b816fa8ba4fe04998a3c34f1f105a1432ecf119203143f490cd04aad9cbd04ab"
+      ]
+    }
+  },
+  {
+    "asset": "BG-SHIP",
+    "review": {
+      "id": "BG-SHIP",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.602263+00:00",
+      "levelSHA256": [
+        "a429963bf4fe839581953a26e986156d61c3b50f6cb77e3022515f0fcf61681d",
+        "3a17bf9b2728221b36bb9fd664b84eda2db9a2d0d642e645c05c555887177c36",
+        "d3bb05eda74812ca85e2602658b824baf0d8121001bc332c891962a4fc9be176"
+      ]
+    }
+  },
+  {
+    "asset": "ENV-BRIDGEKIT-DECK",
+    "review": {
+      "id": "ENV-BRIDGEKIT-DECK",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.602686+00:00",
+      "levelSHA256": [
+        "7e9a3ea7cc0ead1f3133e1c9d9d7eb76c6ebb3850ff101be84e45f816a893d3a",
+        "6202d29a2d08d51cfcf26c1ffbf76efee1705a125a12911525d5006bdef86abc",
+        "53c145752dc076f8d27d4e3633db5690094a67796147df63eea2f3a45fd7f0ec"
+      ]
+    }
+  },
+  {
+    "asset": "ENV-LIGHTKIT-POLE",
+    "review": {
+      "id": "ENV-LIGHTKIT-POLE",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.602893+00:00",
+      "levelSHA256": [
+        "682ee4c3cc2db2bf9998d796dad27ae6a54884b5bcee0038b2ef26c008657e70",
+        "7270d5afd0418588bcc9577a5aec5cc0b985141903252dda80a2f43c5e58a1e3",
+        "3b3456ad09d5596207a3b94b4e52708d93e4d6e32087d3c346baa0b9ca87b794"
+      ]
+    }
+  },
+  {
+    "asset": "ENV-PIPEKIT-ELBOW",
+    "review": {
+      "id": "ENV-PIPEKIT-ELBOW",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.603332+00:00",
+      "levelSHA256": [
+        "ab440b57ba514d7aad5160e0cc005c17d472f1b07c784d3b64b8dd64e0662523",
+        "4783374a3d1b36496f9ed848739753115ca57fbbcaab5efd44acef8f268633d8",
+        "bae65e52c523cc65968cf31bbae266a0332886ebf24531f1292ccf5110f9dcd8"
+      ]
+    }
+  },
+  {
+    "asset": "ENV-PIPEKIT-STRAIGHT",
+    "review": {
+      "id": "ENV-PIPEKIT-STRAIGHT",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.603661+00:00",
+      "levelSHA256": [
+        "b8c1f188db65ed1d21e0e2822dad24d881e939a6a1fc4742c5dde65d92705a50",
+        "7a5d1953c56f342ef84d65478c14e53fd98cb8524edd5e37e33716530a0f86c6",
+        "5ad088f2d100a2a8e663de08666d8a944519c89dcb5c0249f1956c18ea06acc3"
+      ]
+    }
+  },
+  {
+    "asset": "ENV-WALLKIT-PANEL",
+    "review": {
+      "id": "ENV-WALLKIT-PANEL",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.603974+00:00",
+      "levelSHA256": [
+        "8a6dd7947bff0da1fc267362d06fc1d60e8e79b3ea1495b4b1d7cbd805d12d0f",
+        "b318e09958643246dc3b9986f31de4c2c3d8b2675845a44ba276ebab874f1518",
+        "33f71e690976721bc491ae2acd504de6fe294e4eb5dec63a46016e6fa76de0b5"
+      ]
+    }
+  },
+  {
+    "asset": "MAP-A-ARCH-01",
+    "review": {
+      "id": "MAP-A-ARCH-01",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.604141+00:00",
+      "levelSHA256": [
+        "c1d27aa0882a093d974bd280b08214bae606083a8cb41100cc278c92f7348981",
+        "93454cd9bffa1af34a6e1754efb3b0f33a79cb91cf5d71e8626e329ba91e33d6",
+        "3eef58a082c6a7773e2f9b4d58fd99f719eb572798731b65dbf13f15a70de117"
+      ]
+    }
+  },
+  {
+    "asset": "MAP-B-CORRIDOR-01",
+    "review": {
+      "id": "MAP-B-CORRIDOR-01",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.604345+00:00",
+      "levelSHA256": [
+        "29dfe65de0a950db2cb7897d4683a13fad9f26125ebe6c988d7b222b631a8d3e",
+        "cc00ff266686acdb561d8510b5370a5488b3a74fe32560288b27935845487dc5",
+        "e7a05030bf708fe479d4716b2caec1689e8641607f0c779db719203cb7ff3799"
+      ]
+    }
+  },
+  {
+    "asset": "MAP-C-FACADE-01",
+    "review": {
+      "id": "MAP-C-FACADE-01",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.604550+00:00",
+      "levelSHA256": [
+        "2349f04bb17ed4f81c197b3ae4b040cfa287040922c2e64bacc81ea7a22b5d25",
+        "fef65b621163f5b8c8cd05be01464b4fb62cfe4314b194215a0b614d5da65cd1",
+        "7305cce7c7551481417e379ffff9c971ed2b9c3111d4219425c823ff68ed5a72"
+      ]
+    }
+  },
+  {
+    "asset": "MAP-C-ICEBANK-01",
+    "review": {
+      "id": "MAP-C-ICEBANK-01",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.604792+00:00",
+      "levelSHA256": [
+        "bd81511d0598d5b4ef9c690d9b0db4b3883387022dd4dae209439349ca9bf050",
+        "60f2afa9ae2fab86e8bff3ef5a61d3bc050c2956c2d1050989e60feb41452651",
+        "3dc25ecb573a237ec6c3a4cb635e1b4feb89c2e98c291372192976c876a1e75e"
+      ]
+    }
+  },
+  {
+    "asset": "MAP-E-PIER-01",
+    "review": {
+      "id": "MAP-E-PIER-01",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Back image exists but has not been individually accepted in this review.",
+        "The pier preview clips part of its top; full-object close-up remains to be checked."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.605007+00:00",
+      "levelSHA256": [
+        "6a81dfd5f3c0c38787acf38014af579173a1f8be0719d25111afef48f9b5756e",
+        "695504a8833ee7fda721aa06b1c5f5152546dea89f4c324e4c2beb11fd196b43",
+        "ea75e08b955c2250993b9e82a6e1eca0f40b4d6a0a8970b022f331c542cdf9f7"
+      ]
+    }
+  },
+  {
+    "asset": "MAP-F-ROOF-01",
+    "review": {
+      "id": "MAP-F-ROOF-01",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.605298+00:00",
+      "levelSHA256": [
+        "a574967cda96f4a2865ec6ac9703a02ab5ff83372f182b9e6a499677877423d6",
+        "4cf80c94c3aba357078e3cb9b5d7939a10d3ee23d8423481749a0a1234649a72",
+        "6621b5fd754a9956df86c9ff8e3dc58999b5cc5be6b817cb9b2ebd329cb0bf7e"
+      ]
+    }
+  },
+  {
+    "asset": "PROP-BOOTH",
+    "review": {
+      "id": "PROP-BOOTH",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.605498+00:00",
+      "levelSHA256": [
+        "d1786fc792731127f7ff345f0b205b9cae6100d4c4f33d00f30882ad5dfa53d7",
+        "7d9295d4551b99373143415446d2ec37f981caa95188f149a254a363391abc7f",
+        "9b9da23b63f3d1fb475c7392f329bfb69a8ef5181792547fca740017a46abb4e"
+      ]
+    }
+  },
+  {
+    "asset": "PROP-TANK",
+    "review": {
+      "id": "PROP-TANK",
+      "result": "front-view-offline-material-and-silhouette-review-passed",
+      "evidence": [
+        "front.png"
+      ],
+      "algorithm": "Locked UV seams and borders; UV error weights 10. Targets are soft; actual triangle counts prevail.",
+      "notes": "No UV streaking or major outline collapse in the inspected front three-quarter view. Complex assets retain more triangles to preserve texture islands.",
+      "limitations": [
+        "Offline single view only; no runtime/GPU/collision/navigation acceptance."
+      ],
+      "reviewedAt": "2026-10-31T07:38:41.606287+00:00",
+      "levelSHA256": [
+        "52cc47b314a1bcb4ea88da5038be5a94a0492612b505e621d7b9d415fe392e3a",
+        "dd3d830b2657f7e8d03133a897a64f31c6b7deeb70e6de235e096c369507b70b",
+        "597c231c39287af1cb3e50a2734ab392f8a96142718612e4fe6ab49149320939"
+      ]
+    }
+  }
+]

@@ -1,0 +1,132 @@
+{
+  "status": "integrated-candidate-not-browser-accepted",
+  "frozenAtLocal": "2026-10-31 16:32 Asia/Shanghai",
+  "entry": "src/presentation/GeneratedArchitecture.ts",
+  "constructor": "new GeneratedArchitecture(library, { parent, scenario, baseURL, onStatus? })",
+  "methods": [
+    "ready: Promise<readonly ArchitectureStatus[]>",
+    "update(cameraPosition?: Vector3)",
+    "getStatus()",
+    "coverage()",
+    "dispose()"
+  ],
+  "statusType": "ArchitectureStatus { id, state: pending|loading|ready|error|cancelled, error?, placements?, drawBatches? }",
+  "assetCount": 22,
+  "sourceCount": 66,
+  "bytes": 62655080,
+  "assetCoverage": {
+    "ARCH-BEAM-STEEL": [
+      "frontgate",
+      "transfer"
+    ],
+    "ARCH-CARGO-CONTAINER": [
+      "frontgate",
+      "transfer"
+    ],
+    "ARCH-COVER-CONCRETE": [
+      "frontgate",
+      "transfer"
+    ],
+    "ARCH-FLOOR-METAL": [
+      "frontgate",
+      "medical",
+      "transfer"
+    ],
+    "ARCH-ROOF-METAL": [
+      "frontgate",
+      "medical",
+      "transfer"
+    ],
+    "ARCH-WALL-PAINT": [
+      "frontgate",
+      "medical",
+      "transfer"
+    ],
+    "BG-CRANE": [
+      "frontgate",
+      "transfer"
+    ],
+    "BG-HEAT": [
+      "frontgate",
+      "transfer"
+    ],
+    "BG-SHIP": [
+      "epilogue"
+    ],
+    "ENV-BRIDGEKIT-DECK": [
+      "escort"
+    ],
+    "ENV-LIGHTKIT-POLE": [
+      "frontgate",
+      "transfer"
+    ],
+    "ENV-PIPEKIT-ELBOW": [
+      "frontgate",
+      "transfer"
+    ],
+    "ENV-PIPEKIT-STRAIGHT": [
+      "frontgate",
+      "transfer"
+    ],
+    "ENV-WALLKIT-PANEL": [
+      "frontgate",
+      "transfer"
+    ],
+    "MAP-A-ARCH-01": [
+      "childhood"
+    ],
+    "MAP-B-CORRIDOR-01": [
+      "transfer"
+    ],
+    "MAP-C-FACADE-01": [
+      "frontgate",
+      "transfer"
+    ],
+    "MAP-C-ICEBANK-01": [
+      "frontgate",
+      "transfer"
+    ],
+    "MAP-E-PIER-01": [
+      "escort"
+    ],
+    "MAP-F-ROOF-01": [
+      "epilogue"
+    ],
+    "PROP-BOOTH": [
+      "frontgate",
+      "transfer"
+    ],
+    "PROP-TANK": [
+      "frontgate",
+      "transfer"
+    ]
+  },
+  "validation": {
+    "focusedTests": 14,
+    "failed": 0,
+    "durationSeconds": 5.8,
+    "typecheck": "passed",
+    "productionBuild": "not run",
+    "browserWebGL": "not run",
+    "images": "decode mocked in tests",
+    "originalSolids": "JSON unchanged in all six parsed environments"
+  },
+  "sourceEvidence": [
+    "source-hashes.json",
+    "production-reviews.json",
+    "runtime-checks.json",
+    "test-output.txt"
+  ],
+  "integrationOwnerMust": [
+    "Attach to PreparedGameLevel and await readiness",
+    "Call update with camera world position",
+    "Dispose before environment generic traversal",
+    "Review actual framing, seams, occlusion, textures, and runtime cost"
+  ],
+  "limitations": [
+    "All 22 models are mounted in real scenario trees, not visually accepted gameplay",
+    "Remaining S05/S11 procedural scopes recorded in runtime-checks",
+    "S02 and S07 bindings declared but not independently real-GLB tested",
+    "No publishing or Git commits by architecture worker"
+  ]
+}

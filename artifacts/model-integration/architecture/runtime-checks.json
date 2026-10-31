@@ -1,0 +1,2102 @@
+{
+  "scope": "Real GLB node/index/attribute/material parsing, image decode mocked; no WebGL/browser/visual/performance acceptance",
+  "uniqueAssets": 22,
+  "uniqueSourcesParsed": 66,
+  "actualScenarios": [
+    {
+      "scenario": "frontgate",
+      "statuses": [
+        {
+          "id": "S05-ground",
+          "state": "ready",
+          "placements": 999,
+          "drawBatches": 60
+        },
+        {
+          "id": "S05-boundaries",
+          "state": "ready",
+          "placements": 82,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-worker-screens",
+          "state": "ready",
+          "placements": 100,
+          "drawBatches": 6
+        },
+        {
+          "id": "S05-workshop-repair",
+          "state": "ready",
+          "placements": 60,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-workshop-north-west",
+          "state": "ready",
+          "placements": 52,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-workshop-north-east",
+          "state": "ready",
+          "placements": 72,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-workshop-east-long",
+          "state": "ready",
+          "placements": 138,
+          "drawBatches": 18
+        },
+        {
+          "id": "S05-workshop-weigh-booth-building",
+          "state": "ready",
+          "placements": 52,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-workshop-rear-building",
+          "state": "ready",
+          "placements": 66,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-main-gate-structure",
+          "state": "ready",
+          "placements": 67,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-pipelines",
+          "state": "ready",
+          "placements": 46,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-ice-silhouette",
+          "state": "ready",
+          "placements": 11,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-far-heat-trio",
+          "state": "ready",
+          "placements": 3,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-freight-containers",
+          "state": "ready",
+          "placements": 4,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-cover",
+          "state": "ready",
+          "placements": 19,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-far-facades",
+          "state": "ready",
+          "placements": 3,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-pipe-return-elbow",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-external-inspection-booth",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-secondary-tank",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-north-lamp",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-dock-crane",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        }
+      ],
+      "sourceCount": 48,
+      "placements": 1779,
+      "sourceIds": [
+        "ARCH-FLOOR-METAL:lod0",
+        "ARCH-FLOOR-METAL:lod1",
+        "ARCH-FLOOR-METAL:lod2",
+        "ENV-WALLKIT-PANEL:lod0",
+        "ENV-WALLKIT-PANEL:lod1",
+        "ENV-WALLKIT-PANEL:lod2",
+        "ARCH-WALL-PAINT:lod0",
+        "ARCH-WALL-PAINT:lod1",
+        "ARCH-WALL-PAINT:lod2",
+        "ARCH-ROOF-METAL:lod0",
+        "ARCH-ROOF-METAL:lod1",
+        "ARCH-ROOF-METAL:lod2",
+        "ARCH-BEAM-STEEL:lod0",
+        "ARCH-BEAM-STEEL:lod1",
+        "ARCH-BEAM-STEEL:lod2",
+        "ENV-PIPEKIT-STRAIGHT:lod0",
+        "ENV-PIPEKIT-STRAIGHT:lod1",
+        "ENV-PIPEKIT-STRAIGHT:lod2",
+        "MAP-C-ICEBANK-01:lod0",
+        "MAP-C-ICEBANK-01:lod1",
+        "MAP-C-ICEBANK-01:lod2",
+        "BG-HEAT:lod0",
+        "BG-HEAT:lod1",
+        "BG-HEAT:lod2",
+        "ARCH-CARGO-CONTAINER:lod0",
+        "ARCH-CARGO-CONTAINER:lod1",
+        "ARCH-CARGO-CONTAINER:lod2",
+        "ARCH-COVER-CONCRETE:lod0",
+        "ARCH-COVER-CONCRETE:lod1",
+        "ARCH-COVER-CONCRETE:lod2",
+        "MAP-C-FACADE-01:lod0",
+        "MAP-C-FACADE-01:lod1",
+        "MAP-C-FACADE-01:lod2",
+        "ENV-PIPEKIT-ELBOW:lod0",
+        "ENV-PIPEKIT-ELBOW:lod1",
+        "ENV-PIPEKIT-ELBOW:lod2",
+        "PROP-BOOTH:lod0",
+        "PROP-BOOTH:lod1",
+        "PROP-BOOTH:lod2",
+        "PROP-TANK:lod0",
+        "PROP-TANK:lod1",
+        "PROP-TANK:lod2",
+        "ENV-LIGHTKIT-POLE:lod0",
+        "ENV-LIGHTKIT-POLE:lod1",
+        "ENV-LIGHTKIT-POLE:lod2",
+        "BG-CRANE:lod0",
+        "BG-CRANE:lod1",
+        "BG-CRANE:lod2"
+      ],
+      "ownedDrawBatches": 198,
+      "unchangedSolids": true,
+      "fallbackTargets": [
+        {
+          "id": "S05-ground",
+          "targets": [
+            {
+              "name": "port-ground"
+            }
+          ]
+        },
+        {
+          "id": "S05-boundaries",
+          "targets": [
+            {
+              "name": "static-box-concrete-true",
+              "indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-worker-screens",
+          "targets": [
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-repair",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                10
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                17
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-north-west",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                13
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                50
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-north-east",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                14
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                59
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-east-long",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                15
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                68
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-weigh-booth-building",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                16
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                84
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-rear-building",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                17
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                121
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-main-gate-structure",
+          "targets": [
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                173,
+                174,
+                238,
+                239,
+                231,
+                232
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                82,
+                119,
+                100
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-pipelines",
+          "targets": [
+            {
+              "name": "static-cylinder-amber-true",
+              "indices": [
+                2
+              ]
+            },
+            {
+              "name": "static-cylinder-pale-true",
+              "indices": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-ice-silhouette",
+          "targets": [
+            {
+              "name": "static-cone-ice-false",
+              "indices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-far-heat-trio",
+          "targets": [
+            {
+              "name": "static-box-paint-false",
+              "indices": [
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "name": "static-box-pale-false",
+              "indices": [
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "name": "static-cylinder-steel-true",
+              "indices": [
+                0,
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-freight-containers",
+          "targets": [
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                192,
+                193,
+                194,
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224,
+                225,
+                226,
+                227,
+                228,
+                229,
+                230
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                94,
+                95,
+                96,
+                97,
+                98
+              ]
+            },
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                11,
+                12
+              ]
+            },
+            {
+              "name": "static-box-amber-false",
+              "indices": [
+                56,
+                57,
+                58,
+                151
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-cover",
+          "targets": [
+            {
+              "name": "static-box-concrete-true",
+              "indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+              ]
+            },
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                167,
+                168,
+                169,
+                170,
+                171,
+                172,
+                188,
+                189,
+                190,
+                191,
+                233,
+                234,
+                235,
+                236,
+                237
+              ]
+            },
+            {
+              "name": "static-box-rubber-true",
+              "indices": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+              ]
+            },
+            {
+              "name": "static-box-amber-false",
+              "indices": [
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                135,
+                136,
+                137,
+                138,
+                139,
+                140,
+                141,
+                142,
+                143,
+                144,
+                145,
+                146,
+                147,
+                148,
+                149,
+                150,
+                152,
+                153,
+                154,
+                155,
+                156,
+                157,
+                158,
+                159,
+                160,
+                161,
+                162,
+                163,
+                164,
+                165,
+                166,
+                167,
+                168,
+                169,
+                170,
+                171,
+                172,
+                173,
+                174,
+                175,
+                176,
+                177,
+                178,
+                179,
+                180,
+                181,
+                182,
+                183,
+                184,
+                185,
+                186,
+                187,
+                188,
+                189,
+                190,
+                191,
+                192,
+                193,
+                194
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-far-facades",
+          "targets": []
+        },
+        {
+          "id": "S05-pipe-return-elbow",
+          "targets": []
+        },
+        {
+          "id": "S05-external-inspection-booth",
+          "targets": []
+        },
+        {
+          "id": "S05-secondary-tank",
+          "targets": [
+            {
+              "name": "static-box-concrete-true",
+              "indices": [
+                21
+              ]
+            },
+            {
+              "name": "static-cylinder-steel-true",
+              "indices": [
+                20,
+                21,
+                22,
+                23
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                101,
+                102,
+                103,
+                104,
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116
+              ]
+            },
+            {
+              "name": "static-cylinder-pale-true",
+              "indices": [
+                1
+              ]
+            },
+            {
+              "name": "static-cylinder-amber-true",
+              "indices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-north-lamp",
+          "targets": [
+            {
+              "name": "static-cylinder-steel-true",
+              "indices": [
+                12
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                27
+              ]
+            },
+            {
+              "name": "static-box-signal-false",
+              "indices": [
+                11
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-dock-crane",
+          "targets": []
+        }
+      ],
+      "uncoveredVisualScopes": 39
+    },
+    {
+      "scenario": "medical",
+      "statuses": [
+        {
+          "id": "S11-ground",
+          "state": "ready",
+          "placements": 143,
+          "drawBatches": 12
+        },
+        {
+          "id": "S11-walls",
+          "state": "ready",
+          "placements": 417,
+          "drawBatches": 30
+        },
+        {
+          "id": "S11-ceiling",
+          "state": "ready",
+          "placements": 90,
+          "drawBatches": 12
+        }
+      ],
+      "sourceCount": 9,
+      "placements": 650,
+      "sourceIds": [
+        "ARCH-FLOOR-METAL:lod0",
+        "ARCH-FLOOR-METAL:lod1",
+        "ARCH-FLOOR-METAL:lod2",
+        "ARCH-WALL-PAINT:lod0",
+        "ARCH-WALL-PAINT:lod1",
+        "ARCH-WALL-PAINT:lod2",
+        "ARCH-ROOF-METAL:lod0",
+        "ARCH-ROOF-METAL:lod1",
+        "ARCH-ROOF-METAL:lod2"
+      ],
+      "ownedDrawBatches": 54,
+      "unchangedSolids": true,
+      "fallbackTargets": [
+        {
+          "id": "S11-ground",
+          "targets": [
+            {
+              "name": "port-ground"
+            }
+          ]
+        },
+        {
+          "id": "S11-walls",
+          "targets": [
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5
+              ]
+            },
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                0
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S11-ceiling",
+          "targets": [
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                6
+              ]
+            }
+          ]
+        }
+      ],
+      "uncoveredVisualScopes": 18
+    },
+    {
+      "scenario": "childhood",
+      "statuses": [
+        {
+          "id": "S01-S02-entry-arch-crown",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        }
+      ],
+      "sourceCount": 3,
+      "placements": 1,
+      "sourceIds": [
+        "MAP-A-ARCH-01:lod0",
+        "MAP-A-ARCH-01:lod1",
+        "MAP-A-ARCH-01:lod2"
+      ],
+      "ownedDrawBatches": 3,
+      "unchangedSolids": true,
+      "fallbackTargets": [
+        {
+          "id": "S01-S02-entry-arch-crown",
+          "targets": []
+        }
+      ],
+      "uncoveredVisualScopes": 53
+    },
+    {
+      "scenario": "transfer",
+      "statuses": [
+        {
+          "id": "S05-ground",
+          "state": "ready",
+          "placements": 999,
+          "drawBatches": 60
+        },
+        {
+          "id": "S05-boundaries",
+          "state": "ready",
+          "placements": 82,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-worker-screens",
+          "state": "ready",
+          "placements": 100,
+          "drawBatches": 6
+        },
+        {
+          "id": "S05-workshop-repair",
+          "state": "ready",
+          "placements": 60,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-workshop-north-west",
+          "state": "ready",
+          "placements": 52,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-workshop-north-east",
+          "state": "ready",
+          "placements": 72,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-workshop-east-long",
+          "state": "ready",
+          "placements": 138,
+          "drawBatches": 18
+        },
+        {
+          "id": "S05-workshop-weigh-booth-building",
+          "state": "ready",
+          "placements": 52,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-workshop-rear-building",
+          "state": "ready",
+          "placements": 66,
+          "drawBatches": 15
+        },
+        {
+          "id": "S05-main-gate-structure",
+          "state": "ready",
+          "placements": 67,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-pipelines",
+          "state": "ready",
+          "placements": 46,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-ice-silhouette",
+          "state": "ready",
+          "placements": 11,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-far-heat-trio",
+          "state": "ready",
+          "placements": 3,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-freight-containers",
+          "state": "ready",
+          "placements": 4,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-cover",
+          "state": "ready",
+          "placements": 19,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-far-facades",
+          "state": "ready",
+          "placements": 3,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-pipe-return-elbow",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-external-inspection-booth",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-secondary-tank",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-north-lamp",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S05-dock-crane",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S06-S07-cargo-corridor",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        }
+      ],
+      "sourceCount": 51,
+      "placements": 1780,
+      "sourceIds": [
+        "ARCH-FLOOR-METAL:lod0",
+        "ARCH-FLOOR-METAL:lod1",
+        "ARCH-FLOOR-METAL:lod2",
+        "ENV-WALLKIT-PANEL:lod0",
+        "ENV-WALLKIT-PANEL:lod1",
+        "ENV-WALLKIT-PANEL:lod2",
+        "ARCH-WALL-PAINT:lod0",
+        "ARCH-WALL-PAINT:lod1",
+        "ARCH-WALL-PAINT:lod2",
+        "ARCH-ROOF-METAL:lod0",
+        "ARCH-ROOF-METAL:lod1",
+        "ARCH-ROOF-METAL:lod2",
+        "ARCH-BEAM-STEEL:lod0",
+        "ARCH-BEAM-STEEL:lod1",
+        "ARCH-BEAM-STEEL:lod2",
+        "ENV-PIPEKIT-STRAIGHT:lod0",
+        "ENV-PIPEKIT-STRAIGHT:lod1",
+        "ENV-PIPEKIT-STRAIGHT:lod2",
+        "MAP-C-ICEBANK-01:lod0",
+        "MAP-C-ICEBANK-01:lod1",
+        "MAP-C-ICEBANK-01:lod2",
+        "BG-HEAT:lod0",
+        "BG-HEAT:lod1",
+        "BG-HEAT:lod2",
+        "ARCH-CARGO-CONTAINER:lod0",
+        "ARCH-CARGO-CONTAINER:lod1",
+        "ARCH-CARGO-CONTAINER:lod2",
+        "ARCH-COVER-CONCRETE:lod0",
+        "ARCH-COVER-CONCRETE:lod1",
+        "ARCH-COVER-CONCRETE:lod2",
+        "MAP-C-FACADE-01:lod0",
+        "MAP-C-FACADE-01:lod1",
+        "MAP-C-FACADE-01:lod2",
+        "ENV-PIPEKIT-ELBOW:lod0",
+        "ENV-PIPEKIT-ELBOW:lod1",
+        "ENV-PIPEKIT-ELBOW:lod2",
+        "PROP-BOOTH:lod0",
+        "PROP-BOOTH:lod1",
+        "PROP-BOOTH:lod2",
+        "PROP-TANK:lod0",
+        "PROP-TANK:lod1",
+        "PROP-TANK:lod2",
+        "ENV-LIGHTKIT-POLE:lod0",
+        "ENV-LIGHTKIT-POLE:lod1",
+        "ENV-LIGHTKIT-POLE:lod2",
+        "BG-CRANE:lod0",
+        "BG-CRANE:lod1",
+        "BG-CRANE:lod2",
+        "MAP-B-CORRIDOR-01:lod0",
+        "MAP-B-CORRIDOR-01:lod1",
+        "MAP-B-CORRIDOR-01:lod2"
+      ],
+      "ownedDrawBatches": 201,
+      "unchangedSolids": true,
+      "fallbackTargets": [
+        {
+          "id": "S05-ground",
+          "targets": [
+            {
+              "name": "port-ground"
+            }
+          ]
+        },
+        {
+          "id": "S05-boundaries",
+          "targets": [
+            {
+              "name": "static-box-concrete-true",
+              "indices": [
+                0,
+                1,
+                2,
+                3
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-worker-screens",
+          "targets": [
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-repair",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                10
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                17
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-north-west",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                13
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                50
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-north-east",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                14
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                59
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-east-long",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                15
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                68
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-weigh-booth-building",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                16
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                84
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-workshop-rear-building",
+          "targets": [
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                17
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                121
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-main-gate-structure",
+          "targets": [
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                173,
+                174,
+                238,
+                239,
+                231,
+                232
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                82,
+                119,
+                100
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-pipelines",
+          "targets": [
+            {
+              "name": "static-cylinder-amber-true",
+              "indices": [
+                2
+              ]
+            },
+            {
+              "name": "static-cylinder-pale-true",
+              "indices": [
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-ice-silhouette",
+          "targets": [
+            {
+              "name": "static-cone-ice-false",
+              "indices": [
+                0,
+                1,
+                2,
+                3,
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                10
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-far-heat-trio",
+          "targets": [
+            {
+              "name": "static-box-paint-false",
+              "indices": [
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "name": "static-box-pale-false",
+              "indices": [
+                0,
+                1,
+                2
+              ]
+            },
+            {
+              "name": "static-cylinder-steel-true",
+              "indices": [
+                0,
+                1,
+                2
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-freight-containers",
+          "targets": [
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                19,
+                20,
+                21,
+                22,
+                23,
+                24,
+                25,
+                26,
+                27,
+                28,
+                29,
+                30,
+                31,
+                32,
+                33,
+                34,
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                50,
+                51,
+                52,
+                53,
+                54,
+                55,
+                56,
+                57,
+                58,
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                192,
+                193,
+                194,
+                195,
+                196,
+                197,
+                198,
+                199,
+                200,
+                201,
+                202,
+                203,
+                204,
+                205,
+                206,
+                207,
+                208,
+                209,
+                210,
+                211,
+                212,
+                213,
+                214,
+                215,
+                216,
+                217,
+                218,
+                219,
+                220,
+                221,
+                222,
+                223,
+                224,
+                225,
+                226,
+                227,
+                228,
+                229,
+                230
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                35,
+                36,
+                37,
+                38,
+                39,
+                40,
+                41,
+                42,
+                43,
+                44,
+                45,
+                46,
+                47,
+                48,
+                49,
+                94,
+                95,
+                96,
+                97,
+                98
+              ]
+            },
+            {
+              "name": "static-box-paint-true",
+              "indices": [
+                11,
+                12
+              ]
+            },
+            {
+              "name": "static-box-amber-false",
+              "indices": [
+                56,
+                57,
+                58,
+                151
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-cover",
+          "targets": [
+            {
+              "name": "static-box-concrete-true",
+              "indices": [
+                5,
+                6,
+                7,
+                8,
+                9,
+                10,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+              ]
+            },
+            {
+              "name": "static-box-pale-true",
+              "indices": [
+                167,
+                168,
+                169,
+                170,
+                171,
+                172,
+                188,
+                189,
+                190,
+                191,
+                233,
+                234,
+                235,
+                236,
+                237
+              ]
+            },
+            {
+              "name": "static-box-rubber-true",
+              "indices": [
+                4,
+                5,
+                6,
+                7,
+                8,
+                9,
+                11,
+                12,
+                13,
+                14,
+                15,
+                16,
+                17,
+                18,
+                19
+              ]
+            },
+            {
+              "name": "static-box-amber-false",
+              "indices": [
+                59,
+                60,
+                61,
+                62,
+                63,
+                64,
+                65,
+                66,
+                67,
+                68,
+                69,
+                70,
+                71,
+                72,
+                73,
+                74,
+                75,
+                76,
+                77,
+                78,
+                79,
+                80,
+                81,
+                82,
+                83,
+                84,
+                85,
+                86,
+                87,
+                88,
+                89,
+                90,
+                91,
+                92,
+                93,
+                94,
+                95,
+                96,
+                97,
+                98,
+                99,
+                100,
+                101,
+                102,
+                103,
+                104,
+                105,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116,
+                117,
+                118,
+                119,
+                120,
+                121,
+                122,
+                123,
+                124,
+                125,
+                126,
+                127,
+                128,
+                129,
+                130,
+                131,
+                132,
+                133,
+                134,
+                135,
+                136,
+                137,
+                138,
+                139,
+                140,
+                141,
+                142,
+                143,
+                144,
+                145,
+                146,
+                147,
+                148,
+                149,
+                150,
+                152,
+                153,
+                154,
+                155,
+                156,
+                157,
+                158,
+                159,
+                160,
+                161,
+                162,
+                163,
+                164,
+                165,
+                166,
+                167,
+                168,
+                169,
+                170,
+                171,
+                172,
+                173,
+                174,
+                175,
+                176,
+                177,
+                178,
+                179,
+                180,
+                181,
+                182,
+                183,
+                184,
+                185,
+                186,
+                187,
+                188,
+                189,
+                190,
+                191,
+                192,
+                193,
+                194
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-far-facades",
+          "targets": []
+        },
+        {
+          "id": "S05-pipe-return-elbow",
+          "targets": []
+        },
+        {
+          "id": "S05-external-inspection-booth",
+          "targets": []
+        },
+        {
+          "id": "S05-secondary-tank",
+          "targets": [
+            {
+              "name": "static-box-concrete-true",
+              "indices": [
+                21
+              ]
+            },
+            {
+              "name": "static-cylinder-steel-true",
+              "indices": [
+                20,
+                21,
+                22,
+                23
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                101,
+                102,
+                103,
+                104,
+                105,
+                106,
+                107,
+                108,
+                109,
+                110,
+                111,
+                112,
+                113,
+                114,
+                115,
+                116
+              ]
+            },
+            {
+              "name": "static-cylinder-pale-true",
+              "indices": [
+                1
+              ]
+            },
+            {
+              "name": "static-cylinder-amber-true",
+              "indices": [
+                1
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-north-lamp",
+          "targets": [
+            {
+              "name": "static-cylinder-steel-true",
+              "indices": [
+                12
+              ]
+            },
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                27
+              ]
+            },
+            {
+              "name": "static-box-signal-false",
+              "indices": [
+                11
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S05-dock-crane",
+          "targets": []
+        },
+        {
+          "id": "S06-S07-cargo-corridor",
+          "targets": []
+        }
+      ],
+      "uncoveredVisualScopes": 52
+    },
+    {
+      "scenario": "escort",
+      "statuses": [
+        {
+          "id": "S08-bridge-subdecks",
+          "state": "ready",
+          "placements": 60,
+          "drawBatches": 3
+        },
+        {
+          "id": "S08-bridge-piers",
+          "state": "ready",
+          "placements": 12,
+          "drawBatches": 3
+        }
+      ],
+      "sourceCount": 6,
+      "placements": 72,
+      "sourceIds": [
+        "ENV-BRIDGEKIT-DECK:lod0",
+        "ENV-BRIDGEKIT-DECK:lod1",
+        "ENV-BRIDGEKIT-DECK:lod2",
+        "MAP-E-PIER-01:lod0",
+        "MAP-E-PIER-01:lod1",
+        "MAP-E-PIER-01:lod2"
+      ],
+      "ownedDrawBatches": 6,
+      "unchangedSolids": true,
+      "fallbackTargets": [
+        {
+          "id": "S08-bridge-subdecks",
+          "targets": []
+        },
+        {
+          "id": "S08-bridge-piers",
+          "targets": []
+        }
+      ],
+      "uncoveredVisualScopes": 32
+    },
+    {
+      "scenario": "epilogue",
+      "statuses": [
+        {
+          "id": "S12-receiving-warehouse-roof",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        },
+        {
+          "id": "S12-offshore-receiving-ship",
+          "state": "ready",
+          "placements": 1,
+          "drawBatches": 3
+        }
+      ],
+      "sourceCount": 6,
+      "placements": 2,
+      "sourceIds": [
+        "MAP-F-ROOF-01:lod0",
+        "MAP-F-ROOF-01:lod1",
+        "MAP-F-ROOF-01:lod2",
+        "BG-SHIP:lod0",
+        "BG-SHIP:lod1",
+        "BG-SHIP:lod2"
+      ],
+      "ownedDrawBatches": 6,
+      "unchangedSolids": true,
+      "fallbackTargets": [
+        {
+          "id": "S12-receiving-warehouse-roof",
+          "targets": [
+            {
+              "name": "static-box-steel-true",
+              "indices": [
+                23
+              ]
+            }
+          ]
+        },
+        {
+          "id": "S12-offshore-receiving-ship",
+          "targets": []
+        }
+      ],
+      "uncoveredVisualScopes": 19
+    }
+  ],
+  "remainingS05": [
+    {
+      "entity": "worker repair shallow-vault roof, 18×14m",
+      "reason": "Existing MAP-A/MAP-F source aspect does not match shallow 18m span; requires approved shallow canopy arrangement or a dedicated module."
+    },
+    {
+      "entity": "workshop door/window/vent accessories and five remaining far buildings",
+      "reason": "Bind measured facade modules to front surfaces only; never use one facade to replace a full building cube."
+    },
+    {
+      "entity": "filterBank, racks, gate actuator/hoist, bases, screen caps/ribs, staging block",
+      "reason": "Distinct mechanical/structural visual scopes still need exact generated components; no automatic material-based guessing."
+    },
+    {
+      "entity": "weigh deck",
+      "reason": "8×22×0.12m deck needs floor tiles with measured thickness fit or dedicated bridge deck; fine scale markings remain information overlays."
+    },
+    {
+      "entity": "existing lamp/tank/tug/crane fallback LOD system",
+      "reason": "Owner must remove far-whitebox behavior and mark only real generated visuals as existing-generated; this plan does not claim their coverage automatically."
+    }
+  ],
+  "remainingS11": [
+    {
+      "entity": "37×41m shallow vaulted outer roof at y=6",
+      "reason": "MAP-F-ROOF uniform span37 gives ≈18.17m rise, unlike old ≈3.75m rise. Do not stretch it to fit; dedicated shallow-vault asset/segmentation is needed."
+    },
+    {
+      "entity": "medical-treatment-curtain and its rail",
+      "reason": "Dynamic scale.x animation must retain a dedicated curtain actor. No replacement with a static wall slab."
+    },
+    {
+      "entity": "patient carts, mattresses, wheeled mechanisms, IV stand/tube/bag",
+      "reason": "Require dedicated separated generated asset and motion ownership; architecture loader rejects animated meshes."
+    },
+    {
+      "entity": "supply lockers/bins, water table, rest-back, four desks/screens",
+      "reason": "Map exact dedicated prop IDs and measured envelopes via independent prop owner; no blanket steel-box replacement."
+    },
+    {
+      "entity": "bench version difference",
+      "reason": "Main a67757d still has a 4.5m bench collider; backup8d14c1a has two1.8m generated stools with calibrated solids. Owner must preserve the merged version and avoid reinstating the old collider."
+    },
+    {
+      "entity": "signs and three ceiling signal strips",
+      "reason": "Retain semantic text/light color overlays via declareInformation; physical lamp housings need generated bodies."
+    }
+  ]
+}

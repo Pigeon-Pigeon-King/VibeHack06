@@ -153,18 +153,22 @@ export function createCharacter(role: CharacterRole): CharacterModel {
     if (object instanceof Mesh) object.castShadow = ['torso-and-equipment', 'head-face-and-headwear', 'leg-knee-and-boot'].includes(object.name);
   });
   let disposed = false;
-  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false, crouched = false, gesture = 0, lookAway = 0, care = false, reaching = 0, restrained = false }) => {
+  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false, crouched = false, gesture = 0, lookAway = 0, care = false, reaching = 0, restrained = false, fallProgress = 1 }) => {
     const stride = Math.sin(walk) * 0.48;
-    body.position.y = down ? 0.24 : crouched ? -0.68 : kneeling ? -0.36 : Math.abs(Math.sin(walk * 2)) * 0.018;
-    body.rotation.set(down ? Math.PI / 2 : MathUtils.clamp(reaching, 0, 1) * 0.45, 0, 0);
-    head.rotation.x = down ? 0.12 : aiming ? -0.055 : 0;
+    const progress = MathUtils.clamp(Number.isFinite(fallProgress) ? fallProgress : 1, 0, 1);
+    const support = MathUtils.clamp((progress - (kneeling ? 0.12 : 0)) / (kneeling ? 0.88 : 1), 0, 1);
+    const fall = down ? support * support * (3 - 2 * support) : 0;
+    body.position.y = down ? MathUtils.lerp(kneeling ? -0.36 : 0, 0.24, fall) : crouched ? -0.68 : kneeling ? -0.36 : Math.abs(Math.sin(walk * 2)) * 0.018;
+    body.rotation.set(down ? Math.PI / 2 * fall : MathUtils.clamp(reaching, 0, 1) * 0.45, 0, 0);
+    head.rotation.x = down ? 0.12 * fall : aiming ? -0.055 : 0;
     head.rotation.y = down ? 0 : lookAway;
     for (let i = 0; i < 2; i++) {
       const sign = i === 0 ? 1 : -1;
       legs[i].position.y = hip + (crouched && !down ? 0.28 : 0);
-      legs[i].rotation.x = down ? 0.05 * sign : crouched ? 1.25 + stride * sign * 0.1 : kneeling ? 1.03 : stride * sign;
-      arms[i].rotation.set(down ? 0.35 * sign : carrying ? -1.40 : aiming && armed ? -1.18 : -stride * sign * 0.7, 0, down ? 0.25 * sign : aiming || carrying ? sign * 0.20 : sign * 0.035);
-      elbows[i].rotation.x = carrying ? -0.10 : aiming && armed ? -0.40 : -0.06;
+      legs[i].rotation.x = down ? MathUtils.lerp(kneeling ? 1.03 : 0, 0.05 * sign, fall) : crouched ? 1.25 + stride * sign * 0.1 : kneeling ? 1.03 : stride * sign;
+      arms[i].rotation.set(down ? MathUtils.lerp(restrained ? 0.7 : 0, 0.35 * sign, fall) : carrying ? -1.40 : aiming && armed ? -1.18 : -stride * sign * 0.7,
+        0, down ? MathUtils.lerp(restrained ? 0.3 * sign : sign * 0.035, 0.25 * sign, fall) : aiming || carrying ? sign * 0.20 : sign * 0.035);
+      elbows[i].rotation.x = down ? MathUtils.lerp(restrained ? -1 : -0.06, -0.06, fall) : carrying ? -0.10 : aiming && armed ? -0.40 : -0.06;
     }
     if (!armed && !down && !carrying && gesture) {
       arms[1].rotation.x -= gesture * 0.6; elbows[1].rotation.x -= gesture * 0.8;

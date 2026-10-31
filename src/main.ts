@@ -1,6 +1,10 @@
-import { ACESFilmicToneMapping, BoxGeometry, CanvasTexture, Color, ConeGeometry, FogExp2, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PCFShadowMap, PerspectiveCamera, RingGeometry, Scene, Sprite, SpriteMaterial, SRGBColorSpace, Vector3, WebGLRenderer } from 'three';
+import { ACESFilmicToneMapping, BoxGeometry, Color, ConeGeometry, FogExp2, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PCFShadowMap, PerspectiveCamera, RingGeometry, Scene, SRGBColorSpace, Vector3, WebGLRenderer } from 'three';
 import type { CharacterModel, EnvironmentModel, RunMode, ScenarioId, UiState, Vec3 } from './contracts';
-import { createImportedCharacter } from './presentation/ImportedCharacter';
+import { createImportedCharacter, type CharacterLoadStatus } from './presentation/ImportedCharacter';
+import { CharacterMotionTracker } from './presentation/CharacterMotionTracker';
+import { playerCharacterIdentity, type CharacterIdentity } from './assets/character-catalog';
+import { queryAimIdentity } from './presentation/AimIdentity';
+import { AimIdentityHUD } from './ui/AimIdentityHUD';
 import { ChapterTransition, HtmlNarrationPlayer, planCampaignEntry, planCampaignTransition, type CampaignEntryPlan, type CampaignTransitionPlan } from './chapter-transition';
 import { createGameLevel, prepareGameLevel, type PreparedGameLevel } from './chapter-transition/PreparedGameLevel';
 import { NARRATION_ASSETS, getNarrationBaseURL } from './chapter-transition/narration-assets';
@@ -34,17 +38,6 @@ import { RELIEF } from './content/relief-layout';
 import { DepartureMonitor } from './presentation/DepartureMonitor';
 import { CareView } from './presentation/CareView';
 
-function label(text: string, color = '#e4e6dd'): Sprite {
-  const canvas = document.createElement('canvas'); canvas.width = 512; canvas.height = 96;
-  const context = canvas.getContext('2d')!;
-  context.font = '500 32px system-ui, sans-serif'; context.textAlign = 'center'; context.textBaseline = 'middle';
-  context.fillStyle = 'rgba(10,22,29,0.78)'; context.fillRect(25, 12, 462, 72);
-  context.fillStyle = color; context.fillText(text, 256, 48);
-  const map = new CanvasTexture(canvas); map.colorSpace = SRGBColorSpace;
-  const sprite = new Sprite(new SpriteMaterial({ map, transparent: true, depthWrite: false }));
-  sprite.scale.set(2.8, 0.525, 1); return sprite;
-}
-function disposeLabel(sprite: Sprite): void { sprite.material.map?.dispose(); sprite.material.dispose(); }
 function carriedSupply(): Group {
   const root = new Group();
   const body = new Mesh(new BoxGeometry(0.62, 0.34, 0.42), new MeshStandardMaterial({ color: 0x668b86, roughness: 0.82 }));
@@ -66,7 +59,6 @@ type CampaignPlan = CampaignEntryPlan | CampaignTransitionPlan;
 interface PreparedCampaign { level: PreparedGameLevel; plan: CampaignPlan }
 
 export class Game {
-  private readonly aiDiagnostics = import.meta.env.DEV && new URLSearchParams(location.search).has('ai-debug');
   private presentationEpoch = 0;
   private readonly scene = new Scene();
   private readonly camera = new PerspectiveCamera(75, innerWidth / innerHeight, 0.045, 1000);
@@ -80,16 +72,17 @@ export class Game {
   private readonly supply = carriedSupply();
   private readonly heldItems = new HeldItemMotion();
   private readonly care = new CareView();
-  private readonly crowd = new CrowdView();
+  private readonly crowd = new CrowdView(64, { library: this.modelLibrary, baseURL: document.baseURI });
+  private readonly motionTracker = new CharacterMotionTracker();
   private monitor?: DepartureMonitor;
   private readonly ui: GameUI;
   private readonly objectiveIndicator: ObjectiveIndicator;
+  private readonly aimIdentity: AimIdentityHUD;
   private readonly input: Input;
   private readonly touchControls: TouchControls;
-  private readonly characters = new Map<string, { model: CharacterModel; label?: Sprite; name: string; role: string }>();
+  private readonly characters = new Map<string, { model: CharacterModel; name: string; role: string }>();
   private readonly marker = new Group();
-  private readonly markerLabel = label('目标', '#f4d49e');
-  private readonly markerMaterials: Array<{ material: MeshBasicMaterial | SpriteMaterial; opacity: number }> = [];
+  private readonly markerMaterials: Array<{ material: MeshBasicMaterial; opacity: number }> = [];
   private markerOpacity = 1;
   private environment!: EnvironmentModel;
   private level?: PreparedGameLevel;
@@ -139,9 +132,9 @@ export class Game {
     const ring = new Mesh(new RingGeometry(0.5, 0.58, 32), new MeshBasicMaterial({ color: 0xe7c782, side: 2, transparent: true, opacity: 0.8, depthWrite: false }));
     ring.rotation.x = -Math.PI / 2; ring.position.y = 0.04;
     const arrow = new Mesh(new ConeGeometry(0.16, 0.35, 4), new MeshBasicMaterial({ color: 0xe7c782, transparent: true, depthWrite: false }));
-    arrow.rotation.z = Math.PI; arrow.position.y = 2.7; this.markerLabel.position.y = 3.2;
-    this.marker.add(ring, arrow, this.markerLabel);
-    this.markerMaterials.push({ material: ring.material, opacity: 0.8 }, { material: arrow.material, opacity: 1 }, { material: this.markerLabel.material, opacity: 1 });
+    arrow.rotation.z = Math.PI; arrow.position.y = 2.7;
+    this.marker.add(ring, arrow);
+    this.markerMaterials.push({ material: ring.material, opacity: 0.8 }, { material: arrow.material, opacity: 1 });
     this.input = new Input(this.renderer.domElement, () => this.pause(), message => { this.pointerError = message; });
     try {
       this.store = new SaveStore(window.localStorage);
@@ -159,7 +152,7 @@ export class Game {
       importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
       setVolume: value => { this.sound.setVolume(value); this.narration.setVolume(this.sound.volume); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
       setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.pointerError = ''; this.persistSettings(); },
-      retryEquipment: () => this.weapon.retry(),
+      retryEquipment: () => { this.weapon.retry(); void this.weapon.retryArms(); },
     });
     this.touchControls = new TouchControls(document.querySelector('#game-ui')!, {
       move: (forward, right) => this.input.setTouchMove(forward, right),
@@ -168,6 +161,7 @@ export class Game {
       active: action => this.input.isTouchActionDown(action), pause: () => this.pause(),
     });
     this.objectiveIndicator = new ObjectiveIndicator(document.querySelector('#game-ui')!);
+    this.aimIdentity = new AimIdentityHUD(document.querySelector('#game-ui')!);
     this.narration.setVolume(this.sound.volume);
     this.transition = this.createTransition();
     this.load('nightshift');
@@ -243,14 +237,16 @@ export class Game {
     if (this.monitor) { this.scene.remove(this.monitor.screen); this.monitor.dispose(); this.monitor = undefined; }
     this.environment?.root.removeFromParent();
     this.level?.dispose();
-    for (const { model, label: tag } of this.characters.values()) { this.scene.remove(model.root); model.dispose(); if (tag) { this.scene.remove(tag); disposeLabel(tag); } }
-    this.characters.clear(); this.crowd.clear(); this.feedback.clear(); this.sound.stopTransient();
+    for (const { model } of this.characters.values()) { model.root.removeFromParent(); model.dispose(); }
+    this.aimIdentity.update(null, 0, false);
+    this.characters.clear(); this.motionTracker.clear(); this.crowd.clear(); this.feedback.clear(); this.sound.stopTransient();
     this.level = level; this.environment = level.environment; this.sim = level.sim;
     this.scene.add(this.environment.root);
     // S12 opens onto the distant arrival corridor; the combat-area haze hid
     // the incoming escorts at a few hundred metres. Restore it in other scenes.
     this.scene.fog = new FogExp2(0x677e8d, id === 'epilogue' ? 0.004 : 0.008);
     this.sound.setScene(this.presentationEpoch, this.missionAudioState());
+    void this.weapon.setCharacter(playerCharacterIdentity(id, this.sim.player.name), document.baseURI);
     if (!restored) this.speakCurrentLine();
     this.heldItems.reset(this.heldItem);
     this.monitor = monitor;
@@ -442,6 +438,7 @@ export class Game {
   private present(dt: number): void {
     const sim = this.sim, p = sim.player, m = sim.mission, objective = sim.objective;
     const active = this.mode === 'playing';
+    void this.weapon.setCharacter(playerCharacterIdentity(sim.scenario, p.name), document.baseURI);
     const sceneFrame = { scenario: sim.scenario, phase: m.phase, phaseTime: m.phaseTime, lowMotion: this.lowMotion };
     const history = openingView(sceneFrame, m.facts);
     this.camera.position.set(...sim.playerEye);
@@ -491,27 +488,21 @@ export class Game {
       let item = this.characters.get(actor.id);
       if (item && item.role !== actor.role) {
         this.scene.remove(item.model.root); item.model.dispose();
-        if (item.label) { this.scene.remove(item.label); disposeLabel(item.label); }
-        this.characters.delete(actor.id); item = undefined;
+        this.characters.delete(actor.id); this.motionTracker.remove(actor.id); this.characterAssetErrors.delete(actor.id); item = undefined;
       }
       if (!item) {
         const epoch = this.presentationEpoch;
         const crowdActor = (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
           && actor.role === 'civilian' && /^(late-civilian-|evac-crowd-|civilian-)/.test(actor.id);
-        const model = crowdActor ? this.crowd.create() : createImportedCharacter(this.modelLibrary,
-          { id: actor.id, name: actor.name, role: actor.id.startsWith('hall-invader-') ? 'enemy' : actor.role }, document.baseURI, status => {
-            if (epoch !== this.presentationEpoch) return;
-            if (status.state === 'error') this.characterAssetErrors.add(actor.id);
-            else this.characterAssetErrors.delete(actor.id);
-          });
-        const anonymous = /^(hall-invader-|hall-defender-|late-civilian-|evac-crowd-|civilian-)/.test(actor.id);
-        const tag = actor.role !== 'enemy' && !anonymous ? label(actor.name, actor.role === 'worker' ? '#efc78b' : '#c5e3dc') : undefined;
-        item = { model, label: tag, name: actor.name, role: actor.role }; this.characters.set(actor.id, item); this.scene.add(model.root); if (tag) this.scene.add(tag);
-      }
-      if (item.label && item.name !== actor.name) {
-        this.scene.remove(item.label); disposeLabel(item.label);
-        item.label = label(actor.name, actor.role === 'worker' ? '#efc78b' : '#c5e3dc'); item.name = actor.name;
-        this.scene.add(item.label);
+        const identity: CharacterIdentity = { id: actor.id, name: actor.name, role: actor.id.startsWith('hall-invader-') ? 'enemy' : actor.role };
+        const onStatus = (status: CharacterLoadStatus) => {
+          if (this.disposed || epoch !== this.presentationEpoch) return;
+          if (status.state === 'error') this.characterAssetErrors.add(actor.id);
+          else this.characterAssetErrors.delete(actor.id);
+        };
+        const model = crowdActor ? this.crowd.create(identity, onStatus)
+          : createImportedCharacter(this.modelLibrary, identity, document.baseURI, onStatus);
+        item = { model, name: actor.name, role: actor.role }; this.characters.set(actor.id, item); this.scene.add(model.root);
       }
       item.model.root.position.set(...actor.position); item.model.root.rotation.y = actor.yaw;
       if (actor.id === 'medic' && transferPatient && oldBed) {
@@ -533,9 +524,11 @@ export class Game {
         && (['father', 'evacuator', 'daughter', 'young-lu', 'zhao', 'shao'].includes(actor.id)
           || /^(hall-invader-|hall-defender-|late-civilian-|evac-crowd-)/.test(actor.id));
       const crowdHitTime = actor.id.startsWith('late-civilian-') ? openingCrowdHitTime(Number(actor.id.slice(14))) : undefined;
+      const fallProgress = this.motionTracker.fallProgress(actor.id, actor.down, m.elapsed);
+      const commander = actor.id === 'zhao' && sim.scenario === 'mainhall' && m.phase >= 4;
       item.model.setPose({ walk: actor.goals.length || actor.combat?.moving || stagedWalker ? actor.walk : 0, aiming: actor.aiming, down: actor.down,
-        fallProgress: actor.down && crowdHitTime !== undefined && sim.scenario === 'mainhall'
-          ? !sim.has('history-timeline-v2') || history.time < crowdHitTime ? 1 : (history.time - crowdHitTime) / 0.4 : undefined,
+        fallProgress: commander ? history.commanderFallProgress : actor.down && crowdHitTime !== undefined && sim.scenario === 'mainhall'
+          ? !sim.has('history-timeline-v2') || history.time < crowdHitTime ? 1 : (history.time - crowdHitTime) / 0.4 : fallProgress,
         armed: actor.role === 'enemy' || actor.role === 'ally' && sim.scenario !== 'transfer'
           && !(sim.scenario === 'flank' && (m.control !== 'combat' || actor.id === 'meng'))
           && !(sim.scenario === 'escort' && m.control !== 'combat')
@@ -546,11 +539,13 @@ export class Game {
           || actor.role === 'opponent' && (sim.scenario === 'mainhall' ? history.invaders : m.phase > 4 || m.phaseTime >= 18)
           || actor.id === 'father' && m.facts.includes('father-rifle-collected') && !actor.down,
         crouched: actor.combat?.crouched,
-        kneeling: actor.id === 'zhao' && history.restrained
+        moveSpeed: this.motionTracker.speed(actor.id, actor.position, m.elapsed),
+        animationTime: m.elapsed,
+        kneeling: commander ? history.commanderKneeling : actor.id === 'zhao' && history.restrained
           || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= OPENING_TIMELINE.childhood.rifle - 1 && m.phaseTime < OPENING_TIMELINE.childhood.departure
           || actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
         reaching: actor.id === 'zhao' ? history.reaching : 0,
-        restrained: actor.id === 'zhao' && history.restrained,
+        restrained: commander ? history.commanderRestrained : actor.id === 'zhao' && history.restrained,
         care: actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
         gesture: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.speaker === '周延' ? 0.35 + Math.sin(m.phaseTime * 2.2) * 0.12 : 0,
         lookAway: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.phaseTime >= 42 && m.phaseTime < 49 ? -0.3 : 0,
@@ -562,25 +557,23 @@ export class Game {
           || (actor.id === 'zheng' && sim.scenario === 'handover' && m.phase === 4)
           || (actor.id === 'zheng' && rescueCarry)
           || (actor.id === 'medic' && transferring) });
-      if (item.label) {
-        item.label.position.set(actor.position[0], actor.position[1] + 2.1, actor.position[2]);
-        const size = Math.min(1, this.camera.position.distanceTo(item.label.position) / 10);
-        item.label.scale.set(2.8 * size, 0.525 * size, 1);
-        item.label.visible = item.model.root.visible && !actor.down && distance(actor.position, p.position) < 24
-          && !(sim.scenario === 'mainhall' && actor.id === 'shao' && !sim.has('shao-identified-by-zhou'));
-      }
+
     }
+    for (const [id, item] of this.characters) if (!seen.has(id)) {
+      item.model.root.removeFromParent(); item.model.dispose();
+      this.characters.delete(id); this.motionTracker.remove(id); this.characterAssetErrors.delete(id);
+    }
+    const identityVisible = active && m.control !== 'staged' && !m.failed && !m.complete && p.health > 0;
+    const identityHit = identityVisible ? queryAimIdentity({ physics: sim.physics, actors: sim.actors,
+      cameraPosition: this.camera.position.toArray() as Vec3, worldDirection: forward.toArray() as Vec3,
+      scenario: sim.scenario, facts: m.facts, isActorVisible: id => this.characters.get(id)?.model.root.visible === true }) : null;
+    this.aimIdentity.update(identityHit, dt, identityVisible, this.lowMotion);
+    this.level?.architecture.update(this.camera.position);
     this.marker.visible = active && m.control !== 'staged';
     this.marker.position.set(...objective.point);
     this.markerOpacity = smoothObjectiveOpacity(this.markerOpacity, objectiveFocusOpacity(this.camera, objective.point), dt, this.lowMotion);
     for (const marker of this.markerMaterials) marker.material.opacity = marker.opacity * this.markerOpacity;
     this.feedback.update(active ? dt : 0, sim.ballistics.projectiles);
-    const diagnostics = import.meta.env.DEV ? (this.qaImported ? '检查点恢复 · 局部视觉验收\n' : '') + `阶段 ${m.phase} · ${p.name} · 坐标 ${p.position.map(v => v.toFixed(1)).join(', ')} · ${Math.round(this.fps)} FPS\n` +
-      `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}` +
-      (sim.scenario === 'epilogue' ? ` · 护航 ${this.environment.root.userData.airCoverStatus}` : '') +
-      `\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}`
-      + (this.aiDiagnostics ? '\n' + sim.actors.filter(a => !a.down && a.combat).slice().sort((a, b) => Number(b.role === 'ally') - Number(a.role === 'ally')).slice(0, 4)
-        .map(a => `${a.id} ${a.combat!.phase} ${a.position[0].toFixed(1)},${a.position[2].toFixed(1)} ${a.combat!.cover?.solid ?? '无掩体'}`).join('\n') : '') : undefined;
     const evacuees = sim.scenario === 'transfer' ? sim.actors.filter(a => a.role === 'cart')
       : sim.scenario === 'epilogue' ? sim.actors.filter(a => a.id.startsWith('worker-') || a.id === 'supply-cart')
       : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-'))
@@ -605,9 +598,10 @@ export class Game {
       nextLabel: undefined,
       error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings,
         this.equipment.state === 'error' ? `装备载入失败。${this.mode === 'playing' ? '可在暂停菜单重试。' : ''}` : '',
-        this.level?.sceneAssetErrors.size ? '部分场景素材未能载入，已保留临时模型。' : '',
+        (this.level?.sceneAssetErrors.size || this.level?.architectureAssetErrors.size) ? '部分场景素材未能载入，已保留临时模型。' : '',
+        this.weapon.armsStatus.state === 'error' ? '双臂素材未能载入，可在暂停菜单重试装备。' : '',
         this.characterAssetErrors.size ? '部分人物素材未能载入，已保留临时模型。' : '',
-        this.sound.getStatus().errors.length ? '部分声音素材未能载入；字幕和任务仍可继续。' : ''].filter(Boolean).join(' '), diagnostics,
+        this.sound.getStatus().errors.length ? '部分声音素材未能载入；字幕和任务仍可继续。' : ''].filter(Boolean).join(' '),
     };
     this.ui.render(state);
     const skipAvailable = this.canSkipPresentation();
@@ -636,15 +630,14 @@ export class Game {
     if (this.disposed) return;
     this.disposed = true;
     this.transition.dispose(); this.narration.dispose();
-    this.objectiveIndicator.dispose();
+    this.objectiveIndicator.dispose(); this.aimIdentity.dispose();
     cancelAnimationFrame(this.raf); this.abort.abort(); this.touchControls.dispose(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
     this.level?.dispose();
     this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
-    for (const { model, label: tag } of this.characters.values()) { model.dispose(); if (tag) disposeLabel(tag); }
-    this.modelLibrary.dispose();
+    for (const { model } of this.characters.values()) model.dispose();
+    this.modelLibrary.dispose(); this.motionTracker.clear();
     this.crowd.dispose();
-    disposeLabel(this.markerLabel);
     this.marker.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshBasicMaterial).dispose(); } });
     this.scene.environment = null; this.indirectLighting.dispose();
     this.renderer.dispose();

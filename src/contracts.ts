@@ -23,7 +23,8 @@ export interface SceneFrame { scenario: ScenarioId; phase: number; phaseTime: nu
 export interface CharacterModel {
   root: Group;
   setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean; crouched?: boolean; gesture?: number; lookAway?: number;
-    occupied?: boolean; damaged?: boolean; patientOffset?: Vec3; care?: boolean; cargo?: boolean; orderly?: boolean; reaching?: number; restrained?: boolean; fallProgress?: number }): void;
+    occupied?: boolean; damaged?: boolean; patientOffset?: Vec3; care?: boolean; cargo?: boolean; orderly?: boolean; reaching?: number; restrained?: boolean; fallProgress?: number;
+    moveSpeed?: number; reloadFraction?: number; animationTime?: number }): void;
   dispose(): void;
 }
 export type CharacterRole = 'enemy' | 'ally' | 'worker' | 'father' | 'child' | 'medic' | 'civilian' | 'opponent' | 'cart';

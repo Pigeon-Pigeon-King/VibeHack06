@@ -1,4 +1,4 @@
-import type { CharacterRole } from '../contracts';
+import type { CharacterRole, ScenarioId } from '../contracts';
 import type { ModelSource } from './model-contracts';
 
 /** Exact approved production revisions; runtime URLs remain inside the game bundle. */
@@ -190,6 +190,13 @@ export const CHARACTER_ASSETS = [
 export type CharacterAsset = typeof CHARACTER_ASSETS[number];
 export type CharacterAssetId = CharacterAsset['id'];
 export interface CharacterIdentity { id: string; name: string; role: CharacterRole }
+
+/** Viewpoint identity is authored; crouching or an injured camera height cannot change age. */
+export function playerCharacterIdentity(scenario: ScenarioId, name: string): CharacterIdentity {
+  // “十九岁” contains the same suffix, but is the adult protagonist.
+  const nineYearsOld = /(?:^|[^零〇一二三四五六七八九十百千万0-9])九岁/.test(name);
+  return { id: 'player', name, role: scenario === 'childhood' || nineYearsOld ? 'child' : 'ally' };
+}
 
 export const CANONICAL_WALK = {
   "id": "ANIM-WALK-CANONICAL",

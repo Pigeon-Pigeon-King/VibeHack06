@@ -1,0 +1,122 @@
+{
+  "schema": "ganymede.tactical-state-review/1",
+  "status": "five-targeted-regressions-passed",
+  "reviewedAtUTC": "2026-10-31T08:31:20Z",
+  "observedHEAD": "a408a97",
+  "requestedBaseline": "13ad2a0",
+  "ownership": {
+    "runtime": "parent exclusively edits ImportedCharacter/CharacterRig/CharacterMotion",
+    "thisAgent": [
+      "tests/tactical-character-state.test.ts",
+      "artifacts/model-integration/tactical/state-review.json"
+    ],
+    "noOtherFilesEdited": true
+  },
+  "readOnlyFindings": [
+    {
+      "file": "src/presentation/CharacterMotionTracker.ts",
+      "line": 9,
+      "finding": "Speed advances once per simulation time; repeated render frames retain the measured speed. Rewinds, large teleports and suspended intervals reset it.",
+      "preserve": "Do not introduce wall-clock or render-call-count time advancement for clips."
+    },
+    {
+      "file": "src/presentation/CharacterRig.ts",
+      "line": 137,
+      "finding": "CharacterClipSampler directly rewrites every track, including constant tracks, after the bind-pose restore; this fixes unchanged AnimationMixer PropertyMixer cache values.",
+      "preserve": "Absolute repeated sampling must remain deterministic. Existing weight interpolates toward rest, so sequential calls are not a complete A-to-B crossfade."
+    },
+    {
+      "file": "src/presentation/ImportedCharacter.ts",
+      "line": 157,
+      "finding": "Each setPose restores the rig; walk phase follows distance divided by stride. Procedural run/crouch/aim/care/fall overlays then apply.",
+      "preserve": "Keep fallback actions and explicit down/care/carry/restrained/reload/kneel priority. Real cover/fire semantics must not be invented from aiming alone."
+    },
+    {
+      "file": "src/presentation/ImportedCharacter.ts",
+      "line": 69,
+      "finding": "World AK attaches independently to the existing procedural weapon socket and retains its original muzzle object.",
+      "preserve": "If the owner adds a hand-bone follow step, apply it after clip/pose evaluation; preserve muzzle identity and weapon scale calibration and keep FirstPersonArms separate."
+    },
+    {
+      "file": "src/presentation/TacticalAnimations.ts",
+      "line": 23,
+      "finding": "The target-baked tactical loader checks original bind-pose transforms and returns an optional lease of 17 clips; it must be called before mounting/sampling the target.",
+      "preserve": "Tactical-load failure must retain the loaded character and procedural/walk fallback. Late success must release its lease after character disposal."
+    }
+  ],
+  "plannedBehaviorTests": [
+    "Repeated simulation timestamp produces the same skeleton/skin and does not reset a run or advance a transition.",
+    "State changes and clock rewind remain finite, deterministic and do not move the simulation-owned root.",
+    "Optional tactical failure retains visible loaded skin, canonical walk and procedural actions without request loops.",
+    "Disposed character rejects late tactical attachment and frees that lease exactly once.",
+    "World weapon preserves muzzle identity and world-space alignment through tactical poses."
+  ],
+  "verification": {
+    "runtimeApiReceived": true,
+    "testsDefined": 5,
+    "testsRun": 5,
+    "testsPassed": 5,
+    "testsFailed": 0,
+    "testsAwaitingRuntimeIntegration": 0,
+    "durationMs": 524,
+    "tested": [
+      "Finite animationTime enables shared run; repeated simulation timestamps reproduce identical skeleton matrices.",
+      "Changing animationTime alone does not advance moving clip phase; returning stationary time reproduces the same idle pose.",
+      "Missing and NaN animationTime retain deterministic procedural fallback.",
+      "Child walk returns to identical pose after crouch/down/care/carry; simulation-owned root stays fixed and shared clip remains disabled.",
+      "Controlled optional tactical download failure retains actual visible skin, canonical walk and crouch fallback without repeated requests.",
+      "Decoded tactical acquire winning a disposal/abort race releases its lease exactly once and never reattaches.",
+      "World AK original muzzle identity, source muzzle alignment, socket scale and one-instance ownership survive shared crouch_idle/crouch_walk/ready_idle and fallback down."
+    ],
+    "notClaimed": [
+      "Crossfaded action transitions",
+      "Full 17-clip runtime state machine",
+      "Visual hand/grip/foot contact or PBR acceptance",
+      "High-risk adult body deformation acceptance",
+      "All 13 bodies tested by this state regression file",
+      "Main-window runtime call-site wiring or browser performance"
+    ],
+    "command": "node node_modules/vitest/vitest.mjs run tests/tactical-character-state.test.ts",
+    "browserOrVisualAcceptance": false,
+    "targetedTypecheck": {
+      "status": "passed",
+      "command": "node node_modules/typescript/bin/tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --lib ES2022,DOM --types vite/client,node --skipLibCheck --strict --esModuleInterop tests/tactical-character-state.test.ts"
+    }
+  },
+  "scopeFrozenAtUTC": "2026-10-31T08:40:00Z",
+  "verifiedAtUTC": "2026-10-31T08:46:38Z",
+  "runtimeContract": {
+    "poseField": "animationTime?: number; finite simulation elapsed seconds only",
+    "observables": [
+      "root.userData.motion.clip",
+      "root.userData.tacticalStatus"
+    ],
+    "enabledClips": [
+      "idle",
+      "ready_idle",
+      "run",
+      "crouch_idle",
+      "crouch_walk"
+    ],
+    "movingPhase": "authoritative walk distance",
+    "stationaryPhase": "absolute animationTime",
+    "preservedFallbacks": [
+      "missing/non-finite time",
+      "CH-SHAO",
+      "CH-DOCTOR",
+      "CH-SHEN",
+      "child",
+      "down/care/carry/restrained/reload/kneel and other excluded actions"
+    ],
+    "crossfadeAccepted": false,
+    "weaponHandContactAccepted": false
+  },
+  "testedFileSHA256": {
+    "src/presentation/ImportedCharacter.ts": "166a6903c47b5dc6bec665e9ad0607eb1f969104c550998b2d01ab7fc2d1729f",
+    "src/presentation/CharacterRig.ts": "3cde92e719eca63646b1ff37051c7a2d0a1025f27e1ac08ce4b1168fec6710c3",
+    "src/presentation/CharacterMotion.ts": "0deb152d9d7ec16ec921bda2ff603dd1e95c596de0447f892e8c30e987745296",
+    "src/presentation/CharacterMotionTracker.ts": "1fb4b04733895c9a344f0bb72ac399e2a7b9201ab9e56af0daaf82f5cf0a1ca0",
+    "src/presentation/TacticalAnimations.ts": "504eb034fee9466dfed287637bf2e7fabe52d38d21c8cfe161b4d2d46ae0e890",
+    "tests/tactical-character-state.test.ts": "746f1724929d8c8916004b4e41c49c767d9723ccae0cb8a0290c9fb42e900587"
+  }
+}

@@ -1,0 +1,23 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+ ✓ tests/architecture-transactions.test.ts > generated architecture geometry and transforms > bakes source root/nested transforms, merges bolts by material, preserves UV/PBR, and follows a dynamic parent 35ms
+ ✓ tests/architecture-transactions.test.ts > generated architecture geometry and transforms > preserves material-array groups as separate batches without mutating leased geometry or materials 9ms
+ ✓ tests/architecture-transactions.test.ts > generated architecture geometry and transforms > keeps generated LODs at all distances and reuses only LOD0 material/texture 11ms
+ ✓ tests/architecture-transactions.test.ts > atomic visual replacement and lifecycle > waits for every source before hiding any target 8ms
+ ✓ tests/architecture-transactions.test.ts > atomic visual replacement and lifecycle > limits partial batch replacement to explicit indices and reports the uncovered instances 5ms
+ ✓ tests/architecture-transactions.test.ts > atomic visual replacement and lifecycle > rejects a failed source or bad aspect fit atomically and releases successful siblings 13ms
+ ✓ tests/architecture-transactions.test.ts > atomic visual replacement and lifecycle > detaches and releases a late lease after disposal without changing the fallback 4ms
+ ✓ tests/architecture-transactions.test.ts > atomic visual replacement and lifecycle > shares one acquisition across jobs and detaches batches before the final lease is released 8ms
+ ✓ tests/architecture-transactions.test.ts > atomic visual replacement and lifecycle > reports unmapped visuals and requires explicit exceptions for signs/lights or already generated models 3ms
+ ✓ tests/architecture-integration.test.ts > frozen architecture runtime integration > publishes every level at a local source URL and preserves all frozen hashes 258ms
+ ✓ tests/architecture-integration.test.ts > frozen architecture runtime integration > binds authored S05/S11 scopes without changing colliders, and all 22 assets enter actual campaign scenarios 3959ms
+ ✓ tests/architecture-integration.test.ts > frozen architecture runtime integration > cancels a preparing owner, preserves all fallback matrices and releases late source results 21ms
+ ✓ tests/architecture-integration.test.ts > frozen architecture runtime integration > keeps shared library materials live while a second environment still owns a lease 144ms
+ ✓ tests/architecture-integration.test.ts > frozen architecture runtime integration > generic environment disposal invokes architecture cancellation before shared geometry traversal 89ms
+
+ Test Files  2 passed (2)
+      Tests  14 passed (14)
+   Start at  16:32:12
+   Duration  5.80s (tests 80%, import 10%, transform 9%, worker 1%)
+

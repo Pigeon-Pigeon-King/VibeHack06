@@ -1,0 +1,29 @@
+{
+  "completedAt": "2026-10-31T08:33:50.950896+00:00",
+  "implementation": [
+    "src/assets/tactical-catalog.ts",
+    "src/presentation/TacticalAnimations.ts"
+  ],
+  "runtimeDirectory": "public/models/animations/tactical-r1/",
+  "api": "loadTacticalAnimations(library: ModelLibrary, asset: CharacterAsset, root: Group): Promise<{ clips: Map<string, AnimationClip>; dispose(): void }>",
+  "checks": {
+    "typecheck": "tsc --noEmit exit 0",
+    "testCommand": "vitest run tests/tactical-assets.test.ts",
+    "testFilesPassed": 1,
+    "testsPassed": 3,
+    "actualOptimizedCharacterRigs": 13,
+    "animationPacks": 13,
+    "clipsPerPack": 17,
+    "tracksPerClip": 123,
+    "boneNamesNotUUIDs": true,
+    "wrongSourceAndModifiedRigRejected": true,
+    "failedLeaseReleased": true
+  },
+  "usage": "Call before root normalization/mounting/posing. Catch rejection for fallback. Dispose returned lease on character release. ModelLibrary.acquire owns all animation resource lifetime. No old retarget.",
+  "heightCalibration": "CharacterAsset runtime adults 1.75m, child1.15m; source tactical authoring adults1.8m/child1.25m. Exposed authoredHeightMeters; weapon integration must account for difference.",
+  "visualAcceptance": "NOT_REVIEWED; localized rig skin strain remains candidate risk. No universal skin-quality approval.",
+  "externalAbsoluteRuntimeDependencies": false,
+  "paidAPIRequests": 0,
+  "gitOperations": 0,
+  "editedOtherOwnersFiles": false
+}

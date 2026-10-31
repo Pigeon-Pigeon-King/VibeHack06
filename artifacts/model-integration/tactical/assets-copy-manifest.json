@@ -1,0 +1,141 @@
+{
+  "source": "original approved tactical-v1 local archive",
+  "entries": [
+    {
+      "id": "CH-LU",
+      "runtimePath": "models/animations/tactical-r1/ch-lu.glb",
+      "sourceSha256": "33579cb205c11d50c6fa6dfa42f93f022e387cbcf07b5a24c9a6be0b37961501",
+      "sha256": "8cdaec04e90cff8e3b31bd750d4e5b9bc3029cee9d08156b0b84dcda9bb58d37",
+      "bytes": 2504620,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-ZHOU",
+      "runtimePath": "models/animations/tactical-r1/ch-zhou.glb",
+      "sourceSha256": "1ec1a772922bf269612bb9b7edf0d1453e297ad41ff0a739603bd9c3a0abd38d",
+      "sha256": "984be4cb00668be40db4990241c65cc9912516793d9479f2819f68b601de2076",
+      "bytes": 2504392,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-FATHER",
+      "runtimePath": "models/animations/tactical-r1/ch-father.glb",
+      "sourceSha256": "56f25bda8d2fe8a89475fdbeb142604d10c07d505b30663c83b48750093b82b3",
+      "sha256": "cca255aab9c8775f6bd3366916e6eb49edcfc9dae3e9b5a18e4b6f3c9e4f81fd",
+      "bytes": 2504620,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-ZHAO",
+      "runtimePath": "models/animations/tactical-r1/ch-zhao.glb",
+      "sourceSha256": "bb3feadbff89b2ea8bc4dd008cc5c6a4eee4b34c53d6018116003429a4f3af9e",
+      "sha256": "18ed2282b2392e81e58abbf5c6827ffd17c8e5520e4158b251f6225a945a847c",
+      "bytes": 2504692,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-XU",
+      "runtimePath": "models/animations/tactical-r1/ch-xu.glb",
+      "sourceSha256": "91851024995f6285c1a6c2cd7c4ac0be6bef80766e4124eb648a69938e9b0c8f",
+      "sha256": "b07d9ec4042b5c9ba4c38e40d1e170b09d4305a46b04b5d35254407fbe902c0e",
+      "bytes": 2504644,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-MENG",
+      "runtimePath": "models/animations/tactical-r1/ch-meng.glb",
+      "sourceSha256": "3c12c834d9efbc5fb15a731101e31f71872bc3f193f0c867f9d09508b7da2a1a",
+      "sha256": "e371069a9f777d3aa259ba941823c1011b46ec398b12ebc5baf1b578fb33b76d",
+      "bytes": 2504364,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-LUO",
+      "runtimePath": "models/animations/tactical-r1/ch-luo.glb",
+      "sourceSha256": "99d550070d86e919ca780d58699d70daa8ed172f2e9696ee78d4a5a666cbb329",
+      "sha256": "c17476b99ab44e1527b1bbe10f74001e377044f8cbf202e13c6d8c8e8b8ce770",
+      "bytes": 2504424,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-SHAO",
+      "runtimePath": "models/animations/tactical-r1/ch-shao.glb",
+      "sourceSha256": "8b13b2f6aecc9689df545e93387cc82277775b53feca6ecd73b495376170358d",
+      "sha256": "9b91d53d9cd7e790a75fadf1150b85470488b56553636dceb9df633eb0cc31cd",
+      "bytes": 2504600,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-ZHENG",
+      "runtimePath": "models/animations/tactical-r1/ch-zheng.glb",
+      "sourceSha256": "71465e2907f29cb26e4fd7927bf07a1f756e11fb511ebcc91ffdd1e78fc2e765",
+      "sha256": "89b779a30c6fe70d1fd4054b5f1beab02d5ae6201abc2441704178f8a908397f",
+      "bytes": 2504948,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-SHEN",
+      "runtimePath": "models/animations/tactical-r1/ch-shen.glb",
+      "sourceSha256": "00740e54780b3f6b06ffdeba1d68ca531b99638be6fa7bfd50bbfa50f305d0a3",
+      "sha256": "ed69c9add8da32fa75d4bcbf6b0cbd298762a54e930671409a5260c575b62d73",
+      "bytes": 2504348,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-DOCTOR",
+      "runtimePath": "models/animations/tactical-r1/ch-doctor.glb",
+      "sourceSha256": "bdf7f567d245dc555393a53423a6ce7fb52d2a09c8ab82eb7b2e39fe17bb7a24",
+      "sha256": "21e093bb23618df6c8e5275c1d6eb49934477ac4be8b5c95f383cb822c434a37",
+      "bytes": 2504548,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-ENEMY",
+      "runtimePath": "models/animations/tactical-r1/ch-enemy.glb",
+      "sourceSha256": "5f5d3f3fb12a31cae51954ff3e47e615fdd779bd461ee5c4add5b90e1530b3d0",
+      "sha256": "00ea81296696405ac4fe55bc9ff2164a98a91976c2013afb294c7bcd9c393a8d",
+      "bytes": 2504580,
+      "authoredHeightMeters": 1.8,
+      "bodyPlan": "adult",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    {
+      "id": "CH-LU-CHILD",
+      "runtimePath": "models/animations/tactical-r1/ch-lu-child.glb",
+      "sourceSha256": "1d33683fcf92e1db07de9ca73b059052d16fd841551d927f25022efc72cf83c1",
+      "sha256": "100407019610bfb05d23328cffdc74e68e80c960b88e068c2913c5fa2c5ffd17",
+      "bytes": 2504548,
+      "authoredHeightMeters": 1.25,
+      "bodyPlan": "child-independent",
+      "visualAcceptance": "NOT_REVIEWED"
+    }
+  ],
+  "clips": 17,
+  "bones": 41,
+  "tracksPerClip": 123,
+  "externalRuntimeDependencies": false,
+  "visualAcceptance": "NOT_REVIEWED",
+  "knownRisks": "Source rigs have localized skin strain; children independently authored but armed motion not visually approved."
+}
