@@ -65,6 +65,7 @@ export interface UiState {
   hitFlash: number;
   hurtFlash: number;
   lowMotion: boolean;
+  touchControls: boolean;
   muted: boolean;
   sensitivity: number;
   volume: number;
@@ -87,4 +88,5 @@ export interface UiActions {
   setSensitivity(value: number): void;
   setVolume(value: number): void;
   setLowMotion(value: boolean): void;
+  setTouchControls(value: boolean): void;
 }

@@ -9,6 +9,8 @@ import { initializePhysics, FIXED_DT } from './runtime/Physics';
 import { Simulation, distance, type Snapshot } from './mission/Simulation';
 import { GameUI } from './ui/GameUI';
 import { ObjectiveIndicator } from './ui/ObjectiveIndicator';
+import { TouchControls } from './ui/TouchControls';
+import { bindPageLifecycle } from './runtime/PageLifecycle';
 import { HeldItemMotion, type HeldItem } from './presentation/HeldItemMotion';
 import { LAYOUT } from './content/layout';
 import { carryFacts, CHAPTER_STAGES, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
@@ -62,6 +64,7 @@ class Game {
   private readonly ui: GameUI;
   private readonly objectiveIndicator: ObjectiveIndicator;
   private readonly input: Input;
+  private readonly touchControls: TouchControls;
   private readonly characters = new Map<string, { model: CharacterModel; label?: Sprite; name: string; role: string }>();
   private readonly marker = new Group();
   private readonly markerLabel = label('目标', '#f4d49e');
@@ -69,6 +72,9 @@ class Game {
   private sim!: Simulation;
   private mode: RunMode = 'menu';
   private lowMotion = false;
+  private touchPreference?: boolean;
+  private historySuspended = false;
+  private disposed = false;
   private error = '';
   private pointerError = '';
   private accumulator = 0;
@@ -107,6 +113,8 @@ class Game {
       this.store = new SaveStore(window.localStorage);
       const restored = this.store.getSettings();
       this.input.sensitivity = restored.settings.sensitivity; this.sound.setVolume(restored.settings.volume); this.lowMotion = restored.settings.lowMotion;
+      this.touchPreference = restored.settings.touchControls;
+      if (this.touchPreference !== undefined) this.input.setTouchEnabled(this.touchPreference);
       this.saveNotice = restored.warning ?? '';
       this.refreshCampaign();
     } catch { this.saveNotice = '当前环境不能访问本机存档；本次行动仍可重试检查点。'; }
@@ -116,13 +124,32 @@ class Game {
       menu: () => this.menu(), setSensitivity: value => { this.input.sensitivity = value; this.persistSettings(); },
       importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
       setVolume: value => { this.sound.setVolume(value); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
+      setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.pointerError = ''; this.persistSettings(); },
+    });
+    this.touchControls = new TouchControls(document.querySelector('#game-ui')!, {
+      move: (forward, right) => this.input.setTouchMove(forward, right),
+      look: (yaw, pitch) => this.input.addTouchLook(yaw, pitch),
+      action: (action, down) => this.input.setTouchAction(action, down),
+      active: action => this.input.isTouchActionDown(action), pause: () => this.pause(),
     });
     this.objectiveIndicator = new ObjectiveIndicator(document.querySelector('#game-ui')!);
     this.load('nightshift');
     window.addEventListener('resize', () => {
+      this.input.clearTouch();
       this.camera.aspect = innerWidth / innerHeight; this.camera.updateProjectionMatrix(); this.renderer.setSize(innerWidth, innerHeight);
     }, { signal: this.abort.signal });
-    window.addEventListener('pagehide', () => this.dispose(), { once: true, signal: this.abort.signal });
+    bindPageLifecycle(window, {
+      suspend: () => {
+        this.pause(); this.input.clear(); this.sound.pause();
+        this.historySuspended = true; cancelAnimationFrame(this.raf);
+      },
+      restore: () => {
+        if (this.disposed) return;
+        this.historySuspended = false; this.accumulator = 0; this.previousTime = performance.now();
+        this.raf = requestAnimationFrame(this.animate);
+      },
+      dispose: () => this.dispose(),
+    }, this.abort.signal);
     this.renderer.domElement.addEventListener('webglcontextlost', e => { e.preventDefault(); this.error = '图形上下文已失效，请刷新页面重新进入。'; this.pause(); }, { signal: this.abort.signal });
     this.animate();
   }
@@ -201,7 +228,8 @@ class Game {
     if (result?.warning) this.saveNotice = result.warning;
   }
   private persistSettings(): void {
-    const result = this.store?.saveSettings({ sensitivity: this.input.sensitivity, volume: this.sound.volume, lowMotion: this.lowMotion });
+    const result = this.store?.saveSettings({ sensitivity: this.input.sensitivity, volume: this.sound.volume, lowMotion: this.lowMotion,
+      ...(this.touchPreference !== undefined ? { touchControls: this.touchPreference } : {}) });
     if (result) this.writeErrors.settings = result.ok ? '' : result.error ?? '设置保存失败。';
   }
   private persistCheckpoint(snapshot = this.sim.checkpoint): void {
@@ -380,19 +408,31 @@ class Game {
       presentationEpoch: this.presentationEpoch, subtitleTime: m.elapsed, subtitleRevision: m.subtitleUntil,
       subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, hurtFlash: sim.hurtFlash,
-      lowMotion: this.lowMotion, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,
+      lowMotion: this.lowMotion, touchControls: this.input.touchEnabled, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,
       chapter: Boolean(this.chapter),
       continueLabel: this.savedCampaign ? `继续 · ${stageFor(this.savedCampaign.snapshot.mission.scenario)?.title ?? '第一关'}` : undefined,
       nextLabel: this.chapter && nextStage(sim.scenario) ? `继续 · ${nextStage(sim.scenario)!.title}` : undefined,
       error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings].filter(Boolean).join(' '), diagnostics,
     };
     this.ui.render(state);
+    // Every current staged sequence supports skip; these three first wait for an
+    // authored event or an actor to arrive. Match the mission's existing guards.
+    const skipAvailable = m.control === 'staged'
+      && !(sim.scenario === 'rescue' && m.phase === 1 && !sim.has('rescue-meng-wounded'))
+      && !(sim.scenario === 'medical' && m.phase === 8 && sim.actors.find(a => a.id === 'xu')?.goals.length)
+      && !(sim.scenario === 'relief' && m.phase === 7 && sim.actors.find(a => a.id === 'zheng')?.goals.length);
+    this.touchControls.render({ enabled: this.input.touchEnabled, mode: this.mode, control: m.control,
+      interaction: objective.interaction, epoch: this.presentationEpoch, skipAvailable,
+      coverAvailable: sim.scenario === 'rescue' && (m.phase === 0 || m.phase === 2)
+        && !sim.has('rescue-zheng-approaching') && !sim.has(`rescue-cover-call-${m.phase}`),
+    });
     this.objectiveIndicator.update(this.camera, objective.point, p.position, this.mode, m.control);
     if (this.monitor && distance(p.position, ESCORT.monitor) < 30) this.monitor.render(this.renderer, m.phaseTime, m.phase === 4, sim.has('shaoyuan-departure-confirmed'));
     this.renderer.render(this.scene, this.camera);
   }
 
   private animate = (): void => {
+    if (this.disposed || this.historySuspended) return;
     const now = performance.now(), dt = Math.min((now - this.previousTime) / 1000, 0.1); this.previousTime = now;
     this.fps = this.fps * 0.95 + 1 / Math.max(0.001, dt) * 0.05;
     if (this.mode === 'playing') {
@@ -402,8 +442,10 @@ class Game {
     this.present(dt); this.frame++; this.raf = requestAnimationFrame(this.animate);
   };
   dispose(): void {
+    if (this.disposed) return;
+    this.disposed = true;
     this.objectiveIndicator.dispose();
-    cancelAnimationFrame(this.raf); this.abort.abort(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
+    cancelAnimationFrame(this.raf); this.abort.abort(); this.touchControls.dispose(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
     this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
     for (const { model, label: tag } of this.characters.values()) { model.dispose(); if (tag) disposeLabel(tag); }

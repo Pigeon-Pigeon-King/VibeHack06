@@ -10,7 +10,7 @@ export interface StorageLike {
   removeItem(key: string): void;
 }
 export type SaveSlot = 'campaign' | ScenarioId;
-export interface GameSettings { sensitivity: number; volume: number; lowMotion: boolean }
+export interface GameSettings { sensitivity: number; volume: number; lowMotion: boolean; touchControls?: boolean }
 export interface SaveResult { ok: boolean; error?: string }
 export interface SavedGame { snapshot: Snapshot; chapter?: ChapterProgress; savedAt: number }
 export interface LoadResult { save?: SavedGame; warning?: string }
@@ -333,14 +333,17 @@ function parseSave(raw: string, slot: SaveSlot): SaveEnvelope {
   return { schema: 'ganymede-save', version: VERSION, slot, savedAt: data.savedAt, snapshot, ...(chapter ? { chapter } : {}) };
 }
 function validateSettings(value: unknown): GameSettings {
-  const data = record(value, '设置', ['sensitivity', 'volume', 'lowMotion']);
+  const data = record(value, '设置', ['sensitivity', 'volume', 'lowMotion'], ['touchControls']);
   numeric(data.sensitivity, '灵敏度', -Number.MAX_VALUE, Number.MAX_VALUE);
   numeric(data.volume, '音量', -Number.MAX_VALUE, Number.MAX_VALUE);
   boolean(data.lowMotion, '低动效');
-  return { sensitivity: data.sensitivity, volume: data.volume, lowMotion: data.lowMotion };
+  if (Object.hasOwn(data, 'touchControls')) boolean(data.touchControls, '触屏操作');
+  return { sensitivity: data.sensitivity, volume: data.volume, lowMotion: data.lowMotion,
+    ...(typeof data.touchControls === 'boolean' ? { touchControls: data.touchControls } : {}) };
 }
 function boundedSettings(settings: GameSettings): GameSettings {
-  return { sensitivity: Math.max(0.25, Math.min(2.5, settings.sensitivity)), volume: Math.max(0, Math.min(1, settings.volume)), lowMotion: settings.lowMotion };
+  return { sensitivity: Math.max(0.25, Math.min(2.5, settings.sensitivity)), volume: Math.max(0, Math.min(1, settings.volume)), lowMotion: settings.lowMotion,
+    ...(typeof settings.touchControls === 'boolean' ? { touchControls: settings.touchControls } : {}) };
 }
 function parseSettings(raw: string): SettingsEnvelope {
   const value = json(raw); version(value, 'ganymede-settings');
