@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "id": "ganymede-trailer-45s-v2",
+  "status": "SCRIPT_DRAFT",
+  "date": "2026-10-31",
+  "scope": "本轮仅制作规划与文字；媒体、运行改动和HTML另行制作",
+  "supersedesForCurrentPlan": "../timeline.json",
+  "video": {
+    "durationSeconds": 45,
+    "fps": 30,
+    "frameCount": 1350,
+    "targetWidth": 1920,
+    "targetHeight": 1080,
+    "exportVerified": false
+  },
+  "stage": {
+    "speechSeconds": 120,
+    "trailerSeconds": 45,
+    "contentSeconds": 165,
+    "reservedTransitionSeconds": 15,
+    "slotSeconds": 180,
+    "rehearsalStatus": "NOT_RUN"
+  },
+  "shots": [
+    {
+      "id": "T01",
+      "startSeconds": 0,
+      "endSeconds": 5,
+      "startFrame": 0,
+      "endFrameExclusive": 150,
+      "purpose": "占领十年的港区",
+      "plannedCaptureKind": "实机环境／演出机位",
+      "onScreenText": "木卫三／被占领的第十年",
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T02",
+      "startSeconds": 5,
+      "endSeconds": 9,
+      "startFrame": 150,
+      "endFrameExclusive": 270,
+      "purpose": "S01父亲守门与S02周延、班长历史碎片",
+      "plannedCaptureKind": "双视点实机演出",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T03",
+      "startSeconds": 9,
+      "endSeconds": 12,
+      "startFrame": 270,
+      "endFrameExclusive": 360,
+      "purpose": "成年闻川、周延",
+      "plannedCaptureKind": "实机演出／人物取景",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T04",
+      "startSeconds": 12,
+      "endSeconds": 18,
+      "startFrame": 360,
+      "endFrameExclusive": 540,
+      "purpose": "第一人称连续交火",
+      "plannedCaptureKind": "真人操作；连续原速片段",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T05",
+      "startSeconds": 18,
+      "endSeconds": 23,
+      "startFrame": 540,
+      "endFrameExclusive": 690,
+      "purpose": "S07—S08共享情报与可行追击",
+      "plannedCaptureKind": "实机终端／演出",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T06",
+      "startSeconds": 23,
+      "endSeconds": 28,
+      "startFrame": 690,
+      "endFrameExclusive": 840,
+      "purpose": "S08选择继续护送",
+      "plannedCaptureKind": "实机演出／操作",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T07",
+      "startSeconds": 28,
+      "endSeconds": 31,
+      "startFrame": 840,
+      "endFrameExclusive": 930,
+      "purpose": "S09交出阵位并接受保护",
+      "plannedCaptureKind": "实机演出",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T08",
+      "startSeconds": 31,
+      "endSeconds": 34,
+      "startFrame": 930,
+      "endFrameExclusive": 1020,
+      "purpose": "S10同伴换位后的真实开火",
+      "plannedCaptureKind": "真人操作；保留较长完整原片",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T09",
+      "startSeconds": 34,
+      "endSeconds": 38,
+      "startFrame": 1020,
+      "endFrameExclusive": 1140,
+      "purpose": "S10协作搬运孟齐",
+      "plannedCaptureKind": "真人操作",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T10",
+      "startSeconds": 38,
+      "endSeconds": 41,
+      "startFrame": 1140,
+      "endFrameExclusive": 1230,
+      "purpose": "S12扶门与首批人员物资通过",
+      "plannedCaptureKind": "真人操作",
+      "onScreenText": null,
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    },
+    {
+      "id": "T11",
+      "startSeconds": 41,
+      "endSeconds": 45,
+      "startFrame": 1230,
+      "endFrameExclusive": 1350,
+      "purpose": "统一透明标题覆盖渐暗实机画面",
+      "plannedCaptureKind": "后期标题合成",
+      "onScreenText": "重返木卫三",
+      "captureStatus": "NOT_CAPTURED",
+      "sourceClip": null
+    }
+  ],
+  "narration": {
+    "status": "TEXT_DRAFT_NOT_RECORDED",
+    "context": "成年闻川作品外旁白；不是新增战役对白",
+    "speakerId": "lu.a19",
+    "selectedRound01Id": "lu-b",
+    "reference": "design/audio/campaign-voice-01/references/lu.a19/base.wav",
+    "referenceSha256": "d7963e29f30e14a025fe259958fe0efb308dcd6283679e02fd1a0b65ec9a56ec",
+    "timingStatus": "PROVISIONAL_BEFORE_RECORDING",
+    "cues": [
+      {
+        "id": "trailer45.v2.01",
+        "startSeconds": 0.5,
+        "endSeconds": 4.8,
+        "text": "我们盼着回归，已经十年了。"
+      },
+      {
+        "id": "trailer45.v2.02",
+        "startSeconds": 5.3,
+        "endSeconds": 11.5,
+        "text": "我忘不了爸爸。周延也忘不了他的班长。"
+      },
+      {
+        "id": "trailer45.v2.03",
+        "startSeconds": 13.0,
+        "endSeconds": 17.8,
+        "text": "地球的援军正在靠近。邵原，也要逃了。"
+      },
+      {
+        "id": "trailer45.v2.04",
+        "startSeconds": 18.5,
+        "endSeconds": 21.5,
+        "text": "追上去，还来得及。"
+      },
+      {
+        "id": "trailer45.v2.05",
+        "startSeconds": 23.5,
+        "endSeconds": 27.6,
+        "text": "可我答应过，要把这些人送到。"
+      },
+      {
+        "id": "trailer45.v2.06",
+        "startSeconds": 37.2,
+        "endSeconds": 40.6,
+        "text": "这一次，换我守住这扇门。"
+      }
+    ]
+  },
+  "music": {
+    "status": "NOT_PRODUCED",
+    "direction": "原创工业电子战斗音乐；密度逐层增加，留旁白与实机动作空间",
+    "bpm": 128,
+    "beatsPerBar": 4,
+    "bars": 24,
+    "durationSeconds": 45,
+    "sampleRateHz": 48000,
+    "samplesPerChannel": 2160000,
+    "channels": 2,
+    "masterTarget": "24-bit PCM WAV",
+    "originalGameMusicMutedDuringCapture": true,
+    "finalAccentSeconds": 41.25,
+    "tailContainedIn45Seconds": true,
+    "file": null
+  },
+  "captureAudio": {
+    "status": "PRESET_NOT_IMPLEMENTED",
+    "music": 0,
+    "sfx": 1,
+    "ambience": 1,
+    "voice": 0,
+    "note": "读取时仅底层有分组Gain接口；现有菜单无单独BGM控制，也无四轨导出功能。需后续明确录制入口。"
+  },
+  "title": {
+    "status": "BRIEF_ONLY",
+    "toolPlanned": "ImageGen",
+    "text": "重返木卫三",
+    "assetIdProposed": "BRAND-TITLE-01",
+    "transparentBackground": true,
+    "format": "RGBA PNG",
+    "startSeconds": 41,
+    "endSeconds": 45,
+    "reuse": [
+      "game",
+      "trailer",
+      "html-presentation"
+    ],
+    "file": null
+  },
+  "production": {
+    "capture": "NOT_STARTED",
+    "music": "NOT_STARTED",
+    "narration": "NOT_STARTED",
+    "title": "NOT_STARTED",
+    "edit": "NOT_STARTED",
+    "html": "NOT_STARTED",
+    "listeningReview": "NOT_RUN",
+    "videoPlaybackReview": "NOT_RUN"
+  },
+  "documents": {
+    "editPlan": "EDIT_PLAN.md",
+    "narrationText": "narration.zh-CN.txt",
+    "speech": "../../../docs/submission/SPEECH_2MIN.md",
+    "presentationPlan": "../../../docs/submission/CREATIVE_PRESENTATION_PLAN.md"
+  }
+}

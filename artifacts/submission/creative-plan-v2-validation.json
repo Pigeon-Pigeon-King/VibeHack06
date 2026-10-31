@@ -1,0 +1,26 @@
+{
+  "checkedAt": "2026-10-31T07:55:17.263520+00:00",
+  "scope": "text-and-plan-structure-only",
+  "result": "PASS",
+  "shotCount": 11,
+  "durationSeconds": 45,
+  "frameCountAt30Fps": 1350,
+  "titleDurationSeconds": 4,
+  "narrationCueCount": 6,
+  "narrationAllocatedSeconds": 25.8,
+  "speechHanCharacterCount": 378,
+  "narrationHanCharacterCount": 71,
+  "localLinksResolved": 40,
+  "mediaGenerated": false,
+  "speechTimedByHuman": false,
+  "audioListening": "NOT_RUN",
+  "videoPlayback": "NOT_RUN",
+  "files": {
+    "docs/submission/SPEECH_2MIN.md": "50e5c1330cbdeec05dd1d2a7aec7350ec5d4f500c0d44859fe5d83a2965ec8d1",
+    "docs/submission/CREATIVE_PRESENTATION_PLAN.md": "b8c145da902085ed546efba752e2408fc20106cbdca0793675ce79fee427b894",
+    "artifacts/trailer-45s/v2/EDIT_PLAN.md": "50ee74631e2dbe3ac3a09eae43533abcc9000a15a9e3ad9af4797c484ea6d964",
+    "docs/submission/README.md": "6b09e1218d50cb862f12c23797a307e638882e9b0c90af84c729af79903caa58",
+    "artifacts/trailer-45s/v2/timeline.json": "f038094116520a0356a8ff6adf3222f8f5b6a6efeaea26d7983a6f7341c7a14b",
+    "artifacts/trailer-45s/v2/narration.zh-CN.txt": "bba75b4282c12e77673c4aedf1a1fbc75bcee21b1194cde3da5b5c06bf3509c2"
+  }
+}
