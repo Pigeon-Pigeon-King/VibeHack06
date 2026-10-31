@@ -30,6 +30,8 @@ WASD 移动，Shift 冲刺，C 蹲伏，Space 跳跃，鼠标观察，左键／F
 | [美术方向](design/ART_DIRECTION.md) | 方块人物与更精细工业场景的视觉边界 |
 | [持续开发进度](artifacts/game-progress.md) | 长期目标、实际完成项、缺口与下一步 |
 | [完成标准与当前差距](docs/PRODUCTION_READINESS.md) | 用户确认的画风、HUD/连续演出要求，以及白盒与成品的区别 |
+| [比赛规范核查](docs/COMPETITION_COMPLIANCE.md) | 参赛时间与原创要求、当前提交缺口、待确认边界 |
+| [成果提交与路演](docs/SUBMISSION_PLAN.md) | 官网提交路径、所需链接与材料、三分钟展示及截止前安排 |
 | [参考项目与官方资料](docs/REFERENCE_PROJECTS.md) | 源码、演示、API、许可证和核查范围 |
 | [交接归并与版本裁决](docs/HANDOFF_RECONCILIATION.md) | 三个 ZIP 的重复关系、历史差异与适用优先级 |
 | [Nativue 架构画布](docs/NATIVUE.md) | 启动、阅读与刷新本地架构图 |

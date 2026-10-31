@@ -1,0 +1,50 @@
+{
+  "checkedAt": "2026-10-31T09:37:54+08:00",
+  "sourceCommit": "ad1872c36071a7f424433a891428919e12c66a06",
+  "packageVersion": "0.6.0",
+  "guide": {
+    "url": "https://vibecafe.feishu.cn/docx/X0nvdcjB0o6KjKxJdKGcEF9unne",
+    "contentSource": "Full text pasted by user in current conversation",
+    "directOnlineReadSucceeded": false,
+    "publicPageCrossCheck": "https://vibecafe.ai/hacks/6",
+    "submissionUrlFromGuide": "https://vibecafe.ai/hacks/6/projects/submit",
+    "submissionFormInspectedWhileSignedIn": false,
+    "deadline": "2026-10-31T18:00:00+08:00",
+    "pitchSeconds": 180
+  },
+  "git": {
+    "rootCommits": ["d52b6605ea15c7f73b51cef6f65e459b0bd8f02e"],
+    "rootAuthorDate": "2026-10-30T19:52:46+08:00",
+    "rootCommitDate": "2026-10-30T19:52:46+08:00",
+    "rootIsEmpty": true,
+    "firstRuntimeCommit": "ed4395e",
+    "firstRuntimeCommitDate": "2026-10-31T01:24:41+08:00",
+    "firstCommitAfterKickoff": true,
+    "remotes": []
+  },
+  "delivery": {
+    "verifiedPublicPlayableUrl": null,
+    "localDevUrl": "http://127.0.0.1:5188/",
+    "windowsRuntimeVerified": false,
+    "existingZipRecord": "artifacts/autonomy-package.json",
+    "existingZipIncludesAd1872cHud": false,
+    "teamAndSubmissionAccountVerified": false,
+    "buildInPublicUrlRegisteredInThisAudit": false
+  },
+  "notices": {
+    "inspectedArchive": "release/ReturnToGanymede-win32-x64/resources/app.asar",
+    "ThreeLicensePresentAndMatchesInstalledDependency": true,
+    "RapierLicensePresentAndMatchesInstalledDependency": true,
+    "webDistContainsNoticeFile": false,
+    "webDistCompleteMitTextFound": false
+  },
+  "changesThisAudit": {
+    "runtimeChanged": false,
+    "gitHistoryRewritten": false,
+    "productionScopeReduced": false,
+    "externalPublicationOrSubmission": false,
+    "repositoryAccessChanged": false,
+    "organizerContacted": false
+  },
+  "scope": "Submission readiness review based on the supplied guide and local evidence. Not an organizer eligibility ruling, legal clearance, full originality audit, new gameplay verification, or completed submission."
+}
