@@ -1,0 +1,793 @@
+{
+  "commit": "d7963df6fd479336bc0e3c6c2e5bdbf5cf487aef",
+  "utc": "2026-10-31T09:10:27.658962+00:00",
+  "inputs": 626,
+  "inputMismatches": [],
+  "distFiles": 381,
+  "distBytes": 218416058,
+  "distMismatches": [],
+  "http": [
+    {
+      "path": "assets/generated/production-20261031/BG-CRANE.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031/PROP-BENCH.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031/PROP-TANK.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031/PROP-VEH-TUG.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-CARGO.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-FAN.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-FILTER.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-PUMP.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/README.txt",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s01-s02/bridge-s01-s02-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s01-s02/bridge-s01-s02-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s01-s02/bridge-s01-s02-03.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s02-s03/bridge-s02-s03-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s02-s03/bridge-s02-s03-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s02-s03/bridge-s02-s03-03.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s03-s04/bridge-s03-s04-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s03-s04/bridge-s03-s04-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s03-s04/bridge-s03-s04-03.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s04-s05/bridge-s04-s05-01.t02.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s04-s05/bridge-s04-s05-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s05-s06/bridge-s05-s06-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s05-s06/bridge-s05-s06-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s05-s06/bridge-s05-s06-03.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s06-s07/bridge-s06-s07-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s06-s07/bridge-s06-s07-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s07-s08/bridge-s07-s08-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s07-s08/bridge-s07-s08-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s07-s08/bridge-s07-s08-03.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s08-s09/bridge-s08-s09-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s08-s09/bridge-s08-s09-02.t02.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s09-s10/bridge-s09-s10-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s09-s10/bridge-s09-s10-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s10-s11/bridge-s10-s11-01.t02.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s10-s11/bridge-s10-s11-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s11-s12/bridge-s11-s12-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/bridge-s11-s12/bridge-s11-s12-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/opening-campaign/opening-campaign-01.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/opening-campaign/opening-campaign-02.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/opening-campaign/opening-campaign-03.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/audio/opening-campaign/opening-campaign-04.t01.mp3",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "audio/chapter-bridge-01/manifest.json",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-doctor.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-enemy.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-father.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-lu-child.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-lu.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-luo.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-meng.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-shao.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-shen.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-xu.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-zhao.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-zheng.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/tactical-r1/ch-zhou.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/animations/walk-canonical-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-BEAM-STEEL-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-BEAM-STEEL-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-BEAM-STEEL-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-CARGO-CONTAINER-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-CARGO-CONTAINER-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-CARGO-CONTAINER-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-COVER-CONCRETE-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-COVER-CONCRETE-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-COVER-CONCRETE-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-FLOOR-METAL-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-FLOOR-METAL-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-FLOOR-METAL-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-ROOF-METAL-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-ROOF-METAL-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-ROOF-METAL-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-WALL-PAINT-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-WALL-PAINT-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ARCH-WALL-PAINT-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-CRANE-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-CRANE-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-CRANE-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-HEAT-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-HEAT-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-HEAT-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-SHIP-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-SHIP-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/BG-SHIP-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-BRIDGEKIT-DECK-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-BRIDGEKIT-DECK-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-BRIDGEKIT-DECK-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-LIGHTKIT-POLE-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-LIGHTKIT-POLE-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-LIGHTKIT-POLE-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-PIPEKIT-ELBOW-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-PIPEKIT-ELBOW-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-PIPEKIT-ELBOW-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-WALLKIT-PANEL-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-WALLKIT-PANEL-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/ENV-WALLKIT-PANEL-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-A-ARCH-01-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-A-ARCH-01-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-A-ARCH-01-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-B-CORRIDOR-01-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-B-CORRIDOR-01-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-B-CORRIDOR-01-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-C-FACADE-01-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-C-FACADE-01-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-C-FACADE-01-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-C-ICEBANK-01-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-C-ICEBANK-01-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-C-ICEBANK-01-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-E-PIER-01-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-E-PIER-01-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-E-PIER-01-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-F-ROOF-01-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-F-ROOF-01-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/MAP-F-ROOF-01-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/PROP-BOOTH-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/PROP-BOOTH-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/PROP-BOOTH-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/PROP-TANK-lod0.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/PROP-TANK-lod1-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/architecture-r1/PROP-TANK-lod2-geometry.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-doctor-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-enemy-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-father-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-lu-child-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-lu-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-luo-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-meng-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-shao-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-shen-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-xu-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-zhao-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-zheng-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/characters/ch-zhou-rig-v1.glb",
+      "status": 200,
+      "matches": true
+    },
+    {
+      "path": "models/weapons/ak47-world-r1.glb",
+      "status": 200,
+      "matches": true
+    }
+  ],
+  "mainModule": {
+    "animationTime: m.elapsed": true,
+    "commanderFallProgress": true,
+    "motionTracker.fallProgress": true,
+    "new AimIdentityHUD": true
+  },
+  "boundary": "Static HTTP/files only. No browser rendering, audio listening, mobile or Windows playtest."
+}
