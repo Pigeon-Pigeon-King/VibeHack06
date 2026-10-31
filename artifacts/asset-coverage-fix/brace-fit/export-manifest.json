@@ -1,0 +1,211 @@
+{
+  "generatedAt": "2026-10-31T11:29:56.355Z",
+  "scope": "Frozen actual runtime mesh after skin.getVertexPosition; Node image decode substituted only. Blender reads original runtime GLB PBR textures. Not WebGL acceptance.",
+  "sourceHashes": {
+    "src/presentation/CareView.ts": "92ee72d9280b2f0a660c0849b1168ef746655bc15ffb653f9e448f8efafbf3e2",
+    "src/presentation/FirstPersonArms.ts": "a2cbbb032dba47c5bb084d84843445c5cb1e197a5a5bba2ff5077c238407ba2c",
+    "src/presentation/FirstPersonSeatedLegs.ts": "417a519ff2deed292e62a19aad2493f9c657f3f59f13d9bbe9de8313bf897bff",
+    "src/presentation/CarriedSupplyHands.ts": "8e71780d25f411a77ae9340364241a88ffc79cd1a0ed78efbc238baa37e89993",
+    "src/presentation/ImportedCharacter.ts": "4233ad4a23da6d7c95ce1b7241b851a93770a68497a87e63ab34b3f2d79caea1",
+    "src/presentation/TacticalAnimations.ts": "bce34e5fbe9cb1e73e42cb4f6a6cf7382ab37e2f51c754f3beea0821941be8ca",
+    "src/presentation/WorldAK47.ts": "8255892cd61277143ab2d8aea3a8c4d2fbaed0433418199ee193b1b3ab706ede",
+    "src/presentation/GeneratedSceneAssets.ts": "3b51ab6e323a339facccc5375c3e88bf7d3414b0587fbe92f006d75b17242f18",
+    "src/main.ts": "fa0fd31760d0b00054c8157b1c80f77fceaf89ed387665e7954b69a5b80c5430"
+  },
+  "sourceHashesAfter": {
+    "src/presentation/CareView.ts": "92ee72d9280b2f0a660c0849b1168ef746655bc15ffb653f9e448f8efafbf3e2",
+    "src/presentation/FirstPersonArms.ts": "a2cbbb032dba47c5bb084d84843445c5cb1e197a5a5bba2ff5077c238407ba2c",
+    "src/presentation/FirstPersonSeatedLegs.ts": "417a519ff2deed292e62a19aad2493f9c657f3f59f13d9bbe9de8313bf897bff",
+    "src/presentation/CarriedSupplyHands.ts": "8e71780d25f411a77ae9340364241a88ffc79cd1a0ed78efbc238baa37e89993",
+    "src/presentation/ImportedCharacter.ts": "4233ad4a23da6d7c95ce1b7241b851a93770a68497a87e63ab34b3f2d79caea1",
+    "src/presentation/TacticalAnimations.ts": "bce34e5fbe9cb1e73e42cb4f6a6cf7382ab37e2f51c754f3beea0821941be8ca",
+    "src/presentation/WorldAK47.ts": "8255892cd61277143ab2d8aea3a8c4d2fbaed0433418199ee193b1b3ab706ede",
+    "src/presentation/GeneratedSceneAssets.ts": "3b51ab6e323a339facccc5375c3e88bf7d3414b0587fbe92f006d75b17242f18",
+    "src/main.ts": "fa0fd31760d0b00054c8157b1c80f77fceaf89ed387665e7954b69a5b80c5430"
+  },
+  "sourceChangedDuringExport": [],
+  "sources": {
+    "CH-ZHOU": {
+      "path": "public/models/characters/ch-zhou-rig-v1.glb",
+      "sha256": "e643df2c1bc4a42ebd35d7b1da52a769222c09aa501963f49cd53dcb0a7bcd98",
+      "revision": "rig-v1-tex1024-e643df2c1bc4",
+      "bytes": 1648864
+    },
+    "PROP-ARMOR-LEFT-BRACE": {
+      "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+      "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+      "revision": "production-20261031-tex1024-v1",
+      "bytes": 1320340
+    }
+  },
+  "cases": [
+    {
+      "id": "zhou-seat",
+      "evidence": {
+        "status": {
+          "arms": {
+            "state": "ready",
+            "assetId": "CH-ZHOU"
+          },
+          "legs": {
+            "state": "ready",
+            "assetId": "CH-ZHOU"
+          }
+        },
+        "input": {
+          "progress": 1,
+          "adjusted": true
+        },
+        "contact": {
+          "leftAnkleErrorMeters": 0.0000025418392928640636,
+          "rightAnkleErrorMeters": 1.2840814075043612e-7,
+          "adjustment": 1,
+          "source": "simulation care progress / brace-adjusted fact",
+          "braceFit": "three source-mesh pieces; measured skin sections, fixed leg lengths",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "cuffs": [
+          {
+            "name": "thigh-cuff",
+            "fit": {
+              "sourceSHA256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+              "bone": "L_Thigh",
+              "sourcePlanes": [
+                0.35,
+                0.4,
+                0.45
+              ],
+              "sourceCenter": [
+                -0.06925805095548658,
+                0.007945268295388885
+              ],
+              "skinCenter": [
+                -0.022866100416579063,
+                0.007268009973192852
+              ],
+              "scale": [
+                0.43358045249524413,
+                0.42,
+                0.42357724728034646
+              ],
+              "clearanceMeters": 0.003,
+              "rule": "owned source shell radially seated around posed limb cross sections; source wall thickness/UV preserved; no body vertex or bone translation changes"
+            }
+          },
+          {
+            "name": "knee-guard",
+            "fit": {
+              "sourceSHA256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+              "bone": "L_Calf",
+              "sourcePlanes": [
+                -0.09,
+                -0.06,
+                -0.03
+              ],
+              "sourceCenter": [
+                -0.06738341295180628,
+                0.005279959774933798
+              ],
+              "skinCenter": [
+                -0.028354357593722485,
+                0.01598437748604426
+              ],
+              "scale": [
+                0.5002672386191126,
+                0.42,
+                0.46524092826801905
+              ],
+              "clearanceMeters": 0.003,
+              "rule": "owned source shell radially seated around posed limb cross sections; source wall thickness/UV preserved; no body vertex or bone translation changes"
+            }
+          },
+          {
+            "name": "shin-guard",
+            "fit": {
+              "sourceSHA256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+              "bone": "L_Calf",
+              "sourcePlanes": [
+                -0.46,
+                -0.4,
+                -0.34
+              ],
+              "sourceCenter": [
+                -0.084522592054192,
+                0.004918464336811604
+              ],
+              "skinCenter": [
+                -0.025429594645824033,
+                0.021025544847025762
+              ],
+              "scale": [
+                0.551453430015078,
+                0.42,
+                0.5075366710045889
+              ],
+              "clearanceMeters": 0.003,
+              "rule": "owned source shell radially seated around posed limb cross sections; source wall thickness/UV preserved; no body vertex or bone translation changes"
+            }
+          }
+        ]
+      },
+      "views": [
+        {
+          "name": "overview",
+          "camera": [
+            1.5,
+            1.1,
+            -2.2
+          ],
+          "target": [
+            0,
+            0.3,
+            -0.28
+          ],
+          "ortho": 1.35
+        },
+        {
+          "name": "first-person",
+          "camera": [
+            0,
+            0.96,
+            0.02
+          ],
+          "target": [
+            0,
+            0.3,
+            -0.55
+          ],
+          "fov": 75
+        },
+        {
+          "name": "outer-knee",
+          "camera": [
+            -1.2,
+            0.85,
+            -0.8
+          ],
+          "target": [
+            -0.11,
+            0.43,
+            -0.42
+          ],
+          "ortho": 0.85
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.21648966111489143,
+          -0.01319416770878179,
+          -0.7668259030414699
+        ],
+        "max": [
+          0.23313460693044027,
+          0.6698024333891553,
+          0.015854820875626653
+        ]
+      },
+      "meshes": 4,
+      "triangles": 12183
+    }
+  ]
+}

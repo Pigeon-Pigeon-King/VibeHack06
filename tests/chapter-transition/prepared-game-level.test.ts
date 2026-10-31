@@ -11,6 +11,7 @@ import type { Actor, Snapshot } from '../../src/mission/Simulation';
 import * as environments from '../../src/presentation/environment';
 import * as sceneAssets from '../../src/presentation/GeneratedSceneAssets';
 import * as architectureAssets from '../../src/presentation/GeneratedArchitecture';
+import * as worldWeapons from '../../src/presentation/GeneratedWorldWeapons';
 import type { ArchitectureStatus } from '../../src/presentation/GeneratedArchitecture';
 import type { GeneratedSceneAssetStatus, GeneratedSceneAssetsOptions } from '../../src/presentation/GeneratedSceneAssets';
 import { initializePhysics } from '../../src/runtime/Physics';
@@ -103,13 +104,16 @@ function template() {
 describe('detached level construction and construction rollback', () => {
   it('constructs the real environment/simulation without ticking, saving, warming or attaching a live scene', async () => {
     await initializePhysics();
-    // Keep environment/Simulation real while isolating the two asynchronous I/O owners.
+    // Keep environment/Simulation real while isolating the three asynchronous I/O owners.
     vi.spyOn(sceneAssets, 'GeneratedSceneAssets').mockImplementation(class {
       ready = Promise.resolve([]); dispose() {}
     } as unknown as typeof sceneAssets.GeneratedSceneAssets);
     vi.spyOn(architectureAssets, 'GeneratedArchitecture').mockImplementation(class {
       ready = Promise.resolve([]); dispose() {}
     } as unknown as typeof architectureAssets.GeneratedArchitecture);
+    vi.spyOn(worldWeapons, 'GeneratedWorldWeapons').mockImplementation(class {
+      ready = Promise.resolve([]); dispose() {}
+    } as unknown as typeof worldWeapons.GeneratedWorldWeapons);
     const save = vi.spyOn(SaveStore.prototype, 'save'), step = vi.spyOn(simulations.Simulation.prototype, 'step');
     const getItem = vi.fn(), setItem = vi.fn(); vi.stubGlobal('localStorage', { getItem, setItem });
     const library = { acquire: vi.fn(() => Promise.reject(new Error('no model request expected'))) };
@@ -231,7 +235,7 @@ describe('real readiness, deduplicated warming and resource ownership', () => {
     expect(h.rootsAtEnvironmentDisposal[0]).toEqual(['generated-fallback:epilogue-reception-console']);
   });
 
-  it('warms anonymous crowd skins once per catalog source, keeps carts procedural, and retains warm templates across activation', async () => {
+  it('warms crowd skins, separate cart assets and compatible tactical packs once per source, retaining templates across activation', async () => {
     const h = harness([actor('guard-a', 'ally'), actor('guard-b', 'ally'), actor('young-lu', 'child'), actor('hall-invader-0', 'civilian'),
       actor('late-civilian-0', 'civilian'), actor('evac-crowd-0', 'civilian'), actor('civilian-0', 'civilian'), actor('patient', 'cart')]);
     const fixtures = new Map<string, ReturnType<typeof template>>();
@@ -240,17 +244,17 @@ describe('real readiness, deduplicated warming and resource ownership', () => {
     const run = start(library); h.ready.resolve([]);
     const level = own(await run.promise);
     const sources = loader.mock.calls.map(([source]) => source);
-    const expected = ['ANIM-WALK-CANONICAL', 'CH-ENEMY', 'CH-LU-CHILD', 'CH-SHEN', 'CH-ZHOU', 'WP-AK47'];
+    const expected = ['ANIM-WALK-CANONICAL', 'CH-DOCTOR', 'CH-ENEMY', 'CH-LU-CHILD', 'CH-SHEN', 'CH-ZHOU', 'PROP-TRANSFER', 'TACTICAL-CH-ENEMY', 'TACTICAL-CH-ZHOU', 'WP-AK47'];
     expect(sources.map(source => source.id).sort()).toEqual(expected);
     // Count leases as well as downloads: the library cache alone could hide
     // duplicate warm acquisitions for the three anonymous resident identities.
     expect(acquire.mock.calls.map(([source]) => source.id).sort()).toEqual(expected);
     expect(sources.every(source => source.url.startsWith(baseURL.replace('index.html', '')))).toBe(true);
-    expect(run.progress.mock.calls.map(([fraction]) => fraction)).toEqual([0, 1 / 8, 2 / 8, 3 / 8, 4 / 8, 5 / 8, 6 / 8, 7 / 8, 1]);
+    expect(run.progress.mock.calls.map(([fraction]) => fraction)).toEqual(Array.from({ length: 13 }, (_, i) => i / 12));
     for (const item of fixtures.values()) for (const spy of Object.values(item.disposed)) expect(spy).not.toHaveBeenCalled();
     const active = await library.acquire(sources.find(source => source.id === 'CH-ZHOU')!);
     const shared = fixtures.get('CH-ZHOU')!;
-    expect(loader).toHaveBeenCalledTimes(6); expect(active.root.getObjectByProperty('isMesh', true)).toBeDefined();
+    expect(loader).toHaveBeenCalledTimes(10); expect(active.root.getObjectByProperty('isMesh', true)).toBeDefined();
     const live = new Group(); live.add(level.environment.root, active.root);
     // Cancellation after fulfilled preparation does not destroy the transferred active level.
     run.controller.abort(); expect(level.isDisposed).toBe(false);
@@ -283,8 +287,8 @@ describe('real readiness, deduplicated warming and resource ownership', () => {
     h.ready.resolve([{ id: 'failed-terminal', assetId: 'PROP-TERMINAL-CONSOLE', state: 'error', message: '纹理不可用' }]);
     const level = own(await run.promise);
     expect(level.sceneAssetErrors).toEqual(new Set(['failed-terminal']));
-    expect(level.warmAssetErrors).toEqual(new Set(['CH-ZHOU', 'CH-ZHENG', 'ANIM-WALK-CANONICAL', 'WP-AK47']));
-    expect(calls).toHaveLength(4); expect(level.isDisposed).toBe(false); expect(run.progress.mock.calls.at(-1)).toEqual([1]);
+    expect(level.warmAssetErrors).toEqual(new Set(['CH-ZHOU', 'CH-ZHENG', 'TACTICAL-CH-ZHENG', 'ANIM-WALK-CANONICAL', 'WP-AK47']));
+    expect(calls).toHaveLength(5); expect(level.isDisposed).toBe(false); expect(run.progress.mock.calls.at(-1)).toEqual([1]);
     expect(h.sim.step).not.toHaveBeenCalled(); expect(h.environment.setFacts).not.toHaveBeenCalled(); expect(h.environment.update).not.toHaveBeenCalled();
   });
 
@@ -345,7 +349,7 @@ describe('cancellation never becomes a successful fallback preload', () => {
 
   it('preserves active anonymous body and walk leases across cancelled preparation and re-entry', async () => {
     const residents = () => [actor('late-civilian-0', 'civilian'), actor('evac-crowd-0', 'civilian'),
-      actor('civilian-0', 'civilian'), actor('patient', 'cart')];
+      actor('civilian-0', 'civilian')];
     const h = harness(residents()), fixtures = new Map<string, ReturnType<typeof template>>();
     const loader = vi.fn(async (source: ModelSource) => { const value = template(); fixtures.set(source.id, value); return value.value; });
     const library = own(new ModelLibrary(loader));

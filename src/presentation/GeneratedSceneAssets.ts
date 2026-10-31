@@ -1,5 +1,6 @@
-import { Box3, BoxGeometry, Group, Mesh, MeshStandardMaterial, Vector3 } from 'three';
+import { Box3, Group, InstancedMesh, Matrix4, Mesh, Vector3 } from 'three';
 import type { Object3D } from 'three';
+import { readGeneratedPropBindings, type GeneratedPropBinding } from './GeneratedPropBindings';
 import type { ScenarioId } from '../contracts';
 import type { ModelLibrary } from '../assets/ModelLibrary';
 import type { ModelLease } from '../assets/model-contracts';
@@ -25,12 +26,11 @@ interface Prepared {
   readonly placement: SceneAssetPlacement;
   readonly lease: ModelLease;
   readonly mount: Group;
-  readonly foundation?: Mesh<BoxGeometry, MeshStandardMaterial>;
   released: boolean;
 }
 
 /**
- * Static scene dressing borrowed from the shared ModelLibrary. Construct after
+ * Scene props and state-bound attachments borrowed from the shared ModelLibrary. Construct after
  * PortKit.flush(), then dispose BEFORE the environment's generic tree disposal.
  * A missing visual slot or failed load leaves all procedural gameplay geometry.
  */
@@ -41,18 +41,20 @@ export class GeneratedSceneAssets {
   private readonly statuses = new Map<string, GeneratedSceneAssetStatus>();
   private readonly prepared = new Set<Prepared>();
   private readonly swapped = new Map<Object3D, boolean>();
+  private readonly swappedInstances = new Map<InstancedMesh, Map<number, Matrix4>>();
   private disposed = false;
 
   constructor(private readonly library: Pick<ModelLibrary, 'acquire'>, private readonly options: GeneratedSceneAssetsOptions) {
     const placements = options.placements ?? generatedScenePlacements(options.scenario);
-    for (const placement of placements) {
+    const bindings = readGeneratedPropBindings(options.parent);
+    for (const placement of [...placements, ...bindings.flatMap(binding => binding.placements)]) {
       if (this.statuses.has(placement.id)) throw new Error(`Duplicate generated scene placement: ${placement.id}`);
       this.statuses.set(placement.id, { id: placement.id, assetId: placement.assetId, state: 'pending' });
     }
     this.root.name = `generated-scene-assets:${options.scenario}`;
     this.root.userData.resourceOwner = 'ModelLibrary leases; dispose GeneratedSceneAssets before traversing environment';
     options.parent.add(this.root);
-    this.ready = this.load(placements);
+    this.ready = this.load(placements, bindings);
   }
 
   getStatus(): readonly GeneratedSceneAssetStatus[] {
@@ -66,24 +68,27 @@ export class GeneratedSceneAssets {
     try { this.options.onStatus?.({ ...status }); } catch { /* Observer owns its errors. */ }
   }
 
-  private async load(placements: readonly SceneAssetPlacement[]): Promise<readonly GeneratedSceneAssetStatus[]> {
+  private async load(placements: readonly SceneAssetPlacement[], bindings: readonly GeneratedPropBinding[]): Promise<readonly GeneratedSceneAssetStatus[]> {
     const grouped = new Map<string, SceneAssetPlacement[]>();
     for (const placement of placements) {
       const key = placement.fallbackSlot ? `slot:${placement.fallbackSlot}` : `item:${placement.id}`;
       const group = grouped.get(key) ?? []; group.push(placement); grouped.set(key, group);
     }
-    const groups = [...grouped.values()];
+    const groups: Array<{ placements: readonly SceneAssetPlacement[]; binding?: GeneratedPropBinding }> = [
+      ...[...grouped.values()].map(placements => ({ placements })),
+      ...bindings.map(binding => ({ placements: binding.placements, binding })),
+    ];
     let cursor = 0;
     // Avoid starting every PBR download/decode at once. The library
     // remains the sole template cache and shares repeated bench instances.
     await Promise.all(Array.from({ length: Math.min(2, groups.length) }, async () => {
-      while (!this.disposed && cursor < groups.length) await this.loadGroup(groups[cursor++]);
+      while (!this.disposed && cursor < groups.length) { const group = groups[cursor++]; await this.loadGroup(group.placements, group.binding); }
     }));
     return this.getStatus();
   }
 
-  private async loadGroup(placements: readonly SceneAssetPlacement[]): Promise<void> {
-    const slot = placements[0].fallbackSlot;
+  private async loadGroup(placements: readonly SceneAssetPlacement[], binding?: GeneratedPropBinding): Promise<void> {
+    const slot = binding ? undefined : placements[0].fallbackSlot;
     const fallback = slot ? this.options.parent.getObjectByName(`generated-fallback:${slot}`) : undefined;
     if (slot && !fallback) {
       for (const placement of placements) this.report(placement, 'error', `Missing isolated fallback slot: ${slot}`);
@@ -111,8 +116,22 @@ export class GeneratedSceneAssets {
     }
     // Multi-part replacement (two benches) is atomic. Partial success never
     // hides the old slot or draws a new model through its fallback geometry.
-    for (const prepared of loaded) this.root.add(prepared.mount);
-    if (fallback) { this.swapped.set(fallback, fallback.visible); fallback.visible = false; }
+    for (const prepared of loaded) {
+      if (binding?.originMatrix) prepared.mount.applyMatrix4(binding.originMatrix);
+      (binding?.parent ?? this.root).add(prepared.mount);
+    }
+    for (const target of binding?.fallback ?? (fallback ? [fallback] : [])) {
+      this.swapped.set(target, target.visible); target.visible = false;
+    }
+    for (const { mesh, indices } of binding?.members ?? []) {
+      const saved = this.swappedInstances.get(mesh) ?? new Map<number, Matrix4>();
+      for (const index of indices) {
+        const original = new Matrix4(); mesh.getMatrixAt(index, original);
+        if (!saved.has(index)) saved.set(index, original);
+        mesh.setMatrixAt(index, new Matrix4().makeScale(0, 0, 0));
+      }
+      this.swappedInstances.set(mesh, saved); mesh.instanceMatrix.needsUpdate = true;
+    }
     for (const placement of placements) this.report(placement, 'ready');
   }
 
@@ -143,15 +162,8 @@ export class GeneratedSceneAssets {
       sourceBounds: { min: bounds.min.toArray(), max: bounds.max.toArray() }, uniformScale: scale,
       basis: 'glTF +Y up, explicit per-placement yaw', collision: 'authored level proxy; no generated mesh collider',
       status: 'integrated-geometry-rendering-pending' };
-    let foundation: Prepared['foundation'];
-    if (placement.foundation) {
-      const { width, height, depth } = placement.foundation;
-      foundation = new Mesh(new BoxGeometry(width, height, depth), new MeshStandardMaterial({ color: 0x707d7e, roughness: 0.94, metalness: 0.08 }));
-      foundation.name = `generated-foundation:${placement.id}`; foundation.position.y = -height / 2;
-      foundation.receiveShadow = true; mount.add(foundation);
-    }
     mount.updateMatrixWorld(true);
-    return { placement, lease, mount, foundation, released: false };
+    return { placement, lease, mount, released: false };
   }
 
   private release(prepared: Prepared): void {
@@ -159,7 +171,6 @@ export class GeneratedSceneAssets {
     prepared.released = true; this.prepared.delete(prepared);
     prepared.mount.removeFromParent();
     prepared.lease.root.removeFromParent(); prepared.lease.dispose();
-    prepared.foundation?.geometry.dispose(); prepared.foundation?.material.dispose();
     prepared.mount.clear();
   }
 
@@ -170,7 +181,11 @@ export class GeneratedSceneAssets {
     this.root.removeFromParent();
     for (const prepared of [...this.prepared]) this.release(prepared);
     for (const [fallback, visible] of this.swapped) fallback.visible = visible;
-    this.swapped.clear(); this.root.clear();
+    for (const [mesh, instances] of this.swappedInstances) {
+      for (const [index, matrix] of instances) mesh.setMatrixAt(index, matrix);
+      mesh.instanceMatrix.needsUpdate = true;
+    }
+    this.swappedInstances.clear(); this.swapped.clear(); this.root.clear();
     for (const [id, status] of this.statuses) {
       if (status.state === 'pending' || status.state === 'loading') this.statuses.set(id, { ...status, state: 'cancelled' });
     }

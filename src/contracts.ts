@@ -20,11 +20,17 @@ export interface EnvironmentModel {
   dispose(): void;
 }
 export interface SceneFrame { scenario: ScenarioId; phase: number; phaseTime: number; lowMotion: boolean }
+/** Presentation input copied from the real combat controller; no new save state. */
+export interface CharacterCombatPose {
+  phase: 'seek' | 'hide' | 'peek' | 'recover' | 'shift' | 'hold' | 'return';
+  coverKey?: string; side: 'left' | 'right'; moving: boolean;
+}
 export interface CharacterModel {
   root: Group;
   setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean; crouched?: boolean; gesture?: number; lookAway?: number;
     occupied?: boolean; damaged?: boolean; patientOffset?: Vec3; care?: boolean; cargo?: boolean; orderly?: boolean; reaching?: number; restrained?: boolean; fallProgress?: number;
-    moveSpeed?: number; reloadFraction?: number; animationTime?: number }): void;
+    moveSpeed?: number; reloadFraction?: number; animationTime?: number;
+    combat?: CharacterCombatPose; lastShotAt?: number; tacticalEnabled?: boolean }): void;
   dispose(): void;
 }
 export type CharacterRole = 'enemy' | 'ally' | 'worker' | 'father' | 'child' | 'medic' | 'civilian' | 'opponent' | 'cart';

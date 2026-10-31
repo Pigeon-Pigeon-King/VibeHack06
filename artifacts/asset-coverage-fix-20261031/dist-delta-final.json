@@ -1,0 +1,44 @@
+{
+  "createdAt": "2026-10-31T11:38:19.238550+00:00",
+  "baselineRuntimeCommit": "a9030c6",
+  "baselineManifest": "/Users/penguin/VibeHack06/artifacts/release-20261031/github-pages/dist-manifest.json",
+  "dist": "/Users/penguin/VibeHack06-asset-coverage/dist",
+  "fileCount": 381,
+  "totalBytes": 218475284,
+  "added": [
+    {
+      "path": "assets/EpilogueAirCover-xnWOHjvg.js",
+      "bytes": 2724451,
+      "sha256": "7fafade5f2d19e7f8aba6c8a83d7c71a89fbbd88b08787474f196e2217ee7c60"
+    },
+    {
+      "path": "assets/index-CwzmmAmg.js",
+      "bytes": 6126537,
+      "sha256": "d12178a3114ee7dc15a61554dfa87a3e0c8ce049f3c30149c136fd8b844b6ee9"
+    }
+  ],
+  "changed": [
+    {
+      "path": "index.html",
+      "bytes": 638,
+      "sha256": "d7c44f4efdda7b5fc9df7e04d2396991557571e3ba9e3165ca32caf260c45458"
+    }
+  ],
+  "obsoleteHashedFiles": [
+    {
+      "path": "assets/EpilogueAirCover-ByVKCowj.js",
+      "bytes": 2724451,
+      "sha256": "48e7f58cab6bace6b683b19e91dfdc05a3f870828cbf0232635e0a9cb38eee24"
+    },
+    {
+      "path": "assets/index-CyxQ_Iqn.js",
+      "bytes": 6074972,
+      "sha256": "459e29211f107080436e742d5681513d55db65e6d1d1105688e25cf2a72b98df"
+    }
+  ],
+  "unchangedFileCount": 378,
+  "uploadBytes": 8851626,
+  "publicSourceDiff": [],
+  "publicationStatus": "not-published-by-this-chat",
+  "note": "Upload new hashed files before replacing index.html; retain old hashed JS while existing sessions may use it. No source GLB, texture or audio bytes changed."
+}

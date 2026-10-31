@@ -1,3 +1,4 @@
+import { bindGeneratedProp, doorLeaves, propPlacement, propSlot } from './GeneratedPropBindings';
 import { BoxGeometry, Group, Mesh, MeshStandardMaterial, PointLight } from 'three';
 import type { Vec3 } from '../contracts';
 import { EPILOGUE as E } from '../content/epilogue-layout';
@@ -26,8 +27,10 @@ export function buildEpilogue(k: PortKit): SceneDynamics {
   for (const z of [-10, 100]) block(k, `epilogue-boundary-z-${z}`, [-200, 1.4, z], [460, 2.8, 0.5]);
   k.workshop(-414, 64, 18, 24);
   for (const [id, p] of [['report', E.report], ['needs', E.needs]] as const) {
-    block(k, `epilogue-${id}-desk`, [p[0], 0.5, p[2] - 1.4], [2.8, 1, 1], 'steel');
-    k.box('glass', [p[0], 1.3, p[2] - 1.5], [0.8, 0.5, 0.1]);
+  propSlot(k, `epilogue-${id}-desk`, [propPlacement(`epilogue-${id}-desk`, 'PROP-TERMINAL-CONSOLE', [p[0], 0, p[2] - 1.4], 2.8, 'z', Math.PI / 2)], slot => {
+    block(slot, `epilogue-${id}-desk`, [p[0], 0.5, p[2] - 1.4], [2.8, 1, 1], 'steel');
+    slot.box('glass', [p[0], 1.3, p[2] - 1.5], [0.8, 0.5, 0.1]);
+  });
   }
   const route = [E.needs, ...E.shoreVia];
   route.slice(1).forEach((b, i) => shoreLeg(k, route[i], b));
@@ -61,6 +64,7 @@ export function buildEpilogue(k: PortKit): SceneDynamics {
   const door = new Group(); door.name = 'epilogue-reception-door'; door.position.set(-4, 1.7, 1); k.root.add(door);
   const panel = new Mesh(new BoxGeometry(6, 3.4, 0.24), new MeshStandardMaterial({ color: 0x65838a, metalness: 0.35, roughness: 0.7 }));
   panel.castShadow = true; panel.receiveShadow = true; door.add(panel);
+  bindGeneratedProp(door, 'epilogue-reception-door', doorLeaves('epilogue-reception-door', [0, -1.7, 0], 6, 3.4));
   // Distant berth indicators promise arrival, without a fabricated full landing.
   for (let i = 0; i < 7; i++) {
     const x = 75 + i * 19, z = 54 + i * 9;

@@ -1,3 +1,4 @@
+import { propPlacement, propSlot } from './GeneratedPropBindings';
 import { CylinderGeometry, Mesh, MeshStandardMaterial, PointLight } from 'three';
 import type { Vec3 } from '../contracts';
 import { FLANK as F } from '../content/flank-layout';
@@ -85,13 +86,15 @@ function separatedTransport(kit: PortKit): void {
   // Obsolete heat-exchange skids occupy the passing bay, leaving a level 2.98m cart throat.
   // None of these objects represents a patient cart; all actual patients are Simulation actors.
   for (const z of [-11, -5, 1]) {
-    block(kit, `flank-obsolete-unit-${z}`, [-38.5, 1.05, z], [4, 2.1, 3.8], 'paint');
-    kit.box('steel', [-38.5, 0.16, z], [4.1, 0.32, 4]);
+  propSlot(kit, `flank-obsolete-unit-${z}`, [-39.65, -37.35].map((x, i) => propPlacement(`flank-filter-${z}-${i}`, 'PROP-FILTER', [x, 0, z], 3.5)), slot => {
+    block(slot, `flank-obsolete-unit-${z}`, [-38.5, 1.05, z], [4, 2.1, 3.8], 'paint');
+    slot.box('steel', [-38.5, 0.16, z], [4.1, 0.32, 4]);
     for (const x of [-39.65, -37.35]) {
-      kit.cylinder('pale', [x, 1.43, z], 0.53, 3.5, [Math.PI / 2, 0, 0]);
-      kit.cylinder('steel', [x, 1.43, z + 1.8], 0.56, 0.12, [Math.PI / 2, 0, 0]);
+      slot.cylinder('pale', [x, 1.43, z], 0.53, 3.5, [Math.PI / 2, 0, 0]);
+      slot.cylinder('steel', [x, 1.43, z + 1.8], 0.56, 0.12, [Math.PI / 2, 0, 0]);
     }
-    kit.box('amber', [-40.52, 0.9, z], [0.035, 0.22, 3.6]);
+    slot.box('amber', [-40.52, 0.9, z], [0.035, 0.22, 3.6]);
+  });
   }
   kit.cover(-44, -5, 17, Math.PI / 2);
   // Temporary 1.6m planked bypass over low pipework: 0.15m steps, never a cart route.

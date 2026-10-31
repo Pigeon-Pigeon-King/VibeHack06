@@ -6,7 +6,7 @@ import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { ModelLibrary } from '../src/assets/ModelLibrary';
 import type { ModelSource, ModelTemplate } from '../src/assets/model-contracts';
 import { CHARACTER_ASSETS, type CharacterAsset } from '../src/assets/character-catalog';
-import { TACTICAL_ASSETS, TACTICAL_CLIP_NAMES } from '../src/assets/tactical-catalog';
+import { TACTICAL_ASSETS, TACTICAL_CLIP_NAMES, tacticalSource } from '../src/assets/tactical-catalog';
 import { loadTacticalAnimations } from '../src/presentation/TacticalAnimations';
 
 async function parse(path: string): Promise<ModelTemplate> {
@@ -18,6 +18,11 @@ async function parse(path: string): Promise<ModelTemplate> {
 const loader = (source: ModelSource) => parse(`models/${source.url.split('models/')[1]}`);
 
 describe('frozen tactical runtime assets', () => {
+  it('keeps explicit deployment subpaths and packaged origins for tactical fetches', () => {
+    expect(tacticalSource('CH-LU', 'https://example.test/ganymede/index.html').url).toBe('https://example.test/ganymede/models/animations/tactical-r1/ch-lu.glb');
+    expect(tacticalSource('CH-LU', 'game://local/index.html').url).toBe('game://local/models/animations/tactical-r1/ch-lu.glb');
+    expect(tacticalSource('CH-LU', 'file:///package/dist/index.html').url).toBe('file:///package/dist/models/animations/tactical-r1/ch-lu.glb');
+  });
   it('binds all 13 actual texture-optimized rigs with source contracts and bone-name tracks', async () => {
     const library = new ModelLibrary(loader);
     try {

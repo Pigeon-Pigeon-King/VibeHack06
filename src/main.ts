@@ -1,6 +1,8 @@
 import { ACESFilmicToneMapping, BoxGeometry, Color, ConeGeometry, FogExp2, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PCFShadowMap, PerspectiveCamera, RingGeometry, Scene, SRGBColorSpace, Vector3, WebGLRenderer } from 'three';
 import type { CharacterModel, EnvironmentModel, RunMode, ScenarioId, UiState, Vec3 } from './contracts';
 import { createImportedCharacter, type CharacterLoadStatus } from './presentation/ImportedCharacter';
+import { ImportedPatientCart } from './presentation/ImportedPatientCart';
+import { characterCombatPose } from './presentation/TacticalAnimations';
 import { CharacterMotionTracker } from './presentation/CharacterMotionTracker';
 import { playerCharacterIdentity, type CharacterIdentity } from './assets/character-catalog';
 import { queryAimIdentity } from './presentation/AimIdentity';
@@ -38,6 +40,9 @@ import { ESCORT } from './content/escort-layout';
 import { RELIEF } from './content/relief-layout';
 import { DepartureMonitor } from './presentation/DepartureMonitor';
 import { CareView } from './presentation/CareView';
+import { CarriedSupplyHands } from './presentation/CarriedSupplyHands';
+import { GeneratedSceneAssets } from './presentation/GeneratedSceneAssets';
+import { bindGeneratedProp, propPlacement } from './presentation/GeneratedPropBindings';
 
 function carriedSupply(): Group {
   const root = new Group();
@@ -47,12 +52,7 @@ function carriedSupply(): Group {
     const strap = new Mesh(new BoxGeometry(0.045, 0.35, 0.43), new MeshStandardMaterial({ color: 0xc6b077, roughness: 0.9 }));
     strap.position.x = x; root.add(strap);
   }
-  for (const side of [-1, 1]) {
-    const glove = new Mesh(new BoxGeometry(0.13, 0.12, 0.20), new MeshStandardMaterial({ color: 0x26353b, roughness: 0.9 }));
-    glove.position.set(side * 0.34, -0.02, 0.035); root.add(glove);
-    const sleeve = new Mesh(new BoxGeometry(0.15, 0.15, 0.35), new MeshStandardMaterial({ color: 0x56696c, roughness: 0.9 }));
-    sleeve.position.set(side * 0.40, -0.08, 0.24); sleeve.rotation.y = -side * 0.28; root.add(sleeve);
-  }
+  bindGeneratedProp(root, 'first-person-supply', [propPlacement('first-person-supply', 'PROP-CARGO', [0, -.21, 0], .62, 'z', Math.PI / 2)]);
   root.position.set(0, -0.44, -0.72); return root;
 }
 
@@ -72,10 +72,13 @@ export class Game {
   private equipment: { state: 'loading' | 'ready' | 'error'; message?: string; progress?: ModelLoadProgress } = { state: 'loading' };
   private readonly weapon = new ImportedWeaponView(this.modelLibrary, ak47Source(document.baseURI), state => { this.equipment = state; });
   private readonly supply = carriedSupply();
+  private readonly supplyHands = new CarriedSupplyHands(this.modelLibrary);
+  private supplyAssets = new GeneratedSceneAssets(this.modelLibrary, { parent: this.supply, scenario: 'nightshift', baseURL: document.baseURI, placements: [] });
   private readonly heldItems = new HeldItemMotion();
-  private readonly care = new CareView();
+  private readonly care = new CareView(this.modelLibrary);
   private readonly crowd = new CrowdView(64, { library: this.modelLibrary, baseURL: document.baseURI });
   private readonly motionTracker = new CharacterMotionTracker();
+  private readonly actorShots = new Map<string, number>();
   private monitor?: DepartureMonitor;
   private readonly ui: GameUI;
   private readonly objectiveIndicator: ObjectiveIndicator;
@@ -129,6 +132,7 @@ export class Game {
     this.renderer.domElement.setAttribute('aria-label', '游戏画面');
     this.renderer.domElement.tabIndex = -1;
     this.scene.background = new Color(0x677e8d); this.scene.fog = new FogExp2(0x677e8d, 0.008);
+    this.supply.add(this.supplyHands.root);
     this.camera.rotation.order = 'YXZ'; this.camera.add(this.weapon.root, this.supply); this.scene.add(this.camera, this.feedback.root, this.marker, this.care.root, this.crowd.root);
     const ring = new Mesh(new RingGeometry(0.5, 0.58, 32), new MeshBasicMaterial({ color: 0xe7c782, side: 2, transparent: true, opacity: 0.8, depthWrite: false }));
     ring.rotation.x = -Math.PI / 2; ring.position.y = 0.04;
@@ -153,7 +157,11 @@ export class Game {
       importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
       setVolume: value => { this.sound.setVolume(value); this.narration.setVolume(this.sound.volume); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
       setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.applyRenderQuality(); this.pointerError = ''; this.persistSettings(); },
-      retryEquipment: () => { this.weapon.retry(); void this.weapon.retryArms(); },
+      retryEquipment: () => {
+        this.weapon.retry(); void this.weapon.retryArms(); void this.care.retry(); void this.supplyHands.retry();
+        this.supplyAssets.dispose(); this.supplyAssets = new GeneratedSceneAssets(this.modelLibrary,
+          { parent: this.supply, scenario: 'nightshift', baseURL: document.baseURI, placements: [] });
+      },
     });
     this.touchControls = new TouchControls(document.querySelector('#game-ui')!, {
       move: (forward, right) => this.input.setTouchMove(forward, right),
@@ -240,7 +248,7 @@ export class Game {
     const id = level.sim.scenario;
     // This canvas-backed view can fail during construction. Prepare it while
     // the previous scene and checkpoint are still owned by the host.
-    const monitor = id === 'escort' ? new DepartureMonitor() : undefined;
+    const monitor = id === 'escort' ? new DepartureMonitor(this.modelLibrary, document.baseURI) : undefined;
     this.presentationEpoch++;
     this.pendingJetApproach = false;
     this.characterAssetErrors.clear();
@@ -250,7 +258,7 @@ export class Game {
     this.level?.dispose();
     for (const { model } of this.characters.values()) { model.root.removeFromParent(); model.dispose(); }
     this.aimIdentity.update(null, 0, false);
-    this.characters.clear(); this.motionTracker.clear(); this.crowd.clear(); this.feedback.clear(); this.sound.stopTransient();
+    this.characters.clear(); this.motionTracker.clear(); this.actorShots.clear(); this.crowd.clear(); this.feedback.clear(); this.sound.stopTransient();
     this.level = level; this.environment = level.environment; this.sim = level.sim;
     this.scene.add(this.environment.root);
     // S12 opens onto the distant arrival corridor; the combat-area haze hid
@@ -258,6 +266,8 @@ export class Game {
     this.scene.fog = new FogExp2(0x677e8d, id === 'epilogue' ? 0.004 : 0.008);
     this.sound.setScene(this.presentationEpoch, this.missionAudioState());
     void this.weapon.setCharacter(playerCharacterIdentity(id, this.sim.player.name), document.baseURI);
+    void this.care.setCharacter(playerCharacterIdentity(id, this.sim.player.name), document.baseURI);
+    void this.supplyHands.setCharacter(playerCharacterIdentity(id, this.sim.player.name), document.baseURI);
     if (!restored) this.speakCurrentLine();
     this.heldItems.reset(this.heldItem);
     this.monitor = monitor;
@@ -424,6 +434,7 @@ export class Game {
     }
     for (const e of this.sim.events) {
       if (e.type === 'shot') {
+        if (e.actorId && e.actorId !== 'player') this.actorShots.set(e.actorId, m.elapsed);
         const listener = this.sim.player;
         const relative = e.position ? ((e.position[0] - listener.position[0]) * Math.cos(listener.yaw)
           - (e.position[2] - listener.position[2]) * Math.sin(listener.yaw)) / 20 : 0;
@@ -451,6 +462,8 @@ export class Game {
     const sim = this.sim, p = sim.player, m = sim.mission, objective = sim.objective;
     const active = this.mode === 'playing';
     void this.weapon.setCharacter(playerCharacterIdentity(sim.scenario, p.name), document.baseURI);
+    void this.care.setCharacter(playerCharacterIdentity(sim.scenario, p.name), document.baseURI);
+    void this.supplyHands.setCharacter(playerCharacterIdentity(sim.scenario, p.name), document.baseURI);
     const sceneFrame = { scenario: sim.scenario, phase: m.phase, phaseTime: m.phaseTime, lowMotion: this.lowMotion };
     const history = openingView(sceneFrame, m.facts);
     this.camera.position.set(...sim.playerEye);
@@ -500,7 +513,7 @@ export class Game {
       let item = this.characters.get(actor.id);
       if (item && item.role !== actor.role) {
         this.scene.remove(item.model.root); item.model.dispose();
-        this.characters.delete(actor.id); this.motionTracker.remove(actor.id); this.characterAssetErrors.delete(actor.id); item = undefined;
+        this.characters.delete(actor.id); this.motionTracker.remove(actor.id); this.actorShots.delete(actor.id); this.characterAssetErrors.delete(actor.id); item = undefined;
       }
       if (!item) {
         const epoch = this.presentationEpoch;
@@ -512,7 +525,8 @@ export class Game {
           if (status.state === 'error') this.characterAssetErrors.add(actor.id);
           else this.characterAssetErrors.delete(actor.id);
         };
-        const model = crowdActor ? this.crowd.create(identity, onStatus)
+        const model = actor.role === 'cart' ? new ImportedPatientCart(this.modelLibrary, identity, document.baseURI, onStatus, sim.scenario)
+          : crowdActor ? this.crowd.create(identity, onStatus)
           : createImportedCharacter(this.modelLibrary, identity, document.baseURI, onStatus);
         item = { model, name: actor.name, role: actor.role }; this.characters.set(actor.id, item); this.scene.add(model.root);
       }
@@ -553,6 +567,9 @@ export class Game {
         crouched: actor.combat?.crouched,
         moveSpeed: this.motionTracker.speed(actor.id, actor.position, m.elapsed),
         animationTime: m.elapsed,
+        tacticalEnabled: m.control === 'combat',
+        combat: characterCombatPose(actor.combat),
+        lastShotAt: this.actorShots.get(actor.id),
         kneeling: commander ? history.commanderKneeling : actor.id === 'zhao' && history.restrained
           || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= OPENING_TIMELINE.childhood.rifle - 1 && m.phaseTime < OPENING_TIMELINE.childhood.departure
           || actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
@@ -572,6 +589,7 @@ export class Game {
 
     }
     for (const [id, item] of this.characters) if (!seen.has(id)) {
+      this.actorShots.delete(id);
       item.model.root.removeFromParent(); item.model.dispose();
       this.characters.delete(id); this.motionTracker.remove(id); this.characterAssetErrors.delete(id);
     }
@@ -610,8 +628,11 @@ export class Game {
       nextLabel: undefined,
       error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings,
         this.equipment.state === 'error' ? `装备载入失败。${this.mode === 'playing' ? '可在暂停菜单重试。' : ''}` : '',
-        (this.level?.sceneAssetErrors.size || this.level?.architectureAssetErrors.size) ? '部分场景素材未能载入，已保留临时模型。' : '',
+        (this.level?.sceneAssetErrors.size || this.level?.architectureAssetErrors.size || this.level?.worldWeaponAssetErrors.size
+          || this.monitor?.assetErrors.size) ? '部分场景素材未能载入，已保留临时模型。' : '',
         this.weapon.armsStatus.state === 'error' ? '双臂素材未能载入，可在暂停菜单重试装备。' : '',
+        (this.care.status.arms.state === 'error' || this.care.status.legs.state === 'error' || this.supplyHands.status.state === 'error'
+          || this.supplyAssets.getStatus().some(status => status.state === 'error')) ? '护理或搬运素材未能载入，可在暂停菜单重试装备。' : '',
         this.characterAssetErrors.size ? '部分人物素材未能载入，已保留临时模型。' : '',
         this.sound.getStatus().errors.length ? '部分声音素材未能载入；字幕和任务仍可继续。' : ''].filter(Boolean).join(' '),
     };
@@ -647,6 +668,7 @@ export class Game {
     this.renderQuality.detachScene();
     this.level?.dispose();
     this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
+    this.supplyHands.dispose(); this.supplyAssets.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
     for (const { model } of this.characters.values()) model.dispose();
     this.modelLibrary.dispose(); this.motionTracker.clear();

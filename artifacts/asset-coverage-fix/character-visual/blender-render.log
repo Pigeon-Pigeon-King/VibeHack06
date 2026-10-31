@@ -1,0 +1,40 @@
+18:46:51 | INFO: Data are loaded, start creating Blender stuff
+18:46:51 | INFO: Blender create Mesh node tripo_mesh_98939ba8-5a7f-4895-94e2-90f76dd807cc
+18:46:51 | INFO: glTF import finished in 0.02s
+18:46:51 | INFO: Data are loaded, start creating Blender stuff
+18:46:51 | INFO: Blender create Mesh node tripo_mesh_72ca2db1-f3d0-4a3b-9555-3a8be0109392
+18:46:51 | INFO: glTF import finished in 0.01s
+18:46:51 | INFO: Data are loaded, start creating Blender stuff
+18:46:51 | INFO: Blender create Mesh node tripo_mesh_a57e944a-7925-4be4-9e4c-56cda1bb1dd4
+18:46:51 | INFO: glTF import finished in 0.06s
+18:46:51 | INFO: Data are loaded, start creating Blender stuff
+18:46:51 | INFO: Blender create Mesh node tripo_mesh_64300525-783e-4f8e-866e-6a05aa05ad94
+18:46:51 | INFO: glTF import finished in 0.05s
+18:46:51 | INFO: Data are loaded, start creating Blender stuff
+18:46:51 | INFO: Blender create Mesh node BoltHardwareGeometryMesh
+18:46:51 | INFO: Blender create Mesh node ChargingHandleGeometryMesh
+18:46:51 | INFO: Blender create Mesh node FrontIronMesh
+18:46:51 | INFO: Blender create Mesh node FurnitureGeometryMesh
+18:46:51 | INFO: Blender create Mesh node MagazineMesh
+18:46:51 | INFO: Blender create Mesh node OpticRailAdapterMesh
+18:46:51 | INFO: Blender create Mesh node RearIronGeometryMesh
+18:46:51 | INFO: Blender create Mesh node ReceiverGeometryMesh
+18:46:51 | INFO: Blender create Mesh node StockButtpadMesh
+18:46:51 | INFO: Blender create Mesh node StockWoodMesh
+18:46:51 | INFO: Blender create Mesh node WeaponBodyGeometryMesh
+18:46:51 | INFO: glTF import finished in 0.04s
+/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/render-character-visual.py:24: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  s.world=bpy.data.worlds.new('inspection-world');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs[0].default_value=(.4,.45,.5,1);s.world.node_tree.nodes['Background'].inputs[1].default_value=.65
+00:12.139  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-seat-overview.png'
+00:18.208  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-seat-first-person.png'
+00:23.075  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-supply-first-person.png'
+00:26.945  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-supply-overview.png'
+00:30.402  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-aim-left-front.png'
+00:33.656  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-aim-left-side.png'
+00:37.248  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-fire-left-front.png'
+00:40.524  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-fire-left-side.png'
+00:44.119  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-fire-right-front.png'
+00:47.451  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-fire-right-side.png'
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

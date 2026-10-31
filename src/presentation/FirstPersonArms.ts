@@ -8,7 +8,12 @@ import { inspectCharacterRig, restoreCharacterRig, type CharacterRig } from './C
 export interface FirstPersonArmsStatus {
   state: 'placeholder' | 'loading' | 'ready' | 'error' | 'disposed'; assetId?: string; message?: string; progress?: ModelLoadProgress;
 }
-interface ArmsPose { rightGrip: Vector3; leftSupport: Vector3; reloadFraction: number; magazineGrip?: Vector3 }
+export interface FirstPersonArmsPose {
+  rightGrip: Vector3; leftSupport: Vector3; reloadFraction: number; magazineGrip?: Vector3;
+  /** Carry contacts use the same skin/rig; only the view-frame shoulder placement changes. */
+  layout?: 'weapon' | 'carry'; shoulderCenter?: Vector3;
+  leftHandDirection?: Vector3; rightHandDirection?: Vector3;
+}
 interface HandCalibration { palm: Group; offset: Vector3; direction: Vector3; rotation: Quaternion; armLength: number }
 interface LoadedArms {
   lease: ModelLease; geometries: BufferGeometry[]; rig: CharacterRig; poser: FirstPersonArmPoser;
@@ -32,18 +37,20 @@ function selectAttribute(attribute: BufferAttribute | InterleavedBufferAttribute
   return result;
 }
 
-/** Keeps only source triangles whose three vertices predominantly belong to the same arm. */
-export function extractFirstPersonArms(mesh: SkinnedMesh, rig: CharacterRig): BufferGeometry {
+/** Keeps original triangles whose three vertices predominantly belong to the same selected limb. */
+export function extractFirstPersonLimbs(mesh: SkinnedMesh, rig: CharacterRig, part: 'arms' | 'legs'): BufferGeometry {
   const source = mesh.geometry, position = source.getAttribute('position'), joints = source.getAttribute('skinIndex'), weights = source.getAttribute('skinWeight');
   if (!position || !joints || !weights || joints.itemSize !== 4 || weights.itemSize !== 4) throw new Error('人物手臂缺少蒙皮属性。');
   const arm = new Int8Array(position.count), point = new Vector3();
-  const shoulder = { L: rig.bones.get('L_Upperarm')!.getWorldPosition(new Vector3()), R: rig.bones.get('R_Upperarm')!.getWorldPosition(new Vector3()) };
+  const proximal = part === 'arms' ? 'Upperarm' : 'Thigh';
+  const names = part === 'arms' ? armName : /^[LR]_(Thigh|Calf|Foot|ToeBase)/;
+  const shoulder = { L: rig.bones.get(`L_${proximal}`)!.getWorldPosition(new Vector3()), R: rig.bones.get(`R_${proximal}`)!.getWorldPosition(new Vector3()) };
   const leftward = shoulder.L.clone().sub(shoulder.R).normalize();
   for (let vertex = 0; vertex < position.count; vertex++) {
     let left = 0, right = 0;
     for (let component = 0; component < 4; component++) {
       const name = mesh.skeleton.bones[joints.getComponent(vertex, component)]?.name;
-      if (name && armName.test(name)) {
+      if (name && names.test(name)) {
         if (name.startsWith('L_')) left += weights.getComponent(vertex, component); else right += weights.getComponent(vertex, component);
       }
     }
@@ -53,6 +60,7 @@ export function extractFirstPersonArms(mesh: SkinnedMesh, rig: CharacterRig): Bu
     // Keep shoulder/upper-arm geometry without accepting a torso triangle that
     // happens to have a stray arm weight in this generated mesh.
     if (point.dot(leftward) * (side === 'L' ? 1 : -1) < -0.025) continue;
+    if (part === 'legs' && point.y > 0.025) continue;
     arm[vertex] = side === 'L' ? 1 : 2;
   }
   const index = source.index, count = index?.count ?? position.count, selected: number[] = [], vertices: number[] = [], remap = new Map<number, number>();
@@ -76,11 +84,15 @@ export function extractFirstPersonArms(mesh: SkinnedMesh, rig: CharacterRig): Bu
     for (const [name, attributes] of Object.entries(source.morphAttributes)) geometry.morphAttributes[name as keyof BufferGeometry['morphAttributes']] = attributes!.map(attribute => selectAttribute(attribute, vertices));
     geometry.morphTargetsRelative = source.morphTargetsRelative; geometry.setIndex(selected);
     for (const group of groups) geometry.addGroup(group.start, group.count, group.materialIndex);
-    geometry.name = `${source.name || mesh.name}:first-person-arms`;
-    geometry.userData = { sourceGeometry: source.uuid, sourceVertexIndices: vertices, sourceTriangles: count / 3, armTriangles: { left: perArm[0], right: perArm[1] }, crop: 'same-arm skin weight >= 0.7; source triangles and attributes preserved' };
+    geometry.name = `${source.name || mesh.name}:first-person-${part}`;
+    geometry.userData = { sourceGeometry: source.uuid, sourceVertexIndices: vertices, sourceTriangles: count / 3,
+      [part === 'arms' ? 'armTriangles' : 'legTriangles']: { left: perArm[0], right: perArm[1] },
+      crop: `same-${part === 'arms' ? 'arm' : 'leg'} skin weight >= 0.7; source triangles and attributes preserved` };
     return geometry;
   } catch (error) { geometry.dispose(); throw error; }
 }
+
+export function extractFirstPersonArms(mesh: SkinnedMesh, rig: CharacterRig): BufferGeometry { return extractFirstPersonLimbs(mesh, rig, 'arms'); }
 
 function prepareArms(lease: ModelLease, asset: CharacterAsset, frame: Group): LoadedArms {
   const rig = inspectCharacterRig(lease.root), geometries: BufferGeometry[] = [];
@@ -184,7 +196,7 @@ export class FirstPersonArms {
   private identity?: CharacterIdentity;
   private baseURL = '';
   private key = '';
-  private pose: ArmsPose = { rightGrip: new Vector3(0, -0.14, -0.02), leftSupport: new Vector3(-0.055, -0.085, -0.48), reloadFraction: 0 };
+  private pose: FirstPersonArmsPose = { rightGrip: new Vector3(0, -0.14, -0.02), leftSupport: new Vector3(-0.055, -0.085, -0.48), reloadFraction: 0 };
 
   constructor(private readonly library: ModelLibrary, private readonly onStatus: (status: FirstPersonArmsStatus) => void = () => {}) {
     this.root.name = 'first-person-character-arms'; this.root.visible = false;
@@ -230,9 +242,10 @@ export class FirstPersonArms {
     }
   }
 
-  setPose(pose: ArmsPose): void {
+  setPose(pose: FirstPersonArmsPose): void {
     if (this.disposed) return;
-    this.pose = { rightGrip: pose.rightGrip.clone(), leftSupport: pose.leftSupport.clone(), magazineGrip: pose.magazineGrip?.clone(), reloadFraction: bounded(pose.reloadFraction) };
+    this.pose = { ...pose, rightGrip: pose.rightGrip.clone(), leftSupport: pose.leftSupport.clone(), magazineGrip: pose.magazineGrip?.clone(),
+      shoulderCenter: pose.shoulderCenter?.clone(), leftHandDirection: pose.leftHandDirection?.clone(), rightHandDirection: pose.rightHandDirection?.clone(), reloadFraction: bounded(pose.reloadFraction) };
     const loaded = this.loaded; if (!loaded) return;
     const { rig, mount, scale, poser } = loaded; restoreCharacterRig(rig);
     const phase = this.pose.reloadFraction;
@@ -242,13 +255,17 @@ export class FirstPersonArms {
     // Viewmodel shoulder placement preserves each model's scale and limb lengths.
     // The child has its own shorter rig; this is a technical hand placement,
     // never permission to enable child combat or approve the adult rifle fit.
-    const shoulder = new Vector3(0, -0.22, Math.min(0.04, this.pose.leftSupport.z + loaded.left.armLength * 0.82));
+    const armLength = Math.min(loaded.left.armLength, loaded.right.armLength);
+    const shoulder = this.pose.shoulderCenter ?? (this.pose.layout === 'carry'
+      ? leftGrip.clone().add(this.pose.rightGrip).multiplyScalar(0.5).add(new Vector3(0, armLength * 0.10, armLength * 0.28))
+      : new Vector3(0, -0.22, Math.min(0.04, this.pose.leftSupport.z + loaded.left.armLength * 0.82)));
     mount.position.copy(shoulder).sub(loaded.shoulderCenter.clone().applyQuaternion(sourceToView).multiplyScalar(scale));
     this.root.updateWorldMatrix(true, true);
     const errors: number[] = [];
     for (const side of ['L', 'R'] as const) {
       const hand = side === 'L' ? loaded.left : loaded.right, grip = side === 'L' ? leftGrip : this.pose.rightGrip;
-      const finger = side === 'L' ? new Vector3(0.80, -0.12, -0.60).lerp(new Vector3(0.1, -1, 0), takingMagazine).normalize() : new Vector3(-0.06, -1, -0.08).normalize();
+      const direction = side === 'L' ? this.pose.leftHandDirection : this.pose.rightHandDirection;
+      const finger = direction?.clone().normalize() ?? (side === 'L' ? new Vector3(0.80, -0.12, -0.60).lerp(new Vector3(0.1, -1, 0), takingMagazine).normalize() : new Vector3(-0.06, -1, -0.08).normalize());
       const orientation = new Quaternion().setFromUnitVectors(hand.direction, finger).multiply(hand.rotation).normalize();
       const wrist = grip.clone().sub(hand.offset.clone().applyQuaternion(orientation).multiplyScalar(scale));
       const pole = new Vector3(side === 'L' ? -0.6 : 0.6, -1, 0.18).normalize();

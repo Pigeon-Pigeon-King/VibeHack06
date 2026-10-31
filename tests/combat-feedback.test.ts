@@ -37,6 +37,7 @@ it('confirms only real player impacts: nonlethal hit first, red-priority kill se
     }
     const fire = () => {
       sim.step({ ...emptyIntent, fire: true, ads: true });
+      expect(sim.events.find(event => event.type === 'shot')?.actorId).toBe('player');
       for (let i = 0; i < 4 && sim.ballistics.projectiles.some(p => p.owner === 'player'); i++) sim.step(emptyIntent);
     };
     fire(); expect(target.health).toBe(34); expect(sim.hitFlash).toBeGreaterThan(0); expect(sim.killFlash).toBe(0);

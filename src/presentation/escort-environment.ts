@@ -1,3 +1,4 @@
+import { benchRow, bindGeneratedProp, cabinetRow, doorLeaves, propPlacement, propSlot } from './GeneratedPropBindings';
 import { BoxGeometry, Mesh, MeshStandardMaterial, PointLight } from 'three';
 import type { Vec3 } from '../contracts';
 import { ESCORT as E } from '../content/escort-layout';
@@ -81,15 +82,19 @@ function reception(k: PortKit) {
   for (const x of [-8.72, -5.28]) k.box('pale', [x, 2.05, 2.17], [0.18, 2.15, 0.18]);
   for (const y of [1.04, 3.06]) k.box('pale', [-7, y, 2.17], [3.6, 0.18, 0.18]);
   k.box('rubber', [-7, 2.05, 2.06], [3.22, 1.82, 0.12]);
-  block(k, 'escort-reception-battery', [15, 1.2, -1.5], [3, 2.4, 2], 'steel');
+  propSlot(k, 'escort-reception-battery', cabinetRow('escort-reception-battery', [15, 0, -1.5], 3, 2.4), slot => {
+  block(slot, 'escort-reception-battery', [15, 1.2, -1.5], [3, 2.4, 2], 'steel');
+  });
   for (const z of [10, 15]) {
-    block(k, `escort-reception-bench-${z}`, [17, 0.43, z], [1.3, 0.86, 3.5], 'pale');
-    k.box('white', [17, 0.92, z], [0.55, 0.12, 0.8]);
+  propSlot(k, `escort-reception-bench-${z}`, [propPlacement(`escort-reception-bench-${z}`, 'PROP-BENCH', [17, 0, z], 3.2)], slot => {
+    block(slot, `escort-reception-bench-${z}`, [17, 0.43, z], [1.3, 0.86, 3.5], 'pale');
+    slot.box('white', [17, 0.92, z], [0.55, 0.12, 0.8]);
+  });
   }
   const door = new PortKit(); door.root.name = 'escort-loading-door';
   door.box('paint', [-14, 1.8, 15], [0.35, 3.6, 10]);
   for (let z = 10.4; z < 20; z += 0.8) door.box('pale', [-14.22, 1.8, z], [0.08, 3.4, 0.06]);
-  door.flush(); k.root.add(door.root);
+  door.flush(); bindGeneratedProp(door.root, 'escort-loading-door', doorLeaves('escort-loading-door', [-14, 0, 15], 10, 3.6, 0)); k.root.add(door.root);
   k.solid('escort-loading-door', [-14, 1.8, 15], [0.4, 3.6, 10], 0, 'escort-convoy-started');
   const lamp = new PointLight(0xffd9aa, 65, 23, 2); lamp.position.set(3, 4.4, 8); k.root.add(lamp);
   k.sign('西货廊', [-14.3, 4.48, 15], 8, 0.5, -Math.PI / 2);
@@ -165,8 +170,10 @@ function industrialFields(k: PortKit): void {
     k.box('amber', [x - 24, 4.5, 15], [0.8, 0.35, 0.8]);
   }
   for (const [i, p] of E.ammo.entries()) {
-    block(k, `escort-ammo-${i}`, [p[0] + 1.3, 0.5, p[2]], [1.3, 1, 0.8], 'steel');
-    k.box('amber', [p[0] + 1.3, 1.04, p[2]], [1.25, 0.08, 0.75]);
+  propSlot(k, `escort-ammo-${i}`, [propPlacement(`escort-ammo-${i}`, 'PROP-CARGO', [p[0] + 1.3, 0, p[2]], 1.25, 'z', Math.PI / 2)], slot => {
+    block(slot, `escort-ammo-${i}`, [p[0] + 1.3, 0.5, p[2]], [1.3, 1, 0.8], 'steel');
+    slot.box('amber', [p[0] + 1.3, 1.04, p[2]], [1.25, 0.08, 0.75]);
+  });
   }
 }
 function medicalStation(k: PortKit) {
@@ -176,11 +183,13 @@ function medicalStation(k: PortKit) {
   for (const x of [-418, -378]) for (const z of [23.5, 49]) block(k, `escort-station-leg-${x}-${z}`, [x, 2.3, z], [0.24, 4.6, 0.24], 'steel');
   k.terminal(E.manifest);
   for (const z of [30, 37, 44]) {
-    block(k, `escort-station-store-${z}`, [-416, 1.25, z], [3, 2.5, 3.2], 'steel');
-    k.box('white', [-414.45, 1.4, z], [0.08, 0.35, 1.8]);
-    k.box('white', [-414.44, 1.4, z], [0.08, 1.6, 0.35]);
+  propSlot(k, `escort-station-store-${z}`, cabinetRow(`escort-station-store-${z}`, [-416, 0, z], 3, 2.5), slot => {
+    block(slot, `escort-station-store-${z}`, [-416, 1.25, z], [3, 2.5, 3.2], 'steel');
+    slot.box('white', [-414.45, 1.4, z], [0.08, 0.35, 1.8]);
+    slot.box('white', [-414.44, 1.4, z], [0.08, 1.6, 0.35]);
+  });
   }
-  for (const x of [-407, -386]) block(k, `escort-station-bench-${x}`, [x, 0.43, 41.5], [5, 0.86, 0.9], 'pale');
+  for (const x of [-407, -386]) propSlot(k, `escort-station-bench-${x}`, benchRow(`escort-station-bench-${x}`, [x, 0, 41.5], 5), slot => block(slot, `escort-station-bench-${x}`, [x, 0.43, 41.5], [5, 0.86, 0.9], 'pale'));
   block(k, 'escort-change-tray', [-241.1, 0.5, 20.6], [2.2, 1, 1.1], 'pale');
   const pillow = new PortKit(); pillow.root.name = 'escort-patient-pillow';
   pillow.box('white', [-241.1, 1.14, 20.6], [0.65, 0.22, 0.42], [0, 0.14, 0]);

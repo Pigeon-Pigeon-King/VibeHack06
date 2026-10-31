@@ -1,0 +1,60 @@
+{
+  "recordedAt": "2026-10-31T11:39:30.262886+00:00",
+  "baselineRuntimeCommit": "a9030c6",
+  "branch": "codex/asset-coverage-fix",
+  "fullSuite": {
+    "success": true,
+    "files": 84,
+    "passed": 991,
+    "failed": 0,
+    "skipped": 1,
+    "command": "node node_modules/vitest/vitest.mjs run --maxWorkers=2 --testTimeout=20000",
+    "skipDetails": [
+      {
+        "file": "/Users/penguin/VibeHack06-asset-coverage/tests/chapter-transition/narration-assets.test.ts",
+        "test": "frozen chapter narration delivery compares every copied file byte-for-byte with the production originals"
+      }
+    ],
+    "skipReason": "Production narration original-to-copy optional check requires NARRATION_DELIVERY_RUNTIME, which is not configured in this isolated worktree. Runtime audio hashes remain checked."
+  },
+  "independentRouteChecks": {
+    "transport-checks-final": {
+      "success": true,
+      "passed": 8,
+      "failed": 0
+    },
+    "escort-checks": {
+      "success": true,
+      "passed": 10,
+      "failed": 0
+    },
+    "finale-checks": {
+      "success": true,
+      "passed": 10,
+      "failed": 0
+    }
+  },
+  "typecheck": "passed",
+  "productionBuild": "passed",
+  "buildWarning": "Existing large JS chunk warning remains; not a device performance acceptance.",
+  "gitDiffCheck": "passed",
+  "sourceSnapshotFile": "../asset-coverage-fix/source-snapshot.json",
+  "snapshotFiles": 140,
+  "sourceDriftAfterSnapshot": [],
+  "unvalidated": [
+    "WebGL visual result on final build",
+    "browser user inputs",
+    "mobile physical devices",
+    "Windows EXE",
+    "full campaign human playthrough",
+    "frame rate and thermals"
+  ],
+  "offlineVisuals": "Actual GLB/Three.js transforms exported to Blender; not game screenshots.",
+  "priorFailures": [
+    "An armed-idle comparison test used an unarmed baseline; corrected its expectation to the same armed state.",
+    "During brace work a CH-LU thin cross-section caused body load fallback; fixed source skin envelope and all three identities now pass.",
+    "Earlier independent transport run exceeded 5s wall-clock under concurrent Blender load; unchanged route assertions passed with 20s timeout."
+  ],
+  "assetFilesChanged": false,
+  "publicationStatus": "Waiting for source merge and delivery owner incremental publication; see dist-delta-final.json."
+}

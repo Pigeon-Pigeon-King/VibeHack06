@@ -1,0 +1,23 @@
+19:38:52 | INFO: Data are loaded, start creating Blender stuff
+19:38:52 | INFO: Blender create Mesh node tripo_mesh_9b8d7d6c-a745-4bb8-af3b-2eefdaa030ee
+19:38:52 | INFO: glTF import finished in 0.07s
+19:38:52 | INFO: Data are loaded, start creating Blender stuff
+19:38:52 | INFO: Blender create Mesh node BoltHardwareGeometryMesh
+19:38:52 | INFO: Blender create Mesh node ChargingHandleGeometryMesh
+19:38:52 | INFO: Blender create Mesh node FrontIronMesh
+19:38:52 | INFO: Blender create Mesh node FurnitureGeometryMesh
+19:38:52 | INFO: Blender create Mesh node MagazineMesh
+19:38:52 | INFO: Blender create Mesh node OpticRailAdapterMesh
+19:38:52 | INFO: Blender create Mesh node RearIronGeometryMesh
+19:38:52 | INFO: Blender create Mesh node ReceiverGeometryMesh
+19:38:52 | INFO: Blender create Mesh node StockButtpadMesh
+19:38:52 | INFO: Blender create Mesh node StockWoodMesh
+19:38:52 | INFO: Blender create Mesh node WeaponBodyGeometryMesh
+19:38:52 | INFO: glTF import finished in 0.04s
+/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/render-character-visual.py:27: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  s.world=bpy.data.worlds.new('inspection-world');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs[0].default_value=(.4,.45,.5,1);s.world.node_tree.nodes['Background'].inputs[1].default_value=.65
+00:06.642  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/xu-aim-left-front.png'
+00:12.587  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/xu-aim-left-side.png'
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

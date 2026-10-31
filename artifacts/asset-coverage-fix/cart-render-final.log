@@ -1,0 +1,22 @@
+19:02:55 | INFO: Data are loaded, start creating Blender stuff
+19:02:55 | INFO: Blender create Mesh node tripo_mesh_6328a757-b2db-4ff3-83e8-755ba83270a3
+19:02:55 | INFO: glTF import finished in 0.07s
+19:02:55 | INFO: Data are loaded, start creating Blender stuff
+19:02:55 | INFO: Blender create Mesh node tripo_mesh_8d8192a4-2414-497c-9ef3-019dc604fce0
+19:02:55 | INFO: glTF import finished in 0.01s
+19:02:55 | INFO: Data are loaded, start creating Blender stuff
+19:02:55 | INFO: Blender create Mesh node tripo_mesh_72ca2db1-f3d0-4a3b-9555-3a8be0109392
+19:02:55 | INFO: glTF import finished in 0.01s
+19:02:55 | INFO: Data are loaded, start creating Blender stuff
+19:02:55 | INFO: Blender create Mesh node tripo_mesh_8618a776-771a-4405-b0b7-13ff8237f6d0
+19:02:55 | INFO: glTF import finished in 0.05s
+19:02:55 | INFO: Data are loaded, start creating Blender stuff
+19:02:55 | INFO: Blender create Mesh node tripo_mesh_1c388cb1-fe48-4263-a1e0-7210e4451aa3
+19:02:56 | INFO: glTF import finished in 0.03s
+/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/render-assembly.py:22: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  s.world=bpy.data.worlds.new('world');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs[0].default_value=(.4,.45,.5,1);s.world.node_tree.nodes['Background'].inputs[1].default_value=.6
+00:19.756  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/cart-assembly-front.png'
+00:37.218  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/cart-assembly-rear.png'
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

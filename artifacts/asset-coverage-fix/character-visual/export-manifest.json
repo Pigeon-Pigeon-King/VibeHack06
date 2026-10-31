@@ -1,0 +1,1429 @@
+{
+  "generatedAt": "2026-10-31T11:37:49.308Z",
+  "scope": "Frozen actual runtime mesh after skin.getVertexPosition; Node image decode substituted only. Blender reads original runtime GLB PBR textures. Not WebGL acceptance.",
+  "sourceHashes": {
+    "src/presentation/CareView.ts": "92ee72d9280b2f0a660c0849b1168ef746655bc15ffb653f9e448f8efafbf3e2",
+    "src/presentation/FirstPersonArms.ts": "a2cbbb032dba47c5bb084d84843445c5cb1e197a5a5bba2ff5077c238407ba2c",
+    "src/presentation/FirstPersonSeatedLegs.ts": "417a519ff2deed292e62a19aad2493f9c657f3f59f13d9bbe9de8313bf897bff",
+    "src/presentation/CarriedSupplyHands.ts": "8e71780d25f411a77ae9340364241a88ffc79cd1a0ed78efbc238baa37e89993",
+    "src/presentation/ImportedCharacter.ts": "4233ad4a23da6d7c95ce1b7241b851a93770a68497a87e63ab34b3f2d79caea1",
+    "src/presentation/TacticalAnimations.ts": "bce34e5fbe9cb1e73e42cb4f6a6cf7382ab37e2f51c754f3beea0821941be8ca",
+    "src/presentation/WorldAK47.ts": "8255892cd61277143ab2d8aea3a8c4d2fbaed0433418199ee193b1b3ab706ede",
+    "src/presentation/GeneratedSceneAssets.ts": "3b51ab6e323a339facccc5375c3e88bf7d3414b0587fbe92f006d75b17242f18",
+    "src/main.ts": "fa0fd31760d0b00054c8157b1c80f77fceaf89ed387665e7954b69a5b80c5430"
+  },
+  "sourceHashesAfter": {
+    "src/presentation/CareView.ts": "92ee72d9280b2f0a660c0849b1168ef746655bc15ffb653f9e448f8efafbf3e2",
+    "src/presentation/FirstPersonArms.ts": "a2cbbb032dba47c5bb084d84843445c5cb1e197a5a5bba2ff5077c238407ba2c",
+    "src/presentation/FirstPersonSeatedLegs.ts": "417a519ff2deed292e62a19aad2493f9c657f3f59f13d9bbe9de8313bf897bff",
+    "src/presentation/CarriedSupplyHands.ts": "8e71780d25f411a77ae9340364241a88ffc79cd1a0ed78efbc238baa37e89993",
+    "src/presentation/ImportedCharacter.ts": "4233ad4a23da6d7c95ce1b7241b851a93770a68497a87e63ab34b3f2d79caea1",
+    "src/presentation/TacticalAnimations.ts": "bce34e5fbe9cb1e73e42cb4f6a6cf7382ab37e2f51c754f3beea0821941be8ca",
+    "src/presentation/WorldAK47.ts": "8255892cd61277143ab2d8aea3a8c4d2fbaed0433418199ee193b1b3ab706ede",
+    "src/presentation/GeneratedSceneAssets.ts": "3b51ab6e323a339facccc5375c3e88bf7d3414b0587fbe92f006d75b17242f18",
+    "src/main.ts": "fa0fd31760d0b00054c8157b1c80f77fceaf89ed387665e7954b69a5b80c5430"
+  },
+  "sourceChangedDuringExport": [],
+  "sources": {
+    "CH-ZHOU": {
+      "path": "public/models/characters/ch-zhou-rig-v1.glb",
+      "sha256": "e643df2c1bc4a42ebd35d7b1da52a769222c09aa501963f49cd53dcb0a7bcd98",
+      "revision": "rig-v1-tex1024-e643df2c1bc4",
+      "bytes": 1648864
+    },
+    "PROP-ARMOR-LEFT-BRACE": {
+      "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+      "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+      "revision": "production-20261031-tex1024-v1",
+      "bytes": 1320340
+    },
+    "PROP-CARGO": {
+      "path": "public/assets/generated/production-20261031-props-r1/PROP-CARGO.glb",
+      "sha256": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+      "revision": "production-20261031-tex1024-v1",
+      "bytes": 1880176
+    },
+    "WP-AK47": {
+      "path": "public/models/weapons/ak47-world-r1.glb",
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+      "revision": "world-r1-d121eb62491e",
+      "bytes": 2046524
+    },
+    "CH-ENEMY": {
+      "path": "public/models/characters/ch-enemy-rig-v1.glb",
+      "sha256": "0242cf47abaf0d8692a9fcd40465913af64488f90f5186b02a058920eef83b6c",
+      "revision": "rig-v1-tex1024-0242cf47abaf",
+      "bytes": 1871400
+    },
+    "ANIM-WALK-CANONICAL": {
+      "path": "public/models/animations/walk-canonical-v1.glb",
+      "sha256": "8281b6b9d7563805e9fffed3a0db6657eefe42fac0d8d86c9a4357e193b0aa78",
+      "revision": "canonical-v1-8281b6b9d756",
+      "bytes": 532296
+    },
+    "TACTICAL-CH-ENEMY": {
+      "path": "public/models/animations/tactical-r1/ch-enemy.glb",
+      "sha256": "00ea81296696405ac4fe55bc9ff2164a98a91976c2013afb294c7bcd9c393a8d",
+      "revision": "r1-00ea81296696",
+      "bytes": 2504580
+    },
+    "CH-LU": {
+      "path": "public/models/characters/ch-lu-rig-v1.glb",
+      "sha256": "6d6e12d9e23449ab24f260f2b33bdb30a1e48a179c625e0c9904992ac7b5737f",
+      "revision": "rig-v1-tex1024-6d6e12d9e234",
+      "bytes": 1636760
+    },
+    "TACTICAL-CH-LU": {
+      "path": "public/models/animations/tactical-r1/ch-lu.glb",
+      "sha256": "8cdaec04e90cff8e3b31bd750d4e5b9bc3029cee9d08156b0b84dcda9bb58d37",
+      "revision": "r1-8cdaec04e90c",
+      "bytes": 2504620
+    },
+    "TACTICAL-CH-ZHOU": {
+      "path": "public/models/animations/tactical-r1/ch-zhou.glb",
+      "sha256": "984be4cb00668be40db4990241c65cc9912516793d9479f2819f68b601de2076",
+      "revision": "r1-984be4cb0066",
+      "bytes": 2504392
+    },
+    "CH-XU": {
+      "path": "public/models/characters/ch-xu-rig-v1.glb",
+      "sha256": "a92899ff81b6ee64e8b9a36185ae2c0e56380c37eef243f14a3542167271e640",
+      "revision": "rig-v1-tex1024-a92899ff81b6",
+      "bytes": 1578972
+    },
+    "TACTICAL-CH-XU": {
+      "path": "public/models/animations/tactical-r1/ch-xu.glb",
+      "sha256": "b07d9ec4042b5c9ba4c38e40d1e170b09d4305a46b04b5d35254407fbe902c0e",
+      "revision": "r1-b07d9ec4042b",
+      "bytes": 2504644
+    }
+  },
+  "cases": [
+    {
+      "id": "zhou-seat",
+      "evidence": {
+        "status": {
+          "arms": {
+            "state": "ready",
+            "assetId": "CH-ZHOU"
+          },
+          "legs": {
+            "state": "ready",
+            "assetId": "CH-ZHOU"
+          }
+        },
+        "input": {
+          "position": [
+            0,
+            0,
+            0
+          ],
+          "yaw": 0,
+          "mode": "seat",
+          "progress": 0.8,
+          "adjusted": true
+        },
+        "contact": {
+          "leftAnkleErrorMeters": 0.0000025418392928640636,
+          "rightAnkleErrorMeters": 1.2840814075043612e-7,
+          "adjustment": 1,
+          "source": "simulation care progress / brace-adjusted fact",
+          "braceFit": "three source-mesh pieces; measured skin sections, fixed leg lengths",
+          "visualAcceptance": "NOT_REVIEWED"
+        }
+      },
+      "views": [
+        {
+          "name": "overview",
+          "camera": [
+            1.5,
+            1.1,
+            -2.2
+          ],
+          "target": [
+            0,
+            0.3,
+            -0.28
+          ],
+          "ortho": 1.35
+        },
+        {
+          "name": "first-person",
+          "camera": [
+            0,
+            1.18,
+            0.08
+          ],
+          "target": [
+            0,
+            0.3,
+            -0.5
+          ],
+          "fov": 75
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.21648966111489143,
+          -0.01319416770878179,
+          -0.7668259030414699
+        ],
+        "max": [
+          0.23313460693044027,
+          0.6698024333891553,
+          0.015854820875626653
+        ]
+      },
+      "meshes": 4,
+      "triangles": 12183
+    },
+    {
+      "id": "zhou-supply",
+      "evidence": {
+        "status": {
+          "state": "ready",
+          "assetId": "CH-ZHOU"
+        },
+        "cargo": [
+          {
+            "id": "first-person-supply",
+            "assetId": "PROP-CARGO",
+            "state": "ready"
+          }
+        ],
+        "exactMainPlacement": {
+          "root": [
+            0,
+            -0.44,
+            -0.72
+          ],
+          "bottom": [
+            0,
+            -0.21,
+            0
+          ],
+          "sourceAxis": "z",
+          "metres": 0.62,
+          "yaw": 1.5707963267948966
+        },
+        "contacts": {
+          "leftErrorMeters": 6.581577879511794e-8,
+          "rightErrorMeters": 9.392732873287095e-8,
+          "reloadFraction": 0,
+          "visualAcceptance": "NOT_REVIEWED"
+        }
+      },
+      "views": [
+        {
+          "name": "first-person",
+          "camera": [
+            0,
+            0,
+            0
+          ],
+          "target": [
+            0,
+            0,
+            -1
+          ],
+          "fov": 75
+        },
+        {
+          "name": "overview",
+          "camera": [
+            1.1,
+            0.5,
+            0.5
+          ],
+          "target": [
+            0,
+            -0.42,
+            -0.72
+          ],
+          "ortho": 1.25
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.5044195603413114,
+          -0.65,
+          -0.9155061328411103
+        ],
+        "max": [
+          0.5001737996647139,
+          -0.2291715025901795,
+          -0.5192713792359006
+        ]
+      },
+      "meshes": 2,
+      "triangles": 9882
+    },
+    {
+      "id": "enemy-aim-left",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "left",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_aim_left",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": true,
+          "clipTime": 8.07,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 1.3877787807814457e-17,
+          "leftGripError": 4.313540603837536e-8,
+          "sightForwardDot": 0.9975640502136449
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 9.2533632140927e-9,
+          "leftErrorMeters": 5.63491624573399e-8,
+          "stockShoulderErrorMeters": 2.5097679356831033e-8,
+          "shoulderOffsetMeters": 0.039886749157351555,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.14352240444017833,
+            0.8292515428249868,
+            0.03239973947328213
+          ],
+          "forward": [
+            0.06975648699504065,
+            3.1066377070451204e-8,
+            0.9975640493332295
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        },
+        {
+          "name": "side",
+          "camera": [
+            -3,
+            1.5,
+            0.4
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.3417535759463162,
+          -1.652033212139203e-8,
+          -0.16250930629602356
+        ],
+        "max": [
+          0.30311998596966283,
+          1.1351632764846873,
+          0.9207698430253175
+        ]
+      },
+      "meshes": 11,
+      "triangles": 39512
+    },
+    {
+      "id": "enemy-fire-left",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "lastShotAt": 8.02,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "left",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_fire_left",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": false,
+          "clipTime": 0.1050000000000007,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 1.1102230246251565e-16,
+          "leftGripError": 4.919415996095401e-8,
+          "sightForwardDot": 0.9962783944545122
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 1.3281283457589599e-8,
+          "leftErrorMeters": 6.77037797043895e-8,
+          "stockShoulderErrorMeters": 2.5292865358097462e-8,
+          "shoulderOffsetMeters": 0.039888017129790024,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.14341127661904518,
+            0.8293284700424834,
+            0.03210765866499072
+          ],
+          "forward": [
+            0.06966783397835627,
+            0.05075183748390673,
+            0.9962783967851414
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.34135375914377486,
+          -1.652033212139203e-8,
+          -0.16258112530447172
+        ],
+        "max": [
+          0.29887419731385656,
+          1.13523770490166,
+          1.0123062363380981
+        ]
+      },
+      "meshes": 12,
+      "triangles": 39522
+    },
+    {
+      "id": "enemy-aim-right",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "right",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_aim_right",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": true,
+          "clipTime": 8.07,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 1.1443916996305594e-16,
+          "leftGripError": 6.63868653800755e-8,
+          "sightForwardDot": 0.9975640448733126
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 1.234763473473724e-8,
+          "leftErrorMeters": 7.676828807686346e-8,
+          "stockShoulderErrorMeters": 2.548277536333368e-8,
+          "shoulderOffsetMeters": 0.02923735651793609,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.3583401329000288,
+            0.7187334317871218,
+            -0.046014961871771946
+          ],
+          "forward": [
+            -0.06975654252182935,
+            -1.3406366357856937e-7,
+            0.9975640454504073
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.5783807708153282,
+          -0.00001875023755361393,
+          -0.18022440228067232
+        ],
+        "max": [
+          0.2616719351224057,
+          1.1332816963697494,
+          0.8424041631916198
+        ]
+      },
+      "meshes": 11,
+      "triangles": 39512
+    },
+    {
+      "id": "enemy-fire-right",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "lastShotAt": 8.02,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "right",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_fire_right",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": false,
+          "clipTime": 0.1050000000000007,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 5.551115123125783e-17,
+          "leftGripError": 7.071409615704312e-8,
+          "sightForwardDot": 0.9962785744874127
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 1.1198454395474068e-8,
+          "leftErrorMeters": 8.147895891030195e-8,
+          "stockShoulderErrorMeters": 2.4938745129390722e-8,
+          "shoulderOffsetMeters": 0.031465044631962834,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.35823389981706055,
+            0.7047799981742725,
+            -0.046310391024897944
+          ],
+          "forward": [
+            -0.06966536538026621,
+            0.05075167979438362,
+            0.9962785774393037
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.5783398698665773,
+          -0.00001875023755361393,
+          -0.18007500181129965
+        ],
+        "max": [
+          0.2616719351224057,
+          1.1333561414175592,
+          0.9339682971341186
+        ]
+      },
+      "meshes": 12,
+      "triangles": 39522
+    },
+    {
+      "id": "lu-aim-left",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "left",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_aim_left",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": true,
+          "clipTime": 8.07,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 1.3877787807814457e-17,
+          "leftGripError": 6.931173035957423e-8,
+          "sightForwardDot": 0.9975640428577175
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 1.228338889083447e-8,
+          "leftErrorMeters": 5.2434820336040994e-8,
+          "stockShoulderErrorMeters": 4.3494499217853515e-8,
+          "shoulderOffsetMeters": 0.053065556920832396,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.13947293386845963,
+            0.7905172977937378,
+            0.019118212067301424
+          ],
+          "forward": [
+            0.0697565803429322,
+            5.163431093230346e-8,
+            0.9975640428057024
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        },
+        {
+          "name": "side",
+          "camera": [
+            -3,
+            1.5,
+            0.4
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.29117467017167065,
+          -2.119156400576602e-8,
+          -0.18874379595844576
+        ],
+        "max": [
+          0.32483346971737626,
+          1.1325660545653322,
+          0.9074882776480685
+        ]
+      },
+      "meshes": 11,
+      "triangles": 40346
+    },
+    {
+      "id": "lu-fire-left",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "lastShotAt": 8.02,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "left",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_fire_left",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": false,
+          "clipTime": 0.1050000000000007,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 2.7755575615628914e-17,
+          "leftGripError": 6.499844300805218e-8,
+          "sightForwardDot": 0.9962783707192282
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 7.628234972705036e-9,
+          "leftErrorMeters": 5.273530167516538e-8,
+          "stockShoulderErrorMeters": 4.097499504810458e-8,
+          "shoulderOffsetMeters": 0.05306059702514643,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.1393595382344681,
+            0.7905957026200353,
+            0.018836651391016153
+          ],
+          "forward": [
+            0.06966819920460995,
+            0.050751988368253384,
+            0.9962783635592292
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.29108883536046243,
+          -2.119156400576602e-8,
+          -0.18882046376358863
+        ],
+        "max": [
+          0.32242018460231775,
+          1.1326414179513637,
+          0.9990351494877048
+        ]
+      },
+      "meshes": 12,
+      "triangles": 40356
+    },
+    {
+      "id": "lu-aim-right",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "right",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_aim_right",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": true,
+          "clipTime": 8.07,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 5.551115123125783e-17,
+          "leftGripError": 5.526958193462435e-8,
+          "sightForwardDot": 0.9975640553265074
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 2.8422685738268446e-8,
+          "leftErrorMeters": 1.1255874572304593e-8,
+          "stockShoulderErrorMeters": 4.9336673822881965e-8,
+          "shoulderOffsetMeters": 0.029401947953395922,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.3352461663080022,
+            0.6854935484645559,
+            -0.055882474579765556
+          ],
+          "forward": [
+            -0.06975645999316868,
+            1.1107722291145096e-7,
+            0.9975640512213787
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.5185789202973877,
+          -9.549798426870868e-9,
+          -0.20215232845200154
+        ],
+        "max": [
+          0.2511436347891522,
+          1.135564574682402,
+          0.8325366580831254
+        ]
+      },
+      "meshes": 11,
+      "triangles": 40346
+    },
+    {
+      "id": "lu-fire-right",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "lastShotAt": 8.02,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "right",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_fire_right",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": false,
+          "clipTime": 0.1050000000000007,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 0,
+          "leftGripError": 5.30069547313817e-8,
+          "sightForwardDot": 0.9962785869688621
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 2.688966553194938e-8,
+          "leftErrorMeters": 1.2639410059622791e-8,
+          "stockShoulderErrorMeters": 4.978037992597601e-8,
+          "shoulderOffsetMeters": 0.03104177709862462,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.33514614688692523,
+            0.671109464291911,
+            -0.05616818896093957
+          ],
+          "forward": [
+            -0.06966529794325026,
+            0.05075181074186991,
+            0.9962785754842365
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.5178591323700288,
+          -9.549798426870868e-9,
+          -0.20221852048859656
+        ],
+        "max": [
+          0.2511436347891522,
+          1.1356399406030941,
+          0.9241105003068154
+        ]
+      },
+      "meshes": 12,
+      "triangles": 40356
+    },
+    {
+      "id": "zhou-aim-left",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "left",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_aim_left",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": true,
+          "clipTime": 8.07,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 0,
+          "leftGripError": 7.039892500236333e-8,
+          "sightForwardDot": 0.9975640480013936
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 7.507774347600369e-8,
+          "leftErrorMeters": 3.9231175208187366e-8,
+          "stockShoulderErrorMeters": 6.849783093551044e-8,
+          "shoulderOffsetMeters": 0.03082207001484488,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.14594287452618118,
+            0.8134798502707279,
+            0.048902666497434286
+          ],
+          "forward": [
+            0.06975636946790185,
+            -2.291926998506948e-8,
+            0.9975640575515224
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        },
+        {
+          "name": "side",
+          "camera": [
+            -3,
+            1.5,
+            0.4
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.333449304731778,
+          1.7047717981201475e-8,
+          -0.17564000644310335
+        ],
+        "max": [
+          0.30628710248444546,
+          1.1330873217086437,
+          0.9372725946213482
+        ]
+      },
+      "meshes": 11,
+      "triangles": 40488
+    },
+    {
+      "id": "zhou-fire-left",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "lastShotAt": 8.02,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "left",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_fire_left",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": false,
+          "clipTime": 0.1050000000000007,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 0,
+          "leftGripError": 7.113241056174325e-8,
+          "sightForwardDot": 0.9962785136511163
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 7.13848451522357e-8,
+          "leftErrorMeters": 2.986432664044117e-8,
+          "stockShoulderErrorMeters": 6.24346320854291e-8,
+          "shoulderOffsetMeters": 0.03082207001484488,
+          "supportFraction": 0.01953125,
+          "shoulder": [
+            -0.14582834210144646,
+            0.8135582887475236,
+            0.048605461047329504
+          ],
+          "forward": [
+            0.06966662354468313,
+            0.050750885515233435,
+            0.9962785299218805
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.3332380481599737,
+          1.7047717981201475e-8,
+          -0.17572317073761917
+        ],
+        "max": [
+          0.30101752247535024,
+          1.1331642979003764,
+          1.0288040048633054
+        ]
+      },
+      "meshes": 12,
+      "triangles": 40498
+    },
+    {
+      "id": "zhou-aim-right",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "right",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_aim_right",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": true,
+          "clipTime": 8.07,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 2.7755575615628914e-17,
+          "leftGripError": 1.1161055460246084e-7,
+          "sightForwardDot": 0.9975640535929498
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 1.3238839518265716e-7,
+          "leftErrorMeters": 3.922462281470972e-8,
+          "stockShoulderErrorMeters": 1.309688351935758e-7,
+          "shoulderOffsetMeters": 0.030822070014844903,
+          "supportFraction": 0.17578125,
+          "shoulder": [
+            -0.37334183005360444,
+            0.7027009669646368,
+            -0.03206101496991662
+          ],
+          "forward": [
+            -0.06975651592736697,
+            -5.2895392058744366e-8,
+            0.9975640473100825
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.5748200497063474,
+          -6.449595214494398e-8,
+          -0.1884691952364969
+        ],
+        "max": [
+          0.28191474611282713,
+          1.1346569881612658,
+          0.8563579177875696
+        ]
+      },
+      "meshes": 11,
+      "triangles": 40488
+    },
+    {
+      "id": "zhou-fire-right",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "lastShotAt": 8.02,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "right",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_fire_right",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": false,
+          "clipTime": 0.1050000000000007,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 6.206335383118183e-17,
+          "leftGripError": 1.1481373725638526e-7,
+          "sightForwardDot": 0.9962785852483457
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 1.2349524567816544e-7,
+          "leftErrorMeters": 3.747915090768393e-8,
+          "stockShoulderErrorMeters": 1.245693959419203e-7,
+          "shoulderOffsetMeters": 0.030822070014844903,
+          "supportFraction": 0.0419921875,
+          "shoulder": [
+            -0.3732337378152001,
+            0.702779401573674,
+            -0.032361591913943735
+          ],
+          "forward": [
+            -0.06966498381875114,
+            0.050752024615081597,
+            0.9962785865544854
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.5759142838523743,
+          -6.449595214494398e-8,
+          -0.18854033802719594
+        ],
+        "max": [
+          0.28191474611282713,
+          1.1347339623848933,
+          0.9479168949795173
+        ]
+      },
+      "meshes": 12,
+      "triangles": 40498
+    },
+    {
+      "id": "xu-aim-left",
+      "evidence": {
+        "poseInput": {
+          "walk": 0,
+          "aiming": true,
+          "down": false,
+          "armed": true,
+          "moveSpeed": 0,
+          "animationTime": 8.07,
+          "combat": {
+            "phase": "peek",
+            "moving": false,
+            "side": "left",
+            "coverKey": "inspection-cover"
+          }
+        },
+        "motion": {
+          "clip": "cover_aim_left",
+          "gait": "idle",
+          "running": 0,
+          "reloadFraction": 0,
+          "loop": true,
+          "clipTime": 8.07,
+          "source": "target-baked shared tactical clip"
+        },
+        "tacticalStatus": "shared-clip-full-authored-pose",
+        "weaponContact": {
+          "rightGripError": 6.206335383118183e-17,
+          "leftGripError": 1.0712678685485889e-7,
+          "sightForwardDot": 0.9975640430966015
+        },
+        "shoulderContact": {
+          "rightErrorMeters": 1.5274246163258947e-8,
+          "leftErrorMeters": 4.947379973365648e-8,
+          "stockShoulderErrorMeters": 4.764809177806088e-8,
+          "shoulderOffsetMeters": 0.09649212863584784,
+          "supportFraction": 0,
+          "shoulder": [
+            -0.1100026828983631,
+            0.6866445818235382,
+            0.013617820767178032
+          ],
+          "forward": [
+            0.06975650490152377,
+            8.117726845485386e-9,
+            0.9975640480810862
+          ],
+          "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+          "visualAcceptance": "NOT_REVIEWED"
+        },
+        "assetStatus": "ready",
+        "scope": "Synthetic simulation input through the actual frozen runtime presenter; not a captured gameplay event."
+      },
+      "views": [
+        {
+          "name": "front",
+          "camera": [
+            2.6,
+            1.8,
+            3.2
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        },
+        {
+          "name": "side",
+          "camera": [
+            -3,
+            1.5,
+            0.4
+          ],
+          "target": [
+            0,
+            0.85,
+            0.15
+          ],
+          "ortho": 2
+        }
+      ],
+      "bounds": {
+        "min": [
+          -0.2899065810183378,
+          -2.5535072540813768e-8,
+          -0.19911976250862032
+        ],
+        "max": [
+          0.2793306103611812,
+          1.13536410971455,
+          0.9019877602330151
+        ]
+      },
+      "meshes": 11,
+      "triangles": 40150
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import { propPlacement, propSlot } from './GeneratedPropBindings';
 import type { Vec3 } from '../contracts';
 import { RESCUE as R } from '../content/rescue-layout';
 import type { SceneDynamics } from './chapter-environments';
@@ -55,8 +56,10 @@ export function buildRescue(k: PortKit): SceneDynamics {
   k.box('steel', [47, 2.15, 163], [12.5, 0.3, 10.4]);
   for (const x of [42, 52]) k.box('steel', [x, 3.7, 178], [0.2, 3.4, 0.2]);
   for (const [i, p] of R.ammo.entries()) {
-    block(k, `rescue-ammo-${i}`, [p[0] - 1.6, 0.48, p[2]], [1.4, 0.96, 0.8], 'steel');
-    k.box('amber', [p[0] - 1.6, 1.0, p[2]], [1.4, 0.08, 0.8]);
+  propSlot(k, `rescue-ammo-${i}`, [propPlacement(`rescue-ammo-${i}`, 'PROP-CARGO', [p[0] - 1.6, 0, p[2]], 1.4, 'z', Math.PI / 2)], slot => {
+    block(slot, `rescue-ammo-${i}`, [p[0] - 1.6, 0.48, p[2]], [1.4, 0.96, 0.8], 'steel');
+    slot.box('amber', [p[0] - 1.6, 1.0, p[2]], [1.4, 0.08, 0.8]);
+  });
   }
   const route = [R.pickup, ...R.transportVia];
   route.slice(1).forEach((b, i) => road(k, route[i], b));

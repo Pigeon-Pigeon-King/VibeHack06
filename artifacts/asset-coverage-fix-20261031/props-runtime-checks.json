@@ -1,0 +1,6338 @@
+{
+  "scope": "15 real environment builders + production GLB parse and source-frame calibration; texture decode mocked. No WebGL/browser/visual/performance acceptance.",
+  "generatedAt": "2026-10-31T10:56:47.091Z",
+  "sourceCatalog": "src/assets/scene-asset-catalog.ts",
+  "scenarios": [
+    {
+      "scenario": "northgate",
+      "explicitBindingGroups": 2,
+      "modelInstances": 2,
+      "bindings": [
+        {
+          "id": "prop-tractor-0-tractor-11",
+          "parent": "industrial-port-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 20,
+          "placements": [
+            {
+              "id": "prop-tractor-0-tractor-11",
+              "assetId": "PROP-VEH-TUG",
+              "position": [
+                19,
+                0,
+                7
+              ],
+              "size": {
+                "axis": "x",
+                "metres": 4.35
+              },
+              "yaw": 1.4207963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-1-terminal-19",
+          "parent": "industrial-port-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-1-terminal-19",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                1.45,
+                1.1,
+                4.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "prop-tractor-0-tractor-11",
+          "assetId": "PROP-VEH-TUG",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-1-terminal-19",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "prologue",
+      "explicitBindingGroups": 0,
+      "modelInstances": 0,
+      "bindings": [],
+      "fixed": [],
+      "statuses": []
+    },
+    {
+      "scenario": "handover",
+      "explicitBindingGroups": 3,
+      "modelInstances": 5,
+      "bindings": [
+        {
+          "id": "handover-medical-cabinet",
+          "parent": "generated-fallback:handover-medical-cabinet",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "handover-medical-cabinet-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                9.733333333333334,
+                0,
+                28.5
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "handover-medical-cabinet-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                10.4,
+                0,
+                28.5
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "handover-medical-cabinet-2",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                11.066666666666666,
+                0,
+                28.5
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-tractor-1-tractor-9",
+          "parent": "industrial-port-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 20,
+          "placements": [
+            {
+              "id": "prop-tractor-1-tractor-9",
+              "assetId": "PROP-VEH-TUG",
+              "position": [
+                24,
+                0,
+                -22
+              ],
+              "size": {
+                "axis": "x",
+                "metres": 4.35
+              },
+              "yaw": 2.0707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-2-terminal-15",
+          "parent": "industrial-port-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-2-terminal-15",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                -12.55,
+                1.1,
+                15.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "handover-medical-cabinet-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "handover-medical-cabinet-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "handover-medical-cabinet-2",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "prop-tractor-1-tractor-9",
+          "assetId": "PROP-VEH-TUG",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-2-terminal-15",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "nightshift",
+      "explicitBindingGroups": 10,
+      "modelInstances": 15,
+      "bindings": [
+        {
+          "id": "night-fan-body",
+          "parent": "generated-fallback:night-fan-body",
+          "fallbackObjects": 4,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-fan-body",
+              "assetId": "PROP-FAN",
+              "position": [
+                -12,
+                0,
+                27.3
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.5
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "night-work-tools",
+          "parent": "generated-fallback:night-work-tools",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-tool-roll",
+              "assetId": "PROP-TOOL-ROLL",
+              "position": [
+                -19.4,
+                1.03,
+                35
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.9
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "night-tool-bag",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                -20.6,
+                1.03,
+                35
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.55
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "night-supplies-source",
+          "parent": "night-supplies-source",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-supplies-source",
+              "assetId": "PROP-CARGO",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.9
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "night-stores-19",
+          "parent": "generated-fallback:night-stores-19",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-stores-19",
+              "assetId": "PROP-CARGO",
+              "position": [
+                19,
+                0,
+                13.8
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2.05
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "night-stores-22",
+          "parent": "generated-fallback:night-stores-22",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-stores-22",
+              "assetId": "PROP-CARGO",
+              "position": [
+                22,
+                0,
+                13.8
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2.05
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "night-supplies-delivered",
+          "parent": "night-supplies-delivered",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-supplies-delivered",
+              "assetId": "PROP-CARGO",
+              "position": [
+                0,
+                0,
+                0
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.9
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "night-care-cabinet--1",
+          "parent": "generated-fallback:night-care-cabinet--1",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-care-cabinet--1-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                22.466666666666665,
+                0,
+                -1
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "night-care-cabinet--1-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                23.5,
+                0,
+                -1
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "night-care-cabinet--1-2",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                24.533333333333335,
+                0,
+                -1
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "night-care-cabinet-4",
+          "parent": "generated-fallback:night-care-cabinet-4",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-care-cabinet-4-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                22.466666666666665,
+                0,
+                4
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "night-care-cabinet-4-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                23.5,
+                0,
+                4
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "night-care-cabinet-4-2",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                24.533333333333335,
+                0,
+                4
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "night-transfer-bed",
+          "parent": "generated-fallback:night-transfer-bed",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "night-transfer-bed",
+              "assetId": "PROP-TRANSFER",
+              "position": [
+                19.5,
+                0,
+                -7.7
+              ],
+              "size": {
+                "axis": "x",
+                "metres": 2.3
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-9-terminal-0",
+          "parent": "S03-nightshift-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-9-terminal-0",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                -7.55,
+                1.1,
+                27.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "night-fan-body",
+          "assetId": "PROP-FAN",
+          "state": "ready"
+        },
+        {
+          "id": "night-tool-roll",
+          "assetId": "PROP-TOOL-ROLL",
+          "state": "ready"
+        },
+        {
+          "id": "night-tool-bag",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "night-supplies-source",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "night-stores-19",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "night-stores-22",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "night-supplies-delivered",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "night-care-cabinet--1-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "night-care-cabinet--1-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "night-care-cabinet--1-2",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "night-care-cabinet-4-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "night-care-cabinet-4-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "night-care-cabinet-4-2",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "night-transfer-bed",
+          "assetId": "PROP-TRANSFER",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-9-terminal-0",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "workers",
+      "explicitBindingGroups": 9,
+      "modelInstances": 17,
+      "bindings": [
+        {
+          "id": "workers-military-truck-26-12",
+          "parent": "generated-fallback:workers-military-truck-26-12",
+          "fallbackObjects": 8,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "workers-truck-26-12",
+              "assetId": "PROP-VEH-TRANSPORT",
+              "position": [
+                26,
+                0,
+                12
+              ],
+              "size": {
+                "axis": "x",
+                "metres": 8.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "checkpoint-gate--1",
+          "parent": "checkpoint-gate-panel--1",
+          "fallbackObjects": 4,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "checkpoint-gate--1-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -4.032288646697998,
+                0,
+                -9.382561932742665e-17
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "checkpoint-gate--1-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -2.5,
+                0,
+                0
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "checkpoint-gate--1-leaf-2",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -0.9677113533020019,
+                0,
+                9.382561932742665e-17
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "checkpoint-gate-1",
+          "parent": "checkpoint-gate-panel-1",
+          "fallbackObjects": 4,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "checkpoint-gate-1-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                0.9677113533020019,
+                0,
+                -9.382561932742665e-17
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "checkpoint-gate-1-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                2.5,
+                0,
+                0
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "checkpoint-gate-1-leaf-2",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                4.032288646697998,
+                0,
+                9.382561932742665e-17
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "yard-gate--1",
+          "parent": "yard-gate-panel--1",
+          "fallbackObjects": 4,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "yard-gate--1-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -4.032288646697998,
+                0,
+                -78
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "yard-gate--1-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -2.5,
+                0,
+                -78
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "yard-gate--1-leaf-2",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -0.9677113533020019,
+                0,
+                -78
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "yard-gate-1",
+          "parent": "yard-gate-panel-1",
+          "fallbackObjects": 4,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "yard-gate-1-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                0.9677113533020019,
+                0,
+                -78
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "yard-gate-1-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                2.5,
+                0,
+                -78
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "yard-gate-1-leaf-2",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                4.032288646697998,
+                0,
+                -78
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "workers-transfer-vehicle",
+          "parent": "generated-fallback:workers-transfer-vehicle",
+          "fallbackObjects": 5,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "workers-transfer-vehicle",
+              "assetId": "PROP-VEH-TRANSPORT",
+              "position": [
+                31.3,
+                0,
+                -118
+              ],
+              "size": {
+                "axis": "x",
+                "metres": 7
+              },
+              "yaw": -1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-6-terminal-22",
+          "parent": "S04-workers-street-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-6-terminal-22",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                1.45,
+                1.1,
+                2.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-7-terminal-42",
+          "parent": "S04-workers-street-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-7-terminal-42",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                1.45,
+                1.1,
+                -76.3
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-8-terminal-53",
+          "parent": "S04-workers-street-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-8-terminal-53",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                -13.55,
+                1.1,
+                -86.3
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "workers-truck-26-12",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "state": "ready"
+        },
+        {
+          "id": "checkpoint-gate--1-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "checkpoint-gate--1-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "checkpoint-gate--1-leaf-2",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "checkpoint-gate-1-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "checkpoint-gate-1-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "checkpoint-gate-1-leaf-2",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "yard-gate--1-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "yard-gate--1-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "yard-gate--1-leaf-2",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "yard-gate-1-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "yard-gate-1-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "yard-gate-1-leaf-2",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "workers-transfer-vehicle",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-6-terminal-22",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-7-terminal-42",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-8-terminal-53",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "childhood",
+      "explicitBindingGroups": 13,
+      "modelInstances": 24,
+      "bindings": [
+        {
+          "id": "history-bench--10-11.4",
+          "parent": "generated-fallback:history-bench--10-11.4",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench--10-11.4-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -12,
+                0,
+                11.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench--10-11.4-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -10,
+                0,
+                11.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench--10-11.4-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -8,
+                0,
+                11.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-bench--2-18.4",
+          "parent": "generated-fallback:history-bench--2-18.4",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench--2-18.4-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -4,
+                0,
+                18.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench--2-18.4-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -2,
+                0,
+                18.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench--2-18.4-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                0,
+                0,
+                18.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-bench-8-17.5",
+          "parent": "generated-fallback:history-bench-8-17.5",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench-8-17.5-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                6,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-8-17.5-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                8,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-8-17.5-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                10,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-bench-20-17.5",
+          "parent": "generated-fallback:history-bench-20-17.5",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench-20-17.5-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                18.333333333333332,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-20-17.5-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                20,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-20-17.5-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                21.666666666666668,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-bench-22-7.5",
+          "parent": "generated-fallback:history-bench-22-7.5",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench-22-7.5-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                21,
+                0,
+                7.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-22-7.5-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                23,
+                0,
+                7.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-lunch-container",
+          "parent": "generated-fallback:history-lunch-container",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-lunch-container",
+              "assetId": "PROP-TOOL-LUNCHBOX",
+              "position": [
+                -10,
+                0.55,
+                11.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.32
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-belongings--5.5",
+          "parent": "generated-fallback:history-belongings--5.5",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-belongings--5.5",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                -5.5,
+                0,
+                12.6
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.85
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-belongings-6.5",
+          "parent": "generated-fallback:history-belongings-6.5",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-belongings-6.5",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                6.5,
+                0,
+                19.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.85
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-belongings-17",
+          "parent": "generated-fallback:history-belongings-17",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-belongings-17",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                17,
+                0,
+                18.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.85
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-belongings-24",
+          "parent": "generated-fallback:history-belongings-24",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-belongings-24",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                24,
+                0,
+                11
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.85
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-maintenance-door",
+          "parent": "history-maintenance-door",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-maintenance-door-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -22,
+                0,
+                5.188675272464752
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-maintenance-door-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -22,
+                0,
+                6.811324727535248
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-lower-partition",
+          "parent": "history-lower-partition",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-lower-partition-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -36,
+                -2.4,
+                5.0051817268133165
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 6.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-lower-partition-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -36,
+                -2.4,
+                6.9948182731866835
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 6.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-spilled-container",
+          "parent": "generated-fallback:history-spilled-container",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-spilled-container",
+              "assetId": "PROP-TOOL-LUNCHBOX",
+              "position": [
+                -29.2,
+                -1.34,
+                6.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.32
+              },
+              "yaw": 0.4,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "history-bench--10-11.4-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--10-11.4-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--10-11.4-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--2-18.4-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--2-18.4-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--2-18.4-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-8-17.5-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-8-17.5-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-8-17.5-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-20-17.5-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-20-17.5-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-20-17.5-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-22-7.5-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-22-7.5-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-lunch-container",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "state": "ready"
+        },
+        {
+          "id": "history-belongings--5.5",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "history-belongings-6.5",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "history-belongings-17",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "history-belongings-24",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "history-maintenance-door-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "history-maintenance-door-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "history-lower-partition-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "history-lower-partition-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "history-spilled-container",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "mainhall",
+      "explicitBindingGroups": 13,
+      "modelInstances": 24,
+      "bindings": [
+        {
+          "id": "history-bench--10-11.4",
+          "parent": "generated-fallback:history-bench--10-11.4",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench--10-11.4-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -12,
+                0,
+                11.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench--10-11.4-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -10,
+                0,
+                11.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench--10-11.4-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -8,
+                0,
+                11.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-bench--2-18.4",
+          "parent": "generated-fallback:history-bench--2-18.4",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench--2-18.4-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -4,
+                0,
+                18.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench--2-18.4-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -2,
+                0,
+                18.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench--2-18.4-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                0,
+                0,
+                18.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-bench-8-17.5",
+          "parent": "generated-fallback:history-bench-8-17.5",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench-8-17.5-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                6,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-8-17.5-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                8,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-8-17.5-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                10,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-bench-20-17.5",
+          "parent": "generated-fallback:history-bench-20-17.5",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench-20-17.5-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                18.333333333333332,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-20-17.5-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                20,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-20-17.5-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                21.666666666666668,
+                0,
+                17.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-bench-22-7.5",
+          "parent": "generated-fallback:history-bench-22-7.5",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-bench-22-7.5-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                21,
+                0,
+                7.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-bench-22-7.5-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                23,
+                0,
+                7.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-lunch-container",
+          "parent": "generated-fallback:history-lunch-container",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-lunch-container",
+              "assetId": "PROP-TOOL-LUNCHBOX",
+              "position": [
+                -10,
+                0.55,
+                11.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.32
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-belongings--5.5",
+          "parent": "generated-fallback:history-belongings--5.5",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-belongings--5.5",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                -5.5,
+                0,
+                12.6
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.85
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-belongings-6.5",
+          "parent": "generated-fallback:history-belongings-6.5",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-belongings-6.5",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                6.5,
+                0,
+                19.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.85
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-belongings-17",
+          "parent": "generated-fallback:history-belongings-17",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-belongings-17",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                17,
+                0,
+                18.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.85
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-belongings-24",
+          "parent": "generated-fallback:history-belongings-24",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-belongings-24",
+              "assetId": "PROP-TOOL-BAG",
+              "position": [
+                24,
+                0,
+                11
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.85
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-maintenance-door",
+          "parent": "history-maintenance-door",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-maintenance-door-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -22,
+                0,
+                5.188675272464752
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-maintenance-door-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -22,
+                0,
+                6.811324727535248
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-lower-partition",
+          "parent": "history-lower-partition",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-lower-partition-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -36,
+                -2.4,
+                5.0051817268133165
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 6.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "history-lower-partition-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -36,
+                -2.4,
+                6.9948182731866835
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 6.3
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "history-spilled-container",
+          "parent": "generated-fallback:history-spilled-container",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "history-spilled-container",
+              "assetId": "PROP-TOOL-LUNCHBOX",
+              "position": [
+                -29.2,
+                -1.34,
+                6.4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.32
+              },
+              "yaw": 0.4,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "history-bench--10-11.4-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--10-11.4-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--10-11.4-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--2-18.4-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--2-18.4-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench--2-18.4-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-8-17.5-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-8-17.5-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-8-17.5-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-20-17.5-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-20-17.5-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-20-17.5-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-22-7.5-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-bench-22-7.5-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "history-lunch-container",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "state": "ready"
+        },
+        {
+          "id": "history-belongings--5.5",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "history-belongings-6.5",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "history-belongings-17",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "history-belongings-24",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "history-maintenance-door-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "history-maintenance-door-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "history-lower-partition-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "history-lower-partition-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "history-spilled-container",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "frontgate",
+      "explicitBindingGroups": 0,
+      "modelInstances": 16,
+      "bindings": [],
+      "fixed": [
+        {
+          "id": "front-tug",
+          "assetId": "PROP-VEH-TUG",
+          "position": [
+            21,
+            0,
+            20
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 4.35
+          },
+          "yaw": 1.4207963267948966,
+          "fallbackSlot": "front-tug",
+          "role": "replacement",
+          "support": "front-ground / existing tractor solid"
+        },
+        {
+          "id": "front-east-tank",
+          "assetId": "PROP-TANK",
+          "position": [
+            43,
+            0,
+            10
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 6.2
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-east-tank",
+          "role": "replacement",
+          "support": "front-ground / existing tank solid"
+        },
+        {
+          "id": "front-background-crane",
+          "assetId": "BG-CRANE",
+          "position": [
+            78,
+            0,
+            60
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 30
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "outside front-boundary-x-54 and front-boundary-z-52",
+          "castShadow": false
+        },
+        {
+          "id": "front-background-light",
+          "assetId": "ENV-LIGHTKIT-POLE",
+          "position": [
+            58,
+            0,
+            36
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 5
+          },
+          "yaw": 0,
+          "role": "background",
+          "support": "outside front-boundary-x-54",
+          "castShadow": false
+        },
+        {
+          "id": "front-filter-0",
+          "assetId": "PROP-FILTER",
+          "position": [
+            22.9,
+            0.402,
+            3.65
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 3.4
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-filter-1",
+          "assetId": "PROP-FILTER",
+          "position": [
+            25.1,
+            0.402,
+            3.65
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 3.4
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-pump-0",
+          "assetId": "PROP-PUMP",
+          "position": [
+            22.9,
+            0.402,
+            6.8
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 2.5
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-pump-1",
+          "assetId": "PROP-PUMP",
+          "position": [
+            25.1,
+            0.402,
+            6.8
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 2.5
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-cooling-fan",
+          "assetId": "PROP-FAN",
+          "position": [
+            48,
+            3.402,
+            -32
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 1.2
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "front-east-staging-block top 3.4"
+        },
+        {
+          "id": "front-service-cargo",
+          "assetId": "PROP-CARGO",
+          "position": [
+            -33.8,
+            2.502,
+            -31
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 1.1
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack top 2.5"
+        },
+        {
+          "id": "front-service-bag",
+          "assetId": "PROP-TOOL-BAG",
+          "position": [
+            -34.8,
+            1.352,
+            -30.36
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.4
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang"
+        },
+        {
+          "id": "front-service-tools",
+          "assetId": "PROP-TOOL-ROLL",
+          "position": [
+            -33.8,
+            1.352,
+            -30.38
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.3
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack middle shelf top 1.35"
+        },
+        {
+          "id": "front-worker-lunch",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "position": [
+            -32.8,
+            2.202,
+            -30.38
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.22
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack upper shelf top 2.2"
+        },
+        {
+          "id": "front-transport-parked",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "position": [
+            62,
+            0,
+            -62
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 7.5
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "parked beyond front-boundary-x-54; vehicle remains static",
+          "castShadow": false
+        },
+        {
+          "id": "front-spare-door",
+          "assetId": "PROP-DOOR-LEAF",
+          "position": [
+            59,
+            0,
+            -49
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 2.7
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "spare door awaiting repair beyond east boundary; not the mission door",
+          "castShadow": false
+        },
+        {
+          "id": "front-spare-door-lock",
+          "assetId": "PROP-DOOR-LOCK",
+          "position": [
+            59,
+            1.2,
+            -48.55
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.55
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "mounted against spare door front face; no independent motion",
+          "castShadow": false
+        }
+      ],
+      "statuses": [
+        {
+          "id": "front-tug",
+          "assetId": "PROP-VEH-TUG",
+          "state": "ready"
+        },
+        {
+          "id": "front-east-tank",
+          "assetId": "PROP-TANK",
+          "state": "ready"
+        },
+        {
+          "id": "front-background-crane",
+          "assetId": "BG-CRANE",
+          "state": "ready"
+        },
+        {
+          "id": "front-background-light",
+          "assetId": "ENV-LIGHTKIT-POLE",
+          "state": "ready"
+        },
+        {
+          "id": "front-filter-0",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "front-filter-1",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "front-pump-0",
+          "assetId": "PROP-PUMP",
+          "state": "ready"
+        },
+        {
+          "id": "front-pump-1",
+          "assetId": "PROP-PUMP",
+          "state": "ready"
+        },
+        {
+          "id": "front-cooling-fan",
+          "assetId": "PROP-FAN",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-cargo",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-bag",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-tools",
+          "assetId": "PROP-TOOL-ROLL",
+          "state": "ready"
+        },
+        {
+          "id": "front-worker-lunch",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "state": "ready"
+        },
+        {
+          "id": "front-transport-parked",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "state": "ready"
+        },
+        {
+          "id": "front-spare-door",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "front-spare-door-lock",
+          "assetId": "PROP-DOOR-LOCK",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "transfer",
+      "explicitBindingGroups": 10,
+      "modelInstances": 29,
+      "bindings": [
+        {
+          "id": "transfer-shutter",
+          "parent": "transfer-shutter",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-shutter-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -43.911324727535245,
+                0,
+                24
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "transfer-shutter-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -42,
+                0,
+                24
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "transfer-shutter-leaf-2",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -40.088675272464755,
+                0,
+                24
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-control-cover",
+          "parent": "transfer-control-cover",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-control-cover-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                0.3931327372789383,
+                -0.65,
+                -9.605349559117758e-18
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.3
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "transfer-control-cover-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                0.7068672627210617,
+                -0.65,
+                9.605349559117758e-18
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.3
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-lock-rod",
+          "parent": "transfer-lock-rod",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-lock-rod",
+              "assetId": "PROP-DOOR-LOCK",
+              "position": [
+                -36.5,
+                0.87,
+                21.97
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.66
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-heat-unit",
+          "parent": "generated-fallback:transfer-heat-unit",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-heat-unit",
+              "assetId": "PROP-FILTER",
+              "position": [
+                -12,
+                0,
+                29.8
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2.1
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-battery-cabinet",
+          "parent": "generated-fallback:transfer-battery-cabinet",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-battery-cabinet-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -11,
+                0,
+                37.8
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-first-aid-bag",
+          "parent": "generated-fallback:transfer-first-aid-bag",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-first-aid-bag",
+              "assetId": "PROP-MEDICAL-BAG",
+              "position": [
+                -22.7,
+                1.01,
+                29.62
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.52
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-water-mug",
+          "parent": "generated-fallback:transfer-water-mug",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-water-mug",
+              "assetId": "PROP-LIFE-MUG",
+              "position": [
+                -22.3,
+                1.002,
+                33.4
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.18
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-spare-radio",
+          "parent": "generated-fallback:transfer-spare-radio",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-spare-radio",
+              "assetId": "PROP-RADIO-PACK",
+              "position": [
+                -22.55,
+                1.002,
+                33.75
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.32
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-work-tools",
+          "parent": "generated-fallback:transfer-work-tools",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-work-tools",
+              "assetId": "PROP-TOOL-ROLL",
+              "position": [
+                -18.5,
+                1.082,
+                41.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.7
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-9-terminal-42",
+          "parent": "S06-transfer-gate-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-9-terminal-42",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                -15.55,
+                1.1,
+                42.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [
+        {
+          "id": "front-tug",
+          "assetId": "PROP-VEH-TUG",
+          "position": [
+            21,
+            0,
+            20
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 4.35
+          },
+          "yaw": 1.4207963267948966,
+          "fallbackSlot": "front-tug",
+          "role": "replacement",
+          "support": "front-ground / existing tractor solid"
+        },
+        {
+          "id": "front-east-tank",
+          "assetId": "PROP-TANK",
+          "position": [
+            43,
+            0,
+            10
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 6.2
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-east-tank",
+          "role": "replacement",
+          "support": "front-ground / existing tank solid"
+        },
+        {
+          "id": "front-background-crane",
+          "assetId": "BG-CRANE",
+          "position": [
+            78,
+            0,
+            60
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 30
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "outside front-boundary-x-54 and front-boundary-z-52",
+          "castShadow": false
+        },
+        {
+          "id": "front-background-light",
+          "assetId": "ENV-LIGHTKIT-POLE",
+          "position": [
+            58,
+            0,
+            36
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 5
+          },
+          "yaw": 0,
+          "role": "background",
+          "support": "outside front-boundary-x-54",
+          "castShadow": false
+        },
+        {
+          "id": "front-filter-0",
+          "assetId": "PROP-FILTER",
+          "position": [
+            22.9,
+            0.402,
+            3.65
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 3.4
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-filter-1",
+          "assetId": "PROP-FILTER",
+          "position": [
+            25.1,
+            0.402,
+            3.65
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 3.4
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-pump-0",
+          "assetId": "PROP-PUMP",
+          "position": [
+            22.9,
+            0.402,
+            6.8
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 2.5
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-pump-1",
+          "assetId": "PROP-PUMP",
+          "position": [
+            25.1,
+            0.402,
+            6.8
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 2.5
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-cooling-fan",
+          "assetId": "PROP-FAN",
+          "position": [
+            48,
+            3.402,
+            -32
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 1.2
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "front-east-staging-block top 3.4"
+        },
+        {
+          "id": "front-service-cargo",
+          "assetId": "PROP-CARGO",
+          "position": [
+            -33.8,
+            2.502,
+            -31
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 1.1
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack top 2.5"
+        },
+        {
+          "id": "front-service-bag",
+          "assetId": "PROP-TOOL-BAG",
+          "position": [
+            -34.8,
+            1.352,
+            -30.36
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.4
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang"
+        },
+        {
+          "id": "front-service-tools",
+          "assetId": "PROP-TOOL-ROLL",
+          "position": [
+            -33.8,
+            1.352,
+            -30.38
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.3
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack middle shelf top 1.35"
+        },
+        {
+          "id": "front-worker-lunch",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "position": [
+            -32.8,
+            2.202,
+            -30.38
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.22
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack upper shelf top 2.2"
+        },
+        {
+          "id": "front-transport-parked",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "position": [
+            62,
+            0,
+            -62
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 7.5
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "parked beyond front-boundary-x-54; vehicle remains static",
+          "castShadow": false
+        },
+        {
+          "id": "front-spare-door",
+          "assetId": "PROP-DOOR-LEAF",
+          "position": [
+            59,
+            0,
+            -49
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 2.7
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "spare door awaiting repair beyond east boundary; not the mission door",
+          "castShadow": false
+        },
+        {
+          "id": "front-spare-door-lock",
+          "assetId": "PROP-DOOR-LOCK",
+          "position": [
+            59,
+            1.2,
+            -48.55
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.55
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "mounted against spare door front face; no independent motion",
+          "castShadow": false
+        }
+      ],
+      "statuses": [
+        {
+          "id": "front-tug",
+          "assetId": "PROP-VEH-TUG",
+          "state": "ready"
+        },
+        {
+          "id": "front-east-tank",
+          "assetId": "PROP-TANK",
+          "state": "ready"
+        },
+        {
+          "id": "front-background-crane",
+          "assetId": "BG-CRANE",
+          "state": "ready"
+        },
+        {
+          "id": "front-background-light",
+          "assetId": "ENV-LIGHTKIT-POLE",
+          "state": "ready"
+        },
+        {
+          "id": "front-filter-0",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "front-filter-1",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "front-pump-0",
+          "assetId": "PROP-PUMP",
+          "state": "ready"
+        },
+        {
+          "id": "front-pump-1",
+          "assetId": "PROP-PUMP",
+          "state": "ready"
+        },
+        {
+          "id": "front-cooling-fan",
+          "assetId": "PROP-FAN",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-cargo",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-bag",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-tools",
+          "assetId": "PROP-TOOL-ROLL",
+          "state": "ready"
+        },
+        {
+          "id": "front-worker-lunch",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "state": "ready"
+        },
+        {
+          "id": "front-transport-parked",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "state": "ready"
+        },
+        {
+          "id": "front-spare-door",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "front-spare-door-lock",
+          "assetId": "PROP-DOOR-LOCK",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-shutter-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-shutter-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-shutter-leaf-2",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-control-cover-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-control-cover-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-lock-rod",
+          "assetId": "PROP-DOOR-LOCK",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-heat-unit",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-battery-cabinet-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-first-aid-bag",
+          "assetId": "PROP-MEDICAL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-water-mug",
+          "assetId": "PROP-LIFE-MUG",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-spare-radio",
+          "assetId": "PROP-RADIO-PACK",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-work-tools",
+          "assetId": "PROP-TOOL-ROLL",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-9-terminal-42",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "flank",
+      "explicitBindingGroups": 13,
+      "modelInstances": 35,
+      "bindings": [
+        {
+          "id": "transfer-shutter",
+          "parent": "transfer-shutter",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-shutter-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -43.911324727535245,
+                0,
+                24
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "transfer-shutter-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -42,
+                0,
+                24
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "transfer-shutter-leaf-2",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -40.088675272464755,
+                0,
+                24
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-control-cover",
+          "parent": "transfer-control-cover",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-control-cover-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                0.3931327372789383,
+                -0.65,
+                -9.605349559117758e-18
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.3
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "transfer-control-cover-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                0.7068672627210617,
+                -0.65,
+                9.605349559117758e-18
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.3
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-lock-rod",
+          "parent": "transfer-lock-rod",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-lock-rod",
+              "assetId": "PROP-DOOR-LOCK",
+              "position": [
+                -36.5,
+                0.87,
+                21.97
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.66
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-heat-unit",
+          "parent": "generated-fallback:transfer-heat-unit",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-heat-unit",
+              "assetId": "PROP-FILTER",
+              "position": [
+                -12,
+                0,
+                29.8
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2.1
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-battery-cabinet",
+          "parent": "generated-fallback:transfer-battery-cabinet",
+          "fallbackObjects": 3,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-battery-cabinet-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -11,
+                0,
+                37.8
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-first-aid-bag",
+          "parent": "generated-fallback:transfer-first-aid-bag",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-first-aid-bag",
+              "assetId": "PROP-MEDICAL-BAG",
+              "position": [
+                -22.7,
+                1.01,
+                29.62
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.52
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-water-mug",
+          "parent": "generated-fallback:transfer-water-mug",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-water-mug",
+              "assetId": "PROP-LIFE-MUG",
+              "position": [
+                -22.3,
+                1.002,
+                33.4
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.18
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-spare-radio",
+          "parent": "generated-fallback:transfer-spare-radio",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-spare-radio",
+              "assetId": "PROP-RADIO-PACK",
+              "position": [
+                -22.55,
+                1.002,
+                33.75
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.32
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "transfer-work-tools",
+          "parent": "generated-fallback:transfer-work-tools",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "transfer-work-tools",
+              "assetId": "PROP-TOOL-ROLL",
+              "position": [
+                -18.5,
+                1.082,
+                41.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 0.7
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "flank-obsolete-unit--11",
+          "parent": "generated-fallback:flank-obsolete-unit--11",
+          "fallbackObjects": 5,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "flank-filter--11-0",
+              "assetId": "PROP-FILTER",
+              "position": [
+                -39.65,
+                0,
+                -11
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "flank-filter--11-1",
+              "assetId": "PROP-FILTER",
+              "position": [
+                -37.35,
+                0,
+                -11
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "flank-obsolete-unit--5",
+          "parent": "generated-fallback:flank-obsolete-unit--5",
+          "fallbackObjects": 5,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "flank-filter--5-0",
+              "assetId": "PROP-FILTER",
+              "position": [
+                -39.65,
+                0,
+                -5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "flank-filter--5-1",
+              "assetId": "PROP-FILTER",
+              "position": [
+                -37.35,
+                0,
+                -5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "flank-obsolete-unit-1",
+          "parent": "generated-fallback:flank-obsolete-unit-1",
+          "fallbackObjects": 5,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "flank-filter-1-0",
+              "assetId": "PROP-FILTER",
+              "position": [
+                -39.65,
+                0,
+                1
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "flank-filter-1-1",
+              "assetId": "PROP-FILTER",
+              "position": [
+                -37.35,
+                0,
+                1
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-12-terminal-42",
+          "parent": "S07-flank-and-handover-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-12-terminal-42",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                -15.55,
+                1.1,
+                42.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [
+        {
+          "id": "front-tug",
+          "assetId": "PROP-VEH-TUG",
+          "position": [
+            21,
+            0,
+            20
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 4.35
+          },
+          "yaw": 1.4207963267948966,
+          "fallbackSlot": "front-tug",
+          "role": "replacement",
+          "support": "front-ground / existing tractor solid"
+        },
+        {
+          "id": "front-east-tank",
+          "assetId": "PROP-TANK",
+          "position": [
+            43,
+            0,
+            10
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 6.2
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-east-tank",
+          "role": "replacement",
+          "support": "front-ground / existing tank solid"
+        },
+        {
+          "id": "front-background-crane",
+          "assetId": "BG-CRANE",
+          "position": [
+            78,
+            0,
+            60
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 30
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "outside front-boundary-x-54 and front-boundary-z-52",
+          "castShadow": false
+        },
+        {
+          "id": "front-background-light",
+          "assetId": "ENV-LIGHTKIT-POLE",
+          "position": [
+            58,
+            0,
+            36
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 5
+          },
+          "yaw": 0,
+          "role": "background",
+          "support": "outside front-boundary-x-54",
+          "castShadow": false
+        },
+        {
+          "id": "front-filter-0",
+          "assetId": "PROP-FILTER",
+          "position": [
+            22.9,
+            0.402,
+            3.65
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 3.4
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-filter-1",
+          "assetId": "PROP-FILTER",
+          "position": [
+            25.1,
+            0.402,
+            3.65
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 3.4
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-pump-0",
+          "assetId": "PROP-PUMP",
+          "position": [
+            22.9,
+            0.402,
+            6.8
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 2.5
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-pump-1",
+          "assetId": "PROP-PUMP",
+          "position": [
+            25.1,
+            0.402,
+            6.8
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 2.5
+          },
+          "yaw": 0,
+          "fallbackSlot": "front-filter-machinery",
+          "role": "replacement",
+          "support": "front-filter-base top 0.4; existing front-filter-bank solid retained"
+        },
+        {
+          "id": "front-cooling-fan",
+          "assetId": "PROP-FAN",
+          "position": [
+            48,
+            3.402,
+            -32
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 1.2
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "front-east-staging-block top 3.4"
+        },
+        {
+          "id": "front-service-cargo",
+          "assetId": "PROP-CARGO",
+          "position": [
+            -33.8,
+            2.502,
+            -31
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 1.1
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack top 2.5"
+        },
+        {
+          "id": "front-service-bag",
+          "assetId": "PROP-TOOL-BAG",
+          "position": [
+            -34.8,
+            1.352,
+            -30.36
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.4
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack middle shelf top 1.35; soft bag overhang"
+        },
+        {
+          "id": "front-service-tools",
+          "assetId": "PROP-TOOL-ROLL",
+          "position": [
+            -33.8,
+            1.352,
+            -30.38
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.3
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack middle shelf top 1.35"
+        },
+        {
+          "id": "front-worker-lunch",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "position": [
+            -32.8,
+            2.202,
+            -30.38
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.22
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "workers-parts-rack upper shelf top 2.2"
+        },
+        {
+          "id": "front-transport-parked",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "position": [
+            62,
+            0,
+            -62
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 7.5
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "parked beyond front-boundary-x-54; vehicle remains static",
+          "castShadow": false
+        },
+        {
+          "id": "front-spare-door",
+          "assetId": "PROP-DOOR-LEAF",
+          "position": [
+            59,
+            0,
+            -49
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 2.7
+          },
+          "yaw": 1.5707963267948966,
+          "role": "background",
+          "support": "spare door awaiting repair beyond east boundary; not the mission door",
+          "castShadow": false
+        },
+        {
+          "id": "front-spare-door-lock",
+          "assetId": "PROP-DOOR-LOCK",
+          "position": [
+            59,
+            1.2,
+            -48.55
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.55
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "mounted against spare door front face; no independent motion",
+          "castShadow": false
+        }
+      ],
+      "statuses": [
+        {
+          "id": "front-tug",
+          "assetId": "PROP-VEH-TUG",
+          "state": "ready"
+        },
+        {
+          "id": "front-east-tank",
+          "assetId": "PROP-TANK",
+          "state": "ready"
+        },
+        {
+          "id": "front-background-crane",
+          "assetId": "BG-CRANE",
+          "state": "ready"
+        },
+        {
+          "id": "front-background-light",
+          "assetId": "ENV-LIGHTKIT-POLE",
+          "state": "ready"
+        },
+        {
+          "id": "front-filter-0",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "front-filter-1",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "front-pump-0",
+          "assetId": "PROP-PUMP",
+          "state": "ready"
+        },
+        {
+          "id": "front-pump-1",
+          "assetId": "PROP-PUMP",
+          "state": "ready"
+        },
+        {
+          "id": "front-cooling-fan",
+          "assetId": "PROP-FAN",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-cargo",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-bag",
+          "assetId": "PROP-TOOL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "front-service-tools",
+          "assetId": "PROP-TOOL-ROLL",
+          "state": "ready"
+        },
+        {
+          "id": "front-worker-lunch",
+          "assetId": "PROP-TOOL-LUNCHBOX",
+          "state": "ready"
+        },
+        {
+          "id": "front-transport-parked",
+          "assetId": "PROP-VEH-TRANSPORT",
+          "state": "ready"
+        },
+        {
+          "id": "front-spare-door",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "front-spare-door-lock",
+          "assetId": "PROP-DOOR-LOCK",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-shutter-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-shutter-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-shutter-leaf-2",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-control-cover-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-control-cover-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-lock-rod",
+          "assetId": "PROP-DOOR-LOCK",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-heat-unit",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-battery-cabinet-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-first-aid-bag",
+          "assetId": "PROP-MEDICAL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-water-mug",
+          "assetId": "PROP-LIFE-MUG",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-spare-radio",
+          "assetId": "PROP-RADIO-PACK",
+          "state": "ready"
+        },
+        {
+          "id": "transfer-work-tools",
+          "assetId": "PROP-TOOL-ROLL",
+          "state": "ready"
+        },
+        {
+          "id": "flank-filter--11-0",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "flank-filter--11-1",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "flank-filter--5-0",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "flank-filter--5-1",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "flank-filter-1-0",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "flank-filter-1-1",
+          "assetId": "PROP-FILTER",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-12-terminal-42",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "escort",
+      "explicitBindingGroups": 17,
+      "modelInstances": 29,
+      "bindings": [
+        {
+          "id": "escort-reception-battery",
+          "parent": "generated-fallback:escort-reception-battery",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-reception-battery-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                14.25,
+                0,
+                -1.5
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-reception-battery-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                15.75,
+                0,
+                -1.5
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-reception-bench-10",
+          "parent": "generated-fallback:escort-reception-bench-10",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-reception-bench-10",
+              "assetId": "PROP-BENCH",
+              "position": [
+                17,
+                0,
+                10
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.2
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-reception-bench-15",
+          "parent": "generated-fallback:escort-reception-bench-15",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-reception-bench-15",
+              "assetId": "PROP-BENCH",
+              "position": [
+                17,
+                0,
+                15
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.2
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-loading-door",
+          "parent": "escort-loading-door",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-loading-door-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -14,
+                0,
+                11.088675272464751
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-loading-door-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -14,
+                0,
+                13.044337636232376
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-loading-door-leaf-2",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -14,
+                0,
+                15
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-loading-door-leaf-3",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -14,
+                0,
+                16.955662363767622
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-loading-door-leaf-4",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -14,
+                0,
+                18.91132472753525
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-ammo-0",
+          "parent": "generated-fallback:escort-ammo-0",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-ammo-0",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -24.7,
+                0,
+                -6
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.25
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-ammo-1",
+          "parent": "generated-fallback:escort-ammo-1",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-ammo-1",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -106.7,
+                0,
+                -4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.25
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-ammo-2",
+          "parent": "generated-fallback:escort-ammo-2",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-ammo-2",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -204.7,
+                0,
+                -4
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.25
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-ammo-3",
+          "parent": "generated-fallback:escort-ammo-3",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-ammo-3",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -276.7,
+                0,
+                8
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.25
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-station-store-30",
+          "parent": "generated-fallback:escort-station-store-30",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-station-store-30-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -416.75,
+                0,
+                30
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-station-store-30-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -415.25,
+                0,
+                30
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-station-store-37",
+          "parent": "generated-fallback:escort-station-store-37",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-station-store-37-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -416.75,
+                0,
+                37
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-station-store-37-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -415.25,
+                0,
+                37
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-station-store-44",
+          "parent": "generated-fallback:escort-station-store-44",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-station-store-44-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -416.75,
+                0,
+                44
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-station-store-44-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -415.25,
+                0,
+                44
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.5
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-station-bench--407",
+          "parent": "generated-fallback:escort-station-bench--407",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-station-bench--407-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -408.6666666666667,
+                0,
+                41.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-station-bench--407-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -407,
+                0,
+                41.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-station-bench--407-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -405.3333333333333,
+                0,
+                41.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "escort-station-bench--386",
+          "parent": "generated-fallback:escort-station-bench--386",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "escort-station-bench--386-0",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -387.6666666666667,
+                0,
+                41.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-station-bench--386-1",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -386,
+                0,
+                41.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "escort-station-bench--386-2",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -384.3333333333333,
+                0,
+                41.5
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.6666666666666667
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-13-terminal-97",
+          "parent": "S08-west-cargo-escort-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-13-terminal-97",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                10.45,
+                1.1,
+                3.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-14-terminal-98",
+          "parent": "S08-west-cargo-escort-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-14-terminal-98",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                4.45,
+                1.1,
+                4.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-tractor-15-tractor-109",
+          "parent": "S08-west-cargo-escort-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 20,
+          "placements": [
+            {
+              "id": "prop-tractor-15-tractor-109",
+              "assetId": "PROP-VEH-TUG",
+              "position": [
+                -65,
+                0,
+                -45
+              ],
+              "size": {
+                "axis": "x",
+                "metres": 4.35
+              },
+              "yaw": 2.1707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-terminal-16-terminal-132",
+          "parent": "S08-west-cargo-escort-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 5,
+          "placements": [
+            {
+              "id": "prop-terminal-16-terminal-132",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                -399.55,
+                1.1,
+                38.7
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.1
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "escort-reception-battery-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "escort-reception-battery-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "escort-reception-bench-10",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "escort-reception-bench-15",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "escort-loading-door-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "escort-loading-door-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "escort-loading-door-leaf-2",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "escort-loading-door-leaf-3",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "escort-loading-door-leaf-4",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "escort-ammo-0",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "escort-ammo-1",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "escort-ammo-2",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "escort-ammo-3",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-store-30-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-store-30-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-store-37-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-store-37-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-store-44-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-store-44-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-bench--407-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-bench--407-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-bench--407-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-bench--386-0",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-bench--386-1",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "escort-station-bench--386-2",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-13-terminal-97",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-14-terminal-98",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        },
+        {
+          "id": "prop-tractor-15-tractor-109",
+          "assetId": "PROP-VEH-TUG",
+          "state": "ready"
+        },
+        {
+          "id": "prop-terminal-16-terminal-132",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "relief",
+      "explicitBindingGroups": 10,
+      "modelInstances": 14,
+      "bindings": [
+        {
+          "id": "relief-ammo-0",
+          "parent": "generated-fallback:relief-ammo-0",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-ammo-0",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -12.6,
+                0,
+                91
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.4
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "relief-ammo-1",
+          "parent": "generated-fallback:relief-ammo-1",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-ammo-1",
+              "assetId": "PROP-CARGO",
+              "position": [
+                28.4,
+                0,
+                110
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.4
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "relief-ammo-2",
+          "parent": "generated-fallback:relief-ammo-2",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-ammo-2",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -20.6,
+                0,
+                135
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.4
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "relief-rest-seat",
+          "parent": "generated-fallback:relief-rest-seat",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-rest-seat",
+              "assetId": "PROP-BENCH",
+              "position": [
+                -8,
+                0,
+                160.85
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 3.2
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "relief-water-mug",
+          "parent": "generated-fallback:relief-water-mug",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-water-mug",
+              "assetId": "PROP-LIFE-MUG",
+              "position": [
+                -4.6,
+                1.01,
+                160.2
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.18
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "relief-table-radio",
+          "parent": "generated-fallback:relief-table-radio",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-table-radio",
+              "assetId": "PROP-RADIO-PACK",
+              "position": [
+                -12.5,
+                1.002,
+                160.3
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.48
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "relief-rest-locker--20",
+          "parent": "generated-fallback:relief-rest-locker--20",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-rest-locker--20-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -21.166666666666668,
+                0,
+                149
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "relief-rest-locker--20-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -20,
+                0,
+                149
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "relief-rest-locker--20-2",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -18.833333333333332,
+                0,
+                149
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "relief-rest-locker-9",
+          "parent": "generated-fallback:relief-rest-locker-9",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-rest-locker-9-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                7.833333333333333,
+                0,
+                149
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "relief-rest-locker-9-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                9,
+                0,
+                149
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "relief-rest-locker-9-2",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                10.166666666666666,
+                0,
+                149
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2.6
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "relief-care-spare-brace",
+          "parent": "relief-care-spare-strap",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "relief-care-spare-brace",
+              "assetId": "PROP-ARMOR-LEFT-BRACE",
+              "position": [
+                -4.25,
+                1.002,
+                160.65
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.42
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "prop-tractor-9-tractor-11",
+          "parent": "S09-relief-rear-courtyard-placeholder",
+          "fallbackObjects": 0,
+          "fallbackInstances": 20,
+          "placements": [
+            {
+              "id": "prop-tractor-9-tractor-11",
+              "assetId": "PROP-VEH-TUG",
+              "position": [
+                49,
+                0,
+                87
+              ],
+              "size": {
+                "axis": "x",
+                "metres": 4.35
+              },
+              "yaw": 1.2707963267948965,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "relief-ammo-0",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "relief-ammo-1",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "relief-ammo-2",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "relief-rest-seat",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "relief-water-mug",
+          "assetId": "PROP-LIFE-MUG",
+          "state": "ready"
+        },
+        {
+          "id": "relief-table-radio",
+          "assetId": "PROP-RADIO-PACK",
+          "state": "ready"
+        },
+        {
+          "id": "relief-rest-locker--20-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "relief-rest-locker--20-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "relief-rest-locker--20-2",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "relief-rest-locker-9-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "relief-rest-locker-9-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "relief-rest-locker-9-2",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "relief-care-spare-brace",
+          "assetId": "PROP-ARMOR-LEFT-BRACE",
+          "state": "ready"
+        },
+        {
+          "id": "prop-tractor-9-tractor-11",
+          "assetId": "PROP-VEH-TUG",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "rescue",
+      "explicitBindingGroups": 2,
+      "modelInstances": 2,
+      "bindings": [
+        {
+          "id": "rescue-ammo-0",
+          "parent": "generated-fallback:rescue-ammo-0",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "rescue-ammo-0",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -17.6,
+                0,
+                197
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.4
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "rescue-ammo-1",
+          "parent": "generated-fallback:rescue-ammo-1",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "rescue-ammo-1",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -38.6,
+                0,
+                233
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 1.4
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [],
+      "statuses": [
+        {
+          "id": "rescue-ammo-0",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "rescue-ammo-1",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "medical",
+      "explicitBindingGroups": 11,
+      "modelInstances": 29,
+      "bindings": [
+        {
+          "id": "medical-registration-desk-handheld",
+          "parent": "generated-fallback:medical-registration-desk-handheld",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-registration-desk-handheld",
+              "assetId": "PROP-TERMINAL-HANDHELD",
+              "position": [
+                -403.4,
+                1.112,
+                66.6
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-equipment-table-handheld",
+          "parent": "generated-fallback:medical-equipment-table-handheld",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-equipment-table-handheld",
+              "assetId": "PROP-TERMINAL-HANDHELD",
+              "position": [
+                -404.4,
+                1.112,
+                56.6
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-record-desk-handheld",
+          "parent": "generated-fallback:medical-record-desk-handheld",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-record-desk-handheld",
+              "assetId": "PROP-TERMINAL-HANDHELD",
+              "position": [
+                -396.4,
+                1.112,
+                53.6
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-radio-table-handheld",
+          "parent": "generated-fallback:medical-radio-table-handheld",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-radio-table-handheld",
+              "assetId": "PROP-TERMINAL-HANDHELD",
+              "position": [
+                -399.4,
+                1.112,
+                68.6
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 0.4
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-supply-locker--417",
+          "parent": "generated-fallback:medical-supply-locker--417",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-supply-locker--417-0",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -418.06666666666666,
+                0,
+                39
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "medical-supply-locker--417-1",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -417,
+                0,
+                39
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "medical-supply-locker--417-2",
+              "assetId": "PROP-SAMPLE-CABINET",
+              "position": [
+                -415.93333333333334,
+                0,
+                39
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 2
+              },
+              "yaw": 0,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-supply-bin--417-50",
+          "parent": "generated-fallback:medical-supply-bin--417-50",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-supply-bin--417-50",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -417,
+                0,
+                50
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.06
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-supply-bin--417-56",
+          "parent": "generated-fallback:medical-supply-bin--417-56",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-supply-bin--417-56",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -417,
+                0,
+                56
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.06
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-supply-bin--417-68",
+          "parent": "generated-fallback:medical-supply-bin--417-68",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-supply-bin--417-68",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -417,
+                0,
+                68
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.06
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-supply-bin--387-50",
+          "parent": "generated-fallback:medical-supply-bin--387-50",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-supply-bin--387-50",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -387,
+                0,
+                50
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.06
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-supply-bin--387-56",
+          "parent": "generated-fallback:medical-supply-bin--387-56",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-supply-bin--387-56",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -387,
+                0,
+                56
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.06
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "medical-supply-bin--387-68",
+          "parent": "generated-fallback:medical-supply-bin--387-68",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "medical-supply-bin--387-68",
+              "assetId": "PROP-CARGO",
+              "position": [
+                -387,
+                0,
+                68
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 1.06
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [
+        {
+          "id": "medical-bench-left",
+          "assetId": "PROP-BENCH",
+          "position": [
+            -414.5,
+            0,
+            63.5
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 1.8
+          },
+          "yaw": 1.5707963267948966,
+          "fallbackSlot": "medical-rest-bench",
+          "role": "replacement",
+          "support": "medical-ground / calibrated left bench solid"
+        },
+        {
+          "id": "medical-bench-right",
+          "assetId": "PROP-BENCH",
+          "position": [
+            -412.5,
+            0,
+            63.5
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 1.8
+          },
+          "yaw": 1.5707963267948966,
+          "fallbackSlot": "medical-rest-bench",
+          "role": "replacement",
+          "support": "medical-ground / calibrated right bench solid"
+        },
+        {
+          "id": "medical-supply-bag",
+          "assetId": "PROP-MEDICAL-BAG",
+          "position": [
+            -417,
+            1.062,
+            56
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.4
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "medical-supply-bin--417-56 amber lid top y=1.06"
+        },
+        {
+          "id": "medical-water-mug",
+          "assetId": "PROP-LIFE-MUG",
+          "position": [
+            -414.5,
+            0.962,
+            60.2
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 0.18
+          },
+          "yaw": 0,
+          "fallbackSlot": "medical-water-vessel",
+          "role": "replacement",
+          "support": "medical-water-table top y=0.96; replaces the original vessel"
+        },
+        {
+          "id": "medical-spare-trolley",
+          "assetId": "PROP-TRANSFER",
+          "position": [
+            -387,
+            0,
+            62
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 2.3
+          },
+          "yaw": 0,
+          "fallbackSlot": "medical-spare-trolley",
+          "role": "replacement",
+          "support": "medical-ground / dedicated parked trolley solid; no patient or task ownership"
+        },
+        {
+          "id": "medical-spare-stretcher",
+          "assetId": "PROP-STRETCHER",
+          "position": [
+            -387,
+            1.062,
+            68
+          ],
+          "size": {
+            "axis": "x",
+            "metres": 2.1
+          },
+          "yaw": 0,
+          "role": "surface-prop",
+          "support": "medical-supply-bin--387-68 lid top 1.06; stretcher has 0.25m handle overhang at each end"
+        },
+        {
+          "id": "medical-equipment-chest",
+          "assetId": "PROP-ARMOR-CHEST",
+          "position": [
+            -405.7,
+            1.112,
+            56.65
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 0.55
+          },
+          "yaw": 3.141592653589793,
+          "role": "surface-prop",
+          "support": "medical-equipment-table top 1.11; stowed armor, not a character attachment"
+        },
+        {
+          "id": "medical-equipment-brace",
+          "assetId": "PROP-ARMOR-LEFT-BRACE",
+          "position": [
+            -405.05,
+            1.112,
+            56.7
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 0.42
+          },
+          "yaw": 3.141592653589793,
+          "role": "surface-prop",
+          "support": "medical-equipment-table top 1.11; stowed spare brace"
+        },
+        {
+          "id": "medical-equipment-helmet",
+          "assetId": "PROP-ARMOR-HELMET",
+          "position": [
+            -387,
+            1.062,
+            56
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 0.35
+          },
+          "yaw": 3.141592653589793,
+          "role": "surface-prop",
+          "support": "medical-supply-bin--387-56 lid top 1.06; recovered equipment"
+        },
+        {
+          "id": "medical-radio-pack",
+          "assetId": "PROP-RADIO-PACK",
+          "position": [
+            -400.6,
+            1.112,
+            68.65
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 0.4
+          },
+          "yaw": 0,
+          "role": "surface-prop",
+          "support": "medical-radio-table top 1.11; clear of screen"
+        },
+        {
+          "id": "medical-radio-headset",
+          "assetId": "PROP-RADIO-HEADSET",
+          "position": [
+            -400,
+            1.112,
+            68.72
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.2
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "medical-radio-table top 1.11; stowed beside radio"
+        },
+        {
+          "id": "medical-record-handheld",
+          "assetId": "PROP-TERMINAL-HANDHELD",
+          "position": [
+            -397.5,
+            1.112,
+            53.7
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 0.24
+          },
+          "yaw": 0,
+          "role": "surface-prop",
+          "support": "medical-record-desk top 1.11; resting upright"
+        },
+        {
+          "id": "medical-sample-corecase",
+          "assetId": "PROP-SAMPLE-CORECASE",
+          "position": [
+            -387,
+            1.062,
+            50
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 0.45
+          },
+          "yaw": 1.5707963267948966,
+          "role": "surface-prop",
+          "support": "medical-supply-bin--387-50 lid top 1.06; maintenance sample storage"
+        },
+        {
+          "id": "medical-sample-cabinet-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "position": [
+            -388.05,
+            0,
+            39
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 2
+          },
+          "yaw": 0,
+          "fallbackSlot": "medical-sample-cabinets",
+          "role": "replacement",
+          "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint"
+        },
+        {
+          "id": "medical-sample-cabinet-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "position": [
+            -387,
+            0,
+            39
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 2
+          },
+          "yaw": 0,
+          "fallbackSlot": "medical-sample-cabinets",
+          "role": "replacement",
+          "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint"
+        },
+        {
+          "id": "medical-sample-cabinet-2",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "position": [
+            -385.95,
+            0,
+            39
+          ],
+          "size": {
+            "axis": "y",
+            "metres": 2
+          },
+          "yaw": 0,
+          "fallbackSlot": "medical-sample-cabinets",
+          "role": "replacement",
+          "support": "medical-ground / existing east locker conservative solid; three cabinets stay inside its footprint"
+        }
+      ],
+      "statuses": [
+        {
+          "id": "medical-bench-left",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "medical-bench-right",
+          "assetId": "PROP-BENCH",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-bag",
+          "assetId": "PROP-MEDICAL-BAG",
+          "state": "ready"
+        },
+        {
+          "id": "medical-water-mug",
+          "assetId": "PROP-LIFE-MUG",
+          "state": "ready"
+        },
+        {
+          "id": "medical-spare-trolley",
+          "assetId": "PROP-TRANSFER",
+          "state": "ready"
+        },
+        {
+          "id": "medical-spare-stretcher",
+          "assetId": "PROP-STRETCHER",
+          "state": "ready"
+        },
+        {
+          "id": "medical-equipment-chest",
+          "assetId": "PROP-ARMOR-CHEST",
+          "state": "ready"
+        },
+        {
+          "id": "medical-equipment-brace",
+          "assetId": "PROP-ARMOR-LEFT-BRACE",
+          "state": "ready"
+        },
+        {
+          "id": "medical-equipment-helmet",
+          "assetId": "PROP-ARMOR-HELMET",
+          "state": "ready"
+        },
+        {
+          "id": "medical-radio-pack",
+          "assetId": "PROP-RADIO-PACK",
+          "state": "ready"
+        },
+        {
+          "id": "medical-radio-headset",
+          "assetId": "PROP-RADIO-HEADSET",
+          "state": "ready"
+        },
+        {
+          "id": "medical-record-handheld",
+          "assetId": "PROP-TERMINAL-HANDHELD",
+          "state": "ready"
+        },
+        {
+          "id": "medical-sample-corecase",
+          "assetId": "PROP-SAMPLE-CORECASE",
+          "state": "ready"
+        },
+        {
+          "id": "medical-sample-cabinet-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "medical-sample-cabinet-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "medical-sample-cabinet-2",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "medical-registration-desk-handheld",
+          "assetId": "PROP-TERMINAL-HANDHELD",
+          "state": "ready"
+        },
+        {
+          "id": "medical-equipment-table-handheld",
+          "assetId": "PROP-TERMINAL-HANDHELD",
+          "state": "ready"
+        },
+        {
+          "id": "medical-record-desk-handheld",
+          "assetId": "PROP-TERMINAL-HANDHELD",
+          "state": "ready"
+        },
+        {
+          "id": "medical-radio-table-handheld",
+          "assetId": "PROP-TERMINAL-HANDHELD",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-locker--417-0",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-locker--417-1",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-locker--417-2",
+          "assetId": "PROP-SAMPLE-CABINET",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-bin--417-50",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-bin--417-56",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-bin--417-68",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-bin--387-50",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-bin--387-56",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        },
+        {
+          "id": "medical-supply-bin--387-68",
+          "assetId": "PROP-CARGO",
+          "state": "ready"
+        }
+      ]
+    },
+    {
+      "scenario": "epilogue",
+      "explicitBindingGroups": 3,
+      "modelInstances": 6,
+      "bindings": [
+        {
+          "id": "epilogue-report-desk",
+          "parent": "generated-fallback:epilogue-report-desk",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "epilogue-report-desk",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                -397,
+                0,
+                81.6
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2.8
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "epilogue-needs-desk",
+          "parent": "generated-fallback:epilogue-needs-desk",
+          "fallbackObjects": 2,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "epilogue-needs-desk",
+              "assetId": "PROP-TERMINAL-CONSOLE",
+              "position": [
+                -390,
+                0,
+                81.6
+              ],
+              "size": {
+                "axis": "z",
+                "metres": 2.8
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        },
+        {
+          "id": "epilogue-reception-door",
+          "parent": "epilogue-reception-door",
+          "fallbackObjects": 1,
+          "fallbackInstances": 0,
+          "placements": [
+            {
+              "id": "epilogue-reception-door-leaf-0",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                -1.9718066871166229,
+                -1.7,
+                -1.2073833739573593e-16
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.4
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "epilogue-reception-door-leaf-1",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                0,
+                -1.7,
+                0
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.4
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            },
+            {
+              "id": "epilogue-reception-door-leaf-2",
+              "assetId": "PROP-DOOR-LEAF",
+              "position": [
+                1.9718066871166229,
+                -1.7,
+                1.2073833739573593e-16
+              ],
+              "size": {
+                "axis": "y",
+                "metres": 3.4
+              },
+              "yaw": 1.5707963267948966,
+              "role": "replacement",
+              "support": "authored prop host; original gameplay collision and state retained"
+            }
+          ]
+        }
+      ],
+      "fixed": [
+        {
+          "id": "epilogue-reception-console",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "position": [
+            2.2,
+            0,
+            6
+          ],
+          "size": {
+            "axis": "z",
+            "metres": 3.5
+          },
+          "yaw": 1.5707963267948966,
+          "fallbackSlot": "epilogue-reception-console",
+          "role": "replacement",
+          "support": "epilogue-ground / existing reception-table solid"
+        }
+      ],
+      "statuses": [
+        {
+          "id": "epilogue-reception-console",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        },
+        {
+          "id": "epilogue-report-desk",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        },
+        {
+          "id": "epilogue-needs-desk",
+          "assetId": "PROP-TERMINAL-CONSOLE",
+          "state": "ready"
+        },
+        {
+          "id": "epilogue-reception-door-leaf-0",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "epilogue-reception-door-leaf-1",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        },
+        {
+          "id": "epilogue-reception-door-leaf-2",
+          "assetId": "PROP-DOOR-LEAF",
+          "state": "ready"
+        }
+      ]
+    }
+  ],
+  "knownAdaptations": [
+    "S04 transfer bus reuses PROP-VEH-TRANSPORT; transport-truck body rather than a dedicated bus.",
+    "Terminal head uses a compact uniformly scaled CONSOLE; architecture owns its generated structural pedestal.",
+    "Existing radio-pack body also serves as the spare/table field radio; no new radio model is claimed.",
+    "S03 has four complete AK rack displays via GeneratedWorldWeapons; separate weapon parts are not claimed. See world-weapons-runtime-checks.json."
+  ],
+  "partContractGaps": [
+    "PROP-FAN is one static mesh; production impeller separation remains required. Old rotor is hidden after successful replacement.",
+    "PROP-DOOR-LEAF and PROP-DOOR-LOCK move as intact authored hosts; internal mechanism / hinges are not individually articulated.",
+    "PROP-TOOL-LUNCHBOX is a closed intact box; open lid, loose food and utensils are not produced parts."
+  ],
+  "existingBaseNeedsCalibration": [
+    "S01/S02 toppled and fire cabinets have very different thin collision envelopes; SAMPLE-CABINET exists but a rigid pose/fit contract is still needed.",
+    "S01/S02 fallen cabinet door can reuse DOOR-LEAF after a lying pose/envelope calibration."
+  ],
+  "noExactProducedProp": [
+    "S03 four exposed ice cores and eight end caps; a closed SAMPLE-CORECASE does not supply independently verified core geometry",
+    "S01/S02 mattress in flat and upright states",
+    "S06 basin/faucet, drinking bottle and medical bandage roll",
+    "S08 transferred pillow/identity-card holder",
+    "S09 drinking bottle",
+    "S11 IV stand/bag/tube and privacy curtain"
+  ]
+}

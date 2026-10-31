@@ -124,11 +124,14 @@ describe('real character motion continuity', () => {
     view.setPose({ ...idle, walk, moveSpeed: 0 }); const stopped = bones(view.root);
     expect(view.root.userData.motion.gait).toBe('idle');
     view.setPose(idle); expect(difference(stopped, bones(view.root)).angle).toBeLessThan(0.000001);
+    // Reload returns to the same armed idle. Its calibrated right-hand grip
+    // deliberately differs from the unarmed, relaxed-hand pose above.
+    view.setPose({ ...idle, armed: true }); const armedIdle = bones(view.root);
     view.setPose({ ...idle, armed: true, reloadFraction: 0.3 }); const pouch = bones(view.root);
     view.setPose({ ...idle, armed: true, reloadFraction: 0.78 }); const rack = bones(view.root);
     expect(pouch.get('L_Hand')!.position.distanceTo(rack.get('L_Hand')!.position)).toBeGreaterThan(0.2);
     view.setPose({ ...idle, armed: true, reloadFraction: 0.78 }); expect(difference(rack, bones(view.root)).angle).toBeLessThan(0.000001);
-    view.setPose({ ...idle, armed: true, reloadFraction: 1 }); expect(difference(stopped, bones(view.root)).angle).toBeLessThan(0.000001);
+    view.setPose({ ...idle, armed: true, reloadFraction: 1 }); expect(difference(armedIdle, bones(view.root)).angle).toBeLessThan(0.000001);
     expect(view.root.position.toArray()).toEqual([0, 0, 0]);
   });
 

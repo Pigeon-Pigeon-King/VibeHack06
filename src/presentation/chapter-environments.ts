@@ -1,3 +1,5 @@
+import { bindGeneratedWorldWeapon } from './GeneratedWorldWeapons';
+import { bindGeneratedProp, cabinetRow, doorLeaves, propPlacement, propSlot } from './GeneratedPropBindings';
 import { CylinderGeometry, Group, Mesh, MeshStandardMaterial, PointLight } from 'three';
 import type { SceneFrame, Vec3 } from '../contracts';
 import { NIGHT, WORKERS } from '../content/chapter-layout';
@@ -59,14 +61,17 @@ function crate(root: Group, at: Vec3, name: string): Group {
     .box([0.32, 0.18, 0.012], [0, 0.32, 0.328], 0x253c49)
     .box([0.15, 0.045, 0.02], [0, 0.32, 0.34], 0xd9d6bb)
     .mesh(group, material, name);
-  group.userData.assetStatus = 'placeholder'; root.add(group); return group;
+  bindGeneratedProp(group, name, [propPlacement(name, 'PROP-CARGO', [0, 0, 0], 0.9)]);
+  group.userData.assetStatus = 'pending-generated'; root.add(group); return group;
 }
 
 function fan(kit: PortKit): { rotor: Group; obstruction: Group; lamp: MeshStandardMaterial } {
   const at: Vec3 = [NIGHT.fan[0], 1.75, NIGHT.fan[2] - 2.7];
-  wall(kit, 'night-fan-housing', at, [4.0, 3.5, 2.4], 'steel');
-  kit.box('pale', [at[0], 3.6, at[2]], [4.2, 0.15, 2.6]);
-  kit.cylinder('rubber', [at[0], at[1], at[2] + 1.24], 1.38, 0.10, [Math.PI / 2, 0, 0]);
+  const housing = kit.visualSlot('night-fan-body', slot => {
+    wall(slot, 'night-fan-housing', at, [4.0, 3.5, 2.4], 'steel');
+    slot.box('pale', [at[0], 3.6, at[2]], [4.2, 0.15, 2.6]);
+    slot.cylinder('rubber', [at[0], at[1], at[2] + 1.24], 1.38, 0.10, [Math.PI / 2, 0, 0]);
+  });
   const rotor = new Group(); rotor.name = 'night-fan-rotor'; rotor.position.set(at[0], at[1], at[2] + 1.32);
   const pieces = new VertexParts().cylinder(0.25, 0.22, [0, 0, 0], 0xc5c9b7, [Math.PI / 2, 0, 0]);
   for (let i = 0; i < 6; i++) {
@@ -74,6 +79,9 @@ function fan(kit: PortKit): { rotor: Group; obstruction: Group; lamp: MeshStanda
     pieces.box([0.30, 0.90, 0.07], [-Math.sin(angle) * 0.68, Math.cos(angle) * 0.68, 0], 0x789196, [0, 0, angle + 0.15]);
   }
   pieces.mesh(rotor, characterMaterial(), 'fan-blades'); kit.root.add(rotor);
+  bindGeneratedProp(housing, 'night-fan-body', [propPlacement('night-fan-body', 'PROP-FAN', [at[0], 0, at[2]], 3.5, 'y', Math.PI / 2)], [...housing.children, rotor]);
+  housing.userData.partContract = 'Static generated fan; separate production impeller still required. Do not rotate the whole housing.';
+  rotor.userData.productionAnimationPending = 'separate impeller';
   const obstruction = new Group(); obstruction.name = 'night-fan-obstruction';
   obstruction.position.set(at[0], at[1] - 0.4, at[2] + 1.48);
   new VertexParts()
@@ -109,7 +117,10 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
   kit.box('pale', [-19, 0.95, 35], [5.6, 0.16, 1.3]);
   kit.solid('night-toolbench', [-19, 0.55, 35], [5.6, 1.1, 1.3]);
   for (const x of [-21.4, -16.6]) kit.box('steel', [x, 0.45, 35], [0.18, 0.9, 1.1]);
-  for (let i = 0; i < 5; i++) kit.box(i % 2 ? 'steel' : 'amber', [-20.5 + i * 0.65, 1.07, 35], [0.42, 0.08, 0.15], [0, i * 0.2, 0]);
+  propSlot(kit, 'night-work-tools', [propPlacement('night-tool-roll', 'PROP-TOOL-ROLL', [-19.4, 1.03, 35], 0.9, 'z', Math.PI / 2),
+    propPlacement('night-tool-bag', 'PROP-TOOL-BAG', [-20.6, 1.03, 35], 0.55)], slot => {
+    for (let i = 0; i < 5; i++) slot.box(i % 2 ? 'steel' : 'amber', [-20.5 + i * 0.65, 1.07, 35], [0.42, 0.08, 0.15], [0, i * 0.2, 0]);
+  });
   kit.sign('维修廊', [-3.70, 4.15, 30], 4.4, 0.65, Math.PI / 2);
 
   // Supply rack stands behind the interaction point; the authored source crate is reversible by facts.
@@ -119,9 +130,11 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
   kit.solid('night-supply-rack', rack, [5, 3, 1.1]);
   const supply = crate(kit.root, [12, 1.35, 16.3], 'night-supplies-source');
   for (const x of [19, 22]) {
-    kit.box('white', [x, 0.65, 13.8], [2.1, 1.3, 2.2]);
-    kit.box('paint', [x, 1.34, 13.8], [2.15, 0.10, 2.25]);
-    kit.solid(`night-stores-${x}`, [x, 0.7, 13.8], [2.15, 1.4, 2.25]);
+    propSlot(kit, `night-stores-${x}`, [propPlacement(`night-stores-${x}`, 'PROP-CARGO', [x, 0, 13.8], 2.05)], slot => {
+      slot.box('white', [x, 0.65, 13.8], [2.1, 1.3, 2.2]);
+      slot.box('paint', [x, 1.34, 13.8], [2.15, 0.10, 2.25]);
+      slot.solid(`night-stores-${x}`, [x, 0.7, 13.8], [2.15, 1.4, 2.25]);
+    });
   }
   kit.sign('物资室', [3.70, 4.15, 18], 4.5, 0.65, -Math.PI / 2);
   light(kit, [12, 3.8, 20], 0xffd4a1, 35, 13);
@@ -131,13 +144,17 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
   for (const x of [10.0, 12.6]) kit.box('steel', [x, 0.42, -6.1], [0.14, 0.84, 1.25]);
   const delivered = crate(kit.root, [12, 0.93, -6.1], 'night-supplies-delivered'); delivered.visible = false;
   for (const z of [-1, 4]) {
-    wall(kit, `night-care-cabinet-${z}`, [23.5, 1.15, z], [3.1, 2.3, 2.5], 'pale');
-    kit.box('white', [23.5, 1.6, z + 1.27], [1.4, 0.18, 0.035], [0, 0, 0], false);
+    propSlot(kit, `night-care-cabinet-${z}`, cabinetRow(`night-care-cabinet-${z}`, [23.5, 0, z], 3.1, 2.3), slot => {
+      wall(slot, `night-care-cabinet-${z}`, [23.5, 1.15, z], [3.1, 2.3, 2.5], 'pale');
+      slot.box('white', [23.5, 1.6, z + 1.27], [1.4, 0.18, 0.035], [0, 0, 0], false);
+    });
   }
   // Empty transfer bed; people remain owned by the simulation.
-  kit.box('white', [19.5, 0.80, -7.7], [1.25, 0.16, 2.2]);
-  kit.box('paint', [19.5, 0.91, -7.7], [1.1, 0.12, 2]);
-  kit.solid('night-transfer-bed', [19.5, 0.5, -7.7], [1.4, 1.0, 2.3]);
+  propSlot(kit, 'night-transfer-bed', [propPlacement('night-transfer-bed', 'PROP-TRANSFER', [19.5, 0, -7.7], 2.3, 'x', Math.PI / 2)], slot => {
+    slot.box('white', [19.5, 0.80, -7.7], [1.25, 0.16, 2.2]);
+    slot.box('paint', [19.5, 0.91, -7.7], [1.1, 0.12, 2]);
+    slot.solid('night-transfer-bed', [19.5, 0.5, -7.7], [1.4, 1.0, 2.3]);
+  });
   kit.sign('护理室', [3.70, 4.15, -4], 4.5, 0.65, -Math.PI / 2);
   light(kit, [13, 3.8, -3], 0xffd9ae, 45, 15);
 
@@ -152,12 +169,21 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
     for (const z of [-25.75, -24.25]) kit.cylinder('steel', [-23.1 + i * 0.95, 1.30, z], 0.18, 0.12, [Math.PI / 2, 0, 0]);
   }
   wall(kit, 'night-weapon-rack', [-10, 1.4, -34], [5.0, 2.8, 0.55], 'steel');
+  const rackWeapons: Group[] = [];
   for (let i = 0; i < 4; i++) {
-    const x = -11.5 + i;
-    kit.box('pale', [x, 1.45, -33.65], [0.16, 0.70, 0.18], [0, 0, -0.10]);
-    kit.box('rubber', [x + 0.06, 0.98, -33.62], [0.24, 0.28, 0.19]);
-    kit.cylinder('rubber', [x - 0.06, 2.02, -33.65], 0.035, 0.50);
-    kit.box('amber', [x + 0.15, 1.32, -33.62], [0.17, 0.10, 0.08]);
+    const id = `night-rack-ak-${i}`;
+    // Keep each original display in an isolated host. The replacement is a complete
+    // 0.89m AK, not an asserted set of independently produced weapon components.
+    const display = kit.visualSlot(id, slot => {
+      slot.box('pale', [0, .35, -.03], [.16, .70, .18], [0, 0, -.10]);
+      slot.box('rubber', [.06, -.12, 0], [.24, .28, .19]);
+      slot.cylinder('rubber', [-.06, .92, -.03], .035, .50);
+      slot.box('amber', [.15, .22, 0], [.17, .10, .08]);
+    });
+    display.position.set(-11.5 + i, 1.1, -33.62);
+    bindGeneratedWorldWeapon(display, id, 'upright-rack');
+    if (i === 1) display.userData.collectionFact = 'weapon-collected';
+    rackWeapons.push(display);
   }
   kit.sign('样本室', [-3.70, 4.15, -24], 4.5, 0.65, Math.PI / 2);
   light(kit, [-12, 4.0, -25], 0xc8e1e6, 55, 16);
@@ -177,6 +203,8 @@ export function buildNightShift(kit: PortKit): SceneDynamics {
       blower.lamp.emissive.copy(blower.lamp.color);
       supply.visible = !facts.includes('supplies-collected');
       delivered.visible = facts.includes('supplies-delivered');
+      // The existing mission fact owns pickup and checkpoint restoration; no new interaction.
+      rackWeapons[1].visible = !facts.includes('weapon-collected');
     },
   };
 }
@@ -190,7 +218,8 @@ function slidingGate(kit: PortKit, id: string, z: number, width: number, fact: s
     panel.box('pale', [side * width / 4, 3.16, z + 0.19], [width / 2, 0.10, 0.08]);
     for (let i = 0; i < 5; i++) panel.box('steel', [side * width / 4, 0.35 + i * 0.54, z + 0.19], [width / 2 - 0.2, 0.055, 0.08]);
     panel.box('amber', [side * width / 4, 1.4, z + 0.23], [width / 2 - 0.2, 0.22, 0.035], [0, 0, 0], false);
-    panel.flush(); kit.root.add(panel.root); panels.push(panel.root);
+    panel.flush(); bindGeneratedProp(panel.root, `${id}-${side}`, doorLeaves(`${id}-${side}`, [side * width / 4, 0, z], width / 2, 3.2));
+    kit.root.add(panel.root); panels.push(panel.root);
   }
   kit.solid(id, [0, 1.6, z], [width, 3.2, 0.40], 0, fact);
   for (const x of [-width / 2 - 0.3, width / 2 + 0.3]) wall(kit, `${id}-frame-${x}`, [x, 2.1, z], [0.55, 4.2, 0.75], 'pale');
@@ -213,34 +242,40 @@ function crossWall(kit: PortKit, id: string, z: number, opening: number): void {
 }
 
 function militaryTruck(kit: PortKit, x: number, z: number): void {
-  kit.located([x, 0, z], 0, () => {
-    kit.box('steel', [0, 0.74, 0], [3.1, 0.6, 7.6]);
-    kit.box('rubber', [0, 1.6, -2.3], [2.8, 2.0, 2.4]);
-    kit.box('glass', [0, 2.05, -3.55], [2.3, 0.72, 0.08], [-0.18, 0, 0]);
-    kit.box('pale', [0, 2.69, -2.3], [3.0, 0.18, 2.5]);
-    kit.box('steel', [0, 1.65, 1.5], [2.9, 1.3, 3.8]);
-    kit.part('arch', 'paint', [0, 2.25, 1.45], [3.0, 1.5, 4.0]);
+  propSlot(kit, `workers-military-truck-${x}-${z}`, [propPlacement(`workers-truck-${x}-${z}`, 'PROP-VEH-TRANSPORT', [x, 0, z], 8.1, 'x', Math.PI / 2)], slot => {
+  slot.located([x, 0, z], 0, () => {
+    slot.box('steel', [0, 0.74, 0], [3.1, 0.6, 7.6]);
+    slot.box('rubber', [0, 1.6, -2.3], [2.8, 2.0, 2.4]);
+    slot.box('glass', [0, 2.05, -3.55], [2.3, 0.72, 0.08], [-0.18, 0, 0]);
+    slot.box('pale', [0, 2.69, -2.3], [3.0, 0.18, 2.5]);
+    slot.box('steel', [0, 1.65, 1.5], [2.9, 1.3, 3.8]);
+    slot.part('arch', 'paint', [0, 2.25, 1.45], [3.0, 1.5, 4.0]);
     for (const x of [-1.62, 1.62]) for (const z of [-2.9, 1.0, 2.7]) {
-      kit.cylinder('rubber', [x, 0.65, z], 0.65, 0.38, [0, 0, Math.PI / 2]);
-      kit.cylinder('steel', [x * 1.07, 0.65, z], 0.30, 0.05, [0, 0, Math.PI / 2]);
+      slot.cylinder('rubber', [x, 0.65, z], 0.65, 0.38, [0, 0, Math.PI / 2]);
+      slot.cylinder('steel', [x * 1.07, 0.65, z], 0.30, 0.05, [0, 0, Math.PI / 2]);
     }
-    for (const x of [-1.05, 1.05]) kit.box('white', [x, 1.38, -3.6], [0.28, 0.20, 0.06], [0, 0, 0], false);
-    kit.box('pale', [0, 0.72, -3.95], [3.2, 0.25, 0.22]);
-    kit.solid(`military-truck-${x}-${z}`, [0, 1.65, 0], [3.55, 3.3, 8.1]);
+    for (const x of [-1.05, 1.05]) slot.box('white', [x, 1.38, -3.6], [0.28, 0.20, 0.06], [0, 0, 0], false);
+    slot.box('pale', [0, 0.72, -3.95], [3.2, 0.25, 0.22]);
+    slot.solid(`military-truck-${x}-${z}`, [0, 1.65, 0], [3.55, 3.3, 8.1]);
+  });
+
   });
 }
 
 function transferBus(kit: PortKit): void {
-  kit.located([31.3, 0, -118], 0, () => {
-    kit.box('pale', [0, 1.50, 0], [3.15, 2.2, 6.8]);
-    kit.box('paint', [0, 0.81, 0], [3.22, 0.28, 6.9]);
-    kit.box('glass', [0, 2.10, 3.43], [2.6, 0.85, 0.06]);
-    kit.box('white', [0, 2.70, 0], [3.3, 0.18, 7.0]);
+  propSlot(kit, 'workers-transfer-vehicle', [propPlacement('workers-transfer-vehicle', 'PROP-VEH-TRANSPORT', [31.3, 0, -118], 7, 'x', -Math.PI / 2)], slot => {
+  slot.located([31.3, 0, -118], 0, () => {
+    slot.box('pale', [0, 1.50, 0], [3.15, 2.2, 6.8]);
+    slot.box('paint', [0, 0.81, 0], [3.22, 0.28, 6.9]);
+    slot.box('glass', [0, 2.10, 3.43], [2.6, 0.85, 0.06]);
+    slot.box('white', [0, 2.70, 0], [3.3, 0.18, 7.0]);
     for (const x of [-1.60, 1.60]) {
-      for (const z of [-2.1, 2.1]) kit.cylinder('rubber', [x, 0.57, z], 0.55, 0.30, [0, 0, Math.PI / 2]);
-      for (const z of [-2.25, -0.75, 0.75, 2.25]) kit.box('glass', [x, 2.05, z], [0.06, 0.70, 1.1]);
+      for (const z of [-2.1, 2.1]) slot.cylinder('rubber', [x, 0.57, z], 0.55, 0.30, [0, 0, Math.PI / 2]);
+      for (const z of [-2.25, -0.75, 0.75, 2.25]) slot.box('glass', [x, 2.05, z], [0.06, 0.70, 1.1]);
     }
-    kit.solid('workers-transfer-bus', [0, 1.5, 0], [3.3, 3.0, 7.0]);
+    slot.solid('workers-transfer-bus', [0, 1.5, 0], [3.3, 3.0, 7.0]);
+  });
+
   });
 }
 

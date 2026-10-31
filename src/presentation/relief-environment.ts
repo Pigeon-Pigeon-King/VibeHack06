@@ -1,3 +1,4 @@
+import { bindGeneratedProp, cabinetRow, propPlacement, propSlot } from './GeneratedPropBindings';
 import { CylinderGeometry, Mesh, MeshStandardMaterial, PointLight } from 'three';
 import type { Vec3 } from '../contracts';
 import { RELIEF as R } from '../content/relief-layout';
@@ -64,8 +65,10 @@ function firingAndWithdrawal(k: PortKit): void {
   for (let x = -8; x < 22; x += 5) k.box('white', [x, 0.018, 104], [2.3, 0.02, 0.10], [0, 0, 0], false);
   for (let x = -22; x < 22; x += 5) k.box('white', [x, 0.018, 128], [2.3, 0.02, 0.10], [0, 0, 0], false);
   for (const [i, p] of R.ammo.entries()) {
-    block(k, `relief-ammo-${i}`, [p[0] + 1.4, 0.5, p[2]], [1.5, 1, 0.9], 'steel');
-    k.box('amber', [p[0] + 1.4, 1.05, p[2]], [1.4, 0.10, 0.85]);
+  propSlot(k, `relief-ammo-${i}`, [propPlacement(`relief-ammo-${i}`, 'PROP-CARGO', [p[0] + 1.4, 0, p[2]], 1.4, 'z', Math.PI / 2)], slot => {
+    block(slot, `relief-ammo-${i}`, [p[0] + 1.4, 0.5, p[2]], [1.5, 1, 0.9], 'steel');
+    slot.box('amber', [p[0] + 1.4, 1.05, p[2]], [1.4, 0.10, 0.85]);
+  });
   }
 }
 function restShelter(k: PortKit) {
@@ -81,21 +84,30 @@ function restShelter(k: PortKit) {
   k.sign('休息室', [-29.36, 4.25, 161], 9, 0.6, -Math.PI / 2);
   k.sign('出口', [-8, 4.2, 176.35], 7, 0.55);
   // The seat is behind the authored foot position; it does not embed a standing/restoring player capsule.
-  block(k, 'relief-rest-seat', [-8, 0.43, 160.85], [3.2, 0.86, 0.8], 'pale');
-  block(k, 'relief-rest-seat-back', [-8, 1.1, 161.25], [3.2, 0.8, 0.16], 'paint');
+  propSlot(k, 'relief-rest-seat', [propPlacement('relief-rest-seat', 'PROP-BENCH', [-8, 0, 160.85], 3.2, 'z', Math.PI / 2)], slot => {
+  block(slot, 'relief-rest-seat', [-8, 0.43, 160.85], [3.2, 0.86, 0.8], 'pale');
+  block(slot, 'relief-rest-seat-back', [-8, 1.1, 161.25], [3.2, 0.8, 0.16], 'paint');
+  });
   block(k, 'relief-water-table', [-4.2, 0.5, 160.3], [1.25, 1, 1], 'pale');
   k.cylinder('white', [-4.2, 1.23, 160.3], 0.14, 0.44);
-  k.cylinder('steel', [-4.6, 1.10, 160.2], 0.07, 0.18);
+  propSlot(k, 'relief-water-mug', [propPlacement('relief-water-mug', 'PROP-LIFE-MUG', [-4.6, 1.01, 160.2], 0.18, 'y')], slot => {
+  slot.cylinder('steel', [-4.6, 1.10, 160.2], 0.07, 0.18);
+  });
   block(k, 'relief-radio-table', [-12.5, 0.5, 160.3], [1.4, 1, 1], 'steel');
-  k.box('rubber', [-12.5, 1.15, 160.3], [0.55, 0.3, 0.35]);
-  k.cylinder('steel', [-12.7, 1.6, 160.3], 0.018, 0.7);
+  propSlot(k, 'relief-table-radio', [propPlacement('relief-table-radio', 'PROP-RADIO-PACK', [-12.5, 1.002, 160.3], 0.48, 'y')], slot => {
+  slot.box('rubber', [-12.5, 1.15, 160.3], [0.55, 0.3, 0.35]);
+  slot.cylinder('steel', [-12.7, 1.6, 160.3], 0.018, 0.7);
+  });
   for (const x of [-20, 9]) {
-    block(k, `relief-rest-locker-${x}`, [x, 1.3, 149], [3.5, 2.6, 2], 'steel');
-    k.box('white', [x, 1.8, 150.05], [0.4, 0.55, 0.06]);
+  propSlot(k, `relief-rest-locker-${x}`, cabinetRow(`relief-rest-locker-${x}`, [x, 0, 149], 3.5, 2.6), slot => {
+    block(slot, `relief-rest-locker-${x}`, [x, 1.3, 149], [3.5, 2.6, 2], 'steel');
+    slot.box('white', [x, 1.8, 150.05], [0.4, 0.55, 0.06]);
+  });
     k.cylinder('amber', [x, 4.5, 161], 0.16, 26, [Math.PI / 2, 0, 0]);
   }
   const brace = new PortKit(); brace.root.name = 'relief-care-spare-strap';
-  brace.box('amber', [-4.25, 1.045, 160.65], [0.12, 0.03, 0.42]); brace.flush(); k.root.add(brace.root);
+  brace.box('amber', [-4.25, 1.045, 160.65], [0.12, 0.03, 0.42]); brace.flush();
+  bindGeneratedProp(brace.root, 'relief-care-spare-brace', [propPlacement('relief-care-spare-brace', 'PROP-ARMOR-LEFT-BRACE', [-4.25, 1.002, 160.65], 0.42, 'y')]); k.root.add(brace.root);
   const light = new PointLight(0xffd9ac, 65, 25, 2); light.position.set(-8, 4.2, 159); k.root.add(light);
   return brace.root;
 }

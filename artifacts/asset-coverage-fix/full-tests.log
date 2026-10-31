@@ -1,0 +1,26 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-asset-coverage
+
+ ❯ tests/character-motion.test.ts (32 tests | 1 failed) 4791ms
+   ❯ real character motion continuity (32)
+     × drives a distinct run, crouch travel and reload from actual motion/action inputs 45ms
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/character-motion.test.ts > real character motion continuity > drives a distinct run, crouch travel and reload from actual motion/action inputs
+AssertionError: expected 1.39710610283802 to be less than 0.000001
+ ❯ tests/character-motion.test.ts:131:116
+    129|     expect(pouch.get('L_Hand')!.position.distanceTo(rack.get('L_Hand')…
+    130|     view.setPose({ ...idle, armed: true, reloadFraction: 0.78 }); expe…
+    131|     view.setPose({ ...idle, armed: true, reloadFraction: 1 }); expect(…
+       |                                                                                                                    ^
+    132|     expect(view.root.position.toArray()).toEqual([0, 0, 0]);
+    133|   });
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+
+ Test Files  1 failed | 83 passed (84)
+      Tests  1 failed | 978 passed | 1 skipped (980)
+   Start at  18:42:48
+   Duration  81.11s (tests 95%, import 3%, transform 2%)

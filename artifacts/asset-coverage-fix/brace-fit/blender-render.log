@@ -1,0 +1,14 @@
+19:32:27 | INFO: Data are loaded, start creating Blender stuff
+19:32:27 | INFO: Blender create Mesh node tripo_mesh_98939ba8-5a7f-4895-94e2-90f76dd807cc
+19:32:27 | INFO: glTF import finished in 0.02s
+19:32:27 | INFO: Data are loaded, start creating Blender stuff
+19:32:27 | INFO: Blender create Mesh node tripo_mesh_64300525-783e-4f8e-866e-6a05aa05ad94
+19:32:27 | INFO: glTF import finished in 0.06s
+/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/brace-fit/render-seated.py:27: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  s.world=bpy.data.worlds.new('inspection-world');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs[0].default_value=(.4,.45,.5,1);s.world.node_tree.nodes['Background'].inputs[1].default_value=.65
+00:04.399  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/brace-fit/zhou-seat-overview.png'
+00:06.851  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/brace-fit/zhou-seat-first-person.png'
+00:09.769  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/brace-fit/zhou-seat-outer-knee.png'
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

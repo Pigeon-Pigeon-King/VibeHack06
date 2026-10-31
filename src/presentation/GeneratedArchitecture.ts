@@ -58,7 +58,7 @@ export class GeneratedArchitecture {
     try { this.options.onStatus?.({ ...status }); } catch { /* UI observers do not own leases. */ }
   }
   getStatus(): readonly ArchitectureStatus[] { return [...this.statuses.values()].map(status => ({ ...status })); }
-  coverage(): ReturnType<ArchitectureTransactions['coverage']> { return this.transactions.coverage(); }
+  coverage() { return { ...this.transactions.coverage(), plan: this.options.parent.userData.architectureCoveragePlan }; }
   update(cameraPosition?: Vector3): void { if (cameraPosition && !this.disposed) this.transactions.update(cameraPosition); }
   dispose(): void {
     if (this.disposed) return;

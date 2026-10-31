@@ -1,0 +1,219 @@
+{
+  "generatedAt": "2026-10-31T10:56:42.511Z",
+  "scope": "Actual AK GLB geometry/nodes/calibration; image decode substituted; browser visual acceptance pending.",
+  "source": {
+    "id": "WP-AK47",
+    "revision": "world-r1-d121eb62491e",
+    "name": "AK-47",
+    "runtimePath": "models/weapons/ak47-world-r1.glb",
+    "sourcePath": "assets/source/WP-AK47/ak47_reloadable_world.glb",
+    "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+    "bytes": 2046524,
+    "provenance": {
+      "creator": "taradavies",
+      "adapter": "Operation Steel Tide / AetherRadar",
+      "source": "https://opengameart.org/content/ak-47-1",
+      "adaptationRevision": "7ef7b539af1e0166e1d2735dc0ba200a08ba6492",
+      "geometryLicense": "CC0-1.0",
+      "adaptationLicense": "MIT",
+      "licensePath": "licenses/WP-AK47/"
+    },
+    "sourceCost": {
+      "uniqueTriangles": 24488,
+      "meshResources": 11,
+      "materials": 6,
+      "embeddedImages": 6,
+      "textureEntries": 10,
+      "animationClips": 0
+    },
+    "defaultHiddenNodes": [
+      "SpareMagazine",
+      "Suppressor",
+      "OpticMount",
+      "OpticRailAdapterGeometry",
+      "OpticRailContact"
+    ],
+    "requiredNodes": [
+      "Magazine",
+      "ChargingHandle",
+      "FrontIronSight",
+      "RearIronSight",
+      "MuzzleDeviceTip",
+      "FurnitureGeometry",
+      "Stock"
+    ],
+    "presentationLengthMeters": 0.89,
+    "status": "imported-geometry-checked-rendering-pending"
+  },
+  "scenarios": [
+    {
+      "scenario": "childhood",
+      "modelInstances": 3,
+      "statuses": [
+        {
+          "id": "history-source-rifle",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        },
+        {
+          "id": "history-fallen-rifle",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        },
+        {
+          "id": "history-commander-rifle",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        }
+      ],
+      "bindings": [
+        {
+          "id": "history-source-rifle",
+          "pose": "lying",
+          "position": [
+            -16,
+            0,
+            8
+          ]
+        },
+        {
+          "id": "history-fallen-rifle",
+          "pose": "lying",
+          "position": [
+            -12.4,
+            0.015,
+            9.8
+          ]
+        },
+        {
+          "id": "history-commander-rifle",
+          "pose": "lying",
+          "position": [
+            -4.7,
+            0.015,
+            14.7
+          ]
+        }
+      ]
+    },
+    {
+      "scenario": "mainhall",
+      "modelInstances": 3,
+      "statuses": [
+        {
+          "id": "history-source-rifle",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        },
+        {
+          "id": "history-fallen-rifle",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        },
+        {
+          "id": "history-commander-rifle",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        }
+      ],
+      "bindings": [
+        {
+          "id": "history-source-rifle",
+          "pose": "lying",
+          "position": [
+            -16,
+            0,
+            8
+          ]
+        },
+        {
+          "id": "history-fallen-rifle",
+          "pose": "lying",
+          "position": [
+            -12.4,
+            0.015,
+            9.8
+          ]
+        },
+        {
+          "id": "history-commander-rifle",
+          "pose": "lying",
+          "position": [
+            -4.7,
+            0.015,
+            14.7
+          ]
+        }
+      ]
+    },
+    {
+      "scenario": "nightshift",
+      "modelInstances": 4,
+      "statuses": [
+        {
+          "id": "night-rack-ak-0",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        },
+        {
+          "id": "night-rack-ak-1",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        },
+        {
+          "id": "night-rack-ak-2",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        },
+        {
+          "id": "night-rack-ak-3",
+          "assetId": "WP-AK47",
+          "state": "ready"
+        }
+      ],
+      "collectionFact": "weapon-collected",
+      "bindings": [
+        {
+          "id": "night-rack-ak-0",
+          "pose": "upright-rack",
+          "position": [
+            -11.5,
+            1.1,
+            -33.62
+          ],
+          "visibleAfterCollection": true
+        },
+        {
+          "id": "night-rack-ak-1",
+          "pose": "upright-rack",
+          "position": [
+            -10.5,
+            1.1,
+            -33.62
+          ],
+          "visibleAfterCollection": false
+        },
+        {
+          "id": "night-rack-ak-2",
+          "pose": "upright-rack",
+          "position": [
+            -9.5,
+            1.1,
+            -33.62
+          ],
+          "visibleAfterCollection": true
+        },
+        {
+          "id": "night-rack-ak-3",
+          "pose": "upright-rack",
+          "position": [
+            -8.5,
+            1.1,
+            -33.62
+          ],
+          "visibleAfterCollection": true
+        }
+      ]
+    }
+  ]
+}

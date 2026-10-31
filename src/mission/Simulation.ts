@@ -50,6 +50,8 @@ export interface Snapshot {
 export interface GameEvent {
   type: 'shot' | 'impact' | 'hit' | 'hurt' | 'reload' | 'objective' | 'checkpoint' | 'dialogue';
   position?: Vec3; enemy?: boolean; killed?: boolean;
+  /** Actual firing actor, absent for authored off-screen fire with no character. */
+  actorId?: string;
   dialogue?: { speaker: string; text: string; expiresAt: number };
 }
 export function distance(a: Vec3, b: Vec3): number { return Math.hypot(a[0] - b[0], a[2] - b[2]); }
@@ -328,7 +330,7 @@ export class Simulation {
       const origin = barrelHit ? sight : muzzle;
       if (barrelHit) aimPoint = barrelHit.point;
       this.ballistics.fire('player', origin, aimPoint.map((v, i) => v - origin[i]) as Vec3, 34);
-      this.events.push({ type: 'shot', position: this.playerEye });
+      this.events.push({ type: 'shot', position: this.playerEye, actorId: 'player' });
     }
     for (const impact of this.ballistics.update(dt)) {
       const { projectile, hit } = impact;
@@ -450,7 +452,7 @@ export class Simulation {
             to[1] - from[1] + (enemy ? this.random.between(-spread, spread) : 0),
             to[2] - from[2] + this.random.between(-spread, spread)], enemy ? 9 : 17, enemy ? 360 : 420);
           a.cooldown = this.random.between(enemy ? 0.8 : 1.6, enemy ? 1.5 : 2.8);
-          this.events.push({ type: 'shot', position: from, enemy });
+          this.events.push({ type: 'shot', position: from, enemy, actorId: a.id });
           if (a.role === 'ally' && covering) this.fact('relief-cover-fired');
           if (a.role === 'ally' && this.scenario === 'rescue') this.fact('rescue-cover-fired');
         }

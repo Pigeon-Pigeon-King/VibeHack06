@@ -1,0 +1,114 @@
+{
+  "renderer": "5.2.3 LTS",
+  "engine": "Cycles",
+  "threads": 1,
+  "samples": 12,
+  "scope": "Offline inspection only, not WebGL acceptance",
+  "renders": [
+    {
+      "case": "zhou-supply",
+      "view": "first-person",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-supply-first-person.png"
+    },
+    {
+      "case": "zhou-supply",
+      "view": "overview",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-supply-overview.png"
+    },
+    {
+      "case": "zhou-seat",
+      "view": "overview",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-seat-overview.png"
+    },
+    {
+      "case": "zhou-seat",
+      "view": "first-person",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-seat-first-person.png"
+    },
+    {
+      "case": "enemy-aim-left",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/enemy-aim-left-front.png"
+    },
+    {
+      "case": "enemy-aim-left",
+      "view": "side",
+      "file": "artifacts/asset-coverage-fix/character-visual/enemy-aim-left-side.png"
+    },
+    {
+      "case": "enemy-fire-left",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/enemy-fire-left-front.png"
+    },
+    {
+      "case": "enemy-aim-right",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/enemy-aim-right-front.png"
+    },
+    {
+      "case": "enemy-fire-right",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/enemy-fire-right-front.png"
+    },
+    {
+      "case": "lu-aim-left",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/lu-aim-left-front.png"
+    },
+    {
+      "case": "lu-aim-left",
+      "view": "side",
+      "file": "artifacts/asset-coverage-fix/character-visual/lu-aim-left-side.png"
+    },
+    {
+      "case": "lu-fire-left",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/lu-fire-left-front.png"
+    },
+    {
+      "case": "lu-aim-right",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/lu-aim-right-front.png"
+    },
+    {
+      "case": "lu-fire-right",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/lu-fire-right-front.png"
+    },
+    {
+      "case": "zhou-aim-left",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-aim-left-front.png"
+    },
+    {
+      "case": "zhou-aim-left",
+      "view": "side",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-aim-left-side.png"
+    },
+    {
+      "case": "zhou-fire-left",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-fire-left-front.png"
+    },
+    {
+      "case": "zhou-aim-right",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-aim-right-front.png"
+    },
+    {
+      "case": "zhou-fire-right",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/zhou-fire-right-front.png"
+    },
+    {
+      "case": "xu-aim-left",
+      "view": "front",
+      "file": "artifacts/asset-coverage-fix/character-visual/xu-aim-left-front.png"
+    },
+    {
+      "case": "xu-aim-left",
+      "view": "side",
+      "file": "artifacts/asset-coverage-fix/character-visual/xu-aim-left-side.png"
+    }
+  ]
+}

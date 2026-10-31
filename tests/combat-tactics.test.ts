@@ -43,14 +43,20 @@ class Memory implements StorageLike {
 describe('physical combat tactics', () => {
   it('uses authored north-gate cover for both teams during actual gameplay updates', () => {
     const environment = buildEnvironment('northgate'), s = new Simulation('northgate', environment.solids);
-    const allyPhases = new Set<string>(), enemyPhases = new Set<string>();
+    const allyPhases = new Set<string>(), enemyPhases = new Set<string>(), shooters = new Set<string>();
     try {
       for (let i = 0; i < 30 / FIXED_DT && !s.mission.failed; i++) {
         s.step(emptyIntent);
+        for (const event of s.events) if (event.type === 'shot') {
+          expect(event.actorId).toBeTruthy();
+          expect(s.actors.some(a => a.id === event.actorId && (a.role === 'ally' || a.role === 'enemy'))).toBe(true);
+          shooters.add(event.actorId!);
+        }
         for (const a of s.actors) if (a.combat?.cover) (a.role === 'ally' ? allyPhases : enemyPhases).add(a.combat.phase);
       }
       expect([...allyPhases]).toEqual(expect.arrayContaining(['seek', 'hide', 'peek']));
       expect([...enemyPhases]).toEqual(expect.arrayContaining(['seek', 'hide', 'peek']));
+      expect(shooters.size).toBeGreaterThan(0);
     } finally { s.dispose(); environment.dispose(); }
   });
   it('uses the campaign’s 1.2 m concrete cover with a matching low collider and a standing firing window', () => {

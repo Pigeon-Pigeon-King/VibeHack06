@@ -147,17 +147,7 @@ describe('generated runtime assets and real geometry', () => {
       expect((mesh.material as MeshStandardMaterial).metalnessMap).toBeInstanceOf(Texture);
       expect((mesh.material as MeshStandardMaterial).transparent).toBe(false);
       if (placement.fallbackSlot) expect(environment.root.getObjectByName(`generated-fallback:${placement.fallbackSlot}`)!.visible).toBe(false);
-      if (placement.foundation) {
-        // The non-traversable landmark has an actual visual footing, not an unsupported model beyond the ground mesh.
-        const foundation = environment.root.getObjectByName(`generated-foundation:${placement.id}`)!;
-        const foundationBounds = new Box3().setFromObject(foundation, true);
-        expect(foundationBounds.max.y).toBeCloseTo(bounds.min.y, 6);
-        expect(bounds.min.x).toBeGreaterThan(foundationBounds.min.x);
-        expect(bounds.max.x).toBeLessThan(foundationBounds.max.x);
-        expect(bounds.min.z).toBeGreaterThan(foundationBounds.min.z);
-        expect(bounds.max.z).toBeLessThan(foundationBounds.max.z);
-        expect(foundationBounds.min.x).toBeGreaterThan(FRONTGATE.bounds.maxX + 0.4);
-      }
+
     }
     if (scenario === 'medical') {
       for (const [placementId, solidId] of [['medical-bench-left', 'medical-rest-bench'], ['medical-bench-right', 'medical-rest-bench-1']]) {
@@ -169,7 +159,8 @@ describe('generated runtime assets and real geometry', () => {
       const bag = modelBounds(controller, 'medical-supply-bag'), mug = modelBounds(controller, 'medical-water-mug');
       expect(bag.min.y - 1.06).toBeCloseTo(0.002, 6); expect(bag.min.x).toBeGreaterThan(-417.8); expect(bag.max.x).toBeLessThan(-416.2);
       expect(mug.min.y - 0.96).toBeCloseTo(0.002, 6); expect(mug.max.x).toBeLessThan(-413.95); expect(mug.max.z).toBeLessThan(60.6);
-      expect(distanceXZ(mug, [-414.5, 0, 60.2])).toBeGreaterThan(0.15);
+      expect(distanceXZ(mug, [-414.5, 0, 60.2])).toBe(0); // replaces this vessel, rather than adding a second cup
+      expect(environment.root.getObjectByName('generated-fallback:medical-water-vessel')!.visible).toBe(false);
       for (const placement of generatedScenePlacements(scenario)) {
         const bounds = modelBounds(controller, placement.id);
         for (const point of [MEDICAL.registration, MEDICAL.equipment, MEDICAL.recordDesk, MEDICAL.zhouVisit, MEDICAL.mengVisit, MEDICAL.rest, ...MEDICAL.nurseRoute, ...MEDICAL.doctorRoute]) {
@@ -257,15 +248,14 @@ describe('generated scene lease ownership and cancellation', () => {
     expect(changed.dispose).toHaveBeenCalledTimes(1); expect(old.visible).toBe(true);
   });
 
-  it('continues independent dressing after one asset failure and disposes owned foundations once', async () => {
+  it('continues independent dressing after one asset failure without synthesizing box foundations', async () => {
     const placements = generatedScenePlacements('frontgate').filter(placement => ['front-tug', 'front-background-light'].includes(placement.id));
     const { library, pending } = deferredLibrary(), parent = new Group(); fallback(parent, 'front-tug');
     const controller = own(new GeneratedSceneAssets(library, { parent, scenario: 'frontgate', baseURL, placements }));
     pending[0].reject(new Error('offline')); pending[1].resolve(fakeLease('ENV-LIGHTKIT-POLE'));
     expect((await controller.ready).map(status => status.state)).toEqual(['error', 'ready']);
-    const foundation = parent.getObjectByName('generated-foundation:front-background-light') as Mesh;
-    const disposed = vi.fn(); foundation.geometry.addEventListener('dispose', disposed);
-    controller.dispose(); controller.dispose(); expect(disposed).toHaveBeenCalledTimes(1);
+    expect(parent.getObjectByName('generated-foundation:front-background-light')).toBeUndefined();
+    controller.dispose(); controller.dispose(); expect(controller.root.children).toHaveLength(0);
   });
 
   it('keeps unrelated scenarios free of new model loads', async () => {

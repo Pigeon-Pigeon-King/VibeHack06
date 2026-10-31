@@ -1,0 +1,839 @@
+[
+  {
+    "asset": "CH-ENEMY",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.07310886682928065,
+        "rightErrorMeters": 1.016819199676455e-7,
+        "leftErrorMeters": 3.9556536941598127e-8,
+        "stockShoulderErrorMeters": 9.938013758978624e-8,
+        "shoulderOffsetMeters": 0.03082207001484386,
+        "supportFraction": 0,
+        "shoulder": [
+          3.9123357359072917,
+          1.0133033582732163,
+          -2.8729322922782425
+        ],
+        "forward": [
+          0.6516920285456944,
+          -2.3536722428512792e-8,
+          0.7584836846828003
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.07143817503095883,
+        "rightErrorMeters": 9.699651836604305e-8,
+        "leftErrorMeters": 3.006396783492117e-8,
+        "stockShoulderErrorMeters": 9.2691624857084e-8,
+        "shoulderOffsetMeters": 0.030822070014844726,
+        "supportFraction": 0.009765625,
+        "shoulder": [
+          3.9120586651839138,
+          1.0135582887475234,
+          -2.873925744759508
+        ],
+        "forward": [
+          0.6509315329496891,
+          0.04829672517787009,
+          0.7575985518392055
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.11772266008461912,
+        "rightErrorMeters": 1.459285425786728e-7,
+        "leftErrorMeters": 3.658649593443793e-8,
+        "stockShoulderErrorMeters": 1.4836862034193025e-7,
+        "shoulderOffsetMeters": 0.03082207001484492,
+        "supportFraction": 0.17578125,
+        "shoulder": [
+          3.6816053097105015,
+          0.9025244737751164,
+          -2.8020739491564632
+        ],
+        "forward": [
+          0.5397892484681694,
+          -6.089413247333027e-8,
+          0.8418001943680965
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.10753603729219617,
+        "rightErrorMeters": 1.3754234480954357e-7,
+        "leftErrorMeters": 3.551088603334742e-8,
+        "stockShoulderErrorMeters": 1.4234404010894745e-7,
+        "shoulderOffsetMeters": 0.03082207001484492,
+        "supportFraction": 0.0478515625,
+        "shoulder": [
+          3.6813046070328928,
+          0.9027794015736736,
+          -2.803063608806674
+        ],
+        "forward": [
+          0.5391599511872706,
+          0.0482972442622967,
+          0.8408174137304769
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  },
+  {
+    "asset": "CH-FATHER",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.0600180019546675,
+        "rightErrorMeters": 3.442772286744385e-8,
+        "leftErrorMeters": 4.7834316046092494e-8,
+        "stockShoulderErrorMeters": 6.695947857095231e-8,
+        "shoulderOffsetMeters": 0.052942517246480636,
+        "supportFraction": 0,
+        "shoulder": [
+          3.9086347584792644,
+          1.011048266233799,
+          -2.8896272744066382
+        ],
+        "forward": [
+          0.6516920748500185,
+          -1.8577944904732445e-9,
+          0.758483644897949
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.060063637156096875,
+        "rightErrorMeters": 3.3188838328488074e-8,
+        "leftErrorMeters": 2.537307047455173e-8,
+        "stockShoulderErrorMeters": 6.305247787260577e-8,
+        "shoulderOffsetMeters": 0.052937736849346266,
+        "supportFraction": 0,
+        "shoulder": [
+          3.908331129679248,
+          1.011197479839319,
+          -2.8906425454641265
+        ],
+        "forward": [
+          0.6509319703659737,
+          0.0482971278105001,
+          0.7575981503414111
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.09247733476753499,
+        "rightErrorMeters": 2.874414479774273e-8,
+        "leftErrorMeters": 3.716608686706787e-8,
+        "stockShoulderErrorMeters": 6.867389963493623e-8,
+        "shoulderOffsetMeters": 0.03023899340922217,
+        "supportFraction": 0,
+        "shoulder": [
+          3.6976325109580177,
+          0.8916062412252057,
+          -2.8312215727771934
+        ],
+        "forward": [
+          0.5397893454867824,
+          5.268687918051745e-8,
+          0.8418001321566471
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.09476291342531781,
+        "rightErrorMeters": 2.646033388063483e-8,
+        "leftErrorMeters": 4.317462824476657e-8,
+        "stockShoulderErrorMeters": 6.473724862216494e-8,
+        "shoulderOffsetMeters": 0.037607176654642464,
+        "supportFraction": 0,
+        "shoulder": [
+          3.6973450157052095,
+          0.8760252206537393,
+          -2.832241552254271
+        ],
+        "forward": [
+          0.5391598882023035,
+          0.04829703827618516,
+          0.8408174659505048
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  },
+  {
+    "asset": "CH-LU",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.058054303925833405,
+        "rightErrorMeters": 1.4866878048192003e-8,
+        "leftErrorMeters": 2.0313949619270495e-8,
+        "stockShoulderErrorMeters": 5.621383739922529e-8,
+        "shoulderOffsetMeters": 0.053077526059359316,
+        "supportFraction": 0,
+        "shoulder": [
+          3.8997184954993194,
+          0.9903409391484936,
+          -2.9007151700133655
+        ],
+        "forward": [
+          0.6516920866797362,
+          -3.788373614455342e-8,
+          0.7584836347338089
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.058039318632246255,
+        "rightErrorMeters": 1.146674869947813e-8,
+        "leftErrorMeters": 2.0695191290128e-8,
+        "stockShoulderErrorMeters": 5.38351367084818e-8,
+        "shoulderOffsetMeters": 0.053060357486162606,
+        "supportFraction": 0,
+        "shoulder": [
+          3.899469672188278,
+          0.9905957026200352,
+          -2.901666472982118
+        ],
+        "forward": [
+          0.6509320832025426,
+          0.048297236185760574,
+          0.757598046482708
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.07182469653706361,
+        "rightErrorMeters": 2.8153618210095438e-8,
+        "leftErrorMeters": 2.2015307865781156e-8,
+        "stockShoulderErrorMeters": 6.207308895218496e-8,
+        "shoulderOffsetMeters": 0.029402821780840253,
+        "supportFraction": 0,
+        "shoulder": [
+          3.697930304018821,
+          0.8853239426238366,
+          -2.8439690115678404
+        ],
+        "forward": [
+          0.5397893946063749,
+          1.2367877620056405e-7,
+          0.8418001006595734
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.07255274113343399,
+        "rightErrorMeters": 2.7166097949052545e-8,
+        "leftErrorMeters": 2.5853212231538764e-8,
+        "stockShoulderErrorMeters": 6.216142380710967e-8,
+        "shoulderOffsetMeters": 0.03080867232335085,
+        "supportFraction": 0,
+        "shoulder": [
+          3.697637310913677,
+          0.8718087866316022,
+          -2.8449045149825705
+        ],
+        "forward": [
+          0.539159892887475,
+          0.04829723657045825,
+          0.8408174515560578
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  },
+  {
+    "asset": "CH-LUO",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.057614645908622523,
+        "rightErrorMeters": 1.4572406833295253e-7,
+        "leftErrorMeters": 4.964718272265003e-8,
+        "stockShoulderErrorMeters": 1.9358643484950952e-7,
+        "shoulderOffsetMeters": 0.04726924620706472,
+        "supportFraction": 0,
+        "shoulder": [
+          3.9046541529828858,
+          1.005733735047201,
+          -2.899046547015072
+        ],
+        "forward": [
+          0.651692167617711,
+          2.9375146219228244e-8,
+          0.7584835651915793
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.057568793744066496,
+        "rightErrorMeters": 1.5140377538944293e-7,
+        "leftErrorMeters": 4.3939388345808915e-8,
+        "stockShoulderErrorMeters": 2.58735905797513e-7,
+        "shoulderOffsetMeters": 0.04726447983724063,
+        "supportFraction": 0,
+        "shoulder": [
+          3.9043859489525845,
+          1.0059747494935978,
+          -2.9000140775527656
+        ],
+        "forward": [
+          0.6509319899782577,
+          0.048297128200150787,
+          0.7575981334656018
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.07742616481047743,
+        "rightErrorMeters": 1.0523394973563831e-7,
+        "leftErrorMeters": 5.951326548442528e-8,
+        "stockShoulderErrorMeters": 1.867058002764761e-7,
+        "shoulderOffsetMeters": 0.02933885735839169,
+        "supportFraction": 0,
+        "shoulder": [
+          3.69437770492448,
+          0.8946402291549203,
+          -2.8376981803703174
+        ],
+        "forward": [
+          0.5397894344830005,
+          -5.518688970870522e-8,
+          0.8418000750894
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.07884926386070651,
+        "rightErrorMeters": 9.93598524437229e-8,
+        "leftErrorMeters": 6.150834624807511e-8,
+        "stockShoulderErrorMeters": 1.85430071876234e-7,
+        "shoulderOffsetMeters": 0.03424852435541374,
+        "supportFraction": 0,
+        "shoulder": [
+          3.6940832963767067,
+          0.88019166566527,
+          -2.8386597482805542
+        ],
+        "forward": [
+          0.5391598949300589,
+          0.04829701576579662,
+          0.8408174629294556
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  },
+  {
+    "asset": "CH-MENG",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.05996467690150516,
+        "rightErrorMeters": 2.538456958967661e-8,
+        "leftErrorMeters": 9.227537192685175e-8,
+        "stockShoulderErrorMeters": 9.301057701621142e-8,
+        "shoulderOffsetMeters": 0.04836955601091279,
+        "supportFraction": 0.2734375,
+        "shoulder": [
+          3.89779976092447,
+          0.9732892239393183,
+          -2.905115749763811
+        ],
+        "forward": [
+          0.6516921644062623,
+          7.626774090009141e-8,
+          0.7584835679508657
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.059936779519903276,
+        "rightErrorMeters": 2.1199218482695734e-8,
+        "leftErrorMeters": 3.97309596055062e-8,
+        "stockShoulderErrorMeters": 8.969781052104596e-8,
+        "shoulderOffsetMeters": 0.04837119864684404,
+        "supportFraction": 0.4208984375,
+        "shoulder": [
+          3.8975474676994204,
+          0.9735392731575638,
+          -2.906027025508944
+        ],
+        "forward": [
+          0.650931687368804,
+          0.0482967974013828,
+          0.7575984145574562
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.0713612380154956,
+        "rightErrorMeters": 6.19896290136276e-8,
+        "leftErrorMeters": 8.7282698700741e-8,
+        "stockShoulderErrorMeters": 1.1955355408230612e-7,
+        "shoulderOffsetMeters": 0.030822070014844726,
+        "supportFraction": 0.2578125,
+        "shoulder": [
+          3.696365637493766,
+          0.8704916250107451,
+          -2.848233915993853
+        ],
+        "forward": [
+          0.539789505004513,
+          1.4400303762082756e-7,
+          0.8418000298687108
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.07168894383385757,
+        "rightErrorMeters": 6.157351485969259e-8,
+        "leftErrorMeters": 8.842530740554416e-8,
+        "stockShoulderErrorMeters": 1.2109396418840725e-7,
+        "shoulderOffsetMeters": 0.029349587493515007,
+        "supportFraction": 0.1875,
+        "shoulder": [
+          3.69608564058941,
+          0.8573655336410602,
+          -2.849141132318002
+        ],
+        "forward": [
+          0.5391601378202572,
+          0.048297290064673114,
+          0.8408172914242725
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  },
+  {
+    "asset": "CH-XU",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.07967404266502147,
+        "rightErrorMeters": 1.9479829228888897e-8,
+        "leftErrorMeters": 5.386978414241578e-8,
+        "stockShoulderErrorMeters": 4.146715322582191e-8,
+        "shoulderOffsetMeters": 0.09650622255331387,
+        "supportFraction": 0,
+        "shoulder": [
+          3.920067442921456,
+          0.8864485193181584,
+          -2.9227712797476095
+        ],
+        "forward": [
+          0.651692048068724,
+          -6.331120233566964e-8,
+          0.7584836679085373
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.07061138195128923,
+        "rightErrorMeters": 2.2413596515706046e-8,
+        "leftErrorMeters": 4.6904326291726636e-8,
+        "stockShoulderErrorMeters": 3.960513749711482e-8,
+        "shoulderOffsetMeters": 0.10084424008624741,
+        "supportFraction": 0.9697265625,
+        "shoulder": [
+          3.8602934926676773,
+          0.9887074232864084,
+          -2.879334164627343
+        ],
+        "forward": [
+          0.650931559757376,
+          0.04829662621820685,
+          0.7575985351145872
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.08513137876079924,
+        "rightErrorMeters": 2.292488060845265e-8,
+        "leftErrorMeters": 7.639075381153995e-8,
+        "stockShoulderErrorMeters": 6.425992030778247e-8,
+        "shoulderOffsetMeters": 0.030338369922722125,
+        "supportFraction": 0.1923828125,
+        "shoulder": [
+          3.707163490555824,
+          0.8834100054443468,
+          -2.851483241831925
+        ],
+        "forward": [
+          0.5397893249786193,
+          -2.4383413866847795e-9,
+          0.8418001453071428
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.081772444670255,
+        "rightErrorMeters": 2.1610803520513503e-8,
+        "leftErrorMeters": 6.95909194887292e-8,
+        "stockShoulderErrorMeters": 5.924547769887719e-8,
+        "shoulderOffsetMeters": 0.0346799239900163,
+        "supportFraction": 0.1171875,
+        "shoulder": [
+          3.706887924044348,
+          0.8732831253197173,
+          -2.8523628143843136
+        ],
+        "forward": [
+          0.539159815305643,
+          0.04829703095024219,
+          0.8408175131150495
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  },
+  {
+    "asset": "CH-ZHAO",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.06253467644800403,
+        "rightErrorMeters": 8.021125279633362e-9,
+        "leftErrorMeters": 1.4911106976368907e-8,
+        "stockShoulderErrorMeters": 1.0414871365218194e-7,
+        "shoulderOffsetMeters": 0.04857011579167114,
+        "supportFraction": 0,
+        "shoulder": [
+          3.918587986952778,
+          0.9918862372100361,
+          -2.8795121414307006
+        ],
+        "forward": [
+          0.6516921056836126,
+          -1.1167492218635727e-7,
+          0.7584836184055969
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.062418873445852285,
+        "rightErrorMeters": 9.432662720698606e-9,
+        "leftErrorMeters": 2.0854740273279845e-8,
+        "stockShoulderErrorMeters": 1.0298329042481349e-7,
+        "shoulderOffsetMeters": 0.04856486600760957,
+        "supportFraction": 0,
+        "shoulder": [
+          3.918328987016336,
+          0.9921442627259978,
+          -2.8804645851295843
+        ],
+        "forward": [
+          0.650932003559487,
+          0.048297135910831436,
+          0.7575981213049849
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.07286838996397958,
+        "rightErrorMeters": 1.5727808252561556e-8,
+        "leftErrorMeters": 1.104541524567746e-8,
+        "stockShoulderErrorMeters": 1.1351670990091924e-7,
+        "shoulderOffsetMeters": 0.03010732008964761,
+        "supportFraction": 0,
+        "shoulder": [
+          3.7113781960090684,
+          0.8895253380270485,
+          -2.8200833343609113
+        ],
+        "forward": [
+          0.53978930010985,
+          6.238478337043479e-9,
+          0.8418001612537969
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.0732985453816098,
+        "rightErrorMeters": 1.3732316279439754e-8,
+        "leftErrorMeters": 1.0825225758200335e-8,
+        "stockShoulderErrorMeters": 1.1348979501614554e-7,
+        "shoulderOffsetMeters": 0.029781200093225893,
+        "supportFraction": 0,
+        "shoulder": [
+          3.7110857671489716,
+          0.87619382369749,
+          -2.8210273249848434
+        ],
+        "forward": [
+          0.5391598056068458,
+          0.04829704511339975,
+          0.8408175185206969
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  },
+  {
+    "asset": "CH-ZHENG",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.05443318304254297,
+        "rightErrorMeters": 8.023671158053048e-8,
+        "leftErrorMeters": 2.850183764421337e-8,
+        "stockShoulderErrorMeters": 8.946671235836201e-8,
+        "shoulderOffsetMeters": 0.03827557846590419,
+        "supportFraction": 0,
+        "shoulder": [
+          3.9234288235784294,
+          1.0256930644770457,
+          -2.8902145358732816
+        ],
+        "forward": [
+          0.6516920023485305,
+          9.669729853292727e-8,
+          0.758483707191495
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.054509139988679886,
+        "rightErrorMeters": 8.333816386589436e-8,
+        "leftErrorMeters": 2.9583328778635215e-8,
+        "stockShoulderErrorMeters": 8.769968038289473e-8,
+        "shoulderOffsetMeters": 0.038279857739832224,
+        "supportFraction": 0,
+        "shoulder": [
+          3.9231470625376597,
+          1.0259238372604704,
+          -2.8911927647625926
+        ],
+        "forward": [
+          0.6509320200492531,
+          0.048297401704932984,
+          0.7575980901923862
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.09035600295386784,
+        "rightErrorMeters": 3.512501239877114e-8,
+        "leftErrorMeters": 2.4275184019654066e-8,
+        "stockShoulderErrorMeters": 9.217493191288839e-8,
+        "shoulderOffsetMeters": 0.02946836379180958,
+        "supportFraction": 0,
+        "shoulder": [
+          3.7028795605977582,
+          0.9155265201107732,
+          -2.8222781970051773
+        ],
+        "forward": [
+          0.5397894103337728,
+          2.5538339907250115e-7,
+          0.8418000905746285
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.08998383951992857,
+        "rightErrorMeters": 2.8698707372994823e-8,
+        "leftErrorMeters": 2.8570239740201073e-8,
+        "stockShoulderErrorMeters": 8.340588959548748e-8,
+        "shoulderOffsetMeters": 0.03389460506915318,
+        "supportFraction": 0,
+        "shoulder": [
+          3.7025862434687955,
+          0.9027578891540997,
+          -2.823257783357011
+        ],
+        "forward": [
+          0.5391599913377443,
+          0.048297179151012504,
+          0.8408173917247065
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  },
+  {
+    "asset": "CH-ZHOU",
+    "results": [
+      {
+        "side": "left",
+        "fire": false,
+        "clearance": 0.07310886682928065,
+        "rightErrorMeters": 1.016819199676455e-7,
+        "leftErrorMeters": 3.9556536941598127e-8,
+        "stockShoulderErrorMeters": 9.938013758978624e-8,
+        "shoulderOffsetMeters": 0.03082207001484386,
+        "supportFraction": 0,
+        "shoulder": [
+          3.9123357359072917,
+          1.0133033582732163,
+          -2.8729322922782425
+        ],
+        "forward": [
+          0.6516920285456944,
+          -2.3536722428512792e-8,
+          0.7584836846828003
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "left",
+        "fire": true,
+        "clearance": 0.07143817503095883,
+        "rightErrorMeters": 9.699651836604305e-8,
+        "leftErrorMeters": 3.006396783492117e-8,
+        "stockShoulderErrorMeters": 9.2691624857084e-8,
+        "shoulderOffsetMeters": 0.030822070014844726,
+        "supportFraction": 0.009765625,
+        "shoulder": [
+          3.9120586651839138,
+          1.0135582887475234,
+          -2.873925744759508
+        ],
+        "forward": [
+          0.6509315329496891,
+          0.04829672517787009,
+          0.7575985518392055
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": false,
+        "clearance": 0.11772266008461912,
+        "rightErrorMeters": 1.459285425786728e-7,
+        "leftErrorMeters": 3.658649593443793e-8,
+        "stockShoulderErrorMeters": 1.4836862034193025e-7,
+        "shoulderOffsetMeters": 0.03082207001484492,
+        "supportFraction": 0.17578125,
+        "shoulder": [
+          3.6816053097105015,
+          0.9025244737751164,
+          -2.8020739491564632
+        ],
+        "forward": [
+          0.5397892484681694,
+          -6.089413247333027e-8,
+          0.8418001943680965
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      },
+      {
+        "side": "right",
+        "fire": true,
+        "clearance": 0.10753603729219617,
+        "rightErrorMeters": 1.3754234480954357e-7,
+        "leftErrorMeters": 3.551088603334742e-8,
+        "stockShoulderErrorMeters": 1.4234404010894745e-7,
+        "shoulderOffsetMeters": 0.03082207001484492,
+        "supportFraction": 0.0478515625,
+        "shoulder": [
+          3.6813046070328928,
+          0.9027794015736736,
+          -2.803063608806674
+        ],
+        "forward": [
+          0.5391599511872706,
+          0.0482972442622967,
+          0.8408174137304769
+        ],
+        "constraint": "original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation",
+        "visualAcceptance": "NOT_REVIEWED"
+      }
+    ]
+  }
+]

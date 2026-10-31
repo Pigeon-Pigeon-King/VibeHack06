@@ -1,0 +1,65 @@
+{
+  "baseCommit": "0b3b05b4da0230bfcdb13a3c3d5e9e1e18acf79f",
+  "scenarios": {
+    "northgate": {
+      "count": 20,
+      "sha256": "a407ef9dfc37a85a0d3a7c0c8dc60768d56f0c711445e6baafb540be6a8a658d"
+    },
+    "prologue": {
+      "count": 15,
+      "sha256": "9356e8f2eb15c873c9f4793fc009e35f9f2593d005e6f4acebbe06b9f670ae21"
+    },
+    "handover": {
+      "count": 20,
+      "sha256": "677d1359e68d0a5b2b94dd5ec44e3a136e7c9685b3bf994ac9973bfa1efc77d9"
+    },
+    "nightshift": {
+      "count": 49,
+      "sha256": "1920c48b46142a43c3f3f8d550d0a381ba9507359e8a96c9916ace355a1aabf7"
+    },
+    "workers": {
+      "count": 184,
+      "sha256": "5a5ddd9c432c4e2a8d752513e36e0e0ac7739479cc2c74bb78d6d2ccf8a903e9"
+    },
+    "childhood": {
+      "count": 57,
+      "sha256": "dabe72da0ce21cf341fe275097d00a4db3f8189380dc5b3cec81a09e8ad97072"
+    },
+    "mainhall": {
+      "count": 57,
+      "sha256": "dabe72da0ce21cf341fe275097d00a4db3f8189380dc5b3cec81a09e8ad97072"
+    },
+    "frontgate": {
+      "count": 57,
+      "sha256": "2c274ca6846a5dc869b49e21dc78cbcadd7ea47730429b90e335374e008f059f"
+    },
+    "transfer": {
+      "count": 87,
+      "sha256": "ab5d6cbe31f1a89706e8fdfb5146cbfc69d5947b8489e066309f3156d09d4aea"
+    },
+    "flank": {
+      "count": 163,
+      "sha256": "52757c02713dc9f9c827436b18dcbdc1d7c9a25512e1c9b8b0407f95b6120418"
+    },
+    "escort": {
+      "count": 140,
+      "sha256": "96659f1e1c49ab4bb968cffd183b1841af1628860f56eb736884adfdc1c2504d"
+    },
+    "relief": {
+      "count": 51,
+      "sha256": "77e590c94e50b272e856db18f5ad57295b4552e225a33021a74008925de05a0e"
+    },
+    "rescue": {
+      "count": 127,
+      "sha256": "83a8791eec09b8450b461f357878e40ff843c12a423c391e82443742f4242eae"
+    },
+    "medical": {
+      "count": 29,
+      "sha256": "646af4bdefab9f81330bafe379a5915cbe244afc520dc0893ef24e2369f185c2"
+    },
+    "epilogue": {
+      "count": 27,
+      "sha256": "2766c8bdbc532e19ccf5409b403f931e05a6dbeb1b8e94d439c9be3beb74e9d3"
+    }
+  }
+}

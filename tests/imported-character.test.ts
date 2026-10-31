@@ -227,7 +227,7 @@ function fakeLease(): ModelLease {
 }
 
 describe('NPC world AK actual character integration', () => {
-  it('replaces every existing armed-role socket at metre scale and keeps its old muzzle through all poses', async () => {
+  it('mounts every armed role on its production hand at metre scale and retains the same muzzle through poses', async () => {
     const loader = vi.fn(geometryTemplate), lib = new ModelLibrary(loader); cleanup.push(() => lib.dispose());
     const identities: CharacterIdentity[] = [
       { id: 'zheng', name: '郑铎', role: 'ally' }, { id: 'enemy-0', name: '敌方步枪兵', role: 'enemy' },
@@ -246,7 +246,9 @@ describe('NPC world AK actual character integration', () => {
     for (const { character, attachment, socket, oldMuzzle } of rows) {
       expect(character.root.userData.assetStatus).toBe('ready'); expect(socket.scale.toArray()).toEqual([0.68, 0.68, 0.68]);
       expect(attachment.muzzle).toBe(oldMuzzle);
-      const mount = socket.getObjectByName('world-ak47-mount')!, actualMuzzle = mount.getObjectByName('MuzzleDeviceTip')!;
+      const mount = character.root.getObjectByName('world-ak47-mount')!, actualMuzzle = mount.getObjectByName('MuzzleDeviceTip')!;
+      expect(mount.parent?.name).toBe('R_Hand'); expect(mount.parent instanceof Bone).toBe(true);
+      expect(socket.getObjectByName('world-ak47-mount')).toBeUndefined();
       const placeholder = socket.getObjectByName(character.identity.id === 'shao' ? 'sidearm-body' : 'receiver-stock-barrel')!;
       expect(placeholder.visible).toBe(false); expect(socket.getObjectByName('right-grip-arm')).toBeUndefined();
       let mounts = 0; character.root.traverse(node => { if (node.name === 'world-ak47-mount') mounts++; }); expect(mounts).toBe(1);
@@ -272,14 +274,14 @@ describe('NPC world AK actual character integration', () => {
         character.setPose({ walk: 0, armed: true, ...pose }); character.root.updateMatrixWorld(true);
         expect(oldMuzzle.getWorldPosition(new Vector3()).distanceTo(actualMuzzle.getWorldPosition(new Vector3()))).toBeLessThan(1e-6);
       }
-      character.setPose({ walk: 0, aiming: false, down: false, armed: false }); expect(socket.visible).toBe(false);
-      character.setPose({ walk: 0, aiming: false, down: false, armed: true, carrying: true }); expect(socket.visible).toBe(false);
-      character.setPose({ walk: 0, aiming: true, down: false, armed: true }); expect(socket.visible).toBe(true);
+      character.setPose({ walk: 0, aiming: false, down: false, armed: false }); expect(mount.visible).toBe(false);
+      character.setPose({ walk: 0, aiming: false, down: false, armed: true, carrying: true }); expect(mount.visible).toBe(false);
+      character.setPose({ walk: 0, aiming: true, down: false, armed: true }); expect(mount.visible).toBe(true);
       metrics.push({ actor: character.identity, actualLengthMeters: max - min, aimForwardDot: barrel.dot(forward), visibleMeshes, triangles,
         oldMuzzleObjectPreserved: true, socketScalePreserved: socket.scale.toArray(), source: socket.userData.worldWeapon,
         calibration: mount.userData.calibration });
     }
-    writeFileSync(new URL('world-ak-npc-calibration.json', directory), JSON.stringify({ status: 'numerical-runtime-integration-passed', actors: metrics,
+    if (process.env.WRITE_CHARACTER_AUDIT === '1') writeFileSync(new URL('world-ak-npc-calibration.json', directory), JSON.stringify({ status: 'numerical-runtime-integration-passed', actors: metrics,
       akTemplateLoads: loader.mock.calls.filter(([source]) => source.id === 'WP-AK47').length,
       limitation: 'Image decoding only is substituted in Node; no browser/PBR/hand-contact/performance acceptance.' }, null, 2) + '\n');
   });

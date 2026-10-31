@@ -1,0 +1,44 @@
+19:27:24 | INFO: Data are loaded, start creating Blender stuff
+19:27:24 | INFO: Blender create Mesh node tripo_mesh_a57e944a-7925-4be4-9e4c-56cda1bb1dd4
+19:27:24 | INFO: glTF import finished in 0.07s
+19:27:24 | INFO: Data are loaded, start creating Blender stuff
+19:27:24 | INFO: Blender create Mesh node tripo_mesh_ea7042bb-c0c3-4331-9fbd-8d64ec0e16b1
+19:27:24 | INFO: glTF import finished in 0.05s
+19:27:24 | INFO: Data are loaded, start creating Blender stuff
+19:27:24 | INFO: Blender create Mesh node tripo_mesh_64300525-783e-4f8e-866e-6a05aa05ad94
+19:27:24 | INFO: glTF import finished in 0.05s
+19:27:24 | INFO: Data are loaded, start creating Blender stuff
+19:27:24 | INFO: Blender create Mesh node BoltHardwareGeometryMesh
+19:27:24 | INFO: Blender create Mesh node ChargingHandleGeometryMesh
+19:27:24 | INFO: Blender create Mesh node FrontIronMesh
+19:27:24 | INFO: Blender create Mesh node FurnitureGeometryMesh
+19:27:24 | INFO: Blender create Mesh node MagazineMesh
+19:27:24 | INFO: Blender create Mesh node OpticRailAdapterMesh
+19:27:24 | INFO: Blender create Mesh node RearIronGeometryMesh
+19:27:24 | INFO: Blender create Mesh node ReceiverGeometryMesh
+19:27:24 | INFO: Blender create Mesh node StockButtpadMesh
+19:27:24 | INFO: Blender create Mesh node StockWoodMesh
+19:27:24 | INFO: Blender create Mesh node WeaponBodyGeometryMesh
+19:27:24 | INFO: glTF import finished in 0.04s
+/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/render-character-visual.py:27: DeprecationWarning: 'World.use_nodes' is expected to be removed in Blender 6.0
+  s.world=bpy.data.worlds.new('inspection-world');s.world.use_nodes=True;s.world.node_tree.nodes['Background'].inputs[0].default_value=(.4,.45,.5,1);s.world.node_tree.nodes['Background'].inputs[1].default_value=.65
+00:07.512  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-aim-left-front.png'
+00:12.627  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-aim-left-side.png'
+00:18.146  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-fire-left-front.png'
+00:23.652  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-aim-right-front.png'
+00:29.083  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/enemy-fire-right-front.png'
+00:34.928  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/lu-aim-left-front.png'
+00:40.390  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/lu-aim-left-side.png'
+00:45.816  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/lu-fire-left-front.png'
+00:51.338  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/lu-aim-right-front.png'
+00:56.888  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/lu-fire-right-front.png'
+01:02.510  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-aim-left-front.png'
+01:07.969  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-aim-left-side.png'
+01:13.531  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-fire-left-front.png'
+01:19.045  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-aim-right-front.png'
+01:24.680  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/zhou-fire-right-front.png'
+01:30.249  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/xu-aim-left-front.png'
+01:36.291  render           | Saved: '/Users/penguin/VibeHack06-asset-coverage/artifacts/asset-coverage-fix/character-visual/xu-aim-left-side.png'
+Blender 5.2.3 LTS (hash e13b728c6880 built 2026-10-22 01:31:22)
+
+Blender quit

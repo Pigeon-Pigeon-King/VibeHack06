@@ -22,6 +22,11 @@ vi.mock('../../src/chapter-transition/TransitionOverlay', () => ({
   },
 }));
 vi.mock('../../src/presentation/environment', () => ({ buildEnvironment: boundaries.environment }));
+// Off-world rendering owns its own model requests, outside this chapter host boundary.
+vi.mock('../../src/presentation/DepartureMonitor', async () => {
+  const { Group } = await import('three');
+  return { DepartureMonitor: class { screen = new Group(); ready = Promise.resolve(); render() {} dispose() {} } };
+});
 vi.mock('../../src/presentation/GeneratedArchitecture', () => ({
   GeneratedArchitecture: class {
     readonly ready = Promise.resolve([]);
@@ -183,12 +188,13 @@ function setup(options: { scenario?: ScenarioId; chapter?: boolean; complete?: b
     mode: 'menu', qaImported: false, disposed: false, presentationEpoch: 0,
     transitionPlan: undefined, pendingJetApproach: false,
     characterAssetErrors: new Set<string>(), characters: new Map(),
-    motionTracker: new CharacterMotionTracker(),
+    motionTracker: new CharacterMotionTracker(), actorShots: new Map<string, number>(),
     crowd: { clear: vi.fn() }, feedback: { clear: vi.fn() }, heldItems: { reset: vi.fn() },
     input: { enabled: false, touchEnabled: false, yaw: 0, pitch: 0, clear: vi.fn(), lock: vi.fn(), unlock: vi.fn(), read: vi.fn(() => ({ ...emptyIntent })) },
     touchControls: { render: vi.fn() },
     aimIdentity: { update: vi.fn(), dispose: vi.fn() },
     weapon: { setCharacter: vi.fn(async () => {}), retryArms: vi.fn(async () => {}), armsStatus: { state: 'ready' } },
+    care: { setCharacter: vi.fn(async () => {}) }, supplyHands: { setCharacter: vi.fn(async () => {}) },
     renderer: { domElement: { focus: vi.fn() }, capabilities: { maxTextureSize: 4096 } },
     renderQuality: { detachScene: vi.fn(), bindScene: vi.fn(), apply: vi.fn() },
     accumulator: 0, ads: 0, lastFootstep: 0, error: '', pointerError: '', saveNotice: '',

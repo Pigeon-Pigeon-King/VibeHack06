@@ -1,3 +1,5 @@
+import { bindGeneratedWorldWeapon } from './GeneratedWorldWeapons';
+import { benchRow, bindGeneratedProp, doorLeaves, propPlacement, propSlot } from './GeneratedPropBindings';
 import { Group, PointLight } from 'three';
 import type { Vec3 } from '../contracts';
 import { HISTORY as H } from '../content/history-layout';
@@ -23,13 +25,15 @@ function light(kit: PortKit, at: Vec3, color: number, intensity: number, range: 
 }
 
 function bench(kit: PortKit, x: number, z: number, length = 6): void {
-  kit.box('pale', [x, 0.48, z], [length, 0.12, 0.65]);
-  kit.box('paint', [x, 0.83, z - 0.29], [length, 0.56, 0.10]);
+  propSlot(kit, `history-bench-${x}-${z}`, benchRow(`history-bench-${x}-${z}`, [x, 0, z], length), slot => {
+  slot.box('pale', [x, 0.48, z], [length, 0.12, 0.65]);
+  slot.box('paint', [x, 0.83, z - 0.29], [length, 0.56, 0.10]);
   for (const dx of [-length * 0.37, length * 0.37]) {
-    kit.box('steel', [x + dx, 0.22, z], [0.12, 0.44, 0.57]);
-    kit.box('steel', [x + dx, 0.055, z], [0.55, 0.11, 0.73]);
+    slot.box('steel', [x + dx, 0.22, z], [0.12, 0.44, 0.57]);
+    slot.box('steel', [x + dx, 0.055, z], [0.55, 0.11, 0.73]);
   }
-  kit.solid(`history-bench-${x}-${z}`, [x, 0.55, z], [length, 1.10, 0.73]);
+  slot.solid(`history-bench-${x}-${z}`, [x, 0.55, z], [length, 1.10, 0.73]);
+  });
 }
 
 function rifleModel(root: Group, name: string, at: Vec3): Group {
@@ -39,7 +43,8 @@ function rifleModel(root: Group, name: string, at: Vec3): Group {
   model.cylinder('rubber', [0.39, 0.09, 0], 0.035, 0.42, [0, 0, Math.PI / 2]);
   model.box('rubber', [-0.03, 0.07, 0.16], [0.12, 0.12, 0.21], [0, -0.18, 0]);
   model.box('amber', [0.03, 0.17, 0], [0.09, 0.03, 0.10]);
-  model.flush(); model.root.position.set(...at); root.add(model.root); return model.root;
+  model.flush(); bindGeneratedWorldWeapon(model.root, name);
+  model.root.position.set(...at); root.add(model.root); return model.root;
 }
 
 /** Both historical viewpoints use identical architecture and landmark coordinates. No people are made here. */
@@ -97,8 +102,10 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   bench(kit, 20, 17.5, 5);
   bench(kit, 22, 7.5, 4);
   const lunch = new PortKit(); lunch.root.name = 'history-lunchbox-on-bench';
-  lunch.box('pale', [-10, 0.61, 11.50], [0.32, 0.13, 0.23]);
-  lunch.box('white', [-10, 0.684, 11.50], [0.28, 0.025, 0.19]);
+  propSlot(lunch, 'history-lunch-container', [propPlacement('history-lunch-container', 'PROP-TOOL-LUNCHBOX', [-10, 0.55, 11.5], 0.32, 'z', Math.PI / 2)], slot => {
+    slot.box('pale', [-10, 0.61, 11.50], [0.32, 0.13, 0.23]);
+    slot.box('white', [-10, 0.684, 11.50], [0.28, 0.025, 0.19]);
+  });
   lunch.box('steel', [-10.34, 0.558, 11.51], [0.29, 0.027, 0.22], [0, 0.15, 0]);
   lunch.box('amber', [-9.55, 0.56, 11.52], [0.06, 0.04, 0.045]);
   lunch.box('paint', [-9.2, 0.55, 11.48], [0.13, 0.025, 0.09], [0, -0.3, 0]);
@@ -106,8 +113,10 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   lunch.flush(); kit.root.add(lunch.root);
   // Packed belongings stay beside the seating, leaving the westbound aisle open.
   for (const [x, z] of [[-5.5, 12.6], [6.5, 19.5], [17.0, 18.5], [24, 11]]) {
-    block(kit, `history-belongings-${x}`, [x, 0.30, z], [0.85, 0.60, 0.7], 'rubber');
-    kit.box('amber', [x, 0.62, z], [0.55, 0.08, 0.1]);
+    propSlot(kit, `history-belongings-${x}`, [propPlacement(`history-belongings-${x}`, 'PROP-TOOL-BAG', [x, 0, z], 0.85, 'z', Math.PI / 2)], slot => {
+      block(slot, `history-belongings-${x}`, [x, 0.30, z], [0.85, 0.60, 0.7], 'rubber');
+      slot.box('amber', [x, 0.62, z], [0.55, 0.08, 0.1]);
+    });
   }
   const mattress = new PortKit(); mattress.root.name = 'history-mattress-in-aisle';
   mattress.box('white', [-19.2, 0.12, 9.6], [2.2, 0.24, 0.95], [0, 0.18, 0]);
@@ -166,12 +175,12 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   gate.box('steel', [H.gateX, 1.8, 6], [0.28, 3.6, 3.8]);
   for (const z of [4.2, 6, 7.8]) gate.box('pale', [H.gateX + 0.17, 1.8, z], [0.06, 3.55, 0.06]);
   gate.box('amber', [H.gateX + 0.18, 1.5, 6], [0.035, 0.16, 3.4], [0, 0, 0], false);
-  gate.flush(); kit.root.add(gate.root);
+  gate.flush(); bindGeneratedProp(gate.root, 'history-maintenance-door', doorLeaves('history-maintenance-door', [H.gateX, 0, 6], 3.8, 3.6, 0)); kit.root.add(gate.root);
   kit.solid('history-maintenance-door', [H.gateX, 1.8, 6], [0.35, 3.6, 4], 0, 'history-gate-open');
   const partition = new PortKit(); partition.root.name = 'history-lower-partition';
   partition.box('steel', [H.partitionX, 0.75, 6], [0.26, 6.3, 5.8]);
   for (let y = -2.2; y < 3.8; y += 0.45) partition.box('pale', [H.partitionX + 0.16, y, 6], [0.06, 0.045, 5.7]);
-  partition.flush(); partition.root.position.y = 6.8; kit.root.add(partition.root);
+  partition.flush(); bindGeneratedProp(partition.root, 'history-lower-partition', doorLeaves('history-lower-partition', [H.partitionX, -2.4, 6], 5.8, 6.3, 0)); partition.root.position.y = 6.8; kit.root.add(partition.root);
   // This shutter and collapse are staged visuals; the scripts have already ended free traversal.
   const rubble = new PortKit(); rubble.root.name = 'history-collapse-debris'; rubble.root.visible = false;
   // Keep the authored leg-pinning debris with the southern S02 observer.
@@ -192,7 +201,10 @@ export function buildHistoryHall(kit: PortKit): SceneDynamics {
   const commanderRifle = rifleModel(kit.root, 'history-commander-rifle', [H.zhaoCaptured[0] + 0.8, 0.015, H.zhaoCaptured[2] + 0.7]);
   commanderRifle.visible = false;
   const spilled = new PortKit(); spilled.root.name = 'history-spilled-lunch'; spilled.root.visible = false;
-  spilled.box('pale', [-29.2, -1.28, 6.4], [0.32, 0.12, 0.23], [0.08, 0.4, 0.4]);
+  propSlot(spilled, 'history-spilled-container', [propPlacement('history-spilled-container', 'PROP-TOOL-LUNCHBOX', [-29.2, -1.34, 6.4], 0.32, 'z', 0.4)], slot => {
+    slot.box('pale', [-29.2, -1.28, 6.4], [0.32, 0.12, 0.23], [0.08, 0.4, 0.4]);
+  });
+  spilled.root.userData.partContract = 'Generated closed container; separated open lid and spilled food remain production gaps.';
   spilled.box('steel', [-29.6, -1.48, 6.3], [0.29, 0.025, 0.21], [0, -0.6, 0]);
   for (let i = 0; i < 19; i++) {
     const x = -29.05 - i % 5 * 0.12, stairY = -0.15 * (Math.floor((-25 - x) / 0.5) + 1);

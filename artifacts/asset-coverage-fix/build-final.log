@@ -1,0 +1,18 @@
+Command: ['/Users/penguin/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node', 'node_modules/typescript/bin/tsc', '--noEmit']
+Command: ['/Users/penguin/.cache/codex-runtimes/codex-primary-runtime/dependencies/node/bin/node', 'node_modules/vite/bin/vite.js', 'build']
+vite v8.3.5 building client environment for production...
+transforming...
+✓ 142 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                               0.63 kB │ gzip:     0.40 kB
+dist/assets/index-uUZyamQ7.css               30.27 kB │ gzip:     6.93 kB
+dist/assets/EpilogueAirCover-xnWOHjvg.js  2,724.45 kB │ gzip:   508.10 kB
+dist/assets/index-CwzmmAmg.js             6,126.53 kB │ gzip: 2,200.67 kB
+
+✓ built in 1.26s
+[plugin builtin:vite-reporter]
+(!) Some chunks are larger than 1800 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.

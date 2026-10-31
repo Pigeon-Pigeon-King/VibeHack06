@@ -739,7 +739,7 @@ export type SceneAssetPoint = readonly [number, number, number];
 export interface SceneAssetPlacement {
   readonly id: string;
   readonly assetId: SceneAssetId;
-  /** Bottom-centre in metres, in the untransformed environment root. */
+  /** Bottom-centre in metres in the authored host (or untransformed environment root for fixed placements). */
   readonly position: SceneAssetPoint;
   /** One uniform scale, measured along an inspected source-space axis. */
   readonly size: { readonly axis: 'x' | 'y' | 'z'; readonly metres: number };
@@ -749,8 +749,6 @@ export interface SceneAssetPlacement {
   readonly role: 'replacement' | 'surface-prop' | 'background';
   readonly support: string;
   readonly castShadow?: boolean;
-  /** An owned visual foundation outside traversable bounds, top at position.y. */
-  readonly foundation?: { readonly width: number; readonly depth: number; readonly height: number };
 }
 
 export function sceneAssetSource(id: SceneAssetId, baseURL: string): ModelSource {
@@ -764,11 +762,9 @@ const frontPlacements: readonly SceneAssetPlacement[] = [
   { id: 'front-east-tank', assetId: 'PROP-TANK', position: [43, 0, 10], size: { axis: 'x', metres: 6.2 },
     yaw: 0, fallbackSlot: 'front-east-tank', role: 'replacement', support: 'front-ground / existing tank solid' },
   { id: 'front-background-crane', assetId: 'BG-CRANE', position: [78, 0, 60], size: { axis: 'y', metres: 30 },
-    yaw: Math.PI / 2, role: 'background', support: 'outside front-boundary-x-54 and front-boundary-z-52', castShadow: false,
-    foundation: { width: 43, depth: 22, height: 0.4 } },
+    yaw: Math.PI / 2, role: 'background', support: 'outside front-boundary-x-54 and front-boundary-z-52', castShadow: false },
   { id: 'front-background-light', assetId: 'ENV-LIGHTKIT-POLE', position: [58, 0, 36], size: { axis: 'y', metres: 5 },
-    yaw: 0, role: 'background', support: 'outside front-boundary-x-54', castShadow: false,
-    foundation: { width: 3.2, depth: 2.0, height: 0.3 } },
+    yaw: 0, role: 'background', support: 'outside front-boundary-x-54', castShadow: false },
   ...[22.9, 25.1].map((x, i): SceneAssetPlacement => ({ id: `front-filter-${i}`, assetId: 'PROP-FILTER',
     position: [x, 0.402, 3.65], size: { axis: 'z', metres: 3.4 }, yaw: 0,
     fallbackSlot: 'front-filter-machinery', role: 'replacement', support: 'front-filter-base top 0.4; existing front-filter-bank solid retained' })),
@@ -786,11 +782,9 @@ const frontPlacements: readonly SceneAssetPlacement[] = [
   { id: 'front-worker-lunch', assetId: 'PROP-TOOL-LUNCHBOX', position: [-32.8, 2.202, -30.38], size: { axis: 'z', metres: 0.22 },
     yaw: Math.PI / 2, role: 'surface-prop', support: 'workers-parts-rack upper shelf top 2.2' },
   { id: 'front-transport-parked', assetId: 'PROP-VEH-TRANSPORT', position: [62, 0, -62], size: { axis: 'x', metres: 7.5 },
-    yaw: Math.PI / 2, role: 'background', support: 'parked beyond front-boundary-x-54; vehicle remains static', castShadow: false,
-    foundation: { width: 5, depth: 10, height: 0.3 } },
+    yaw: Math.PI / 2, role: 'background', support: 'parked beyond front-boundary-x-54; vehicle remains static', castShadow: false },
   { id: 'front-spare-door', assetId: 'PROP-DOOR-LEAF', position: [59, 0, -49], size: { axis: 'y', metres: 2.7 },
-    yaw: Math.PI / 2, role: 'background', support: 'spare door awaiting repair beyond east boundary; not the mission door', castShadow: false,
-    foundation: { width: 3, depth: 3, height: 0.3 } },
+    yaw: Math.PI / 2, role: 'background', support: 'spare door awaiting repair beyond east boundary; not the mission door', castShadow: false },
   { id: 'front-spare-door-lock', assetId: 'PROP-DOOR-LOCK', position: [59, 1.2, -48.55], size: { axis: 'z', metres: 0.55 },
     yaw: Math.PI / 2, role: 'surface-prop', support: 'mounted against spare door front face; no independent motion', castShadow: false },
 ];
@@ -802,8 +796,8 @@ const medicalPlacements: readonly SceneAssetPlacement[] = [
     yaw: Math.PI / 2, fallbackSlot: 'medical-rest-bench', role: 'replacement', support: 'medical-ground / calibrated right bench solid' },
   { id: 'medical-supply-bag', assetId: 'PROP-MEDICAL-BAG', position: [-417, 1.062, 56], size: { axis: 'z', metres: 0.4 },
     yaw: Math.PI / 2, role: 'surface-prop', support: 'medical-supply-bin--417-56 amber lid top y=1.06' },
-  { id: 'medical-water-mug', assetId: 'PROP-LIFE-MUG', position: [-414.16, 0.962, 60.39], size: { axis: 'y', metres: 0.1 },
-    yaw: 0, role: 'surface-prop', support: 'medical-water-table top y=0.96; clear of existing vessel at [-414.5,60.2]' },
+  { id: 'medical-water-mug', assetId: 'PROP-LIFE-MUG', position: [-414.5, 0.962, 60.2], size: { axis: 'y', metres: 0.18 },
+    yaw: 0, fallbackSlot: 'medical-water-vessel', role: 'replacement', support: 'medical-water-table top y=0.96; replaces the original vessel' },
   { id: 'medical-spare-trolley', assetId: 'PROP-TRANSFER', position: [-387, 0, 62], size: { axis: 'x', metres: 2.3 },
     yaw: 0, fallbackSlot: 'medical-spare-trolley', role: 'replacement', support: 'medical-ground / dedicated parked trolley solid; no patient or task ownership' },
   { id: 'medical-spare-stretcher', assetId: 'PROP-STRETCHER', position: [-387, 1.062, 68], size: { axis: 'x', metres: 2.1 },
@@ -832,7 +826,7 @@ const epiloguePlacements: readonly SceneAssetPlacement[] = [
     yaw: Math.PI / 2, fallbackSlot: 'epilogue-reception-console', role: 'replacement', support: 'epilogue-ground / existing reception-table solid' },
 ];
 
-/** Static dressing only: no transport, lamp-state, screen interaction or movable-part claim. */
+/** Supplemental fixed placements. Authored dynamic and common prop bindings are discovered from the environment. */
 export function generatedScenePlacements(scenario: ScenarioId): readonly SceneAssetPlacement[] {
   if (scenario === 'frontgate' || scenario === 'transfer' || scenario === 'flank') return frontPlacements;
   if (scenario === 'medical') return medicalPlacements;

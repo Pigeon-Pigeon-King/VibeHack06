@@ -1,0 +1,25 @@
+{
+  "renderer": "5.2.3 LTS",
+  "engine": "Cycles",
+  "threads": 1,
+  "samples": 8,
+  "scope": "Offline inspection only, not WebGL acceptance",
+  "renders": [
+    {
+      "case": "zhou-seat",
+      "view": "overview",
+      "file": "artifacts/asset-coverage-fix/brace-fit/zhou-seat-overview.png"
+    },
+    {
+      "case": "zhou-seat",
+      "view": "first-person",
+      "file": "artifacts/asset-coverage-fix/brace-fit/zhou-seat-first-person.png"
+    },
+    {
+      "case": "zhou-seat",
+      "view": "outer-knee",
+      "file": "artifacts/asset-coverage-fix/brace-fit/zhou-seat-outer-knee.png"
+    }
+  ],
+  "metadataCorrection": "Render code used Cycles samples=8; initial manifest copied a stale 12 label. Corrected after inspecting executed script."
+}

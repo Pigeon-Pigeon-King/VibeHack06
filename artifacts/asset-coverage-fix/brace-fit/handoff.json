@@ -1,0 +1,186 @@
+{
+  "frozenAt": "2026-10-31T19:36:25+08:00",
+  "sourceId": "PROP-ARMOR-LEFT-BRACE",
+  "files": [
+    {
+      "path": "src/presentation/FirstPersonSeatedLegs.ts",
+      "sha256": "417a519ff2deed292e62a19aad2493f9c657f3f59f13d9bbe9de8313bf897bff"
+    },
+    {
+      "path": "tests/care-production.test.ts",
+      "sha256": "2f5b3e11b0a3c39803b3f9592b5ed21f4fd220abd34c3d1c837b5dbcfbabe4ab"
+    },
+    {
+      "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+      "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8"
+    }
+  ],
+  "change": {
+    "basis": "+Y upright; +X anterior plate; Z hinge/lateral axis",
+    "derivation": "Original triangles clipped at source Y=.30 and -.23. Added boundary vertices are barycentric samples, not new surface/caps. Three independent geometries, shared leased source material. UV is original/barycentric; source GLB/template is unchanged. Owned shell vertices radially conform to the convex envelope of three actual posed skin sections per cuff; normals transformed by local Jacobian. Thigh cuff follows hip-knee; other parts follow knee-ankle.",
+    "originalTriangles": 5641,
+    "derivedBraceTriangles": 6137,
+    "sourceBeforeWarpArea": "Equal within 1e-5 test tolerance; triangle splits preserve all source surface area.",
+    "ownership": "All derived BufferAttributes allocate independent arrays. Owner releases derived geometry before leased template. Source material/geometry not disposed while another lease exists.",
+    "facts": "progress/brace-adjusted/cancellation retained; no body vertex edit or bone translations/scales; fixed leg lengths preserved."
+  },
+  "validation": {
+    "careProductionTests": {
+      "passed": 9,
+      "total": 9,
+      "time": "19:36:25 +08:00",
+      "identities": [
+        "CH-LU",
+        "CH-ZHOU",
+        "CH-LU-CHILD"
+      ],
+      "covers": [
+        "Original skin/rig attributes across seat-transfer-supply",
+        "Failure retry and late cancellation",
+        "Source geometry/buffer isolation and UV barycentric provenance",
+        "Pre-fit clipped area equality",
+        "Actual thigh/calf axes",
+        "Actual anterior shell vs skin ray intersections",
+        "Fixed leg lengths through progress toggle",
+        "Shared lease and owned geometry disposal"
+      ]
+    },
+    "typecheck": "tsc --noEmit passed",
+    "fullSuite": "Parent owns final full-suite rerun",
+    "offline": {
+      "renderer": "Blender 5.2.3 LTS / Cycles",
+      "threads": 1,
+      "samples": 8,
+      "identity": "CH-ZHOU",
+      "posedGeometry": "actual CareView, deformed SkinnedMesh plus fitted source shell, real GLB texture/material/UV",
+      "views": [
+        "zhou-seat-first-person.png",
+        "zhou-seat-outer-knee.png",
+        "zhou-seat-overview.png"
+      ],
+      "observed": "Upper cuff now follows the thigh and the knee guard faces anterior. Previously floating upper circular cuff and jagged centroid cut edges eliminated in these views.",
+      "released": true
+    },
+    "webgl": "Not tested; browser permission remains closed."
+  },
+  "limitations": [
+    "Offline visual inspection is CH-ZHOU seated/adjusted only; CH-LU and child passed runtime tests but no new offline images in this narrow repair.",
+    "Contact rays explicitly check visible anterior surfaces. The original cropped clothing has open crease/crop surfaces; rear/medial rays may hit another limb and do not prove a globally watertight contact envelope. No all-triangle collision-free claim.",
+    "Authored knee armor protrudes from the cloth; anterior ray test permits up to 45 mm including source armor/liner thickness. The fitted envelope clearance parameter is 3 mm for adult Zhou, not a claim that every visible plate point is 3 mm from skin.",
+    "The pre-existing ragged proximal body crop remains visible in diagnostic outside-camera views; this task changes brace only.",
+    "No gameplay, simulation timing, interaction facts, or other equipment changes."
+  ],
+  "evidence": {
+    "status": {
+      "arms": {
+        "state": "ready",
+        "assetId": "CH-ZHOU"
+      },
+      "legs": {
+        "state": "ready",
+        "assetId": "CH-ZHOU"
+      }
+    },
+    "input": {
+      "progress": 1,
+      "adjusted": true
+    },
+    "contact": {
+      "leftAnkleErrorMeters": 2.5418392928640636e-06,
+      "rightAnkleErrorMeters": 1.2840814075043612e-07,
+      "adjustment": 1,
+      "source": "simulation care progress / brace-adjusted fact",
+      "braceFit": "three source-mesh pieces; measured skin sections, fixed leg lengths",
+      "visualAcceptance": "NOT_REVIEWED"
+    },
+    "cuffs": [
+      {
+        "name": "thigh-cuff",
+        "fit": {
+          "sourceSHA256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+          "bone": "L_Thigh",
+          "sourcePlanes": [
+            0.35,
+            0.4,
+            0.45
+          ],
+          "sourceCenter": [
+            -0.06925805095548658,
+            0.007945268295388885
+          ],
+          "skinCenter": [
+            -0.022866100416579063,
+            0.007268009973192852
+          ],
+          "scale": [
+            0.43358045249524413,
+            0.42,
+            0.42357724728034646
+          ],
+          "clearanceMeters": 0.003,
+          "rule": "owned source shell radially seated around posed limb cross sections; source wall thickness/UV preserved; no body vertex or bone translation changes"
+        }
+      },
+      {
+        "name": "knee-guard",
+        "fit": {
+          "sourceSHA256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+          "bone": "L_Calf",
+          "sourcePlanes": [
+            -0.09,
+            -0.06,
+            -0.03
+          ],
+          "sourceCenter": [
+            -0.06738341295180628,
+            0.005279959774933798
+          ],
+          "skinCenter": [
+            -0.028354357593722485,
+            0.01598437748604426
+          ],
+          "scale": [
+            0.5002672386191126,
+            0.42,
+            0.46524092826801905
+          ],
+          "clearanceMeters": 0.003,
+          "rule": "owned source shell radially seated around posed limb cross sections; source wall thickness/UV preserved; no body vertex or bone translation changes"
+        }
+      },
+      {
+        "name": "shin-guard",
+        "fit": {
+          "sourceSHA256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+          "bone": "L_Calf",
+          "sourcePlanes": [
+            -0.46,
+            -0.4,
+            -0.34
+          ],
+          "sourceCenter": [
+            -0.084522592054192,
+            0.004918464336811604
+          ],
+          "skinCenter": [
+            -0.025429594645824033,
+            0.021025544847025762
+          ],
+          "scale": [
+            0.551453430015078,
+            0.42,
+            0.5075366710045889
+          ],
+          "clearanceMeters": 0.003,
+          "rule": "owned source shell radially seated around posed limb cross sections; source wall thickness/UV preserved; no body vertex or bone translation changes"
+        }
+      }
+    ]
+  },
+  "reproduce": [
+    "/Users/penguin/.local/node-runtime/node-v22.14.0-darwin-arm64/bin/node node_modules/vitest/vitest.mjs run tests/care-production.test.ts --maxWorkers=1",
+    "/Users/penguin/.local/node-runtime/node-v22.14.0-darwin-arm64/bin/node node_modules/typescript/bin/tsc --noEmit",
+    "/Users/penguin/.local/node-runtime/node-v22.14.0-darwin-arm64/bin/node artifacts/asset-coverage-fix/brace-fit/export-seated.mjs",
+    "/Applications/Blender.app/Contents/MacOS/Blender -b -t 1 --python artifacts/asset-coverage-fix/brace-fit/render-seated.py -- zhou-seat"
+  ]
+}

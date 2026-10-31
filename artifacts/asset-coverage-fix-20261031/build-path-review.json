@@ -1,0 +1,40 @@
+{
+  "scope": "Supplement to runtime source audit: desktop protocol, full-dist packaging, source-copy and production-status reporting. Not a new Windows package/run.",
+  "items": [
+    {
+      "path": "desktop/main.cjs",
+      "sha256": "86b47f8db719d11f68aefb7488074d79cc863e5f0587cd93de29c7dc553a15a3",
+      "lines": 51,
+      "mode": "full text read"
+    },
+    {
+      "path": "scripts/package-windows.mjs",
+      "sha256": "52b1a6e97259c44d11d79d1bafdfc50bd2ed75c11bd061d1cd99ac602fec791d",
+      "lines": 27,
+      "mode": "full text read"
+    },
+    {
+      "path": "scripts/inspect-package.mjs",
+      "sha256": "47fa79abd73993a2275ea9bd2bb0ccf88cfe0a8ad77ed96ae02c503a45ad5c8e",
+      "lines": 50,
+      "mode": "full text read"
+    },
+    {
+      "path": "scripts/prepare-generated-assets.py",
+      "sha256": "65332f08ddb135653e7c567a2db6ac5282c79eee383422295f6ff188718e1473",
+      "lines": 139,
+      "mode": "full text read"
+    },
+    {
+      "path": "scripts/update-generated-asset-catalog.py",
+      "sha256": "9e51c8f3291512f0ab9a6e2122d808d20bde01218dceda7ea7c2a312972cf616",
+      "lines": 155,
+      "mode": "full text read"
+    }
+  ],
+  "findings": [
+    "Desktop game:// protocol serves project-local dist; packager copies all dist without a scene whitelist. No model substitution in these paths.",
+    "Original-copy script refuses to overwrite optimized runtime conversions. It is not the full current runtime catalog.",
+    "Production status reconciler contained stale not-wired assertions; replaced with production-only neutral state and pointer to runtime instance evidence. Not executed against original production reports."
+  ]
+}

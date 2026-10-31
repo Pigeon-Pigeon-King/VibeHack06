@@ -225,7 +225,7 @@ function stagedShot(s: Simulation, mark: string, a: Actor, target: Vec3, enemy =
   s.fact(mark);
   if (!emit) return;
   const from: Vec3 = [a.position[0], a.position[1] + 1.38, a.position[2]];
-  s.events.push({ type: 'shot', position: from, enemy });
+  s.events.push({ type: 'shot', position: from, enemy, actorId: a.id });
   // Authored crossfire has visible flight and collisions, but cannot hurt the child or undo the evacuation.
   s.ballistics.fire(a.id, from, [target[0] - from[0], target[1] + 1.1 - from[1], target[2] - from[2]], 0, 360);
 }

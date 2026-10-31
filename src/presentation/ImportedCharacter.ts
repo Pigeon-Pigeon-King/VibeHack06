@@ -1,13 +1,14 @@
-import { Group, MathUtils, Mesh, Quaternion, SkinnedMesh, Sphere, Vector3 } from 'three';
+import { Bone, Box3, Group, MathUtils, Matrix4, Mesh, Quaternion, SkinnedMesh, Sphere, Vector3 } from 'three';
 import type { CharacterModel } from '../contracts';
 import { ModelLibrary } from '../assets/ModelLibrary';
 import type { ModelLease, ModelLoadProgress } from '../assets/model-contracts';
 import { canonicalWalkSource, characterAssetFor, characterSource, type CharacterAsset, type CharacterIdentity } from '../assets/character-catalog';
 import { ak47Source } from '../assets/weapon-catalog';
+import { TACTICAL_HAND_CALIBRATIONS, TACTICAL_WEAPON_CALIBRATION } from '../assets/tactical-catalog';
 import { createCharacter } from './characters';
 import { CharacterBonePoser, CharacterClipSampler, inspectCharacterRig, restoreCharacterRig, retargetCharacterWalk, type CharacterRig } from './CharacterRig';
 import { sampleCharacterGait } from './CharacterMotion';
-import { loadTacticalAnimations, type TacticalAnimationLease } from './TacticalAnimations';
+import { loadTacticalAnimations, TacticalPoseController, type TacticalAnimationLease } from './TacticalAnimations';
 import { attachWorldAK47, type WorldAK47Attachment } from './WorldAK47';
 
 type Pose = Parameters<CharacterModel['setPose']>[0] & { moveSpeed?: number; reloadFraction?: number; animationTime?: number };
@@ -19,9 +20,128 @@ interface LoadedCharacter {
   model: ModelLease; animation: ModelLease; rig: CharacterRig; poser: CharacterBonePoser; walk: CharacterClipSampler;
   scale: number; strideMeters: number; downLift: number; feet: Map<'L' | 'R', Vector3>;
   tactical?: TacticalAnimationLease; tacticalSamplers: Map<string, CharacterClipSampler>;
+  headBounds: Box3;
 }
 const up = new Vector3(0, 1, 0);
 const number = (value: number | undefined, fallback = 0) => value !== undefined && Number.isFinite(value) ? value : fallback;
+type BonePose = { position: Vector3; quaternion: Quaternion; scale: Vector3 };
+const armBone = (name: string) => /^[LR]_(Clavicle|Upperarm|Forearm|Hand)/.test(name);
+const sourceForwardToGame = new Quaternion().setFromAxisAngle(up, -Math.PI / 2);
+function worldRotation(bone: Bone, quaternion: Quaternion): void {
+  bone.quaternion.copy(bone.parent!.getWorldQuaternion(new Quaternion()).invert().multiply(quaternion).normalize());
+  bone.updateWorldMatrix(false, true);
+}
+function pointBone(bone: Bone, child: Bone, target: Vector3): void {
+  const origin = bone.getWorldPosition(new Vector3());
+  const before = child.getWorldPosition(new Vector3()).sub(origin).normalize(), after = target.clone().sub(origin).normalize();
+  worldRotation(bone, new Quaternion().setFromUnitVectors(before, after).multiply(bone.getWorldQuaternion(new Quaternion())));
+}
+
+/** Stable-path hand contact only: no tactical pack is enabled for a risky body. */
+function fitStableWeaponHands(root: Group, rig: CharacterRig, assetId: string): void {
+  const calibration = TACTICAL_HAND_CALIBRATIONS[assetId]; if (!calibration) return;
+  root.updateWorldMatrix(true, true);
+  const frame = root.getWorldQuaternion(new Quaternion()).multiply(sourceForwardToGame);
+  const right = rig.bones.get('R_Hand')!, left = rig.bones.get('L_Hand')!, upper = rig.bones.get('L_Upperarm')!, forearm = rig.bones.get('L_Forearm')!;
+  worldRotation(right, frame.clone().multiply(new Quaternion().fromArray(calibration.rightHandToWeaponQuaternion).invert()));
+  const target = new Vector3().fromArray(TACTICAL_WEAPON_CALIBRATION.supportFromGripMeters).applyQuaternion(frame).add(right.getWorldPosition(new Vector3()));
+  const shoulder = upper.getWorldPosition(new Vector3()), elbow = forearm.getWorldPosition(new Vector3()), hand = left.getWorldPosition(new Vector3());
+  const a = shoulder.distanceTo(elbow), b = elbow.distanceTo(hand), direction = target.clone().sub(shoulder);
+  const length = MathUtils.clamp(direction.length(), Math.abs(a - b) + 1e-5, a + b - 1e-5); direction.normalize();
+  const along = (a * a - b * b + length * length) / (2 * length);
+  const pole = new Vector3(0.35, -1, 0.2).applyQuaternion(root.getWorldQuaternion(new Quaternion()));
+  pole.addScaledVector(direction, -pole.dot(direction)).normalize();
+  const bend = shoulder.clone().addScaledVector(direction, along).addScaledVector(pole, Math.sqrt(Math.max(0, a * a - along * along)));
+  pointBone(upper, forearm, bend); pointBone(forearm, left, target);
+  worldRotation(left, frame.clone().multiply(new Quaternion().fromArray(calibration.leftHandGripWorldQuaternion)));
+}
+
+/** Shoulder contact overrides only arm rotations, after clip blending; pelvis/legs/trunk keep their sampled tracks. */
+function fitShoulderedWeapon(root: Group, rig: CharacterRig, assetId: string, weapon: WorldAK47Attachment, preserveAim: boolean, headBounds: Box3): void {
+  const calibration = TACTICAL_HAND_CALIBRATIONS[assetId], offsets = weapon.gripOffsets;
+  if (!calibration || !offsets) return;
+  root.updateMatrixWorld(true);
+  const rootQ = root.getWorldQuaternion(new Quaternion()), right = rig.bones.get('R_Hand')!, left = rig.bones.get('L_Hand')!;
+  const frame = preserveAim ? right.getWorldQuaternion(new Quaternion()).multiply(new Quaternion().fromArray(calibration.rightHandToWeaponQuaternion))
+    : rootQ.clone().multiply(sourceForwardToGame);
+  const forward = new Vector3(1, 0, 0).applyQuaternion(frame).normalize();
+  const actualShoulder = rig.bones.get('R_Upperarm')!.getWorldPosition(new Vector3()), inverseRoot = root.matrixWorld.clone().invert();
+  const shoulderLocal = actualShoulder.clone().applyMatrix4(inverseRoot).add(new Vector3(-.025, .01, .015));
+  const headFrame = new Matrix4().multiplyMatrices(inverseRoot, rig.bones.get('Head')!.matrixWorld);
+  const envelope = headBounds.clone().applyMatrix4(headFrame), directionLocal = forward.clone().applyQuaternion(rootQ.clone().invert());
+  const headTravel = Math.max(0, envelope.max.z - shoulderLocal.z);
+  // Original helmet/head size varies by identity. Keep the rifle's upper
+  // receiver outside that measured envelope, rather than assuming one head width.
+  const headSide = envelope.min.x - .05 - Math.max(0, directionLocal.x / Math.max(.5, directionLocal.z)) * headTravel;
+  const outside = shoulderLocal.clone(); outside.x = Math.min(outside.x, headSide);
+  const below = shoulderLocal.clone(); below.y = Math.min(below.y, envelope.min.y - .11 - Math.max(0, directionLocal.y) * headTravel);
+  const originalShoulderLocal = actualShoulder.clone().applyMatrix4(inverseRoot);
+  // Wide helmets may need a slightly lower shoulder seat instead of moving
+  // the entire rifle far out from the deltoid. Choose the nearer safe seat.
+  shoulderLocal.copy(originalShoulderLocal.distanceTo(outside) <= originalShoulderLocal.distanceTo(below) ? outside : below);
+  const shoulder = shoulderLocal.applyMatrix4(root.matrixWorld);
+  const grip = shoulder.clone().sub(offsets.stock.clone().applyQuaternion(frame));
+  const solve = (side: 'L' | 'R', target: Vector3) => {
+    const upper = rig.bones.get(`${side}_Upperarm`)!, lower = rig.bones.get(`${side}_Forearm`)!, hand = rig.bones.get(`${side}_Hand`)!;
+    const start = upper.getWorldPosition(new Vector3()), elbow = lower.getWorldPosition(new Vector3()), wrist = hand.getWorldPosition(new Vector3());
+    const a = start.distanceTo(elbow), b = elbow.distanceTo(wrist), direction = target.clone().sub(start);
+    const distance = MathUtils.clamp(direction.length(), Math.abs(a - b) + 1e-5, a + b - 1e-5); direction.normalize();
+    // In the +Z-forward character frame anatomical right is -X.
+    const pole = new Vector3(side === 'L' ? .65 : -.65, -1, -.15).applyQuaternion(rootQ);
+    pole.addScaledVector(direction, -pole.dot(direction)).normalize();
+    const along = (a * a - b * b + distance * distance) / (2 * distance);
+    const bend = start.clone().addScaledVector(direction, along).addScaledVector(pole, Math.sqrt(Math.max(0, a * a - along * along)));
+    pointBone(upper, lower, bend); pointBone(lower, hand, target);
+    return hand.getWorldPosition(new Vector3()).distanceTo(target);
+  };
+  const rightError = solve('R', grip);
+  worldRotation(right, frame.clone().multiply(new Quaternion().fromArray(calibration.rightHandToWeaponQuaternion).invert()));
+  const support = right.getWorldPosition(new Vector3()).add(offsets.support.clone().applyQuaternion(frame));
+  const rearSupport = right.getWorldPosition(new Vector3()).add(offsets.supportRear.clone().applyQuaternion(frame));
+  // Protract the left clavicle only as much as the fixed arm needs to reach
+  // across the chest. The shoulder segment is rotated, never lengthened.
+  const clavicle = rig.bones.get('L_Clavicle')!, upper = rig.bones.get('L_Upperarm')!, lower = rig.bones.get('L_Forearm')!;
+  const clavicleAt = clavicle.getWorldPosition(new Vector3()), upperAt = upper.getWorldPosition(new Vector3());
+  const reach = upperAt.distanceTo(lower.getWorldPosition(new Vector3())) + lower.getWorldPosition(new Vector3()).distanceTo(left.getWorldPosition(new Vector3()));
+  const restQ = clavicle.quaternion.clone();
+  const protract = (target: Vector3) => {
+    clavicle.quaternion.copy(restQ); clavicle.updateWorldMatrix(false, true);
+    if (upperAt.distanceTo(target) <= reach * .98) return upperAt.distanceTo(target);
+    const initial = upperAt.clone().sub(clavicleAt).normalize(), desired = target.clone().sub(clavicleAt).normalize();
+    const turn = new Quaternion().setFromUnitVectors(initial, desired), angle = initial.angleTo(desired);
+    const maxFraction = angle > 1e-6 ? Math.min(1, .80 / angle) : 0;
+    const apply = (fraction: number) => {
+      clavicle.quaternion.copy(restQ); clavicle.updateWorldMatrix(false, true);
+      const direction = initial.clone().applyQuaternion(new Quaternion().slerp(turn, fraction));
+      pointBone(clavicle, upper, clavicleAt.clone().add(direction));
+      return upper.getWorldPosition(new Vector3()).distanceTo(target);
+    };
+    let low = 0, high = maxFraction;
+    if (apply(high) <= reach * .98) for (let i = 0; i < 12; i++) {
+      const middle = (low + high) / 2; if (apply(middle) > reach * .98) low = middle; else high = middle;
+    }
+    return apply(high);
+  };
+  let supportFraction = 0;
+  if (protract(support) > reach * .98) {
+    // Shorter limbs may grip nearer the rear of the same measured wooden
+    // foregrip. Do not stretch a bone or move a hand into empty space.
+    let low = 0, high = 1;
+    if (protract(rearSupport) <= reach * .98) for (let i = 0; i < 10; i++) {
+      const middle = (low + high) / 2;
+      if (protract(support.clone().lerp(rearSupport, middle)) > reach * .98) low = middle; else high = middle;
+    }
+    supportFraction = high; support.lerp(rearSupport, high); protract(support);
+  }
+  weapon.setSupportFraction(supportFraction);
+  const leftError = solve('L', support);
+  worldRotation(left, frame.clone().multiply(new Quaternion().fromArray(calibration.leftHandGripWorldQuaternion)));
+  root.updateMatrixWorld(true);
+  const stock = root.getObjectByName('ganymede-stock-contact')?.getWorldPosition(new Vector3());
+  root.userData.shoulderContact = { rightErrorMeters: rightError, leftErrorMeters: leftError,
+    stockShoulderErrorMeters: stock?.distanceTo(shoulder), shoulderOffsetMeters: actualShoulder.distanceTo(shoulder), supportFraction, shoulder: shoulder.toArray(), forward: forward.toArray(),
+    constraint: 'original stock rear face at right shoulder; fixed arm lengths; no weapon-only translation', visualAcceptance: 'NOT_REVIEWED' };
+}
 
 /** Sync CharacterModel with a real asynchronous view replacement. The game owns the outer root and simulation. */
 export class ImportedCharacter implements CharacterModel {
@@ -40,6 +160,12 @@ export class ImportedCharacter implements CharacterModel {
   private generation = 0;
   private disposed = false;
   private pose: Pose = { walk: 0, aiming: false, down: false };
+  private readonly tacticalPose = new TacticalPoseController();
+  private readonly previousBones = new Map<string, BonePose>();
+  private blendFrom?: Map<string, BonePose>;
+  private blendAt = 0;
+  private sampleTime = -Infinity;
+  private selectionKey?: string;
 
   constructor(private readonly library: ModelLibrary, readonly identity: CharacterIdentity, private readonly baseURL: string,
     private readonly onStatus: (status: CharacterLoadStatus) => void = () => {}) {
@@ -78,6 +204,8 @@ export class ImportedCharacter implements CharacterModel {
   }
   private current(generation: number, signal: AbortSignal): boolean { return !this.disposed && generation === this.generation && !signal.aborted; }
   private releaseLoaded(): void {
+    this.weapon?.bindToHand();
+    this.tacticalPose.reset(); this.previousBones.clear(); this.blendFrom = undefined; this.selectionKey = undefined; this.sampleTime = -Infinity;
     const loaded = this.loaded; this.loaded = undefined;
     if (loaded) {
       // Borrowed GLB subtrees never enter the procedural fallback's dispose traversal.
@@ -110,10 +238,21 @@ export class ImportedCharacter implements CharacterModel {
       if (metadata?.schema !== 'ganymede.shared-animation/1' || metadata.referenceAsset !== 'CH-LU'
         || !Array.isArray(metadata.rootMotion?.travel) || !metadata.rootMotion.travel.every(Number.isFinite)) throw new Error('不是本批已转换的 canonical 行走。');
       const source = inspectCharacterRig(animation.root, false), rig = inspectCharacterRig(model.root);
+      const headBounds = new Box3(), inverseHead = rig.bones.get('Head')!.matrixWorld.clone().invert();
+      model.root.traverse(object => {
+        if (!(object instanceof SkinnedMesh)) return;
+        const joints = object.geometry.getAttribute('skinIndex'), weights = object.geometry.getAttribute('skinWeight'), point = new Vector3();
+        for (let i = 0; i < weights.count; i++) {
+          let influence = 0;
+          for (let j = 0; j < 4; j++) if (object.skeleton.bones[joints.getComponent(i, j)].name === 'Head') influence += weights.getComponent(i, j);
+          if (influence >= .5) headBounds.expandByPoint(object.getVertexPosition(i, point).applyMatrix4(object.matrixWorld).applyMatrix4(inverseHead));
+        }
+      });
+      if (headBounds.isEmpty()) throw new Error('人物缺少可测量的头部蒙皮。');
       // These bodies use the stable path below, so do not fetch unused packs for
       // every civilian or child when a crowd enters the level.
       if (asset.bodyPlan === 'adult' && !['CH-SHAO', 'CH-DOCTOR', 'CH-SHEN'].includes(asset.id)) {
-        try { tactical = await loadTacticalAnimations(this.library, asset, model.root); }
+        try { tactical = await loadTacticalAnimations(this.library, asset, model.root, { baseURL: this.baseURL, signal: controller.signal }); }
         catch { this.root.userData.tacticalStatus = 'optional-load-failed-stable-fallback'; }
       }
       if (!this.current(generation, controller.signal)) { tactical?.dispose(); for (const lease of acquired) lease.dispose(); return; }
@@ -138,7 +277,10 @@ export class ImportedCharacter implements CharacterModel {
         * (asset.bodyPlan === 'child' ? rig.legLength / source.legLength : 1);
       if (!(strideMeters > 0.2 && strideMeters < 5)) throw new Error('行走步幅不符合人物尺度。');
       this.mount.add(model.root);
+      this.root.updateMatrixWorld(true);
+      this.weapon?.bindToHand(rig.bones.get('R_Hand')!, TACTICAL_HAND_CALIBRATIONS[asset.id]?.rightHandToWeaponQuaternion);
       this.loaded = { model, animation, rig, poser: new CharacterBonePoser(model.root, rig), walk: new CharacterClipSampler(clip, rig),
+        headBounds,
         tactical, tacticalSamplers: new Map(tactical ? [...tactical.clips].map(([name, clip]) => [name, new CharacterClipSampler(clip, rig)]) : []),
         scale, strideMeters, downLift: rig.bounds.clone().applyMatrix4(this.mount.matrix).max.z, feet };
       acquired.clear();
@@ -147,7 +289,7 @@ export class ImportedCharacter implements CharacterModel {
         legLengthMeters: rig.legLength * scale,
         bodyPlan: asset.bodyPlan, rigBones: 41, walkTracks: clip.tracks.length, retarget: 'target-rest-world-delta',
         animationClips: tactical ? [...tactical.clips.keys()] : ['walk_in_place'], proceduralActions: ['run', 'crouch-walk', 'aim', 'reload', 'kneel', 'carry', 'care', 'fall'],
-        contactAnimation: 'procedural approximation; hand, foot and equipment contact awaits visual review' };
+        contactAnimation: 'authored tactical poses and measured hand socket; procedural care/fall; visual review pending' };
       this.setPose(this.pose);
       this.notify({ state: 'ready' });
     } catch (error) {
@@ -163,6 +305,9 @@ export class ImportedCharacter implements CharacterModel {
   setPose(pose: Pose): void {
     if (this.disposed) return;
     this.pose = { ...pose }; this.fallback.setPose(pose);
+    const weaponVisible = (pose.armed ?? ['ally', 'enemy', 'opponent'].includes(this.identity.role))
+      && !pose.down && !pose.carrying && !pose.care && !pose.restrained;
+    this.weapon?.setVisible(weaponVisible); this.weapon?.setShot(number(pose.animationTime), pose.lastShotAt);
     const loaded = this.loaded; if (!loaded) return;
     const { rig, poser, model, feet } = loaded;
     restoreCharacterRig(rig);
@@ -176,17 +321,18 @@ export class ImportedCharacter implements CharacterModel {
     const gait = moving && (crouched || running > 0) ? sampleCharacterGait(walk / 4, bodyHeight, crouched ? 'crouch' : 'run', rig.legLength * loaded.scale) : undefined;
     const reload = !down && armed && !pose.carrying && !pose.care && !pose.restrained ? MathUtils.clamp(number(pose.reloadFraction), 0, 1) : 0;
     const reloading = reload > 0 && reload < 1;
-    // Full packs are target-baked. Only explicit simulation time enables the
-    // initial locomotion subset; existing callers and risky bodies keep their
-    // tested procedural path. No aiming flag is interpreted as a shot event.
+    // Keep the high-strain identities and child on their existing stable path.
     const tacticalEligible = Number.isFinite(pose.animationTime) && this.asset!.bodyPlan === 'adult'
       && !['CH-SHAO', 'CH-DOCTOR', 'CH-SHEN'].includes(this.asset!.id)
+      && pose.tacticalEnabled !== false
       && !down && !kneeling && !pose.care && !pose.carrying && !pose.restrained && !reloading
       && number(pose.reaching) === 0 && number(pose.gesture) === 0;
-    const tacticalName = tacticalEligible ? crouched ? moving ? 'crouch_walk' : 'crouch_idle'
-      : running >= 1 ? 'run' : !moving ? armed ? 'ready_idle' : 'idle' : undefined : undefined;
+    const selection = this.tacticalPose.select({ ...pose, armed }, tacticalEligible, moving, running,
+      name => loaded.tacticalSamplers.get(name)?.duration ?? 0);
+    const tacticalName = selection?.name;
     const tacticalSampler = tacticalName ? loaded.tacticalSamplers.get(tacticalName) : undefined;
-    const sharedCrouch = !!tacticalSampler && crouched, sharedRun = !!tacticalSampler && tacticalName === 'run';
+    const authoredBody = !!tacticalSampler && tacticalName !== 'idle' && tacticalName !== 'run';
+    const sharedCrouch = !!tacticalSampler && (crouched || authoredBody), sharedRun = !!tacticalSampler && tacticalName === 'run';
     this.posture.position.set(0, down && !kneeling ? loaded.downLift * fallEase : tacticalSampler ? 0 : crouched ? -bodyHeight * 0.31 + (gait?.bodyLift ?? 0)
       : kneeling ? -bodyHeight * 0.25 : running * (-bodyHeight * 0.085 + (gait?.bodyLift ?? 0)), 0);
     this.posture.rotation.set(down ? kneeling ? 0 : Math.PI / 2 * fallEase : MathUtils.clamp(number(pose.reaching), 0, 1) * 0.15, 0, 0);
@@ -200,18 +346,29 @@ export class ImportedCharacter implements CharacterModel {
     }
     if (tacticalSampler) {
       const stride = rig.legLength * loaded.scale * (sharedRun ? 3.1 : 1.15);
-      const time = moving ? walk / 4 / stride * tacticalSampler.duration : number(pose.animationTime);
-      tacticalSampler.sample(time, true);
+      const time = moving && (tacticalName === 'run' || tacticalName === 'crouch_walk')
+        ? walk / 4 / stride * tacticalSampler.duration : selection!.time;
+      tacticalSampler.sample(time, selection!.loop);
     }
-    this.root.userData.tacticalStatus = tacticalSampler ? 'shared-clip-with-stable-upper-body-overlay'
+    // An armed locomotion layer changes only arm branches, retaining canonical legs/hip/trunk.
+    // Full authored cover/crouch clips bypass all procedural upper-body/head overlays below.
+    const readyArms = !authoredBody && tacticalEligible && armed ? loaded.tacticalSamplers.get('ready_idle') : undefined;
+    if (readyArms) {
+      const retain = [...rig.bones].filter(([name]) => !armBone(name)).map(([, bone]) =>
+        ({ bone, position: bone.position.clone(), quaternion: bone.quaternion.clone(), scale: bone.scale.clone() }));
+      readyArms.sample(moving ? walk / 4 : number(pose.animationTime), true);
+      for (const p of retain) { p.bone.position.copy(p.position); p.bone.quaternion.copy(p.quaternion); p.bone.scale.copy(p.scale); }
+    }
+    this.root.userData.tacticalStatus = tacticalSampler ? 'shared-clip-full-authored-pose'
       : loaded.tactical ? 'available-stable-fallback-selected' : 'optional-load-failed-stable-fallback';
     this.root.userData.motion = { clip: tacticalSampler ? tacticalName : undefined, gait: down ? 'down' : kneeling ? 'kneel' : crouched ? moving ? 'crouch-walk' : 'crouch'
       : running > 0 ? 'run' : walking ? 'walk' : 'idle', running, reloadFraction: reloading ? reload : 0,
-      source: tacticalSampler ? 'target-baked shared tactical clip; stable upper-body overlay' : gait ? 'procedural on production rig' : walking ? 'canonical walk' : 'procedural pose' };
+      loop: selection?.loop, clipTime: selection?.time,
+      source: tacticalSampler ? 'target-baked shared tactical clip' : gait ? 'procedural on production rig' : walking ? 'canonical walk' : 'procedural pose' };
     this.root.updateWorldMatrix(true, true);
-    if (running > 0 && !sharedRun) poser.lean(running * 0.18);
+    if (running > 0 && !sharedRun && !authoredBody) poser.lean(running * 0.18);
     if (down && kneeling) poser.lean(-Math.sin(Math.PI * MathUtils.clamp(fall / 0.42, 0, 1)) * 0.08);
-    for (const side of ['L', 'R'] as const) {
+    if (!authoredBody && !readyArms) for (const side of ['L', 'R'] as const) {
       const upper = `${side}_Upperarm`, lower = `${side}_Forearm`, hand = `${side}_Hand`, sign = poser.side(upper);
       let upperDirection: Vector3 | undefined, lowerDirection: Vector3 | undefined;
       let armWeight = 1;
@@ -250,7 +407,7 @@ export class ImportedCharacter implements CharacterModel {
       if (upperDirection) poser.aim(upper, lower, upperDirection, armWeight);
       if (lowerDirection) poser.aim(lower, hand, lowerDirection, armWeight);
     }
-    if (kneeling || crouched && !sharedCrouch || running > 0 && !sharedRun) {
+    if (!authoredBody && (kneeling || crouched && !sharedCrouch || running > 0 && !sharedRun)) {
       const pole = new Vector3(0, 0, 1).applyQuaternion(this.root.getWorldQuaternion(new Quaternion()));
       for (const side of ['L', 'R'] as const) {
         const target = feet.get(side)!.clone();
@@ -262,13 +419,38 @@ export class ImportedCharacter implements CharacterModel {
         poser.leg(side, target.applyMatrix4(this.root.matrixWorld), pole, down ? 1 - fallEase : crouched || kneeling ? 1 : running);
       }
     }
-    poser.head(down ? 0 : MathUtils.clamp(number(pose.lookAway), -1, 1), down ? 0.1 * fallEase : pose.aiming ? -0.04 : MathUtils.clamp(number(pose.reaching), 0, 1) * 0.2);
+    if (!authoredBody) poser.head(down ? 0 : MathUtils.clamp(number(pose.lookAway), -1, 1), down ? 0.1 * fallEase : pose.aiming ? -0.04 : MathUtils.clamp(number(pose.reaching), 0, 1) * 0.2);
     if (down && kneeling) {
       this.posture.position.y = MathUtils.lerp(-bodyHeight * 0.25, loaded.downLift, fallEase);
       this.posture.rotation.x = Math.PI / 2 * fallEase;
     }
+    if (weaponVisible && !authoredBody && !readyArms && !reloading) fitStableWeaponHands(this.root, rig, this.asset!.id);
+    const now = number(pose.animationTime), key = tacticalSampler ? selection!.key : undefined;
+    if (!tacticalEligible || now < this.sampleTime) { this.blendFrom = undefined; this.previousBones.clear(); this.selectionKey = key; }
+    if (tacticalEligible && key !== this.selectionKey) {
+      this.blendFrom = this.previousBones.size ? new Map([...this.previousBones].map(([name, p]) => [name,
+        { position: p.position.clone(), quaternion: p.quaternion.clone(), scale: p.scale.clone() }])) : undefined;
+      this.blendAt = now; this.selectionKey = key;
+    }
+    const blend = MathUtils.clamp((now - this.blendAt) / (tacticalName?.includes('fire') ? 0.055 : 0.18), 0, 1);
+    if (this.blendFrom && blend < 1) for (const [name, bone] of rig.bones) {
+      const from = this.blendFrom.get(name)!;
+      bone.position.lerp(from.position, 1 - blend); bone.quaternion.slerp(from.quaternion, 1 - blend); bone.scale.lerp(from.scale, 1 - blend);
+    }
+    if (blend >= 1) this.blendFrom = undefined;
+    if (tacticalEligible) for (const [name, bone] of rig.bones) {
+      const previous = this.previousBones.get(name);
+      if (previous) { previous.position.copy(bone.position); previous.quaternion.copy(bone.quaternion); previous.scale.copy(bone.scale); }
+      else this.previousBones.set(name, { position: bone.position.clone(), quaternion: bone.quaternion.clone(), scale: bone.scale.clone() });
+    }
+    this.sampleTime = now;
+    if (weaponVisible && this.weapon && !reloading && !kneeling && this.asset!.bodyPlan === 'adult'
+      && !['CH-SHAO', 'CH-DOCTOR', 'CH-SHEN'].includes(this.asset!.id)) {
+      fitShoulderedWeapon(this.root, rig, this.asset!.id, this.weapon, !!authoredBody || !!readyArms, loaded.headBounds);
+    } else delete this.root.userData.shoulderContact;
     // Refresh the posture ancestors and the skin inverse-bind matrix together.
     this.root.updateMatrixWorld(true);
+    this.root.userData.weaponContact = this.weapon?.contact(rig.bones.get('L_Hand')!, new Vector3(0, 0, 1).applyQuaternion(this.root.getWorldQuaternion(new Quaternion())));
   }
 
   retry(): void {

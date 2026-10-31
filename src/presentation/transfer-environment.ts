@@ -1,3 +1,4 @@
+import { bindGeneratedProp, cabinetRow, doorLeaves, propPlacement, propSlot } from './GeneratedPropBindings';
 import { CylinderGeometry, Mesh, MeshStandardMaterial, PointLight } from 'three';
 import type { Vec3 } from '../contracts';
 import { TRANSFER as T } from '../content/transfer-layout';
@@ -23,7 +24,7 @@ export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {
   shutter.box('steel', [-42, 1.8, 24], [6, 3.6, 0.32]);
   for (let x = -44.8; x < -39; x += 0.6) shutter.box('pale', [x, 1.8, 23.79], [0.06, 3.4, 0.08]);
   shutter.box('amber', [-42, 1.30, 23.75], [5.7, 0.24, 0.035], [0, 0, 0], false);
-  shutter.flush(); kit.root.add(shutter.root);
+  shutter.flush(); bindGeneratedProp(shutter.root, 'transfer-shutter', doorLeaves('transfer-shutter', [-42, 0, 24], 6, 3.6)); kit.root.add(shutter.root);
   if (!completed) kit.solid('transfer-shutter', [-42, 1.8, 24], [6, 3.6, 0.40], 0, 'transfer-gate-open');
   // Shelter uses the existing workshop wall as its western edge, never the cart lane as a prop shelf.
   kit.part('arch', 'pale', [-37.5, 4.3, 24], [15, 2.8, 12]);
@@ -44,10 +45,12 @@ export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {
   kit.box('pale', [-36.30, 1.35, 22.02], [0.30, 0.12, 0.045]);
   const cover = new PortKit(); cover.root.name = 'transfer-control-cover'; cover.root.position.set(-37.05, 1.15, 21.99);
   cover.box('paint', [0.55, 0, 0], [1.1, 1.3, 0.07]);
-  cover.box('pale', [0.91, 0, -0.05], [0.055, 0.25, 0.05]); cover.flush(); kit.root.add(cover.root);
+  cover.box('pale', [0.91, 0, -0.05], [0.055, 0.25, 0.05]); cover.flush();
+  bindGeneratedProp(cover.root, 'transfer-control-cover', doorLeaves('transfer-control-cover', [0.55, -0.65, 0], 1.1, 1.3)); kit.root.add(cover.root);
   const rod = new PortKit(); rod.root.name = 'transfer-lock-rod';
   rod.cylinder('pale', [-36.5, 0.97, 21.97], 0.07, 0.66, [0, 0, Math.PI / 2]);
-  rod.box('amber', [-36.19, 0.97, 21.97], [0.09, 0.20, 0.11]); rod.flush(); kit.root.add(rod.root);
+  rod.box('amber', [-36.19, 0.97, 21.97], [0.09, 0.20, 0.11]); rod.flush();
+  bindGeneratedProp(rod.root, 'transfer-lock-rod', [propPlacement('transfer-lock-rod', 'PROP-DOOR-LOCK', [-36.5, 0.87, 21.97], 0.66, 'z', Math.PI / 2)]); kit.root.add(rod.root);
   const gateLampMaterial = new MeshStandardMaterial({ color: 0xd7a468, emissive: 0xd7a468, emissiveIntensity: 1, roughness: 0.4 });
   const gateLamp = new Mesh(new CylinderGeometry(0.11, 0.11, 0.05, 12), gateLampMaterial);
   gateLamp.name = 'transfer-gate-indicator'; gateLamp.rotation.x = Math.PI / 2; gateLamp.position.set(-36.5, 2.35, 21.95); kit.root.add(gateLamp);
@@ -68,14 +71,18 @@ export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {
     kit.cylinder('amber', [x, 4.0, 34], 0.13, 11, [Math.PI / 2, 0, 0]);
     kit.box('signal', [x, 4.52, 34], [3.5, 0.08, 0.20], [0, 0, 0], false);
   }
-  block(kit, 'D02-heat-exchanger', [-12, 1.25, 29.8], [3, 2.5, 2.1], 'steel');
-  for (let x = -13.2; x < -10.7; x += 0.35) kit.cylinder('pale', [x, 1.4, 30.93], 0.09, 1.7);
-  kit.box('signal', [-11.4, 2.32, 30.9], [0.45, 0.12, 0.06], [0, 0, 0], false);
-  block(kit, 'D02-battery-rack', [-11, 1.3, 37.8], [2, 2.6, 2.2], 'steel');
+  propSlot(kit, 'transfer-heat-unit', [propPlacement('transfer-heat-unit', 'PROP-FILTER', [-12, 0, 29.8], 2.1)], slot => {
+  block(slot, 'D02-heat-exchanger', [-12, 1.25, 29.8], [3, 2.5, 2.1], 'steel');
+  for (let x = -13.2; x < -10.7; x += 0.35) slot.cylinder('pale', [x, 1.4, 30.93], 0.09, 1.7);
+  slot.box('signal', [-11.4, 2.32, 30.9], [0.45, 0.12, 0.06], [0, 0, 0], false);
+  });
+  propSlot(kit, 'transfer-battery-cabinet', cabinetRow('transfer-battery-cabinet', [-11, 0, 37.8], 2, 2.6), slot => {
+  block(slot, 'D02-battery-rack', [-11, 1.3, 37.8], [2, 2.6, 2.2], 'steel');
   for (const y of [0.65, 1.65]) for (const x of [-11.5, -10.5]) {
-    kit.box('paint', [x, y, 38.95], [0.80, 0.70, 0.10]);
-    kit.box('amber', [x, y + 0.26, 39.02], [0.35, 0.06, 0.035]);
+    slot.box('paint', [x, y, 38.95], [0.80, 0.70, 0.10]);
+    slot.box('amber', [x, y + 0.26, 39.02], [0.35, 0.06, 0.035]);
   }
+  });
   // Sink, faucet and first-aid box are next to the actual hand-care interaction point.
   block(kit, 'D02-sink-base', [-22.7, 0.45, 29.6], [3, 0.9, 1], 'pale');
   kit.box('steel', [-22.7, 0.95, 29.6], [3.15, 0.10, 1.1]);
@@ -83,22 +90,30 @@ export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {
   kit.box('white', [-22.25, 1.03, 29.65], [1.0, 0.025, 0.46]);
   kit.cylinder('pale', [-22.25, 1.22, 29.21], 0.035, 0.4);
   kit.cylinder('pale', [-22.25, 1.40, 29.35], 0.035, 0.3, [Math.PI / 2, 0, 0]);
-  kit.box('white', [-22.7, 1.16, 29.62], [0.45, 0.31, 0.52]);
-  kit.box('paint', [-22.70, 1.19, 29.89], [0.27, 0.07, 0.018]);
-  kit.box('paint', [-22.70, 1.19, 29.90], [0.07, 0.22, 0.018]);
+  propSlot(kit, 'transfer-first-aid-bag', [propPlacement('transfer-first-aid-bag', 'PROP-MEDICAL-BAG', [-22.7, 1.01, 29.62], 0.52)], slot => {
+  slot.box('white', [-22.7, 1.16, 29.62], [0.45, 0.31, 0.52]);
+  slot.box('paint', [-22.70, 1.19, 29.89], [0.27, 0.07, 0.018]);
+  slot.box('paint', [-22.70, 1.19, 29.90], [0.07, 0.22, 0.018]);
+  });
   const bandage = new PortKit(); bandage.root.name = 'transfer-clean-dressing';
   bandage.cylinder('white', [-23.05, 1.10, 29.6], 0.09, 0.15, [Math.PI / 2, 0, 0]); bandage.flush(); kit.root.add(bandage.root);
   // Water and a spare radio remain available for the subsequent S07 rest and handover.
   block(kit, 'D02-water-table', [-22.6, 0.50, 33.5], [1.0, 1, 0.9], 'pale');
   kit.cylinder('white', [-22.65, 1.22, 33.5], 0.12, 0.42);
-  kit.cylinder('steel', [-22.30, 1.09, 33.4], 0.065, 0.18);
-  kit.box('rubber', [-22.55, 1.08, 33.75], [0.22, 0.16, 0.10]);
-  kit.box('steel', [-22.55, 1.30, 33.75], [0.015, 0.30, 0.015]);
+  propSlot(kit, 'transfer-water-mug', [propPlacement('transfer-water-mug', 'PROP-LIFE-MUG', [-22.30, 1.002, 33.4], 0.18, 'y')], slot => {
+  slot.cylinder('steel', [-22.30, 1.09, 33.4], 0.065, 0.18);
+  });
+  propSlot(kit, 'transfer-spare-radio', [propPlacement('transfer-spare-radio', 'PROP-RADIO-PACK', [-22.55, 1.002, 33.75], 0.32, 'y')], slot => {
+  slot.box('rubber', [-22.55, 1.08, 33.75], [0.22, 0.16, 0.10]);
+  slot.box('steel', [-22.55, 1.30, 33.75], [0.015, 0.30, 0.015]);
+  });
   // Outside work console and covered porch connect the room back to the inner-gate landmark.
   kit.terminal(T.returnConsole);
   block(kit, 'D02-tool-bench', [-18.5, 0.50, 41.5], [2, 1, 1], 'steel');
   kit.box('pale', [-18.5, 1.04, 41.5], [2.15, 0.08, 1.1]);
-  kit.box('amber', [-18.5, 1.12, 41.5], [0.7, 0.08, 0.13], [0, 0.25, 0]);
+  propSlot(kit, 'transfer-work-tools', [propPlacement('transfer-work-tools', 'PROP-TOOL-ROLL', [-18.5, 1.082, 41.5], 0.7, 'z', Math.PI / 2)], slot => {
+  slot.box('amber', [-18.5, 1.12, 41.5], [0.7, 0.08, 0.13], [0, 0.25, 0]);
+  });
   kit.box('pale', [-17, 3.65, 42.4], [10.5, 0.2, 4.8]);
   kit.solid('D02-porch-roof', [-17, 3.65, 42.4], [10.5, 0.2, 4.8]);
   for (const x of [-22, -12]) block(kit, `D02-porch-post-${x}`, [x, 1.8, 44.5], [0.17, 3.6, 0.17], 'steel');

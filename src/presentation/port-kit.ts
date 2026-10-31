@@ -7,7 +7,27 @@ import {
 import type { SolidSpec, Vec3 } from '../contracts';
 
 export type Surface = 'steel' | 'paint' | 'pale' | 'concrete' | 'rubber' | 'amber' | 'white' | 'glass' | 'signal' | 'ice';
-type Primitive = 'box' | 'cylinder' | 'cone' | 'elbow' | 'arch';
+export type Primitive = 'box' | 'cylinder' | 'cone' | 'elbow' | 'arch';
+export type PortKitKind = 'cover' | 'container' | 'workshop' | 'tank' | 'light' | 'tractor' | 'terminal' | 'beam';
+export interface PortKitMember { mesh: InstancedMesh; indices: number[] }
+export interface PortKitSemantic {
+  id: string; kind: PortKitKind; args: readonly unknown[]; originMatrix: Matrix4; parent: Group; members: PortKitMember[];
+}
+export interface PortKitPrimitive {
+  kind: Primitive; surface: Surface; matrix: Matrix4; parent: Group;
+  batch: string; index: number; mesh?: InstancedMesh; semantic?: PortKitSemantic;
+  solidId?: string; openFact?: string;
+}
+const semanticRegistry = new WeakMap<Group, PortKitSemantic[]>();
+const primitiveRegistry = new WeakMap<Group, PortKitPrimitive[]>();
+/** Metadata only: neither this registry nor its readers alter visuals, colliders or serial IDs. */
+export function readPortKitSemantics(root: Group): readonly PortKitSemantic[] {
+  const result: PortKitSemantic[] = []; root.traverse(node => result.push(...semanticRegistry.get(node as Group) ?? [])); return result;
+}
+export function readPortKitPrimitives(root: Group): readonly PortKitPrimitive[] {
+  const result: PortKitPrimitive[] = []; root.traverse(node => result.push(...primitiveRegistry.get(node as Group) ?? [])); return result;
+}
+
 const PALETTE: Record<Surface, number> = {
   steel: 0x394a53, paint: 0x456a77, pale: 0x829692, concrete: 0x8b9796,
   rubber: 0x27343a, amber: 0xc5a165, white: 0xd6dbcf, glass: 0x25434e,
@@ -40,8 +60,18 @@ export class PortKit {
   private batches = new Map<string, { geometry: BufferGeometry; material: MeshStandardMaterial; matrices: Matrix4[]; shadows: boolean }>();
   private serial = 0;
   private origin = new Matrix4();
+  private readonly semantics: PortKitSemantic[] = [];
+  private readonly primitiveRecords: PortKitPrimitive[] = [];
+  private activeSemantic?: PortKitSemantic;
+  private describe(kind: PortKitKind, args: readonly unknown[], build: () => void): void {
+    const record: PortKitSemantic = { id: `${kind}-${this.semantics.length}`, kind, args,
+      originMatrix: this.origin.clone(), parent: this.root, members: [] };
+    this.semantics.push(record); const previous = this.activeSemantic; this.activeSemantic = record;
+    try { build(); } finally { this.activeSemantic = previous; }
+  }
 
   constructor() {
+    semanticRegistry.set(this.root, this.semantics); primitiveRegistry.set(this.root, this.primitiveRecords);
     this.root.name = 'industrial-port-placeholder';
     this.root.userData.assetStatus = 'placeholder';
   }
@@ -91,6 +121,8 @@ export class PortKit {
       batch = { geometry: this.shape(kind), material: this.material(surface), matrices: [], shadows };
       this.batches.set(key, batch);
     }
+    this.primitiveRecords.push({ kind, surface, matrix: matrix.clone(), parent: this.root,
+      batch: `static-${key}`, index: batch.matrices.length, semantic: this.activeSemantic });
     batch.matrices.push(matrix);
   }
   box(surface: Surface, at: Vec3, size: Vec3, rotation: Vec3 = [0, 0, 0], shadows = true): void {
@@ -103,10 +135,14 @@ export class PortKit {
     const a = new Vector3(...from); const b = new Vector3(...to);
     const d = b.clone().sub(a);
     const rot = new Euler().setFromQuaternion(new Quaternion().setFromUnitVectors(new Vector3(0, 1, 0), d.clone().normalize()));
-    this.box(surface, a.add(b).multiplyScalar(0.5).toArray() as Vec3, [width, d.length(), width], [rot.x, rot.y, rot.z]);
+    this.describe('beam', [[...from], [...to], width], () => this.box(surface, a.add(b).multiplyScalar(0.5).toArray() as Vec3, [width, d.length(), width], [rot.x, rot.y, rot.z]));
   }
   solid(id: string, at: Vec3, size: Vec3, yaw = 0, openFact?: string): void {
     const position = new Vector3(...at).applyMatrix4(this.origin);
+    const last = this.primitiveRecords[this.primitiveRecords.length - 1];
+    if (last && !last.semantic && new Vector3().setFromMatrixPosition(last.matrix).distanceTo(position) < 1e-5) {
+      last.solidId = id; last.openFact = openFact;
+    }
     const originYaw = new Euler().setFromRotationMatrix(this.origin, 'YXZ').y;
     this.solids.push({ id, position: position.toArray() as Vec3, size, rotationY: yaw + originYaw, ...(openFact ? { openFact } : {}) });
   }
@@ -137,17 +173,17 @@ export class PortKit {
   }
   cover(x: number, z: number, length = 4, yaw = 0): void {
     const id = `cover-${this.serial++}`;
-    this.located([x, 0, z], yaw, () => {
+    this.describe('cover', [x, z, length, yaw], () => this.located([x, 0, z], yaw, () => {
       this.box('concrete', [0, 0.55, 0], [length, 1.1, 0.82]);
       this.box('pale', [0, 1.09, 0], [length + 0.06, 0.10, 0.90]);
       this.box('rubber', [0, 0.15, 0], [length + 0.18, 0.30, 1.05]);
       for (let x = -length / 2 + 0.22; x < length / 2; x += 0.55) this.box('amber', [x, 0.82, 0.421], [0.20, 0.30, 0.012], [0, 0, -0.35], false);
       this.solid(id, [0, 0.60, 0], [length + 0.18, 1.20, 1.05]);
-    });
+    }));
   }
   container(x: number, z: number, yaw = 0, surface: Surface = 'paint'): void {
     const id = `container-${this.serial++}`;
-    this.located([x, 0, z], yaw, () => {
+    this.describe('container', [x, z, yaw, surface], () => this.located([x, 0, z], yaw, () => {
       this.box(surface, [0, 1.32, 0], [2.8, 2.64, 6.5]);
       for (let z = -3.05; z <= 3.05; z += 0.34) {
         this.box('pale', [-1.42, 1.35, z], [0.06, 2.42, 0.065]);
@@ -161,11 +197,11 @@ export class PortKit {
       for (const x of [-0.55, 0.55]) this.box('pale', [x, 1.27, 3.36], [0.045, 2.20, 0.06]);
       this.box('amber', [0, 2.38, 3.36], [1.60, 0.14, 0.02], [0, 0, 0], false);
       this.solid(id, [0, 1.34, 0], [2.90, 2.68, 6.70]);
-    });
+    }));
   }
   workshop(x: number, z: number, width = 10, depth = 10): void {
     const id = `workshop-${this.serial++}`;
-    this.located([x, 0, z], 0, () => {
+    this.describe('workshop', [x, z, width, depth], () => this.located([x, 0, z], 0, () => {
       this.box('paint', [0, 2.6, 0], [width, 5.2, depth]);
       this.box('steel', [0, 5.27, 0], [width + 0.5, 0.20, depth + 0.5]);
       this.box('pale', [0, 1.0, depth / 2 + 0.025], [width, 0.20, 0.05]);
@@ -179,11 +215,11 @@ export class PortKit {
       this.box('pale', [width * 0.24, 5.8, -depth * 0.20], [2.3, 1.0, 2]);
       for (let x = -0.8; x <= 0.8; x += 0.30) this.box('steel', [width * 0.24 + x, 5.80, -depth * 0.20 + 1.02], [0.10, 0.70, 0.05]);
       this.solid(id, [0, 2.7, 0], [width, 5.4, depth]);
-    });
+    }));
   }
   tank(x: number, z: number, radius = 2.2, height = 6): void {
     const id = `tank-${this.serial++}`;
-    this.located([x, 0, z], 0, () => {
+    this.describe('tank', [x, z, radius, height], () => this.located([x, 0, z], 0, () => {
       this.cylinder('pale', [0, height / 2 + 0.4, 0], radius, height);
       for (const y of [0.48, height * 0.5 + 0.4, height + 0.35]) this.cylinder('steel', [0, y, 0], radius + 0.09, 0.12);
       this.cylinder('steel', [0, height + 0.75, 0], 0.30, 0.70);
@@ -191,11 +227,11 @@ export class PortKit {
       this.cylinder('amber', [radius + 0.35, 2.6, 0], 0.13, 4.5);
       for (let y = 0.6; y < height; y += 0.42) this.box('steel', [-0.65, y, radius + 0.09], [0.60, 0.05, 0.13]);
       this.solid(id, [0, height / 2 + 0.2, 0], [radius * 2.15, height + 0.4, radius * 2.15]);
-    });
+    }));
   }
   tractor(x: number, z: number, yaw = 0): void {
     const id = `tractor-${this.serial++}`;
-    this.located([x, 0, z], yaw, () => {
+    this.describe('tractor', [x, z, yaw], () => this.located([x, 0, z], yaw, () => {
       this.box('steel', [0, 0.67, 0], [2.3, 0.55, 4.1]);
       this.box('amber', [0, 1.35, -1.0], [2.2, 0.85, 1.8]);
       this.box('pale', [0, 1.9, 0.5], [2.0, 1.7, 1.8]);
@@ -212,11 +248,11 @@ export class PortKit {
       this.box('steel', [0.7, 3.05, 0.6], [0.08, 0.5, 0.08]);
       this.box('amber', [0.7, 3.32, 0.6], [0.20, 0.15, 0.20]);
       this.solid(id, [0, 1.35, 0], [2.65, 2.70, 4.35]);
-    });
+    }));
   }
   terminal(at: Vec3): void {
     const id = `terminal-${this.serial++}`;
-    this.located([at[0] + 1.45, 0, at[2] - 0.30], 0, () => {
+    this.describe('terminal', [[...at]], () => this.located([at[0] + 1.45, 0, at[2] - 0.30], 0, () => {
       this.box('steel', [0, 0.55, 0], [0.85, 1.1, 0.65]);
       this.box('pale', [0, 1.18, 0.03], [1.1, 0.30, 0.90], [-0.20, 0, 0]);
       this.box('glass', [0, 1.36, -0.16], [0.83, 0.55, 0.12], [-0.22, 0, 0]);
@@ -224,13 +260,15 @@ export class PortKit {
       this.box('white', [-0.28, 1.30, 0.21], [0.18, 0.04, 0.24], [-0.20, 0, 0], false);
       this.cylinder('signal', [0.32, 1.29, 0.30], 0.055, 0.035);
       this.solid(id, [0, 0.77, 0], [1.1, 1.54, 0.90]);
-    });
+    }));
     this.box('amber', [at[0], 0.018, at[2] + 0.2], [1.25, 0.018, 0.08], [0, 0, 0], false);
   }
   light(x: number, z: number, height = 5.5): void {
+    this.describe('light', [x, z, height], () => {
     this.cylinder('steel', [x, height / 2, z], 0.075, height);
     this.box('steel', [x + 0.50, height, z], [1.1, 0.08, 0.09]);
     this.box('signal', [x + 0.85, height - 0.09, z], [0.60, 0.07, 0.28], [0, 0, 0], false);
+    });
   }
   flush(): void {
     for (const [name, batch] of this.batches) {
@@ -242,6 +280,14 @@ export class PortKit {
       mesh.receiveShadow = true;
       mesh.computeBoundingBox(); mesh.computeBoundingSphere();
       this.root.add(mesh);
+      for (const record of this.primitiveRecords) if (!record.mesh && record.batch === mesh.name) record.mesh = mesh;
+    }
+    for (const semantic of this.semantics) {
+      const members = new Map<InstancedMesh, number[]>();
+      for (const record of this.primitiveRecords) if (record.semantic === semantic && record.mesh) {
+        const indices = members.get(record.mesh) ?? []; indices.push(record.index); members.set(record.mesh, indices);
+      }
+      semantic.members = [...members].map(([mesh, indices]) => ({ mesh, indices }));
     }
     this.batches.clear();
   }
@@ -265,6 +311,6 @@ export function addGround(root: Group, bounds: SceneBounds = { minX: -30, maxX: 
   texture.repeat.set((bounds.maxX - bounds.minX) / 4, (bounds.maxZ - bounds.minZ) / 4); texture.needsUpdate = true;
   const material = new MeshStandardMaterial({ map: texture, roughness: 0.98, metalness: 0.03 });
   const mesh = new Mesh(new BoxGeometry(bounds.maxX - bounds.minX, 0.4, bounds.maxZ - bounds.minZ), material);
-  mesh.position.set((bounds.minX + bounds.maxX) / 2, -0.2, (bounds.minZ + bounds.maxZ) / 2); mesh.receiveShadow = true; mesh.name = 'port-ground'; root.add(mesh);
+  mesh.position.set((bounds.minX + bounds.maxX) / 2, -0.2, (bounds.minZ + bounds.maxZ) / 2); mesh.receiveShadow = true; mesh.name = 'port-ground'; mesh.userData.architectureGround = true; root.add(mesh);
 }
 

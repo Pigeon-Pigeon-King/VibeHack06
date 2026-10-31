@@ -1,3 +1,4 @@
+import { cabinetRow, propSlot } from './GeneratedPropBindings';
 import {
   DataTexture, DirectionalLight, Group, HemisphereLight, MathUtils, Mesh, MeshBasicMaterial,
   PointLight, RGBAFormat, SphereGeometry, SRGBColorSpace,
@@ -177,9 +178,11 @@ function handoverSite(kit: PortKit): void {
   kit.box('pale', [14, 1.8, 31.9], [10, 3.6, 0.20]);
   kit.solid('medical-back', [14, 1.8, 31.9], [10, 3.6, 0.2]);
   kit.box('signal', [14, 3.9, 24], [3.6, 0.08, 0.20], [0, 0, 0], false);
-  kit.box('pale', [10.4, 0.65, 28.5], [2, 1.3, 1.7]);
-  kit.solid('medical-cabinet', [10.4, 0.65, 28.5], [2, 1.3, 1.7]);
-  kit.box('white', [10.4, 1.35, 28.5], [2.2, 0.1, 1.9]);
+  propSlot(kit, 'handover-medical-cabinet', cabinetRow('handover-medical-cabinet', [10.4, 0, 28.5], 2, 1.4), slot => {
+  slot.box('pale', [10.4, 0.65, 28.5], [2, 1.3, 1.7]);
+  slot.solid('medical-cabinet', [10.4, 0.65, 28.5], [2, 1.3, 1.7]);
+  slot.box('white', [10.4, 1.35, 28.5], [2.2, 0.1, 1.9]);
+  });
 }
 
 export function buildEnvironment(scenario: ScenarioId): EnvironmentModel {

@@ -118,7 +118,9 @@ def main():
                                "manifest": "runtime/prepared-assets.json", "windowsAcceptance": "not-run",
                                "additionalMapAssetsPrepared": len(prepared_map),
                                "additionalMapManifest": "architecture/prepared-manifest.json",
-                               "additionalMapStatus": "independent-package-not-wired-to-main"},
+                               "additionalMapStatus": "produced-see-instance-coverage-evidence",
+                               "integrationEvidence": "artifacts/game-progress.md",
+                               "statusScope": "production reports only; runtime coverage is not inferred from file counts"},
         "paidJobsSubmitted": len({t["taskId"] for t in accepted_tasks if t.get("provider", {}).get("consumed_credit", 0) > 0})
                              + len({a["task_id"] for a in props["assets"] if a.get("task_id")}) + len(maps["assets"]) + len(additional_tasks) + (2 if tactical else 0),
         "characterJobs": [{"assetId": a["id"], "stage": t["role"], "taskId": t["taskId"],
@@ -129,7 +131,7 @@ def main():
     status["providers"]["mapStructuresAndLandmarks"] = "Hyper3D and Tripo in parallel"
     if tactical:
         status["sharedTacticalAnimations"] = {key: tactical[key] for key in ("adultCount", "childIndependentCount", "clipCount", "totalFrames", "allNumericallyStable", "actualNewCredits")}
-        status["sharedTacticalAnimations"].update({"status": "candidate-not-wired-to-main", "visualAcceptance": "Only selected offline poses reviewed; full motion, weapon contact and game acceptance pending.",
+        status["sharedTacticalAnimations"].update({"status": "produced-see-runtime-integration-evidence", "visualAcceptance": "See artifacts/game-progress.md for enabled bodies/states and revision-specific evidence; production counts do not approve full motion or contact.",
                                                   "report": "characters/tactical-animations/verification-summary.json", "skinRisk": tactical["skinRisk"]})
     status["reports"]["architecture"] = "architecture/report.json"
     write(BATCH / "production-status.json", status)

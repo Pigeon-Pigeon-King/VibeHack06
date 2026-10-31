@@ -1,3 +1,4 @@
+import { cabinetRow, propPlacement, propSlot } from './GeneratedPropBindings';
 import { BoxGeometry, Group, Mesh, MeshStandardMaterial, PointLight } from 'three';
 import type { Vec3 } from '../contracts';
 import { MEDICAL as M } from '../content/medical-layout';
@@ -10,7 +11,8 @@ function block(k: PortKit, id: string, p: Vec3, size: Vec3, surface: Surface = '
 function desk(k: PortKit, id: string, p: Vec3) {
   block(k, id, [p[0], 0.52, p[2] - 1.35], [2.6, 1.04, 0.9], 'steel');
   k.box('white', [p[0], 1.075, p[2] - 1.35], [2.7, 0.07, 1.0]);
-  k.box('glass', [p[0] + 0.6, 1.32, p[2] - 1.4], [0.65, 0.4, 0.08], [-0.15, 0, 0]);
+  propSlot(k, `${id}-handheld`, [propPlacement(`${id}-handheld`, 'PROP-TERMINAL-HANDHELD', [p[0] + 0.6, 1.112, p[2] - 1.4], 0.4, 'y')], slot =>
+    slot.box('glass', [p[0] + 0.6, 1.32, p[2] - 1.4], [0.65, 0.4, 0.08], [-0.15, 0, 0]));
 }
 
 /** Functional ward spaces are separate; task-controlled patient actors own both beds. */
@@ -40,10 +42,12 @@ export function buildMedical(k: PortKit): SceneDynamics {
       slot.box('white', [x, 1.9, 39.78], [0.5, 0.75, 0.03]);
     };
     if (x === -387) k.visualSlot('medical-sample-cabinets', locker);
-    else locker(k);
+    else propSlot(k, `medical-supply-locker-${x}`, cabinetRow(`medical-supply-locker-${x}`, [x, 0, 39], 3.2, 2), locker);
     for (const z of [50, 56, 68]) {
-      block(k, `medical-supply-bin-${x}-${z}`, [x, 0.5, z], [1.6, 1, 1.2], 'pale');
-      k.box('amber', [x, 1.03, z], [1.5, 0.06, 0.8]);
+  propSlot(k, `medical-supply-bin-${x}-${z}`, [propPlacement(`medical-supply-bin-${x}-${z}`, 'PROP-CARGO', [x, 0, z], 1.06, 'y', Math.PI / 2)], slot => {
+      block(slot, `medical-supply-bin-${x}-${z}`, [x, 0.5, z], [1.6, 1, 1.2], 'pale');
+      slot.box('amber', [x, 1.03, z], [1.5, 0.06, 0.8]);
+  });
     }
   }
   // Empty reserve equipment remains east of every treatment/escort route.
@@ -62,7 +66,7 @@ export function buildMedical(k: PortKit): SceneDynamics {
     block(slot, 'medical-rest-bench-1', [-412.5, 0.25344233214855194, 63.5], [1.8, 0.5068846642971039, 0.45368186831474306], 'pale');
   });
   block(k, 'medical-rest-back', [-413.5, 1.2, 64], [4.5, 1.0, 0.15], 'paint');
-  k.cylinder('white', [-414.5, 1.15, 60.2], 0.15, 0.25);
+  k.visualSlot('medical-water-vessel', slot => slot.cylinder('white', [-414.5, 1.15, 60.2], 0.15, 0.25));
   block(k, 'medical-water-table', [-414.5, 0.48, 60.2], [1.1, 0.96, 0.8]);
   // No static mattress duplicates the actor-controlled beds at z44.
   for (const x of [-407, -390]) {

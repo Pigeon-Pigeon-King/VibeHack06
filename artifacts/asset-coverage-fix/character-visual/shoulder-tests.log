@@ -1,0 +1,8 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-asset-coverage
+
+
+ Test Files  3 passed (3)
+      Tests  64 passed (64)
+   Start at  19:27:07
+   Duration  5.36s (tests 96%, import 2%, transform 1%)

@@ -1,0 +1,9 @@
+# Large offline geometry snapshots are reproducible with the committed exporters.
+/*-assembly.json
+/character-visual/*-left.json
+/character-visual/*-right.json
+/character-visual/zhou-seat.json
+/character-visual/zhou-supply.json
+/character-visual/before-shoulder-fit/*.json
+
+/brace-fit/zhou-seat.json

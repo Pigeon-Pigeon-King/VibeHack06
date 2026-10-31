@@ -1,8 +1,9 @@
-import { Box3, Group, LoadingManager, Matrix4, Mesh, Object3D, Quaternion, Vector3, type BufferGeometry } from 'three';
+import { Box3, ConeGeometry, Group, LoadingManager, Matrix4, Mesh, MeshBasicMaterial, Object3D, Quaternion, Vector3, type BufferGeometry } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import type { ModelLibrary } from '../assets/ModelLibrary';
 import type { ModelLease, ModelSource } from '../assets/model-contracts';
 import { disposeModelTree, registerModelDisposer } from './model-tools';
+import { TACTICAL_WEAPON_CALIBRATION } from '../assets/tactical-catalog';
 
 /** Same committed source as ImportedWeaponView, without first-person arms or animation rules. */
 export const WORLD_AK47 = {
@@ -24,6 +25,15 @@ export interface WorldAK47Attachment {
   readonly state: WorldAK47State;
   /** Stable original muzzle object, moved to the imported marker on success. */
   readonly muzzle: Object3D;
+  /** Metre offsets in the calibrated +X weapon frame, measured from the original firing grip. */
+  readonly gripOffsets: { stock: Vector3; support: Vector3; supportRear: Vector3 } | undefined;
+  /** Slide only the contact marker along the measured underside of the existing foregrip. */
+  setSupportFraction(fraction: number): void;
+  /** Move the imported gun itself to the production hand, preserving its one shared lease. */
+  bindToHand(hand?: Object3D, rightHandToWeaponQuaternion?: readonly number[]): void;
+  setVisible(visible: boolean): void;
+  setShot(simulationTime: number, lastShotAt?: number): void;
+  contact(leftHand: Object3D, forward: Vector3): { rightGripError: number; leftGripError: number; sightForwardDot: number } | undefined;
   dispose(): void;
 }
 export interface WorldAK47Options {
@@ -84,7 +94,7 @@ function pointsInRoot(root: Group, node: Object3D): Vector3[] {
 
 interface WorldCalibration {
   bounds: Box3; scale: number; sourceMuzzle: Vector3; front: Vector3; rear: Vector3;
-  basis: Quaternion; grip: Vector3; support: Vector3;
+  basis: Quaternion; grip: Vector3; support: Vector3; supportRear: Vector3; stock: Vector3;
 }
 const calibrations = new WeakMap<BufferGeometry, WorldCalibration>();
 const gripAnchor = new Vector3(0, -0.14, -0.02);
@@ -117,10 +127,14 @@ function measureWorldAK47(source: Group): WorldCalibration {
   if (!gripPoints.length || !supportPoints.length) throw new Error('AK grip geometry could not be identified');
   const grip = new Box3().setFromPoints(gripPoints).getCenter(new Vector3());
   const supportBounds = new Box3().setFromPoints(supportPoints), support = supportBounds.getCenter(new Vector3()); support.y = supportBounds.min.y;
-  return { bounds, scale, sourceMuzzle, front, rear, basis, grip, support };
+  const supportRear = new Vector3(support.x, support.y, supportBounds.max.z - .005);
+  const stockPoints = pointsInRoot(source, requireNode(source, 'StockButtpadGeometry'));
+  const stockRear = Math.max(...stockPoints.map(point => point.z));
+  const stock = new Box3().setFromPoints(stockPoints.filter(point => stockRear - point.z < .002)).getCenter(new Vector3());
+  return { bounds, scale, sourceMuzzle, front, rear, basis, grip, support, supportRear, stock };
 }
 
-function prepareWorldAK47(source: Group): Group {
+export function prepareWorldAK47(source: Group): Group {
   for (const name of WORLD_AK47.requiredNodes) requireNode(source, name);
   for (const name of WORLD_AK47.hiddenNodes) source.getObjectByName(name)?.traverse(node => { node.visible = false; });
   source.updateMatrixWorld(true);
@@ -128,20 +142,20 @@ function prepareWorldAK47(source: Group): Group {
   if (!(receiver instanceof Mesh)) throw new Error('World weapon receiver lacks geometry');
   let calibration = calibrations.get(receiver.geometry);
   if (!calibration) { calibration = measureWorldAK47(source); calibrations.set(receiver.geometry, calibration); }
-  const { bounds, scale, sourceMuzzle, front, rear, basis, grip, support } = calibration;
+  const { bounds, scale, sourceMuzzle, front, rear, basis, grip, support, supportRear, stock } = calibration;
   const mount = new Group(); mount.name = 'world-ak47-mount';
   mount.scale.setScalar(scale); mount.quaternion.copy(basis);
   mount.position.copy(gripAnchor).sub(grip.clone().applyQuaternion(basis).multiplyScalar(scale));
   mount.add(source);
   for (const [name, position] of [['ganymede-front-sight', front], ['ganymede-rear-sight', rear],
-    ['ganymede-firing-grip', grip], ['ganymede-support-grip', support]] as const) {
+    ['ganymede-firing-grip', grip], ['ganymede-support-grip', support], ['ganymede-stock-contact', stock]] as const) {
     const marker = new Group(); marker.name = name; marker.position.copy(position); source.add(marker);
   }
   source.traverse(object => { if (object instanceof Mesh) { object.castShadow = false; object.receiveShadow = true; } });
   mount.userData.calibration = { sourceForward: '-Z', sourceUp: '+Y', uniformScale: scale,
     sourceBounds: { min: bounds.min.toArray(), max: bounds.max.toArray() },
     presentationLengthMeters: WORLD_AK47.presentationLengthMeters, lengthFrame: 'weapon-parent-local-before-existing-outer-scale',
-    sourceMuzzle: sourceMuzzle.toArray(), sourceFiringGrip: grip.toArray(), sourceSupportGrip: support.toArray(),
+    sourceMuzzle: sourceMuzzle.toArray(), sourceFiringGrip: grip.toArray(), sourceSupportGrip: support.toArray(), sourceSupportRear: supportRear.toArray(), sourceStockContact: stock.toArray(),
     sightBasis: basis.toArray(), supplierAnimationClips: 0, handContact: 'runtime-review-pending' };
   return mount;
 }
@@ -218,6 +232,9 @@ export function attachWorldAK47(parentWeaponRoot: Group, options: WorldAK47Optio
     fallback.push({ mesh: object, visible: object.visible });
   });
   let state: WorldAK47State = 'loading', mount: Group | undefined;
+  const flash = new Mesh(new ConeGeometry(0.045, 0.16, 5), new MeshBasicMaterial({ color: 0xffd189, toneMapped: false, depthWrite: false }));
+  flash.name = 'world-ak47-shot-flash'; flash.rotation.x = -Math.PI / 2; flash.position.z = -0.07; flash.visible = false; muzzle.add(flash);
+  let handBinding: { hand: Object3D; quaternion: Quaternion } | undefined, requestedVisible = true;
   const oldStatus = parentWeaponRoot.userData.assetStatus, oldWeapon = parentWeaponRoot.userData.worldWeapon;
   const source = options.source ?? { id: WORLD_AK47.id, revision: WORLD_AK47.revision, url: worldAK47Url(options.baseURL, options.pageURL) };
   const lease = options.library ? acquireLibraryWeapon(options.library, source) : (options.pool ?? sharedWorldWeapons).acquire(source.url);
@@ -228,9 +245,73 @@ export function attachWorldAK47(parentWeaponRoot: Group, options: WorldAK47Optio
     rest.parent.add(muzzle); muzzle.position.copy(rest.position); muzzle.quaternion.copy(rest.quaternion); muzzle.scale.copy(rest.scale);
     muzzle.matrixAutoUpdate = rest.autoUpdate; muzzle.matrix.copy(rest.matrix); muzzle.matrixWorldNeedsUpdate = true;
   };
-  const attachment: WorldAK47Attachment = { ready, muzzle, get state() { return state; }, dispose() {
+  const placeMount = () => {
+    if (!mount) return;
+    const calibration = mount.userData.calibration;
+    if (handBinding) {
+      const { hand, quaternion } = handBinding;
+      hand.updateWorldMatrix(true, false);
+      const scale = hand.getWorldScale(new Vector3());
+      if (!(scale.x > 0) || !scale.toArray().every(Number.isFinite)
+        || Math.abs(scale.y - scale.x) > 1e-5 || Math.abs(scale.z - scale.x) > 1e-5) throw new Error('World weapon hand must have a positive uniform scale');
+      if (WORLD_AK47.sha256 !== TACTICAL_WEAPON_CALIBRATION.sha256
+        || new Vector3().fromArray(calibration.sourceFiringGrip).distanceTo(new Vector3().fromArray(TACTICAL_WEAPON_CALIBRATION.sourceGrip)) > 1e-5) throw new Error('World weapon grip calibration does not match the pinned model');
+      // The hand already inherits the character's source-to-metres scale. No legacy 0.68 socket remains in this path.
+      mount.scale.setScalar(TACTICAL_WEAPON_CALIBRATION.sourceUniformScaleToMeters / scale.x);
+      mount.quaternion.copy(quaternion).multiply(new Quaternion().fromArray(TACTICAL_WEAPON_CALIBRATION.sourceToForwardXQuaternion)).normalize();
+      mount.position.fromArray(TACTICAL_WEAPON_CALIBRATION.sourceGrip).applyQuaternion(mount.quaternion).multiplyScalar(-mount.scale.x);
+      hand.add(mount); mount.visible = requestedVisible;
+      mount.userData.calibration = { ...calibration, socket: hand.name, socketScale: scale.x, socketScaleCompensation: 1 / scale.x,
+        lengthFrame: 'world-metres-through-production-hand', handContact: 'measured-right-grip; left-contact-numerically-inspected; visual-review-pending' };
+    } else {
+      const socketScale = parentWeaponRoot.scale.x;
+      if (!(socketScale > 0) || !Number.isFinite(socketScale) || Math.abs(parentWeaponRoot.scale.y - socketScale) > 1e-6
+        || Math.abs(parentWeaponRoot.scale.z - socketScale) > 1e-6) throw new Error('World weapon socket must have a positive uniform scale');
+      mount.scale.setScalar(calibration.uniformScale / socketScale);
+      mount.quaternion.fromArray(calibration.sightBasis);
+      mount.position.copy(gripAnchor).sub(new Vector3().fromArray(calibration.sourceFiringGrip).applyQuaternion(mount.quaternion).multiplyScalar(mount.scale.x));
+      parentWeaponRoot.add(mount); mount.visible = true;
+      mount.userData.calibration = { ...calibration, socket: 'fallback', socketScale, socketScaleCompensation: 1 / socketScale,
+        lengthFrame: 'actor-metres-after-legacy-socket-scale' };
+    }
+    mount.updateMatrix();
+  };
+  const attachment: WorldAK47Attachment = { ready, muzzle, get state() { return state; },
+    get gripOffsets() {
+      if (!mount || state !== 'ready') return undefined;
+      const calibration = mount.userData.calibration, grip = new Vector3().fromArray(calibration.sourceFiringGrip);
+      const rotation = new Quaternion().fromArray(TACTICAL_WEAPON_CALIBRATION.sourceToForwardXQuaternion);
+      const offset = (value: number[]) => new Vector3().fromArray(value).sub(grip).multiplyScalar(TACTICAL_WEAPON_CALIBRATION.sourceUniformScaleToMeters).applyQuaternion(rotation);
+      return { stock: offset(calibration.sourceStockContact), support: offset(calibration.sourceSupportGrip), supportRear: offset(calibration.sourceSupportRear) };
+    },
+    setSupportFraction(fraction) {
+      if (!mount || state !== 'ready') return;
+      const at = Math.max(0, Math.min(1, Number.isFinite(fraction) ? fraction : 0)), calibration = mount.userData.calibration;
+      requireNode(mount, 'ganymede-support-grip').position.fromArray(calibration.sourceSupportGrip).lerp(new Vector3().fromArray(calibration.sourceSupportRear), at);
+      mount.userData.supportContactFraction = at;
+    },
+    bindToHand(hand, quaternion) {
+      if (state === 'disposed') return;
+      if (hand && (!quaternion || quaternion.length !== 4 || !quaternion.every(Number.isFinite))) throw new Error('Missing production hand weapon axes');
+      handBinding = hand ? { hand, quaternion: new Quaternion().fromArray(quaternion!).normalize() } : undefined;
+      placeMount();
+    },
+    setVisible(visible) { requestedVisible = visible; if (handBinding && mount) mount.visible = visible; },
+    setShot(time, at) { flash.visible = state !== 'disposed' && requestedVisible && Number.isFinite(time)
+      && at !== undefined && Number.isFinite(at) && time >= at && time - at < 0.055; },
+    contact(leftHand, forward) {
+      if (!handBinding || !mount || state !== 'ready') return undefined;
+      mount.updateWorldMatrix(true, true);
+      const grip = requireNode(mount, 'ganymede-firing-grip').getWorldPosition(new Vector3());
+      const support = requireNode(mount, 'ganymede-support-grip').getWorldPosition(new Vector3());
+      const front = requireNode(mount, 'ganymede-front-sight').getWorldPosition(new Vector3());
+      const rear = requireNode(mount, 'ganymede-rear-sight').getWorldPosition(new Vector3());
+      return { rightGripError: grip.distanceTo(handBinding.hand.getWorldPosition(new Vector3())),
+        leftGripError: support.distanceTo(leftHand.getWorldPosition(new Vector3())), sightForwardDot: front.sub(rear).normalize().dot(forward.clone().normalize()) };
+    }, dispose() {
     if (state === 'disposed') return;
     state = 'disposed'; unregister();
+    flash.removeFromParent(); flash.geometry.dispose(); flash.material.dispose();
     // Detach first: the caller's tree cleanup must not visit reference-counted GPU resources.
     restoreMuzzle(); mount?.removeFromParent(); mount = undefined; lease.release();
     for (const part of fallback) part.mesh.visible = part.visible;
@@ -244,18 +325,8 @@ export function attachWorldAK47(parentWeaponRoot: Group, options: WorldAK47Optio
   parentWeaponRoot.userData.worldWeapon = { id: WORLD_AK47.id, revision: WORLD_AK47.revision, state };
   void lease.template.then(template => {
     if (state === 'disposed') return;
-    const socketScale = parentWeaponRoot.scale.x;
-    if (!Number.isFinite(socketScale) || socketScale <= 0 || Math.abs(parentWeaponRoot.scale.y - socketScale) > 1e-6
-      || Math.abs(parentWeaponRoot.scale.z - socketScale) > 1e-6) throw new Error('World weapon socket must have a positive uniform scale');
     mount = lease.instance ? template : template.clone(true);
-    // The procedural actor socket is scaled to 0.68. Keep its pose and fallback
-    // untouched; resize the imported geometry around the same grip anchor only.
-    const compensation = 1 / socketScale;
-    mount.scale.multiplyScalar(compensation);
-    mount.position.sub(gripAnchor).multiplyScalar(compensation).add(gripAnchor);
-    mount.userData.calibration = { ...mount.userData.calibration, socketScale, socketScaleCompensation: compensation,
-      lengthFrame: 'actor-metres-after-legacy-socket-scale' };
-    parentWeaponRoot.add(mount);
+    placeMount();
     const marker = requireNode(mount, 'MuzzleDeviceTip');
     marker.add(muzzle); muzzle.position.set(0, 0, 0); muzzle.quaternion.identity(); muzzle.scale.setScalar(1);
     muzzle.matrixAutoUpdate = true; muzzle.updateMatrix(); muzzle.userData.forward = '-Z';
