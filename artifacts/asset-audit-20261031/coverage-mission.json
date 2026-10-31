@@ -1,0 +1,345 @@
+{
+  "schema": "ganymede.asset-audit.read-coverage/1",
+  "auditAt": "2026-10-31T17:53:57.350375+08:00",
+  "workspace": "/Users/penguin/VibeHack06",
+  "scope": "补齐所有 src/mission/*.ts、Locomotion、Navigation、Ballistics、SaveStore、RigAudit 的完整阅读；只读资产调用链审计。",
+  "summary": {
+    "files": 16,
+    "lines": 3365,
+    "readMode": "full-file",
+    "allStartEndHashesEqual": true,
+    "newRuntimeOrBrowserVerification": false,
+    "newGeometryValidation": false,
+    "newAPIRequests": 0,
+    "sourcePublicGitModified": false
+  },
+  "method": "先前已记录的逐行范围与本轮补读范围合并达到每文件 1..N；本轮完整读未覆盖模块。开始/结束 SHA 相等。几何、13 人物/17 动作包的既有审计直接沿用，不重跑或冒充视觉验收。",
+  "files": [
+    {
+      "path": "src/mission/Dialogue.ts",
+      "sha256": "95195133acd103175b9358e8209ec05299397a7ab2778de14c85bc1653fa095b",
+      "lines": 22,
+      "startSha256": "95195133acd103175b9358e8209ec05299397a7ab2778de14c85bc1653fa095b",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-22",
+      "conclusion": "playDialogue/finishDialogue 只更新 say/facts，lookWithin 只钳制相机；没有角色资源或骨骼动画入口。",
+      "evidence": [
+        "src/mission/Dialogue.ts:5",
+        "src/mission/Dialogue.ts:12",
+        "src/mission/Dialogue.ts:16"
+      ]
+    },
+    {
+      "path": "src/mission/Epilogue.ts",
+      "sha256": "655ed28b0a23b7245e2ceeb0010a29e4fcdb515cb3983f6fd30774386fc9a30e",
+      "lines": 102,
+      "startSha256": "655ed28b0a23b7245e2ceeb0010a29e4fcdb515cb3983f6fd30774386fc9a30e",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-102",
+      "conclusion": "S12 通过 createActor 建郑铎/罗敬/3 名 worker 和 supply-cart；扶门为距离、事实、物理队列停走，未发送扶门手部/骨骼动作。由 Simulation.updateMission 调用，人物仍经 main 的 ImportedCharacter。",
+      "evidence": [
+        "src/mission/Epilogue.ts:30",
+        "src/mission/Epilogue.ts:74",
+        "src/mission/Epilogue.ts:79",
+        "src/mission/Simulation.ts:379",
+        "src/mission/Simulation.ts:498"
+      ]
+    },
+    {
+      "path": "src/mission/Escort.ts",
+      "sha256": "e8bcab390440d26ceb034b66c67dc40501ae7dd2caef2d05e447ba0d6693a49c",
+      "lines": 197,
+      "startSha256": "e8bcab390440d26ceb034b66c67dc40501ae7dd2caef2d05e447ba0d6693a49c",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-197",
+      "conclusion": "S08 人物与 3 辆 cart 全经 createActor；换床 8 秒后更改占用事实/两车名字，不更改人形身份；main 对病人块做 patientOffset 和 CareView 程序化双手。监控邵原旧 primitive 为已知 CA-06，未新增正式换床片段。",
+      "evidence": [
+        "src/mission/Escort.ts:88",
+        "src/mission/Escort.ts:144",
+        "src/mission/Escort.ts:149",
+        "src/main.ts:485",
+        "src/main.ts:528"
+      ]
+    },
+    {
+      "path": "src/mission/Flank.ts",
+      "sha256": "c7822cc7571b88f5e7598419e7963a5adfeaff6b388069f536384cfb6a4bb3e5",
+      "lines": 159,
+      "startSha256": "c7822cc7571b88f5e7598419e7963a5adfeaff6b388069f536384cfb6a4bb3e5",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-159",
+      "conclusion": "S07 维修员/家属/孟齐/郑铎和敌兵经统一 createActor；2 辆患者车保留已知通用患者路径。分流、递备用机、喝水、交接均为 routes/facts/对白；无额外源动作载入或角色替换。",
+      "evidence": [
+        "src/mission/Flank.ts:28",
+        "src/mission/Flank.ts:92",
+        "src/mission/Flank.ts:128",
+        "src/mission/Simulation.ts:493"
+      ]
+    },
+    {
+      "path": "src/mission/Frontgate.ts",
+      "sha256": "895124ed8c8beff9903c7ed13ba4645eb6d52672531458a5ccbac42e1ea53846",
+      "lines": 144,
+      "startSha256": "895124ed8c8beff9903c7ed13ba4645eb6d52672531458a5ccbac42e1ea53846",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-144",
+      "conclusion": "S05 7 工人、郑铎、接替队员和敌兵经统一 createActor/spawnChapterGroup；接防、撤回和无线电只改路线/事实/控制模式，不在任务内创建替代模型。",
+      "evidence": [
+        "src/mission/Frontgate.ts:36",
+        "src/mission/Frontgate.ts:62",
+        "src/mission/Frontgate.ts:92",
+        "src/mission/Simulation.ts:491"
+      ]
+    },
+    {
+      "path": "src/mission/Medical.ts",
+      "sha256": "c28b55dc4249400c0ba409309b58202bb357ff66f9050c4a7cf65f01e1c01216",
+      "lines": 116,
+      "startSha256": "c28b55dc4249400c0ba409309b58202bb357ff66f9050c4a7cf65f01e1c01216",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-116",
+      "conclusion": "S11 周延/孟齐从出生即为 cart（CA-04），医师/护理员/许岚/郑铎经人形身份映射；死亡只变 name/facts。装备交付、陪坐只改事实/路线/对白，未请求卧床/陪坐动作。跳过把医师移到同一终点，不创建新资产路径。",
+      "evidence": [
+        "src/mission/Medical.ts:31",
+        "src/mission/Medical.ts:47",
+        "src/mission/Medical.ts:71",
+        "src/mission/Medical.ts:77",
+        "src/mission/Medical.ts:82"
+      ]
+    },
+    {
+      "path": "src/mission/Opening.ts",
+      "sha256": "06b3abe0642311ba5d55dd93369e05b5d03a86e7666243e847271af39e5dca7d",
+      "lines": 570,
+      "startSha256": "06b3abe0642311ba5d55dd93369e05b5d03a86e7666243e847271af39e5dca7d",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-570",
+      "conclusion": "S01/S02 人物全经 createActor/ensureDefenders/ensureInvaders；晚出生邵原/侵入者依然走主渲染导入路径。过场通过 pose/位置/aiming/down/facts 和 main 程序化姿势实现；旧存档迁移保留相容站位/终态，不新增资产 URL。拿枪、饭盒、床垫动作没有正式动画片段触发；现有三把场景枪 primitive 已在 CA-10。",
+      "evidence": [
+        "src/mission/Opening.ts:91",
+        "src/mission/Opening.ts:210",
+        "src/mission/Opening.ts:274",
+        "src/mission/Opening.ts:330",
+        "src/mission/Opening.ts:357",
+        "src/mission/Opening.ts:494"
+      ]
+    },
+    {
+      "path": "src/mission/Relief.ts",
+      "sha256": "7aaa734b0fc06a19b173a9c06760a364c58b2d779f971c5504024b0b46493e8a",
+      "lines": 129,
+      "startSha256": "7aaa734b0fc06a19b173a9c06760a364c58b2d779f971c5504024b0b46493e8a",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-129",
+      "conclusion": "S09 孟齐/郑铎/接防队员/工人/敌兵统一出生；坐下把玩家碰撞高设 1.1，起身恢复 1.8。护具调整为事实+main CareView 程序化护具和手腿，非穿戴源模型/正式动作；已有 CA-08/09。",
+      "evidence": [
+        "src/mission/Relief.ts:30",
+        "src/mission/Relief.ts:80",
+        "src/mission/Relief.ts:90",
+        "src/main.ts:493",
+        "src/presentation/CareView.ts:12"
+      ]
+    },
+    {
+      "path": "src/mission/Rescue.ts",
+      "sha256": "a9215fc21c80b39ba879d0f957bfffcfaccdf71006073df10d8afb42a5e1424f",
+      "lines": 218,
+      "startSha256": "a9215fc21c80b39ba879d0f957bfffcfaccdf71006073df10d8afb42a5e1424f",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-218",
+      "conclusion": "S10 makePatient 明确把孟齐 ally 改 cart，重建物理；这是已有 CA-04 的正式模型旁路，存档也保留。抬运使用共享位移和 CareView 手部，周延负伤只改变玩家高度/事实，固定剧情射击不绑定渲染枪口。zhou-cart 在 main 始终 occupied=false，不应写成当前 S10 会显示 CH-ZHOU 病体。",
+      "evidence": [
+        "src/mission/Rescue.ts:18",
+        "src/mission/Rescue.ts:29",
+        "src/mission/Rescue.ts:54",
+        "src/mission/Rescue.ts:63",
+        "src/mission/Rescue.ts:151",
+        "src/main.ts:564"
+      ]
+    },
+    {
+      "path": "src/mission/Simulation.ts",
+      "sha256": "cae03168625b84c6f16ff0a7aadb35139567f2e55f60eac3d815c16ae7fc2ad3",
+      "lines": 772,
+      "startSha256": "cae03168625b84c6f16ff0a7aadb35139567f2e55f60eac3d815c16ae7fc2ad3",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-772",
+      "conclusion": "完整读到 772 行：统一人口/恢复/物理/角色路线/战斗/全部任务分发。补正旧 handover 第 3 阶段晚出生 CH-MENG（ally+down），第 4 阶段仅搬动该人体；并非新版 rescue 的 cart 替换。旧 prologue/handover 改玩家 name，由现有玩家身份映射切换双臂。S03 weapon-collected 只赋 ammo/reserve/fact，装备种类不是存档字段。射击/换弹没有 NPC clip 事件，已知 CA-01/03。",
+      "evidence": [
+        "src/mission/Simulation.ts:95",
+        "src/mission/Simulation.ts:112",
+        "src/mission/Simulation.ts:265",
+        "src/mission/Simulation.ts:483",
+        "src/mission/Simulation.ts:530",
+        "src/mission/Simulation.ts:545",
+        "src/mission/Simulation.ts:549",
+        "src/mission/Simulation.ts:609"
+      ]
+    },
+    {
+      "path": "src/mission/Transfer.ts",
+      "sha256": "2c2a7ddebb1d87976547c2be1e1774f80dd509f512174bea1099a3eee2a8589a",
+      "lines": 103,
+      "startSha256": "2c2a7ddebb1d87976547c2be1e1774f80dd509f512174bea1099a3eee2a8589a",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-103",
+      "conclusion": "S06 周延/许岚/罗敬/联络员走正式身份映射，3 cart 走通用患者。手划伤/清洗包扎戴手套只写事实与对白；争论仅主视图已知 gesture/lookAway 程序姿态，没有额外装备或源 clip 切换。",
+      "evidence": [
+        "src/mission/Transfer.ts:28",
+        "src/mission/Transfer.ts:39",
+        "src/mission/Transfer.ts:67",
+        "src/mission/Transfer.ts:77",
+        "src/main.ts:562"
+      ]
+    },
+    {
+      "path": "src/actors/Locomotion.ts",
+      "sha256": "b0c39ae7dbb05b475ef81dd5acd7ba3e22244c73b74d64a0d81f5b5d796ab7ff",
+      "lines": 31,
+      "startSha256": "b0c39ae7dbb05b475ef81dd5acd7ba3e22244c73b74d64a0d81f5b5d796ab7ff",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-31",
+      "conclusion": "只选择 NPC 物理速度：步行、护送、儿童段、患者车、救援撤离。既不生成几何也不加载动作；实际移动由 Simulation 累计到 walk，再由呈现模块选择现有片段/程序化姿势。",
+      "evidence": [
+        "src/actors/Locomotion.ts:1",
+        "src/mission/Simulation.ts:304",
+        "src/mission/Simulation.ts:375"
+      ]
+    },
+    {
+      "path": "src/actors/Navigation.ts",
+      "sha256": "1699a64ecaa5d53992950b981c78a5a5d6c097c8b0ee10d59f9cdcbe5e8c76cc",
+      "lines": 90,
+      "startSha256": "1699a64ecaa5d53992950b981c78a5a5d6c097c8b0ee10d59f9cdcbe5e8c76cc",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-90",
+      "conclusion": "完整读取实体扩张与二维网格寻路；路径 y=0，阶梯/精确停靠由 Simulation 的 authored/preciseDock 分支处理。无角色或武器资产入口，无新增模型旁路。",
+      "evidence": [
+        "src/actors/Navigation.ts:34",
+        "src/actors/Navigation.ts:75",
+        "src/mission/Simulation.ts:404"
+      ]
+    },
+    {
+      "path": "src/combat/Ballistics.ts",
+      "sha256": "081fe98fac1b3ebb14464d88c12fac25f39026fbfc4bdeb5e2b98ac31c276785",
+      "lines": 40,
+      "startSha256": "081fe98fac1b3ebb14464d88c12fac25f39026fbfc4bdeb5e2b98ac31c276785",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-40",
+      "conclusion": "fire 保存 owner 与独立 origin，update 做阻力/重力/连续 trace。它不读取 GLB 枪口；shot GameEvent 丢失 actorId 的显示绑定缺口仍属 CA-03，不重复新增。",
+      "evidence": [
+        "src/combat/Ballistics.ts:15",
+        "src/combat/Ballistics.ts:23",
+        "src/mission/Simulation.ts:330",
+        "src/mission/Rescue.ts:57"
+      ]
+    },
+    {
+      "path": "src/persistence/SaveStore.ts",
+      "sha256": "1e4efcead13e5d7fbc7683a67bd530a44ae4dece4050c8ce77b0502f0d49ef48",
+      "lines": 468,
+      "startSha256": "1e4efcead13e5d7fbc7683a67bd530a44ae4dece4050c8ce77b0502f0d49ef48",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-468",
+      "conclusion": "完整读取 schema/白名单/人物与事实交叉校验/写入与备份恢复。保留身份 role/down/combat 与剧情位置，明确校验 rescue 孟齐 cart 和 medical 两 cart，恢复继续已有旁路。旧 handover phase>=3 强制孟齐 ally。没有资产 URL/修订/装备 ID/片段字段，不允许存档注入外部引用；呈现按当前 catalog 和状态重建，不保存动画混合进度。",
+      "evidence": [
+        "src/persistence/SaveStore.ts:33",
+        "src/persistence/SaveStore.ts:89",
+        "src/persistence/SaveStore.ts:220",
+        "src/persistence/SaveStore.ts:257",
+        "src/persistence/SaveStore.ts:298",
+        "src/persistence/SaveStore.ts:316"
+      ]
+    },
+    {
+      "path": "src/assets/RigAudit.ts",
+      "sha256": "ab2fb76ef4ed47e38710a034464ac75f8d153e61767207eaee7129cf9bb91981",
+      "lines": 204,
+      "startSha256": "ab2fb76ef4ed47e38710a034464ac75f8d153e61767207eaee7129cf9bb91981",
+      "unchangedDuringAudit": true,
+      "readMode": "full-file",
+      "readRanges": "1-204",
+      "conclusion": "结构离线审计：语义/层级/矩阵/蒙皮权重/片段及成人 rest 比较；明确保留手工关节、接触、儿童和实机检查。src 中没有调用 auditRig/compareAdultRigs；真实调用为 scripts/audit-character-rig.mjs 与 tests/rig-audit.test.ts。运行导入使用其自己的 CharacterRig/TacticalAnimations 合同，不应把离线工具存在当成已逐实例实机验收。",
+      "evidence": [
+        "src/assets/RigAudit.ts:41",
+        "src/assets/RigAudit.ts:60",
+        "src/assets/RigAudit.ts:180",
+        "scripts/audit-character-rig.mjs:89",
+        "tests/rig-audit.test.ts:28"
+      ]
+    }
+  ],
+  "newOrClarifiedObservations": [
+    {
+      "id": "mission-coverage-01",
+      "classification": "scenario-matrix correction",
+      "detail": "旧 handover 在 phase 3 动态创建孟齐 ally+down，仍加载 CH-MENG，phase 4 用位置搬运。现有场景矩阵此前漏记此晚出生人物；应补记预热未覆盖，而不是把所有救援路径一概归为 cart。",
+      "evidence": [
+        "src/mission/Simulation.ts:549",
+        "src/mission/Simulation.ts:556",
+        "src/persistence/SaveStore.ts:300",
+        "src/main.ts:505"
+      ]
+    },
+    {
+      "id": "mission-coverage-02",
+      "classification": "existing limitation confirmed; CA-04 clarification",
+      "detail": "新版 rescue 的孟齐为 cart；zhou-cart 在 main occupied=false，玩家第一人称随该担架移动。S11 medical 的 zhou/meng cart 才显示通用患者代理。没有独立周延病体/卧床姿势资产接入。",
+      "evidence": [
+        "src/mission/Rescue.ts:32",
+        "src/mission/Rescue.ts:86",
+        "src/main.ts:564",
+        "src/mission/Medical.ts:32"
+      ]
+    },
+    {
+      "id": "mission-coverage-03",
+      "classification": "existing missing-action evidence expanded",
+      "detail": "饭盒/床垫、风机/领装备、清洗包扎、换床、陪坐/交装备、扶门等任务动作不是新增动画源：由 facts/routes/计时/少量 CareView 或程序化骨姿实现。17 clip 不含这些剧情动作；不可把任务完成当成动作生产与手部接触验收。",
+      "evidence": [
+        "src/mission/Opening.ts:500",
+        "src/mission/Simulation.ts:585",
+        "src/mission/Simulation.ts:609",
+        "src/mission/Transfer.ts:77",
+        "src/mission/Escort.ts:144",
+        "src/mission/Medical.ts:47",
+        "src/mission/Medical.ts:82",
+        "src/mission/Epilogue.ts:74"
+      ]
+    },
+    {
+      "id": "mission-coverage-04",
+      "classification": "audit-boundary clarification",
+      "detail": "RigAudit 只在离线脚本/测试调用；运行模型有独立结构 gate，并未把该审计工具作为每次加载全权重或视觉验收。",
+      "evidence": [
+        "src/assets/RigAudit.ts:60",
+        "scripts/audit-character-rig.mjs:89",
+        "src/presentation/TacticalAnimations.ts:21"
+      ]
+    }
+  ],
+  "assetBypassVerdict": "本次没有发现此前名单以外的新模型创建旁路；补正一个旧场景晚出生人物与 S10 担架占用描述，并增强既有剧情动作/患者/穿戴/事件绑定缺口证据。当前功能代码保持不动。",
+  "evidenceBoundary": {
+    "staticCodeOnly": true,
+    "visualAcceptance": "NOT_PERFORMED",
+    "gamePlayAcceptance": "NOT_PERFORMED",
+    "newTests": "未运行；只读静态审计，沿用既有几何/模型数据。",
+    "priorModelAudit": "artifacts/asset-audit-20261031/characters-actions.json"
+  }
+}

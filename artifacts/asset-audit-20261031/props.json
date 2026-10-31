@@ -1,0 +1,3212 @@
+{
+  "schema": "ganymede.asset-audit.props/1",
+  "createdAt": "2026-10-31T09:48:42.827955+00:00",
+  "workspace": "/Users/penguin/VibeHack06",
+  "branch": "main",
+  "scope": "Read-only static source/reference audit of all25 produced Tripo props and all environment builders. No runtime screenshots/playthrough/API submissions/repairs. Full file vs targeted reads disclosed below.",
+  "counts": {
+    "producedDownloaded": 25,
+    "catalogued": 25,
+    "sourceFilesExist": 25,
+    "runtimeFilesExist": 25,
+    "sourceShaMatches": 25,
+    "runtimeShaMatches": 25,
+    "distinctPropIdsWithReplacementSlots": 7,
+    "distinctPropIdsDressingOrBackgroundOnly": 18,
+    "authoredPlacementsAcrossThreeLists": 30,
+    "placementsAcrossScenarios": 56,
+    "replacementPlacementsAcrossScenarios": 22
+  },
+  "findings": [
+    {
+      "id": "P1-S04-VEHICLE",
+      "priority": "P1",
+      "finding": "S04 military truck and transfer bus remain primitive. PROP-VEH-TRANSPORT is only an off-boundary background prop in S05/S06/S07. Architecture binding has no workers branch.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 215
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 319
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 376
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 788
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/architecture-bindings.ts",
+          "line": 109
+        }
+      ]
+    },
+    {
+      "id": "P1-CARTS",
+      "priority": "P1",
+      "finding": "All plot carts remain createPatientCart: role=cart explicitly returns no character asset; static medical spare trolley is unrelated. This includes actual patients in medical beds, damaged-wheel swap, rescue stretchers and supply cart.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/assets/character-catalog.ts",
+          "line": 226
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 93
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/characters.ts",
+          "line": 64
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/patient-cart.ts",
+          "line": 6
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 561
+        }
+      ]
+    },
+    {
+      "id": "P1-DYNAMIC-PROPS",
+      "priority": "P1",
+      "finding": "Door/lock/fan/brace/cargo/lunch production exists but gameplay paths still update primitive nodes. Static placement adapter has no fact/animation or actor linkage.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedSceneAssets.ts",
+          "line": 119
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 110
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 171
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/CareView.ts",
+          "line": 11
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 42
+        }
+      ]
+    },
+    {
+      "id": "P1-SCENE-COVERAGE",
+      "priority": "P1",
+      "finding": "25 assets referenced does not mean all scenes covered. Only frontgate/transfer/flank, medical and epilogue have scene prop placements. childhood/mainhall/nightshift/workers/escort/relief/rescue and legacy scenarios return [].",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 835
+        }
+      ]
+    },
+    {
+      "id": "P2-DRESSING",
+      "priority": "P2",
+      "finding": "Only7 unique Tripo IDs participate in fallback replacement; remaining18 are dressing/background only. Three front scenes reuse the same placement list. Shelf equipment is not worn equipment. S11 mug deliberately leaves original vessel visible, and west cabinets are untouched.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 761
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 805
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 39
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 65
+        }
+      ]
+    },
+    {
+      "id": "P2-FALLBACK",
+      "priority": "P2",
+      "finding": "Missing slot/load/bounds mismatch retains procedural fallback; grouped four machinery models swap atomically only after all load. Level ready collects errors rather than requiring zero errors; UI explicitly reports retained temporary models. Not proof these failures occurred in runtime.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedSceneAssets.ts",
+          "line": 85
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedSceneAssets.ts",
+          "line": 102
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedSceneAssets.ts",
+          "line": 115
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/chapter-transition/PreparedGameLevel.ts",
+          "line": 147
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 615
+        }
+      ]
+    },
+    {
+      "id": "P2-VISIBILITY-LOD",
+      "priority": "P2",
+      "finding": "GeneratedSceneAssets has no distance/whitebox LOD or per-frame visibility controller. Off-boundary transport/door can be distant/occluded; visual accessibility not proven here. Explicit generated architecture LOD never re-enables its whitebox target, so those LODs must not be blamed for still-primitive vehicles. Background foundations are newly created BoxGeometry.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 788
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedSceneAssets.ts",
+          "line": 147
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ArchitectureTransactions.ts",
+          "line": 307
+        }
+      ]
+    },
+    {
+      "id": "P2-DUPLICATE-LANDMARK",
+      "priority": "P2",
+      "finding": "Front environment retains original procedural distant crane while catalog and architecture add generated cranes at separate off-map positions. These are separate silhouettes, not proven exact overlap; cannot count added cranes as replacement of the old crane.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/frontgate-environment.ts",
+          "line": 82
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 766
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/architecture-bindings.ts",
+          "line": 126
+        }
+      ]
+    }
+  ],
+  "assets": [
+    {
+      "id": "PROP-TRANSFER",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb",
+      "sourcePath": "assets/source/tripo/PROP-TRANSFER/1c388cb1-fe48-4263-a1e0-7210e4451aa3-pbr-model.glb",
+      "taskId": "1c388cb1-fe48-4263-a1e0-7210e4451aa3",
+      "sha256": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+      "sourceSha256": "3f029558fb380a475fae91e5ed09700224445dc445fdae4f7d8495338ed9a56d",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 94,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-TRANSFER/1c388cb1-fe48-4263-a1e0-7210e4451aa3-pbr-model.glb",
+        "exists": true,
+        "sha256": "3f029558fb380a475fae91e5ed09700224445dc445fdae4f7d8495338ed9a56d",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb",
+        "exists": true,
+        "sha256": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "1c388cb1-fe48-4263-a1e0-7210e4451aa3",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 17042,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_1c388cb1-fe48-4263-a1e0-7210e4451aa3"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.5,
+                -0.23441840708255768,
+                -0.25887173414230347
+              ],
+              "max": [
+                0.5,
+                0.23441840708255768,
+                0.25887173414230347
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "床架、轮组、把手、背板、护栏、固定带需后制分件",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 medical spare trolley [-387,0,62]; replacement of medical-spare-trolley only",
+        "mode": "replacement",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 807
+        }
+      },
+      "uncoveredOrPotentialReuse": "S03 empty night-transfer-bed; S06/S07/S08/S10/S11 plot patient carts; S12 medical supply cart; all role=cart use procedural patient-cart",
+      "requiredPreparation": "Existing mesh can provide empty chassis. Separate wheel/rail/bed parts, patients, pillow, blanket and orderly; retain actor transforms and damage/occupancy state.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 137
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/assets/character-catalog.ts",
+          "line": 226
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 93
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/patient-cart.ts",
+          "line": 6
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 561
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Transfer.ts",
+          "line": 33
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Flank.ts",
+          "line": 33
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Escort.ts",
+          "line": 93
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Rescue.ts",
+          "line": 23
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Medical.ts",
+          "line": 32
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Epilogue.ts",
+          "line": 34
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "existing_model_missing_dynamic_part_or_state_contract"
+      ]
+    },
+    {
+      "id": "PROP-STRETCHER",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb",
+      "sourcePath": "assets/source/tripo/PROP-STRETCHER/8d8192a4-2414-497c-9ef3-019dc604fce0-pbr-model.glb",
+      "taskId": "8d8192a4-2414-497c-9ef3-019dc604fce0",
+      "sha256": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+      "sourceSha256": "f82188ebd6f314a80a28f1719f466dd6a61c4873afa29c617a20c9281538a8a6",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 126,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-STRETCHER/8d8192a4-2414-497c-9ef3-019dc604fce0-pbr-model.glb",
+        "exists": true,
+        "sha256": "f82188ebd6f314a80a28f1719f466dd6a61c4873afa29c617a20c9281538a8a6",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb",
+        "exists": true,
+        "sha256": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "8d8192a4-2414-497c-9ef3-019dc604fce0",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 7168,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_8d8192a4-2414-497c-9ef3-019dc604fce0"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.5,
+                -0.031084980815649033,
+                -0.17940440773963928
+              ],
+              "max": [
+                0.5,
+                0.031084980815649033,
+                0.17940440773963928
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "两侧杆、床布、四提把需后制挂点",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 shelf/bin lid [-387,1.062,68]; static stowed stretcher",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 809
+        }
+      },
+      "uncoveredOrPotentialReuse": "S10 empty and occupied transfer stretchers are role=cart; carry and transfer scenes do not load this prop",
+      "requiredPreparation": "Need independent handles/contact sockets/patient attachment; current flat static mesh is not evidence of carry animation.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Rescue.ts",
+          "line": 23
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Rescue.ts",
+          "line": 32
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/patient-cart.ts",
+          "line": 6
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 491
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "existing_model_missing_dynamic_part_or_state_contract"
+      ]
+    },
+    {
+      "id": "PROP-BENCH",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031/PROP-BENCH.glb",
+      "sourcePath": "assets/source/tripo/PROP-BENCH/f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247-pbr-model.glb",
+      "taskId": "f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247",
+      "sha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+      "sourceSha256": "bafcb58d9cd1d40badbbbf4a7bc05ad19b0e5df657a2dae423d156b82cd01022",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 28,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-BENCH/f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247-pbr-model.glb",
+        "exists": true,
+        "sha256": "bafcb58d9cd1d40badbbbf4a7bc05ad19b0e5df657a2dae423d156b82cd01022",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031/PROP-BENCH.glb",
+        "exists": true,
+        "sha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 4592,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.12602274119853973,
+                -0.1408012956380844,
+                -0.5
+              ],
+              "max": [
+                0.12602274119853973,
+                0.1408012956380844,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "座面、脚底接触点待标定",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 two rest benches; replaces medical-rest-bench",
+        "mode": "replacement",
+        "countPerScenario": 2,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 799
+        }
+      },
+      "uncoveredOrPotentialReuse": "S01/S02 five hall benches; S08 reception/station benches; S09 rest seat",
+      "requiredPreparation": "Reuse measured bench length; history benches have backs, requiring variant or separate backrest. S11 separate backrest remains procedural.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 25
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 94
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 86
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 183
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 84
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 64
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-DOOR-LEAF",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb",
+      "sourcePath": "assets/source/tripo/PROP-DOOR-LEAF/ce8b2327-8995-44d0-9fe5-e3551e06009e-pbr-model.glb",
+      "taskId": "ce8b2327-8995-44d0-9fe5-e3551e06009e",
+      "sha256": "e01e2ebd2db78d58ee372e3588fd7cc42e4d71ee48157a21e9c32f77141931b1",
+      "sourceSha256": "df28de7339fc37401088b2deeadae2aac7779c61d344134b4f55c79ec0bb75f3",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 158,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-DOOR-LEAF/ce8b2327-8995-44d0-9fe5-e3551e06009e-pbr-model.glb",
+        "exists": true,
+        "sha256": "df28de7339fc37401088b2deeadae2aac7779c61d344134b4f55c79ec0bb75f3",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb",
+        "exists": true,
+        "sha256": "e01e2ebd2db78d58ee372e3588fd7cc42e4d71ee48157a21e9c32f77141931b1",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "ce8b2327-8995-44d0-9fe5-e3551e06009e",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 8730,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_ce8b2327-8995-44d0-9fe5-e3551e06009e"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.1281512826681137,
+                -0.5,
+                -0.3024097979068756
+              ],
+              "max": [
+                0.1281512826681137,
+                0.5,
+                0.3024097979068756
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "门叶本体；滑动轴、碰撞与导航待标定",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 spare door at x=59 outside x=54 boundary; static background",
+        "mode": "background",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 791
+        }
+      },
+      "uncoveredOrPotentialReuse": "S01/S02 maintenance door and partition; S04 two double sliding gates; S06 shutter; S08 loading door; S12 receiving door",
+      "requiredPreparation": "Existing leaf candidate needs separate movable node, pivot, geometry/style fit and state linkage. A 2.7m leaf is not automatically a six-metre shutter or double gate.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 165
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 227
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 184
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 324
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 343
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 22
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 110
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 89
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 205
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/epilogue-environment.ts",
+          "line": 62
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/epilogue-environment.ts",
+          "line": 72
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "existing_model_missing_dynamic_part_or_state_contract"
+      ]
+    },
+    {
+      "id": "PROP-DOOR-LOCK",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb",
+      "sourcePath": "assets/source/tripo/PROP-DOOR-LOCK/6caff16f-c506-44e0-afb8-db653121a67d-pbr-model.glb",
+      "taskId": "6caff16f-c506-44e0-afb8-db653121a67d",
+      "sha256": "e786f8eddae672f6f23599fdab5efc84ad05844aa55cdf6f2e06ea4929de1955",
+      "sourceSha256": "52ff81fdb82013c7f52c31a36ae2277d234d8358a745bfb6a42211f4ea59e8d5",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 190,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-DOOR-LOCK/6caff16f-c506-44e0-afb8-db653121a67d-pbr-model.glb",
+        "exists": true,
+        "sha256": "52ff81fdb82013c7f52c31a36ae2277d234d8358a745bfb6a42211f4ea59e8d5",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb",
+        "exists": true,
+        "sha256": "e786f8eddae672f6f23599fdab5efc84ad05844aa55cdf6f2e06ea4929de1955",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "6caff16f-c506-44e0-afb8-db653121a67d",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 4691,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_6caff16f-c506-44e0-afb8-db653121a67d"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.25948432087898254,
+                -0.15692640841007233,
+                -0.5
+              ],
+              "max": [
+                0.25948432087898254,
+                0.15692640841007233,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "锁杆、手柄后制分件和局部轴",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 fixed lock on spare door x=59; no mechanics",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 794
+        }
+      },
+      "uncoveredOrPotentialReuse": "S06 actual control cabinet, hinged cover and lock rod",
+      "requiredPreparation": "Separate cover/rod, set pivot/travel, connect transfer-cover-open and transfer-gate-open; generic mounted lock does not replace complete controller.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 40
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 45
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 48
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 111
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Transfer.ts",
+          "line": 39
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "existing_model_missing_dynamic_part_or_state_contract"
+      ]
+    },
+    {
+      "id": "PROP-TERMINAL-CONSOLE",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+      "sourcePath": "assets/source/tripo/PROP-TERMINAL-CONSOLE/914701ef-9b63-4d3e-9064-b1cf113aa4fe-pbr-model.glb",
+      "taskId": "914701ef-9b63-4d3e-9064-b1cf113aa4fe",
+      "sha256": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+      "sourceSha256": "8213a3b4a182c5df399dd56e06f7a9de31e1745d18aaafdf2f4bb36dbdf415a2",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 72,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-TERMINAL-CONSOLE/914701ef-9b63-4d3e-9064-b1cf113aa4fe-pbr-model.glb",
+        "exists": true,
+        "sha256": "8213a3b4a182c5df399dd56e06f7a9de31e1745d18aaafdf2f4bb36dbdf415a2",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+        "exists": true,
+        "sha256": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "914701ef-9b63-4d3e-9064-b1cf113aa4fe",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 9819,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_914701ef-9b63-4d3e-9064-b1cf113aa4fe"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.15724784135818481,
+                -0.19664359092712402,
+                -0.5
+              ],
+              "max": [
+                0.15724784135818481,
+                0.19664359092712402,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "柜体、屏幕、开关后制；屏幕运行时生成",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "epilogue"
+        ],
+        "description": "S12 epilogue reception-console; replaces epilogue-reception-console",
+        "mode": "replacement",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 831
+        }
+      },
+      "uncoveredOrPotentialReuse": "S03 fan reset terminal; S04 checkpoint/yard/release terminals; S06 return console; S08 reception/luo/manifest and surveillance desk; S11 four desks/screens; S12 report/needs desks; legacy terminals",
+      "requiredPreparation": "Reuse furniture where proportions fit, preserve independent blank screen/UI or DepartureMonitor. Current adapter supplies static model, no screen or interaction handlers.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 88
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 325
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 344
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 366
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 98
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 78
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 80
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 177
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 10
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 33
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/epilogue-environment.ts",
+          "line": 29
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/environment.ts",
+          "line": 111
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/environment.ts",
+          "line": 164
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-TERMINAL-HANDHELD",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb",
+      "sourcePath": "assets/source/tripo/PROP-TERMINAL-HANDHELD/f8f981a5-3714-4010-a0d8-c263a49b46ba-pbr-model.glb",
+      "taskId": "f8f981a5-3714-4010-a0d8-c263a49b46ba",
+      "sha256": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+      "sourceSha256": "234b2bea3fc26466eae954075d9cc9e02db6fa0e9d6f2dc68666fad19c614c3d",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 222,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-TERMINAL-HANDHELD/f8f981a5-3714-4010-a0d8-c263a49b46ba-pbr-model.glb",
+        "exists": true,
+        "sha256": "234b2bea3fc26466eae954075d9cc9e02db6fa0e9d6f2dc68666fad19c614c3d",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb",
+        "exists": true,
+        "sha256": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "f8f981a5-3714-4010-a0d8-c263a49b46ba",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 4196,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_f8f981a5-3714-4010-a0d8-c263a49b46ba"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.1957043707370758,
+                -0.5,
+                -0.3151775896549225
+              ],
+              "max": [
+                0.1957043707370758,
+                0.5,
+                0.3151775896549225
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "手持与腰挂双用途挂点待标定",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 static handheld on desk [-397.5,1.112,53.7]",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 821
+        }
+      },
+      "uncoveredOrPotentialReuse": "No authored handheld attachment or pickup found; reports/cards/desk interfaces cannot be declared handheld use merely by name",
+      "requiredPreparation": "Potential hand/desk reuse requires explicit need and socket; do not fabricate missing handheld gameplay.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 63
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedSceneAssets.ts",
+          "line": 119
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 512
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-VEH-TUG",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031/PROP-VEH-TUG.glb",
+      "sourcePath": "assets/source/tripo/PROP-VEH-TUG/561b30a3-8648-4ea8-84ef-7091de2d68a1-pbr-model.glb",
+      "taskId": "561b30a3-8648-4ea8-84ef-7091de2d68a1",
+      "sha256": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+      "sourceSha256": "41012891d28356f8e57810b96b1620af34aa81ea59ab98f386411ad408d428da",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 83,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-VEH-TUG/561b30a3-8648-4ea8-84ef-7091de2d68a1-pbr-model.glb",
+        "exists": true,
+        "sha256": "41012891d28356f8e57810b96b1620af34aa81ea59ab98f386411ad408d428da",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031/PROP-VEH-TUG.glb",
+        "exists": true,
+        "sha256": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "561b30a3-8648-4ea8-84ef-7091de2d68a1",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 18122,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_561b30a3-8648-4ea8-84ef-7091de2d68a1"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.5,
+                -0.23017218708992004,
+                -0.26132938265800476
+              ],
+              "max": [
+                0.5,
+                0.23017218708992004,
+                0.26132938265800476
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "轮组、检修盖、拖钩后制分件；弹道代理另作",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 front-tug replacement [21,0,20]",
+        "mode": "replacement",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 762
+        }
+      },
+      "uncoveredOrPotentialReuse": "S08 tractor [-65,0,-45]; S09 tractor [49,0,87]; legacy northgate/handover tractors",
+      "requiredPreparation": "Reuse chassis, calibrate yaw/bounds and preserve physics proxy. No wheel animation in present static adapter.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 148
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 30
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/environment.ts",
+          "line": 91
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/environment.ts",
+          "line": 158
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-VEH-TRANSPORT",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb",
+      "sourcePath": "assets/source/tripo/PROP-VEH-TRANSPORT/711110bd-b12a-4cf3-863a-376aa825f30d-pbr-model.glb",
+      "taskId": "711110bd-b12a-4cf3-863a-376aa825f30d",
+      "sha256": "4fa477429e68cc40f8cd65d6ec3ee9c288cbaaeb652c8d91318a230020092a10",
+      "sourceSha256": "cc936c5892774b3c6d569ba9181a7b72cf1c56da32b5293b632031643c4e9864",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 254,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-VEH-TRANSPORT/711110bd-b12a-4cf3-863a-376aa825f30d-pbr-model.glb",
+        "exists": true,
+        "sha256": "cc936c5892774b3c6d569ba9181a7b72cf1c56da32b5293b632031643c4e9864",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb",
+        "exists": true,
+        "sha256": "4fa477429e68cc40f8cd65d6ec3ee9c288cbaaeb652c8d91318a230020092a10",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "711110bd-b12a-4cf3-863a-376aa825f30d",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 17959,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_711110bd-b12a-4cf3-863a-376aa825f30d"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.5,
+                -0.2035214751958847,
+                -0.19288723170757294
+              ],
+              "max": [
+                0.5,
+                0.2035214751958847,
+                0.19288723170757294
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "车门、轮组、尾板后制分件；原库存近景风格不足，图生新件",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 background transport [62,0,-62], outside playable x=54 boundary",
+        "mode": "background",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 788
+        }
+      },
+      "uncoveredOrPotentialReuse": "S04 militaryTruck at call319 and transferBus at call376 remain PortKit boxes/cylinders",
+      "requiredPreparation": "Reuse for compatible truck body after checking approved shape; passenger bus is a different form and may need variant. Current static mesh has no passenger/door/wheel subparts.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 215
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 233
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 319
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 376
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/architecture-bindings.ts",
+          "line": 109
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-FILTER",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-FILTER.glb",
+      "sourcePath": "assets/source/tripo/PROP-FILTER/a6423fe0-9719-45d4-b285-4ee37ae409b5-pbr-model.glb",
+      "taskId": "a6423fe0-9719-45d4-b285-4ee37ae409b5",
+      "sha256": "c5b51ec1c1bc3f0fc34e20b0485077047f03bea2a742a920660180d701e5256f",
+      "sourceSha256": "232bf081736435438f871a860680232a47287f12616bfa8e880acced07d1c6e2",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 286,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-FILTER/a6423fe0-9719-45d4-b285-4ee37ae409b5-pbr-model.glb",
+        "exists": true,
+        "sha256": "232bf081736435438f871a860680232a47287f12616bfa8e880acced07d1c6e2",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-FILTER.glb",
+        "exists": true,
+        "sha256": "c5b51ec1c1bc3f0fc34e20b0485077047f03bea2a742a920660180d701e5256f",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "a6423fe0-9719-45d4-b285-4ee37ae409b5",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 10809,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_a6423fe0-9719-45d4-b285-4ee37ae409b5"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.23325049877166748,
+                -0.2907179296016693,
+                -0.5
+              ],
+              "max": [
+                0.23325049877166748,
+                0.2907179296016693,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "滤芯、服务面板、底座后制分件",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 front-filter-machinery; two filters replace shared machinery slot",
+        "mode": "replacement",
+        "countPerScenario": 2,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 772
+        }
+      },
+      "uncoveredOrPotentialReuse": "S06 heat exchanger; S07 obsolete equipment bank; S10 machinery covers are still primitive candidate substitutions, not exact same machinery",
+      "requiredPreparation": "Use only after function/size match; filter is not automatically a heat exchanger. S03 fan blockage remains separate debris.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 71
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/flank-environment.ts",
+          "line": 88
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/rescue-environment.ts",
+          "line": 49
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 77
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-CARGO",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-CARGO.glb",
+      "sourcePath": "assets/source/tripo/PROP-CARGO/72ca2db1-f3d0-4a3b-9555-3a8be0109392-pbr-model.glb",
+      "taskId": "72ca2db1-f3d0-4a3b-9555-3a8be0109392",
+      "sha256": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+      "sourceSha256": "a036cefdf7c9a92edb81f5908986b9b2701245511f3bece3540a68b8d52581ef",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 318,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-CARGO/72ca2db1-f3d0-4a3b-9555-3a8be0109392-pbr-model.glb",
+        "exists": true,
+        "sha256": "a036cefdf7c9a92edb81f5908986b9b2701245511f3bece3540a68b8d52581ef",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-CARGO.glb",
+        "exists": true,
+        "sha256": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "72ca2db1-f3d0-4a3b-9555-3a8be0109392",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 5039,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_72ca2db1-f3d0-4a3b-9555-3a8be0109392"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.31533247232437134,
+                -0.33937782049179077,
+                -0.5
+              ],
+              "max": [
+                0.31533247232437134,
+                0.33937782049179077,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "单箱基准；三高度复用，库存近景细节不足，图生新件",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 one small box on rear shelf [-33.8,2.502,-31]",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 780
+        }
+      },
+      "uncoveredOrPotentialReuse": "S03 collected/delivered crate and camera-held crate; supply-cart cargo; S08/S09/S10 ammo/supply boxes",
+      "requiredPreparation": "Reuse small cargo with three scene states and carried view; do not replace shipping containers with small box. ARCH-CARGO-CONTAINER exists separately.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 51
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 120
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 132
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 42
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 224
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/patient-cart.ts",
+          "line": 18
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 167
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 66
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/rescue-environment.ts",
+          "line": 57
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-PUMP",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-PUMP.glb",
+      "sourcePath": "assets/source/tripo/PROP-PUMP/30ddf85f-f5f3-44d5-9b84-3535a0f1425e-pbr-model.glb",
+      "taskId": "30ddf85f-f5f3-44d5-9b84-3535a0f1425e",
+      "sha256": "ea37539ae6da8e0c56cd99001471de30b7ab55f8eab2586549dba0c66c392890",
+      "sourceSha256": "4de2d7d9a2fc84316ae24c8fe9c512a64a3d8eb2284137035467b8f9e50ef7c9",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 350,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-PUMP/30ddf85f-f5f3-44d5-9b84-3535a0f1425e-pbr-model.glb",
+        "exists": true,
+        "sha256": "4de2d7d9a2fc84316ae24c8fe9c512a64a3d8eb2284137035467b8f9e50ef7c9",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-PUMP.glb",
+        "exists": true,
+        "sha256": "ea37539ae6da8e0c56cd99001471de30b7ab55f8eab2586549dba0c66c392890",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "30ddf85f-f5f3-44d5-9b84-3535a0f1425e",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 10485,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_30ddf85f-f5f3-44d5-9b84-3535a0f1425e"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.2847839295864105,
+                -0.23878398537635803,
+                -0.5
+              ],
+              "max": [
+                0.2847839295864105,
+                0.23878398537635803,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "泵体、机座、检修盖后制分件",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 two pumps in shared front-filter-machinery slot",
+        "mode": "replacement",
+        "countPerScenario": 2,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 775
+        }
+      },
+      "uncoveredOrPotentialReuse": "S07 pump room/obsolete units and S10 machinery are still authored primitive assemblies",
+      "requiredPreparation": "Do not claim all pipeline/plant equipment is the same pump; separate rotors/valves if actual movement needed.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/flank-environment.ts",
+          "line": 68
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/flank-environment.ts",
+          "line": 88
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/rescue-environment.ts",
+          "line": 49
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-FAN",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-FAN.glb",
+      "sourcePath": "assets/source/tripo/PROP-FAN/f6b963d0-cdc7-4ea2-939c-b4ed3b437fea-pbr-model.glb",
+      "taskId": "f6b963d0-cdc7-4ea2-939c-b4ed3b437fea",
+      "sha256": "8a0b1f1ad9bfcac49d8aa0587ad94409f758e5ffc34a2c8e5f5f956b19d97910",
+      "sourceSha256": "247508f6c9680631d86e679e3370d1caa069c36562fd36a81eade680775816a6",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 382,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-FAN/f6b963d0-cdc7-4ea2-939c-b4ed3b437fea-pbr-model.glb",
+        "exists": true,
+        "sha256": "247508f6c9680631d86e679e3370d1caa069c36562fd36a81eade680775816a6",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-FAN.glb",
+        "exists": true,
+        "sha256": "8a0b1f1ad9bfcac49d8aa0587ad94409f758e5ffc34a2c8e5f5f956b19d97910",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "f6b963d0-cdc7-4ea2-939c-b4ed3b437fea",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 9437,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_f6b963d0-cdc7-4ea2-939c-b4ed3b437fea"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.25746995210647583,
+                -0.497150719165802,
+                -0.5
+              ],
+              "max": [
+                0.25746995210647583,
+                0.497150719165802,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "壳、叶轮、格栅后制分件；1.2/2m实例",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 one fan on fixed staging block [48,3.402,-32]",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 778
+        }
+      },
+      "uncoveredOrPotentialReuse": "S03 mission-critical fan, rotor, blockage, indicator and reset terminal remain primitive",
+      "requiredPreparation": "Need separate housing/rotor/blockage or generated subparts; bind fan-cleared/fan-restarted; source one mesh is not animated fan.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 65
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 171
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Simulation.ts",
+          "line": 582
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "existing_model_missing_dynamic_part_or_state_contract"
+      ]
+    },
+    {
+      "id": "PROP-TOOL-BAG",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb",
+      "sourcePath": "assets/source/tripo/PROP-TOOL-BAG/0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5-pbr-model.glb",
+      "taskId": "0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5",
+      "sha256": "936b657dd2151be5ae36c3a65b7625b6fc1752299a7e35716a03ab5153d31650",
+      "sourceSha256": "b1e5648ce9369f954f910e4b93aa4d1d2005cbf38f88ece011cc790100ebf2b7",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 414,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-TOOL-BAG/0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5-pbr-model.glb",
+        "exists": true,
+        "sha256": "b1e5648ce9369f954f910e4b93aa4d1d2005cbf38f88ece011cc790100ebf2b7",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb",
+        "exists": true,
+        "sha256": "936b657dd2151be5ae36c3a65b7625b6fc1752299a7e35716a03ab5153d31650",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 5496,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.31173914670944214,
+                -0.397460013628006,
+                -0.5
+              ],
+              "max": [
+                0.31173914670944214,
+                0.397460013628006,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "挂身、放桌、递交挂点另作",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 rear shelf [-34.8,1.352,-30.36]",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 782
+        }
+      },
+      "uncoveredOrPotentialReuse": "S01/S02 belongings boxes/bags; S03 workshop and S06 repair bench could use compatible storage bag",
+      "requiredPreparation": "Candidate reuse after silhouette/purpose match, not proof that every generic belongings box is a tool bag.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 108
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 109
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 99
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-TOOL-ROLL",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb",
+      "sourcePath": "assets/source/tripo/PROP-TOOL-ROLL/ad2d5d2a-a635-4a84-8341-be625ac6cae5-pbr-model.glb",
+      "taskId": "ad2d5d2a-a635-4a84-8341-be625ac6cae5",
+      "sha256": "ca5d918c44c649e0149d63b3eb68c6e5a61981b16c3d4e25509a8fe64a1722bd",
+      "sourceSha256": "56c03b2ce98ca994e5ef6c98348c3a86e15f7fba19dc684c82ddd39e48b4b4b3",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 446,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-TOOL-ROLL/ad2d5d2a-a635-4a84-8341-be625ac6cae5-pbr-model.glb",
+        "exists": true,
+        "sha256": "56c03b2ce98ca994e5ef6c98348c3a86e15f7fba19dc684c82ddd39e48b4b4b3",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb",
+        "exists": true,
+        "sha256": "ca5d918c44c649e0149d63b3eb68c6e5a61981b16c3d4e25509a8fe64a1722bd",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "ad2d5d2a-a635-4a84-8341-be625ac6cae5",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 4787,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_ad2d5d2a-a635-4a84-8341-be625ac6cae5"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.23423536121845245,
+                -0.20957869291305542,
+                -0.5
+              ],
+              "max": [
+                0.23423536121845245,
+                0.20957869291305542,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "工具卷独立；无需全人物变体",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 rear shelf [-33.8,1.352,-30.38]",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 784
+        }
+      },
+      "uncoveredOrPotentialReuse": "S03 night toolbench and S06 repair tools",
+      "requiredPreparation": "Existing tool roll can replace group if scale/layout fit; individual interactive tools require separated mesh.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 109
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 99
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-TOOL-LUNCHBOX",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb",
+      "sourcePath": "assets/source/tripo/PROP-TOOL-LUNCHBOX/f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec-pbr-model.glb",
+      "taskId": "f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec",
+      "sha256": "b84562c1a10554721ab50b58e7f0d2f9b8ad1eae03d04d19efca2738376e63b4",
+      "sourceSha256": "b78ffa416f0e2995970011de78a1865ef5f247f96e33a1071fc0c7a215212925",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 478,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-TOOL-LUNCHBOX/f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec-pbr-model.glb",
+        "exists": true,
+        "sha256": "b78ffa416f0e2995970011de78a1865ef5f247f96e33a1071fc0c7a215212925",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb",
+        "exists": true,
+        "sha256": "b84562c1a10554721ab50b58e7f0d2f9b8ad1eae03d04d19efca2738376e63b4",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 3328,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.3599480986595154,
+                -0.40197446942329407,
+                -0.5
+              ],
+              "max": [
+                0.3599480986595154,
+                0.40197446942329407,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "独立可携带饭盒",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "frontgate",
+          "transfer",
+          "flank"
+        ],
+        "description": "S05/S06/S07 rear shelf [-32.8,2.202,-30.38]",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 786
+        }
+      },
+      "uncoveredOrPotentialReuse": "S01 packed lunch and spilled lunch narrative props remain primitive",
+      "requiredPreparation": "Closed produced box needs open lid, food/loose contents and spilled state; do not count shelf decoration as lunch-packed sequence integration.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 99
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 194
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 230
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Opening.ts",
+          "line": 500
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "existing_model_missing_dynamic_part_or_state_contract"
+      ]
+    },
+    {
+      "id": "PROP-RADIO-PACK",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb",
+      "sourcePath": "assets/source/tripo/PROP-RADIO-PACK/1301e9a7-c909-4b44-9218-0160fbd9a0cb-pbr-model.glb",
+      "taskId": "1301e9a7-c909-4b44-9218-0160fbd9a0cb",
+      "sha256": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+      "sourceSha256": "0ec3cb9ff4b2b28dae7f4957b72d7d2b7ef3c3324c12e2d01bb01025842d48f6",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 510,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-RADIO-PACK/1301e9a7-c909-4b44-9218-0160fbd9a0cb-pbr-model.glb",
+        "exists": true,
+        "sha256": "0ec3cb9ff4b2b28dae7f4957b72d7d2b7ef3c3324c12e2d01bb01025842d48f6",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb",
+        "exists": true,
+        "sha256": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "1301e9a7-c909-4b44-9218-0160fbd9a0cb",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 7124,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_1301e9a7-c909-4b44-9218-0160fbd9a0cb"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.21003249287605286,
+                -0.5,
+                -0.3248141407966614
+              ],
+              "max": [
+                0.21003249287605286,
+                0.5,
+                0.3248141407966614
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "背负挂点；耳麦分开；线缆后制",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 table [-400.6,1.112,68.65]; stowed only",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 817
+        }
+      },
+      "uncoveredOrPotentialReuse": "S06 and S09 tabletop radios remain box+antenna; character equipment not attached through this asset",
+      "requiredPreparation": "Backpack radio is not necessarily a tabletop radio. Check shape; add attachment only where design calls for pack.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 91
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 89
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 63
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-RADIO-HEADSET",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb",
+      "sourcePath": "assets/source/tripo/PROP-RADIO-HEADSET/ce2057ec-310e-4711-a656-ab74a7d5f73f-pbr-model.glb",
+      "taskId": "ce2057ec-310e-4711-a656-ab74a7d5f73f",
+      "sha256": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+      "sourceSha256": "115f17e668682f67f14bda4855885065bcd43dd6f570fd2982fb2dd0af208304",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 542,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-RADIO-HEADSET/ce2057ec-310e-4711-a656-ab74a7d5f73f-pbr-model.glb",
+        "exists": true,
+        "sha256": "115f17e668682f67f14bda4855885065bcd43dd6f570fd2982fb2dd0af208304",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb",
+        "exists": true,
+        "sha256": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "ce2057ec-310e-4711-a656-ab74a7d5f73f",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 4656,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_ce2057ec-310e-4711-a656-ab74a7d5f73f"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.21589766442775726,
+                -0.40636977553367615,
+                -0.5
+              ],
+              "max": [
+                0.21589766442775726,
+                0.40636977553367615,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "头部挂点与麦克风方向待适配",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 table [-400,1.112,68.72]; no wearer",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 819
+        }
+      },
+      "uncoveredOrPotentialReuse": "No independent headset attachment path for production characters; current dialogue/radio logic has no visual equipment linkage",
+      "requiredPreparation": "Need explicit head socket and side/orientation clearance if on-body design requires; absence not a claim of a missing named interaction.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 63
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 140
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "potential_attachment_requires_character_mesh_inspection_before_addition"
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-CHEST",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb",
+      "sourcePath": "assets/source/tripo/PROP-ARMOR-CHEST/840ece9e-0e2f-4a39-933f-68729b55ffa4-pbr-model.glb",
+      "taskId": "840ece9e-0e2f-4a39-933f-68729b55ffa4",
+      "sha256": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+      "sourceSha256": "fbdac8521d6078cb7c6aed001d81042bd0d7e180e0b0a3800dd7079675a63079",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 574,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-ARMOR-CHEST/840ece9e-0e2f-4a39-933f-68729b55ffa4-pbr-model.glb",
+        "exists": true,
+        "sha256": "fbdac8521d6078cb7c6aed001d81042bd0d7e180e0b0a3800dd7079675a63079",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb",
+        "exists": true,
+        "sha256": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "840ece9e-0e2f-4a39-933f-68729b55ffa4",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 7063,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_840ece9e-0e2f-4a39-933f-68729b55ffa4"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.39480137825012207,
+                -0.5,
+                -0.4739276170730591
+              ],
+              "max": [
+                0.39480137825012207,
+                0.5,
+                0.4739276170730591
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "胸甲完整附件；适配人物胸腹骨骼",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 stowed plate [-405.7,1.112,56.65]",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 811
+        }
+      },
+      "uncoveredOrPotentialReuse": "No independent armor attachment path. Fallback soldiers have procedural armor; generated bodies may bake clothing/equipment and need visual review",
+      "requiredPreparation": "Do not duplicate armor already present in character mesh; asset not proved fitted to a rig.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/characters.ts",
+          "line": 86
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 140
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 145
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "potential_attachment_requires_character_mesh_inspection_before_addition"
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-LEFT-BRACE",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+      "sourcePath": "assets/source/tripo/PROP-ARMOR-LEFT-BRACE/98939ba8-5a7f-4895-94e2-90f76dd807cc-pbr-model.glb",
+      "taskId": "98939ba8-5a7f-4895-94e2-90f76dd807cc",
+      "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+      "sourceSha256": "28cdb4035899713a36fe5e73e9279819bee8f2f2a9da10b536c2168a5f6953fb",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 606,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-ARMOR-LEFT-BRACE/98939ba8-5a7f-4895-94e2-90f76dd807cc-pbr-model.glb",
+        "exists": true,
+        "sha256": "28cdb4035899713a36fe5e73e9279819bee8f2f2a9da10b536c2168a5f6953fb",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+        "exists": true,
+        "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "98939ba8-5a7f-4895-94e2-90f76dd807cc",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 5641,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_98939ba8-5a7f-4895-94e2-90f76dd807cc"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.31692633032798767,
+                -0.5,
+                -0.25358349084854126
+              ],
+              "max": [
+                0.31692633032798767,
+                0.5,
+                0.25358349084854126
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "明确左膝；铰链、绑带、支架后制分件",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 shelf [-405.05,1.112,56.7]; no leg",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 813
+        }
+      },
+      "uncoveredOrPotentialReuse": "S09 brace adjustment and S08/S10 care/carry first-person legs use CareView primitive brace",
+      "requiredPreparation": "Separate straps/hinge, verify anatomical left and contact, attach under knee joints; preserve zhou-brace-adjusted state.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/CareView.ts",
+          "line": 11
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/CareView.ts",
+          "line": 29
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 97
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 118
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/mission/Relief.ts",
+          "line": 90
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/main.ts",
+          "line": 485
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "existing_model_missing_dynamic_part_or_state_contract"
+      ]
+    },
+    {
+      "id": "PROP-ARMOR-HELMET",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb",
+      "sourcePath": "assets/source/tripo/PROP-ARMOR-HELMET/2f160991-6325-4ede-83b7-4e71ffc5ccba-pbr-model.glb",
+      "taskId": "2f160991-6325-4ede-83b7-4e71ffc5ccba",
+      "sha256": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+      "sourceSha256": "45793603d143012d6683072156e1a209fc325512bba8b0c3dcc84b01555d8185",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 638,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-ARMOR-HELMET/2f160991-6325-4ede-83b7-4e71ffc5ccba-pbr-model.glb",
+        "exists": true,
+        "sha256": "45793603d143012d6683072156e1a209fc325512bba8b0c3dcc84b01555d8185",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb",
+        "exists": true,
+        "sha256": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "2f160991-6325-4ede-83b7-4e71ffc5ccba",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 6138,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_2f160991-6325-4ede-83b7-4e71ffc5ccba"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.3688441812992096,
+                -0.5,
+                -0.42772576212882996
+              ],
+              "max": [
+                0.3688441812992096,
+                0.5,
+                0.42772576212882996
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "敌兵基础装备；头部挂点待适配",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 bin lid [-387,1.062,56]; recovered loose item",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 815
+        }
+      },
+      "uncoveredOrPotentialReuse": "No independent helmet attachment path; fallback enemy helmet is primitive; production body appearance belongs to character audit",
+      "requiredPreparation": "No claim every character needs this helmet. Inspect existing head mesh before adding, prevent double helmet.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/characters.ts",
+          "line": 109
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 145
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "potential_attachment_requires_character_mesh_inspection_before_addition"
+      ]
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+      "sourcePath": "assets/source/tripo/PROP-MEDICAL-BAG/76629177-8de5-4c65-a8dc-34dcfd2b938b-pbr-model.glb",
+      "taskId": "76629177-8de5-4c65-a8dc-34dcfd2b938b",
+      "sha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+      "sourceSha256": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 50,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-MEDICAL-BAG/76629177-8de5-4c65-a8dc-34dcfd2b938b-pbr-model.glb",
+        "exists": true,
+        "sha256": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+        "exists": true,
+        "sha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "76629177-8de5-4c65-a8dc-34dcfd2b938b",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 5518,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_76629177-8de5-4c65-a8dc-34dcfd2b938b"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.2999960780143738,
+                -0.35750243067741394,
+                -0.5
+              ],
+              "max": [
+                0.2999960780143738,
+                0.35750243067741394,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "护理包独立；敷料毯另后制，不并入人体",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 bin lid [-417,1.062,56]",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 803
+        }
+      },
+      "uncoveredOrPotentialReuse": "Fallback medic bag primitive; S06 first-aid box is a distinct fixed item; handheld treatment props not supplied by a closed bag",
+      "requiredPreparation": "Potential separate medic bag attachment after inspecting current generated medic clothing; not a replacement for saline/dressings.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/characters.ts",
+          "line": 101
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 86
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+          "line": 145
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances",
+        "potential_attachment_requires_character_mesh_inspection_before_addition"
+      ]
+    },
+    {
+      "id": "PROP-LIFE-MUG",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+      "sourcePath": "assets/source/tripo/PROP-LIFE-MUG/a509e55e-d414-42db-ba04-1c2b0a44b03b-pbr-model.glb",
+      "taskId": "a509e55e-d414-42db-ba04-1c2b0a44b03b",
+      "sha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+      "sourceSha256": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 39,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-LIFE-MUG/a509e55e-d414-42db-ba04-1c2b0a44b03b-pbr-model.glb",
+        "exists": true,
+        "sha256": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+        "exists": true,
+        "sha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "a509e55e-d414-42db-ba04-1c2b0a44b03b",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 3626,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_a509e55e-d414-42db-ba04-1c2b0a44b03b"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.43909358978271484,
+                -0.3714621067047119,
+                -0.5
+              ],
+              "max": [
+                0.43909358978271484,
+                0.3714621067047119,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "单杯；库存未检出贴合近景款，图生新件",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 water table [-414.16,.962,60.39]; added beside retained cylinder vessel",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 805
+        }
+      },
+      "uncoveredOrPotentialReuse": "S06 steel mug and S09 mug; original S11 cylinder vessel still present",
+      "requiredPreparation": "Static mugs reusable; bottle is a distinct asset. No proof of exact overlap: positions differ intentionally, but original visible proxy is not replaced.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 92
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 87
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 65
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-SAMPLE-CABINET",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb",
+      "sourcePath": "assets/source/tripo/PROP-SAMPLE-CABINET/b7566df9-bdcd-4133-bbac-c01576ba79ca-pbr-model.glb",
+      "taskId": "b7566df9-bdcd-4133-bbac-c01576ba79ca",
+      "sha256": "40eca6cd7e558e0668df0f3791f487eabf6f5a13ceb876cf05fad40087d8b165",
+      "sourceSha256": "e6668bbf6876af59b36f8d6e423fb6c3c8355550c325668d0eeff5911e728dad",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 670,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-SAMPLE-CABINET/b7566df9-bdcd-4133-bbac-c01576ba79ca-pbr-model.glb",
+        "exists": true,
+        "sha256": "e6668bbf6876af59b36f8d6e423fb6c3c8355550c325668d0eeff5911e728dad",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb",
+        "exists": true,
+        "sha256": "40eca6cd7e558e0668df0f3791f487eabf6f5a13ceb876cf05fad40087d8b165",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "b7566df9-bdcd-4133-bbac-c01576ba79ca",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 7407,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_b7566df9-bdcd-4133-bbac-c01576ba79ca"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.21986743807792664,
+                -0.5,
+                -0.3536636531352997
+              ],
+              "max": [
+                0.21986743807792664,
+                0.5,
+                0.3536636531352997
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "柜门、抽屉／存放槽后制；实际观看距离另验",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 three east lockers at x[-388.05,-387,-385.95], z39; replaces medical-sample-cabinets",
+        "mode": "replacement",
+        "countPerScenario": 3,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 825
+        }
+      },
+      "uncoveredOrPotentialReuse": "S11 west lockers, S03 care cabinets, S08 storage cabinet, S09 lockers; S01 toppled and fire cabinet are different variants",
+      "requiredPreparation": "Use only matching shape; toppled/open/fire cabinet requires variant or material/door separation.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 39
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 134
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 179
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 93
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 139
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    },
+    {
+      "id": "PROP-SAMPLE-CORECASE",
+      "provider": "Tripo",
+      "runtimePath": "assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb",
+      "sourcePath": "assets/source/tripo/PROP-SAMPLE-CORECASE/96f7adc2-ca55-42ab-864d-333a01fe0e83-pbr-model.glb",
+      "taskId": "96f7adc2-ca55-42ab-864d-333a01fe0e83",
+      "sha256": "341ff92746ab75956402abf21604c5aaf186ee14fd5e4fc6177a9386dd82edf6",
+      "sourceSha256": "a8ea25df78c93292849e83ea11ba2393fad6b0944281e8f9526843ca921b7a7d",
+      "status": "prepared-integration-candidate-rendering-pending",
+      "catalog_line": 702,
+      "source": {
+        "path": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-SAMPLE-CORECASE/96f7adc2-ca55-42ab-864d-333a01fe0e83-pbr-model.glb",
+        "exists": true,
+        "sha256": "a8ea25df78c93292849e83ea11ba2393fad6b0944281e8f9526843ca921b7a7d",
+        "matchesCatalog": true
+      },
+      "runtime": {
+        "path": "/Users/penguin/VibeHack06/public/assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb",
+        "exists": true,
+        "sha256": "341ff92746ab75956402abf21604c5aaf186ee14fd5e4fc6177a9386dd82edf6",
+        "matchesCatalog": true
+      },
+      "production": {
+        "status": "downloaded",
+        "taskId": "96f7adc2-ca55-42ab-864d-333a01fe0e83",
+        "consumedCredits": 40,
+        "metrics": {
+          "triangles": 4416,
+          "meshes": 1,
+          "primitives": 1,
+          "nodes": 1,
+          "materials": 1,
+          "images": 3,
+          "skins": 0,
+          "animations": 0,
+          "node_names": [
+            "tripo_node_96f7adc2-ca55-42ab-864d-333a01fe0e83"
+          ],
+          "raw_accessor_bounds_not_meters": [
+            {
+              "min": [
+                -0.19621585309505463,
+                -0.17366966605186462,
+                -0.5
+              ],
+              "max": [
+                0.19621585309505463,
+                0.17366966605186462,
+                0.5
+              ]
+            }
+          ],
+          "external_resources": []
+        },
+        "mechanicalPending": "独立冰芯匣；柜与匣分别装配",
+        "sourceReportPrepared": false,
+        "sourceReportValidated": false
+      },
+      "placement": {
+        "scenarios": [
+          "medical"
+        ],
+        "description": "S11 bin lid [-387,1.062,50]; closed static case",
+        "mode": "dressing",
+        "countPerScenario": 1,
+        "evidence": {
+          "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+          "line": 823
+        }
+      },
+      "uncoveredOrPotentialReuse": "S03 samples still cylinders on bench; no opening/insertion state on produced case",
+      "requiredPreparation": "Case can dress/store samples, but does not replace visible loose ice core itself; open-case/icecore parts missing from production inventory.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 148
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedSceneAssets.ts",
+          "line": 119
+        }
+      ],
+      "coverageVerdict": "partial-static-placement; not all matching or interactive instances covered",
+      "gapClasses": [
+        "existing_generated_base_not_connected_to_all_relevant_instances"
+      ]
+    }
+  ],
+  "additionalVisibleNeeds": [
+    {
+      "id": "mattress-and-pillow",
+      "visibleObjects": "S01/S02 movable mattress; S08 pillow/card; patient cart pillow/blanket",
+      "inventoryComparison": "No independent produced mattress/pillow/blanket. TRANSFER has empty base and STRETCHER is not a loose mattress. CC0 bedroll exists but has not been visually matched and current user requires generated final assets.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 112
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+          "line": 185
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/patient-cart.ts",
+          "line": 24
+        }
+      ],
+      "gapClass": "no_matching_generated_dedicated_source_found",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    },
+    {
+      "id": "medical-iv-curtain",
+      "visibleObjects": "S11 IV stand/bag/line; movable ward curtain",
+      "inventoryComparison": "No exact generated item among current source IDs. MEDICAL-BAG and SAMPLE-CABINET cannot replace them; curtain needs state-controlled geometry/cloth panel.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 68
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 77
+        }
+      ],
+      "gapClass": "no_matching_generated_dedicated_source_found",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    },
+    {
+      "id": "sink-dressing-firstaid",
+      "visibleObjects": "S06 sink/faucet, first-aid box and treatment roll",
+      "inventoryComparison": "No exact generated sink/faucet/dressing item. Medical bag is not sink or dressing; first-aid-box may adapt cargo/cabinet only after shape review.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 79
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 86
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 89
+        }
+      ],
+      "gapClass": "no_matching_generated_dedicated_source_found",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    },
+    {
+      "id": "workbench-shelf-table",
+      "visibleObjects": "S03 workbenches/racks, S06 toolbench, S11 six lidded bins and four desks",
+      "inventoryComparison": "TERMINAL-CONSOLE or SAMPLE-CABINET can cover some shapes, not all. Independent shelf/bin/workbench geometry not produced as matching ID; local CC0 workbench candidate exists but is not approved final.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 109
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 116
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 99
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 10
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+          "line": 45
+        }
+      ],
+      "gapClass": "existing_generated_bases_cover_some_shapes_but_not_all",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    },
+    {
+      "id": "table-radio-water-bottle",
+      "visibleObjects": "S06/S09 table radios and water bottles",
+      "inventoryComparison": "RADIO-PACK is backpack form and LIFE-MUG is cup; exact tabletop radio/bottle production not found. Reuse only after actual form review.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 91
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+          "line": 87
+        }
+      ],
+      "gapClass": "no_matching_generated_dedicated_source_found",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    },
+    {
+      "id": "sample-core-loose",
+      "visibleObjects": "S03 loose ice-core cylinders with end caps",
+      "inventoryComparison": "SAMPLE-CORECASE is closed container; no independent loose ice core found in produced inventory.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 148
+        }
+      ],
+      "gapClass": "no_matching_generated_dedicated_source_found",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    },
+    {
+      "id": "food-open-lunch",
+      "visibleObjects": "S01 open/spilled lunch and lid/loose contents",
+      "inventoryComparison": "Closed TOOL-LUNCHBOX exists; missing separated/open state and contents, rather than a wholly unproduced lunchbox.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 99
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+          "line": 194
+        }
+      ],
+      "gapClass": "existing_model_missing_dynamic_part_or_variant_contract",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    },
+    {
+      "id": "gates-controller",
+      "visibleObjects": "Wide double gates, shutter and control-cabinet cover/rod",
+      "inventoryComparison": "Generic leaf/lock exist; variant fit and articulated subparts remain unprepared. Not automatically a request to buy another model.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+          "line": 184
+        },
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+          "line": 40
+        }
+      ],
+      "gapClass": "existing_model_missing_dynamic_part_or_variant_contract",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    },
+    {
+      "id": "valves",
+      "visibleObjects": "No separately named gameplay valve found in inspected environment/interaction code",
+      "inventoryComparison": "Local pipe-large-valve and pipe-glass-large-valve paths exist; production pipe modules exist. Do not invent a missing authored valve from generic industrial setting alone.",
+      "evidence": [
+        {
+          "file": "/Users/penguin/VibeHack06/src/presentation/flank-environment.ts",
+          "line": 72
+        }
+      ],
+      "gapClass": "not_an_established_authored_missing_object",
+      "evidenceLimit": "No matching exact generated source in current Tripo/Hyper3D inventory; not a claim that no possible third-party asset exists anywhere."
+    }
+  ],
+  "localInventoryCandidates": [
+    {
+      "id": "kenney-car-kit/truck-flat",
+      "path": "/Users/penguin/Assets/lowpoly-military/packs/kenney-car-kit/models/truck-flat.glb",
+      "exists": true,
+      "license": "CC0-1.0",
+      "scope": "metadata and path checked; not visually approved; user requires generated final map assets, so inventory is comparison evidence, not an authorized final substitution"
+    },
+    {
+      "id": "kenney-car-kit/truck",
+      "path": "/Users/penguin/Assets/lowpoly-military/packs/kenney-car-kit/models/truck.glb",
+      "exists": true,
+      "license": "CC0-1.0",
+      "scope": "metadata and path checked; not visually approved; user requires generated final map assets, so inventory is comparison evidence, not an authorized final substitution"
+    },
+    {
+      "id": "kenney-factory-kit/pipe-glass-large-valve",
+      "path": "/Users/penguin/Assets/lowpoly-military/packs/kenney-factory-kit/models/pipe-glass-large-valve.glb",
+      "exists": true,
+      "license": "CC0-1.0",
+      "scope": "metadata and path checked; not visually approved; user requires generated final map assets, so inventory is comparison evidence, not an authorized final substitution"
+    },
+    {
+      "id": "kenney-factory-kit/pipe-large-valve",
+      "path": "/Users/penguin/Assets/lowpoly-military/packs/kenney-factory-kit/models/pipe-large-valve.glb",
+      "exists": true,
+      "license": "CC0-1.0",
+      "scope": "metadata and path checked; not visually approved; user requires generated final map assets, so inventory is comparison evidence, not an authorized final substitution"
+    },
+    {
+      "id": "kenney-survival-kit/bedroll",
+      "path": "/Users/penguin/Assets/lowpoly-military/packs/kenney-survival-kit/models/bedroll.glb",
+      "exists": true,
+      "license": "CC0-1.0",
+      "scope": "metadata and path checked; not visually approved; user requires generated final map assets, so inventory is comparison evidence, not an authorized final substitution"
+    },
+    {
+      "id": "kenney-survival-kit/workbench",
+      "path": "/Users/penguin/Assets/lowpoly-military/packs/kenney-survival-kit/models/workbench.glb",
+      "exists": true,
+      "license": "CC0-1.0",
+      "scope": "metadata and path checked; not visually approved; user requires generated final map assets, so inventory is comparison evidence, not an authorized final substitution"
+    },
+    {
+      "id": "rgpoly-army-pack-free/truck-d",
+      "path": "/Users/penguin/Assets/lowpoly-military/packs/rgpoly-army-pack-free/models/truck-d.glb",
+      "exists": true,
+      "license": "CC0-1.0",
+      "scope": "metadata and path checked; not visually approved; user requires generated final map assets, so inventory is comparison evidence, not an authorized final substitution"
+    },
+    {
+      "id": "rgpoly-army-pack-free/truck-f",
+      "path": "/Users/penguin/Assets/lowpoly-military/packs/rgpoly-army-pack-free/models/truck-f.glb",
+      "exists": true,
+      "license": "CC0-1.0",
+      "scope": "metadata and path checked; not visually approved; user requires generated final map assets, so inventory is comparison evidence, not an authorized final substitution"
+    }
+  ],
+  "allProducedSourceDirectoryIds": [
+    "ARCH-BEAM-STEEL",
+    "ARCH-CARGO-CONTAINER",
+    "CH-DOCTOR",
+    "CH-ENEMY",
+    "CH-FATHER",
+    "CH-LU",
+    "CH-LU-CHILD",
+    "CH-LUO",
+    "CH-MENG",
+    "CH-SHAO",
+    "CH-SHEN",
+    "CH-XU",
+    "CH-ZHAO",
+    "CH-ZHENG",
+    "CH-ZHOU",
+    "PROP-ARMOR-CHEST",
+    "PROP-ARMOR-HELMET",
+    "PROP-ARMOR-LEFT-BRACE",
+    "PROP-BENCH",
+    "PROP-CARGO",
+    "PROP-DOOR-LEAF",
+    "PROP-DOOR-LOCK",
+    "PROP-FAN",
+    "PROP-FILTER",
+    "PROP-LIFE-MUG",
+    "PROP-MEDICAL-BAG",
+    "PROP-PUMP",
+    "PROP-RADIO-HEADSET",
+    "PROP-RADIO-PACK",
+    "PROP-SAMPLE-CABINET",
+    "PROP-SAMPLE-CORECASE",
+    "PROP-STRETCHER",
+    "PROP-TERMINAL-CONSOLE",
+    "PROP-TERMINAL-HANDHELD",
+    "PROP-TOOL-BAG",
+    "PROP-TOOL-LUNCHBOX",
+    "PROP-TOOL-ROLL",
+    "PROP-TRANSFER",
+    "PROP-VEH-TRANSPORT",
+    "PROP-VEH-TUG",
+    "shared-animations",
+    "ARCH-COVER-CONCRETE",
+    "ARCH-FLOOR-METAL",
+    "ARCH-ROOF-METAL",
+    "ARCH-WALL-PAINT",
+    "BG-CRANE",
+    "BG-HEAT",
+    "BG-SHIP",
+    "ENV-BRIDGEKIT-DECK",
+    "ENV-LIGHTKIT-POLE",
+    "ENV-PIPEKIT-ELBOW",
+    "ENV-PIPEKIT-STRAIGHT",
+    "ENV-WALLKIT-PANEL",
+    "MAP-A-ARCH-01",
+    "MAP-B-CORRIDOR-01",
+    "MAP-C-FACADE-01",
+    "MAP-C-ICEBANK-01",
+    "MAP-E-PIER-01",
+    "MAP-F-ROOF-01",
+    "PROP-BOOTH",
+    "PROP-TANK"
+  ],
+  "filesRead": [
+    {
+      "file": "/Users/penguin/VibeHack06/src/assets/scene-asset-catalog.ts",
+      "sha256": "aafcc3c8b0f9991736aef1b1cb268db7ae1fb77979f8e91ca4f2f8ac49bd5165",
+      "lines": 841,
+      "readScope": "all25 records parsed/hashed; schema and full placement section739-841 reviewed; repetitive catalog middle read by extraction"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedSceneAssets.ts",
+      "sha256": "ac95b900b57db7a31f660572c0f5ef90c8e54bee08badef4042f86d0af4ea74a",
+      "lines": 178,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/port-kit.ts",
+      "sha256": "376fad70765f5deb83508f8e1790a2ae460746549e2bafdcb79e815b7f016d72",
+      "lines": 270,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/chapter-transition/PreparedGameLevel.ts",
+      "sha256": "f14287926438078d57d7ff36072c00509c70f12c6e227bbae87466d12e6a7933",
+      "lines": 219,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/environment.ts",
+      "sha256": "1e1fcacbd3266c56781f4d89281222b0f537e2182c529b57277c20a711cc00aa",
+      "lines": 239,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/chapter-environments.ts",
+      "sha256": "ab18ae1a0d171397e84df665bd73227b6f3aecfdf4e65b57c3d597069fb3ca6f",
+      "lines": 388,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/history-environments.ts",
+      "sha256": "33e1be218aacefb0f8a1781a517b5a8fcb72b33c2baa626cedf6c1a53f793ad6",
+      "lines": 242,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/frontgate-environment.ts",
+      "sha256": "4c1406764928e6debce8c29ea9cc99406eef72e525ffe8bbde2362c08035b0df",
+      "lines": 187,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/transfer-environment.ts",
+      "sha256": "0108ca36e6087ec058c34de02ccb933cd002085c05ab9b7584085da8c3a0bc89",
+      "lines": 119,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/flank-environment.ts",
+      "sha256": "deb6f4da42c716a2aa1924c2d2fbef835b9eb35bb5dcd1532e41a2ccd7defa74",
+      "lines": 153,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/escort-environment.ts",
+      "sha256": "04608328cc139c5a1c1909151bc84f9ed165b05b91743ab5035a0bd4328f1f16",
+      "lines": 213,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/relief-environment.ts",
+      "sha256": "b5eb8851d98e1138cf71e5b783dcbde927a8f82c73fd7b32a663478e405386c8",
+      "lines": 120,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/rescue-environment.ts",
+      "sha256": "b3758eb88a2611603e261a481d314c3d50d65548c965a3892e92a511c559503d",
+      "lines": 78,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/medical-environment.ts",
+      "sha256": "1aea2e05560dcb16ed34afb28bc342896e39d3fbb73b4ff028980a33cd9cbe6c",
+      "lines": 92,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/epilogue-environment.ts",
+      "sha256": "f9f69262e079e95a3d54ec0c4311f6fe579f3458a1d87c37bfa422c0e03177b7",
+      "lines": 82,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/patient-cart.ts",
+      "sha256": "aa85349798bdd63275d45ff7f944dfab753e5c86d69ad61b7f8a98e1052f542b",
+      "lines": 63,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/CareView.ts",
+      "sha256": "08f65946c5ef1e1083fd0a2e6f45b61c069af43c5a9e9cb83fd677fff0e34ad5",
+      "lines": 37,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/OpeningView.ts",
+      "sha256": "26ff1a9e2dc25f69c8e8c2564db89de6f7ab4bc11f76b3a92367758517af6eb1",
+      "lines": 36,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/characters.ts",
+      "sha256": "bca48fecc3e3d6c734b7b5aa37e832b44879b3b365eab39b996eb15c58166164",
+      "lines": 235,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/main.ts",
+      "sha256": "e84a9e051e2749b01d9c7ce690644988c941f3f06a90716e8ee818099762bec4",
+      "lines": 666,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/GeneratedArchitecture.ts",
+      "sha256": "5f7893b44bfdbe6f5896b704c97c477c28df9cc99ed84672287f280e344619d4",
+      "lines": 69,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/architecture-bindings.ts",
+      "sha256": "0d27cad039a0809c3d0b48be7c64357486e22adef9ef496490dc6f68bcbce26b",
+      "lines": 155,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/docs/LOCAL_ASSET_SOURCES.md",
+      "sha256": "1df68f39518abcc688c2a4cdad80b2a8f0248f16ab1aa68f6936865f26d4b72e",
+      "lines": 45,
+      "readScope": "full file text reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/ImportedCharacter.ts",
+      "sha256": "284be4f1ba73d22504c852ba8a88e54095681b2adefdc3adfcdfab99cad00de7",
+      "lines": 289,
+      "readScope": "1-165, 191-289; constructor/load, accessory path and pose tail reviewed"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/assets/character-catalog.ts",
+      "sha256": "afd058acc56aa14d748bd8f59ebea7c91bfce25faea71ae64e7f0b0fbac68713",
+      "lines": 238,
+      "readScope": "characterAssetFor, lines225-230; carts explicitly excluded"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/architecture-placement-plan.ts",
+      "sha256": "46ca91546be17585f351b269ffe53b0aabdbe1312d939a648ada4b6b3b4b1702",
+      "lines": 176,
+      "readScope": "full programmatic file snapshot; manually reviewed profile and plan groups, some terminal output truncated"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/presentation/ArchitectureTransactions.ts",
+      "sha256": "a9a4fe0e099c3ca42bd24f4383a706a38855c0e7d23205c0366ecb3964f95da4",
+      "lines": 367,
+      "readScope": "300-367; LOD update and coverage policy"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Simulation.ts",
+      "sha256": "cae03168625b84c6f16ff0a7aadb35139567f2e55f60eac3d815c16ae7fc2ad3",
+      "lines": 772,
+      "readScope": "repository search plus582-645 interactions and cart navigation references"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Opening.ts",
+      "sha256": "06b3abe0642311ba5d55dd93369e05b5d03a86e7666243e847271af39e5dca7d",
+      "lines": 570,
+      "readScope": "repository search plus500-515 interaction facts"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Transfer.ts",
+      "sha256": "2c2a7ddebb1d87976547c2be1e1774f80dd509f512174bea1099a3eee2a8589a",
+      "lines": 103,
+      "readScope": "26-83 interaction chain"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Flank.ts",
+      "sha256": "c7822cc7571b88f5e7598419e7963a5adfeaff6b388069f536384cfb6a4bb3e5",
+      "lines": 159,
+      "readScope": "cart spawn/route/safe references33,94-106"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Escort.ts",
+      "sha256": "e8bcab390440d26ceb034b66c67dc40501ae7dd2caef2d05e447ba0d6693a49c",
+      "lines": 197,
+      "readScope": "cart helpers31-61 and spawn93-95; transfer interaction137-149"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Relief.ts",
+      "sha256": "7aaa734b0fc06a19b173a9c06760a364c58b2d779f971c5504024b0b46493e8a",
+      "lines": 129,
+      "readScope": "brace fact90-93"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Rescue.ts",
+      "sha256": "a9215fc21c80b39ba879d0f957bfffcfaccdf71006073df10d8afb42a5e1424f",
+      "lines": 218,
+      "readScope": "cart spawn/change23-49 and references77,105"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Medical.ts",
+      "sha256": "c28b55dc4249400c0ba409309b58202bb357ff66f9050c4a7cf65f01e1c01216",
+      "lines": 116,
+      "readScope": "cart roles32-33"
+    },
+    {
+      "file": "/Users/penguin/VibeHack06/src/mission/Epilogue.ts",
+      "sha256": "655ed28b0a23b7245e2ceeb0010a29e4fcdb515cb3983f6fd30774386fc9a30e",
+      "lines": 102,
+      "readScope": "58-89 interaction chain, spawn34"
+    },
+    {
+      "file": "/Users/penguin/Assets/lowpoly-military/catalog/assets.json",
+      "sha256": "c518cf752efb3cdee3fb932a273e8f74b0e953166e63dd7533772bfe0b91641d",
+      "readScope": "all1389 entries searched for relevant furniture/vehicle/mechanical names; listed candidates path checked, no visual review"
+    }
+  ],
+  "limitations": [
+    "Static audit proves code paths and file hashes, not player-camera visibility or Windows acceptance.",
+    "No every-frame instance census or real gameplay interaction executed during this read-only pass.",
+    "Uncovered candidate substitutions require proportion, material, pivot, collision and gameplay review; not all imply new model purchase.",
+    "Production report prepared=false is source-stage metadata; separate runtime files and hashes exist, so do not call them unprepared for all purposes.",
+    "Original production report retains unknown_credit_reservation=150 despite25 downloads; financial reconciliation is outside this code audit."
+  ],
+  "gapClassificationLegend": {
+    "existing_generated_base_not_connected_to_all_relevant_instances": "已有可复用基模但未接入：优先修接入，不直接新增生产",
+    "existing_model_missing_dynamic_part_or_state_contract": "现模型缺动态分件/挂点/状态合同：先拆分或准备，再决定是否补产",
+    "no_matching_generated_dedicated_source_found": "当前已生成资产库无匹配专用形体；有本机替代候选者单列，不能绝对声称全世界无来源",
+    "potential_attachment_requires_character_mesh_inspection_before_addition": "角色可能已含外观；新增可穿戴前检查，避免重复堆叠"
+  }
+}

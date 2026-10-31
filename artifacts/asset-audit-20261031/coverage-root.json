@@ -1,0 +1,215 @@
+{
+  "files": [
+    {
+      "path": "src/assets/model-disposal.ts",
+      "sha256": "302385e9d3c511f889ec374feaeb8cd1fe0c7d21a9b0e4e12e786b19cb7b07d8",
+      "lines": 84,
+      "readMode": "full source",
+      "modelFinding": "Reviewed ownership, model provenance or visual state; see consolidated report"
+    },
+    {
+      "path": "src/mobile-performance/RenderQualityPolicy.ts",
+      "sha256": "53f5db3f721edaec27ebbfa8bfa130a63447fcd58202b7e04be8fa7e27219aa7",
+      "lines": 157,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/mobile-performance/RendererQualityAdapter.ts",
+      "sha256": "5a1549ae64f819e8cddde20c91f169b99fa6f9549001b12bd9e5f02a0c40e214",
+      "lines": 94,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/mobile-performance/index.ts",
+      "sha256": "a73f660a03a8bc01f826e1f5d4908a16577915fdb2f363038fb5600259fadd8e",
+      "lines": 3,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/player/Input.ts",
+      "sha256": "d6887d56021fba972eeb37d60cff8dafd71d813634ec9cc776934f416ebfc6af",
+      "lines": 129,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/player/TouchInputState.ts",
+      "sha256": "a2f03a8b9fdd5cd51725f4930499ca8b78f6279af6bc8fdb06ea424a0004c022",
+      "lines": 46,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/presentation/AimIdentity.ts",
+      "sha256": "e59cd5d8f767590f7c09692e29bfc484dead0eb44846d534e754512166c23ff8",
+      "lines": 73,
+      "readMode": "full source",
+      "modelFinding": "Reviewed ownership, model provenance or visual state; see consolidated report"
+    },
+    {
+      "path": "src/presentation/DeferredAirCover.ts",
+      "sha256": "66299d08e1666e61cb27e7dab8b73b81695877a307ca9259d790386573ab23ea",
+      "lines": 92,
+      "readMode": "full source",
+      "modelFinding": "Reviewed ownership, model provenance or visual state; see consolidated report"
+    },
+    {
+      "path": "src/presentation/HeldItemMotion.ts",
+      "sha256": "6a98ed8ce5bdb149a2830ab2238527715b1c6a347772e3d4b21b239305a585e9",
+      "lines": 37,
+      "readMode": "full source",
+      "modelFinding": "Reviewed ownership, model provenance or visual state; see consolidated report"
+    },
+    {
+      "path": "src/presentation/IndirectLighting.ts",
+      "sha256": "b530a9c087a2eff5519cc7397e03120cee628fc6c722237cbe6bd744a571d7c1",
+      "lines": 19,
+      "readMode": "full source",
+      "modelFinding": "Reviewed ownership, model provenance or visual state; see consolidated report"
+    },
+    {
+      "path": "src/presentation/OpeningView.ts",
+      "sha256": "26ff1a9e2dc25f69c8e8c2564db89de6f7ab4bc11f76b3a92367758517af6eb1",
+      "lines": 36,
+      "readMode": "full source",
+      "modelFinding": "Reviewed ownership, model provenance or visual state; see consolidated report"
+    },
+    {
+      "path": "src/presentation/model-tools.ts",
+      "sha256": "0c6fd2a1cfaa7f247c555264d9a8580f62143aee4f75b1141b514acec7d39259",
+      "lines": 95,
+      "readMode": "full source",
+      "modelFinding": "Reviewed ownership, model provenance or visual state; see consolidated report"
+    },
+    {
+      "path": "src/presentation/reused-aircraft.ts",
+      "sha256": "3160547dcaffcf99578d8dfda58ee2786166d3854aa161ba34cd3b3c760181a7",
+      "lines": 78,
+      "readMode": "full source",
+      "modelFinding": "Reviewed ownership, model provenance or visual state; see consolidated report"
+    },
+    {
+      "path": "src/runtime/PageLifecycle.ts",
+      "sha256": "60520fa2b3cfc61d9a9aa9956198c320fd613a508b4e38cc418c15437fe6b73d",
+      "lines": 24,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/runtime/Physics.ts",
+      "sha256": "1ecbe77b8c0a36b35e47c604f192e786a81cc81a316f7d626aea93e609105e8f",
+      "lines": 193,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/runtime/random.ts",
+      "sha256": "c1fa182484525fcaa198d529d51ef54bfb0ed9510f5ddc409153770dfac4805e",
+      "lines": 9,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/AimIdentityHUD.ts",
+      "sha256": "7204dc0123a46c7fe19f191dbe61cee5f6162b2b654b4f7d3b8e5da6e9916f28",
+      "lines": 72,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/GameUI.ts",
+      "sha256": "61100ed59d74277d8645c9a9375896b510e7d8c9afea96fb8daa2c08a273533b",
+      "lines": 356,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/HitConfirmation.ts",
+      "sha256": "bec25a1264d33491cc5f1efe1f753da22b7c73fc570ba7d2baeba0b2a7105bd2",
+      "lines": 20,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/ObjectiveIndicator.ts",
+      "sha256": "3d898d26f3374e7f2cbd46afa132d4cd1ffd472ddfd658ba10c246c26f9d8d78",
+      "lines": 55,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/SubtitlePresentation.ts",
+      "sha256": "4af0d8adad665b87efedf8dc516e59a27030e21d408e9d579aec006df01a739f",
+      "lines": 133,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/TouchControls.ts",
+      "sha256": "dc7b5a45cb20e9b77080e63e72a80229ce974459213819ff1fb02cd7bb5efea2",
+      "lines": 333,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/modern-combat.css",
+      "sha256": "527816f12f1a4cc90a2546a56c829420d51ca6d34f3f44469aef588c29ad50f1",
+      "lines": 96,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/objective-focus.ts",
+      "sha256": "bec813a4d4a5270175acaa81451537877c8afebeca229adb6ac3c4df18f33db2",
+      "lines": 33,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/objective-indicator.css",
+      "sha256": "5ab4cc4d8a8451e17c547d294705daa91ed98536e8cf3831e49c8a5476183337",
+      "lines": 21,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/objective-projection.ts",
+      "sha256": "3175bd687ec5f6acd3ee6d5bc5375543e18dd2159016dd51382bca0fe8e82563",
+      "lines": 59,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/style.css",
+      "sha256": "4f0acfed6214941f3a9cc153ed816bc5e1567b0bef50ca3b1d588e7a7518d5f0",
+      "lines": 236,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/touch-controls.css",
+      "sha256": "63ef86b4e037bbfd55b08a0c2f94d61ce624352a7954605bfa56222b196e1006",
+      "lines": 153,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    },
+    {
+      "path": "src/ui/touch-gestures.ts",
+      "sha256": "026bac09fc1606f5310970a56bad37faf336d52441a74a0d19edd0fb9a947873",
+      "lines": 96,
+      "readMode": "full source",
+      "modelFinding": "UI/input/render-quality/physics only; no physical model substitution"
+    }
+  ],
+  "findings": [
+    "Mobile renderer adapter changes DPR and shadows only; it does not substitute whiteboxes.",
+    "GameUI is HTML/CSS/SVG; no physical model mesh.",
+    "Physics uses invisible collision proxies; those are not missing visible production meshes.",
+    "OpeningView and HeldItemMotion expose state; the host still mounts the models.",
+    "Reused F35B is explicitly authorized retained source geometry, not generated Tripo/Hyper.",
+    "Read main UI failure path: scene loading can complete degraded and display a notice."
+  ]
+}

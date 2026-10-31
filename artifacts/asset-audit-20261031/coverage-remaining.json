@@ -1,0 +1,1046 @@
+[
+  {
+    "path": "src/actors/Locomotion.ts",
+    "sha256": "b0c39ae7dbb05b475ef81dd5acd7ba3e22244c73b74d64a0d81f5b5d796ab7ff",
+    "lines": 31,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/actors/Navigation.ts",
+    "sha256": "1699a64ecaa5d53992950b981c78a5a5d6c097c8b0ee10d59f9cdcbe5e8c76cc",
+    "lines": 90,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/assets/RigAudit.ts",
+    "sha256": "ab2fb76ef4ed47e38710a034464ac75f8d153e61767207eaee7129cf9bb91981",
+    "lines": 204,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/assets/architecture-catalog.ts",
+    "sha256": "f79168de201474f2d4987ed5c079245b2cfcc45c4b13b7bce4585081fb8f57ea",
+    "lines": 737,
+    "modelConstructionOrReferenceHits": [
+      {
+        "line": 9,
+        "text": "\"url\": \"models/architecture-r1/ARCH-BEAM-STEEL-lod0.glb\","
+      },
+      {
+        "line": 20,
+        "text": "\"url\": \"models/architecture-r1/ARCH-BEAM-STEEL-lod1-geometry.glb\","
+      },
+      {
+        "line": 31,
+        "text": "\"url\": \"models/architecture-r1/ARCH-BEAM-STEEL-lod2-geometry.glb\","
+      },
+      {
+        "line": 42,
+        "text": "\"url\": \"models/architecture-r1/ARCH-CARGO-CONTAINER-lod0.glb\","
+      },
+      {
+        "line": 53,
+        "text": "\"url\": \"models/architecture-r1/ARCH-CARGO-CONTAINER-lod1-geometry.glb\","
+      },
+      {
+        "line": 64,
+        "text": "\"url\": \"models/architecture-r1/ARCH-CARGO-CONTAINER-lod2-geometry.glb\","
+      },
+      {
+        "line": 75,
+        "text": "\"url\": \"models/architecture-r1/ARCH-COVER-CONCRETE-lod0.glb\","
+      },
+      {
+        "line": 86,
+        "text": "\"url\": \"models/architecture-r1/ARCH-COVER-CONCRETE-lod1-geometry.glb\","
+      },
+      {
+        "line": 97,
+        "text": "\"url\": \"models/architecture-r1/ARCH-COVER-CONCRETE-lod2-geometry.glb\","
+      },
+      {
+        "line": 108,
+        "text": "\"url\": \"models/architecture-r1/ARCH-FLOOR-METAL-lod0.glb\","
+      },
+      {
+        "line": 119,
+        "text": "\"url\": \"models/architecture-r1/ARCH-FLOOR-METAL-lod1-geometry.glb\","
+      },
+      {
+        "line": 130,
+        "text": "\"url\": \"models/architecture-r1/ARCH-FLOOR-METAL-lod2-geometry.glb\","
+      },
+      {
+        "line": 141,
+        "text": "\"url\": \"models/architecture-r1/ARCH-ROOF-METAL-lod0.glb\","
+      },
+      {
+        "line": 152,
+        "text": "\"url\": \"models/architecture-r1/ARCH-ROOF-METAL-lod1-geometry.glb\","
+      },
+      {
+        "line": 163,
+        "text": "\"url\": \"models/architecture-r1/ARCH-ROOF-METAL-lod2-geometry.glb\","
+      },
+      {
+        "line": 174,
+        "text": "\"url\": \"models/architecture-r1/ARCH-WALL-PAINT-lod0.glb\","
+      },
+      {
+        "line": 185,
+        "text": "\"url\": \"models/architecture-r1/ARCH-WALL-PAINT-lod1-geometry.glb\","
+      },
+      {
+        "line": 196,
+        "text": "\"url\": \"models/architecture-r1/ARCH-WALL-PAINT-lod2-geometry.glb\","
+      },
+      {
+        "line": 207,
+        "text": "\"url\": \"models/architecture-r1/BG-CRANE-lod0.glb\","
+      },
+      {
+        "line": 218,
+        "text": "\"url\": \"models/architecture-r1/BG-CRANE-lod1-geometry.glb\","
+      },
+      {
+        "line": 229,
+        "text": "\"url\": \"models/architecture-r1/BG-CRANE-lod2-geometry.glb\","
+      },
+      {
+        "line": 240,
+        "text": "\"url\": \"models/architecture-r1/BG-HEAT-lod0.glb\","
+      },
+      {
+        "line": 251,
+        "text": "\"url\": \"models/architecture-r1/BG-HEAT-lod1-geometry.glb\","
+      },
+      {
+        "line": 262,
+        "text": "\"url\": \"models/architecture-r1/BG-HEAT-lod2-geometry.glb\","
+      },
+      {
+        "line": 273,
+        "text": "\"url\": \"models/architecture-r1/BG-SHIP-lod0.glb\","
+      },
+      {
+        "line": 284,
+        "text": "\"url\": \"models/architecture-r1/BG-SHIP-lod1-geometry.glb\","
+      },
+      {
+        "line": 295,
+        "text": "\"url\": \"models/architecture-r1/BG-SHIP-lod2-geometry.glb\","
+      },
+      {
+        "line": 306,
+        "text": "\"url\": \"models/architecture-r1/ENV-BRIDGEKIT-DECK-lod0.glb\","
+      },
+      {
+        "line": 317,
+        "text": "\"url\": \"models/architecture-r1/ENV-BRIDGEKIT-DECK-lod1-geometry.glb\","
+      },
+      {
+        "line": 328,
+        "text": "\"url\": \"models/architecture-r1/ENV-BRIDGEKIT-DECK-lod2-geometry.glb\","
+      },
+      {
+        "line": 339,
+        "text": "\"url\": \"models/architecture-r1/ENV-LIGHTKIT-POLE-lod0.glb\","
+      },
+      {
+        "line": 350,
+        "text": "\"url\": \"models/architecture-r1/ENV-LIGHTKIT-POLE-lod1-geometry.glb\","
+      },
+      {
+        "line": 361,
+        "text": "\"url\": \"models/architecture-r1/ENV-LIGHTKIT-POLE-lod2-geometry.glb\","
+      },
+      {
+        "line": 372,
+        "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-ELBOW-lod0.glb\","
+      },
+      {
+        "line": 383,
+        "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-ELBOW-lod1-geometry.glb\","
+      },
+      {
+        "line": 394,
+        "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-ELBOW-lod2-geometry.glb\","
+      },
+      {
+        "line": 405,
+        "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod0.glb\","
+      },
+      {
+        "line": 416,
+        "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod1-geometry.glb\","
+      },
+      {
+        "line": 427,
+        "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod2-geometry.glb\","
+      },
+      {
+        "line": 438,
+        "text": "\"url\": \"models/architecture-r1/ENV-WALLKIT-PANEL-lod0.glb\","
+      },
+      {
+        "line": 449,
+        "text": "\"url\": \"models/architecture-r1/ENV-WALLKIT-PANEL-lod1-geometry.glb\","
+      },
+      {
+        "line": 460,
+        "text": "\"url\": \"models/architecture-r1/ENV-WALLKIT-PANEL-lod2-geometry.glb\","
+      },
+      {
+        "line": 471,
+        "text": "\"url\": \"models/architecture-r1/MAP-A-ARCH-01-lod0.glb\","
+      },
+      {
+        "line": 482,
+        "text": "\"url\": \"models/architecture-r1/MAP-A-ARCH-01-lod1-geometry.glb\","
+      },
+      {
+        "line": 493,
+        "text": "\"url\": \"models/architecture-r1/MAP-A-ARCH-01-lod2-geometry.glb\","
+      },
+      {
+        "line": 504,
+        "text": "\"url\": \"models/architecture-r1/MAP-B-CORRIDOR-01-lod0.glb\","
+      },
+      {
+        "line": 515,
+        "text": "\"url\": \"models/architecture-r1/MAP-B-CORRIDOR-01-lod1-geometry.glb\","
+      },
+      {
+        "line": 526,
+        "text": "\"url\": \"models/architecture-r1/MAP-B-CORRIDOR-01-lod2-geometry.glb\","
+      },
+      {
+        "line": 537,
+        "text": "\"url\": \"models/architecture-r1/MAP-C-FACADE-01-lod0.glb\","
+      },
+      {
+        "line": 548,
+        "text": "\"url\": \"models/architecture-r1/MAP-C-FACADE-01-lod1-geometry.glb\","
+      },
+      {
+        "line": 559,
+        "text": "\"url\": \"models/architecture-r1/MAP-C-FACADE-01-lod2-geometry.glb\","
+      },
+      {
+        "line": 570,
+        "text": "\"url\": \"models/architecture-r1/MAP-C-ICEBANK-01-lod0.glb\","
+      },
+      {
+        "line": 581,
+        "text": "\"url\": \"models/architecture-r1/MAP-C-ICEBANK-01-lod1-geometry.glb\","
+      },
+      {
+        "line": 592,
+        "text": "\"url\": \"models/architecture-r1/MAP-C-ICEBANK-01-lod2-geometry.glb\","
+      },
+      {
+        "line": 603,
+        "text": "\"url\": \"models/architecture-r1/MAP-E-PIER-01-lod0.glb\","
+      },
+      {
+        "line": 614,
+        "text": "\"url\": \"models/architecture-r1/MAP-E-PIER-01-lod1-geometry.glb\","
+      },
+      {
+        "line": 625,
+        "text": "\"url\": \"models/architecture-r1/MAP-E-PIER-01-lod2-geometry.glb\","
+      },
+      {
+        "line": 636,
+        "text": "\"url\": \"models/architecture-r1/MAP-F-ROOF-01-lod0.glb\","
+      },
+      {
+        "line": 647,
+        "text": "\"url\": \"models/architecture-r1/MAP-F-ROOF-01-lod1-geometry.glb\","
+      },
+      {
+        "line": 658,
+        "text": "\"url\": \"models/architecture-r1/MAP-F-ROOF-01-lod2-geometry.glb\","
+      },
+      {
+        "line": 669,
+        "text": "\"url\": \"models/architecture-r1/PROP-BOOTH-lod0.glb\","
+      },
+      {
+        "line": 680,
+        "text": "\"url\": \"models/architecture-r1/PROP-BOOTH-lod1-geometry.glb\","
+      },
+      {
+        "line": 691,
+        "text": "\"url\": \"models/architecture-r1/PROP-BOOTH-lod2-geometry.glb\","
+      },
+      {
+        "line": 702,
+        "text": "\"url\": \"models/architecture-r1/PROP-TANK-lod0.glb\","
+      },
+      {
+        "line": 713,
+        "text": "\"url\": \"models/architecture-r1/PROP-TANK-lod1-geometry.glb\","
+      },
+      {
+        "line": 724,
+        "text": "\"url\": \"models/architecture-r1/PROP-TANK-lod2-geometry.glb\","
+      }
+    ],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/assets/scene-asset-catalog.ts",
+    "sha256": "aafcc3c8b0f9991736aef1b1cb268db7ae1fb77979f8e91ca4f2f8ac49bd5165",
+    "lines": 841,
+    "modelConstructionOrReferenceHits": [
+      {
+        "line": 8,
+        "text": "runtimePath: 'assets/generated/production-20261031/BG-CRANE.glb',"
+      },
+      {
+        "line": 9,
+        "text": "sourcePath: 'assets/source/hyper3d/BG-CRANE/v1/base_basic_pbr.glb',"
+      },
+      {
+        "line": 19,
+        "text": "runtimePath: 'assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb',"
+      },
+      {
+        "line": 20,
+        "text": "sourcePath: 'assets/source/hyper3d/ENV-LIGHTKIT-POLE/v1/base_basic_pbr.glb',"
+      },
+      {
+        "line": 30,
+        "text": "runtimePath: 'assets/generated/production-20261031/PROP-BENCH.glb',"
+      },
+      {
+        "line": 31,
+        "text": "sourcePath: 'assets/source/tripo/PROP-BENCH/f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247-pbr-model.glb',"
+      },
+      {
+        "line": 41,
+        "text": "runtimePath: 'assets/generated/production-20261031/PROP-LIFE-MUG.glb',"
+      },
+      {
+        "line": 42,
+        "text": "sourcePath: 'assets/source/tripo/PROP-LIFE-MUG/a509e55e-d414-42db-ba04-1c2b0a44b03b-pbr-model.glb',"
+      },
+      {
+        "line": 52,
+        "text": "runtimePath: 'assets/generated/production-20261031/PROP-MEDICAL-BAG.glb',"
+      },
+      {
+        "line": 53,
+        "text": "sourcePath: 'assets/source/tripo/PROP-MEDICAL-BAG/76629177-8de5-4c65-a8dc-34dcfd2b938b-pbr-model.glb',"
+      },
+      {
+        "line": 63,
+        "text": "runtimePath: 'assets/generated/production-20261031/PROP-TANK.glb',"
+      },
+      {
+        "line": 64,
+        "text": "sourcePath: 'assets/source/hyper3d/PROP-TANK/v1/base_basic_pbr.glb',"
+      },
+      {
+        "line": 74,
+        "text": "runtimePath: 'assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb',"
+      },
+      {
+        "line": 75,
+        "text": "sourcePath: 'assets/source/tripo/PROP-TERMINAL-CONSOLE/914701ef-9b63-4d3e-9064-b1cf113aa4fe-pbr-model.glb',"
+      },
+      {
+        "line": 85,
+        "text": "runtimePath: 'assets/generated/production-20261031/PROP-VEH-TUG.glb',"
+      },
+      {
+        "line": 86,
+        "text": "sourcePath: 'assets/source/tripo/PROP-VEH-TUG/561b30a3-8648-4ea8-84ef-7091de2d68a1-pbr-model.glb',"
+      },
+      {
+        "line": 98,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb\","
+      },
+      {
+        "line": 99,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-TRANSFER/1c388cb1-fe48-4263-a1e0-7210e4451aa3-pbr-model.glb\","
+      },
+      {
+        "line": 130,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb\","
+      },
+      {
+        "line": 131,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-STRETCHER/8d8192a4-2414-497c-9ef3-019dc604fce0-pbr-model.glb\","
+      },
+      {
+        "line": 162,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb\","
+      },
+      {
+        "line": 163,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-DOOR-LEAF/ce8b2327-8995-44d0-9fe5-e3551e06009e-pbr-model.glb\","
+      },
+      {
+        "line": 194,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb\","
+      },
+      {
+        "line": 195,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-DOOR-LOCK/6caff16f-c506-44e0-afb8-db653121a67d-pbr-model.glb\","
+      },
+      {
+        "line": 226,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb\","
+      },
+      {
+        "line": 227,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-TERMINAL-HANDHELD/f8f981a5-3714-4010-a0d8-c263a49b46ba-pbr-model.glb\","
+      },
+      {
+        "line": 258,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb\","
+      },
+      {
+        "line": 259,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-VEH-TRANSPORT/711110bd-b12a-4cf3-863a-376aa825f30d-pbr-model.glb\","
+      },
+      {
+        "line": 290,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-FILTER.glb\","
+      },
+      {
+        "line": 291,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-FILTER/a6423fe0-9719-45d4-b285-4ee37ae409b5-pbr-model.glb\","
+      },
+      {
+        "line": 322,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-CARGO.glb\","
+      },
+      {
+        "line": 323,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-CARGO/72ca2db1-f3d0-4a3b-9555-3a8be0109392-pbr-model.glb\","
+      },
+      {
+        "line": 354,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-PUMP.glb\","
+      },
+      {
+        "line": 355,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-PUMP/30ddf85f-f5f3-44d5-9b84-3535a0f1425e-pbr-model.glb\","
+      },
+      {
+        "line": 386,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-FAN.glb\","
+      },
+      {
+        "line": 387,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-FAN/f6b963d0-cdc7-4ea2-939c-b4ed3b437fea-pbr-model.glb\","
+      },
+      {
+        "line": 418,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb\","
+      },
+      {
+        "line": 419,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-TOOL-BAG/0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5-pbr-model.glb\","
+      },
+      {
+        "line": 450,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb\","
+      },
+      {
+        "line": 451,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-TOOL-ROLL/ad2d5d2a-a635-4a84-8341-be625ac6cae5-pbr-model.glb\","
+      },
+      {
+        "line": 482,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb\","
+      },
+      {
+        "line": 483,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-TOOL-LUNCHBOX/f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec-pbr-model.glb\","
+      },
+      {
+        "line": 514,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb\","
+      },
+      {
+        "line": 515,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-RADIO-PACK/1301e9a7-c909-4b44-9218-0160fbd9a0cb-pbr-model.glb\","
+      },
+      {
+        "line": 546,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb\","
+      },
+      {
+        "line": 547,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-RADIO-HEADSET/ce2057ec-310e-4711-a656-ab74a7d5f73f-pbr-model.glb\","
+      },
+      {
+        "line": 578,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb\","
+      },
+      {
+        "line": 579,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-ARMOR-CHEST/840ece9e-0e2f-4a39-933f-68729b55ffa4-pbr-model.glb\","
+      },
+      {
+        "line": 610,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb\","
+      },
+      {
+        "line": 611,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-ARMOR-LEFT-BRACE/98939ba8-5a7f-4895-94e2-90f76dd807cc-pbr-model.glb\","
+      },
+      {
+        "line": 642,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb\","
+      },
+      {
+        "line": 643,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-ARMOR-HELMET/2f160991-6325-4ede-83b7-4e71ffc5ccba-pbr-model.glb\","
+      },
+      {
+        "line": 674,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb\","
+      },
+      {
+        "line": 675,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-SAMPLE-CABINET/b7566df9-bdcd-4133-bbac-c01576ba79ca-pbr-model.glb\","
+      },
+      {
+        "line": 706,
+        "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb\","
+      },
+      {
+        "line": 707,
+        "text": "\"sourcePath\": \"assets/source/tripo/PROP-SAMPLE-CORECASE/96f7adc2-ca55-42ab-864d-333a01fe0e83-pbr-model.glb\","
+      },
+      {
+        "line": 747,
+        "text": "/** An independently constructed PortKit.visualSlot; all members swap atomically. */"
+      },
+      {
+        "line": 836,
+        "text": "export function generatedScenePlacements(scenario: ScenarioId): readonly SceneAssetPlacement[] {"
+      }
+    ],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/audio/AudioBufferCache.ts",
+    "sha256": "193ed031da61ab0c24c1451b425b42dbe8543f6eae2b312eb2aab22bc69369c2",
+    "lines": 132,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/audio/catalog.ts",
+    "sha256": "65e6996f4a24f4b393702e4cfad62e2c0028a0082dd77a3a58e4cbde1871ae09",
+    "lines": 4262,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/audio/contracts.ts",
+    "sha256": "e0ddc8eb591ffcec47f0fb3c160832a9868390a4600967b1df9f02644f67189f",
+    "lines": 56,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/audio/dialogue-events.ts",
+    "sha256": "85263d0da4fe72586c6c7ea1fda7783742783b8db813cfaa7c9daab3025fdee5",
+    "lines": 24,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/audio/music.ts",
+    "sha256": "b77e0ae3df0730f8f3376c30d5f69649ec7cd0874b8481b93980c48e809ffc26",
+    "lines": 32,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/CampaignEntryPlan.ts",
+    "sha256": "02c6b54c220b16560e5ed094546bb2d38a7133378b6cb822352e779e38c732b7",
+    "lines": 30,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/CampaignTransitionPlan.ts",
+    "sha256": "5f20e6e5b8eb8d57d42595603e9549ff616fc453a38600847582ddd8a8abe78a",
+    "lines": 36,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/ChapterTransition.ts",
+    "sha256": "d17f3466655f03477beddf75b398d6d8e25c6b2292893bc3ad6056f5458ca4ab",
+    "lines": 69,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/HtmlNarrationPlayer.ts",
+    "sha256": "c3fac7bb7aa10ea5e06f85609b857fb419e37d96738957f9a82b97a7358d7421",
+    "lines": 109,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/TransitionController.ts",
+    "sha256": "660cee8b57476838847d857cb971808199052ca7db1d33dda884633ba35bfaad",
+    "lines": 293,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/TransitionInputGuard.ts",
+    "sha256": "8a8e14812a51a003c49dd1c8d98292316a26e09804ee88514c392b5b0ac51f8c",
+    "lines": 63,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/TransitionOverlay.ts",
+    "sha256": "6eb1f1d3aaa6f8502d28d3ba2d8bc8359315c29d683503074206d679c52df588",
+    "lines": 97,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/bridges.json",
+    "sha256": "3680b3bbf98aa365b652f732fad0f955e3ae4e2316b462ad0cbe9353d078d93d",
+    "lines": 236,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/catalog.ts",
+    "sha256": "ec04f3271c1c72b55b355fa821eb6882fa766951a2b52d56aeab092243518deb",
+    "lines": 15,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/index.ts",
+    "sha256": "b50237539a9fa0957bd1ee223d64ad17c4ef72be5b392289f02c4686e0351253",
+    "lines": 10,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/narration-assets.ts",
+    "sha256": "e4b426c8c4e17a6eaeb923b036c0001772e87e8165626c17a927873ce8820db6",
+    "lines": 236,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/opening.json",
+    "sha256": "2cedf112062c87b7f30119f44f10623124cfe1a2d6ecb892b1c196c5d1533194",
+    "lines": 29,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/transition.css",
+    "sha256": "147482e158d7122c974e7a67d1e7f6dee44cbb5c882e65b8a3c8339631707998",
+    "lines": 39,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/chapter-transition/types.ts",
+    "sha256": "a6c21fe0c02d04c0ad325f18b85cc4eb30c184bd2f777f9914dd6e56c14bcbd1",
+    "lines": 76,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/combat/Ballistics.ts",
+    "sha256": "081fe98fac1b3ebb14464d88c12fac25f39026fbfc4bdeb5e2b98ac31c276785",
+    "lines": 40,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/OpeningStaging.ts",
+    "sha256": "0b98e68dacec508c371fd1f129727ac7555392d2f50cc32b99bb09ee1158e0d3",
+    "lines": 31,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/chapter-flow.ts",
+    "sha256": "c87c7e22ddced05db1085c166f61ec8e8458ea4f718659cba88a64633948bbca",
+    "lines": 87,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/chapter-layout.ts",
+    "sha256": "13c56b2d60286c79cd459a87b8121b5152243466c193cc74bd69e82082d64967",
+    "lines": 45,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/epilogue-layout.ts",
+    "sha256": "e81b003409eb3fd87bff55eaef5cecbe89d53f17e5f7148adf5510fb5e911889",
+    "lines": 20,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/escort-layout.ts",
+    "sha256": "f2e4047ec8fdb23b94bc11eab164472c805d990bc4f3c0d10e4bf05d84f26141",
+    "lines": 63,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/flank-dialogue-timing.ts",
+    "sha256": "671c2909b9ce17c4c639af4593a3aab16e510db3aebdc1c8978fbad0a5ebb703",
+    "lines": 7,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/flank-layout.ts",
+    "sha256": "f9c61377b6c68f7cdf4a508791723d5e9877a4ed05b7b302e447c0930c17c5be",
+    "lines": 40,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/frontgate-layout.ts",
+    "sha256": "e5398f6f858cb10fb2cb94aa5573010e7fb84b7fe87919547d950015e2dc6b18",
+    "lines": 23,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/medical-layout.ts",
+    "sha256": "f47646fe8e64e0cc3a869aa5453838935f66a50cc45f7322d4a5f56ba2b63823",
+    "lines": 23,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/opening-timeline.ts",
+    "sha256": "57042996012b92fd3d1e390e54b0a080074d67f992bd16698ca5db8fdb0fe301",
+    "lines": 42,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/relief-layout.ts",
+    "sha256": "c668ff69b3eebfccd1aabb2c722b4bd6aec4359973299df17d7dc00c40a431fe",
+    "lines": 37,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/rescue-layout.ts",
+    "sha256": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61",
+    "lines": 32,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/content/transfer-layout.ts",
+    "sha256": "4cdef55e133e9606bde4078a3ac40ad35ee5cb7a1838ca4389e019e683b1a5bb",
+    "lines": 29,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Dialogue.ts",
+    "sha256": "95195133acd103175b9358e8209ec05299397a7ab2778de14c85bc1653fa095b",
+    "lines": 22,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Epilogue.ts",
+    "sha256": "655ed28b0a23b7245e2ceeb0010a29e4fcdb515cb3983f6fd30774386fc9a30e",
+    "lines": 102,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Escort.ts",
+    "sha256": "e8bcab390440d26ceb034b66c67dc40501ae7dd2caef2d05e447ba0d6693a49c",
+    "lines": 197,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Flank.ts",
+    "sha256": "c7822cc7571b88f5e7598419e7963a5adfeaff6b388069f536384cfb6a4bb3e5",
+    "lines": 159,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Frontgate.ts",
+    "sha256": "895124ed8c8beff9903c7ed13ba4645eb6d52672531458a5ccbac42e1ea53846",
+    "lines": 144,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Medical.ts",
+    "sha256": "c28b55dc4249400c0ba409309b58202bb357ff66f9050c4a7cf65f01e1c01216",
+    "lines": 116,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Opening.ts",
+    "sha256": "06b3abe0642311ba5d55dd93369e05b5d03a86e7666243e847271af39e5dca7d",
+    "lines": 570,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Relief.ts",
+    "sha256": "7aaa734b0fc06a19b173a9c06760a364c58b2d779f971c5504024b0b46493e8a",
+    "lines": 129,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Rescue.ts",
+    "sha256": "a9215fc21c80b39ba879d0f957bfffcfaccdf71006073df10d8afb42a5e1424f",
+    "lines": 218,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Simulation.ts",
+    "sha256": "cae03168625b84c6f16ff0a7aadb35139567f2e55f60eac3d815c16ae7fc2ad3",
+    "lines": 772,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mission/Transfer.ts",
+    "sha256": "2c2a7ddebb1d87976547c2be1e1774f80dd509f512174bea1099a3eee2a8589a",
+    "lines": 103,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mobile-performance/RenderQualityPolicy.ts",
+    "sha256": "53f5db3f721edaec27ebbfa8bfa130a63447fcd58202b7e04be8fa7e27219aa7",
+    "lines": 157,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mobile-performance/RendererQualityAdapter.ts",
+    "sha256": "5a1549ae64f819e8cddde20c91f169b99fa6f9549001b12bd9e5f02a0c40e214",
+    "lines": 94,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/mobile-performance/index.ts",
+    "sha256": "a73f660a03a8bc01f826e1f5d4908a16577915fdb2f363038fb5600259fadd8e",
+    "lines": 3,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/persistence/SaveStore.ts",
+    "sha256": "1e4efcead13e5d7fbc7683a67bd530a44ae4dece4050c8ce77b0502f0d49ef48",
+    "lines": 468,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/player/Input.ts",
+    "sha256": "d6887d56021fba972eeb37d60cff8dafd71d813634ec9cc776934f416ebfc6af",
+    "lines": 129,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/player/TouchInputState.ts",
+    "sha256": "a2f03a8b9fdd5cd51725f4930499ca8b78f6279af6bc8fdb06ea424a0004c022",
+    "lines": 46,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/presentation/AimIdentity.ts",
+    "sha256": "e59cd5d8f767590f7c09692e29bfc484dead0eb44846d534e754512166c23ff8",
+    "lines": 73,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/presentation/HeldItemMotion.ts",
+    "sha256": "6a98ed8ce5bdb149a2830ab2238527715b1c6a347772e3d4b21b239305a585e9",
+    "lines": 37,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/presentation/Sound.ts",
+    "sha256": "de223ff9e7ba5883dfca906f59a7cf361834535a7e2f955ba39897fd9ea0dfa5",
+    "lines": 529,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/presentation/reused-aircraft/f35b-palette.js",
+    "sha256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae",
+    "lines": 6,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/presentation/reused-aircraft/f35b-source.js",
+    "sha256": "ec554326e57f5ef3f36748af7030b2d7503da828dddf6a10ad7da5415e3de8f2",
+    "lines": 5,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/presentation/reused-aircraft/f35b.d.ts",
+    "sha256": "6027797a540fcd1ffdcb4d45947f544295889f6564b20970b36fdc1b120dbedd",
+    "lines": 12,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/presentation/reused-aircraft/f35b.js",
+    "sha256": "9e804e42d3b1c8b0cf2c3c9013fe85a409a8d49aad9004b945ce3249d77303c4",
+    "lines": 203,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/runtime/PageLifecycle.ts",
+    "sha256": "60520fa2b3cfc61d9a9aa9956198c320fd613a508b4e38cc418c15437fe6b73d",
+    "lines": 24,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/runtime/Physics.ts",
+    "sha256": "1ecbe77b8c0a36b35e47c604f192e786a81cc81a316f7d626aea93e609105e8f",
+    "lines": 193,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/runtime/random.ts",
+    "sha256": "c1fa182484525fcaa198d529d51ef54bfb0ed9510f5ddc409153770dfac4805e",
+    "lines": 9,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/AimIdentityHUD.ts",
+    "sha256": "7204dc0123a46c7fe19f191dbe61cee5f6162b2b654b4f7d3b8e5da6e9916f28",
+    "lines": 72,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/GameUI.ts",
+    "sha256": "61100ed59d74277d8645c9a9375896b510e7d8c9afea96fb8daa2c08a273533b",
+    "lines": 356,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/HitConfirmation.ts",
+    "sha256": "bec25a1264d33491cc5f1efe1f753da22b7c73fc570ba7d2baeba0b2a7105bd2",
+    "lines": 20,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/ObjectiveIndicator.ts",
+    "sha256": "3d898d26f3374e7f2cbd46afa132d4cd1ffd472ddfd658ba10c246c26f9d8d78",
+    "lines": 55,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/SubtitlePresentation.ts",
+    "sha256": "4af0d8adad665b87efedf8dc516e59a27030e21d408e9d579aec006df01a739f",
+    "lines": 133,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/TouchControls.ts",
+    "sha256": "dc7b5a45cb20e9b77080e63e72a80229ce974459213819ff1fb02cd7bb5efea2",
+    "lines": 333,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/modern-combat.css",
+    "sha256": "527816f12f1a4cc90a2546a56c829420d51ca6d34f3f44469aef588c29ad50f1",
+    "lines": 96,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/objective-focus.ts",
+    "sha256": "bec813a4d4a5270175acaa81451537877c8afebeca229adb6ac3c4df18f33db2",
+    "lines": 33,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/objective-indicator.css",
+    "sha256": "5ab4cc4d8a8451e17c547d294705daa91ed98536e8cf3831e49c8a5476183337",
+    "lines": 21,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/objective-projection.ts",
+    "sha256": "3175bd687ec5f6acd3ee6d5bc5375543e18dd2159016dd51382bca0fe8e82563",
+    "lines": 59,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/style.css",
+    "sha256": "4f0acfed6214941f3a9cc153ed816bc5e1567b0bef50ca3b1d588e7a7518d5f0",
+    "lines": 236,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/touch-controls.css",
+    "sha256": "63ef86b4e037bbfd55b08a0c2f94d61ce624352a7954605bfa56222b196e1006",
+    "lines": 153,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  },
+  {
+    "path": "src/ui/touch-gestures.ts",
+    "sha256": "026bac09fc1606f5310970a56bad37faf336d52441a74a0d19edd0fb9a947873",
+    "lines": 96,
+    "modelConstructionOrReferenceHits": [],
+    "scan": "Full file text scanned; direct construction/reference only, not visual acceptance."
+  }
+]

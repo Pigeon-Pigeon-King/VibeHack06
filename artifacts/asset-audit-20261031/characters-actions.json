@@ -1,0 +1,4847 @@
+{
+  "schema": "ganymede.characters-actions-audit/1",
+  "auditAt": "2026-10-31T09:45:12.152921+00:00",
+  "workspace": "/Users/penguin/VibeHack06",
+  "scope": "Current main: 15 scenarios, character/crowd/arms/weapons/rig/action/wearables; read-only",
+  "newBrowserVerification": false,
+  "newAPIRequests": 0,
+  "modifiedSourcePublicGit": false,
+  "summary": {
+    "producedCharacters": 13,
+    "producedRigs": 13,
+    "runtimeTacticalPacks": 13,
+    "clipsPerPack": 17,
+    "enabledTactical": [
+      "idle",
+      "ready_idle",
+      "run",
+      "crouch_idle",
+      "crouch_walk"
+    ],
+    "unboundTactical": [
+      "crouch_down",
+      "stand_up",
+      "cover_enter",
+      "cover_idle",
+      "cover_peek_left",
+      "cover_aim_left",
+      "cover_fire_left",
+      "cover_peek_right",
+      "cover_aim_right",
+      "cover_fire_right",
+      "cover_exit"
+    ],
+    "separateCanonicalWalkActive": true,
+    "tacticalPackWalkUnused": true,
+    "skippedTacticalIdentities": [
+      "CH-SHAO",
+      "CH-DOCTOR",
+      "CH-SHEN",
+      "CH-LU-CHILD"
+    ],
+    "sourceRuntimeShaChecks": true,
+    "sourceRuntimeRigChecks": true,
+    "packSourceShaChecks": true,
+    "recordedProductionCredits": 855,
+    "priorTacticalCredits": 20
+  },
+  "findings": [
+    {
+      "id": "CA-01",
+      "priority": "P1",
+      "title": "17 片段只触发 5 个子集",
+      "detail": "idle/ready_idle/run/crouch_idle/crouch_walk 在 selector 中可达；walk 另用 canonical。其余 11 个 crouch_down、stand_up、cover_enter/idle/exit、左右 peek/aim/fire 无触发，战术包重复 walk 也未使用。所有当前 sampler 都 loop=true；无跨片段混合或一次性蹲起转换。CombatTactics 有 seek/hide/peek/recover/shift/hold/return，但 main 只转交 crouched、moveSpeed、animationTime；CharacterModel 无 cover side/phase/shot 字段。",
+      "evidence": [
+        "src/presentation/ImportedCharacter.ts:182",
+        "src/presentation/ImportedCharacter.ts:186",
+        "src/presentation/ImportedCharacter.ts:194",
+        "src/presentation/ImportedCharacter.ts:204",
+        "src/main.ts:529",
+        "src/contracts.ts:25",
+        "src/actors/CombatTactics.ts:5"
+      ]
+    },
+    {
+      "id": "CA-02",
+      "priority": "P1",
+      "title": "第三人称 AK 没有绑定真实手骨",
+      "detail": "身体加载后只隐藏 fallback 的身体 Mesh，保留其 pose-root 下枪节点。AK 替换那个旧枪节点，枪姿态仍由 characters.ts 定位，未挂 R_Hand，未读取 TACTICAL_WEAPON_CALIBRATION；procedural arm direction 又覆盖采样上身。0.68 枪缩放已补偿，不能据此宣称真实双手握点成立；蹲伏、体型变化与枪姿态仍分离。",
+      "evidence": [
+        "src/presentation/ImportedCharacter.ts:48",
+        "src/presentation/ImportedCharacter.ts:54",
+        "src/presentation/ImportedCharacter.ts:64",
+        "src/presentation/ImportedCharacter.ts:165",
+        "src/presentation/ImportedCharacter.ts:243",
+        "src/presentation/characters.ts:146",
+        "src/presentation/characters.ts:187",
+        "src/presentation/WorldAK47.ts:247",
+        "src/assets/tactical-catalog.ts:139"
+      ]
+    },
+    {
+      "id": "CA-03",
+      "priority": "P1",
+      "title": "射击/装填事件没有驱动 NPC 片段或模型枪口",
+      "detail": "shot 事件只有 position/enemy 无 actorId，main 仅用它播放枪声。NPC 弹丸起点为身体位置+碰撞高-0.42，演出为+1.38；玩家也使用独立物理 muzzle proxy，不读 ImportedWeaponView.muzzle。保留了真实遮挡检测，但可见枪口对齐未验证。Feedback 只有弹道和命中粒子，无逐枪口闪光。Actor 无弹药/装填字段，main 未传 NPC reloadFraction，相关程序化换弹分支目前不触发。",
+      "evidence": [
+        "src/mission/Simulation.ts:31",
+        "src/mission/Simulation.ts:50",
+        "src/mission/Simulation.ts:325",
+        "src/mission/Simulation.ts:436",
+        "src/mission/Simulation.ts:453",
+        "src/mission/Opening.ts:223",
+        "src/main.ts:413",
+        "src/main.ts:529",
+        "src/presentation/Feedback.ts:24"
+      ]
+    },
+    {
+      "id": "CA-04",
+      "priority": "P1",
+      "title": "伤员人体没有沿用已生产角色",
+      "detail": "role=cart 在身份查找之前直接返回 undefined。Rescue 将孟齐 ally 改 cart，main 替换整个模型；Medical 周延/孟齐从创建起就是 cart。床上人体和附着推车者都是 patient-cart 中的程序化方块，不是 CH-ZHOU/CH-MENG/CH-DOCTOR。医疗区生成备用床/担架只是静态陈设。",
+      "evidence": [
+        "src/assets/character-catalog.ts:225",
+        "src/mission/Rescue.ts:30",
+        "src/mission/Medical.ts:31",
+        "src/main.ts:489",
+        "src/presentation/characters.ts:64",
+        "src/presentation/patient-cart.ts:24",
+        "src/presentation/patient-cart.ts:37",
+        "src/assets/scene-asset-catalog.ts:807"
+      ],
+      "missionCompletionClarification": "S10 zhou-cart is always occupied=false in main.ts:564; the player viewpoint rides the physical stretcher (Rescue.ts:86), so do not describe that scene as rendering a generic Zhou body. S11 zhou/meng cart actors do render the generic patient. Legacy handover keeps Meng ally+down and therefore CH-MENG, with procedural pose/position."
+    },
+    {
+      "id": "CA-05",
+      "priority": "P1",
+      "title": "4 身份跳过战术包；蒙皮高应变未消除",
+      "detail": "SHAO/DOCTOR/SHEN/child 跳过 tactical 下载，仍有正式身体+canonical walk+程序化动作，不能误写人物没接。SHAO connected edge 10723–10736 在 crouch_walk 0.70s 从6.04mm变67.12mm，11.114倍，是实际短边拉伸而非零分母。已有四成人四姿态离线概览未见大块断离，但未检最坏帧/全动画/枪/游戏相机/儿童；不是通用动作合格。",
+      "evidence": [
+        "src/presentation/ImportedCharacter.ts:113",
+        "src/presentation/ImportedCharacter.ts:182",
+        "artifacts/asset-jobs/production-20261031/characters/tactical-animations/inspection/deformation-analysis.json",
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json"
+      ]
+    },
+    {
+      "id": "CA-06",
+      "priority": "P2",
+      "title": "S08 监控邵原仍旧 primitive",
+      "detail": "DepartureMonitor 直接 createCharacter(civilian) 并叠黑外套/灰发/杯子方块，没有请求已有 CH-SHAO；只在 escort 监控摄像画面显示。",
+      "evidence": [
+        "src/presentation/DepartureMonitor.ts:15",
+        "src/presentation/DepartureMonitor.ts:42",
+        "src/main.ts:233",
+        "src/main.ts:614"
+      ]
+    },
+    {
+      "id": "CA-07",
+      "priority": "P2",
+      "title": "女孩/群众/年龄版本共用少数皮肤",
+      "detail": "daughter 女孩与 young-lu 男孩都因 child 优先规则选 CH-LU-CHILD。年轻23岁及33岁周延共用 CH-ZHOU；泛居民=SHEN、工人=LUO、医护=DOCTOR、友军/驻守/接防=ZHOU。S01/S02 32名主厅居民+12名撤离背景居民全用 SHEN，另6名任务居民按 civilian/worker 分别 SHEN/LUO。正式 CrowdView 分支为独立蒙皮实例，不使用原 instancing，也无群众LOD。",
+      "evidence": [
+        "src/assets/character-catalog.ts:210",
+        "src/assets/character-catalog.ts:219",
+        "src/assets/character-catalog.ts:227",
+        "src/presentation/CrowdView.ts:26",
+        "src/presentation/CrowdView.ts:43",
+        "src/mission/Opening.ts:233",
+        "src/content/history-layout.ts:9",
+        "src/content/history-layout.ts:24",
+        "src/mission/Simulation.ts:91"
+      ]
+    },
+    {
+      "id": "CA-08",
+      "priority": "P2",
+      "title": "真实第一人称双臂已接，但搬运/护理仍为代理",
+      "detail": "FirstPersonArms 从当前主角正式蒙皮裁切同侧权重>=0.7的原三角面，双侧各至少100面且有手掌权重，做双节臂IK握枪和跟随弹匣。手是原生成刚性手、41骨无手指；失败回退box手套/袖。nightshift/medical 搬箱由 main.carriedSupply 的方块手，relief/escort/rescue 护理/搬运由 CareView 的方块腿手，未用真实双臂。",
+      "evidence": [
+        "src/presentation/FirstPersonArms.ts:36",
+        "src/presentation/FirstPersonArms.ts:98",
+        "src/presentation/FirstPersonArms.ts:123",
+        "src/presentation/FirstPersonArms.ts:216",
+        "src/presentation/FirstPersonArms.ts:233",
+        "src/presentation/ImportedWeaponView.ts:153",
+        "src/main.ts:41",
+        "src/main.ts:214",
+        "src/main.ts:473",
+        "src/presentation/CareView.ts:11"
+      ]
+    },
+    {
+      "id": "CA-09",
+      "priority": "P2",
+      "title": "穿戴原件已生产，仅接为医疗区静物",
+      "detail": "胸甲/左护具/头盔/电台背包/耳机/手持终端已有生成原件和运行文件，但只摆在medical桌面/箱盖。无骨骼挂载/穿戴拟合/装备切换；角色衣服是整体蒙皮一部分，实际护理护膝/绑带仍程序化。",
+      "evidence": [
+        "src/assets/scene-asset-catalog.ts:811",
+        "src/assets/scene-asset-catalog.ts:817",
+        "src/presentation/GeneratedSceneAssets.ts:32",
+        "src/presentation/CareView.ts:23"
+      ]
+    },
+    {
+      "id": "CA-10",
+      "priority": "P2",
+      "title": "场景散落枪和手枪缺口",
+      "detail": "NPC carbine 和 opponent sidearm 都被同一 AK 替换，所以邵原原手枪 socket 得到AK；未找到独立手枪生产源。历史厅三把来源/掉落/班长枪仍是 rifleModel PortKit 几何，未用 WorldAK47。",
+      "evidence": [
+        "src/presentation/characters.ts:146",
+        "src/presentation/ImportedCharacter.ts:64",
+        "src/presentation/history-environments.ts:35",
+        "src/presentation/history-environments.ts:190"
+      ]
+    },
+    {
+      "id": "CA-11",
+      "priority": "P2",
+      "title": "过场预载不等于动作和人物已就绪",
+      "detail": "PreparedGameLevel 预热初始人物/主角/walk/AK，不含 tactical 或后续动态出现身份；直接单场 load 不等待异步预热。ImportedCharacter 在 model+walk+tactical尝试及rig检查结束前继续显示代理。预热失败算已结束的降级任务。Tactical loader 没传 AbortSignal；角色释放后要等获取完成才释放该lease。",
+      "evidence": [
+        "src/chapter-transition/PreparedGameLevel.ts:109",
+        "src/chapter-transition/PreparedGameLevel.ts:176",
+        "src/main.ts:221",
+        "src/presentation/ImportedCharacter.ts:107",
+        "src/presentation/TacticalAnimations.ts:43"
+      ]
+    },
+    {
+      "id": "CA-12",
+      "priority": "P2",
+      "title": "动作标定尺度与运行尺度存在差值",
+      "detail": "战术成人按1.8m、儿童1.25m编辑，运行catalog使用1.75m/1.15m，物理为1.8m/1.1m。实际 loader 验原件source SHA+真实骨rest/层级/skin bindMatrix/IBM，正确接受仅压纹理的文件SHA变化；但并未证明最终枪长0.89m与运行身体握点、脚底及碰撞高度一致。",
+      "evidence": [
+        "src/assets/tactical-catalog.ts:13",
+        "src/assets/tactical-catalog.ts:133",
+        "src/assets/character-catalog.ts:10",
+        "src/assets/character-catalog.ts:66",
+        "src/mission/Simulation.ts:103",
+        "src/presentation/TacticalAnimations.ts:21"
+      ]
+    }
+  ],
+  "scenarios": [
+    {
+      "scenario": "childhood",
+      "chapter": "S01",
+      "playerArms": "CH-LU-CHILD",
+      "actorAssets": "father FATHER; evacuator SHEN; daughter LU-CHILD; zhao ZHAO; young-zhou/defenders ZHOU; 6+32+12 civilians SHEN",
+      "exceptions": "All imported people; girl uses boy skin; loose guns primitive",
+      "populationEvidence": "src/mission/Opening.ts:233"
+    },
+    {
+      "scenario": "mainhall",
+      "chapter": "S02",
+      "playerArms": "CH-ZHOU",
+      "actorAssets": "father FATHER; evacuator SHEN; daughter/young-lu LU-CHILD; zhao ZHAO; defenders ZHOU; 6 workers LUO;32+12 civilians SHEN; enemies/invaders ENEMY; shao SHAO",
+      "exceptions": "Imported people; deaths procedural; loose rifles primitive",
+      "populationEvidence": "src/mission/Opening.ts:233"
+    },
+    {
+      "scenario": "nightshift",
+      "chapter": "S03",
+      "playerArms": "CH-LU",
+      "actorAssets": "xu XU; meng MENG; zhou ZHOU",
+      "exceptions": "Imported people; supply hands primitive",
+      "populationEvidence": "src/mission/Simulation.ts:123"
+    },
+    {
+      "scenario": "workers",
+      "chapter": "S04",
+      "playerArms": "CH-LU",
+      "actorAssets": "workers incl 罗敬 LUO; zheng ZHENG; meng MENG; E01/E02/E03 ENEMY",
+      "exceptions": "Imported; workers one skin",
+      "populationEvidence": "src/mission/Simulation.ts:130"
+    },
+    {
+      "scenario": "frontgate",
+      "chapter": "S05",
+      "playerArms": "CH-ZHOU",
+      "actorAssets": "7 workers LUO; zheng ZHENG; relief ZHOU; E04 ENEMY",
+      "exceptions": "Imported; generic ally shares Zhou",
+      "populationEvidence": "src/mission/Frontgate.ts:36"
+    },
+    {
+      "scenario": "transfer",
+      "chapter": "S06",
+      "playerArms": "CH-LU",
+      "actorAssets": "courier SHEN; xu XU; zhou ZHOU; luo LUO; cart-* primitive",
+      "exceptions": "Cart patient/orderly primitive",
+      "populationEvidence": "src/mission/Transfer.ts:28"
+    },
+    {
+      "scenario": "flank",
+      "chapter": "S07",
+      "playerArms": "CH-ZHOU",
+      "actorAssets": "zheng ZHENG; meng MENG; workers LUO; walkers SHEN; E05 ENEMY; carts primitive",
+      "exceptions": "Cart patient/orderly primitive",
+      "populationEvidence": "src/mission/Flank.ts:28"
+    },
+    {
+      "scenario": "escort",
+      "chapter": "S08",
+      "playerArms": "CH-LU",
+      "actorAssets": "luo LUO; meng MENG; medic DOCTOR; relief-* ZHOU; walkers SHEN; E06/E07 ENEMY; carts primitive",
+      "exceptions": "Monitor Shao primitive; transfer hands primitive",
+      "populationEvidence": "src/mission/Escort.ts:88"
+    },
+    {
+      "scenario": "relief",
+      "chapter": "S09",
+      "playerArms": "CH-ZHOU",
+      "actorAssets": "meng MENG; zheng ZHENG; relief-* ZHOU; workers LUO; E08 ENEMY",
+      "exceptions": "CareView legs/brace/strap primitive",
+      "populationEvidence": "src/mission/Relief.ts:30"
+    },
+    {
+      "scenario": "rescue",
+      "chapter": "S10",
+      "playerArms": "CH-ZHOU",
+      "actorAssets": "meng MENG→cart; zheng ZHENG; medic/medic-1 DOCTOR; zhou-cart primitive; E09 ENEMY",
+      "exceptions": "Role change replaces Meng skin; carry hands primitive",
+      "populationEvidence": "src/mission/Rescue.ts:18"
+    },
+    {
+      "scenario": "medical",
+      "chapter": "S11",
+      "playerArms": "CH-LU",
+      "actorAssets": "zhou/meng cart; doctor/nurse DOCTOR; xu XU; zheng ZHENG",
+      "exceptions": "Named patients primitive; carry hands primitive; static wearables",
+      "populationEvidence": "src/mission/Medical.ts:31"
+    },
+    {
+      "scenario": "epilogue",
+      "chapter": "S12",
+      "playerArms": "CH-LU",
+      "actorAssets": "zheng ZHENG; luo/worker-* LUO; supply-cart primitive",
+      "exceptions": "Cargo and attached orderly primitive",
+      "populationEvidence": "src/mission/Epilogue.ts:30"
+    },
+    {
+      "scenario": "northgate",
+      "chapter": "legacy",
+      "playerArms": "CH-ZHOU",
+      "actorAssets": "7 workers LUO; zheng ZHENG; enemies ENEMY",
+      "exceptions": "Imported non-cart",
+      "populationEvidence": "src/mission/Simulation.ts:130"
+    },
+    {
+      "scenario": "prologue",
+      "chapter": "legacy",
+      "playerArms": "CH-LU-CHILD→CH-ZHOU",
+      "actorAssets": "3 workers LUO; zheng ZHENG; father FATHER; enemies ENEMY",
+      "exceptions": "Player name changes at phase2",
+      "populationEvidence": "src/mission/Simulation.ts:530"
+    },
+    {
+      "scenario": "handover",
+      "chapter": "legacy",
+      "playerArms": "CH-LU→CH-ZHOU",
+      "actorAssets": "2 workers LUO; zheng ZHENG; medic DOCTOR; enemies ENEMY; phase>=3 late-spawned meng MENG (ally+down)",
+      "exceptions": "Player name changes midscene; late Meng is not in initial preload and remains a production humanoid with procedural down/carry positioning, not the newer rescue cart substitution",
+      "populationEvidence": "src/mission/Simulation.ts:139; src/mission/Simulation.ts:545; src/mission/Simulation.ts:549; src/persistence/SaveStore.ts:300"
+    }
+  ],
+  "characterAssets": [
+    {
+      "id": "CH-DOCTOR",
+      "label": "医师",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-DOCTOR/rig-v1/rig/1f3fb503-1bd8-474b-b7ce-574f8f16b650-model.glb",
+        "sha256": "bdf7f567d245dc555393a53423a6ce7fb52d2a09c8ab82eb7b2e39fe17bb7a24",
+        "bytes": 7991068,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-doctor-rig-v1.glb",
+        "sha256": "ac40a5bd08473ccd844ec77146c264dfc0cdaea65fb28f314626f121d38cb8cd",
+        "bytes": 1474328,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-DOCTOR-apose-v1.png",
+        "sha256": "b8a0185eb9d4a5ab4fdb1535a894f66df10c706079d736cb9a450852467b10ca",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "6328a757-b2db-4ff3-83e8-755ba83270a3",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-DOCTOR/safe-status-6328a757-b2db-4ff3-83e8-755ba83270a3.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "0a9c17db-2825-4141-817a-10d30e3bb2f4",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-DOCTOR/safe-status-0a9c17db-2825-4141-817a-10d30e3bb2f4.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "1f3fb503-1bd8-474b-b7ce-574f8f16b650",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-DOCTOR/safe-status-1f3fb503-1bd8-474b-b7ce-574f8f16b650.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-DOCTOR.glb",
+        "sha256": "21e093bb23618df6c8e5275c1d6eb49934477ac4be8b5c95f383cb822c434a37",
+        "bytes": 2504548,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-doctor.glb",
+        "sha256": "21e093bb23618df6c8e5275c1d6eb49934477ac4be8b5c95f383cb822c434a37",
+        "bytes": 2504548,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": false,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-ENEMY",
+      "label": "敌兵",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-ENEMY/rig-v1/rig/5a26a6cd-f147-4e99-adfb-733d7c686c60-model.glb",
+        "sha256": "5f5d3f3fb12a31cae51954ff3e47e615fdd779bd461ee5c4add5b90e1530b3d0",
+        "bytes": 11880164,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-enemy-rig-v1.glb",
+        "sha256": "0242cf47abaf0d8692a9fcd40465913af64488f90f5186b02a058920eef83b6c",
+        "bytes": 1871400,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-ENEMY-apose-v1.png",
+        "sha256": "05c6ca8fbf32476da124e3c5c88ecc9671bbc351dea26e67a3168417a325651d",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "a57e944a-7925-4be4-9e4c-56cda1bb1dd4",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-ENEMY/safe-status-a57e944a-7925-4be4-9e4c-56cda1bb1dd4.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "5826766f-547c-4542-825c-8e7b8fbad67e",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-ENEMY/safe-status-5826766f-547c-4542-825c-8e7b8fbad67e.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "5a26a6cd-f147-4e99-adfb-733d7c686c60",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-ENEMY/safe-status-5a26a6cd-f147-4e99-adfb-733d7c686c60.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-ENEMY.glb",
+        "sha256": "00ea81296696405ac4fe55bc9ff2164a98a91976c2013afb294c7bcd9c393a8d",
+        "bytes": 2504580,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-enemy.glb",
+        "sha256": "00ea81296696405ac4fe55bc9ff2164a98a91976c2013afb294c7bcd9c393a8d",
+        "bytes": 2504580,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-FATHER",
+      "label": "陆建平",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-FATHER/rig-v1/rig/5d82f4cd-e9a9-4ba5-9ce9-49aa24a971c6-model.glb",
+        "sha256": "56f25bda8d2fe8a89475fdbeb142604d10c07d505b30663c83b48750093b82b3",
+        "bytes": 11585296,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-father-rig-v1.glb",
+        "sha256": "0f3e20b3a03cb3000e2fbf4bc9d06118c852433f7ad8e8f174899bea72a3a7f7",
+        "bytes": 1862188,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-FATHER-apose-v1.png",
+        "sha256": "a148d228f49da63e28104a5075f32efc74edae42b4106bfc9a7c17f551232747",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "05f33e5f-0d5e-4fd5-89ea-0b83ce83b48f",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-FATHER/safe-status-05f33e5f-0d5e-4fd5-89ea-0b83ce83b48f.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "f7b50903-80c7-4e33-be3c-315d63e21af1",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-FATHER/safe-status-f7b50903-80c7-4e33-be3c-315d63e21af1.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "5d82f4cd-e9a9-4ba5-9ce9-49aa24a971c6",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-FATHER/safe-status-5d82f4cd-e9a9-4ba5-9ce9-49aa24a971c6.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-FATHER.glb",
+        "sha256": "cca255aab9c8775f6bd3366916e6eb49edcfc9dae3e9b5a18e4b6f3c9e4f81fd",
+        "bytes": 2504620,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-father.glb",
+        "sha256": "cca255aab9c8775f6bd3366916e6eb49edcfc9dae3e9b5a18e4b6f3c9e4f81fd",
+        "bytes": 2504620,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-LU",
+      "label": "陆闻川",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-LU/rig-v1/rig/77ed8fb0-4b83-4c79-8bc8-f5cd7820c9d3-model.glb",
+        "sha256": "33579cb205c11d50c6fa6dfa42f93f022e387cbcf07b5a24c9a6be0b37961501",
+        "bytes": 9097540,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-lu-rig-v1.glb",
+        "sha256": "6d6e12d9e23449ab24f260f2b33bdb30a1e48a179c625e0c9904992ac7b5737f",
+        "bytes": 1636760,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-LU-apose-v1.png",
+        "sha256": "8eaaf13b0885283cda1eb8c4d9461bec29285be3348741d14a7224d3286c17bc",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "ea7042bb-c0c3-4331-9fbd-8d64ec0e16b1",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "assets/source/tripo/CH-LU/v1/ea7042bb-c0c3-4331-9fbd-8d64ec0e16b1.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "1956a555-00d5-4407-8f1a-c130241bccc5",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "artifacts/asset-jobs/production-20261031/private/tripo/CH-LU-rig.stdout.log"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "77ed8fb0-4b83-4c79-8bc8-f5cd7820c9d3",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "assets/source/tripo/CH-LU/rig-v1/rig/77ed8fb0-4b83-4c79-8bc8-f5cd7820c9d3.json"
+        },
+        {
+          "role": "walk",
+          "taskId": "bbb97803-3f4f-41ea-b1ee-61b351c50bbb",
+          "state": "success",
+          "consumed_credit": 10,
+          "statusEvidence": "assets/source/tripo/CH-LU/animations/walk/bbb97803-3f4f-41ea-b1ee-61b351c50bbb.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/tactical-canonical.glb",
+        "sha256": "8cdaec04e90cff8e3b31bd750d4e5b9bc3029cee9d08156b0b84dcda9bb58d37",
+        "bytes": 2504620,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-lu.glb",
+        "sha256": "8cdaec04e90cff8e3b31bd750d4e5b9bc3029cee9d08156b0b84dcda9bb58d37",
+        "bytes": 2504620,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-LU-CHILD",
+      "label": "陆闻川 · 儿童独立模型",
+      "bodyPlan": "child",
+      "heightMeters": 1.15,
+      "source": {
+        "path": "assets/source/tripo/CH-LU-CHILD/rig-v1/rig/1aeea69b-8de0-49c8-8028-b3fff31436be-model.glb",
+        "sha256": "1d33683fcf92e1db07de9ca73b059052d16fd841551d927f25022efc72cf83c1",
+        "bytes": 9603700,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-lu-child-rig-v1.glb",
+        "sha256": "13f8f41d6852a69b6844c51118825e8a0017d7a86856daf6ba1cf1c51ca63f31",
+        "bytes": 1673800,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-LU-CHILD-apose-v1.png",
+        "sha256": "862bc0d3c4bdd279f4b51b2e37f2ed402c0783bd2cb8285c0e6e82fa8d2f21b4",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "6281d06b-d297-4fda-a997-f7cf3237f8dc",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-LU-CHILD/safe-status-6281d06b-d297-4fda-a997-f7cf3237f8dc.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "2520e13c-2433-43aa-b5ca-89a1a0504b21",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-LU-CHILD/safe-status-2520e13c-2433-43aa-b5ca-89a1a0504b21.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "1aeea69b-8de0-49c8-8028-b3fff31436be",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-LU-CHILD/safe-status-1aeea69b-8de0-49c8-8028-b3fff31436be.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-LU-CHILD.glb",
+        "sha256": "100407019610bfb05d23328cffdc74e68e80c960b88e068c2913c5fa2c5ffd17",
+        "bytes": 2504548,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-lu-child.glb",
+        "sha256": "100407019610bfb05d23328cffdc74e68e80c960b88e068c2913c5fa2c5ffd17",
+        "bytes": 2504548,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": false,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-LUO",
+      "label": "罗敬",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-LUO/rig-v1/rig/b0df3e2a-e328-438e-af06-eca45f2a7510-model.glb",
+        "sha256": "99d550070d86e919ca780d58699d70daa8ed172f2e9696ee78d4a5a666cbb329",
+        "bytes": 10643556,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-luo-rig-v1.glb",
+        "sha256": "d5e7dad0e2c4c0d4391af902474df2db1a197ff7d6668dc5184b52047c64b894",
+        "bytes": 1774244,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-LUO-apose-v1.png",
+        "sha256": "6ce531814a4b67311df2837b09bc1505200eb50324f40447499f688f00e01636",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "c6f0538e-ea3c-44ca-8e53-ae7f428f8d38",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-LUO/safe-status-c6f0538e-ea3c-44ca-8e53-ae7f428f8d38.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "29e4eeb3-bcd3-46f9-a829-a03627f9417c",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-LUO/safe-status-29e4eeb3-bcd3-46f9-a829-a03627f9417c.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "b0df3e2a-e328-438e-af06-eca45f2a7510",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-LUO/safe-status-b0df3e2a-e328-438e-af06-eca45f2a7510.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-LUO.glb",
+        "sha256": "c17476b99ab44e1527b1bbe10f74001e377044f8cbf202e13c6d8c8e8b8ce770",
+        "bytes": 2504424,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-luo.glb",
+        "sha256": "c17476b99ab44e1527b1bbe10f74001e377044f8cbf202e13c6d8c8e8b8ce770",
+        "bytes": 2504424,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-MENG",
+      "label": "孟齐",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-MENG/rig-v1/rig/f348dea9-0358-4eab-9208-1335e1768372-model.glb",
+        "sha256": "3c12c834d9efbc5fb15a731101e31f71872bc3f193f0c867f9d09508b7da2a1a",
+        "bytes": 10019672,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-meng-rig-v1.glb",
+        "sha256": "c90132d7e2afa41b4ea2fdcf3186a149e4814487a45e08d10c742eb601b61d37",
+        "bytes": 1680184,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-MENG-apose-v1.png",
+        "sha256": "8fc55be2617c5a43f45d20a3722619e9c4616e6be292ed5de106e159ccea6206",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "8618a776-771a-4405-b0b7-13ff8237f6d0",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-MENG/safe-status-8618a776-771a-4405-b0b7-13ff8237f6d0.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "694c6240-b064-4f5c-bb98-5019c06b39a5",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-MENG/safe-status-694c6240-b064-4f5c-bb98-5019c06b39a5.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "f348dea9-0358-4eab-9208-1335e1768372",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-MENG/safe-status-f348dea9-0358-4eab-9208-1335e1768372.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-MENG.glb",
+        "sha256": "e371069a9f777d3aa259ba941823c1011b46ec398b12ebc5baf1b578fb33b76d",
+        "bytes": 2504364,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-meng.glb",
+        "sha256": "e371069a9f777d3aa259ba941823c1011b46ec398b12ebc5baf1b578fb33b76d",
+        "bytes": 2504364,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-SHAO",
+      "label": "邵原",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-SHAO/rig-v1/rig/ae88fddf-945c-4716-9776-1758d063fb27-model.glb",
+        "sha256": "8b13b2f6aecc9689df545e93387cc82277775b53feca6ecd73b495376170358d",
+        "bytes": 9687232,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-shao-rig-v1.glb",
+        "sha256": "b972baf3bb59fa52f25e7d449e913ae13d5a5dcc9c95c51d02644a67816c72d4",
+        "bytes": 1656292,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-SHAO-apose-v1.png",
+        "sha256": "74e432f05aacc0283a21546f8c09a967da6702970b4f40ada548fe5f00db7fb8",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "295aa5b2-ee3f-4af1-9215-0b90d0ab65e0",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-SHAO/safe-status-295aa5b2-ee3f-4af1-9215-0b90d0ab65e0.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "e0fd8f66-13e3-4787-84eb-e853b7770f1a",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-SHAO/safe-status-e0fd8f66-13e3-4787-84eb-e853b7770f1a.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "ae88fddf-945c-4716-9776-1758d063fb27",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-SHAO/safe-status-ae88fddf-945c-4716-9776-1758d063fb27.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-SHAO.glb",
+        "sha256": "9b91d53d9cd7e790a75fadf1150b85470488b56553636dceb9df633eb0cc31cd",
+        "bytes": 2504600,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-shao.glb",
+        "sha256": "9b91d53d9cd7e790a75fadf1150b85470488b56553636dceb9df633eb0cc31cd",
+        "bytes": 2504600,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": false,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-SHEN",
+      "label": "沈玉芬",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-SHEN/rig-v1/rig/771ca26e-fcc0-4f52-868b-7d7caeaf348c-model.glb",
+        "sha256": "00740e54780b3f6b06ffdeba1d68ca531b99638be6fa7bfd50bbfa50f305d0a3",
+        "bytes": 8582020,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-shen-rig-v1.glb",
+        "sha256": "f79c3447a5c3d77bf4ab8abba48281fc696a45bc7db053dedc2e57f5dabaa75e",
+        "bytes": 1491652,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-SHEN-apose-v1.png",
+        "sha256": "88701ef7bb1895aab778d4d1a5e3361099cf883aba58c9a93582ce8ade021872",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "a92edc39-49c1-4422-b436-b5a9f21e2d20",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-SHEN/safe-status-a92edc39-49c1-4422-b436-b5a9f21e2d20.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "b1dff96b-8393-4254-9cb2-5ad134e49e43",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-SHEN/safe-status-b1dff96b-8393-4254-9cb2-5ad134e49e43.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "771ca26e-fcc0-4f52-868b-7d7caeaf348c",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-SHEN/safe-status-771ca26e-fcc0-4f52-868b-7d7caeaf348c.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-SHEN.glb",
+        "sha256": "ed69c9add8da32fa75d4bcbf6b0cbd298762a54e930671409a5260c575b62d73",
+        "bytes": 2504348,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-shen.glb",
+        "sha256": "ed69c9add8da32fa75d4bcbf6b0cbd298762a54e930671409a5260c575b62d73",
+        "bytes": 2504348,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": false,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-XU",
+      "label": "许岚",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-XU/rig-v1/rig/aa6d9286-2831-40bc-96f2-74877d95bedf-model.glb",
+        "sha256": "91851024995f6285c1a6c2cd7c4ac0be6bef80766e4124eb648a69938e9b0c8f",
+        "bytes": 9132952,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-xu-rig-v1.glb",
+        "sha256": "a92899ff81b6ee64e8b9a36185ae2c0e56380c37eef243f14a3542167271e640",
+        "bytes": 1578972,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-XU-apose-v1.png",
+        "sha256": "e8a0240b4453ef9201ae9ffe8db8232eb980ac5ec96215754c98321826fd72df",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "9b8d7d6c-a745-4bb8-af3b-2eefdaa030ee",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-XU/safe-status-9b8d7d6c-a745-4bb8-af3b-2eefdaa030ee.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "f7815220-5dd6-4c08-847b-380a39703338",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-XU/safe-status-f7815220-5dd6-4c08-847b-380a39703338.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "aa6d9286-2831-40bc-96f2-74877d95bedf",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-XU/safe-status-aa6d9286-2831-40bc-96f2-74877d95bedf.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-XU.glb",
+        "sha256": "b07d9ec4042b5c9ba4c38e40d1e170b09d4305a46b04b5d35254407fbe902c0e",
+        "bytes": 2504644,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-xu.glb",
+        "sha256": "b07d9ec4042b5c9ba4c38e40d1e170b09d4305a46b04b5d35254407fbe902c0e",
+        "bytes": 2504644,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-ZHAO",
+      "label": "赵启明",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-ZHAO/rig-v1/rig/f959a172-f5d8-49b8-b783-b57917aa72a0-model.glb",
+        "sha256": "bb3feadbff89b2ea8bc4dd008cc5c6a4eee4b34c53d6018116003429a4f3af9e",
+        "bytes": 10827388,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-zhao-rig-v1.glb",
+        "sha256": "4f669c12b0fbe108e3080f2acf418d6402755cbc443af610b84dc3ddce56bb20",
+        "bytes": 1764692,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-ZHAO-apose-v1.png",
+        "sha256": "62a90ca6c554c372047d044077c93f8464d73fa89d24520d846f5f78892cd0bd",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "86cf8490-c4cd-46ba-b4f6-98e1a2f9c5af",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-ZHAO/safe-status-86cf8490-c4cd-46ba-b4f6-98e1a2f9c5af.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "ee96eef1-cb93-49f9-a5cc-694ba09eb710",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-ZHAO/safe-status-ee96eef1-cb93-49f9-a5cc-694ba09eb710.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "f959a172-f5d8-49b8-b783-b57917aa72a0",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-ZHAO/safe-status-f959a172-f5d8-49b8-b783-b57917aa72a0.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-ZHAO.glb",
+        "sha256": "18ed2282b2392e81e58abbf5c6827ffd17c8e5520e4158b251f6225a945a847c",
+        "bytes": 2504692,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-zhao.glb",
+        "sha256": "18ed2282b2392e81e58abbf5c6827ffd17c8e5520e4158b251f6225a945a847c",
+        "bytes": 2504692,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-ZHENG",
+      "label": "郑铎",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-ZHENG/rig-v1/rig/40053c3a-703e-454f-b015-3339d245489e-model.glb",
+        "sha256": "71465e2907f29cb26e4fd7927bf07a1f756e11fb511ebcc91ffdd1e78fc2e765",
+        "bytes": 10475064,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-zheng-rig-v1.glb",
+        "sha256": "5753250c0198f63d7a2b723e0e6c704189283870f330513f323635959ccddd09",
+        "bytes": 1732376,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-ZHENG-apose-v1.png",
+        "sha256": "5da65fe0dbb3cfa39fee004d07c7bbd14b488bcc72ad4a8e55f87ccfe7c6ac8a",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "5cda3235-242f-487e-98c6-126cd1732927",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "private/tripo/CH-ZHENG/safe-status-5cda3235-242f-487e-98c6-126cd1732927.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "ce6e5d28-c18f-467c-86a8-6c1a925f4c3a",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "private/tripo/CH-ZHENG/safe-status-ce6e5d28-c18f-467c-86a8-6c1a925f4c3a.json"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "40053c3a-703e-454f-b015-3339d245489e",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "private/tripo/CH-ZHENG/safe-status-40053c3a-703e-454f-b015-3339d245489e.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-ZHENG.glb",
+        "sha256": "89b779a30c6fe70d1fd4054b5f1beab02d5ae6201abc2441704178f8a908397f",
+        "bytes": 2504948,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-zheng.glb",
+        "sha256": "89b779a30c6fe70d1fd4054b5f1beab02d5ae6201abc2441704178f8a908397f",
+        "bytes": 2504948,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    },
+    {
+      "id": "CH-ZHOU",
+      "label": "周延",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "source": {
+        "path": "assets/source/tripo/CH-ZHOU/rig-v1/rig/9d29d053-843a-410e-9c67-1cd20c7435ea-model.glb",
+        "sha256": "1ec1a772922bf269612bb9b7edf0d1453e297ad41ff0a739603bd9c3a0abd38d",
+        "bytes": 10017412,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "runtime": {
+        "path": "public/models/characters/ch-zhou-rig-v1.glb",
+        "sha256": "e643df2c1bc4a42ebd35d7b1da52a769222c09aa501963f49cd53dcb0a7bcd98",
+        "bytes": 1648864,
+        "meshes": 1,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [],
+        "externalUriCount": 0
+      },
+      "sourceShaMatchesCatalog": true,
+      "runtimeShaMatchesCatalog": true,
+      "sourceRuntimeRestAndInverseBindEqual": true,
+      "input": {
+        "path": "assets/concepts/character-production-20261031/CH-ZHOU-apose-v1.png",
+        "sha256": "4cc9951c75175f9881e1692dd5116354e5b809ca1f6f03cb314ee09cd2827e60",
+        "referenceLog": "artifacts/asset-jobs/production-20261031/characters/reference-log.json"
+      },
+      "tasks": [
+        {
+          "role": "model",
+          "taskId": "64300525-783e-4f8e-866e-6a05aa05ad94",
+          "state": "success",
+          "consumed_credit": 40,
+          "statusEvidence": "assets/source/tripo/CH-ZHOU/v1/64300525-783e-4f8e-866e-6a05aa05ad94.json"
+        },
+        {
+          "role": "prerigcheck",
+          "taskId": "b5cf4ff0-008b-46c6-8ea9-72685ab8b177",
+          "state": "success",
+          "consumed_credit": 0,
+          "statusEvidence": "artifacts/asset-jobs/production-20261031/private/tripo/CH-ZHOU-rig.stdout.log"
+        },
+        {
+          "role": "rig-1",
+          "taskId": "9d29d053-843a-410e-9c67-1cd20c7435ea",
+          "state": "success",
+          "consumed_credit": 25,
+          "statusEvidence": "assets/source/tripo/CH-ZHOU/rig-v1/rig/9d29d053-843a-410e-9c67-1cd20c7435ea.json"
+        }
+      ],
+      "sourcePack": {
+        "path": "assets/source/tripo/shared-animations/tactical-v1/adapted/CH-ZHOU.glb",
+        "sha256": "984be4cb00668be40db4990241c65cc9912516793d9479f2819f68b601de2076",
+        "bytes": 2504392,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "runtimePack": {
+        "path": "public/models/animations/tactical-r1/ch-zhou.glb",
+        "sha256": "984be4cb00668be40db4990241c65cc9912516793d9479f2819f68b601de2076",
+        "bytes": 2504392,
+        "meshes": 0,
+        "skinJointCounts": [
+          41
+        ],
+        "clips": [
+          {
+            "name": "ready_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_down",
+            "channels": 123
+          },
+          {
+            "name": "crouch_idle",
+            "channels": 123
+          },
+          {
+            "name": "crouch_walk",
+            "channels": 123
+          },
+          {
+            "name": "stand_up",
+            "channels": 123
+          },
+          {
+            "name": "cover_enter",
+            "channels": 123
+          },
+          {
+            "name": "cover_idle",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_left",
+            "channels": 123
+          },
+          {
+            "name": "cover_peek_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_aim_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_fire_right",
+            "channels": 123
+          },
+          {
+            "name": "cover_exit",
+            "channels": 123
+          },
+          {
+            "name": "idle",
+            "channels": 123
+          },
+          {
+            "name": "run",
+            "channels": 123
+          },
+          {
+            "name": "walk_in_place",
+            "channels": 123
+          }
+        ],
+        "externalUriCount": 0
+      },
+      "packMatchesSource": true,
+      "tacticalEnabled": true,
+      "boneNames": [
+        "Root",
+        "Hip",
+        "Pelvis",
+        "L_Thigh",
+        "L_Calf",
+        "L_Foot",
+        "L_ToeBase",
+        "L_CalfTwist01",
+        "L_CalfTwist02",
+        "L_ThighTwist01",
+        "L_ThighTwist02",
+        "R_Thigh",
+        "R_ThighTwist01",
+        "R_ThighTwist02",
+        "R_Calf",
+        "R_Foot",
+        "R_ToeBase",
+        "R_CalfTwist01",
+        "R_CalfTwist02",
+        "Waist",
+        "Spine01",
+        "Spine02",
+        "NeckTwist01",
+        "NeckTwist02",
+        "Head",
+        "L_Clavicle",
+        "L_Upperarm",
+        "L_Forearm",
+        "L_ForearmTwist01",
+        "L_ForearmTwist02",
+        "L_Hand",
+        "L_UpperarmTwist01",
+        "L_UpperarmTwist02",
+        "R_Clavicle",
+        "R_Upperarm",
+        "R_UpperarmTwist01",
+        "R_UpperarmTwist02",
+        "R_Forearm",
+        "R_ForearmTwist01",
+        "R_ForearmTwist02",
+        "R_Hand"
+      ],
+      "articulatedFingerBones": []
+    }
+  ],
+  "actions": {
+    "clipNames": [
+      "ready_idle",
+      "crouch_down",
+      "crouch_idle",
+      "crouch_walk",
+      "stand_up",
+      "cover_enter",
+      "cover_idle",
+      "cover_peek_left",
+      "cover_aim_left",
+      "cover_fire_left",
+      "cover_peek_right",
+      "cover_aim_right",
+      "cover_fire_right",
+      "cover_exit",
+      "idle",
+      "run",
+      "walk_in_place"
+    ],
+    "origins": {
+      "TripoNew": [
+        "idle",
+        "run"
+      ],
+      "TripoReused": [
+        "walk_in_place"
+      ],
+      "originalOfflineSkeletalEdit": [
+        "ready_idle",
+        "crouch_down",
+        "crouch_idle",
+        "crouch_walk",
+        "stand_up",
+        "cover_enter",
+        "cover_idle",
+        "cover_peek_left",
+        "cover_aim_left",
+        "cover_fire_left",
+        "cover_peek_right",
+        "cover_aim_right",
+        "cover_fire_right",
+        "cover_exit"
+      ]
+    },
+    "jobs": [
+      {
+        "semantic": "idle",
+        "taskId": "f429866e-520f-46c4-bb34-2cdc30fa33b5",
+        "consumedCredit": 10,
+        "sourcePath": "assets/source/tripo/shared-animations/tactical-v1/sources/idle/f429866e-520f-46c4-bb34-2cdc30fa33b5-model.fbx",
+        "sourceSHA256": "e2c18fcb5c860083eaeb0df16ebec3cd90b314b5db47720b1344597f60e468d8",
+        "duration": 15.333333015441895,
+        "status": "success"
+      },
+      {
+        "semantic": "run",
+        "taskId": "ade6057d-9173-46a8-82fe-8f6a4f9ccf30",
+        "consumedCredit": 10,
+        "sourcePath": "assets/source/tripo/shared-animations/tactical-v1/sources/run/ade6057d-9173-46a8-82fe-8f6a4f9ccf30-model.fbx",
+        "sourceSHA256": "052f1057ea4b1f0d47800a88c2f6fd8a5cd6a4bf85535e03d7b02732dbc0a259",
+        "duration": 1.2333333492279053,
+        "status": "success"
+      }
+    ]
+  },
+  "notProducedOrNotAdapted": [
+    {
+      "item": "独立女孩外观",
+      "status": "no separate source found",
+      "current": "CH-LU-CHILD boy reused"
+    },
+    {
+      "item": "年轻周延独立网格版本",
+      "status": "no separate revision found",
+      "current": "23/33岁共用CH-ZHOU；骨架共用本身符合设计"
+    },
+    {
+      "item": "群众/工人/医护/接防兵外观变体",
+      "status": "no dedicated variants found",
+      "current": "已有SHEN/LUO/DOCTOR/ZHOU基模，不是全部无人模型"
+    },
+    {
+      "item": "周延/孟齐卧床伤员版本",
+      "status": "no dedicated patient source/contact adaptation found",
+      "current": "原基模存在；cart显示通用人体"
+    },
+    {
+      "item": "独立近景双臂/可动手指资产",
+      "status": "no standalone source; runtime derivative exists",
+      "current": "原身体裁切真实双臂已接，不能写双臂全未生产"
+    },
+    {
+      "item": "搬运/护理/抱撤/扶门/换弹/受击/死亡专用片段",
+      "status": "not in 17-clip pack",
+      "current": "已有程序化近似和剧情位移，没有对应正式片段/多人接触包"
+    },
+    {
+      "item": "独立手枪",
+      "status": "no source/runtime weapon found",
+      "current": "opponent gun replaced by AK"
+    },
+    {
+      "item": "穿戴/护具操作适配",
+      "status": "raw props produced; wearable adaptation absent",
+      "current": "现有胸甲/头盔/护具是桌面陈设"
+    }
+  ],
+  "weapon": {
+    "source": {
+      "path": "assets/source/WP-AK47/ak47_reloadable_world.glb",
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+      "bytes": 2046524,
+      "meshes": 11,
+      "skinJointCounts": [],
+      "clips": [],
+      "externalUriCount": 0
+    },
+    "runtime": {
+      "path": "public/models/weapons/ak47-world-r1.glb",
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+      "bytes": 2046524,
+      "meshes": 11,
+      "skinJointCounts": [],
+      "clips": [],
+      "externalUriCount": 0
+    },
+    "provenance": "taradavies OpenGameArt CC0; Operation Steel Tide/AetherRadar MIT adaptation; source license retained",
+    "motion": "0 supplier clips; procedural magazine/bolt/recoil"
+  },
+  "wearables": [
+    {
+      "id": "PROP-ARMOR-CHEST",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-ARMOR-CHEST/840ece9e-0e2f-4a39-933f-68729b55ffa4-pbr-model.glb",
+          "sha256": "fbdac8521d6078cb7c6aed001d81042bd0d7e180e0b0a3800dd7079675a63079",
+          "bytes": 10557232,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb",
+          "sha256": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+          "bytes": 1219540,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    },
+    {
+      "id": "PROP-ARMOR-LEFT-BRACE",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-ARMOR-LEFT-BRACE/98939ba8-5a7f-4895-94e2-90f76dd807cc-pbr-model.glb",
+          "sha256": "28cdb4035899713a36fe5e73e9279819bee8f2f2a9da10b536c2168a5f6953fb",
+          "bytes": 10709188,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+          "sha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+          "bytes": 1320340,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    },
+    {
+      "id": "PROP-ARMOR-HELMET",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-ARMOR-HELMET/2f160991-6325-4ede-83b7-4e71ffc5ccba-pbr-model.glb",
+          "sha256": "45793603d143012d6683072156e1a209fc325512bba8b0c3dcc84b01555d8185",
+          "bytes": 12420076,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb",
+          "sha256": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+          "bytes": 1278600,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    },
+    {
+      "id": "PROP-RADIO-PACK",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-RADIO-PACK/1301e9a7-c909-4b44-9218-0160fbd9a0cb-pbr-model.glb",
+          "sha256": "0ec3cb9ff4b2b28dae7f4957b72d7d2b7ef3c3324c12e2d01bb01025842d48f6",
+          "bytes": 12347788,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb",
+          "sha256": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+          "bytes": 1417512,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    },
+    {
+      "id": "PROP-RADIO-HEADSET",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-RADIO-HEADSET/ce2057ec-310e-4711-a656-ab74a7d5f73f-pbr-model.glb",
+          "sha256": "115f17e668682f67f14bda4855885065bcd43dd6f570fd2982fb2dd0af208304",
+          "bytes": 11850600,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb",
+          "sha256": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+          "bytes": 1349396,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    },
+    {
+      "id": "PROP-TERMINAL-HANDHELD",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-TERMINAL-HANDHELD/f8f981a5-3714-4010-a0d8-c263a49b46ba-pbr-model.glb",
+          "sha256": "234b2bea3fc26466eae954075d9cc9e02db6fa0e9d6f2dc68666fad19c614c3d",
+          "bytes": 15435756,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb",
+          "sha256": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+          "bytes": 1576612,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-MEDICAL-BAG/76629177-8de5-4c65-a8dc-34dcfd2b938b-pbr-model.glb",
+          "sha256": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+          "bytes": 17454464,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+          "sha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+          "bytes": 1569588,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    },
+    {
+      "id": "PROP-STRETCHER",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-STRETCHER/8d8192a4-2414-497c-9ef3-019dc604fce0-pbr-model.glb",
+          "sha256": "f82188ebd6f314a80a28f1719f466dd6a61c4873afa29c617a20c9281538a8a6",
+          "bytes": 10915136,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb",
+          "sha256": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+          "bytes": 1350900,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    },
+    {
+      "id": "PROP-TRANSFER",
+      "sources": [
+        {
+          "path": "assets/source/tripo/PROP-TRANSFER/1c388cb1-fe48-4263-a1e0-7210e4451aa3-pbr-model.glb",
+          "sha256": "3f029558fb380a475fae91e5ed09700224445dc445fdae4f7d8495338ed9a56d",
+          "bytes": 9200768,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "runtime": [
+        {
+          "path": "public/assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb",
+          "sha256": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+          "bytes": 1647596,
+          "meshes": 1,
+          "skinJointCounts": [],
+          "clips": [],
+          "externalUriCount": 0
+        }
+      ],
+      "characterAttachment": false
+    }
+  ],
+  "evidenceBoundary": {
+    "previousWalkApproval": {
+      "expandProduction": true,
+      "at": "2026-10-31T04:47:19.627638+00:00",
+      "basis": [
+        "User explicitly accepted the currently displayed walk binding and requested faster progress",
+        "LU actual Three.js walk displayed after unit/axis conversion",
+        "Same canonical clip applied to LU and ZHOU with 141-frame full-vertex checks per model and per clip; no nonfinite vertices or negative bone determinants",
+        "Both adult rigs have 41 bones and complete explicit semantic mapping",
+        "ZHOU actual Three.js walk_in_place displayed with canonical adaptation enabled; full character inspected in motion"
+      ],
+      "userText": "我目前看到的步行动作绑定没有任何问题，你加快进度",
+      "evidence": [
+        "qa/CH-LU-common-walk.png",
+        "characters/animation-adapter/conversion-report.json",
+        "characters/animation-adapter/verification.json",
+        "qa/CH-ZHOU-common-walk.png"
+      ],
+      "limitations": [
+        "This approves expanding asset production, not all gameplay animation or contacts",
+        "Child animation and carrying contact require separate calibration"
+      ],
+      "secondAdultBrowserVisual": "completed 2026-10-31; visible playing state and full-body screenshot"
+    },
+    "previousOfflineReview": {
+      "scope": "Four adult models, four frozen poses each, front/back offline Cycles renders. No weapon mesh attached.",
+      "models": [
+        "CH-LU",
+        "CH-ZHOU",
+        "CH-SHAO",
+        "CH-DOCTOR"
+      ],
+      "poses": {
+        "ready_idle": 0,
+        "crouch_idle": 0,
+        "cover_aim_left": 0,
+        "cover_fire_left": 0.0704
+      },
+      "result": "Selected poses visually coherent at overview distance; full animation acceptance pending.",
+      "observations": [
+        "Crouch visibly lowers the pelvis with bent knees and feet near the floor.",
+        "No large detached body part or open tear seen in these 16 sampled poses.",
+        "Coat hems and shoulder/chest areas visibly compress and stretch; preserve the measured high-strain warnings."
+      ],
+      "limitations": [
+        "This did not sample the worst crouch-walk frame or every point of every clip.",
+        "No actual AK shoulder/hand contact, root-controller transition, cover collision or game camera tested.",
+        "Only four adults inspected; other adults and child remain unreviewed.",
+        "Blender helper meshes from an initial draft were excluded before these final images."
+      ],
+      "images": [
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-LU/front.png",
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-LU/back.png",
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-ZHOU/front.png",
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-ZHOU/back.png",
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-SHAO/front.png",
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-SHAO/back.png",
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-DOCTOR/front.png",
+        "artifacts/asset-jobs/production-20261031/qa/tactical-offline/CH-DOCTOR/back.png"
+      ]
+    },
+    "skinRisks": [
+      {
+        "id": "CH-LU",
+        "worstClip": "cover_aim_left",
+        "maxEdgeStretchRatio": 8.001921653747559,
+        "maxP99Stretch": 1.7136387825012207,
+        "maxEdgeFractionOver2x": 0.0044903636002384265,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-ZHOU",
+        "worstClip": "cover_aim_right",
+        "maxEdgeStretchRatio": 9.297409057617188,
+        "maxP99Stretch": 1.8300442695617676,
+        "maxEdgeFractionOver2x": 0.006555330107694709,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-FATHER",
+        "worstClip": "cover_aim_right",
+        "maxEdgeStretchRatio": 8.889202117919922,
+        "maxP99Stretch": 1.7845187187194824,
+        "maxEdgeFractionOver2x": 0.006015263731719237,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-ZHAO",
+        "worstClip": "cover_aim_left",
+        "maxEdgeStretchRatio": 5.992094993591309,
+        "maxP99Stretch": 1.7175023555755615,
+        "maxEdgeFractionOver2x": 0.004934077489282537,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-XU",
+        "worstClip": "run",
+        "maxEdgeStretchRatio": 6.489387035369873,
+        "maxP99Stretch": 1.8259973526000977,
+        "maxEdgeFractionOver2x": 0.00628380528157811,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-MENG",
+        "worstClip": "run",
+        "maxEdgeStretchRatio": 4.467268943786621,
+        "maxP99Stretch": 1.7434560060501099,
+        "maxEdgeFractionOver2x": 0.005419089434753372,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-LUO",
+        "worstClip": "cover_aim_left",
+        "maxEdgeStretchRatio": 5.539208889007568,
+        "maxP99Stretch": 1.7047548294067383,
+        "maxEdgeFractionOver2x": 0.003403379635126044,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-SHAO",
+        "worstClip": "crouch_walk",
+        "maxEdgeStretchRatio": 11.063826560974121,
+        "maxP99Stretch": 1.7530183792114258,
+        "maxEdgeFractionOver2x": 0.005644366997499811,
+        "knownPriorWeightConcern": true,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-ZHENG",
+        "worstClip": "cover_fire_left",
+        "maxEdgeStretchRatio": 4.897950649261475,
+        "maxP99Stretch": 1.7171539068222046,
+        "maxEdgeFractionOver2x": 0.004141966864265086,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-SHEN",
+        "worstClip": "cover_peek_left",
+        "maxEdgeStretchRatio": 7.592056751251221,
+        "maxP99Stretch": 2.0927557945251465,
+        "maxEdgeFractionOver2x": 0.01220817313409172,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-DOCTOR",
+        "worstClip": "cover_aim_left",
+        "maxEdgeStretchRatio": 8.642950057983398,
+        "maxP99Stretch": 1.8623772859573364,
+        "maxEdgeFractionOver2x": 0.007239819004524887,
+        "knownPriorWeightConcern": true,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-ENEMY",
+        "worstClip": "crouch_walk",
+        "maxEdgeStretchRatio": 7.205388069152832,
+        "maxP99Stretch": 1.727333903312683,
+        "maxEdgeFractionOver2x": 0.004493548254112215,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      },
+      {
+        "id": "CH-LU-CHILD",
+        "worstClip": "cover_fire_left",
+        "maxEdgeStretchRatio": 7.369584560394287,
+        "maxP99Stretch": 1.925938367843628,
+        "maxEdgeFractionOver2x": 0.008826622596153846,
+        "knownPriorWeightConcern": false,
+        "visualStatus": "NOT_REVIEWED"
+      }
+    ],
+    "deformationConclusion": "The approximately 11x edge is a real connected edge longer than 0.003 model height before posing. It is not a zero-length division. This proves localized geometric stretching; a visible hole/tear is not established without rendering. Coincident-rest vertex separation is reported separately.",
+    "worstEdge": {
+      "id": "CH-SHAO",
+      "clip": "crouch_walk",
+      "vertices": [
+        10723,
+        10736
+      ],
+      "incidentTriangleIndices": [
+        8385,
+        8415
+      ],
+      "topologicalEdge": true,
+      "restLength": 0.003355136878790893,
+      "restLengthMeters": 0.006039245399499542,
+      "posedLength": 0.037287561192916,
+      "posedLengthMeters": 0.06711759923011784,
+      "absoluteExtensionMeters": 0.0610783538306183,
+      "ratio": 11.113573764642801,
+      "time": 0.699999988079071,
+      "restPoints": [
+        [
+          -0.0873124871730631,
+          0.4482915929396346,
+          -0.0018291342271982082
+        ],
+        [
+          -0.08954045483871631,
+          0.44934805596671806,
+          -0.004104434081861796
+        ]
+      ],
+      "posedPoints": [
+        [
+          0.06881757735974399,
+          0.054205360897574606,
+          -0.008645613897631533
+        ],
+        [
+          0.0340119889879503,
+          0.057366068871518364,
+          -0.021643427671961542
+        ]
+      ],
+      "weights": [
+        [
+          {
+            "bone": "R_ThighTwist01",
+            "weight": 0.3642377257347107
+          },
+          {
+            "bone": "L_ThighTwist01",
+            "weight": 0.34933340549468994
+          },
+          {
+            "bone": "L_ThighTwist02",
+            "weight": 0.1506292074918747
+          },
+          {
+            "bone": "R_ThighTwist02",
+            "weight": 0.13579967617988586
+          }
+        ],
+        [
+          {
+            "bone": "L_ThighTwist01",
+            "weight": 0.3798781633377075
+          },
+          {
+            "bone": "R_ThighTwist01",
+            "weight": 0.3331848680973053
+          },
+          {
+            "bone": "L_ThighTwist02",
+            "weight": 0.16092513501644135
+          },
+          {
+            "bone": "Waist",
+            "weight": 0.12601181864738464
+          }
+        ]
+      ],
+      "weightL1Difference": 0.33370503783226013,
+      "anatomicalRegion": "hip / waist / coat-tail junction"
+    },
+    "newTests": "Only read-only GLB/SHA/rest comparisons; no heavy tests or browser",
+    "scopeLimit": "Core presentation/loaders fully read; mission population/fire/state-change ranges inspected, not claimed full mission modules."
+  },
+  "readCoverage": [
+    {
+      "path": "README.md",
+      "sha256": "941f8687e3b0d913b0e1e66a338457652747af7867a52b4e7686c68183c40e84",
+      "lines": 66,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "docs/PROJECT_BLUEPRINT.md",
+      "sha256": "390e46a7e7c6871d9fc7c25fc952edbee21cc3d32b4439dba326f0aa9f71677b",
+      "lines": 113,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "docs/THREEJS_FPS_STANDARDS.md",
+      "sha256": "d867d66aaa345ec0e26c4a93b2869f961165f430f9a505cd31bdf451f5df64bb",
+      "lines": 176,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "docs/ASSET_PIPELINE.md",
+      "sha256": "8a5c3275594104075463a36b358b0361d5df1994a2d2535e30d7be184e7d1d7e",
+      "lines": 101,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "docs/CHARACTER_RIG_STANDARD.md",
+      "sha256": "261902d0dc6896588c82233d06640a7eb04170b4436fb6725a627a55dfc24479",
+      "lines": 50,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "e84a9e051e2749b01d9c7ce690644988c941f3f06a90716e8ee818099762bec4",
+      "lines": 666,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/contracts.ts",
+      "sha256": "d56ad0c13e6586826a5653179d28fd48bbe27ada47f3b44f8aecdab179fe82bd",
+      "lines": 99,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/CharacterRig.ts",
+      "sha256": "3cde92e719eca63646b1ff37051c7a2d0a1025f27e1ac08ce4b1168fec6710c3",
+      "lines": 234,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/ImportedCharacter.ts",
+      "sha256": "284be4f1ba73d22504c852ba8a88e54095681b2adefdc3adfcdfab99cad00de7",
+      "lines": 289,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/CharacterMotion.ts",
+      "sha256": "0deb152d9d7ec16ec921bda2ff603dd1e95c596de0447f892e8c30e987745296",
+      "lines": 32,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/CharacterMotionTracker.ts",
+      "sha256": "0f0db5ed45045d2ee99619b23bdf6fdedb5c9112e66e4a41f85d6c6daabba13e",
+      "lines": 42,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/CrowdView.ts",
+      "sha256": "5ac552dd1c25b86ac4244d9700860947f2cc19129ba4a4628f9f0153e073cf07",
+      "lines": 104,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/WorldAK47.ts",
+      "sha256": "57bc779842e029f6cd628c8000cdf7676b6788a935e20424b9c28fe5ffe232e1",
+      "lines": 274,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/ImportedWeaponView.ts",
+      "sha256": "5da30c57ecaf79331a37be4b19a1f4de918139776942f18e19bb4e574a0cf17b",
+      "lines": 283,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/FirstPersonArms.ts",
+      "sha256": "2e90ae4b62ba8572c34e31b1a2e3c9245431f2f6852976185e99fa7c3134a25d",
+      "lines": 275,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/characters.ts",
+      "sha256": "bca48fecc3e3d6c734b7b5aa37e832b44879b3b365eab39b996eb15c58166164",
+      "lines": 235,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/DepartureMonitor.ts",
+      "sha256": "2171df0632d4959961207e991e2239109f20f7f6b1b4476d23b9ba60823035f7",
+      "lines": 68,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/CareView.ts",
+      "sha256": "08f65946c5ef1e1083fd0a2e6f45b61c069af43c5a9e9cb83fd677fff0e34ad5",
+      "lines": 37,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/patient-cart.ts",
+      "sha256": "aa85349798bdd63275d45ff7f944dfab753e5c86d69ad61b7f8a98e1052f542b",
+      "lines": 63,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/Feedback.ts",
+      "sha256": "abd790a47c577c2f76536484abab1fd902d8b6de14097e7fb7a004a00a9983bf",
+      "lines": 49,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/assets/character-catalog.ts",
+      "sha256": "afd058acc56aa14d748bd8f59ebea7c91bfce25faea71ae64e7f0b0fbac68713",
+      "lines": 238,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/assets/weapon-catalog.ts",
+      "sha256": "611b339bffcecac2c84784eef60f6716d1b0aa46b8e819cd43a79850c4248456",
+      "lines": 31,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/assets/tactical-catalog.ts",
+      "sha256": "990191a5ab853ff6dc800dc31147fbeda9af60a1a598e12c096500e76893db73",
+      "lines": 204,
+      "readMode": "full source (generated 315KB JSON contract parsed structurally)",
+      "ranges": null
+    },
+    {
+      "path": "src/presentation/TacticalAnimations.ts",
+      "sha256": "504eb034fee9466dfed287637bf2e7fabe52d38d21c8cfe161b4d2d46ae0e890",
+      "lines": 70,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/assets/ModelLibrary.ts",
+      "sha256": "318de00d4b4d511dee3cc4ce6332ddf35f82aa168ca5bad44b191daefca80a42",
+      "lines": 133,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/assets/model-contracts.ts",
+      "sha256": "1db424599427b9b57b8e5e3640d2693f4c37d41e7ef485ddca32bee494e248a9",
+      "lines": 31,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/assets/model-loading.ts",
+      "sha256": "90d7c0b6a2ae4af36ea8e9f72a5e42206c2d96041da7b056346c51b32568a1df",
+      "lines": 138,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/chapter-transition/PreparedGameLevel.ts",
+      "sha256": "f14287926438078d57d7ff36072c00509c70f12c6e227bbae87466d12e6a7933",
+      "lines": 219,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/actors/CombatTactics.ts",
+      "sha256": "36e9d669c32a6682c912b14ff1d8281dd43095ea9ce68c6ab5ab06b0c2bf0642",
+      "lines": 183,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/content/OpeningCrowd.ts",
+      "sha256": "b727663c55330e8a6d980d6513e2f03a4e1fc0596456b619c7cc6ffa724b57f2",
+      "lines": 179,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/content/crowd-layout.ts",
+      "sha256": "b4b17e8275ca44a365cdb823554105f7ece97bb7afc3eb4b250038099aaa3ffc",
+      "lines": 19,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/content/history-layout.ts",
+      "sha256": "3a37738f63d686797513fb4e8b698f9b067dc8089be5eb4847a56369c26de648",
+      "lines": 90,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/content/layout.ts",
+      "sha256": "f15f5b2f438391a2cf4001421eb66535aab4697d3b3ce5c6311c292b35e974d2",
+      "lines": 96,
+      "readMode": "full source",
+      "ranges": null
+    },
+    {
+      "path": "src/mission/Simulation.ts",
+      "sha256": "cae03168625b84c6f16ff0a7aadb35139567f2e55f60eac3d815c16ae7fc2ad3",
+      "lines": 772,
+      "readMode": "targeted ranges",
+      "ranges": "1-245,313-334,423-457; actor/fire/player identity searches"
+    },
+    {
+      "path": "src/mission/Opening.ts",
+      "sha256": "06b3abe0642311ba5d55dd93369e05b5d03a86e7666243e847271af39e5dca7d",
+      "lines": 570,
+      "readMode": "targeted ranges",
+      "ranges": "1-77,155-194,223-262; all createActor/stagedShot callers"
+    },
+    {
+      "path": "src/mission/Transfer.ts",
+      "sha256": "2c2a7ddebb1d87976547c2be1e1774f80dd509f512174bea1099a3eee2a8589a",
+      "lines": 103,
+      "readMode": "targeted ranges",
+      "ranges": "1-35"
+    },
+    {
+      "path": "src/mission/Frontgate.ts",
+      "sha256": "895124ed8c8beff9903c7ed13ba4645eb6d52672531458a5ccbac42e1ea53846",
+      "lines": 144,
+      "readMode": "targeted ranges",
+      "ranges": "1-48"
+    },
+    {
+      "path": "src/mission/Flank.ts",
+      "sha256": "c7822cc7571b88f5e7598419e7963a5adfeaff6b388069f536384cfb6a4bb3e5",
+      "lines": 159,
+      "readMode": "targeted ranges",
+      "ranges": "1-38"
+    },
+    {
+      "path": "src/mission/Escort.ts",
+      "sha256": "e8bcab390440d26ceb034b66c67dc40501ae7dd2caef2d05e447ba0d6693a49c",
+      "lines": 197,
+      "readMode": "targeted ranges",
+      "ranges": "1-65,88-98"
+    },
+    {
+      "path": "src/mission/Relief.ts",
+      "sha256": "7aaa734b0fc06a19b173a9c06760a364c58b2d779f971c5504024b0b46493e8a",
+      "lines": 129,
+      "readMode": "targeted ranges",
+      "ranges": "1-37"
+    },
+    {
+      "path": "src/mission/Rescue.ts",
+      "sha256": "a9215fc21c80b39ba879d0f957bfffcfaccdf71006073df10d8afb42a5e1424f",
+      "lines": 218,
+      "readMode": "targeted ranges",
+      "ranges": "1-32, role-change search"
+    },
+    {
+      "path": "src/mission/Medical.ts",
+      "sha256": "c28b55dc4249400c0ba409309b58202bb357ff66f9050c4a7cf65f01e1c01216",
+      "lines": 116,
+      "readMode": "targeted ranges",
+      "ranges": "1-50"
+    },
+    {
+      "path": "src/mission/Epilogue.ts",
+      "sha256": "655ed28b0a23b7245e2ceeb0010a29e4fcdb515cb3983f6fd30774386fc9a30e",
+      "lines": 102,
+      "readMode": "targeted ranges",
+      "ranges": "1-50"
+    },
+    {
+      "path": "src/presentation/history-environments.ts",
+      "sha256": "33e1be218aacefb0f8a1781a517b5a8fcb72b33c2baa626cedf6c1a53f793ad6",
+      "lines": 242,
+      "readMode": "targeted ranges",
+      "ranges": "31-48, rifle creation/visibility search"
+    },
+    {
+      "path": "src/assets/scene-asset-catalog.ts",
+      "sha256": "aafcc3c8b0f9991736aef1b1cb268db7ae1fb77979f8e91ca4f2f8ac49bd5165",
+      "lines": 841,
+      "readMode": "targeted ranges",
+      "ranges": "795-830; wearable entries and all attachment references"
+    },
+    {
+      "path": "src/presentation/GeneratedSceneAssets.ts",
+      "sha256": "ac95b900b57db7a31f660572c0f5ef90c8e54bee08badef4042f86d0af4ea74a",
+      "lines": 178,
+      "readMode": "targeted ranges",
+      "ranges": "1-130"
+    }
+  ],
+  "productionEvidence": [
+    {
+      "path": "artifacts/asset-jobs/production-20261031/characters/report.json",
+      "sha256": "90e6ea8992c1138578ed7ac68d24571053281557b71e3d93c10bedcd349e2912"
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/characters/tactical-animations/delivery-summary.json",
+      "sha256": "d0521750d8f32a02a11ac8512509cd42640106ae1261d3b803cbe18a7b0cd968"
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/characters/tactical-animations/inspection/deformation-analysis.json",
+      "sha256": "86d2e8ec30236425855df498a754bcc6451df623cc84513b468439710e757a16"
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/qa/tactical-offline/review.json",
+      "sha256": "23ef04862a8d40d5ebeef64a30793f677823f73cbc691b3e5cc8d60ca524ebc0"
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/characters/adult-shared-walk-approval.json",
+      "sha256": "f2e6e67acf38cff2204ef7eaf6433b4a5a5187ae802dca7c02b99c446a668880"
+    },
+    {
+      "path": "assets/source/tripo/shared-animations/tactical-v1/catalog.json",
+      "sha256": "5a55172fe86e648aed34d28ae96e97b0e4c4bfa856fbeb0d0892fd14d8500cf8"
+    },
+    {
+      "path": "assets/source/tripo/shared-animations/tactical-v1/integration-contract.json",
+      "sha256": "023308bb08d5daec36337b3c4c48835311fb6fbe18a0e7b9109ac05fa65815a5"
+    }
+  ],
+  "missionCompletionAudit": {
+    "at": "2026-10-31T17:53:57.350375+08:00",
+    "coverage": "artifacts/asset-audit-20261031/coverage-mission.json",
+    "fullFiles": 16,
+    "fullLines": 3365,
+    "observations": [
+      {
+        "id": "mission-coverage-01",
+        "classification": "scenario-matrix correction",
+        "detail": "旧 handover 在 phase 3 动态创建孟齐 ally+down，仍加载 CH-MENG，phase 4 用位置搬运。现有场景矩阵此前漏记此晚出生人物；应补记预热未覆盖，而不是把所有救援路径一概归为 cart。",
+        "evidence": [
+          "src/mission/Simulation.ts:549",
+          "src/mission/Simulation.ts:556",
+          "src/persistence/SaveStore.ts:300",
+          "src/main.ts:505"
+        ]
+      },
+      {
+        "id": "mission-coverage-02",
+        "classification": "existing limitation confirmed; CA-04 clarification",
+        "detail": "新版 rescue 的孟齐为 cart；zhou-cart 在 main occupied=false，玩家第一人称随该担架移动。S11 medical 的 zhou/meng cart 才显示通用患者代理。没有独立周延病体/卧床姿势资产接入。",
+        "evidence": [
+          "src/mission/Rescue.ts:32",
+          "src/mission/Rescue.ts:86",
+          "src/main.ts:564",
+          "src/mission/Medical.ts:32"
+        ]
+      },
+      {
+        "id": "mission-coverage-03",
+        "classification": "existing missing-action evidence expanded",
+        "detail": "饭盒/床垫、风机/领装备、清洗包扎、换床、陪坐/交装备、扶门等任务动作不是新增动画源：由 facts/routes/计时/少量 CareView 或程序化骨姿实现。17 clip 不含这些剧情动作；不可把任务完成当成动作生产与手部接触验收。",
+        "evidence": [
+          "src/mission/Opening.ts:500",
+          "src/mission/Simulation.ts:585",
+          "src/mission/Simulation.ts:609",
+          "src/mission/Transfer.ts:77",
+          "src/mission/Escort.ts:144",
+          "src/mission/Medical.ts:47",
+          "src/mission/Medical.ts:82",
+          "src/mission/Epilogue.ts:74"
+        ]
+      },
+      {
+        "id": "mission-coverage-04",
+        "classification": "audit-boundary clarification",
+        "detail": "RigAudit 只在离线脚本/测试调用；运行模型有独立结构 gate，并未把该审计工具作为每次加载全权重或视觉验收。",
+        "evidence": [
+          "src/assets/RigAudit.ts:60",
+          "scripts/audit-character-rig.mjs:89",
+          "src/presentation/TacticalAnimations.ts:21"
+        ]
+      }
+    ],
+    "noNewVisualVerification": true,
+    "noNewGeometryChecks": true
+  }
+}

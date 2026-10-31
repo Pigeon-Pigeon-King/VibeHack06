@@ -1,0 +1,1501 @@
+{
+  "baselineCommit": "a9030c684655b2d3f35082125055f0e7c84ac2da",
+  "sourceFileCount": 130,
+  "sourceLines": 22466,
+  "coveredFileCount": 130,
+  "uncovered": [],
+  "allBaselineSourceUnchanged": true,
+  "method": "Full source text review or full structural parsing for generated numeric/catalog data; current runtime src scope excludes vendor and archived artifact copies; no new browser visual claim.",
+  "files": [
+    {
+      "path": "src/actors/CombatTactics.ts",
+      "baselineSha256": "36e9d669c32a6682c912b14ff1d8281dd43095ea9ce68c6ab5ab06b0c2bf0642",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/actors/Locomotion.ts",
+      "baselineSha256": "b0c39ae7dbb05b475ef81dd5acd7ba3e22244c73b74d64a0d81f5b5d796ab7ff",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/actors/Navigation.ts",
+      "baselineSha256": "1699a64ecaa5d53992950b981c78a5a5d6c097c8b0ee10d59f9cdcbe5e8c76cc",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/ModelLibrary.ts",
+      "baselineSha256": "318de00d4b4d511dee3cc4ce6332ddf35f82aa168ca5bad44b191daefca80a42",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/RigAudit.ts",
+      "baselineSha256": "ab2fb76ef4ed47e38710a034464ac75f8d153e61767207eaee7129cf9bb91981",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/architecture-catalog.ts",
+      "baselineSha256": "f79168de201474f2d4987ed5c079245b2cfcc45c4b13b7bce4585081fb8f57ea",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/character-catalog.ts",
+      "baselineSha256": "afd058acc56aa14d748bd8f59ebea7c91bfce25faea71ae64e7f0b0fbac68713",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/model-contracts.ts",
+      "baselineSha256": "1db424599427b9b57b8e5e3640d2693f4c37d41e7ef485ddca32bee494e248a9",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/model-disposal.ts",
+      "baselineSha256": "302385e9d3c511f889ec374feaeb8cd1fe0c7d21a9b0e4e12e786b19cb7b07d8",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/model-loading.ts",
+      "baselineSha256": "90d7c0b6a2ae4af36ea8e9f72a5e42206c2d96041da7b056346c51b32568a1df",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/scene-asset-catalog.ts",
+      "baselineSha256": "aafcc3c8b0f9991736aef1b1cb268db7ae1fb77979f8e91ca4f2f8ac49bd5165",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/tactical-catalog.ts",
+      "baselineSha256": "990191a5ab853ff6dc800dc31147fbeda9af60a1a598e12c096500e76893db73",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source (generated 315KB JSON contract parsed structurally)"
+        }
+      ]
+    },
+    {
+      "path": "src/assets/weapon-catalog.ts",
+      "baselineSha256": "611b339bffcecac2c84784eef60f6716d1b0aa46b8e819cd43a79850c4248456",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/audio/AudioBufferCache.ts",
+      "baselineSha256": "193ed031da61ab0c24c1451b425b42dbe8543f6eae2b312eb2aab22bc69369c2",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/audio/catalog.ts",
+      "baselineSha256": "65e6996f4a24f4b393702e4cfad62e2c0028a0082dd77a3a58e4cbde1871ae09",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-structure-parse-and-validation"
+        }
+      ]
+    },
+    {
+      "path": "src/audio/contracts.ts",
+      "baselineSha256": "e0ddc8eb591ffcec47f0fb3c160832a9868390a4600967b1df9f02644f67189f",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/audio/dialogue-events.ts",
+      "baselineSha256": "85263d0da4fe72586c6c7ea1fda7783742783b8db813cfaa7c9daab3025fdee5",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/audio/music.ts",
+      "baselineSha256": "b77e0ae3df0730f8f3376c30d5f69649ec7cd0874b8481b93980c48e809ffc26",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/CampaignEntryPlan.ts",
+      "baselineSha256": "02c6b54c220b16560e5ed094546bb2d38a7133378b6cb822352e779e38c732b7",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/CampaignTransitionPlan.ts",
+      "baselineSha256": "5f20e6e5b8eb8d57d42595603e9549ff616fc453a38600847582ddd8a8abe78a",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/ChapterTransition.ts",
+      "baselineSha256": "d17f3466655f03477beddf75b398d6d8e25c6b2292893bc3ad6056f5458ca4ab",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/HtmlNarrationPlayer.ts",
+      "baselineSha256": "c3fac7bb7aa10ea5e06f85609b857fb419e37d96738957f9a82b97a7358d7421",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/PreparedGameLevel.ts",
+      "baselineSha256": "f14287926438078d57d7ff36072c00509c70f12c6e227bbae87466d12e6a7933",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        },
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/TransitionController.ts",
+      "baselineSha256": "660cee8b57476838847d857cb971808199052ca7db1d33dda884633ba35bfaad",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/TransitionInputGuard.ts",
+      "baselineSha256": "8a8e14812a51a003c49dd1c8d98292316a26e09804ee88514c392b5b0ac51f8c",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/TransitionOverlay.ts",
+      "baselineSha256": "6eb1f1d3aaa6f8502d28d3ba2d8bc8359315c29d683503074206d679c52df588",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/bridges.json",
+      "baselineSha256": "3680b3bbf98aa365b652f732fad0f955e3ae4e2316b462ad0cbe9353d078d93d",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-structure-parse-and-validation"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/catalog.ts",
+      "baselineSha256": "ec04f3271c1c72b55b355fa821eb6882fa766951a2b52d56aeab092243518deb",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/index.ts",
+      "baselineSha256": "b50237539a9fa0957bd1ee223d64ad17c4ef72be5b392289f02c4686e0351253",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/narration-assets.ts",
+      "baselineSha256": "e4b426c8c4e17a6eaeb923b036c0001772e87e8165626c17a927873ce8820db6",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-structure-parse-and-validation"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/opening.json",
+      "baselineSha256": "2cedf112062c87b7f30119f44f10623124cfe1a2d6ecb892b1c196c5d1533194",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-structure-parse-and-validation"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/transition.css",
+      "baselineSha256": "147482e158d7122c974e7a67d1e7f6dee44cbb5c882e65b8a3c8339631707998",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/chapter-transition/types.ts",
+      "baselineSha256": "a6c21fe0c02d04c0ad325f18b85cc4eb30c184bd2f777f9914dd6e56c14bcbd1",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/combat/Ballistics.ts",
+      "baselineSha256": "081fe98fac1b3ebb14464d88c12fac25f39026fbfc4bdeb5e2b98ac31c276785",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/content/OpeningCrowd.ts",
+      "baselineSha256": "b727663c55330e8a6d980d6513e2f03a4e1fc0596456b619c7cc6ffa724b57f2",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/OpeningStaging.ts",
+      "baselineSha256": "0b98e68dacec508c371fd1f129727ac7555392d2f50cc32b99bb09ee1158e0d3",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/chapter-flow.ts",
+      "baselineSha256": "c87c7e22ddced05db1085c166f61ec8e8458ea4f718659cba88a64633948bbca",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        },
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/content/chapter-layout.ts",
+      "baselineSha256": "13c56b2d60286c79cd459a87b8121b5152243466c193cc74bd69e82082d64967",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/crowd-layout.ts",
+      "baselineSha256": "b4b17e8275ca44a365cdb823554105f7ece97bb7afc3eb4b250038099aaa3ffc",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/epilogue-layout.ts",
+      "baselineSha256": "e81b003409eb3fd87bff55eaef5cecbe89d53f17e5f7148adf5510fb5e911889",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/escort-layout.ts",
+      "baselineSha256": "f2e4047ec8fdb23b94bc11eab164472c805d990bc4f3c0d10e4bf05d84f26141",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/flank-dialogue-timing.ts",
+      "baselineSha256": "671c2909b9ce17c4c639af4593a3aab16e510db3aebdc1c8978fbad0a5ebb703",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/flank-layout.ts",
+      "baselineSha256": "f9c61377b6c68f7cdf4a508791723d5e9877a4ed05b7b302e447c0930c17c5be",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/frontgate-layout.ts",
+      "baselineSha256": "e5398f6f858cb10fb2cb94aa5573010e7fb84b7fe87919547d950015e2dc6b18",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/history-layout.ts",
+      "baselineSha256": "3a37738f63d686797513fb4e8b698f9b067dc8089be5eb4847a56369c26de648",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/layout.ts",
+      "baselineSha256": "f15f5b2f438391a2cf4001421eb66535aab4697d3b3ce5c6311c292b35e974d2",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/medical-layout.ts",
+      "baselineSha256": "f47646fe8e64e0cc3a869aa5453838935f66a50cc45f7322d4a5f56ba2b63823",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/opening-timeline.ts",
+      "baselineSha256": "57042996012b92fd3d1e390e54b0a080074d67f992bd16698ca5db8fdb0fe301",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/relief-layout.ts",
+      "baselineSha256": "c668ff69b3eebfccd1aabb2c722b4bd6aec4359973299df17d7dc00c40a431fe",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/rescue-layout.ts",
+      "baselineSha256": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/content/transfer-layout.ts",
+      "baselineSha256": "4cdef55e133e9606bde4078a3ac40ad35ee5cb7a1838ca4389e019e683b1a5bb",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/contracts.ts",
+      "baselineSha256": "d56ad0c13e6586826a5653179d28fd48bbe27ada47f3b44f8aecdab179fe82bd",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/main.ts",
+      "baselineSha256": "e84a9e051e2749b01d9c7ce690644988c941f3f06a90716e8ee818099762bec4",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Dialogue.ts",
+      "baselineSha256": "95195133acd103175b9358e8209ec05299397a7ab2778de14c85bc1653fa095b",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Epilogue.ts",
+      "baselineSha256": "655ed28b0a23b7245e2ceeb0010a29e4fcdb515cb3983f6fd30774386fc9a30e",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Escort.ts",
+      "baselineSha256": "e8bcab390440d26ceb034b66c67dc40501ae7dd2caef2d05e447ba0d6693a49c",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Flank.ts",
+      "baselineSha256": "c7822cc7571b88f5e7598419e7963a5adfeaff6b388069f536384cfb6a4bb3e5",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Frontgate.ts",
+      "baselineSha256": "895124ed8c8beff9903c7ed13ba4645eb6d52672531458a5ccbac42e1ea53846",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Medical.ts",
+      "baselineSha256": "c28b55dc4249400c0ba409309b58202bb357ff66f9050c4a7cf65f01e1c01216",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Opening.ts",
+      "baselineSha256": "06b3abe0642311ba5d55dd93369e05b5d03a86e7666243e847271af39e5dca7d",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Relief.ts",
+      "baselineSha256": "7aaa734b0fc06a19b173a9c06760a364c58b2d779f971c5504024b0b46493e8a",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Rescue.ts",
+      "baselineSha256": "a9215fc21c80b39ba879d0f957bfffcfaccdf71006073df10d8afb42a5e1424f",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Simulation.ts",
+      "baselineSha256": "cae03168625b84c6f16ff0a7aadb35139567f2e55f60eac3d815c16ae7fc2ad3",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mission/Transfer.ts",
+      "baselineSha256": "2c2a7ddebb1d87976547c2be1e1774f80dd509f512174bea1099a3eee2a8589a",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/mobile-performance/RenderQualityPolicy.ts",
+      "baselineSha256": "53f5db3f721edaec27ebbfa8bfa130a63447fcd58202b7e04be8fa7e27219aa7",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/mobile-performance/RendererQualityAdapter.ts",
+      "baselineSha256": "5a1549ae64f819e8cddde20c91f169b99fa6f9549001b12bd9e5f02a0c40e214",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/mobile-performance/index.ts",
+      "baselineSha256": "a73f660a03a8bc01f826e1f5d4908a16577915fdb2f363038fb5600259fadd8e",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/persistence/SaveStore.ts",
+      "baselineSha256": "1e4efcead13e5d7fbc7683a67bd530a44ae4dece4050c8ce77b0502f0d49ef48",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-mission.json",
+          "mode": "full-file"
+        }
+      ]
+    },
+    {
+      "path": "src/player/Input.ts",
+      "baselineSha256": "d6887d56021fba972eeb37d60cff8dafd71d813634ec9cc776934f416ebfc6af",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/player/TouchInputState.ts",
+      "baselineSha256": "a2f03a8b9fdd5cd51725f4930499ca8b78f6279af6bc8fdb06ea424a0004c022",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/AimIdentity.ts",
+      "baselineSha256": "e59cd5d8f767590f7c09692e29bfc484dead0eb44846d534e754512166c23ff8",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/ArchitectureTransactions.ts",
+      "baselineSha256": "a9a4fe0e099c3ca42bd24f4383a706a38855c0e7d23205c0366ecb3964f95da4",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/CareView.ts",
+      "baselineSha256": "08f65946c5ef1e1083fd0a2e6f45b61c069af43c5a9e9cb83fd677fff0e34ad5",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/CharacterMotion.ts",
+      "baselineSha256": "0deb152d9d7ec16ec921bda2ff603dd1e95c596de0447f892e8c30e987745296",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/CharacterMotionTracker.ts",
+      "baselineSha256": "0f0db5ed45045d2ee99619b23bdf6fdedb5c9112e66e4a41f85d6c6daabba13e",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/CharacterRig.ts",
+      "baselineSha256": "3cde92e719eca63646b1ff37051c7a2d0a1025f27e1ac08ce4b1168fec6710c3",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/CrowdView.ts",
+      "baselineSha256": "5ac552dd1c25b86ac4244d9700860947f2cc19129ba4a4628f9f0153e073cf07",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/DeferredAirCover.ts",
+      "baselineSha256": "66299d08e1666e61cb27e7dab8b73b81695877a307ca9259d790386573ab23ea",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        },
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/DepartureMonitor.ts",
+      "baselineSha256": "2171df0632d4959961207e991e2239109f20f7f6b1b4476d23b9ba60823035f7",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "baselineSha256": "9bcda4c5c19d94b72bc75a4cd22352305eab9fa474250f7d0a7825d8939c0c52",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        },
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/Feedback.ts",
+      "baselineSha256": "abd790a47c577c2f76536484abab1fd902d8b6de14097e7fb7a004a00a9983bf",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/FirstPersonArms.ts",
+      "baselineSha256": "2e90ae4b62ba8572c34e31b1a2e3c9245431f2f6852976185e99fa7c3134a25d",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/GeneratedArchitecture.ts",
+      "baselineSha256": "5f7893b44bfdbe6f5896b704c97c477c28df9cc99ed84672287f280e344619d4",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/GeneratedSceneAssets.ts",
+      "baselineSha256": "ac95b900b57db7a31f660572c0f5ef90c8e54bee08badef4042f86d0af4ea74a",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/HeldItemMotion.ts",
+      "baselineSha256": "6a98ed8ce5bdb149a2830ab2238527715b1c6a347772e3d4b21b239305a585e9",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/ImportedCharacter.ts",
+      "baselineSha256": "284be4f1ba73d22504c852ba8a88e54095681b2adefdc3adfcdfab99cad00de7",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/ImportedWeaponView.ts",
+      "baselineSha256": "5da30c57ecaf79331a37be4b19a1f4de918139776942f18e19bb4e574a0cf17b",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/IndirectLighting.ts",
+      "baselineSha256": "b530a9c087a2eff5519cc7397e03120cee628fc6c722237cbe6bd744a571d7c1",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/OpeningView.ts",
+      "baselineSha256": "26ff1a9e2dc25f69c8e8c2564db89de6f7ab4bc11f76b3a92367758517af6eb1",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        },
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/Sound.ts",
+      "baselineSha256": "de223ff9e7ba5883dfca906f59a7cf361834535a7e2f955ba39897fd9ea0dfa5",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/TacticalAnimations.ts",
+      "baselineSha256": "504eb034fee9466dfed287637bf2e7fabe52d38d21c8cfe161b4d2d46ae0e890",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/WorldAK47.ts",
+      "baselineSha256": "57bc779842e029f6cd628c8000cdf7676b6788a935e20424b9c28fe5ffe232e1",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/architecture-bindings.ts",
+      "baselineSha256": "0d27cad039a0809c3d0b48be7c64357486e22adef9ef496490dc6f68bcbce26b",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/architecture-placement-plan.ts",
+      "baselineSha256": "46ca91546be17585f351b269ffe53b0aabdbe1312d939a648ada4b6b3b4b1702",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/chapter-environments.ts",
+      "baselineSha256": "ab18ae1a0d171397e84df665bd73227b6f3aecfdf4e65b57c3d597069fb3ca6f",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/characters.ts",
+      "baselineSha256": "bca48fecc3e3d6c734b7b5aa37e832b44879b3b365eab39b996eb15c58166164",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/environment.ts",
+      "baselineSha256": "1e1fcacbd3266c56781f4d89281222b0f537e2182c529b57277c20a711cc00aa",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/epilogue-environment.ts",
+      "baselineSha256": "f9f69262e079e95a3d54ec0c4311f6fe579f3458a1d87c37bfa422c0e03177b7",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/escort-environment.ts",
+      "baselineSha256": "04608328cc139c5a1c1909151bc84f9ed165b05b91743ab5035a0bd4328f1f16",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/flank-environment.ts",
+      "baselineSha256": "deb6f4da42c716a2aa1924c2d2fbef835b9eb35bb5dcd1532e41a2ccd7defa74",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/frontgate-environment.ts",
+      "baselineSha256": "4c1406764928e6debce8c29ea9cc99406eef72e525ffe8bbde2362c08035b0df",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/history-environments.ts",
+      "baselineSha256": "33e1be218aacefb0f8a1781a517b5a8fcb72b33c2baa626cedf6c1a53f793ad6",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/medical-environment.ts",
+      "baselineSha256": "1aea2e05560dcb16ed34afb28bc342896e39d3fbb73b4ff028980a33cd9cbe6c",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/model-tools.ts",
+      "baselineSha256": "0c6fd2a1cfaa7f247c555264d9a8580f62143aee4f75b1141b514acec7d39259",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/patient-cart.ts",
+      "baselineSha256": "aa85349798bdd63275d45ff7f944dfab753e5c86d69ad61b7f8a98e1052f542b",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "characters-actions.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/port-kit.ts",
+      "baselineSha256": "376fad70765f5deb83508f8e1790a2ae460746549e2bafdcb79e815b7f016d72",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/relief-environment.ts",
+      "baselineSha256": "b5eb8851d98e1138cf71e5b783dcbde927a8f82c73fd7b32a663478e405386c8",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/rescue-environment.ts",
+      "baselineSha256": "b3758eb88a2611603e261a481d314c3d50d65548c965a3892e92a511c559503d",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-palette.js",
+      "baselineSha256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-source.js",
+      "baselineSha256": "ec554326e57f5ef3f36748af7030b2d7503da828dddf6a10ad7da5415e3de8f2",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-json-parse-all-nodes-and-values"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.d.ts",
+      "baselineSha256": "6027797a540fcd1ffdcb4d45947f544295889f6564b20970b36fdc1b120dbedd",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.js",
+      "baselineSha256": "9e804e42d3b1c8b0cf2c3c9013fe85a409a8d49aad9004b945ce3249d77303c4",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-content.json",
+          "mode": "full-source-text"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/reused-aircraft.ts",
+      "baselineSha256": "3160547dcaffcf99578d8dfda58ee2786166d3854aa161ba34cd3b3c760181a7",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        },
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        },
+        {
+          "report": "coverage-loading.json",
+          "mode": "full-text-reviewed"
+        }
+      ]
+    },
+    {
+      "path": "src/presentation/transfer-environment.ts",
+      "baselineSha256": "0108ca36e6087ec058c34de02ccb933cd002085c05ab9b7584085da8c3a0bc89",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "maps.json",
+          "mode": "full"
+        }
+      ]
+    },
+    {
+      "path": "src/runtime/PageLifecycle.ts",
+      "baselineSha256": "60520fa2b3cfc61d9a9aa9956198c320fd613a508b4e38cc418c15437fe6b73d",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/runtime/Physics.ts",
+      "baselineSha256": "1ecbe77b8c0a36b35e47c604f192e786a81cc81a316f7d626aea93e609105e8f",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/runtime/random.ts",
+      "baselineSha256": "c1fa182484525fcaa198d529d51ef54bfb0ed9510f5ddc409153770dfac4805e",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/AimIdentityHUD.ts",
+      "baselineSha256": "7204dc0123a46c7fe19f191dbe61cee5f6162b2b654b4f7d3b8e5da6e9916f28",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/GameUI.ts",
+      "baselineSha256": "61100ed59d74277d8645c9a9375896b510e7d8c9afea96fb8daa2c08a273533b",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/HitConfirmation.ts",
+      "baselineSha256": "bec25a1264d33491cc5f1efe1f753da22b7c73fc570ba7d2baeba0b2a7105bd2",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/ObjectiveIndicator.ts",
+      "baselineSha256": "3d898d26f3374e7f2cbd46afa132d4cd1ffd472ddfd658ba10c246c26f9d8d78",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/SubtitlePresentation.ts",
+      "baselineSha256": "4af0d8adad665b87efedf8dc516e59a27030e21d408e9d579aec006df01a739f",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/TouchControls.ts",
+      "baselineSha256": "dc7b5a45cb20e9b77080e63e72a80229ce974459213819ff1fb02cd7bb5efea2",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/modern-combat.css",
+      "baselineSha256": "527816f12f1a4cc90a2546a56c829420d51ca6d34f3f44469aef588c29ad50f1",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/objective-focus.ts",
+      "baselineSha256": "bec813a4d4a5270175acaa81451537877c8afebeca229adb6ac3c4df18f33db2",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/objective-indicator.css",
+      "baselineSha256": "5ab4cc4d8a8451e17c547d294705daa91ed98536e8cf3831e49c8a5476183337",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/objective-projection.ts",
+      "baselineSha256": "3175bd687ec5f6acd3ee6d5bc5375543e18dd2159016dd51382bca0fe8e82563",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/style.css",
+      "baselineSha256": "4f0acfed6214941f3a9cc153ed816bc5e1567b0bef50ca3b1d588e7a7518d5f0",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/touch-controls.css",
+      "baselineSha256": "63ef86b4e037bbfd55b08a0c2f94d61ce624352a7954605bfa56222b196e1006",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    },
+    {
+      "path": "src/ui/touch-gestures.ts",
+      "baselineSha256": "026bac09fc1606f5310970a56bad37faf336d52441a74a0d19edd0fb9a947873",
+      "unchangedSinceBaseline": true,
+      "coverage": [
+        {
+          "report": "coverage-root.json",
+          "mode": "full source"
+        }
+      ]
+    }
+  ]
+}

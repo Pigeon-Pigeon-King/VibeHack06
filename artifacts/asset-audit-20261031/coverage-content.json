@@ -1,0 +1,2537 @@
+{
+  "audit": "content-catalog-reused-aircraft-reading-completion",
+  "gitHead": "0b3b05b4da0230bfcdb13a3c3d5e9e1e18acf79f",
+  "completedAt": "2026-10-31T09:53:26.506780+00:00",
+  "writeScope": [
+    "artifacts/asset-audit-20261031/coverage-content.json"
+  ],
+  "method": "Full text source read for all requested non-generated files; full programmatic object traversal for large generated numeric source. Read-only local SHA/catalog/layout analysis; no UI, API generation, asset copy, source edit or commit.",
+  "previousMapAudit": "artifacts/asset-audit-20261031/maps.json",
+  "previousMapAuditSourceHashes": [
+    {
+      "path": "src/presentation/environment.ts",
+      "priorSha256": "1e1fcacbd3266c56781f4d89281222b0f537e2182c529b57277c20a711cc00aa",
+      "currentSha256": "1e1fcacbd3266c56781f4d89281222b0f537e2182c529b57277c20a711cc00aa",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/port-kit.ts",
+      "priorSha256": "376fad70765f5deb83508f8e1790a2ae460746549e2bafdcb79e815b7f016d72",
+      "currentSha256": "376fad70765f5deb83508f8e1790a2ae460746549e2bafdcb79e815b7f016d72",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/GeneratedArchitecture.ts",
+      "priorSha256": "5f7893b44bfdbe6f5896b704c97c477c28df9cc99ed84672287f280e344619d4",
+      "currentSha256": "5f7893b44bfdbe6f5896b704c97c477c28df9cc99ed84672287f280e344619d4",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/ArchitectureTransactions.ts",
+      "priorSha256": "a9a4fe0e099c3ca42bd24f4383a706a38855c0e7d23205c0366ecb3964f95da4",
+      "currentSha256": "a9a4fe0e099c3ca42bd24f4383a706a38855c0e7d23205c0366ecb3964f95da4",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/architecture-bindings.ts",
+      "priorSha256": "0d27cad039a0809c3d0b48be7c64357486e22adef9ef496490dc6f68bcbce26b",
+      "currentSha256": "0d27cad039a0809c3d0b48be7c64357486e22adef9ef496490dc6f68bcbce26b",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/architecture-placement-plan.ts",
+      "priorSha256": "46ca91546be17585f351b269ffe53b0aabdbe1312d939a648ada4b6b3b4b1702",
+      "currentSha256": "46ca91546be17585f351b269ffe53b0aabdbe1312d939a648ada4b6b3b4b1702",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/GeneratedSceneAssets.ts",
+      "priorSha256": "ac95b900b57db7a31f660572c0f5ef90c8e54bee08badef4042f86d0af4ea74a",
+      "currentSha256": "ac95b900b57db7a31f660572c0f5ef90c8e54bee08badef4042f86d0af4ea74a",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/chapter-environments.ts",
+      "priorSha256": "ab18ae1a0d171397e84df665bd73227b6f3aecfdf4e65b57c3d597069fb3ca6f",
+      "currentSha256": "ab18ae1a0d171397e84df665bd73227b6f3aecfdf4e65b57c3d597069fb3ca6f",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/history-environments.ts",
+      "priorSha256": "33e1be218aacefb0f8a1781a517b5a8fcb72b33c2baa626cedf6c1a53f793ad6",
+      "currentSha256": "33e1be218aacefb0f8a1781a517b5a8fcb72b33c2baa626cedf6c1a53f793ad6",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/frontgate-environment.ts",
+      "priorSha256": "4c1406764928e6debce8c29ea9cc99406eef72e525ffe8bbde2362c08035b0df",
+      "currentSha256": "4c1406764928e6debce8c29ea9cc99406eef72e525ffe8bbde2362c08035b0df",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/transfer-environment.ts",
+      "priorSha256": "0108ca36e6087ec058c34de02ccb933cd002085c05ab9b7584085da8c3a0bc89",
+      "currentSha256": "0108ca36e6087ec058c34de02ccb933cd002085c05ab9b7584085da8c3a0bc89",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/flank-environment.ts",
+      "priorSha256": "deb6f4da42c716a2aa1924c2d2fbef835b9eb35bb5dcd1532e41a2ccd7defa74",
+      "currentSha256": "deb6f4da42c716a2aa1924c2d2fbef835b9eb35bb5dcd1532e41a2ccd7defa74",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/escort-environment.ts",
+      "priorSha256": "04608328cc139c5a1c1909151bc84f9ed165b05b91743ab5035a0bd4328f1f16",
+      "currentSha256": "04608328cc139c5a1c1909151bc84f9ed165b05b91743ab5035a0bd4328f1f16",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/relief-environment.ts",
+      "priorSha256": "b5eb8851d98e1138cf71e5b783dcbde927a8f82c73fd7b32a663478e405386c8",
+      "currentSha256": "b5eb8851d98e1138cf71e5b783dcbde927a8f82c73fd7b32a663478e405386c8",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/rescue-environment.ts",
+      "priorSha256": "b3758eb88a2611603e261a481d314c3d50d65548c965a3892e92a511c559503d",
+      "currentSha256": "b3758eb88a2611603e261a481d314c3d50d65548c965a3892e92a511c559503d",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/medical-environment.ts",
+      "priorSha256": "1aea2e05560dcb16ed34afb28bc342896e39d3fbb73b4ff028980a33cd9cbe6c",
+      "currentSha256": "1aea2e05560dcb16ed34afb28bc342896e39d3fbb73b4ff028980a33cd9cbe6c",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/epilogue-environment.ts",
+      "priorSha256": "f9f69262e079e95a3d54ec0c4311f6fe579f3458a1d87c37bfa422c0e03177b7",
+      "currentSha256": "f9f69262e079e95a3d54ec0c4311f6fe579f3458a1d87c37bfa422c0e03177b7",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/DeferredAirCover.ts",
+      "priorSha256": "66299d08e1666e61cb27e7dab8b73b81695877a307ca9259d790386573ab23ea",
+      "currentSha256": "66299d08e1666e61cb27e7dab8b73b81695877a307ca9259d790386573ab23ea",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "priorSha256": "9bcda4c5c19d94b72bc75a4cd22352305eab9fa474250f7d0a7825d8939c0c52",
+      "currentSha256": "9bcda4c5c19d94b72bc75a4cd22352305eab9fa474250f7d0a7825d8939c0c52",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/OpeningView.ts",
+      "priorSha256": "26ff1a9e2dc25f69c8e8c2564db89de6f7ab4bc11f76b3a92367758517af6eb1",
+      "currentSha256": "26ff1a9e2dc25f69c8e8c2564db89de6f7ab4bc11f76b3a92367758517af6eb1",
+      "unchanged": true
+    },
+    {
+      "path": "src/presentation/reused-aircraft.ts",
+      "priorSha256": "3160547dcaffcf99578d8dfda58ee2786166d3854aa161ba34cd3b3c760181a7",
+      "currentSha256": "3160547dcaffcf99578d8dfda58ee2786166d3854aa161ba34cd3b3c760181a7",
+      "unchanged": true
+    },
+    {
+      "path": "src/chapter-transition/PreparedGameLevel.ts",
+      "priorSha256": "f14287926438078d57d7ff36072c00509c70f12c6e227bbae87466d12e6a7933",
+      "currentSha256": "f14287926438078d57d7ff36072c00509c70f12c6e227bbae87466d12e6a7933",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/scene-asset-catalog.ts",
+      "priorSha256": "aafcc3c8b0f9991736aef1b1cb268db7ae1fb77979f8e91ca4f2f8ac49bd5165",
+      "currentSha256": "aafcc3c8b0f9991736aef1b1cb268db7ae1fb77979f8e91ca4f2f8ac49bd5165",
+      "unchanged": true
+    },
+    {
+      "path": "src/assets/architecture-catalog.ts",
+      "priorSha256": "f79168de201474f2d4987ed5c079245b2cfcc45c4b13b7bce4585081fb8f57ea",
+      "currentSha256": "f79168de201474f2d4987ed5c079245b2cfcc45c4b13b7bce4585081fb8f57ea",
+      "unchanged": true
+    },
+    {
+      "path": "src/contracts.ts",
+      "priorSha256": "d56ad0c13e6586826a5653179d28fd48bbe27ada47f3b44f8aecdab179fe82bd",
+      "currentSha256": "d56ad0c13e6586826a5653179d28fd48bbe27ada47f3b44f8aecdab179fe82bd",
+      "unchanged": true
+    },
+    {
+      "path": "src/content/chapter-flow.ts",
+      "priorSha256": "c87c7e22ddced05db1085c166f61ec8e8458ea4f718659cba88a64633948bbca",
+      "currentSha256": "c87c7e22ddced05db1085c166f61ec8e8458ea4f718659cba88a64633948bbca",
+      "unchanged": true
+    },
+    {
+      "path": "src/main.ts",
+      "priorSha256": "e84a9e051e2749b01d9c7ce690644988c941f3f06a90716e8ee818099762bec4",
+      "currentSha256": "e84a9e051e2749b01d9c7ce690644988c941f3f06a90716e8ee818099762bec4",
+      "unchanged": true
+    }
+  ],
+  "files": [
+    {
+      "path": "src/content/OpeningCrowd.ts",
+      "sha256": "b727663c55330e8a6d980d6513e2f03a4e1fc0596456b619c7cc6ffa724b57f2",
+      "bytes": 10609,
+      "lines": 179,
+      "readMode": "full-source-text",
+      "conclusion": "完整阅读路径烘焙/采样。使用现有SolidSpec派生阻挡与固定剧情时间、分离角色轨迹；不注册生成地图模型。视觉替换必须保留现有solid/门口/台阶通路。"
+    },
+    {
+      "path": "src/content/OpeningStaging.ts",
+      "sha256": "0b98e68dacec508c371fd1f129727ac7555392d2f50cc32b99bb09ee1158e0d3",
+      "bytes": 1805,
+      "lines": 31,
+      "readMode": "full-source-text",
+      "conclusion": "完整阅读S02邵位置和镜头注视函数；纯时间与布局计算，无地图asset绑定。"
+    },
+    {
+      "path": "src/content/chapter-flow.ts",
+      "sha256": "c87c7e22ddced05db1085c166f61ec8e8458ea4f718659cba88a64633948bbca",
+      "bytes": 6891,
+      "lines": 87,
+      "readMode": "full-source-text",
+      "conclusion": "12段S01—S12主战役与carryFacts/phase limits完整。northgate/prologue/handover仍有phase limits，但不在CHAPTER_STAGES；不得把legacy northgate与S05 frontgate混为同一覆盖。"
+    },
+    {
+      "path": "src/content/chapter-layout.ts",
+      "sha256": "13c56b2d60286c79cd459a87b8121b5152243466c193cc74bd69e82082d64967",
+      "bytes": 1872,
+      "lines": 45,
+      "readMode": "full-source-text",
+      "conclusion": "NIGHT/WORKERS均为坐标锚点、bounds、敌人/居民路线；不存在模型ID或自动替换注册。S04车辆/围墙未替换结论不变。"
+    },
+    {
+      "path": "src/content/crowd-layout.ts",
+      "sha256": "b4b17e8275ca44a365cdb823554105f7ece97bb7afc3eb4b250038099aaa3ffc",
+      "bytes": 1016,
+      "lines": 19,
+      "readMode": "full-source-text",
+      "conclusion": "旧存档落点与确定性crowdPose；无资产绑定，保留legacy落点避免瞬移。"
+    },
+    {
+      "path": "src/content/epilogue-layout.ts",
+      "sha256": "e81b003409eb3fd87bff55eaef5cecbe89d53f17e5f7148adf5510fb5e911889",
+      "bytes": 854,
+      "lines": 20,
+      "readMode": "full-source-text",
+      "conclusion": "S12起点复用MEDICAL.exit，西站到东C03实路线、门和工人终点明确；远船placement不能替代这条走廊上的建筑/门。"
+    },
+    {
+      "path": "src/content/escort-layout.ts",
+      "sha256": "f2e4047ec8fdb23b94bc11eab164472c805d990bc4f3c0d10e4bf05d84f26141",
+      "bytes": 3298,
+      "lines": 63,
+      "readMode": "full-source-text",
+      "conclusion": "实际bridgeSpans为3个（首行注释仍写two real bridge spans）；通行坐标与高台阶梯明确，新增桥下模块并未取代这些通行面。注释数字陈旧但未发现额外隐藏asset绑定。"
+    },
+    {
+      "path": "src/content/flank-dialogue-timing.ts",
+      "sha256": "671c2909b9ce17c4c639af4593a3aab16e510db3aebdc1c8978fbad0a5ebb703",
+      "bytes": 394,
+      "lines": 7,
+      "readMode": "full-source-text",
+      "conclusion": "S07对话时间常量，不负责几何与动作clip加载。"
+    },
+    {
+      "path": "src/content/flank-layout.ts",
+      "sha256": "f9c61377b6c68f7cdf4a508791723d5e9877a4ed05b7b302e447c0930c17c5be",
+      "bytes": 1954,
+      "lines": 40,
+      "readMode": "full-source-text",
+      "conclusion": "S07复用FRONTGATE bounds及TRANSFER equipmentRoom，推车保持y0、行人绕行最高y1.2、高台y2.4；无资产替换。"
+    },
+    {
+      "path": "src/content/frontgate-layout.ts",
+      "sha256": "e5398f6f858cb10fb2cb94aa5573010e7fb84b7fe87919547d950015e2dc6b18",
+      "bytes": 1264,
+      "lines": 23,
+      "readMode": "full-source-text",
+      "conclusion": "S05 108×148米bounds及西侧工人路线、北/东敌人路径；不能因模块可复用而改变divider/门口/导航。"
+    },
+    {
+      "path": "src/content/history-layout.ts",
+      "sha256": "3a37738f63d686797513fb4e8b698f9b067dc8089be5eb4847a56369c26de648",
+      "bytes": 6206,
+      "lines": 90,
+      "readMode": "full-source-text",
+      "conclusion": "S01/S02共厅，西侧撤离下降至-2.4米；6任务平民与额外两组群众分离，门/台阶/隔断坐标是保留结构约束，不是生成模型登记。"
+    },
+    {
+      "path": "src/content/layout.ts",
+      "sha256": "f15f5b2f438391a2cf4001421eb66535aab4697d3b3ce5c6311c292b35e974d2",
+      "bytes": 4776,
+      "lines": 96,
+      "readMode": "full-source-text",
+      "conclusion": "完整15个ScenarioId映射；12战役+3旧关卡均有独立布局项。仅名称/spawn/terminal/post/exit/safe与actor坐标，不建立生成资产。"
+    },
+    {
+      "path": "src/content/medical-layout.ts",
+      "sha256": "f47646fe8e64e0cc3a869aa5453838935f66a50cc45f7322d4a5f56ba2b63823",
+      "bytes": 873,
+      "lines": 23,
+      "readMode": "full-source-text",
+      "conclusion": "两床、医护路线和病区交互锚点；没有自动把医疗柜/杯/窗帘替成生产模型。"
+    },
+    {
+      "path": "src/content/opening-timeline.ts",
+      "sha256": "57042996012b92fd3d1e390e54b0a080074d67f992bd16698ca5db8fdb0fe301",
+      "bytes": 2213,
+      "lines": 42,
+      "readMode": "full-source-text",
+      "conclusion": "S01/S02事实时间、连续受击与旧存档恢复；无asset或loader。可见坍塌/遮挡仍由既有环境实现。"
+    },
+    {
+      "path": "src/content/relief-layout.ts",
+      "sha256": "c668ff69b3eebfccd1aabb2c722b4bd6aec4359973299df17d7dc00c40a431fe",
+      "bytes": 1612,
+      "lines": 37,
+      "readMode": "full-source-text",
+      "conclusion": "S09独立后场bounds z48..190、继承地标坐标而非继承S05环境工厂/资产绑定。"
+    },
+    {
+      "path": "src/content/rescue-layout.ts",
+      "sha256": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61",
+      "bytes": 1233,
+      "lines": 32,
+      "readMode": "full-source-text",
+      "conclusion": "S10独立大地图与西向救援路线，虽然抵达S11坐标，不会因此加载S11结构替换。"
+    },
+    {
+      "path": "src/content/transfer-layout.ts",
+      "sha256": "4cdef55e133e9606bde4078a3ac40ad35ee5cb7a1838ca4389e019e683b1a5bb",
+      "bytes": 1239,
+      "lines": 29,
+      "readMode": "full-source-text",
+      "conclusion": "S06复用S05 bounds；任务卷门平面z24、宽6米，新增远廊道不等同卷门替换。"
+    },
+    {
+      "path": "src/assets/architecture-catalog.ts",
+      "sha256": "f79168de201474f2d4987ed5c079245b2cfcc45c4b13b7bce4585081fb8f57ea",
+      "bytes": 29268,
+      "lines": 737,
+      "readMode": "full-source-text",
+      "conclusion": "完整阅读22资产×3LOD共66条记录与URL resolver。目录本身不声明scene placement；LOD1/2为geometry-only并指向LOD0材质。旧复杂地图LOD面数仍高，不能沿用1500/384目标当实际数。"
+    },
+    {
+      "path": "src/assets/scene-asset-catalog.ts",
+      "sha256": "aafcc3c8b0f9991736aef1b1cb268db7ae1fb77979f8e91ca4f2f8ac49bd5165",
+      "bytes": 36983,
+      "lines": 841,
+      "readMode": "full-source-text",
+      "conclusion": "完整阅读28源资产记录及所有placement；只有frontgate/transfer/flank、medical、epilogue返回摆放。其余10个scenario为空。role/background/surface-prop不是替换；仅fallbackSlot整组成功后隐藏旧物。"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.js",
+      "sha256": "9e804e42d3b1c8b0cf2c3c9013fe85a409a8d49aad9004b945ce3249d77303c4",
+      "bytes": 11374,
+      "lines": 203,
+      "readMode": "full-source-text",
+      "conclusion": "完整阅读203行工厂。四源模型递归保留节点/顶点/面/UV，按源多边形扇形三角化与crease法线；坐标基换为+Y/-Z。按Three命名空间+palette引用计数共享geometry/material，逐实例机构、显式time/thrust、最终owner释放。不依赖外部纹理/GLB/API；这是来源可追溯重用资产，不是Tripo/Hyper。"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-palette.js",
+      "sha256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae",
+      "bytes": 301,
+      "lines": 6,
+      "readMode": "full-source-text",
+      "conclusion": "完整13角色代码色板，无图片纹理；与归档原色板逐字节SHA相同。"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.d.ts",
+      "sha256": "6027797a540fcd1ffdcb4d45947f544295889f6564b20970b36fdc1b120dbedd",
+      "bytes": 360,
+      "lines": 12,
+      "readMode": "full-source-text",
+      "conclusion": "完整createF35B选项/Group返回类型；声明不承诺飞行物理、运输、碰撞或导航。"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-source.js",
+      "sha256": "ec554326e57f5ef3f36748af7030b2d7503da828dddf6a10ad7da5415e3de8f2",
+      "bytes": 3025331,
+      "lines": 5,
+      "readMode": "full-json-parse-all-nodes-and-values",
+      "conclusion": "完整解析3,025,331字节export对象并递归遍历全部数值/节点/面/UV/动画；结构、索引、有限数与源文件摘要验证，未把巨量数组逐数字输出当人工阅读。"
+    }
+  ],
+  "scopeInventory": {
+    "requiredFiles": [
+      "src/content/OpeningCrowd.ts",
+      "src/content/OpeningStaging.ts",
+      "src/content/chapter-flow.ts",
+      "src/content/chapter-layout.ts",
+      "src/content/crowd-layout.ts",
+      "src/content/epilogue-layout.ts",
+      "src/content/escort-layout.ts",
+      "src/content/flank-dialogue-timing.ts",
+      "src/content/flank-layout.ts",
+      "src/content/frontgate-layout.ts",
+      "src/content/history-layout.ts",
+      "src/content/layout.ts",
+      "src/content/medical-layout.ts",
+      "src/content/opening-timeline.ts",
+      "src/content/relief-layout.ts",
+      "src/content/rescue-layout.ts",
+      "src/content/transfer-layout.ts",
+      "src/assets/architecture-catalog.ts",
+      "src/assets/scene-asset-catalog.ts",
+      "src/presentation/reused-aircraft/f35b.js",
+      "src/presentation/reused-aircraft/f35b-palette.js",
+      "src/presentation/reused-aircraft/f35b.d.ts",
+      "src/presentation/reused-aircraft/f35b-source.js"
+    ],
+    "completedFiles": 23,
+    "missingFiles": []
+  },
+  "runtimeCatalogAndContentChecks": {
+    "contents": [
+      {
+        "file": "src/content/OpeningCrowd.ts",
+        "exports": [
+          "openingCrowdPlan",
+          "OpeningCrowdPlan"
+        ],
+        "numericValues": 0,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/OpeningStaging.ts",
+        "exports": [
+          "OPENING_COMMANDER_FALL_SECONDS",
+          "OPENING_JAM_VERSION",
+          "openingShaoPosition",
+          "openingHallGaze"
+        ],
+        "numericValues": 1,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/chapter-flow.ts",
+        "exports": [
+          "CHAPTER_STAGES",
+          "NIGHT_CARRY_FACTS",
+          "stageFor",
+          "nextStage",
+          "SCENARIO_PHASE_LIMITS",
+          "carryFacts"
+        ],
+        "numericValues": 15,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/chapter-layout.ts",
+        "exports": [
+          "NIGHT",
+          "WORKERS"
+        ],
+        "numericValues": 185,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/crowd-layout.ts",
+        "exports": [
+          "CROWD_STAGING_FACT",
+          "LEGACY_CROWD_STOPS",
+          "crowdPose"
+        ],
+        "numericValues": 33,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/epilogue-layout.ts",
+        "exports": [
+          "EPILOGUE"
+        ],
+        "numericValues": 70,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/escort-layout.ts",
+        "exports": [
+          "ESCORT"
+        ],
+        "numericValues": 329,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/flank-dialogue-timing.ts",
+        "exports": [
+          "FLANK_DIALOGUE_TIMING"
+        ],
+        "numericValues": 15,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/flank-layout.ts",
+        "exports": [
+          "FLANK"
+        ],
+        "numericValues": 188,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/frontgate-layout.ts",
+        "exports": [
+          "FRONTGATE"
+        ],
+        "numericValues": 136,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/history-layout.ts",
+        "exports": [
+          "HISTORY"
+        ],
+        "numericValues": 476,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/layout.ts",
+        "exports": [
+          "LAYOUT"
+        ],
+        "numericValues": 486,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/medical-layout.ts",
+        "exports": [
+          "MEDICAL"
+        ],
+        "numericValues": 67,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/opening-timeline.ts",
+        "exports": [
+          "OPENING_TIMELINE",
+          "openingCrowdHitTime",
+          "openingHallTime"
+        ],
+        "numericValues": 21,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/relief-layout.ts",
+        "exports": [
+          "RELIEF"
+        ],
+        "numericValues": 168,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/rescue-layout.ts",
+        "exports": [
+          "RESCUE"
+        ],
+        "numericValues": 121,
+        "nonFiniteNumbers": 0
+      },
+      {
+        "file": "src/content/transfer-layout.ts",
+        "exports": [
+          "TRANSFER"
+        ],
+        "numericValues": 78,
+        "nonFiniteNumbers": 0
+      }
+    ],
+    "chapterStages": [
+      {
+        "id": "S01",
+        "scenario": "childhood",
+        "title": "检修门"
+      },
+      {
+        "id": "S02",
+        "scenario": "mainhall",
+        "title": "主厅"
+      },
+      {
+        "id": "S03",
+        "scenario": "nightshift",
+        "title": "夜班与出发"
+      },
+      {
+        "id": "S04",
+        "scenario": "workers",
+        "title": "带回港务人员"
+      },
+      {
+        "id": "S05",
+        "scenario": "frontgate",
+        "title": "北闸的预告"
+      },
+      {
+        "id": "S06",
+        "scenario": "transfer",
+        "title": "转接门与争执"
+      },
+      {
+        "id": "S07",
+        "scenario": "flank",
+        "title": "交给别人"
+      },
+      {
+        "id": "S08",
+        "scenario": "escort",
+        "title": "留下护送"
+      },
+      {
+        "id": "S09",
+        "scenario": "relief",
+        "title": "接受换班"
+      },
+      {
+        "id": "S10",
+        "scenario": "rescue",
+        "title": "共同撤回"
+      },
+      {
+        "id": "S11",
+        "scenario": "medical",
+        "title": "救护点"
+      },
+      {
+        "id": "S12",
+        "scenario": "epilogue",
+        "title": "进场之前"
+      }
+    ],
+    "layoutScenarios": [
+      "rescue",
+      "medical",
+      "epilogue",
+      "escort",
+      "relief",
+      "transfer",
+      "flank",
+      "childhood",
+      "mainhall",
+      "frontgate",
+      "nightshift",
+      "workers",
+      "northgate",
+      "prologue",
+      "handover"
+    ],
+    "legacyOutsideCampaign": [
+      "northgate",
+      "prologue",
+      "handover"
+    ],
+    "sourceAssetCount": 28,
+    "sceneAssetIds": [
+      "BG-CRANE",
+      "ENV-LIGHTKIT-POLE",
+      "PROP-BENCH",
+      "PROP-LIFE-MUG",
+      "PROP-MEDICAL-BAG",
+      "PROP-TANK",
+      "PROP-TERMINAL-CONSOLE",
+      "PROP-VEH-TUG",
+      "PROP-TRANSFER",
+      "PROP-STRETCHER",
+      "PROP-DOOR-LEAF",
+      "PROP-DOOR-LOCK",
+      "PROP-TERMINAL-HANDHELD",
+      "PROP-VEH-TRANSPORT",
+      "PROP-FILTER",
+      "PROP-CARGO",
+      "PROP-PUMP",
+      "PROP-FAN",
+      "PROP-TOOL-BAG",
+      "PROP-TOOL-ROLL",
+      "PROP-TOOL-LUNCHBOX",
+      "PROP-RADIO-PACK",
+      "PROP-RADIO-HEADSET",
+      "PROP-ARMOR-CHEST",
+      "PROP-ARMOR-LEFT-BRACE",
+      "PROP-ARMOR-HELMET",
+      "PROP-SAMPLE-CABINET",
+      "PROP-SAMPLE-CORECASE"
+    ],
+    "sceneAssetCatalogUnusedByPlacementFunction": [],
+    "architectureAssetCount": 22,
+    "architectureSourceCount": 66,
+    "architectureLodTriangles": [
+      {
+        "id": "ARCH-BEAM-STEEL:lod0",
+        "triangles": 4744,
+        "geometryOnly": false
+      },
+      {
+        "id": "ARCH-BEAM-STEEL:lod1",
+        "triangles": 1498,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-BEAM-STEEL:lod2",
+        "triangles": 384,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-CARGO-CONTAINER:lod0",
+        "triangles": 4132,
+        "geometryOnly": false
+      },
+      {
+        "id": "ARCH-CARGO-CONTAINER:lod1",
+        "triangles": 2668,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-CARGO-CONTAINER:lod2",
+        "triangles": 2056,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-COVER-CONCRETE:lod0",
+        "triangles": 4706,
+        "geometryOnly": false
+      },
+      {
+        "id": "ARCH-COVER-CONCRETE:lod1",
+        "triangles": 1500,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-COVER-CONCRETE:lod2",
+        "triangles": 384,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-FLOOR-METAL:lod0",
+        "triangles": 4872,
+        "geometryOnly": false
+      },
+      {
+        "id": "ARCH-FLOOR-METAL:lod1",
+        "triangles": 1500,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-FLOOR-METAL:lod2",
+        "triangles": 384,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-ROOF-METAL:lod0",
+        "triangles": 4994,
+        "geometryOnly": false
+      },
+      {
+        "id": "ARCH-ROOF-METAL:lod1",
+        "triangles": 1500,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-ROOF-METAL:lod2",
+        "triangles": 384,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-WALL-PAINT:lod0",
+        "triangles": 4916,
+        "geometryOnly": false
+      },
+      {
+        "id": "ARCH-WALL-PAINT:lod1",
+        "triangles": 1500,
+        "geometryOnly": true
+      },
+      {
+        "id": "ARCH-WALL-PAINT:lod2",
+        "triangles": 382,
+        "geometryOnly": true
+      },
+      {
+        "id": "BG-CRANE:lod0",
+        "triangles": 19718,
+        "geometryOnly": false
+      },
+      {
+        "id": "BG-CRANE:lod1",
+        "triangles": 17944,
+        "geometryOnly": true
+      },
+      {
+        "id": "BG-CRANE:lod2",
+        "triangles": 17920,
+        "geometryOnly": true
+      },
+      {
+        "id": "BG-HEAT:lod0",
+        "triangles": 17826,
+        "geometryOnly": false
+      },
+      {
+        "id": "BG-HEAT:lod1",
+        "triangles": 12828,
+        "geometryOnly": true
+      },
+      {
+        "id": "BG-HEAT:lod2",
+        "triangles": 12700,
+        "geometryOnly": true
+      },
+      {
+        "id": "BG-SHIP:lod0",
+        "triangles": 11966,
+        "geometryOnly": false
+      },
+      {
+        "id": "BG-SHIP:lod1",
+        "triangles": 8158,
+        "geometryOnly": true
+      },
+      {
+        "id": "BG-SHIP:lod2",
+        "triangles": 8130,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-BRIDGEKIT-DECK:lod0",
+        "triangles": 15730,
+        "geometryOnly": false
+      },
+      {
+        "id": "ENV-BRIDGEKIT-DECK:lod1",
+        "triangles": 10056,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-BRIDGEKIT-DECK:lod2",
+        "triangles": 10026,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-LIGHTKIT-POLE:lod0",
+        "triangles": 11374,
+        "geometryOnly": false
+      },
+      {
+        "id": "ENV-LIGHTKIT-POLE:lod1",
+        "triangles": 3360,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-LIGHTKIT-POLE:lod2",
+        "triangles": 3306,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-PIPEKIT-ELBOW:lod0",
+        "triangles": 7768,
+        "geometryOnly": false
+      },
+      {
+        "id": "ENV-PIPEKIT-ELBOW:lod1",
+        "triangles": 2966,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-PIPEKIT-ELBOW:lod2",
+        "triangles": 2482,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-PIPEKIT-STRAIGHT:lod0",
+        "triangles": 7472,
+        "geometryOnly": false
+      },
+      {
+        "id": "ENV-PIPEKIT-STRAIGHT:lod1",
+        "triangles": 2360,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-PIPEKIT-STRAIGHT:lod2",
+        "triangles": 2150,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-WALLKIT-PANEL:lod0",
+        "triangles": 7700,
+        "geometryOnly": false
+      },
+      {
+        "id": "ENV-WALLKIT-PANEL:lod1",
+        "triangles": 1738,
+        "geometryOnly": true
+      },
+      {
+        "id": "ENV-WALLKIT-PANEL:lod2",
+        "triangles": 1660,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-A-ARCH-01:lod0",
+        "triangles": 11634,
+        "geometryOnly": false
+      },
+      {
+        "id": "MAP-A-ARCH-01:lod1",
+        "triangles": 3268,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-A-ARCH-01:lod2",
+        "triangles": 3208,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-B-CORRIDOR-01:lod0",
+        "triangles": 15588,
+        "geometryOnly": false
+      },
+      {
+        "id": "MAP-B-CORRIDOR-01:lod1",
+        "triangles": 5914,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-B-CORRIDOR-01:lod2",
+        "triangles": 5822,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-C-FACADE-01:lod0",
+        "triangles": 17856,
+        "geometryOnly": false
+      },
+      {
+        "id": "MAP-C-FACADE-01:lod1",
+        "triangles": 9228,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-C-FACADE-01:lod2",
+        "triangles": 9124,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-C-ICEBANK-01:lod0",
+        "triangles": 15982,
+        "geometryOnly": false
+      },
+      {
+        "id": "MAP-C-ICEBANK-01:lod1",
+        "triangles": 8986,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-C-ICEBANK-01:lod2",
+        "triangles": 8734,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-E-PIER-01:lod0",
+        "triangles": 7676,
+        "geometryOnly": false
+      },
+      {
+        "id": "MAP-E-PIER-01:lod1",
+        "triangles": 3018,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-E-PIER-01:lod2",
+        "triangles": 2868,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-F-ROOF-01:lod0",
+        "triangles": 15854,
+        "geometryOnly": false
+      },
+      {
+        "id": "MAP-F-ROOF-01:lod1",
+        "triangles": 6128,
+        "geometryOnly": true
+      },
+      {
+        "id": "MAP-F-ROOF-01:lod2",
+        "triangles": 5936,
+        "geometryOnly": true
+      },
+      {
+        "id": "PROP-BOOTH:lod0",
+        "triangles": 18962,
+        "geometryOnly": false
+      },
+      {
+        "id": "PROP-BOOTH:lod1",
+        "triangles": 5682,
+        "geometryOnly": true
+      },
+      {
+        "id": "PROP-BOOTH:lod2",
+        "triangles": 5522,
+        "geometryOnly": true
+      },
+      {
+        "id": "PROP-TANK:lod0",
+        "triangles": 15130,
+        "geometryOnly": false
+      },
+      {
+        "id": "PROP-TANK:lod1",
+        "triangles": 6690,
+        "geometryOnly": true
+      },
+      {
+        "id": "PROP-TANK:lod2",
+        "triangles": 6442,
+        "geometryOnly": true
+      }
+    ],
+    "resources": [
+      {
+        "id": "ARCH-BEAM-STEEL:lod0",
+        "path": "public/models/architecture-r1/ARCH-BEAM-STEEL-lod0.glb",
+        "expectedSha": "54ba70eca4ca5909fa0342f00986cab283a14008429eb24173edf38f40224cf7",
+        "expectedBytes": 1616140,
+        "exists": true,
+        "actualSha256": "54ba70eca4ca5909fa0342f00986cab283a14008429eb24173edf38f40224cf7",
+        "actualBytes": 1616140,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-BEAM-STEEL:lod1",
+        "path": "public/models/architecture-r1/ARCH-BEAM-STEEL-lod1-geometry.glb",
+        "expectedSha": "46a2f6560cea092525fc9eba1ece1d1323afc5aa4f2634f7887c0cf7768e8ed2",
+        "expectedBytes": 178232,
+        "exists": true,
+        "actualSha256": "46a2f6560cea092525fc9eba1ece1d1323afc5aa4f2634f7887c0cf7768e8ed2",
+        "actualBytes": 178232,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-BEAM-STEEL:lod2",
+        "path": "public/models/architecture-r1/ARCH-BEAM-STEEL-lod2-geometry.glb",
+        "expectedSha": "73769db7a3b0972a1633cb2875ee4c152352b8f1c19717c397e76e1fa94c1e5d",
+        "expectedBytes": 164860,
+        "exists": true,
+        "actualSha256": "73769db7a3b0972a1633cb2875ee4c152352b8f1c19717c397e76e1fa94c1e5d",
+        "actualBytes": 164860,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-CARGO-CONTAINER:lod0",
+        "path": "public/models/architecture-r1/ARCH-CARGO-CONTAINER-lod0.glb",
+        "expectedSha": "6f96d868d16de630ea1b0f874b73ebc32ee50d3132d84990ae2ba08ad8e6aa13",
+        "expectedBytes": 1556028,
+        "exists": true,
+        "actualSha256": "6f96d868d16de630ea1b0f874b73ebc32ee50d3132d84990ae2ba08ad8e6aa13",
+        "actualBytes": 1556028,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-CARGO-CONTAINER:lod1",
+        "path": "public/models/architecture-r1/ARCH-CARGO-CONTAINER-lod1-geometry.glb",
+        "expectedSha": "20718bb0b536f1805a2b4937f6d6b1bbee28e57517830a8c9c13a35984b7b0df",
+        "expectedBytes": 232984,
+        "exists": true,
+        "actualSha256": "20718bb0b536f1805a2b4937f6d6b1bbee28e57517830a8c9c13a35984b7b0df",
+        "actualBytes": 232984,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-CARGO-CONTAINER:lod2",
+        "path": "public/models/architecture-r1/ARCH-CARGO-CONTAINER-lod2-geometry.glb",
+        "expectedSha": "b28838752a255f54ceb32f4b11dd611e7ea710379ac439683f0fcb3a2e6cba3b",
+        "expectedBytes": 225640,
+        "exists": true,
+        "actualSha256": "b28838752a255f54ceb32f4b11dd611e7ea710379ac439683f0fcb3a2e6cba3b",
+        "actualBytes": 225640,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-COVER-CONCRETE:lod0",
+        "path": "public/models/architecture-r1/ARCH-COVER-CONCRETE-lod0.glb",
+        "expectedSha": "2006a6be5eefda3acbfdf91ac0243105cf81e06a4936a882c8f63f27be108adf",
+        "expectedBytes": 935216,
+        "exists": true,
+        "actualSha256": "2006a6be5eefda3acbfdf91ac0243105cf81e06a4936a882c8f63f27be108adf",
+        "actualBytes": 935216,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-COVER-CONCRETE:lod1",
+        "path": "public/models/architecture-r1/ARCH-COVER-CONCRETE-lod1-geometry.glb",
+        "expectedSha": "678b3a345412b6dc2d4f28fc3dbe02fe88e51158f4197a09f3462daac3774409",
+        "expectedBytes": 190688,
+        "exists": true,
+        "actualSha256": "678b3a345412b6dc2d4f28fc3dbe02fe88e51158f4197a09f3462daac3774409",
+        "actualBytes": 190688,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-COVER-CONCRETE:lod2",
+        "path": "public/models/architecture-r1/ARCH-COVER-CONCRETE-lod2-geometry.glb",
+        "expectedSha": "f512abff239ef2c1e1824faeb5f3fcca1d7ac3330b83ffa26381950bc3820207",
+        "expectedBytes": 177296,
+        "exists": true,
+        "actualSha256": "f512abff239ef2c1e1824faeb5f3fcca1d7ac3330b83ffa26381950bc3820207",
+        "actualBytes": 177296,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-FLOOR-METAL:lod0",
+        "path": "public/models/architecture-r1/ARCH-FLOOR-METAL-lod0.glb",
+        "expectedSha": "62e35537871fc9682c992f5803b0f8ff856148f76711775bf88cbfc7d70ce6e9",
+        "expectedBytes": 651944,
+        "exists": true,
+        "actualSha256": "62e35537871fc9682c992f5803b0f8ff856148f76711775bf88cbfc7d70ce6e9",
+        "actualBytes": 651944,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-FLOOR-METAL:lod1",
+        "path": "public/models/architecture-r1/ARCH-FLOOR-METAL-lod1-geometry.glb",
+        "expectedSha": "7aae1d3986c086bdc2a3ef4ac192f346bb618b6e4bd6459d504260f9889265c3",
+        "expectedBytes": 173784,
+        "exists": true,
+        "actualSha256": "7aae1d3986c086bdc2a3ef4ac192f346bb618b6e4bd6459d504260f9889265c3",
+        "actualBytes": 173784,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-FLOOR-METAL:lod2",
+        "path": "public/models/architecture-r1/ARCH-FLOOR-METAL-lod2-geometry.glb",
+        "expectedSha": "12be499ca07736e4a392cb6b596e895e12dccdb54154a022366a6bd140d5f018",
+        "expectedBytes": 160392,
+        "exists": true,
+        "actualSha256": "12be499ca07736e4a392cb6b596e895e12dccdb54154a022366a6bd140d5f018",
+        "actualBytes": 160392,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-ROOF-METAL:lod0",
+        "path": "public/models/architecture-r1/ARCH-ROOF-METAL-lod0.glb",
+        "expectedSha": "6c07afa048e756e63f1184626af2e3f504179ea78652a4f9bcbce65ff7c16fbb",
+        "expectedBytes": 778468,
+        "exists": true,
+        "actualSha256": "6c07afa048e756e63f1184626af2e3f504179ea78652a4f9bcbce65ff7c16fbb",
+        "actualBytes": 778468,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-ROOF-METAL:lod1",
+        "path": "public/models/architecture-r1/ARCH-ROOF-METAL-lod1-geometry.glb",
+        "expectedSha": "7dea9d88996c031524a57b757e05485a52c56d0033b7ab822d446067e8ae014b",
+        "expectedBytes": 204332,
+        "exists": true,
+        "actualSha256": "7dea9d88996c031524a57b757e05485a52c56d0033b7ab822d446067e8ae014b",
+        "actualBytes": 204332,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-ROOF-METAL:lod2",
+        "path": "public/models/architecture-r1/ARCH-ROOF-METAL-lod2-geometry.glb",
+        "expectedSha": "93645e2850788e7106112fc809895b88832a2f4a45852bff7548303778f4a7f7",
+        "expectedBytes": 190940,
+        "exists": true,
+        "actualSha256": "93645e2850788e7106112fc809895b88832a2f4a45852bff7548303778f4a7f7",
+        "actualBytes": 190940,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-WALL-PAINT:lod0",
+        "path": "public/models/architecture-r1/ARCH-WALL-PAINT-lod0.glb",
+        "expectedSha": "c7a7430ae5a1cd94d5bed073daa25a8f74fa203981402241e13e88acd9d3325b",
+        "expectedBytes": 820432,
+        "exists": true,
+        "actualSha256": "c7a7430ae5a1cd94d5bed073daa25a8f74fa203981402241e13e88acd9d3325b",
+        "actualBytes": 820432,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-WALL-PAINT:lod1",
+        "path": "public/models/architecture-r1/ARCH-WALL-PAINT-lod1-geometry.glb",
+        "expectedSha": "329a0480006fa9d175a593ac5a12e19c9d74bf84370680432bcae9743483b0aa",
+        "expectedBytes": 204736,
+        "exists": true,
+        "actualSha256": "329a0480006fa9d175a593ac5a12e19c9d74bf84370680432bcae9743483b0aa",
+        "actualBytes": 204736,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ARCH-WALL-PAINT:lod2",
+        "path": "public/models/architecture-r1/ARCH-WALL-PAINT-lod2-geometry.glb",
+        "expectedSha": "f978462808393d89a0b492474c0660e2a6a91efe0715b540b268e4dba7d69e06",
+        "expectedBytes": 191320,
+        "exists": true,
+        "actualSha256": "f978462808393d89a0b492474c0660e2a6a91efe0715b540b268e4dba7d69e06",
+        "actualBytes": 191320,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-CRANE:lod0",
+        "path": "public/models/architecture-r1/BG-CRANE-lod0.glb",
+        "expectedSha": "988917110226e797d0466d8669118ac4ea66ef208c6d80717080c4dc6a684a55",
+        "expectedBytes": 3104116,
+        "exists": true,
+        "actualSha256": "988917110226e797d0466d8669118ac4ea66ef208c6d80717080c4dc6a684a55",
+        "actualBytes": 3104116,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-CRANE:lod1",
+        "path": "public/models/architecture-r1/BG-CRANE-lod1-geometry.glb",
+        "expectedSha": "a50b521bbfa6185e21dc733f89a3776ca4dbfeb8a11af51e6be548ec35ea3485",
+        "expectedBytes": 1835628,
+        "exists": true,
+        "actualSha256": "a50b521bbfa6185e21dc733f89a3776ca4dbfeb8a11af51e6be548ec35ea3485",
+        "actualBytes": 1835628,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-CRANE:lod2",
+        "path": "public/models/architecture-r1/BG-CRANE-lod2-geometry.glb",
+        "expectedSha": "db18fe34a1657102be2b44899466ac5a18ab29214c9dab0b27bfe0b0d4da6e21",
+        "expectedBytes": 1835340,
+        "exists": true,
+        "actualSha256": "db18fe34a1657102be2b44899466ac5a18ab29214c9dab0b27bfe0b0d4da6e21",
+        "actualBytes": 1835340,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-HEAT:lod0",
+        "path": "public/models/architecture-r1/BG-HEAT-lod0.glb",
+        "expectedSha": "eb3452143786ad8636ac015800d3e109f5edc4a755a21d5f3d71cb5a111cc422",
+        "expectedBytes": 2511080,
+        "exists": true,
+        "actualSha256": "eb3452143786ad8636ac015800d3e109f5edc4a755a21d5f3d71cb5a111cc422",
+        "actualBytes": 2511080,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-HEAT:lod1",
+        "path": "public/models/architecture-r1/BG-HEAT-lod1-geometry.glb",
+        "expectedSha": "aceaeeca3634bad9a341807d4eb7f3790bd24bf62ca0733c327d1e44b57223e3",
+        "expectedBytes": 1349208,
+        "exists": true,
+        "actualSha256": "aceaeeca3634bad9a341807d4eb7f3790bd24bf62ca0733c327d1e44b57223e3",
+        "actualBytes": 1349208,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-HEAT:lod2",
+        "path": "public/models/architecture-r1/BG-HEAT-lod2-geometry.glb",
+        "expectedSha": "d68b14d7b432ea96ae640c503e1b6c7dfa62744844dc719a16d12746a2be856e",
+        "expectedBytes": 1347672,
+        "exists": true,
+        "actualSha256": "d68b14d7b432ea96ae640c503e1b6c7dfa62744844dc719a16d12746a2be856e",
+        "actualBytes": 1347672,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-SHIP:lod0",
+        "path": "public/models/architecture-r1/BG-SHIP-lod0.glb",
+        "expectedSha": "a429963bf4fe839581953a26e986156d61c3b50f6cb77e3022515f0fcf61681d",
+        "expectedBytes": 1971596,
+        "exists": true,
+        "actualSha256": "a429963bf4fe839581953a26e986156d61c3b50f6cb77e3022515f0fcf61681d",
+        "actualBytes": 1971596,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-SHIP:lod1",
+        "path": "public/models/architecture-r1/BG-SHIP-lod1-geometry.glb",
+        "expectedSha": "8a31b4b1ba45ab8b100e51004c923eaf1ca2222e0c963d2e7d6b0cb018f0cbdf",
+        "expectedBytes": 868960,
+        "exists": true,
+        "actualSha256": "8a31b4b1ba45ab8b100e51004c923eaf1ca2222e0c963d2e7d6b0cb018f0cbdf",
+        "actualBytes": 868960,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-SHIP:lod2",
+        "path": "public/models/architecture-r1/BG-SHIP-lod2-geometry.glb",
+        "expectedSha": "a9a96e2f20dc7ff74fe7c79e31879b8a9e160cb1552bfc19cc64a6a470b19619",
+        "expectedBytes": 868624,
+        "exists": true,
+        "actualSha256": "a9a96e2f20dc7ff74fe7c79e31879b8a9e160cb1552bfc19cc64a6a470b19619",
+        "actualBytes": 868624,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-BRIDGEKIT-DECK:lod0",
+        "path": "public/models/architecture-r1/ENV-BRIDGEKIT-DECK-lod0.glb",
+        "expectedSha": "7e9a3ea7cc0ead1f3133e1c9d9d7eb76c6ebb3850ff101be84e45f816a893d3a",
+        "expectedBytes": 2066836,
+        "exists": true,
+        "actualSha256": "7e9a3ea7cc0ead1f3133e1c9d9d7eb76c6ebb3850ff101be84e45f816a893d3a",
+        "actualBytes": 2066836,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-BRIDGEKIT-DECK:lod1",
+        "path": "public/models/architecture-r1/ENV-BRIDGEKIT-DECK-lod1-geometry.glb",
+        "expectedSha": "4b3807a064fbc3d00e02aabfcff22c88485010fe46cf99f596eca8546ff608af",
+        "expectedBytes": 1121056,
+        "exists": true,
+        "actualSha256": "4b3807a064fbc3d00e02aabfcff22c88485010fe46cf99f596eca8546ff608af",
+        "actualBytes": 1121056,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-BRIDGEKIT-DECK:lod2",
+        "path": "public/models/architecture-r1/ENV-BRIDGEKIT-DECK-lod2-geometry.glb",
+        "expectedSha": "698acc53b11bf7be7469019549574e6848910294ef47ea42f881d52d63f37cd5",
+        "expectedBytes": 1120696,
+        "exists": true,
+        "actualSha256": "698acc53b11bf7be7469019549574e6848910294ef47ea42f881d52d63f37cd5",
+        "actualBytes": 1120696,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-LIGHTKIT-POLE:lod0",
+        "path": "public/models/architecture-r1/ENV-LIGHTKIT-POLE-lod0.glb",
+        "expectedSha": "682ee4c3cc2db2bf9998d796dad27ae6a54884b5bcee0038b2ef26c008657e70",
+        "expectedBytes": 1377664,
+        "exists": true,
+        "actualSha256": "682ee4c3cc2db2bf9998d796dad27ae6a54884b5bcee0038b2ef26c008657e70",
+        "actualBytes": 1377664,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-LIGHTKIT-POLE:lod1",
+        "path": "public/models/architecture-r1/ENV-LIGHTKIT-POLE-lod1-geometry.glb",
+        "expectedSha": "5fd7c25aeb9fee4fe8eb299195753522422a65eb39d2624aa3e0790df8a965c2",
+        "expectedBytes": 541484,
+        "exists": true,
+        "actualSha256": "5fd7c25aeb9fee4fe8eb299195753522422a65eb39d2624aa3e0790df8a965c2",
+        "actualBytes": 541484,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-LIGHTKIT-POLE:lod2",
+        "path": "public/models/architecture-r1/ENV-LIGHTKIT-POLE-lod2-geometry.glb",
+        "expectedSha": "c0dfd815dd4196082370f0d7fc965cabe65dc0367575bf36422ec00d1a2a1212",
+        "expectedBytes": 540836,
+        "exists": true,
+        "actualSha256": "c0dfd815dd4196082370f0d7fc965cabe65dc0367575bf36422ec00d1a2a1212",
+        "actualBytes": 540836,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-PIPEKIT-ELBOW:lod0",
+        "path": "public/models/architecture-r1/ENV-PIPEKIT-ELBOW-lod0.glb",
+        "expectedSha": "ab440b57ba514d7aad5160e0cc005c17d472f1b07c784d3b64b8dd64e0662523",
+        "expectedBytes": 1093996,
+        "exists": true,
+        "actualSha256": "ab440b57ba514d7aad5160e0cc005c17d472f1b07c784d3b64b8dd64e0662523",
+        "actualBytes": 1093996,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-PIPEKIT-ELBOW:lod1",
+        "path": "public/models/architecture-r1/ENV-PIPEKIT-ELBOW-lod1-geometry.glb",
+        "expectedSha": "3d5991237679075d72c09be06723e8c9fd8a66169fd35290093449c49287194f",
+        "expectedBytes": 378972,
+        "exists": true,
+        "actualSha256": "3d5991237679075d72c09be06723e8c9fd8a66169fd35290093449c49287194f",
+        "actualBytes": 378972,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-PIPEKIT-ELBOW:lod2",
+        "path": "public/models/architecture-r1/ENV-PIPEKIT-ELBOW-lod2-geometry.glb",
+        "expectedSha": "ae4af7834ce24478b4bc7186ff2bb6166d381362033e67c3e195d18971f9f0c5",
+        "expectedBytes": 373164,
+        "exists": true,
+        "actualSha256": "ae4af7834ce24478b4bc7186ff2bb6166d381362033e67c3e195d18971f9f0c5",
+        "actualBytes": 373164,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-PIPEKIT-STRAIGHT:lod0",
+        "path": "public/models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod0.glb",
+        "expectedSha": "b8c1f188db65ed1d21e0e2822dad24d881e939a6a1fc4742c5dde65d92705a50",
+        "expectedBytes": 1162192,
+        "exists": true,
+        "actualSha256": "b8c1f188db65ed1d21e0e2822dad24d881e939a6a1fc4742c5dde65d92705a50",
+        "actualBytes": 1162192,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-PIPEKIT-STRAIGHT:lod1",
+        "path": "public/models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod1-geometry.glb",
+        "expectedSha": "51e3d1b9acfe7c701f312b2f3b0f191786504bd82879248356b90fe22a5f6705",
+        "expectedBytes": 349444,
+        "exists": true,
+        "actualSha256": "51e3d1b9acfe7c701f312b2f3b0f191786504bd82879248356b90fe22a5f6705",
+        "actualBytes": 349444,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-PIPEKIT-STRAIGHT:lod2",
+        "path": "public/models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod2-geometry.glb",
+        "expectedSha": "2666616c68565c1dfcc70ea2c419b88acd2a00ec87044bef266866cac4799874",
+        "expectedBytes": 346924,
+        "exists": true,
+        "actualSha256": "2666616c68565c1dfcc70ea2c419b88acd2a00ec87044bef266866cac4799874",
+        "actualBytes": 346924,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-WALLKIT-PANEL:lod0",
+        "path": "public/models/architecture-r1/ENV-WALLKIT-PANEL-lod0.glb",
+        "expectedSha": "8a6dd7947bff0da1fc267362d06fc1d60e8e79b3ea1495b4b1d7cbd805d12d0f",
+        "expectedBytes": 1217056,
+        "exists": true,
+        "actualSha256": "8a6dd7947bff0da1fc267362d06fc1d60e8e79b3ea1495b4b1d7cbd805d12d0f",
+        "actualBytes": 1217056,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-WALLKIT-PANEL:lod1",
+        "path": "public/models/architecture-r1/ENV-WALLKIT-PANEL-lod1-geometry.glb",
+        "expectedSha": "573ad68f40e2b377135b2cf31f77d081be78afa03e45ab3bb61db3dd7c0f112b",
+        "expectedBytes": 328292,
+        "exists": true,
+        "actualSha256": "573ad68f40e2b377135b2cf31f77d081be78afa03e45ab3bb61db3dd7c0f112b",
+        "actualBytes": 328292,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-WALLKIT-PANEL:lod2",
+        "path": "public/models/architecture-r1/ENV-WALLKIT-PANEL-lod2-geometry.glb",
+        "expectedSha": "d79e711c7749dae22675ebd77b492d0f92ace297b2619d6f73eaec7d063a3bce",
+        "expectedBytes": 327356,
+        "exists": true,
+        "actualSha256": "d79e711c7749dae22675ebd77b492d0f92ace297b2619d6f73eaec7d063a3bce",
+        "actualBytes": 327356,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-A-ARCH-01:lod0",
+        "path": "public/models/architecture-r1/MAP-A-ARCH-01-lod0.glb",
+        "expectedSha": "c1d27aa0882a093d974bd280b08214bae606083a8cb41100cc278c92f7348981",
+        "expectedBytes": 1515392,
+        "exists": true,
+        "actualSha256": "c1d27aa0882a093d974bd280b08214bae606083a8cb41100cc278c92f7348981",
+        "actualBytes": 1515392,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-A-ARCH-01:lod1",
+        "path": "public/models/architecture-r1/MAP-A-ARCH-01-lod1-geometry.glb",
+        "expectedSha": "44271b9d767774509f11a57c778689ef43e8e0cc5f4c6a8a7adfcd9b7a0c3e97",
+        "expectedBytes": 547012,
+        "exists": true,
+        "actualSha256": "44271b9d767774509f11a57c778689ef43e8e0cc5f4c6a8a7adfcd9b7a0c3e97",
+        "actualBytes": 547012,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-A-ARCH-01:lod2",
+        "path": "public/models/architecture-r1/MAP-A-ARCH-01-lod2-geometry.glb",
+        "expectedSha": "1afe3d4a8b41262ddb6fbbdb67f737e0f73e7279cafadcde046772138f9f7bde",
+        "expectedBytes": 546292,
+        "exists": true,
+        "actualSha256": "1afe3d4a8b41262ddb6fbbdb67f737e0f73e7279cafadcde046772138f9f7bde",
+        "actualBytes": 546292,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-B-CORRIDOR-01:lod0",
+        "path": "public/models/architecture-r1/MAP-B-CORRIDOR-01-lod0.glb",
+        "expectedSha": "29dfe65de0a950db2cb7897d4683a13fad9f26125ebe6c988d7b222b631a8d3e",
+        "expectedBytes": 1573708,
+        "exists": true,
+        "actualSha256": "29dfe65de0a950db2cb7897d4683a13fad9f26125ebe6c988d7b222b631a8d3e",
+        "actualBytes": 1573708,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-B-CORRIDOR-01:lod1",
+        "path": "public/models/architecture-r1/MAP-B-CORRIDOR-01-lod1-geometry.glb",
+        "expectedSha": "0fa9775c5c693cfef576087641f69493ed5a643b6ee813a50935b55f0630ec44",
+        "expectedBytes": 821880,
+        "exists": true,
+        "actualSha256": "0fa9775c5c693cfef576087641f69493ed5a643b6ee813a50935b55f0630ec44",
+        "actualBytes": 821880,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-B-CORRIDOR-01:lod2",
+        "path": "public/models/architecture-r1/MAP-B-CORRIDOR-01-lod2-geometry.glb",
+        "expectedSha": "cc579c9dc1283d3b37dde798d0c732fff816db45f7994b2a551274462d4bd3f9",
+        "expectedBytes": 820776,
+        "exists": true,
+        "actualSha256": "cc579c9dc1283d3b37dde798d0c732fff816db45f7994b2a551274462d4bd3f9",
+        "actualBytes": 820776,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-C-FACADE-01:lod0",
+        "path": "public/models/architecture-r1/MAP-C-FACADE-01-lod0.glb",
+        "expectedSha": "2349f04bb17ed4f81c197b3ae4b040cfa287040922c2e64bacc81ea7a22b5d25",
+        "expectedBytes": 1743068,
+        "exists": true,
+        "actualSha256": "2349f04bb17ed4f81c197b3ae4b040cfa287040922c2e64bacc81ea7a22b5d25",
+        "actualBytes": 1743068,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-C-FACADE-01:lod1",
+        "path": "public/models/architecture-r1/MAP-C-FACADE-01-lod1-geometry.glb",
+        "expectedSha": "71db6482222f91ea77ed456e4d48b92ec809ce738f50394b2f8ffec35570ad90",
+        "expectedBytes": 1091980,
+        "exists": true,
+        "actualSha256": "71db6482222f91ea77ed456e4d48b92ec809ce738f50394b2f8ffec35570ad90",
+        "actualBytes": 1091980,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-C-FACADE-01:lod2",
+        "path": "public/models/architecture-r1/MAP-C-FACADE-01-lod2-geometry.glb",
+        "expectedSha": "59e4b86e59170d58ca102936ffbac3264df569ed826ed86026e97080c665f4f4",
+        "expectedBytes": 1090732,
+        "exists": true,
+        "actualSha256": "59e4b86e59170d58ca102936ffbac3264df569ed826ed86026e97080c665f4f4",
+        "actualBytes": 1090732,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-C-ICEBANK-01:lod0",
+        "path": "public/models/architecture-r1/MAP-C-ICEBANK-01-lod0.glb",
+        "expectedSha": "bd81511d0598d5b4ef9c690d9b0db4b3883387022dd4dae209439349ca9bf050",
+        "expectedBytes": 2109560,
+        "exists": true,
+        "actualSha256": "bd81511d0598d5b4ef9c690d9b0db4b3883387022dd4dae209439349ca9bf050",
+        "actualBytes": 2109560,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-C-ICEBANK-01:lod1",
+        "path": "public/models/architecture-r1/MAP-C-ICEBANK-01-lod1-geometry.glb",
+        "expectedSha": "8775324856093dd94cb926217d416b2c68cffcda5a18bba6861298c8e5f6d3a4",
+        "expectedBytes": 989692,
+        "exists": true,
+        "actualSha256": "8775324856093dd94cb926217d416b2c68cffcda5a18bba6861298c8e5f6d3a4",
+        "actualBytes": 989692,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-C-ICEBANK-01:lod2",
+        "path": "public/models/architecture-r1/MAP-C-ICEBANK-01-lod2-geometry.glb",
+        "expectedSha": "9ae7a1d6a831b7272d960ebec4493df351cd490d672bc7df5701e243181a4eac",
+        "expectedBytes": 986668,
+        "exists": true,
+        "actualSha256": "9ae7a1d6a831b7272d960ebec4493df351cd490d672bc7df5701e243181a4eac",
+        "actualBytes": 986668,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-E-PIER-01:lod0",
+        "path": "public/models/architecture-r1/MAP-E-PIER-01-lod0.glb",
+        "expectedSha": "6a81dfd5f3c0c38787acf38014af579173a1f8be0719d25111afef48f9b5756e",
+        "expectedBytes": 1213472,
+        "exists": true,
+        "actualSha256": "6a81dfd5f3c0c38787acf38014af579173a1f8be0719d25111afef48f9b5756e",
+        "actualBytes": 1213472,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-E-PIER-01:lod1",
+        "path": "public/models/architecture-r1/MAP-E-PIER-01-lod1-geometry.glb",
+        "expectedSha": "ebd64e0aa9125df8a29cce885ed2a1f0c68849410c74768a3897bfdf81d77439",
+        "expectedBytes": 405560,
+        "exists": true,
+        "actualSha256": "ebd64e0aa9125df8a29cce885ed2a1f0c68849410c74768a3897bfdf81d77439",
+        "actualBytes": 405560,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-E-PIER-01:lod2",
+        "path": "public/models/architecture-r1/MAP-E-PIER-01-lod2-geometry.glb",
+        "expectedSha": "44d54da120cc30e1f7a676817e1b8b392f5bec96d3b0e750403aadc5c3ed1651",
+        "expectedBytes": 403760,
+        "exists": true,
+        "actualSha256": "44d54da120cc30e1f7a676817e1b8b392f5bec96d3b0e750403aadc5c3ed1651",
+        "actualBytes": 403760,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-F-ROOF-01:lod0",
+        "path": "public/models/architecture-r1/MAP-F-ROOF-01-lod0.glb",
+        "expectedSha": "a574967cda96f4a2865ec6ac9703a02ab5ff83372f182b9e6a499677877423d6",
+        "expectedBytes": 1593880,
+        "exists": true,
+        "actualSha256": "a574967cda96f4a2865ec6ac9703a02ab5ff83372f182b9e6a499677877423d6",
+        "actualBytes": 1593880,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-F-ROOF-01:lod1",
+        "path": "public/models/architecture-r1/MAP-F-ROOF-01-lod1-geometry.glb",
+        "expectedSha": "ae026f7bf018559c78ecfe703642d18909a9dabc6bb46e40bf05f8f799f6ed5d",
+        "expectedBytes": 831008,
+        "exists": true,
+        "actualSha256": "ae026f7bf018559c78ecfe703642d18909a9dabc6bb46e40bf05f8f799f6ed5d",
+        "actualBytes": 831008,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "MAP-F-ROOF-01:lod2",
+        "path": "public/models/architecture-r1/MAP-F-ROOF-01-lod2-geometry.glb",
+        "expectedSha": "667365d18f768e4ea70c4d5b62199195d5547303a0391d12f1c491e755a0503e",
+        "expectedBytes": 828704,
+        "exists": true,
+        "actualSha256": "667365d18f768e4ea70c4d5b62199195d5547303a0391d12f1c491e755a0503e",
+        "actualBytes": 828704,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-BOOTH:lod0",
+        "path": "public/models/architecture-r1/PROP-BOOTH-lod0.glb",
+        "expectedSha": "d1786fc792731127f7ff345f0b205b9cae6100d4c4f33d00f30882ad5dfa53d7",
+        "expectedBytes": 1674904,
+        "exists": true,
+        "actualSha256": "d1786fc792731127f7ff345f0b205b9cae6100d4c4f33d00f30882ad5dfa53d7",
+        "actualBytes": 1674904,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-BOOTH:lod1",
+        "path": "public/models/architecture-r1/PROP-BOOTH-lod1-geometry.glb",
+        "expectedSha": "5fed8050937a2af0f7d67948aa0426b001bd20db9f870a594f9c94495c359328",
+        "expectedBytes": 917920,
+        "exists": true,
+        "actualSha256": "5fed8050937a2af0f7d67948aa0426b001bd20db9f870a594f9c94495c359328",
+        "actualBytes": 917920,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-BOOTH:lod2",
+        "path": "public/models/architecture-r1/PROP-BOOTH-lod2-geometry.glb",
+        "expectedSha": "10cbfb89eef32ff2fa9ab8873058915e74ad70da01692ad4607f0d5b4d0b04e5",
+        "expectedBytes": 916000,
+        "exists": true,
+        "actualSha256": "10cbfb89eef32ff2fa9ab8873058915e74ad70da01692ad4607f0d5b4d0b04e5",
+        "actualBytes": 916000,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TANK:lod0",
+        "path": "public/models/architecture-r1/PROP-TANK-lod0.glb",
+        "expectedSha": "52cc47b314a1bcb4ea88da5038be5a94a0492612b505e621d7b9d415fe392e3a",
+        "expectedBytes": 1665872,
+        "exists": true,
+        "actualSha256": "52cc47b314a1bcb4ea88da5038be5a94a0492612b505e621d7b9d415fe392e3a",
+        "actualBytes": 1665872,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TANK:lod1",
+        "path": "public/models/architecture-r1/PROP-TANK-lod1-geometry.glb",
+        "expectedSha": "b3ba0780699bdc6b099bfb11f95bedbc0b25cabdb5699cb2e3850435db84ca82",
+        "expectedBytes": 839296,
+        "exists": true,
+        "actualSha256": "b3ba0780699bdc6b099bfb11f95bedbc0b25cabdb5699cb2e3850435db84ca82",
+        "actualBytes": 839296,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TANK:lod2",
+        "path": "public/models/architecture-r1/PROP-TANK-lod2-geometry.glb",
+        "expectedSha": "5a56f2175ab37197cbd96d756d1f27cf0c573bbd620a64a1ff3de708a34eec2d",
+        "expectedBytes": 836320,
+        "exists": true,
+        "actualSha256": "5a56f2175ab37197cbd96d756d1f27cf0c573bbd620a64a1ff3de708a34eec2d",
+        "actualBytes": 836320,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-CRANE",
+        "path": "public/assets/generated/production-20261031/BG-CRANE.glb",
+        "expectedSha": "bfec243ec25cf469ae3f2eb36a373f4d9737ff92cdfc8cdb2937811f4f1b2ca5",
+        "expectedBytes": 3154172,
+        "exists": true,
+        "actualSha256": "bfec243ec25cf469ae3f2eb36a373f4d9737ff92cdfc8cdb2937811f4f1b2ca5",
+        "actualBytes": 3154172,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "BG-CRANE:source",
+        "path": "assets/source/hyper3d/BG-CRANE/v1/base_basic_pbr.glb",
+        "expectedSha": "db2856bf9bf59c22ba408e98a35cf471871d21db2727659d5ec44c3470d0845d",
+        "expectedBytes": 5331512,
+        "exists": true,
+        "actualSha256": "db2856bf9bf59c22ba408e98a35cf471871d21db2727659d5ec44c3470d0845d",
+        "actualBytes": 5331512,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-LIGHTKIT-POLE",
+        "path": "public/assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb",
+        "expectedSha": "afe2b14a3580fe5445f4cef5441acf9532a5b25c9f127236cfb3d6fa9e0f220d",
+        "expectedBytes": 1393544,
+        "exists": true,
+        "actualSha256": "afe2b14a3580fe5445f4cef5441acf9532a5b25c9f127236cfb3d6fa9e0f220d",
+        "actualBytes": 1393544,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "ENV-LIGHTKIT-POLE:source",
+        "path": "assets/source/hyper3d/ENV-LIGHTKIT-POLE/v1/base_basic_pbr.glb",
+        "expectedSha": "c2b66359af56e25609032fa2f0826d89436e1ce76c9d6003713ba9ce1ff83248",
+        "expectedBytes": 2319412,
+        "exists": true,
+        "actualSha256": "c2b66359af56e25609032fa2f0826d89436e1ce76c9d6003713ba9ce1ff83248",
+        "actualBytes": 2319412,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-BENCH",
+        "path": "public/assets/generated/production-20261031/PROP-BENCH.glb",
+        "expectedSha": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+        "expectedBytes": 1256928,
+        "exists": true,
+        "actualSha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+        "actualBytes": 1256928,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-BENCH:source",
+        "path": "assets/source/tripo/PROP-BENCH/f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247-pbr-model.glb",
+        "expectedSha": "bafcb58d9cd1d40badbbbf4a7bc05ad19b0e5df657a2dae423d156b82cd01022",
+        "expectedBytes": 11641764,
+        "exists": true,
+        "actualSha256": "bafcb58d9cd1d40badbbbf4a7bc05ad19b0e5df657a2dae423d156b82cd01022",
+        "actualBytes": 11641764,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-LIFE-MUG",
+        "path": "public/assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+        "expectedSha": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+        "expectedBytes": 834268,
+        "exists": true,
+        "actualSha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+        "actualBytes": 834268,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-LIFE-MUG:source",
+        "path": "assets/source/tripo/PROP-LIFE-MUG/a509e55e-d414-42db-ba04-1c2b0a44b03b-pbr-model.glb",
+        "expectedSha": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+        "expectedBytes": 8377524,
+        "exists": true,
+        "actualSha256": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+        "actualBytes": 8377524,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-MEDICAL-BAG",
+        "path": "public/assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+        "expectedSha": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+        "expectedBytes": 1569588,
+        "exists": true,
+        "actualSha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+        "actualBytes": 1569588,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-MEDICAL-BAG:source",
+        "path": "assets/source/tripo/PROP-MEDICAL-BAG/76629177-8de5-4c65-a8dc-34dcfd2b938b-pbr-model.glb",
+        "expectedSha": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+        "expectedBytes": 17454464,
+        "exists": true,
+        "actualSha256": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+        "actualBytes": 17454464,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TANK",
+        "path": "public/assets/generated/production-20261031/PROP-TANK.glb",
+        "expectedSha": "03f4f654a3101d91247dcd0fc5dd7170999367c477075c470b4fd3ebe663bb1b",
+        "expectedBytes": 1690788,
+        "exists": true,
+        "actualSha256": "03f4f654a3101d91247dcd0fc5dd7170999367c477075c470b4fd3ebe663bb1b",
+        "actualBytes": 1690788,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TANK:source",
+        "path": "assets/source/hyper3d/PROP-TANK/v1/base_basic_pbr.glb",
+        "expectedSha": "fa1688f012e5dfa93e28dc6147a9215e84334f855c7d850d1c68c5270574ee8c",
+        "expectedBytes": 3169960,
+        "exists": true,
+        "actualSha256": "fa1688f012e5dfa93e28dc6147a9215e84334f855c7d850d1c68c5270574ee8c",
+        "actualBytes": 3169960,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TERMINAL-CONSOLE",
+        "path": "public/assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+        "expectedSha": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+        "expectedBytes": 1617188,
+        "exists": true,
+        "actualSha256": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+        "actualBytes": 1617188,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TERMINAL-CONSOLE:source",
+        "path": "assets/source/tripo/PROP-TERMINAL-CONSOLE/914701ef-9b63-4d3e-9064-b1cf113aa4fe-pbr-model.glb",
+        "expectedSha": "8213a3b4a182c5df399dd56e06f7a9de31e1745d18aaafdf2f4bb36dbdf415a2",
+        "expectedBytes": 10952596,
+        "exists": true,
+        "actualSha256": "8213a3b4a182c5df399dd56e06f7a9de31e1745d18aaafdf2f4bb36dbdf415a2",
+        "actualBytes": 10952596,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-VEH-TUG",
+        "path": "public/assets/generated/production-20261031/PROP-VEH-TUG.glb",
+        "expectedSha": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+        "expectedBytes": 2185792,
+        "exists": true,
+        "actualSha256": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+        "actualBytes": 2185792,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-VEH-TUG:source",
+        "path": "assets/source/tripo/PROP-VEH-TUG/561b30a3-8648-4ea8-84ef-7091de2d68a1-pbr-model.glb",
+        "expectedSha": "41012891d28356f8e57810b96b1620af34aa81ea59ab98f386411ad408d428da",
+        "expectedBytes": 14286384,
+        "exists": true,
+        "actualSha256": "41012891d28356f8e57810b96b1620af34aa81ea59ab98f386411ad408d428da",
+        "actualBytes": 14286384,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TRANSFER",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb",
+        "expectedSha": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+        "expectedBytes": 1647596,
+        "exists": true,
+        "actualSha256": "03264ef2c1cb3282924679778db4081f033bb527a1bcc0364c75f22ec40be18b",
+        "actualBytes": 1647596,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TRANSFER:source",
+        "path": "assets/source/tripo/PROP-TRANSFER/1c388cb1-fe48-4263-a1e0-7210e4451aa3-pbr-model.glb",
+        "expectedSha": "3f029558fb380a475fae91e5ed09700224445dc445fdae4f7d8495338ed9a56d",
+        "expectedBytes": 9200768,
+        "exists": true,
+        "actualSha256": "3f029558fb380a475fae91e5ed09700224445dc445fdae4f7d8495338ed9a56d",
+        "actualBytes": 9200768,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-STRETCHER",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb",
+        "expectedSha": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+        "expectedBytes": 1350900,
+        "exists": true,
+        "actualSha256": "6ad2cb7989e26c1e6e01921a3f87418ffb44bc6f05c4b984a9f14fcc17b5f4f9",
+        "actualBytes": 1350900,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-STRETCHER:source",
+        "path": "assets/source/tripo/PROP-STRETCHER/8d8192a4-2414-497c-9ef3-019dc604fce0-pbr-model.glb",
+        "expectedSha": "f82188ebd6f314a80a28f1719f466dd6a61c4873afa29c617a20c9281538a8a6",
+        "expectedBytes": 10915136,
+        "exists": true,
+        "actualSha256": "f82188ebd6f314a80a28f1719f466dd6a61c4873afa29c617a20c9281538a8a6",
+        "actualBytes": 10915136,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-DOOR-LEAF",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb",
+        "expectedSha": "e01e2ebd2db78d58ee372e3588fd7cc42e4d71ee48157a21e9c32f77141931b1",
+        "expectedBytes": 1604400,
+        "exists": true,
+        "actualSha256": "e01e2ebd2db78d58ee372e3588fd7cc42e4d71ee48157a21e9c32f77141931b1",
+        "actualBytes": 1604400,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-DOOR-LEAF:source",
+        "path": "assets/source/tripo/PROP-DOOR-LEAF/ce8b2327-8995-44d0-9fe5-e3551e06009e-pbr-model.glb",
+        "expectedSha": "df28de7339fc37401088b2deeadae2aac7779c61d344134b4f55c79ec0bb75f3",
+        "expectedBytes": 11420968,
+        "exists": true,
+        "actualSha256": "df28de7339fc37401088b2deeadae2aac7779c61d344134b4f55c79ec0bb75f3",
+        "actualBytes": 11420968,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-DOOR-LOCK",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb",
+        "expectedSha": "e786f8eddae672f6f23599fdab5efc84ad05844aa55cdf6f2e06ea4929de1955",
+        "expectedBytes": 1402304,
+        "exists": true,
+        "actualSha256": "e786f8eddae672f6f23599fdab5efc84ad05844aa55cdf6f2e06ea4929de1955",
+        "actualBytes": 1402304,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-DOOR-LOCK:source",
+        "path": "assets/source/tripo/PROP-DOOR-LOCK/6caff16f-c506-44e0-afb8-db653121a67d-pbr-model.glb",
+        "expectedSha": "52ff81fdb82013c7f52c31a36ae2277d234d8358a745bfb6a42211f4ea59e8d5",
+        "expectedBytes": 11095424,
+        "exists": true,
+        "actualSha256": "52ff81fdb82013c7f52c31a36ae2277d234d8358a745bfb6a42211f4ea59e8d5",
+        "actualBytes": 11095424,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TERMINAL-HANDHELD",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb",
+        "expectedSha": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+        "expectedBytes": 1576612,
+        "exists": true,
+        "actualSha256": "f12960843c199fbcc8bfd2cbee586f817472659b1b5e3e2c21e459e0d4f9e459",
+        "actualBytes": 1576612,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TERMINAL-HANDHELD:source",
+        "path": "assets/source/tripo/PROP-TERMINAL-HANDHELD/f8f981a5-3714-4010-a0d8-c263a49b46ba-pbr-model.glb",
+        "expectedSha": "234b2bea3fc26466eae954075d9cc9e02db6fa0e9d6f2dc68666fad19c614c3d",
+        "expectedBytes": 15435756,
+        "exists": true,
+        "actualSha256": "234b2bea3fc26466eae954075d9cc9e02db6fa0e9d6f2dc68666fad19c614c3d",
+        "actualBytes": 15435756,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-VEH-TRANSPORT",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb",
+        "expectedSha": "4fa477429e68cc40f8cd65d6ec3ee9c288cbaaeb652c8d91318a230020092a10",
+        "expectedBytes": 1785076,
+        "exists": true,
+        "actualSha256": "4fa477429e68cc40f8cd65d6ec3ee9c288cbaaeb652c8d91318a230020092a10",
+        "actualBytes": 1785076,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-VEH-TRANSPORT:source",
+        "path": "assets/source/tripo/PROP-VEH-TRANSPORT/711110bd-b12a-4cf3-863a-376aa825f30d-pbr-model.glb",
+        "expectedSha": "cc936c5892774b3c6d569ba9181a7b72cf1c56da32b5293b632031643c4e9864",
+        "expectedBytes": 11384668,
+        "exists": true,
+        "actualSha256": "cc936c5892774b3c6d569ba9181a7b72cf1c56da32b5293b632031643c4e9864",
+        "actualBytes": 11384668,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-FILTER",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-FILTER.glb",
+        "expectedSha": "c5b51ec1c1bc3f0fc34e20b0485077047f03bea2a742a920660180d701e5256f",
+        "expectedBytes": 1611708,
+        "exists": true,
+        "actualSha256": "c5b51ec1c1bc3f0fc34e20b0485077047f03bea2a742a920660180d701e5256f",
+        "actualBytes": 1611708,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-FILTER:source",
+        "path": "assets/source/tripo/PROP-FILTER/a6423fe0-9719-45d4-b285-4ee37ae409b5-pbr-model.glb",
+        "expectedSha": "232bf081736435438f871a860680232a47287f12616bfa8e880acced07d1c6e2",
+        "expectedBytes": 11934652,
+        "exists": true,
+        "actualSha256": "232bf081736435438f871a860680232a47287f12616bfa8e880acced07d1c6e2",
+        "actualBytes": 11934652,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-CARGO",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-CARGO.glb",
+        "expectedSha": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+        "expectedBytes": 1880176,
+        "exists": true,
+        "actualSha256": "b7447d27ad2bbb417c7ecb7760bb9a6776e8edc1d55b979eccb59d3205ed9783",
+        "actualBytes": 1880176,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-CARGO:source",
+        "path": "assets/source/tripo/PROP-CARGO/72ca2db1-f3d0-4a3b-9555-3a8be0109392-pbr-model.glb",
+        "expectedSha": "a036cefdf7c9a92edb81f5908986b9b2701245511f3bece3540a68b8d52581ef",
+        "expectedBytes": 17572088,
+        "exists": true,
+        "actualSha256": "a036cefdf7c9a92edb81f5908986b9b2701245511f3bece3540a68b8d52581ef",
+        "actualBytes": 17572088,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-PUMP",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-PUMP.glb",
+        "expectedSha": "ea37539ae6da8e0c56cd99001471de30b7ab55f8eab2586549dba0c66c392890",
+        "expectedBytes": 1842348,
+        "exists": true,
+        "actualSha256": "ea37539ae6da8e0c56cd99001471de30b7ab55f8eab2586549dba0c66c392890",
+        "actualBytes": 1842348,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-PUMP:source",
+        "path": "assets/source/tripo/PROP-PUMP/30ddf85f-f5f3-44d5-9b84-3535a0f1425e-pbr-model.glb",
+        "expectedSha": "4de2d7d9a2fc84316ae24c8fe9c512a64a3d8eb2284137035467b8f9e50ef7c9",
+        "expectedBytes": 13377124,
+        "exists": true,
+        "actualSha256": "4de2d7d9a2fc84316ae24c8fe9c512a64a3d8eb2284137035467b8f9e50ef7c9",
+        "actualBytes": 13377124,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-FAN",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-FAN.glb",
+        "expectedSha": "8a0b1f1ad9bfcac49d8aa0587ad94409f758e5ffc34a2c8e5f5f956b19d97910",
+        "expectedBytes": 1460432,
+        "exists": true,
+        "actualSha256": "8a0b1f1ad9bfcac49d8aa0587ad94409f758e5ffc34a2c8e5f5f956b19d97910",
+        "actualBytes": 1460432,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-FAN:source",
+        "path": "assets/source/tripo/PROP-FAN/f6b963d0-cdc7-4ea2-939c-b4ed3b437fea-pbr-model.glb",
+        "expectedSha": "247508f6c9680631d86e679e3370d1caa069c36562fd36a81eade680775816a6",
+        "expectedBytes": 10345464,
+        "exists": true,
+        "actualSha256": "247508f6c9680631d86e679e3370d1caa069c36562fd36a81eade680775816a6",
+        "actualBytes": 10345464,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TOOL-BAG",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb",
+        "expectedSha": "936b657dd2151be5ae36c3a65b7625b6fc1752299a7e35716a03ab5153d31650",
+        "expectedBytes": 1652892,
+        "exists": true,
+        "actualSha256": "936b657dd2151be5ae36c3a65b7625b6fc1752299a7e35716a03ab5153d31650",
+        "actualBytes": 1652892,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TOOL-BAG:source",
+        "path": "assets/source/tripo/PROP-TOOL-BAG/0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5-pbr-model.glb",
+        "expectedSha": "b1e5648ce9369f954f910e4b93aa4d1d2005cbf38f88ece011cc790100ebf2b7",
+        "expectedBytes": 17039144,
+        "exists": true,
+        "actualSha256": "b1e5648ce9369f954f910e4b93aa4d1d2005cbf38f88ece011cc790100ebf2b7",
+        "actualBytes": 17039144,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TOOL-ROLL",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb",
+        "expectedSha": "ca5d918c44c649e0149d63b3eb68c6e5a61981b16c3d4e25509a8fe64a1722bd",
+        "expectedBytes": 1682284,
+        "exists": true,
+        "actualSha256": "ca5d918c44c649e0149d63b3eb68c6e5a61981b16c3d4e25509a8fe64a1722bd",
+        "actualBytes": 1682284,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TOOL-ROLL:source",
+        "path": "assets/source/tripo/PROP-TOOL-ROLL/ad2d5d2a-a635-4a84-8341-be625ac6cae5-pbr-model.glb",
+        "expectedSha": "56c03b2ce98ca994e5ef6c98348c3a86e15f7fba19dc684c82ddd39e48b4b4b3",
+        "expectedBytes": 16894308,
+        "exists": true,
+        "actualSha256": "56c03b2ce98ca994e5ef6c98348c3a86e15f7fba19dc684c82ddd39e48b4b4b3",
+        "actualBytes": 16894308,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TOOL-LUNCHBOX",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb",
+        "expectedSha": "b84562c1a10554721ab50b58e7f0d2f9b8ad1eae03d04d19efca2738376e63b4",
+        "expectedBytes": 1649228,
+        "exists": true,
+        "actualSha256": "b84562c1a10554721ab50b58e7f0d2f9b8ad1eae03d04d19efca2738376e63b4",
+        "actualBytes": 1649228,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-TOOL-LUNCHBOX:source",
+        "path": "assets/source/tripo/PROP-TOOL-LUNCHBOX/f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec-pbr-model.glb",
+        "expectedSha": "b78ffa416f0e2995970011de78a1865ef5f247f96e33a1071fc0c7a215212925",
+        "expectedBytes": 17181560,
+        "exists": true,
+        "actualSha256": "b78ffa416f0e2995970011de78a1865ef5f247f96e33a1071fc0c7a215212925",
+        "actualBytes": 17181560,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-RADIO-PACK",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb",
+        "expectedSha": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+        "expectedBytes": 1417512,
+        "exists": true,
+        "actualSha256": "3bbd93d8b01ba472883a74aa2958b547f3a3f4728202ce807d6ba8be50d843d4",
+        "actualBytes": 1417512,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-RADIO-PACK:source",
+        "path": "assets/source/tripo/PROP-RADIO-PACK/1301e9a7-c909-4b44-9218-0160fbd9a0cb-pbr-model.glb",
+        "expectedSha": "0ec3cb9ff4b2b28dae7f4957b72d7d2b7ef3c3324c12e2d01bb01025842d48f6",
+        "expectedBytes": 12347788,
+        "exists": true,
+        "actualSha256": "0ec3cb9ff4b2b28dae7f4957b72d7d2b7ef3c3324c12e2d01bb01025842d48f6",
+        "actualBytes": 12347788,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-RADIO-HEADSET",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb",
+        "expectedSha": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+        "expectedBytes": 1349396,
+        "exists": true,
+        "actualSha256": "d071ed9172d4f889883bf625c9d0e572287e8e177d0122f14c206c836f26f6fa",
+        "actualBytes": 1349396,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-RADIO-HEADSET:source",
+        "path": "assets/source/tripo/PROP-RADIO-HEADSET/ce2057ec-310e-4711-a656-ab74a7d5f73f-pbr-model.glb",
+        "expectedSha": "115f17e668682f67f14bda4855885065bcd43dd6f570fd2982fb2dd0af208304",
+        "expectedBytes": 11850600,
+        "exists": true,
+        "actualSha256": "115f17e668682f67f14bda4855885065bcd43dd6f570fd2982fb2dd0af208304",
+        "actualBytes": 11850600,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-ARMOR-CHEST",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb",
+        "expectedSha": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+        "expectedBytes": 1219540,
+        "exists": true,
+        "actualSha256": "c32c8cf8660603f30fa8ad8bab558c2b659a08c3401af92e67a45997fe6d51b7",
+        "actualBytes": 1219540,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-ARMOR-CHEST:source",
+        "path": "assets/source/tripo/PROP-ARMOR-CHEST/840ece9e-0e2f-4a39-933f-68729b55ffa4-pbr-model.glb",
+        "expectedSha": "fbdac8521d6078cb7c6aed001d81042bd0d7e180e0b0a3800dd7079675a63079",
+        "expectedBytes": 10557232,
+        "exists": true,
+        "actualSha256": "fbdac8521d6078cb7c6aed001d81042bd0d7e180e0b0a3800dd7079675a63079",
+        "actualBytes": 10557232,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-ARMOR-LEFT-BRACE",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb",
+        "expectedSha": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+        "expectedBytes": 1320340,
+        "exists": true,
+        "actualSha256": "c7c4d847ae9d582f1b7ff9d5d4e66a41d8b3b5c50faafe896e431b2b18ec18c8",
+        "actualBytes": 1320340,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-ARMOR-LEFT-BRACE:source",
+        "path": "assets/source/tripo/PROP-ARMOR-LEFT-BRACE/98939ba8-5a7f-4895-94e2-90f76dd807cc-pbr-model.glb",
+        "expectedSha": "28cdb4035899713a36fe5e73e9279819bee8f2f2a9da10b536c2168a5f6953fb",
+        "expectedBytes": 10709188,
+        "exists": true,
+        "actualSha256": "28cdb4035899713a36fe5e73e9279819bee8f2f2a9da10b536c2168a5f6953fb",
+        "actualBytes": 10709188,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-ARMOR-HELMET",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb",
+        "expectedSha": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+        "expectedBytes": 1278600,
+        "exists": true,
+        "actualSha256": "fc4709a3f63858f6d55d552ac790f9e7cd651d89ff61555a0f11435b6ecd5e60",
+        "actualBytes": 1278600,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-ARMOR-HELMET:source",
+        "path": "assets/source/tripo/PROP-ARMOR-HELMET/2f160991-6325-4ede-83b7-4e71ffc5ccba-pbr-model.glb",
+        "expectedSha": "45793603d143012d6683072156e1a209fc325512bba8b0c3dcc84b01555d8185",
+        "expectedBytes": 12420076,
+        "exists": true,
+        "actualSha256": "45793603d143012d6683072156e1a209fc325512bba8b0c3dcc84b01555d8185",
+        "actualBytes": 12420076,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-SAMPLE-CABINET",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb",
+        "expectedSha": "40eca6cd7e558e0668df0f3791f487eabf6f5a13ceb876cf05fad40087d8b165",
+        "expectedBytes": 1607528,
+        "exists": true,
+        "actualSha256": "40eca6cd7e558e0668df0f3791f487eabf6f5a13ceb876cf05fad40087d8b165",
+        "actualBytes": 1607528,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-SAMPLE-CABINET:source",
+        "path": "assets/source/tripo/PROP-SAMPLE-CABINET/b7566df9-bdcd-4133-bbac-c01576ba79ca-pbr-model.glb",
+        "expectedSha": "e6668bbf6876af59b36f8d6e423fb6c3c8355550c325668d0eeff5911e728dad",
+        "expectedBytes": 12946880,
+        "exists": true,
+        "actualSha256": "e6668bbf6876af59b36f8d6e423fb6c3c8355550c325668d0eeff5911e728dad",
+        "actualBytes": 12946880,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-SAMPLE-CORECASE",
+        "path": "public/assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb",
+        "expectedSha": "341ff92746ab75956402abf21604c5aaf186ee14fd5e4fc6177a9386dd82edf6",
+        "expectedBytes": 1638668,
+        "exists": true,
+        "actualSha256": "341ff92746ab75956402abf21604c5aaf186ee14fd5e4fc6177a9386dd82edf6",
+        "actualBytes": 1638668,
+        "shaMatches": true,
+        "bytesMatch": true
+      },
+      {
+        "id": "PROP-SAMPLE-CORECASE:source",
+        "path": "assets/source/tripo/PROP-SAMPLE-CORECASE/96f7adc2-ca55-42ab-864d-333a01fe0e83-pbr-model.glb",
+        "expectedSha": "a8ea25df78c93292849e83ea11ba2393fad6b0944281e8f9526843ca921b7a7d",
+        "expectedBytes": 14024928,
+        "exists": true,
+        "actualSha256": "a8ea25df78c93292849e83ea11ba2393fad6b0944281e8f9526843ca921b7a7d",
+        "actualBytes": 14024928,
+        "shaMatches": true,
+        "bytesMatch": true
+      }
+    ]
+  },
+  "aircraftSource": {
+    "fullObjectTraversal": {
+      "objects": 19725,
+      "arrays": 114717,
+      "numbers": 325027,
+      "nonFiniteNumbers": 0,
+      "strings": 413,
+      "booleans": 0,
+      "nulls": 0
+    },
+    "models": [
+      {
+        "name": "F-35B",
+        "sourceHash": "fce5758edc01a37c741605c4044425ba785790eaefad39c9d7ef772ee132e878",
+        "sourceManifestMatches": true,
+        "materials": 4,
+        "animations": 34,
+        "nodes": 43,
+        "vertexNodes": 42,
+        "vertices": 12219,
+        "polygons": 11861,
+        "triangles": 22847,
+        "references": 46569,
+        "invalidVertexReferences": 0,
+        "invalidMaterialIndices": 0,
+        "invalidTransformLengths": 0,
+        "invalidVertexOrUVLengths": 0
+      },
+      {
+        "name": "Engine",
+        "sourceHash": "c7638a624428f9163b19242fa9a24b3c9f7ccbf8488ac6feeec04707d515a4f1",
+        "sourceManifestMatches": true,
+        "materials": 1,
+        "animations": 2,
+        "nodes": 16,
+        "vertexNodes": 15,
+        "vertices": 721,
+        "polygons": 696,
+        "triangles": 1376,
+        "references": 2768,
+        "invalidVertexReferences": 0,
+        "invalidMaterialIndices": 0,
+        "invalidTransformLengths": 0,
+        "invalidVertexOrUVLengths": 0
+      },
+      {
+        "name": "Gear",
+        "sourceHash": "36de5d1a47132f8b5004783b9d1829eea466037b0129ab1beeba2bb12427caa9",
+        "sourceManifestMatches": true,
+        "materials": 1,
+        "animations": 15,
+        "nodes": 15,
+        "vertexNodes": 14,
+        "vertices": 2162,
+        "polygons": 2358,
+        "triangles": 4164,
+        "references": 8880,
+        "invalidVertexReferences": 0,
+        "invalidMaterialIndices": 0,
+        "invalidTransformLengths": 0,
+        "invalidVertexOrUVLengths": 0
+      },
+      {
+        "name": "Cockpit",
+        "sourceHash": "0d90400e3311e616c3c246fb4378d2031c8d71c416ef460c9bbe8310e2d3fee3",
+        "sourceManifestMatches": true,
+        "materials": 2,
+        "animations": 6,
+        "nodes": 10,
+        "vertexNodes": 9,
+        "vertices": 4377,
+        "polygons": 4459,
+        "triangles": 8226,
+        "references": 17144,
+        "invalidVertexReferences": 0,
+        "invalidMaterialIndices": 0,
+        "invalidTransformLengths": 0,
+        "invalidVertexOrUVLengths": 0
+      }
+    ],
+    "totalNodes": 84,
+    "meshNodes": 80,
+    "triangles": 36613,
+    "animationObjectNamesMissingFromSource": [
+      "FlameModel",
+      "plume"
+    ],
+    "provenance": {
+      "repository": "https://github.com/FGMEMBERS/F-35B",
+      "revision": "2726b3bdf3c7c54ea09a5d4a248e86a739604ca7",
+      "sourceRevisionMatches": true,
+      "licenseDeclared": "GPL-3.0",
+      "authors": "Petar Jedvaj, Detlef Faber, F-GTUX, Stuart Cassie, Gary Brown and contributors",
+      "sourceShaMatchesRecorded": true,
+      "sourceZipSHA256": "d2f47f7ebf313b8337f655580d4076258878405a757c49e9e28efab046c6c12b",
+      "zipShaMatchesRecorded": true,
+      "paletteMatchesArchivedOriginal": true,
+      "zipManifestMatchesSidecar": true,
+      "archiveManifestChecks": [
+        {
+          "path": "License.txt",
+          "zipEntry": "headwind-f35b-source/License.txt",
+          "bytes": 35147,
+          "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "F-35B-yasim-set.xml",
+          "zipEntry": "headwind-f35b-source/F-35B-yasim-set.xml",
+          "bytes": 19681,
+          "sha256": "f1c9d95580ed4bd06ea8c8d86f5d1c1da1bb8dffd1dbcd9db602b4ec8e798623",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "Models/F-35B.ac",
+          "zipEntry": "headwind-f35b-source/Models/F-35B.ac",
+          "bytes": 1628471,
+          "sha256": "fce5758edc01a37c741605c4044425ba785790eaefad39c9d7ef772ee132e878",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "Models/F-35B.xml",
+          "zipEntry": "headwind-f35b-source/Models/F-35B.xml",
+          "bytes": 19493,
+          "sha256": "343478543918bd77bd9d213db372680f62128508e53ee3801b49ffa14761d36b",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "Models/Engine.ac",
+          "zipEntry": "headwind-f35b-source/Models/Engine.ac",
+          "bytes": 94685,
+          "sha256": "c7638a624428f9163b19242fa9a24b3c9f7ccbf8488ac6feeec04707d515a4f1",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "Models/Engine.xml",
+          "zipEntry": "headwind-f35b-source/Models/Engine.xml",
+          "bytes": 6495,
+          "sha256": "2206938c0294490bada2caf04cccf7cd93f224508c202f173856fbfdd2630009",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "Models/Gear.ac",
+          "zipEntry": "headwind-f35b-source/Models/Gear.ac",
+          "bytes": 306146,
+          "sha256": "36de5d1a47132f8b5004783b9d1829eea466037b0129ab1beeba2bb12427caa9",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "Models/Gear.xml",
+          "zipEntry": "headwind-f35b-source/Models/Gear.xml",
+          "bytes": 7772,
+          "sha256": "3f71d521d10f9b64c02d2c96e00f7d7b4e3e8d91c36bd745e5a7e93c938090d1",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "Models/Cockpit.ac",
+          "zipEntry": "headwind-f35b-source/Models/Cockpit.ac",
+          "bytes": 544161,
+          "sha256": "0d90400e3311e616c3c246fb4378d2031c8d71c416ef460c9bbe8310e2d3fee3",
+          "bytesMatch": true,
+          "shaMatches": true
+        },
+        {
+          "path": "Models/Cockpit.xml",
+          "zipEntry": "headwind-f35b-source/Models/Cockpit.xml",
+          "bytes": 2229,
+          "sha256": "cdef4c33b47a2533172b476a2c59d17e4731a586e1373b10702edb536bb3f94e",
+          "bytesMatch": true,
+          "shaMatches": true
+        }
+      ],
+      "archivedConverterSHA256": "eb82ed999b1484d2de5afb90717437dcae29dde5e324690b4a0f926f0719e127",
+      "archivedRebuildReadmeSHA256": "19e1cfc4d61db372cb36eec36061331e7f159f191a5807d068b8f96e13f7e4eb",
+      "onlineVerification": false,
+      "note": "Local pinned source, manifest, archive and sourceHash compared; upstream HEAD/license interpretation not researched. No change to whole-game license inferred."
+    }
+  },
+  "findings": [
+    "原地图审计复用；完整补读内容配置后未发现额外的模型绑定路径，不能将布局锚点、通行路线或catalog记录视为上屏替换。",
+    "CHAPTER_STAGES为12段，LAYOUT保留15场景。northgate/prologue/handover不在当前主战役顺序内，但仍是可构造ScenarioId，旧环境不能冒充S05等已覆盖。",
+    "ESCORT注释写two real bridge spans，但bridgeSpans实际3条；绑定代码的3跨范围与实际数组一致。是注释陈旧，不是另一批生成实例。",
+    "architecture-catalog的复杂旧资产LOD2仍较高（BG-CRANE 17920、BRIDGEKIT-DECK 10026、C-FACADE 9124、ICEBANK 8734 triangles）；此前1500/384是目标而非这些最终文件的实际面数。",
+    "F35B是固定来源重用源网格+代码色板与机构适配，含80网格节点、36613三角面；不是AI生产，也不是现场新造primitive假模型。是否纳入最新全Tripo/Hyper规则应由主窗口按用户现有授权裁决，不能标成Tripo/Hyper已覆盖。",
+    "新增资料核验不是浏览器画面验收；未对导航、可达路径、模型质量或全部场景可见性作新的通过声明。",
+    "完整动画对象遍历发现2个保留XML对象名FlameModel/plume在此四模型节点树中不存在；工厂仅给实际part匹配animationChain，因此这些名字不产生可见几何。没有凭缺失对象名伪称完整源特效已实现；作为已有重用范围限制记录，不改代码。"
+  ],
+  "limitations": [
+    "Archived converter/readme only hashed for provenance, not executed; no byte-for-byte regeneration claim.",
+    "All GLB records hashed against catalog; no additional GLB decode, camera or GPU validation.",
+    "No upstream network query; source provenance is pinned local archive/manifest verification."
+  ]
+}

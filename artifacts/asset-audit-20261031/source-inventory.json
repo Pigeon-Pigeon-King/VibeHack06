@@ -1,0 +1,3995 @@
+{
+  "baselineCommit": "a9030c684655b2d3f35082125055f0e7c84ac2da",
+  "files": [
+    {
+      "path": "src/actors/CombatTactics.ts",
+      "sha256": "36e9d669c32a6682c912b14ff1d8281dd43095ea9ce68c6ab5ab06b0c2bf0642",
+      "lines": 183,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/actors/Locomotion.ts",
+      "sha256": "b0c39ae7dbb05b475ef81dd5acd7ba3e22244c73b74d64a0d81f5b5d796ab7ff",
+      "lines": 31,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/actors/Navigation.ts",
+      "sha256": "1699a64ecaa5d53992950b981c78a5a5d6c097c8b0ee10d59f9cdcbe5e8c76cc",
+      "lines": 90,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/ModelLibrary.ts",
+      "sha256": "318de00d4b4d511dee3cc4ce6332ddf35f82aa168ca5bad44b191daefca80a42",
+      "lines": 133,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/RigAudit.ts",
+      "sha256": "ab2fb76ef4ed47e38710a034464ac75f8d153e61767207eaee7129cf9bb91981",
+      "lines": 204,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/architecture-catalog.ts",
+      "sha256": "f79168de201474f2d4987ed5c079245b2cfcc45c4b13b7bce4585081fb8f57ea",
+      "lines": 737,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 6,
+          "text": "\"id\": \"ARCH-BEAM-STEEL:lod0\","
+        },
+        {
+          "line": 7,
+          "text": "\"assetId\": \"ARCH-BEAM-STEEL\","
+        },
+        {
+          "line": 9,
+          "text": "\"url\": \"models/architecture-r1/ARCH-BEAM-STEEL-lod0.glb\","
+        },
+        {
+          "line": 13,
+          "text": "\"materialSourceId\": \"ARCH-BEAM-STEEL:lod0\","
+        },
+        {
+          "line": 17,
+          "text": "\"id\": \"ARCH-BEAM-STEEL:lod1\","
+        },
+        {
+          "line": 18,
+          "text": "\"assetId\": \"ARCH-BEAM-STEEL\","
+        },
+        {
+          "line": 20,
+          "text": "\"url\": \"models/architecture-r1/ARCH-BEAM-STEEL-lod1-geometry.glb\","
+        },
+        {
+          "line": 24,
+          "text": "\"materialSourceId\": \"ARCH-BEAM-STEEL:lod0\","
+        },
+        {
+          "line": 28,
+          "text": "\"id\": \"ARCH-BEAM-STEEL:lod2\","
+        },
+        {
+          "line": 29,
+          "text": "\"assetId\": \"ARCH-BEAM-STEEL\","
+        },
+        {
+          "line": 31,
+          "text": "\"url\": \"models/architecture-r1/ARCH-BEAM-STEEL-lod2-geometry.glb\","
+        },
+        {
+          "line": 35,
+          "text": "\"materialSourceId\": \"ARCH-BEAM-STEEL:lod0\","
+        },
+        {
+          "line": 39,
+          "text": "\"id\": \"ARCH-CARGO-CONTAINER:lod0\","
+        },
+        {
+          "line": 40,
+          "text": "\"assetId\": \"ARCH-CARGO-CONTAINER\","
+        },
+        {
+          "line": 42,
+          "text": "\"url\": \"models/architecture-r1/ARCH-CARGO-CONTAINER-lod0.glb\","
+        },
+        {
+          "line": 46,
+          "text": "\"materialSourceId\": \"ARCH-CARGO-CONTAINER:lod0\","
+        },
+        {
+          "line": 50,
+          "text": "\"id\": \"ARCH-CARGO-CONTAINER:lod1\","
+        },
+        {
+          "line": 51,
+          "text": "\"assetId\": \"ARCH-CARGO-CONTAINER\","
+        },
+        {
+          "line": 53,
+          "text": "\"url\": \"models/architecture-r1/ARCH-CARGO-CONTAINER-lod1-geometry.glb\","
+        },
+        {
+          "line": 57,
+          "text": "\"materialSourceId\": \"ARCH-CARGO-CONTAINER:lod0\","
+        },
+        {
+          "line": 61,
+          "text": "\"id\": \"ARCH-CARGO-CONTAINER:lod2\","
+        },
+        {
+          "line": 62,
+          "text": "\"assetId\": \"ARCH-CARGO-CONTAINER\","
+        },
+        {
+          "line": 64,
+          "text": "\"url\": \"models/architecture-r1/ARCH-CARGO-CONTAINER-lod2-geometry.glb\","
+        },
+        {
+          "line": 68,
+          "text": "\"materialSourceId\": \"ARCH-CARGO-CONTAINER:lod0\","
+        },
+        {
+          "line": 72,
+          "text": "\"id\": \"ARCH-COVER-CONCRETE:lod0\","
+        },
+        {
+          "line": 73,
+          "text": "\"assetId\": \"ARCH-COVER-CONCRETE\","
+        },
+        {
+          "line": 75,
+          "text": "\"url\": \"models/architecture-r1/ARCH-COVER-CONCRETE-lod0.glb\","
+        },
+        {
+          "line": 79,
+          "text": "\"materialSourceId\": \"ARCH-COVER-CONCRETE:lod0\","
+        },
+        {
+          "line": 83,
+          "text": "\"id\": \"ARCH-COVER-CONCRETE:lod1\","
+        },
+        {
+          "line": 84,
+          "text": "\"assetId\": \"ARCH-COVER-CONCRETE\","
+        },
+        {
+          "line": 86,
+          "text": "\"url\": \"models/architecture-r1/ARCH-COVER-CONCRETE-lod1-geometry.glb\","
+        },
+        {
+          "line": 90,
+          "text": "\"materialSourceId\": \"ARCH-COVER-CONCRETE:lod0\","
+        },
+        {
+          "line": 94,
+          "text": "\"id\": \"ARCH-COVER-CONCRETE:lod2\","
+        },
+        {
+          "line": 95,
+          "text": "\"assetId\": \"ARCH-COVER-CONCRETE\","
+        },
+        {
+          "line": 97,
+          "text": "\"url\": \"models/architecture-r1/ARCH-COVER-CONCRETE-lod2-geometry.glb\","
+        },
+        {
+          "line": 101,
+          "text": "\"materialSourceId\": \"ARCH-COVER-CONCRETE:lod0\","
+        },
+        {
+          "line": 105,
+          "text": "\"id\": \"ARCH-FLOOR-METAL:lod0\","
+        },
+        {
+          "line": 106,
+          "text": "\"assetId\": \"ARCH-FLOOR-METAL\","
+        },
+        {
+          "line": 108,
+          "text": "\"url\": \"models/architecture-r1/ARCH-FLOOR-METAL-lod0.glb\","
+        },
+        {
+          "line": 112,
+          "text": "\"materialSourceId\": \"ARCH-FLOOR-METAL:lod0\","
+        },
+        {
+          "line": 116,
+          "text": "\"id\": \"ARCH-FLOOR-METAL:lod1\","
+        },
+        {
+          "line": 117,
+          "text": "\"assetId\": \"ARCH-FLOOR-METAL\","
+        },
+        {
+          "line": 119,
+          "text": "\"url\": \"models/architecture-r1/ARCH-FLOOR-METAL-lod1-geometry.glb\","
+        },
+        {
+          "line": 123,
+          "text": "\"materialSourceId\": \"ARCH-FLOOR-METAL:lod0\","
+        },
+        {
+          "line": 127,
+          "text": "\"id\": \"ARCH-FLOOR-METAL:lod2\","
+        },
+        {
+          "line": 128,
+          "text": "\"assetId\": \"ARCH-FLOOR-METAL\","
+        },
+        {
+          "line": 130,
+          "text": "\"url\": \"models/architecture-r1/ARCH-FLOOR-METAL-lod2-geometry.glb\","
+        },
+        {
+          "line": 134,
+          "text": "\"materialSourceId\": \"ARCH-FLOOR-METAL:lod0\","
+        },
+        {
+          "line": 138,
+          "text": "\"id\": \"ARCH-ROOF-METAL:lod0\","
+        },
+        {
+          "line": 139,
+          "text": "\"assetId\": \"ARCH-ROOF-METAL\","
+        },
+        {
+          "line": 141,
+          "text": "\"url\": \"models/architecture-r1/ARCH-ROOF-METAL-lod0.glb\","
+        },
+        {
+          "line": 145,
+          "text": "\"materialSourceId\": \"ARCH-ROOF-METAL:lod0\","
+        },
+        {
+          "line": 149,
+          "text": "\"id\": \"ARCH-ROOF-METAL:lod1\","
+        },
+        {
+          "line": 150,
+          "text": "\"assetId\": \"ARCH-ROOF-METAL\","
+        },
+        {
+          "line": 152,
+          "text": "\"url\": \"models/architecture-r1/ARCH-ROOF-METAL-lod1-geometry.glb\","
+        },
+        {
+          "line": 156,
+          "text": "\"materialSourceId\": \"ARCH-ROOF-METAL:lod0\","
+        },
+        {
+          "line": 160,
+          "text": "\"id\": \"ARCH-ROOF-METAL:lod2\","
+        },
+        {
+          "line": 161,
+          "text": "\"assetId\": \"ARCH-ROOF-METAL\","
+        },
+        {
+          "line": 163,
+          "text": "\"url\": \"models/architecture-r1/ARCH-ROOF-METAL-lod2-geometry.glb\","
+        },
+        {
+          "line": 167,
+          "text": "\"materialSourceId\": \"ARCH-ROOF-METAL:lod0\","
+        },
+        {
+          "line": 171,
+          "text": "\"id\": \"ARCH-WALL-PAINT:lod0\","
+        },
+        {
+          "line": 172,
+          "text": "\"assetId\": \"ARCH-WALL-PAINT\","
+        },
+        {
+          "line": 174,
+          "text": "\"url\": \"models/architecture-r1/ARCH-WALL-PAINT-lod0.glb\","
+        },
+        {
+          "line": 178,
+          "text": "\"materialSourceId\": \"ARCH-WALL-PAINT:lod0\","
+        },
+        {
+          "line": 182,
+          "text": "\"id\": \"ARCH-WALL-PAINT:lod1\","
+        },
+        {
+          "line": 183,
+          "text": "\"assetId\": \"ARCH-WALL-PAINT\","
+        },
+        {
+          "line": 185,
+          "text": "\"url\": \"models/architecture-r1/ARCH-WALL-PAINT-lod1-geometry.glb\","
+        },
+        {
+          "line": 189,
+          "text": "\"materialSourceId\": \"ARCH-WALL-PAINT:lod0\","
+        },
+        {
+          "line": 193,
+          "text": "\"id\": \"ARCH-WALL-PAINT:lod2\","
+        },
+        {
+          "line": 194,
+          "text": "\"assetId\": \"ARCH-WALL-PAINT\","
+        },
+        {
+          "line": 196,
+          "text": "\"url\": \"models/architecture-r1/ARCH-WALL-PAINT-lod2-geometry.glb\","
+        },
+        {
+          "line": 200,
+          "text": "\"materialSourceId\": \"ARCH-WALL-PAINT:lod0\","
+        },
+        {
+          "line": 204,
+          "text": "\"id\": \"BG-CRANE:lod0\","
+        },
+        {
+          "line": 205,
+          "text": "\"assetId\": \"BG-CRANE\","
+        },
+        {
+          "line": 207,
+          "text": "\"url\": \"models/architecture-r1/BG-CRANE-lod0.glb\","
+        },
+        {
+          "line": 211,
+          "text": "\"materialSourceId\": \"BG-CRANE:lod0\","
+        },
+        {
+          "line": 215,
+          "text": "\"id\": \"BG-CRANE:lod1\","
+        },
+        {
+          "line": 216,
+          "text": "\"assetId\": \"BG-CRANE\","
+        },
+        {
+          "line": 218,
+          "text": "\"url\": \"models/architecture-r1/BG-CRANE-lod1-geometry.glb\","
+        },
+        {
+          "line": 222,
+          "text": "\"materialSourceId\": \"BG-CRANE:lod0\","
+        },
+        {
+          "line": 226,
+          "text": "\"id\": \"BG-CRANE:lod2\","
+        },
+        {
+          "line": 227,
+          "text": "\"assetId\": \"BG-CRANE\","
+        },
+        {
+          "line": 229,
+          "text": "\"url\": \"models/architecture-r1/BG-CRANE-lod2-geometry.glb\","
+        },
+        {
+          "line": 233,
+          "text": "\"materialSourceId\": \"BG-CRANE:lod0\","
+        },
+        {
+          "line": 237,
+          "text": "\"id\": \"BG-HEAT:lod0\","
+        },
+        {
+          "line": 238,
+          "text": "\"assetId\": \"BG-HEAT\","
+        },
+        {
+          "line": 240,
+          "text": "\"url\": \"models/architecture-r1/BG-HEAT-lod0.glb\","
+        },
+        {
+          "line": 244,
+          "text": "\"materialSourceId\": \"BG-HEAT:lod0\","
+        },
+        {
+          "line": 248,
+          "text": "\"id\": \"BG-HEAT:lod1\","
+        },
+        {
+          "line": 249,
+          "text": "\"assetId\": \"BG-HEAT\","
+        },
+        {
+          "line": 251,
+          "text": "\"url\": \"models/architecture-r1/BG-HEAT-lod1-geometry.glb\","
+        },
+        {
+          "line": 255,
+          "text": "\"materialSourceId\": \"BG-HEAT:lod0\","
+        },
+        {
+          "line": 259,
+          "text": "\"id\": \"BG-HEAT:lod2\","
+        },
+        {
+          "line": 260,
+          "text": "\"assetId\": \"BG-HEAT\","
+        },
+        {
+          "line": 262,
+          "text": "\"url\": \"models/architecture-r1/BG-HEAT-lod2-geometry.glb\","
+        },
+        {
+          "line": 266,
+          "text": "\"materialSourceId\": \"BG-HEAT:lod0\","
+        },
+        {
+          "line": 270,
+          "text": "\"id\": \"BG-SHIP:lod0\","
+        },
+        {
+          "line": 271,
+          "text": "\"assetId\": \"BG-SHIP\","
+        },
+        {
+          "line": 273,
+          "text": "\"url\": \"models/architecture-r1/BG-SHIP-lod0.glb\","
+        },
+        {
+          "line": 277,
+          "text": "\"materialSourceId\": \"BG-SHIP:lod0\","
+        },
+        {
+          "line": 281,
+          "text": "\"id\": \"BG-SHIP:lod1\","
+        },
+        {
+          "line": 282,
+          "text": "\"assetId\": \"BG-SHIP\","
+        },
+        {
+          "line": 284,
+          "text": "\"url\": \"models/architecture-r1/BG-SHIP-lod1-geometry.glb\","
+        },
+        {
+          "line": 288,
+          "text": "\"materialSourceId\": \"BG-SHIP:lod0\","
+        },
+        {
+          "line": 292,
+          "text": "\"id\": \"BG-SHIP:lod2\","
+        },
+        {
+          "line": 293,
+          "text": "\"assetId\": \"BG-SHIP\","
+        },
+        {
+          "line": 295,
+          "text": "\"url\": \"models/architecture-r1/BG-SHIP-lod2-geometry.glb\","
+        },
+        {
+          "line": 299,
+          "text": "\"materialSourceId\": \"BG-SHIP:lod0\","
+        },
+        {
+          "line": 303,
+          "text": "\"id\": \"ENV-BRIDGEKIT-DECK:lod0\","
+        },
+        {
+          "line": 304,
+          "text": "\"assetId\": \"ENV-BRIDGEKIT-DECK\","
+        },
+        {
+          "line": 306,
+          "text": "\"url\": \"models/architecture-r1/ENV-BRIDGEKIT-DECK-lod0.glb\","
+        },
+        {
+          "line": 310,
+          "text": "\"materialSourceId\": \"ENV-BRIDGEKIT-DECK:lod0\","
+        },
+        {
+          "line": 314,
+          "text": "\"id\": \"ENV-BRIDGEKIT-DECK:lod1\","
+        },
+        {
+          "line": 315,
+          "text": "\"assetId\": \"ENV-BRIDGEKIT-DECK\","
+        },
+        {
+          "line": 317,
+          "text": "\"url\": \"models/architecture-r1/ENV-BRIDGEKIT-DECK-lod1-geometry.glb\","
+        },
+        {
+          "line": 321,
+          "text": "\"materialSourceId\": \"ENV-BRIDGEKIT-DECK:lod0\","
+        },
+        {
+          "line": 325,
+          "text": "\"id\": \"ENV-BRIDGEKIT-DECK:lod2\","
+        },
+        {
+          "line": 326,
+          "text": "\"assetId\": \"ENV-BRIDGEKIT-DECK\","
+        },
+        {
+          "line": 328,
+          "text": "\"url\": \"models/architecture-r1/ENV-BRIDGEKIT-DECK-lod2-geometry.glb\","
+        },
+        {
+          "line": 332,
+          "text": "\"materialSourceId\": \"ENV-BRIDGEKIT-DECK:lod0\","
+        },
+        {
+          "line": 336,
+          "text": "\"id\": \"ENV-LIGHTKIT-POLE:lod0\","
+        },
+        {
+          "line": 337,
+          "text": "\"assetId\": \"ENV-LIGHTKIT-POLE\","
+        },
+        {
+          "line": 339,
+          "text": "\"url\": \"models/architecture-r1/ENV-LIGHTKIT-POLE-lod0.glb\","
+        },
+        {
+          "line": 343,
+          "text": "\"materialSourceId\": \"ENV-LIGHTKIT-POLE:lod0\","
+        },
+        {
+          "line": 347,
+          "text": "\"id\": \"ENV-LIGHTKIT-POLE:lod1\","
+        },
+        {
+          "line": 348,
+          "text": "\"assetId\": \"ENV-LIGHTKIT-POLE\","
+        },
+        {
+          "line": 350,
+          "text": "\"url\": \"models/architecture-r1/ENV-LIGHTKIT-POLE-lod1-geometry.glb\","
+        },
+        {
+          "line": 354,
+          "text": "\"materialSourceId\": \"ENV-LIGHTKIT-POLE:lod0\","
+        },
+        {
+          "line": 358,
+          "text": "\"id\": \"ENV-LIGHTKIT-POLE:lod2\","
+        },
+        {
+          "line": 359,
+          "text": "\"assetId\": \"ENV-LIGHTKIT-POLE\","
+        },
+        {
+          "line": 361,
+          "text": "\"url\": \"models/architecture-r1/ENV-LIGHTKIT-POLE-lod2-geometry.glb\","
+        },
+        {
+          "line": 365,
+          "text": "\"materialSourceId\": \"ENV-LIGHTKIT-POLE:lod0\","
+        },
+        {
+          "line": 369,
+          "text": "\"id\": \"ENV-PIPEKIT-ELBOW:lod0\","
+        },
+        {
+          "line": 370,
+          "text": "\"assetId\": \"ENV-PIPEKIT-ELBOW\","
+        },
+        {
+          "line": 372,
+          "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-ELBOW-lod0.glb\","
+        },
+        {
+          "line": 376,
+          "text": "\"materialSourceId\": \"ENV-PIPEKIT-ELBOW:lod0\","
+        },
+        {
+          "line": 380,
+          "text": "\"id\": \"ENV-PIPEKIT-ELBOW:lod1\","
+        },
+        {
+          "line": 381,
+          "text": "\"assetId\": \"ENV-PIPEKIT-ELBOW\","
+        },
+        {
+          "line": 383,
+          "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-ELBOW-lod1-geometry.glb\","
+        },
+        {
+          "line": 387,
+          "text": "\"materialSourceId\": \"ENV-PIPEKIT-ELBOW:lod0\","
+        },
+        {
+          "line": 391,
+          "text": "\"id\": \"ENV-PIPEKIT-ELBOW:lod2\","
+        },
+        {
+          "line": 392,
+          "text": "\"assetId\": \"ENV-PIPEKIT-ELBOW\","
+        },
+        {
+          "line": 394,
+          "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-ELBOW-lod2-geometry.glb\","
+        },
+        {
+          "line": 398,
+          "text": "\"materialSourceId\": \"ENV-PIPEKIT-ELBOW:lod0\","
+        },
+        {
+          "line": 402,
+          "text": "\"id\": \"ENV-PIPEKIT-STRAIGHT:lod0\","
+        },
+        {
+          "line": 403,
+          "text": "\"assetId\": \"ENV-PIPEKIT-STRAIGHT\","
+        },
+        {
+          "line": 405,
+          "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod0.glb\","
+        },
+        {
+          "line": 409,
+          "text": "\"materialSourceId\": \"ENV-PIPEKIT-STRAIGHT:lod0\","
+        },
+        {
+          "line": 413,
+          "text": "\"id\": \"ENV-PIPEKIT-STRAIGHT:lod1\","
+        },
+        {
+          "line": 414,
+          "text": "\"assetId\": \"ENV-PIPEKIT-STRAIGHT\","
+        },
+        {
+          "line": 416,
+          "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod1-geometry.glb\","
+        },
+        {
+          "line": 420,
+          "text": "\"materialSourceId\": \"ENV-PIPEKIT-STRAIGHT:lod0\","
+        },
+        {
+          "line": 424,
+          "text": "\"id\": \"ENV-PIPEKIT-STRAIGHT:lod2\","
+        },
+        {
+          "line": 425,
+          "text": "\"assetId\": \"ENV-PIPEKIT-STRAIGHT\","
+        },
+        {
+          "line": 427,
+          "text": "\"url\": \"models/architecture-r1/ENV-PIPEKIT-STRAIGHT-lod2-geometry.glb\","
+        },
+        {
+          "line": 431,
+          "text": "\"materialSourceId\": \"ENV-PIPEKIT-STRAIGHT:lod0\","
+        },
+        {
+          "line": 435,
+          "text": "\"id\": \"ENV-WALLKIT-PANEL:lod0\","
+        },
+        {
+          "line": 436,
+          "text": "\"assetId\": \"ENV-WALLKIT-PANEL\","
+        },
+        {
+          "line": 438,
+          "text": "\"url\": \"models/architecture-r1/ENV-WALLKIT-PANEL-lod0.glb\","
+        },
+        {
+          "line": 442,
+          "text": "\"materialSourceId\": \"ENV-WALLKIT-PANEL:lod0\","
+        },
+        {
+          "line": 446,
+          "text": "\"id\": \"ENV-WALLKIT-PANEL:lod1\","
+        },
+        {
+          "line": 447,
+          "text": "\"assetId\": \"ENV-WALLKIT-PANEL\","
+        },
+        {
+          "line": 449,
+          "text": "\"url\": \"models/architecture-r1/ENV-WALLKIT-PANEL-lod1-geometry.glb\","
+        },
+        {
+          "line": 453,
+          "text": "\"materialSourceId\": \"ENV-WALLKIT-PANEL:lod0\","
+        },
+        {
+          "line": 457,
+          "text": "\"id\": \"ENV-WALLKIT-PANEL:lod2\","
+        },
+        {
+          "line": 458,
+          "text": "\"assetId\": \"ENV-WALLKIT-PANEL\","
+        },
+        {
+          "line": 460,
+          "text": "\"url\": \"models/architecture-r1/ENV-WALLKIT-PANEL-lod2-geometry.glb\","
+        },
+        {
+          "line": 464,
+          "text": "\"materialSourceId\": \"ENV-WALLKIT-PANEL:lod0\","
+        },
+        {
+          "line": 468,
+          "text": "\"id\": \"MAP-A-ARCH-01:lod0\","
+        },
+        {
+          "line": 469,
+          "text": "\"assetId\": \"MAP-A-ARCH-01\","
+        },
+        {
+          "line": 471,
+          "text": "\"url\": \"models/architecture-r1/MAP-A-ARCH-01-lod0.glb\","
+        },
+        {
+          "line": 475,
+          "text": "\"materialSourceId\": \"MAP-A-ARCH-01:lod0\","
+        },
+        {
+          "line": 479,
+          "text": "\"id\": \"MAP-A-ARCH-01:lod1\","
+        },
+        {
+          "line": 480,
+          "text": "\"assetId\": \"MAP-A-ARCH-01\","
+        },
+        {
+          "line": 482,
+          "text": "\"url\": \"models/architecture-r1/MAP-A-ARCH-01-lod1-geometry.glb\","
+        },
+        {
+          "line": 486,
+          "text": "\"materialSourceId\": \"MAP-A-ARCH-01:lod0\","
+        },
+        {
+          "line": 490,
+          "text": "\"id\": \"MAP-A-ARCH-01:lod2\","
+        },
+        {
+          "line": 491,
+          "text": "\"assetId\": \"MAP-A-ARCH-01\","
+        },
+        {
+          "line": 493,
+          "text": "\"url\": \"models/architecture-r1/MAP-A-ARCH-01-lod2-geometry.glb\","
+        },
+        {
+          "line": 497,
+          "text": "\"materialSourceId\": \"MAP-A-ARCH-01:lod0\","
+        },
+        {
+          "line": 501,
+          "text": "\"id\": \"MAP-B-CORRIDOR-01:lod0\","
+        },
+        {
+          "line": 502,
+          "text": "\"assetId\": \"MAP-B-CORRIDOR-01\","
+        },
+        {
+          "line": 504,
+          "text": "\"url\": \"models/architecture-r1/MAP-B-CORRIDOR-01-lod0.glb\","
+        },
+        {
+          "line": 508,
+          "text": "\"materialSourceId\": \"MAP-B-CORRIDOR-01:lod0\","
+        },
+        {
+          "line": 512,
+          "text": "\"id\": \"MAP-B-CORRIDOR-01:lod1\","
+        },
+        {
+          "line": 513,
+          "text": "\"assetId\": \"MAP-B-CORRIDOR-01\","
+        },
+        {
+          "line": 515,
+          "text": "\"url\": \"models/architecture-r1/MAP-B-CORRIDOR-01-lod1-geometry.glb\","
+        },
+        {
+          "line": 519,
+          "text": "\"materialSourceId\": \"MAP-B-CORRIDOR-01:lod0\","
+        },
+        {
+          "line": 523,
+          "text": "\"id\": \"MAP-B-CORRIDOR-01:lod2\","
+        },
+        {
+          "line": 524,
+          "text": "\"assetId\": \"MAP-B-CORRIDOR-01\","
+        },
+        {
+          "line": 526,
+          "text": "\"url\": \"models/architecture-r1/MAP-B-CORRIDOR-01-lod2-geometry.glb\","
+        },
+        {
+          "line": 530,
+          "text": "\"materialSourceId\": \"MAP-B-CORRIDOR-01:lod0\","
+        },
+        {
+          "line": 534,
+          "text": "\"id\": \"MAP-C-FACADE-01:lod0\","
+        },
+        {
+          "line": 535,
+          "text": "\"assetId\": \"MAP-C-FACADE-01\","
+        },
+        {
+          "line": 537,
+          "text": "\"url\": \"models/architecture-r1/MAP-C-FACADE-01-lod0.glb\","
+        },
+        {
+          "line": 541,
+          "text": "\"materialSourceId\": \"MAP-C-FACADE-01:lod0\","
+        },
+        {
+          "line": 545,
+          "text": "\"id\": \"MAP-C-FACADE-01:lod1\","
+        },
+        {
+          "line": 546,
+          "text": "\"assetId\": \"MAP-C-FACADE-01\","
+        },
+        {
+          "line": 548,
+          "text": "\"url\": \"models/architecture-r1/MAP-C-FACADE-01-lod1-geometry.glb\","
+        },
+        {
+          "line": 552,
+          "text": "\"materialSourceId\": \"MAP-C-FACADE-01:lod0\","
+        },
+        {
+          "line": 556,
+          "text": "\"id\": \"MAP-C-FACADE-01:lod2\","
+        },
+        {
+          "line": 557,
+          "text": "\"assetId\": \"MAP-C-FACADE-01\","
+        },
+        {
+          "line": 559,
+          "text": "\"url\": \"models/architecture-r1/MAP-C-FACADE-01-lod2-geometry.glb\","
+        },
+        {
+          "line": 563,
+          "text": "\"materialSourceId\": \"MAP-C-FACADE-01:lod0\","
+        },
+        {
+          "line": 567,
+          "text": "\"id\": \"MAP-C-ICEBANK-01:lod0\","
+        },
+        {
+          "line": 568,
+          "text": "\"assetId\": \"MAP-C-ICEBANK-01\","
+        },
+        {
+          "line": 570,
+          "text": "\"url\": \"models/architecture-r1/MAP-C-ICEBANK-01-lod0.glb\","
+        },
+        {
+          "line": 574,
+          "text": "\"materialSourceId\": \"MAP-C-ICEBANK-01:lod0\","
+        },
+        {
+          "line": 578,
+          "text": "\"id\": \"MAP-C-ICEBANK-01:lod1\","
+        },
+        {
+          "line": 579,
+          "text": "\"assetId\": \"MAP-C-ICEBANK-01\","
+        },
+        {
+          "line": 581,
+          "text": "\"url\": \"models/architecture-r1/MAP-C-ICEBANK-01-lod1-geometry.glb\","
+        },
+        {
+          "line": 585,
+          "text": "\"materialSourceId\": \"MAP-C-ICEBANK-01:lod0\","
+        },
+        {
+          "line": 589,
+          "text": "\"id\": \"MAP-C-ICEBANK-01:lod2\","
+        },
+        {
+          "line": 590,
+          "text": "\"assetId\": \"MAP-C-ICEBANK-01\","
+        },
+        {
+          "line": 592,
+          "text": "\"url\": \"models/architecture-r1/MAP-C-ICEBANK-01-lod2-geometry.glb\","
+        },
+        {
+          "line": 596,
+          "text": "\"materialSourceId\": \"MAP-C-ICEBANK-01:lod0\","
+        },
+        {
+          "line": 600,
+          "text": "\"id\": \"MAP-E-PIER-01:lod0\","
+        },
+        {
+          "line": 601,
+          "text": "\"assetId\": \"MAP-E-PIER-01\","
+        },
+        {
+          "line": 603,
+          "text": "\"url\": \"models/architecture-r1/MAP-E-PIER-01-lod0.glb\","
+        },
+        {
+          "line": 607,
+          "text": "\"materialSourceId\": \"MAP-E-PIER-01:lod0\","
+        },
+        {
+          "line": 611,
+          "text": "\"id\": \"MAP-E-PIER-01:lod1\","
+        },
+        {
+          "line": 612,
+          "text": "\"assetId\": \"MAP-E-PIER-01\","
+        },
+        {
+          "line": 614,
+          "text": "\"url\": \"models/architecture-r1/MAP-E-PIER-01-lod1-geometry.glb\","
+        },
+        {
+          "line": 618,
+          "text": "\"materialSourceId\": \"MAP-E-PIER-01:lod0\","
+        },
+        {
+          "line": 622,
+          "text": "\"id\": \"MAP-E-PIER-01:lod2\","
+        },
+        {
+          "line": 623,
+          "text": "\"assetId\": \"MAP-E-PIER-01\","
+        },
+        {
+          "line": 625,
+          "text": "\"url\": \"models/architecture-r1/MAP-E-PIER-01-lod2-geometry.glb\","
+        },
+        {
+          "line": 629,
+          "text": "\"materialSourceId\": \"MAP-E-PIER-01:lod0\","
+        },
+        {
+          "line": 633,
+          "text": "\"id\": \"MAP-F-ROOF-01:lod0\","
+        },
+        {
+          "line": 634,
+          "text": "\"assetId\": \"MAP-F-ROOF-01\","
+        },
+        {
+          "line": 636,
+          "text": "\"url\": \"models/architecture-r1/MAP-F-ROOF-01-lod0.glb\","
+        },
+        {
+          "line": 640,
+          "text": "\"materialSourceId\": \"MAP-F-ROOF-01:lod0\","
+        },
+        {
+          "line": 644,
+          "text": "\"id\": \"MAP-F-ROOF-01:lod1\","
+        },
+        {
+          "line": 645,
+          "text": "\"assetId\": \"MAP-F-ROOF-01\","
+        },
+        {
+          "line": 647,
+          "text": "\"url\": \"models/architecture-r1/MAP-F-ROOF-01-lod1-geometry.glb\","
+        },
+        {
+          "line": 651,
+          "text": "\"materialSourceId\": \"MAP-F-ROOF-01:lod0\","
+        },
+        {
+          "line": 655,
+          "text": "\"id\": \"MAP-F-ROOF-01:lod2\","
+        },
+        {
+          "line": 656,
+          "text": "\"assetId\": \"MAP-F-ROOF-01\","
+        },
+        {
+          "line": 658,
+          "text": "\"url\": \"models/architecture-r1/MAP-F-ROOF-01-lod2-geometry.glb\","
+        },
+        {
+          "line": 662,
+          "text": "\"materialSourceId\": \"MAP-F-ROOF-01:lod0\","
+        },
+        {
+          "line": 666,
+          "text": "\"id\": \"PROP-BOOTH:lod0\","
+        },
+        {
+          "line": 667,
+          "text": "\"assetId\": \"PROP-BOOTH\","
+        },
+        {
+          "line": 669,
+          "text": "\"url\": \"models/architecture-r1/PROP-BOOTH-lod0.glb\","
+        },
+        {
+          "line": 673,
+          "text": "\"materialSourceId\": \"PROP-BOOTH:lod0\","
+        },
+        {
+          "line": 677,
+          "text": "\"id\": \"PROP-BOOTH:lod1\","
+        },
+        {
+          "line": 678,
+          "text": "\"assetId\": \"PROP-BOOTH\","
+        },
+        {
+          "line": 680,
+          "text": "\"url\": \"models/architecture-r1/PROP-BOOTH-lod1-geometry.glb\","
+        },
+        {
+          "line": 684,
+          "text": "\"materialSourceId\": \"PROP-BOOTH:lod0\","
+        },
+        {
+          "line": 688,
+          "text": "\"id\": \"PROP-BOOTH:lod2\","
+        },
+        {
+          "line": 689,
+          "text": "\"assetId\": \"PROP-BOOTH\","
+        },
+        {
+          "line": 691,
+          "text": "\"url\": \"models/architecture-r1/PROP-BOOTH-lod2-geometry.glb\","
+        },
+        {
+          "line": 695,
+          "text": "\"materialSourceId\": \"PROP-BOOTH:lod0\","
+        },
+        {
+          "line": 699,
+          "text": "\"id\": \"PROP-TANK:lod0\","
+        },
+        {
+          "line": 700,
+          "text": "\"assetId\": \"PROP-TANK\","
+        },
+        {
+          "line": 702,
+          "text": "\"url\": \"models/architecture-r1/PROP-TANK-lod0.glb\","
+        },
+        {
+          "line": 706,
+          "text": "\"materialSourceId\": \"PROP-TANK:lod0\","
+        },
+        {
+          "line": 710,
+          "text": "\"id\": \"PROP-TANK:lod1\","
+        },
+        {
+          "line": 711,
+          "text": "\"assetId\": \"PROP-TANK\","
+        },
+        {
+          "line": 713,
+          "text": "\"url\": \"models/architecture-r1/PROP-TANK-lod1-geometry.glb\","
+        },
+        {
+          "line": 717,
+          "text": "\"materialSourceId\": \"PROP-TANK:lod0\","
+        },
+        {
+          "line": 721,
+          "text": "\"id\": \"PROP-TANK:lod2\","
+        },
+        {
+          "line": 722,
+          "text": "\"assetId\": \"PROP-TANK\","
+        },
+        {
+          "line": 724,
+          "text": "\"url\": \"models/architecture-r1/PROP-TANK-lod2-geometry.glb\","
+        },
+        {
+          "line": 728,
+          "text": "\"materialSourceId\": \"PROP-TANK:lod0\","
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/character-catalog.ts",
+      "sha256": "afd058acc56aa14d748bd8f59ebea7c91bfce25faea71ae64e7f0b0fbac68713",
+      "lines": 238,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 7,
+          "text": "\"id\": \"CH-DOCTOR\","
+        },
+        {
+          "line": 11,
+          "text": "\"runtimePath\": \"models/characters/ch-doctor-rig-v1.glb\","
+        },
+        {
+          "line": 12,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-DOCTOR/rig-v1/rig/1f3fb503-1bd8-474b-b7ce-574f8f16b650-model.glb\","
+        },
+        {
+          "line": 21,
+          "text": "\"id\": \"CH-ENEMY\","
+        },
+        {
+          "line": 25,
+          "text": "\"runtimePath\": \"models/characters/ch-enemy-rig-v1.glb\","
+        },
+        {
+          "line": 26,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-ENEMY/rig-v1/rig/5a26a6cd-f147-4e99-adfb-733d7c686c60-model.glb\","
+        },
+        {
+          "line": 35,
+          "text": "\"id\": \"CH-FATHER\","
+        },
+        {
+          "line": 39,
+          "text": "\"runtimePath\": \"models/characters/ch-father-rig-v1.glb\","
+        },
+        {
+          "line": 40,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-FATHER/rig-v1/rig/5d82f4cd-e9a9-4ba5-9ce9-49aa24a971c6-model.glb\","
+        },
+        {
+          "line": 49,
+          "text": "\"id\": \"CH-LU\","
+        },
+        {
+          "line": 53,
+          "text": "\"runtimePath\": \"models/characters/ch-lu-rig-v1.glb\","
+        },
+        {
+          "line": 54,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-LU/rig-v1/rig/77ed8fb0-4b83-4c79-8bc8-f5cd7820c9d3-model.glb\","
+        },
+        {
+          "line": 63,
+          "text": "\"id\": \"CH-LU-CHILD\","
+        },
+        {
+          "line": 67,
+          "text": "\"runtimePath\": \"models/characters/ch-lu-child-rig-v1.glb\","
+        },
+        {
+          "line": 68,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-LU-CHILD/rig-v1/rig/1aeea69b-8de0-49c8-8028-b3fff31436be-model.glb\","
+        },
+        {
+          "line": 77,
+          "text": "\"id\": \"CH-LUO\","
+        },
+        {
+          "line": 81,
+          "text": "\"runtimePath\": \"models/characters/ch-luo-rig-v1.glb\","
+        },
+        {
+          "line": 82,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-LUO/rig-v1/rig/b0df3e2a-e328-438e-af06-eca45f2a7510-model.glb\","
+        },
+        {
+          "line": 91,
+          "text": "\"id\": \"CH-MENG\","
+        },
+        {
+          "line": 95,
+          "text": "\"runtimePath\": \"models/characters/ch-meng-rig-v1.glb\","
+        },
+        {
+          "line": 96,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-MENG/rig-v1/rig/f348dea9-0358-4eab-9208-1335e1768372-model.glb\","
+        },
+        {
+          "line": 105,
+          "text": "\"id\": \"CH-SHAO\","
+        },
+        {
+          "line": 109,
+          "text": "\"runtimePath\": \"models/characters/ch-shao-rig-v1.glb\","
+        },
+        {
+          "line": 110,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-SHAO/rig-v1/rig/ae88fddf-945c-4716-9776-1758d063fb27-model.glb\","
+        },
+        {
+          "line": 119,
+          "text": "\"id\": \"CH-SHEN\","
+        },
+        {
+          "line": 123,
+          "text": "\"runtimePath\": \"models/characters/ch-shen-rig-v1.glb\","
+        },
+        {
+          "line": 124,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-SHEN/rig-v1/rig/771ca26e-fcc0-4f52-868b-7d7caeaf348c-model.glb\","
+        },
+        {
+          "line": 133,
+          "text": "\"id\": \"CH-XU\","
+        },
+        {
+          "line": 137,
+          "text": "\"runtimePath\": \"models/characters/ch-xu-rig-v1.glb\","
+        },
+        {
+          "line": 138,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-XU/rig-v1/rig/aa6d9286-2831-40bc-96f2-74877d95bedf-model.glb\","
+        },
+        {
+          "line": 147,
+          "text": "\"id\": \"CH-ZHAO\","
+        },
+        {
+          "line": 151,
+          "text": "\"runtimePath\": \"models/characters/ch-zhao-rig-v1.glb\","
+        },
+        {
+          "line": 152,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-ZHAO/rig-v1/rig/f959a172-f5d8-49b8-b783-b57917aa72a0-model.glb\","
+        },
+        {
+          "line": 161,
+          "text": "\"id\": \"CH-ZHENG\","
+        },
+        {
+          "line": 165,
+          "text": "\"runtimePath\": \"models/characters/ch-zheng-rig-v1.glb\","
+        },
+        {
+          "line": 166,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-ZHENG/rig-v1/rig/40053c3a-703e-454f-b015-3339d245489e-model.glb\","
+        },
+        {
+          "line": 175,
+          "text": "\"id\": \"CH-ZHOU\","
+        },
+        {
+          "line": 179,
+          "text": "\"runtimePath\": \"models/characters/ch-zhou-rig-v1.glb\","
+        },
+        {
+          "line": 180,
+          "text": "\"sourcePath\": \"assets/source/tripo/CH-ZHOU/rig-v1/rig/9d29d053-843a-410e-9c67-1cd20c7435ea-model.glb\","
+        },
+        {
+          "line": 204,
+          "text": "\"runtimePath\": \"models/animations/walk-canonical-v1.glb\","
+        },
+        {
+          "line": 205,
+          "text": "\"sourcePath\": \"assets/source/tripo/shared-animations/walk-v1/walk-canonical.glb\","
+        },
+        {
+          "line": 211,
+          "text": "lu: 'CH-LU', '陆闻川': 'CH-LU', 'young-lu': 'CH-LU-CHILD',"
+        },
+        {
+          "line": 212,
+          "text": "zhou: 'CH-ZHOU', 'young-zhou': 'CH-ZHOU', '周延': 'CH-ZHOU',"
+        },
+        {
+          "line": 213,
+          "text": "father: 'CH-FATHER', '陆建平': 'CH-FATHER', zhao: 'CH-ZHAO', '赵启明': 'CH-ZHAO',"
+        },
+        {
+          "line": 214,
+          "text": "xu: 'CH-XU', '许岚': 'CH-XU', meng: 'CH-MENG', '孟齐': 'CH-MENG',"
+        },
+        {
+          "line": 215,
+          "text": "luo: 'CH-LUO', '罗敬': 'CH-LUO', shao: 'CH-SHAO', '邵原': 'CH-SHAO',"
+        },
+        {
+          "line": 216,
+          "text": "zheng: 'CH-ZHENG', '郑铎': 'CH-ZHENG', shen: 'CH-SHEN', '沈玉芬': 'CH-SHEN',"
+        },
+        {
+          "line": 217,
+          "text": "evacuator: 'CH-SHEN', doctor: 'CH-DOCTOR', '医师': 'CH-DOCTOR',"
+        },
+        {
+          "line": 220,
+          "text": "enemy: 'CH-ENEMY', opponent: 'CH-ENEMY', ally: 'CH-ZHOU', worker: 'CH-LUO',"
+        },
+        {
+          "line": 221,
+          "text": "father: 'CH-FATHER', child: 'CH-LU-CHILD', medic: 'CH-DOCTOR', civilian: 'CH-SHEN',"
+        },
+        {
+          "line": 227,
+          "text": "const id: CharacterAssetId = actor.role === 'child' ? 'CH-LU-CHILD'"
+        },
+        {
+          "line": 228,
+          "text": ": actor.id.startsWith('hall-invader-') ? 'CH-ENEMY'"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/model-contracts.ts",
+      "sha256": "1db424599427b9b57b8e5e3640d2693f4c37d41e7ef485ddca32bee494e248a9",
+      "lines": 31,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/model-disposal.ts",
+      "sha256": "302385e9d3c511f889ec374feaeb8cd1fe0c7d21a9b0e4e12e786b19cb7b07d8",
+      "lines": 84,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/model-loading.ts",
+      "sha256": "90d7c0b6a2ae4af36ea8e9f72a5e42206c2d96041da7b056346c51b32568a1df",
+      "lines": 138,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/scene-asset-catalog.ts",
+      "sha256": "aafcc3c8b0f9991736aef1b1cb268db7ae1fb77979f8e91ca4f2f8ac49bd5165",
+      "lines": 841,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 6,
+          "text": "'BG-CRANE': {"
+        },
+        {
+          "line": 7,
+          "text": "id: 'BG-CRANE', revision: 'production-20261031-tex1024-v1', provider: 'Hyper3D',"
+        },
+        {
+          "line": 8,
+          "text": "runtimePath: 'assets/generated/production-20261031/BG-CRANE.glb',"
+        },
+        {
+          "line": 9,
+          "text": "sourcePath: 'assets/source/hyper3d/BG-CRANE/v1/base_basic_pbr.glb',"
+        },
+        {
+          "line": 17,
+          "text": "'ENV-LIGHTKIT-POLE': {"
+        },
+        {
+          "line": 18,
+          "text": "id: 'ENV-LIGHTKIT-POLE', revision: 'production-20261031-tex1024-v1', provider: 'Hyper3D',"
+        },
+        {
+          "line": 19,
+          "text": "runtimePath: 'assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb',"
+        },
+        {
+          "line": 20,
+          "text": "sourcePath: 'assets/source/hyper3d/ENV-LIGHTKIT-POLE/v1/base_basic_pbr.glb',"
+        },
+        {
+          "line": 28,
+          "text": "'PROP-BENCH': {"
+        },
+        {
+          "line": 29,
+          "text": "id: 'PROP-BENCH', revision: 'production-20261031-tex1024-v1', provider: 'Tripo',"
+        },
+        {
+          "line": 30,
+          "text": "runtimePath: 'assets/generated/production-20261031/PROP-BENCH.glb',"
+        },
+        {
+          "line": 31,
+          "text": "sourcePath: 'assets/source/tripo/PROP-BENCH/f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247-pbr-model.glb',"
+        },
+        {
+          "line": 39,
+          "text": "'PROP-LIFE-MUG': {"
+        },
+        {
+          "line": 40,
+          "text": "id: 'PROP-LIFE-MUG', revision: 'production-20261031-tex1024-v1', provider: 'Tripo',"
+        },
+        {
+          "line": 41,
+          "text": "runtimePath: 'assets/generated/production-20261031/PROP-LIFE-MUG.glb',"
+        },
+        {
+          "line": 42,
+          "text": "sourcePath: 'assets/source/tripo/PROP-LIFE-MUG/a509e55e-d414-42db-ba04-1c2b0a44b03b-pbr-model.glb',"
+        },
+        {
+          "line": 50,
+          "text": "'PROP-MEDICAL-BAG': {"
+        },
+        {
+          "line": 51,
+          "text": "id: 'PROP-MEDICAL-BAG', revision: 'production-20261031-tex1024-v1', provider: 'Tripo',"
+        },
+        {
+          "line": 52,
+          "text": "runtimePath: 'assets/generated/production-20261031/PROP-MEDICAL-BAG.glb',"
+        },
+        {
+          "line": 53,
+          "text": "sourcePath: 'assets/source/tripo/PROP-MEDICAL-BAG/76629177-8de5-4c65-a8dc-34dcfd2b938b-pbr-model.glb',"
+        },
+        {
+          "line": 61,
+          "text": "'PROP-TANK': {"
+        },
+        {
+          "line": 62,
+          "text": "id: 'PROP-TANK', revision: 'production-20261031-tex1024-v1', provider: 'Hyper3D',"
+        },
+        {
+          "line": 63,
+          "text": "runtimePath: 'assets/generated/production-20261031/PROP-TANK.glb',"
+        },
+        {
+          "line": 64,
+          "text": "sourcePath: 'assets/source/hyper3d/PROP-TANK/v1/base_basic_pbr.glb',"
+        },
+        {
+          "line": 72,
+          "text": "'PROP-TERMINAL-CONSOLE': {"
+        },
+        {
+          "line": 73,
+          "text": "id: 'PROP-TERMINAL-CONSOLE', revision: 'production-20261031-tex1024-v1', provider: 'Tripo',"
+        },
+        {
+          "line": 74,
+          "text": "runtimePath: 'assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb',"
+        },
+        {
+          "line": 75,
+          "text": "sourcePath: 'assets/source/tripo/PROP-TERMINAL-CONSOLE/914701ef-9b63-4d3e-9064-b1cf113aa4fe-pbr-model.glb',"
+        },
+        {
+          "line": 83,
+          "text": "'PROP-VEH-TUG': {"
+        },
+        {
+          "line": 84,
+          "text": "id: 'PROP-VEH-TUG', revision: 'production-20261031-tex1024-v1', provider: 'Tripo',"
+        },
+        {
+          "line": 85,
+          "text": "runtimePath: 'assets/generated/production-20261031/PROP-VEH-TUG.glb',"
+        },
+        {
+          "line": 86,
+          "text": "sourcePath: 'assets/source/tripo/PROP-VEH-TUG/561b30a3-8648-4ea8-84ef-7091de2d68a1-pbr-model.glb',"
+        },
+        {
+          "line": 94,
+          "text": "\"PROP-TRANSFER\": {"
+        },
+        {
+          "line": 95,
+          "text": "\"id\": \"PROP-TRANSFER\","
+        },
+        {
+          "line": 98,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TRANSFER.glb\","
+        },
+        {
+          "line": 99,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-TRANSFER/1c388cb1-fe48-4263-a1e0-7210e4451aa3-pbr-model.glb\","
+        },
+        {
+          "line": 126,
+          "text": "\"PROP-STRETCHER\": {"
+        },
+        {
+          "line": 127,
+          "text": "\"id\": \"PROP-STRETCHER\","
+        },
+        {
+          "line": 130,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-STRETCHER.glb\","
+        },
+        {
+          "line": 131,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-STRETCHER/8d8192a4-2414-497c-9ef3-019dc604fce0-pbr-model.glb\","
+        },
+        {
+          "line": 158,
+          "text": "\"PROP-DOOR-LEAF\": {"
+        },
+        {
+          "line": 159,
+          "text": "\"id\": \"PROP-DOOR-LEAF\","
+        },
+        {
+          "line": 162,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-DOOR-LEAF.glb\","
+        },
+        {
+          "line": 163,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-DOOR-LEAF/ce8b2327-8995-44d0-9fe5-e3551e06009e-pbr-model.glb\","
+        },
+        {
+          "line": 190,
+          "text": "\"PROP-DOOR-LOCK\": {"
+        },
+        {
+          "line": 191,
+          "text": "\"id\": \"PROP-DOOR-LOCK\","
+        },
+        {
+          "line": 194,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-DOOR-LOCK.glb\","
+        },
+        {
+          "line": 195,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-DOOR-LOCK/6caff16f-c506-44e0-afb8-db653121a67d-pbr-model.glb\","
+        },
+        {
+          "line": 222,
+          "text": "\"PROP-TERMINAL-HANDHELD\": {"
+        },
+        {
+          "line": 223,
+          "text": "\"id\": \"PROP-TERMINAL-HANDHELD\","
+        },
+        {
+          "line": 226,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TERMINAL-HANDHELD.glb\","
+        },
+        {
+          "line": 227,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-TERMINAL-HANDHELD/f8f981a5-3714-4010-a0d8-c263a49b46ba-pbr-model.glb\","
+        },
+        {
+          "line": 254,
+          "text": "\"PROP-VEH-TRANSPORT\": {"
+        },
+        {
+          "line": 255,
+          "text": "\"id\": \"PROP-VEH-TRANSPORT\","
+        },
+        {
+          "line": 258,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-VEH-TRANSPORT.glb\","
+        },
+        {
+          "line": 259,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-VEH-TRANSPORT/711110bd-b12a-4cf3-863a-376aa825f30d-pbr-model.glb\","
+        },
+        {
+          "line": 286,
+          "text": "\"PROP-FILTER\": {"
+        },
+        {
+          "line": 287,
+          "text": "\"id\": \"PROP-FILTER\","
+        },
+        {
+          "line": 290,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-FILTER.glb\","
+        },
+        {
+          "line": 291,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-FILTER/a6423fe0-9719-45d4-b285-4ee37ae409b5-pbr-model.glb\","
+        },
+        {
+          "line": 318,
+          "text": "\"PROP-CARGO\": {"
+        },
+        {
+          "line": 319,
+          "text": "\"id\": \"PROP-CARGO\","
+        },
+        {
+          "line": 322,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-CARGO.glb\","
+        },
+        {
+          "line": 323,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-CARGO/72ca2db1-f3d0-4a3b-9555-3a8be0109392-pbr-model.glb\","
+        },
+        {
+          "line": 350,
+          "text": "\"PROP-PUMP\": {"
+        },
+        {
+          "line": 351,
+          "text": "\"id\": \"PROP-PUMP\","
+        },
+        {
+          "line": 354,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-PUMP.glb\","
+        },
+        {
+          "line": 355,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-PUMP/30ddf85f-f5f3-44d5-9b84-3535a0f1425e-pbr-model.glb\","
+        },
+        {
+          "line": 382,
+          "text": "\"PROP-FAN\": {"
+        },
+        {
+          "line": 383,
+          "text": "\"id\": \"PROP-FAN\","
+        },
+        {
+          "line": 386,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-FAN.glb\","
+        },
+        {
+          "line": 387,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-FAN/f6b963d0-cdc7-4ea2-939c-b4ed3b437fea-pbr-model.glb\","
+        },
+        {
+          "line": 414,
+          "text": "\"PROP-TOOL-BAG\": {"
+        },
+        {
+          "line": 415,
+          "text": "\"id\": \"PROP-TOOL-BAG\","
+        },
+        {
+          "line": 418,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TOOL-BAG.glb\","
+        },
+        {
+          "line": 419,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-TOOL-BAG/0cdefaa6-2a0f-4b4e-aede-2ca6e319b6d5-pbr-model.glb\","
+        },
+        {
+          "line": 446,
+          "text": "\"PROP-TOOL-ROLL\": {"
+        },
+        {
+          "line": 447,
+          "text": "\"id\": \"PROP-TOOL-ROLL\","
+        },
+        {
+          "line": 450,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TOOL-ROLL.glb\","
+        },
+        {
+          "line": 451,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-TOOL-ROLL/ad2d5d2a-a635-4a84-8341-be625ac6cae5-pbr-model.glb\","
+        },
+        {
+          "line": 478,
+          "text": "\"PROP-TOOL-LUNCHBOX\": {"
+        },
+        {
+          "line": 479,
+          "text": "\"id\": \"PROP-TOOL-LUNCHBOX\","
+        },
+        {
+          "line": 482,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-TOOL-LUNCHBOX.glb\","
+        },
+        {
+          "line": 483,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-TOOL-LUNCHBOX/f4f7bc35-beb3-4806-b0b0-d0ac2c02c0ec-pbr-model.glb\","
+        },
+        {
+          "line": 510,
+          "text": "\"PROP-RADIO-PACK\": {"
+        },
+        {
+          "line": 511,
+          "text": "\"id\": \"PROP-RADIO-PACK\","
+        },
+        {
+          "line": 514,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-RADIO-PACK.glb\","
+        },
+        {
+          "line": 515,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-RADIO-PACK/1301e9a7-c909-4b44-9218-0160fbd9a0cb-pbr-model.glb\","
+        },
+        {
+          "line": 542,
+          "text": "\"PROP-RADIO-HEADSET\": {"
+        },
+        {
+          "line": 543,
+          "text": "\"id\": \"PROP-RADIO-HEADSET\","
+        },
+        {
+          "line": 546,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-RADIO-HEADSET.glb\","
+        },
+        {
+          "line": 547,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-RADIO-HEADSET/ce2057ec-310e-4711-a656-ab74a7d5f73f-pbr-model.glb\","
+        },
+        {
+          "line": 574,
+          "text": "\"PROP-ARMOR-CHEST\": {"
+        },
+        {
+          "line": 575,
+          "text": "\"id\": \"PROP-ARMOR-CHEST\","
+        },
+        {
+          "line": 578,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-ARMOR-CHEST.glb\","
+        },
+        {
+          "line": 579,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-ARMOR-CHEST/840ece9e-0e2f-4a39-933f-68729b55ffa4-pbr-model.glb\","
+        },
+        {
+          "line": 606,
+          "text": "\"PROP-ARMOR-LEFT-BRACE\": {"
+        },
+        {
+          "line": 607,
+          "text": "\"id\": \"PROP-ARMOR-LEFT-BRACE\","
+        },
+        {
+          "line": 610,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-ARMOR-LEFT-BRACE.glb\","
+        },
+        {
+          "line": 611,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-ARMOR-LEFT-BRACE/98939ba8-5a7f-4895-94e2-90f76dd807cc-pbr-model.glb\","
+        },
+        {
+          "line": 638,
+          "text": "\"PROP-ARMOR-HELMET\": {"
+        },
+        {
+          "line": 639,
+          "text": "\"id\": \"PROP-ARMOR-HELMET\","
+        },
+        {
+          "line": 642,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-ARMOR-HELMET.glb\","
+        },
+        {
+          "line": 643,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-ARMOR-HELMET/2f160991-6325-4ede-83b7-4e71ffc5ccba-pbr-model.glb\","
+        },
+        {
+          "line": 670,
+          "text": "\"PROP-SAMPLE-CABINET\": {"
+        },
+        {
+          "line": 671,
+          "text": "\"id\": \"PROP-SAMPLE-CABINET\","
+        },
+        {
+          "line": 674,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-SAMPLE-CABINET.glb\","
+        },
+        {
+          "line": 675,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-SAMPLE-CABINET/b7566df9-bdcd-4133-bbac-c01576ba79ca-pbr-model.glb\","
+        },
+        {
+          "line": 702,
+          "text": "\"PROP-SAMPLE-CORECASE\": {"
+        },
+        {
+          "line": 703,
+          "text": "\"id\": \"PROP-SAMPLE-CORECASE\","
+        },
+        {
+          "line": 706,
+          "text": "\"runtimePath\": \"assets/generated/production-20261031-props-r1/PROP-SAMPLE-CORECASE.glb\","
+        },
+        {
+          "line": 707,
+          "text": "\"sourcePath\": \"assets/source/tripo/PROP-SAMPLE-CORECASE/96f7adc2-ca55-42ab-864d-333a01fe0e83-pbr-model.glb\","
+        },
+        {
+          "line": 747,
+          "text": "/** An independently constructed PortKit.visualSlot; all members swap atomically. */"
+        },
+        {
+          "line": 762,
+          "text": "{ id: 'front-tug', assetId: 'PROP-VEH-TUG', position: [21, 0, 20], size: { axis: 'x', metres: 4.35 },"
+        },
+        {
+          "line": 764,
+          "text": "{ id: 'front-east-tank', assetId: 'PROP-TANK', position: [43, 0, 10], size: { axis: 'x', metres: 6.2 },"
+        },
+        {
+          "line": 766,
+          "text": "{ id: 'front-background-crane', assetId: 'BG-CRANE', position: [78, 0, 60], size: { axis: 'y', metres: 30 },"
+        },
+        {
+          "line": 769,
+          "text": "{ id: 'front-background-light', assetId: 'ENV-LIGHTKIT-POLE', position: [58, 0, 36], size: { axis: 'y', metres: 5 },"
+        },
+        {
+          "line": 772,
+          "text": "...[22.9, 25.1].map((x, i): SceneAssetPlacement => ({ id: `front-filter-${i}`, assetId: 'PROP-FILTER',"
+        },
+        {
+          "line": 775,
+          "text": "...[22.9, 25.1].map((x, i): SceneAssetPlacement => ({ id: `front-pump-${i}`, assetId: 'PROP-PUMP',"
+        },
+        {
+          "line": 778,
+          "text": "{ id: 'front-cooling-fan', assetId: 'PROP-FAN', position: [48, 3.402, -32], size: { axis: 'z', metres: 1.2 },"
+        },
+        {
+          "line": 780,
+          "text": "{ id: 'front-service-cargo', assetId: 'PROP-CARGO', position: [-33.8, 2.502, -31], size: { axis: 'z', metres: 1.1 },"
+        },
+        {
+          "line": 782,
+          "text": "{ id: 'front-service-bag', assetId: 'PROP-TOOL-BAG', position: [-34.8, 1.352, -30.36], size: { axis: 'z', metres: 0.4 },"
+        },
+        {
+          "line": 784,
+          "text": "{ id: 'front-service-tools', assetId: 'PROP-TOOL-ROLL', position: [-33.8, 1.352, -30.38], size: { axis: 'z', metres: 0.3 },"
+        },
+        {
+          "line": 786,
+          "text": "{ id: 'front-worker-lunch', assetId: 'PROP-TOOL-LUNCHBOX', position: [-32.8, 2.202, -30.38], size: { axis: 'z', metres: 0.22 },"
+        },
+        {
+          "line": 788,
+          "text": "{ id: 'front-transport-parked', assetId: 'PROP-VEH-TRANSPORT', position: [62, 0, -62], size: { axis: 'x', metres: 7.5 },"
+        },
+        {
+          "line": 791,
+          "text": "{ id: 'front-spare-door', assetId: 'PROP-DOOR-LEAF', position: [59, 0, -49], size: { axis: 'y', metres: 2.7 },"
+        },
+        {
+          "line": 794,
+          "text": "{ id: 'front-spare-door-lock', assetId: 'PROP-DOOR-LOCK', position: [59, 1.2, -48.55], size: { axis: 'z', metres: 0.55 },"
+        },
+        {
+          "line": 799,
+          "text": "{ id: 'medical-bench-left', assetId: 'PROP-BENCH', position: [-414.5, 0, 63.5], size: { axis: 'z', metres: 1.8 },"
+        },
+        {
+          "line": 801,
+          "text": "{ id: 'medical-bench-right', assetId: 'PROP-BENCH', position: [-412.5, 0, 63.5], size: { axis: 'z', metres: 1.8 },"
+        },
+        {
+          "line": 803,
+          "text": "{ id: 'medical-supply-bag', assetId: 'PROP-MEDICAL-BAG', position: [-417, 1.062, 56], size: { axis: 'z', metres: 0.4 },"
+        },
+        {
+          "line": 805,
+          "text": "{ id: 'medical-water-mug', assetId: 'PROP-LIFE-MUG', position: [-414.16, 0.962, 60.39], size: { axis: 'y', metres: 0.1 },"
+        },
+        {
+          "line": 807,
+          "text": "{ id: 'medical-spare-trolley', assetId: 'PROP-TRANSFER', position: [-387, 0, 62], size: { axis: 'x', metres: 2.3 },"
+        },
+        {
+          "line": 809,
+          "text": "{ id: 'medical-spare-stretcher', assetId: 'PROP-STRETCHER', position: [-387, 1.062, 68], size: { axis: 'x', metres: 2.1 },"
+        },
+        {
+          "line": 811,
+          "text": "{ id: 'medical-equipment-chest', assetId: 'PROP-ARMOR-CHEST', position: [-405.7, 1.112, 56.65], size: { axis: 'y', metres: 0.55 },"
+        },
+        {
+          "line": 813,
+          "text": "{ id: 'medical-equipment-brace', assetId: 'PROP-ARMOR-LEFT-BRACE', position: [-405.05, 1.112, 56.7], size: { axis: 'y', metres: 0.42 },"
+        },
+        {
+          "line": 815,
+          "text": "{ id: 'medical-equipment-helmet', assetId: 'PROP-ARMOR-HELMET', position: [-387, 1.062, 56], size: { axis: 'y', metres: 0.35 },"
+        },
+        {
+          "line": 817,
+          "text": "{ id: 'medical-radio-pack', assetId: 'PROP-RADIO-PACK', position: [-400.6, 1.112, 68.65], size: { axis: 'y', metres: 0.4 },"
+        },
+        {
+          "line": 819,
+          "text": "{ id: 'medical-radio-headset', assetId: 'PROP-RADIO-HEADSET', position: [-400.0, 1.112, 68.72], size: { axis: 'z', metres: 0.2 },"
+        },
+        {
+          "line": 821,
+          "text": "{ id: 'medical-record-handheld', assetId: 'PROP-TERMINAL-HANDHELD', position: [-397.5, 1.112, 53.7], size: { axis: 'y', metres: 0.24 },"
+        },
+        {
+          "line": 823,
+          "text": "{ id: 'medical-sample-corecase', assetId: 'PROP-SAMPLE-CORECASE', position: [-387, 1.062, 50], size: { axis: 'z', metres: 0.45 },"
+        },
+        {
+          "line": 825,
+          "text": "...[-388.05, -387, -385.95].map((x, i): SceneAssetPlacement => ({ id: `medical-sample-cabinet-${i}`, assetId: 'PROP-SAMPLE-CABINET',"
+        },
+        {
+          "line": 831,
+          "text": "{ id: 'epilogue-reception-console', assetId: 'PROP-TERMINAL-CONSOLE', position: [2.2, 0, 6], size: { axis: 'z', metres: 3.5 },"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/tactical-catalog.ts",
+      "sha256": "990191a5ab853ff6dc800dc31147fbeda9af60a1a598e12c096500e76893db73",
+      "lines": 204,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 8,
+          "text": "\"id\": \"CH-LU\","
+        },
+        {
+          "line": 9,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-lu.glb\","
+        },
+        {
+          "line": 18,
+          "text": "\"id\": \"CH-ZHOU\","
+        },
+        {
+          "line": 19,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-zhou.glb\","
+        },
+        {
+          "line": 28,
+          "text": "\"id\": \"CH-FATHER\","
+        },
+        {
+          "line": 29,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-father.glb\","
+        },
+        {
+          "line": 38,
+          "text": "\"id\": \"CH-ZHAO\","
+        },
+        {
+          "line": 39,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-zhao.glb\","
+        },
+        {
+          "line": 48,
+          "text": "\"id\": \"CH-XU\","
+        },
+        {
+          "line": 49,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-xu.glb\","
+        },
+        {
+          "line": 58,
+          "text": "\"id\": \"CH-MENG\","
+        },
+        {
+          "line": 59,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-meng.glb\","
+        },
+        {
+          "line": 68,
+          "text": "\"id\": \"CH-LUO\","
+        },
+        {
+          "line": 69,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-luo.glb\","
+        },
+        {
+          "line": 78,
+          "text": "\"id\": \"CH-SHAO\","
+        },
+        {
+          "line": 79,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-shao.glb\","
+        },
+        {
+          "line": 88,
+          "text": "\"id\": \"CH-ZHENG\","
+        },
+        {
+          "line": 89,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-zheng.glb\","
+        },
+        {
+          "line": 98,
+          "text": "\"id\": \"CH-SHEN\","
+        },
+        {
+          "line": 99,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-shen.glb\","
+        },
+        {
+          "line": 108,
+          "text": "\"id\": \"CH-DOCTOR\","
+        },
+        {
+          "line": 109,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-doctor.glb\","
+        },
+        {
+          "line": 118,
+          "text": "\"id\": \"CH-ENEMY\","
+        },
+        {
+          "line": 119,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-enemy.glb\","
+        },
+        {
+          "line": 128,
+          "text": "\"id\": \"CH-LU-CHILD\","
+        },
+        {
+          "line": 129,
+          "text": "\"runtimePath\": \"models/animations/tactical-r1/ch-lu-child.glb\","
+        },
+        {
+          "line": 138,
+          "text": "export const TACTICAL_RIG_CONTRACTS: Readonly<Record<string, RigBindingContract>> = JSON.parse(\"{\\\"CH-LU\\\":{\\\"schema\\\":\\\"ganymede.rig-binding-contract/1\\\",\\\"assetId\\\":\\\"CH-LU\\\",\\\"sourceSHA256\\\":\\\"33579cb205c11d50c6fa6dfa42f93f022e387cbcf07b5a24c9a6be0b37961501"
+        },
+        {
+          "line": 141,
+          "text": "\"path\": \"public/models/weapons/ak47-world-r1.glb\","
+        },
+        {
+          "line": 142,
+          "text": "\"previewURL\": \"/public/models/weapons/ak47-world-r1.glb\","
+        },
+        {
+          "line": 143,
+          "text": "\"runtimeURL\": \"/models/weapons/ak47-world-r1.glb\","
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/assets/weapon-catalog.ts",
+      "sha256": "611b339bffcecac2c84784eef60f6716d1b0aa46b8e819cd43a79850c4248456",
+      "lines": 31,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 8,
+          "text": "runtimePath: 'models/weapons/ak47-world-r1.glb',"
+        },
+        {
+          "line": 9,
+          "text": "sourcePath: 'assets/source/WP-AK47/ak47_reloadable_world.glb',"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/audio/AudioBufferCache.ts",
+      "sha256": "193ed031da61ab0c24c1451b425b42dbe8543f6eae2b312eb2aab22bc69369c2",
+      "lines": 132,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/audio/catalog.ts",
+      "sha256": "65e6996f4a24f4b393702e4cfad62e2c0028a0082dd77a3a58e4cbde1871ae09",
+      "lines": 4262,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/audio/contracts.ts",
+      "sha256": "e0ddc8eb591ffcec47f0fb3c160832a9868390a4600967b1df9f02644f67189f",
+      "lines": 56,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/audio/dialogue-events.ts",
+      "sha256": "85263d0da4fe72586c6c7ea1fda7783742783b8db813cfaa7c9daab3025fdee5",
+      "lines": 24,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/audio/music.ts",
+      "sha256": "b77e0ae3df0730f8f3376c30d5f69649ec7cd0874b8481b93980c48e809ffc26",
+      "lines": 32,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/CampaignEntryPlan.ts",
+      "sha256": "02c6b54c220b16560e5ed094546bb2d38a7133378b6cb822352e779e38c732b7",
+      "lines": 30,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/CampaignTransitionPlan.ts",
+      "sha256": "5f20e6e5b8eb8d57d42595603e9549ff616fc453a38600847582ddd8a8abe78a",
+      "lines": 36,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/ChapterTransition.ts",
+      "sha256": "d17f3466655f03477beddf75b398d6d8e25c6b2292893bc3ad6056f5458ca4ab",
+      "lines": 69,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/HtmlNarrationPlayer.ts",
+      "sha256": "c3fac7bb7aa10ea5e06f85609b857fb419e37d96738957f9a82b97a7358d7421",
+      "lines": 109,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/PreparedGameLevel.ts",
+      "sha256": "f14287926438078d57d7ff36072c00509c70f12c6e227bbae87466d12e6a7933",
+      "lines": 219,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/TransitionController.ts",
+      "sha256": "660cee8b57476838847d857cb971808199052ca7db1d33dda884633ba35bfaad",
+      "lines": 293,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/TransitionInputGuard.ts",
+      "sha256": "8a8e14812a51a003c49dd1c8d98292316a26e09804ee88514c392b5b0ac51f8c",
+      "lines": 63,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/TransitionOverlay.ts",
+      "sha256": "6eb1f1d3aaa6f8502d28d3ba2d8bc8359315c29d683503074206d679c52df588",
+      "lines": 97,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/bridges.json",
+      "sha256": "3680b3bbf98aa365b652f732fad0f955e3ae4e2316b462ad0cbe9353d078d93d",
+      "lines": 236,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/catalog.ts",
+      "sha256": "ec04f3271c1c72b55b355fa821eb6882fa766951a2b52d56aeab092243518deb",
+      "lines": 15,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/index.ts",
+      "sha256": "b50237539a9fa0957bd1ee223d64ad17c4ef72be5b392289f02c4686e0351253",
+      "lines": 10,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/narration-assets.ts",
+      "sha256": "e4b426c8c4e17a6eaeb923b036c0001772e87e8165626c17a927873ce8820db6",
+      "lines": 236,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/opening.json",
+      "sha256": "2cedf112062c87b7f30119f44f10623124cfe1a2d6ecb892b1c196c5d1533194",
+      "lines": 29,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/transition.css",
+      "sha256": "147482e158d7122c974e7a67d1e7f6dee44cbb5c882e65b8a3c8339631707998",
+      "lines": 39,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/chapter-transition/types.ts",
+      "sha256": "a6c21fe0c02d04c0ad325f18b85cc4eb30c184bd2f777f9914dd6e56c14bcbd1",
+      "lines": 76,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/combat/Ballistics.ts",
+      "sha256": "081fe98fac1b3ebb14464d88c12fac25f39026fbfc4bdeb5e2b98ac31c276785",
+      "lines": 40,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/OpeningCrowd.ts",
+      "sha256": "b727663c55330e8a6d980d6513e2f03a4e1fc0596456b619c7cc6ffa724b57f2",
+      "lines": 179,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/OpeningStaging.ts",
+      "sha256": "0b98e68dacec508c371fd1f129727ac7555392d2f50cc32b99bb09ee1158e0d3",
+      "lines": 31,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/chapter-flow.ts",
+      "sha256": "c87c7e22ddced05db1085c166f61ec8e8458ea4f718659cba88a64633948bbca",
+      "lines": 87,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/chapter-layout.ts",
+      "sha256": "13c56b2d60286c79cd459a87b8121b5152243466c193cc74bd69e82082d64967",
+      "lines": 45,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/crowd-layout.ts",
+      "sha256": "b4b17e8275ca44a365cdb823554105f7ece97bb7afc3eb4b250038099aaa3ffc",
+      "lines": 19,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/epilogue-layout.ts",
+      "sha256": "e81b003409eb3fd87bff55eaef5cecbe89d53f17e5f7148adf5510fb5e911889",
+      "lines": 20,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/escort-layout.ts",
+      "sha256": "f2e4047ec8fdb23b94bc11eab164472c805d990bc4f3c0d10e4bf05d84f26141",
+      "lines": 63,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/flank-dialogue-timing.ts",
+      "sha256": "671c2909b9ce17c4c639af4593a3aab16e510db3aebdc1c8978fbad0a5ebb703",
+      "lines": 7,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/flank-layout.ts",
+      "sha256": "f9c61377b6c68f7cdf4a508791723d5e9877a4ed05b7b302e447c0930c17c5be",
+      "lines": 40,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/frontgate-layout.ts",
+      "sha256": "e5398f6f858cb10fb2cb94aa5573010e7fb84b7fe87919547d950015e2dc6b18",
+      "lines": 23,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/history-layout.ts",
+      "sha256": "3a37738f63d686797513fb4e8b698f9b067dc8089be5eb4847a56369c26de648",
+      "lines": 90,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/layout.ts",
+      "sha256": "f15f5b2f438391a2cf4001421eb66535aab4697d3b3ce5c6311c292b35e974d2",
+      "lines": 96,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/medical-layout.ts",
+      "sha256": "f47646fe8e64e0cc3a869aa5453838935f66a50cc45f7322d4a5f56ba2b63823",
+      "lines": 23,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/opening-timeline.ts",
+      "sha256": "57042996012b92fd3d1e390e54b0a080074d67f992bd16698ca5db8fdb0fe301",
+      "lines": 42,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/relief-layout.ts",
+      "sha256": "c668ff69b3eebfccd1aabb2c722b4bd6aec4359973299df17d7dc00c40a431fe",
+      "lines": 37,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/rescue-layout.ts",
+      "sha256": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61",
+      "lines": 32,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/content/transfer-layout.ts",
+      "sha256": "4cdef55e133e9606bde4078a3ac40ad35ee5cb7a1838ca4389e019e683b1a5bb",
+      "lines": 29,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/contracts.ts",
+      "sha256": "d56ad0c13e6586826a5653179d28fd48bbe27ada47f3b44f8aecdab179fe82bd",
+      "lines": 99,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/main.ts",
+      "sha256": "e84a9e051e2749b01d9c7ce690644988c941f3f06a90716e8ee818099762bec4",
+      "lines": 666,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 44,
+          "text": "const body = new Mesh(new BoxGeometry(0.62, 0.34, 0.42), new MeshStandardMaterial({ color: 0x668b86, roughness: 0.82 }));"
+        },
+        {
+          "line": 47,
+          "text": "const strap = new Mesh(new BoxGeometry(0.045, 0.35, 0.43), new MeshStandardMaterial({ color: 0xc6b077, roughness: 0.9 }));"
+        },
+        {
+          "line": 51,
+          "text": "const glove = new Mesh(new BoxGeometry(0.13, 0.12, 0.20), new MeshStandardMaterial({ color: 0x26353b, roughness: 0.9 }));"
+        },
+        {
+          "line": 53,
+          "text": "const sleeve = new Mesh(new BoxGeometry(0.15, 0.15, 0.35), new MeshStandardMaterial({ color: 0x56696c, roughness: 0.9 }));"
+        },
+        {
+          "line": 133,
+          "text": "const ring = new Mesh(new RingGeometry(0.5, 0.58, 32), new MeshBasicMaterial({ color: 0xe7c782, side: 2, transparent: true, opacity: 0.8, depthWrite: false }));"
+        },
+        {
+          "line": 135,
+          "text": "const arrow = new Mesh(new ConeGeometry(0.16, 0.35, 4), new MeshBasicMaterial({ color: 0xe7c782, transparent: true, depthWrite: false }));"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Dialogue.ts",
+      "sha256": "95195133acd103175b9358e8209ec05299397a7ab2778de14c85bc1653fa095b",
+      "lines": 22,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Epilogue.ts",
+      "sha256": "655ed28b0a23b7245e2ceeb0010a29e4fcdb515cb3983f6fd30774386fc9a30e",
+      "lines": 102,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Escort.ts",
+      "sha256": "e8bcab390440d26ceb034b66c67dc40501ae7dd2caef2d05e447ba0d6693a49c",
+      "lines": 197,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Flank.ts",
+      "sha256": "c7822cc7571b88f5e7598419e7963a5adfeaff6b388069f536384cfb6a4bb3e5",
+      "lines": 159,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Frontgate.ts",
+      "sha256": "895124ed8c8beff9903c7ed13ba4645eb6d52672531458a5ccbac42e1ea53846",
+      "lines": 144,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Medical.ts",
+      "sha256": "c28b55dc4249400c0ba409309b58202bb357ff66f9050c4a7cf65f01e1c01216",
+      "lines": 116,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Opening.ts",
+      "sha256": "06b3abe0642311ba5d55dd93369e05b5d03a86e7666243e847271af39e5dca7d",
+      "lines": 570,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Relief.ts",
+      "sha256": "7aaa734b0fc06a19b173a9c06760a364c58b2d779f971c5504024b0b46493e8a",
+      "lines": 129,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Rescue.ts",
+      "sha256": "a9215fc21c80b39ba879d0f957bfffcfaccdf71006073df10d8afb42a5e1424f",
+      "lines": 218,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Simulation.ts",
+      "sha256": "cae03168625b84c6f16ff0a7aadb35139567f2e55f60eac3d815c16ae7fc2ad3",
+      "lines": 772,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mission/Transfer.ts",
+      "sha256": "2c2a7ddebb1d87976547c2be1e1774f80dd509f512174bea1099a3eee2a8589a",
+      "lines": 103,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mobile-performance/RenderQualityPolicy.ts",
+      "sha256": "53f5db3f721edaec27ebbfa8bfa130a63447fcd58202b7e04be8fa7e27219aa7",
+      "lines": 157,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mobile-performance/RendererQualityAdapter.ts",
+      "sha256": "5a1549ae64f819e8cddde20c91f169b99fa6f9549001b12bd9e5f02a0c40e214",
+      "lines": 94,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/mobile-performance/index.ts",
+      "sha256": "a73f660a03a8bc01f826e1f5d4908a16577915fdb2f363038fb5600259fadd8e",
+      "lines": 3,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/persistence/SaveStore.ts",
+      "sha256": "1e4efcead13e5d7fbc7683a67bd530a44ae4dece4050c8ce77b0502f0d49ef48",
+      "lines": 468,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/player/Input.ts",
+      "sha256": "d6887d56021fba972eeb37d60cff8dafd71d813634ec9cc776934f416ebfc6af",
+      "lines": 129,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/player/TouchInputState.ts",
+      "sha256": "a2f03a8b9fdd5cd51725f4930499ca8b78f6279af6bc8fdb06ea424a0004c022",
+      "lines": 46,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/AimIdentity.ts",
+      "sha256": "e59cd5d8f767590f7c09692e29bfc484dead0eb44846d534e754512166c23ff8",
+      "lines": 73,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/ArchitectureTransactions.ts",
+      "sha256": "a9a4fe0e099c3ca42bd24f4383a706a38855c0e7d23205c0366ecb3964f95da4",
+      "lines": 367,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 65,
+          "text": "const result = new BufferGeometry();"
+        },
+        {
+          "line": 264,
+          "text": "const mesh = new InstancedMesh(part.geometry, material, set.placements.length); level.meshes.push(mesh);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/CareView.ts",
+      "sha256": "08f65946c5ef1e1083fd0a2e6f45b61c069af43c5a9e9cb83fd677fff0e34ad5",
+      "lines": 37,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 2,
+          "text": "import { characterMaterial, disposeModelTree, VertexParts } from './model-tools';"
+        },
+        {
+          "line": 15,
+          "text": "new VertexParts().box([0.22, 0.22, 0.58], [x, 0.52, -0.32], 0x36454c)"
+        },
+        {
+          "line": 19,
+          "text": "new VertexParts().box([0.15, 0.16, 0.55], [x * 1.4, 0.95, -0.42], 0x56696c)"
+        },
+        {
+          "line": 23,
+          "text": "new VertexParts().box([0.26, 0.12, 0.28], [-0.18, 0.61, -0.55], 0x83949a)"
+        },
+        {
+          "line": 27,
+          "text": "new VertexParts().box([0.30, 0.055, 0.27], [0, 0, 0], 0xc6b077).mesh(this.strap, material, 'brace-lower-strap');"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/CharacterMotion.ts",
+      "sha256": "0deb152d9d7ec16ec921bda2ff603dd1e95c596de0447f892e8c30e987745296",
+      "lines": 32,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/CharacterMotionTracker.ts",
+      "sha256": "0f0db5ed45045d2ee99619b23bdf6fdedb5c9112e66e4a41f85d6c6daabba13e",
+      "lines": 42,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/CharacterRig.ts",
+      "sha256": "3cde92e719eca63646b1ff37051c7a2d0a1025f27e1ac08ce4b1168fec6710c3",
+      "lines": 234,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/CrowdView.ts",
+      "sha256": "5ac552dd1c25b86ac4244d9700860947f2cc19129ba4a4628f9f0153e073cf07",
+      "lines": 104,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 5,
+          "text": "import { createCharacter } from './characters';"
+        },
+        {
+          "line": 14,
+          "text": "private readonly prototype = createCharacter('civilian');"
+        },
+        {
+          "line": 29,
+          "text": "const batch = new InstancedMesh(part.geometry, part.material, capacity);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/DeferredAirCover.ts",
+      "sha256": "66299d08e1666e61cb27e7dab8b73b81695877a307ca9259d790386573ab23ea",
+      "lines": 92,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/DepartureMonitor.ts",
+      "sha256": "2171df0632d4959961207e991e2239109f20f7f6b1b4476d23b9ba60823035f7",
+      "lines": 68,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 3,
+          "text": "import { createCharacter } from './characters';"
+        },
+        {
+          "line": 4,
+          "text": "import { characterMaterial, disposeModelTree, VertexParts } from './model-tools';"
+        },
+        {
+          "line": 15,
+          "text": "private readonly shao = createCharacter('civilian');"
+        },
+        {
+          "line": 23,
+          "text": "new VertexParts().box([32, 0.2, 18], [0, -0.1, 0], 0x516163)"
+        },
+        {
+          "line": 29,
+          "text": "new VertexParts().box([2.1, 0.68, 4.6], [0, 0.85, 0], 0x324347)"
+        },
+        {
+          "line": 36,
+          "text": "new VertexParts().cylinder(0.48, 0.20, [x, 0.48, z], 0x182b2d, [0, 0, Math.PI / 2]).mesh(this.car, material, 'road-wheel');"
+        },
+        {
+          "line": 39,
+          "text": "new VertexParts().box([0.08, 1.05, 1.13], [0, 1.43, -0.56], 0x34484c)"
+        },
+        {
+          "line": 42,
+          "text": "new VertexParts().box([0.49, 0.75, 0.32], [0, 1.03, 0], 0x26323a)"
+        },
+        {
+          "line": 47,
+          "text": "this.screen = new Mesh(new PlaneGeometry(...ESCORT.monitorScreenSize), new MeshBasicMaterial({ map: this.target.texture, toneMapped: false }));"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "sha256": "9bcda4c5c19d94b72bc75a4cd22352305eab9fa474250f7d0a7825d8939c0c52",
+      "lines": 104,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/Feedback.ts",
+      "sha256": "abd790a47c577c2f76536484abab1fd902d8b6de14097e7fb7a004a00a9983bf",
+      "lines": 49,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 8,
+          "text": "private geometry = new BufferGeometry();"
+        },
+        {
+          "line": 12,
+          "text": "private sparks = new InstancedMesh(new BoxGeometry(0.055, 0.055, 0.055), new MeshBasicMaterial(), 80);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/FirstPersonArms.ts",
+      "sha256": "2e90ae4b62ba8572c34e31b1a2e3c9245431f2f6852976185e99fa7c3134a25d",
+      "lines": 275,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 73,
+          "text": "const geometry = new BufferGeometry();"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/GeneratedArchitecture.ts",
+      "sha256": "5f7893b44bfdbe6f5896b704c97c477c28df9cc99ed84672287f280e344619d4",
+      "lines": 69,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 22,
+          "text": "/** Shared-library adapter. Call after PortKit.flush; dispose before generic tree traversal. */"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/GeneratedSceneAssets.ts",
+      "sha256": "ac95b900b57db7a31f660572c0f5ef90c8e54bee08badef4042f86d0af4ea74a",
+      "lines": 178,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 34,
+          "text": "* PortKit.flush(), then dispose BEFORE the environment's generic tree disposal."
+        },
+        {
+          "line": 149,
+          "text": "foundation = new Mesh(new BoxGeometry(width, height, depth), new MeshStandardMaterial({ color: 0x707d7e, roughness: 0.94, metalness: 0.08 }));"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/HeldItemMotion.ts",
+      "sha256": "6a98ed8ce5bdb149a2830ab2238527715b1c6a347772e3d4b21b239305a585e9",
+      "lines": 37,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/ImportedCharacter.ts",
+      "sha256": "284be4f1ba73d22504c852ba8a88e54095681b2adefdc3adfcdfab99cad00de7",
+      "lines": 289,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 7,
+          "text": "import { createCharacter } from './characters';"
+        },
+        {
+          "line": 48,
+          "text": "this.fallback = createCharacter(fallbackRole);"
+        },
+        {
+          "line": 110,
+          "text": "if (metadata?.schema !== 'ganymede.shared-animation/1' || metadata.referenceAsset !== 'CH-LU'"
+        },
+        {
+          "line": 115,
+          "text": "if (asset.bodyPlan === 'adult' && !['CH-SHAO', 'CH-DOCTOR', 'CH-SHEN'].includes(asset.id)) {"
+        },
+        {
+          "line": 183,
+          "text": "&& !['CH-SHAO', 'CH-DOCTOR', 'CH-SHEN'].includes(this.asset!.id)"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/ImportedWeaponView.ts",
+      "sha256": "5da30c57ecaf79331a37be4b19a1f4de918139776942f18e19bb4e574a0cf17b",
+      "lines": 283,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/IndirectLighting.ts",
+      "sha256": "b530a9c087a2eff5519cc7397e03120cee628fc6c722237cbe6bd744a571d7c1",
+      "lines": 19,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/OpeningView.ts",
+      "sha256": "26ff1a9e2dc25f69c8e8c2564db89de6f7ab4bc11f76b3a92367758517af6eb1",
+      "lines": 36,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/Sound.ts",
+      "sha256": "de223ff9e7ba5883dfca906f59a7cf361834535a7e2f955ba39897fd9ea0dfa5",
+      "lines": 529,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/TacticalAnimations.ts",
+      "sha256": "504eb034fee9466dfed287637bf2e7fabe52d38d21c8cfe161b4d2d46ae0e890",
+      "lines": 70,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/WorldAK47.ts",
+      "sha256": "57bc779842e029f6cd628c8000cdf7676b6788a935e20424b9c28fe5ffe232e1",
+      "lines": 274,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 10,
+          "text": "runtimePath: 'models/weapons/ak47-world-r1.glb',"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/architecture-bindings.ts",
+      "sha256": "0d27cad039a0809c3d0b48be7c64357486e22adef9ef496490dc6f68bcbce26b",
+      "lines": 155,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 8,
+          "text": "'BG-CRANE': { semantic: 'landmark', size: [0.891862, 1.443899, 1.889592] },"
+        },
+        {
+          "line": 9,
+          "text": "'BG-SHIP': { semantic: 'landmark', size: [0.794420, 0.550143, 1.891632] },"
+        },
+        {
+          "line": 10,
+          "text": "'ENV-BRIDGEKIT-DECK': { semantic: 'bridge-deck', size: [0.883221, 0.215912, 1.897539] },"
+        },
+        {
+          "line": 11,
+          "text": "'ENV-LIGHTKIT-POLE': { semantic: 'landmark', size: [0.867866, 1.896112, 0.356282] },"
+        },
+        {
+          "line": 12,
+          "text": "'ENV-PIPEKIT-ELBOW': { semantic: 'pipe-elbow', size: [1.044530, 1.843092, 1.891701] },"
+        },
+        {
+          "line": 13,
+          "text": "'MAP-A-ARCH-01': { semantic: 'arch-shell', size: [1.901770, 1.595701, 0.381619] },"
+        },
+        {
+          "line": 14,
+          "text": "'MAP-B-CORRIDOR-01': { semantic: 'arch-shell', size: [1.244916, 0.987584, 1.899415] },"
+        },
+        {
+          "line": 15,
+          "text": "'MAP-E-PIER-01': { semantic: 'pier', size: [1.311136, 1.890110, 1.310689] },"
+        },
+        {
+          "line": 16,
+          "text": "'MAP-F-ROOF-01': { semantic: 'arch-shell', size: [1.893160, 0.929554, 1.427892] },"
+        },
+        {
+          "line": 17,
+          "text": "'PROP-BOOTH': { semantic: 'booth', size: [1.895350, 1.652386, 1.862850] },"
+        },
+        {
+          "line": 18,
+          "text": "'PROP-TANK': { semantic: 'landmark', size: [1.626666, 1.898614, 1.620525] },"
+        },
+        {
+          "line": 33,
+          "text": "/** Capture only root-level immutable PortKit batches, excluding every actor/prop visual slot. */"
+        },
+        {
+          "line": 117,
+          "text": "add('S05-far-facades', [3, 4, 5].map(i => uniformPlacement(`facade-${i}`, 'MAP-C-FACADE-01', [77 + i % 3 * 17, 1, 30 - i * 19 + 7.9], 1, 5)));"
+        },
+        {
+          "line": 118,
+          "text": "add('S05-pipe-return-elbow', [uniformPlacement('pipe-elbow', 'ENV-PIPEKIT-ELBOW', [37, 2.15, 29.65], 1, .7)]);"
+        },
+        {
+          "line": 120,
+          "text": "add('S05-external-inspection-booth', [uniformPlacement('booth', 'PROP-BOOTH', [-60, 0, -65], 1, 3.2, Math.PI / 2)]);"
+        },
+        {
+          "line": 122,
+          "text": "add('S05-secondary-tank', [uniformPlacement('tank', 'PROP-TANK', [44, .4, 27], 0, 4.4)], collect(tankParts));"
+        },
+        {
+          "line": 124,
+          "text": "add('S05-north-lamp', [uniformPlacement('lamp', 'ENV-LIGHTKIT-POLE', [-27, 0, -66], 1, 7)], collect(lamp));"
+        },
+        {
+          "line": 126,
+          "text": "add('S05-dock-crane', [uniformPlacement('dock-crane', 'BG-CRANE', [88, 0, -48], 1, 24, .45)]);"
+        },
+        {
+          "line": 131,
+          "text": "add('S01-S02-entry-arch-crown', [uniformPlacement('history-arch', 'MAP-A-ARCH-01', [30.45, 7.8, -2], 0, 12.5, Math.PI / 2)]);"
+        },
+        {
+          "line": 135,
+          "text": "add('S06-S07-cargo-corridor', [uniformPlacement('cargo-corridor', 'MAP-B-CORRIDOR-01', [-42, 0, 63], 2, 18)]);"
+        },
+        {
+          "line": 143,
+          "text": "const length = (maxX - minX) / 5, depth = length * EXTRA['ENV-BRIDGEKIT-DECK'].size[0] / EXTRA['ENV-BRIDGEKIT-DECK'].size[2];"
+        },
+        {
+          "line": 144,
+          "text": "const rise = length * EXTRA['ENV-BRIDGEKIT-DECK'].size[1] / EXTRA['ENV-BRIDGEKIT-DECK'].size[2];"
+        },
+        {
+          "line": 145,
+          "text": "for (let x = 0; x < 5; x++) for (let z = minZ + depth / 2; z + depth / 2 <= maxZ; z += depth) decks.push(uniformPlacement(`bridge-${n}-${x}-${z}`, 'ENV-BRIDGEKIT-DECK', [minX + (x + .5) * length, -.47 - rise, z], 2, length, Math.PI / 2));"
+        },
+        {
+          "line": 146,
+          "text": "for (const x of [minX + 7, maxX - 7]) for (const z of [minZ + 2.4, maxZ - 2.4]) piers.push(uniformPlacement(`pier-${n}-${x}-${z}`, 'MAP-E-PIER-01', [x, -7, z], 1, 5.5));"
+        },
+        {
+          "line": 151,
+          "text": "add('S12-receiving-warehouse-roof', [uniformPlacement('shore-roof', 'MAP-F-ROOF-01', [-348, 5.4, 59], 0, 34)], collect(at(items, 'box', [-348, 5.27, 59], [34.5, .2, 20.5])));"
+        },
+        {
+          "line": 152,
+          "text": "add('S12-offshore-receiving-ship', [uniformPlacement('receiving-ship', 'BG-SHIP', [-180, -1.5, 139], 2, 68, Math.PI / 2)]);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/architecture-placement-plan.ts",
+      "sha256": "46ca91546be17585f351b269ffe53b0aabdbe1312d939a648ada4b6b3b4b1702",
+      "lines": 176,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 6,
+          "text": "'ARCH-FLOOR-METAL': { semantic: 'floor-panel', size: [1.8895001411, 0.1119674891, 1.8869773149], basis: [0, 0, 0, 1], limit: 1.35 },"
+        },
+        {
+          "line": 7,
+          "text": "'ARCH-WALL-PAINT': { semantic: 'wall-panel', size: [1.8966026306, 0.9395144582, 0.1387816221], basis: [0, 0, 0, 1], limit: 1.5 },"
+        },
+        {
+          "line": 8,
+          "text": "'ARCH-ROOF-METAL': { semantic: 'roof-panel', size: [1.8950922489, 0.1408181936, 1.8906607628], basis: [0, 0, 0, 1], limit: 1.35 },"
+        },
+        {
+          "line": 10,
+          "text": "'ARCH-BEAM-STEEL': { semantic: 'beam', size: [0.0866085365, 1, 0.0915544555], basis: [-Math.SQRT1_2, 0, 0, Math.SQRT1_2], limit: 1.45 },"
+        },
+        {
+          "line": 11,
+          "text": "'ARCH-CARGO-CONTAINER': { semantic: 'cargo-container', size: [0.3861933947, 0.3735889494, 1], basis: [0, 0, 0, 1], limit: 1.25 },"
+        },
+        {
+          "line": 12,
+          "text": "'ARCH-COVER-CONCRETE': { semantic: 'cover', size: [1.8966426849, 0.5576271415, 0.4883289039], basis: [0, 0, 0, 1], limit: 1.4 },"
+        },
+        {
+          "line": 13,
+          "text": "'ENV-WALLKIT-PANEL': { semantic: 'wall-panel', size: [1.8961840868, 0.7955505848, 0.2567566335], basis: [0, 0, 0, 1], limit: 1.35 },"
+        },
+        {
+          "line": 14,
+          "text": "'ENV-PIPEKIT-STRAIGHT': { semantic: 'pipe-straight', size: [0.6520778537, 1.8800470829, 0.6318317056], basis: [0, 0, Math.SQRT1_2, Math.SQRT1_2], limit: 1.35 },"
+        },
+        {
+          "line": 15,
+          "text": "'MAP-C-ICEBANK-01': { semantic: 'ice-bank', size: [1.8940956593, 1.2388576269, 1.3207361698], basis: [0, Math.SQRT1_2, 0, Math.SQRT1_2], limit: 1.025 },"
+        },
+        {
+          "line": 16,
+          "text": "'MAP-C-FACADE-01': { semantic: 'facade-module', size: [1.8882472515, 1.6354393959, 0.5295301080], basis: [0, 0, 0, 1], limit: 1.025 },"
+        },
+        {
+          "line": 17,
+          "text": "'BG-HEAT': { semantic: 'landmark', size: [1.0380849838, 1.8990132809, 0.9431426525], basis: [0, 0, 0, 1], limit: 1.025 },"
+        },
+        {
+          "line": 31,
+          "text": "const floor = id === 'ARCH-FLOOR-METAL', background = p.semantic === 'landmark' || p.semantic === 'ice-bank';"
+        },
+        {
+          "line": 33,
+          "text": "basis: { quaternion: [...p.basis] as Q4, description: id === 'ARCH-BEAM-STEEL' || id === 'ENV-PIPEKIT-STRAIGHT' ? 'Long axis mapped to module +Y' : '+Y vertical; module width X, depth Z',"
+        },
+        {
+          "line": 45,
+          "text": "export function slabGrid(id: string, assetId: 'ARCH-FLOOR-METAL' | 'ARCH-ROOF-METAL', x: number, z: number, width: number, depth: number, bottom: number, thickness: number): ArchitecturePlacement[] {"
+        },
+        {
+          "line": 47,
+          "text": "const nominal = assetId === 'ARCH-ROOF-METAL' ? Math.min(4, thickness / source[1] * source[0] * 1.1) : 4;"
+        },
+        {
+          "line": 49,
+          "text": "for (let ix = 0; ix < nx; ix++) for (let iz = 0; iz < nz; iz++) result.push({ ...p(`${id}-${ix}-${iz}`, assetId, assetId === 'ARCH-FLOOR-METAL' ? 'floor-panel' : 'roof-panel',"
+        },
+        {
+          "line": 56,
+          "text": "const source = SOURCE_PROFILES['ARCH-WALL-PAINT'].size, nx = Math.ceil(length / 4), sx = length / nx;"
+        },
+        {
+          "line": 62,
+          "text": "result.push({ ...p(`${id}-${ix}-${iy}-${iz}`, 'ARCH-WALL-PAINT', 'wall-panel', [x + (alongZ ? b : a), bottom + sy * iy, z + (alongZ ? -a : b)], [sx, sy, sd], alongZ ? Math.PI / 2 : 0), batchKey: id });"
+        },
+        {
+          "line": 68,
+          "text": "const a = new Vector3(...from), delta = new Vector3(...to).sub(a), length = delta.length(), source = SOURCE_PROFILES['ARCH-BEAM-STEEL'].size;"
+        },
+        {
+          "line": 74,
+          "text": "if (distortion <= SOURCE_PROFILES['ARCH-BEAM-STEEL'].limit && (!best || cost < best.cost)) best = { x, y, z, cost };"
+        },
+        {
+          "line": 81,
+          "text": "result.push({ ...p(`${id}-${x}-${y}-${z}`, 'ARCH-BEAM-STEEL', 'beam', a.clone().addScaledVector(delta, (y + 0.5) / best.y).add(offset).toArray() as [number, number, number],"
+        },
+        {
+          "line": 93,
+          "text": "...slabGrid(`${id}-roof`, 'ARCH-ROOF-METAL', x, z, width + 0.5, depth + 0.5, height - 0.03, 0.2)];"
+        },
+        {
+          "line": 98,
+          "text": "groups.push(group('S05-ground', file, 94, 'named mesh port-ground; front-ground collider retained', slabGrid('S05-ground', 'ARCH-FLOOR-METAL', 0, -22, 108, 148, -0.2, 0.2), ['999 floor tiles, 20 spatial chunks; no raised rim permitted. Top remains y=0.']));"
+        },
+        {
+          "line": 100,
+          "text": "for (const x of [-54, 54]) for (let i = 0; i < 24; i++) boundary.push(p(`boundary-x${x}-${i}`, 'ENV-WALLKIT-PANEL', 'wall-panel', [x, 0, -96 + (i + 0.5) * 148 / 24], [148 / 24, 2.8, 0.8], Math.PI / 2));"
+        },
+        {
+          "line": 101,
+          "text": "for (const z of [-96, 52]) for (let i = 0; i < 17; i++) boundary.push(p(`boundary-z${z}-${i}`, 'ENV-WALLKIT-PANEL', 'wall-panel', [-54 + (i + 0.5) * 108 / 17, 0, z], [108 / 17, 2.8, 0.8]));"
+        },
+        {
+          "line": 108,
+          "text": "`PortKit.workshop(${x},${z},${width},${depth}) body+roof only; its facade accessories remain uncovered until bound separately`, warehouse(`workshop-${id}`, x, z, width, depth),"
+        },
+        {
+          "line": 121,
+          "text": "const size = SOURCE_PROFILES['ENV-PIPEKIT-STRAIGHT'].size, count = Math.round(21 / (diameter * size[1] / Math.max(size[0], size[2])));"
+        },
+        {
+          "line": 122,
+          "text": "for (let i = 0; i < count; i++) pipes.push({ ...p(`pipe-${x}-${i}`, 'ENV-PIPEKIT-STRAIGHT', 'pipe-straight', [x, y, 8.5 + 21 * (i + 0.5) / count], [diameter, 21 / count, diameter]), anchor: 'center', pitch: Math.PI / 2 });"
+        },
+        {
+          "line": 125,
+          "text": "const ice = SOURCE_PROFILES['MAP-C-ICEBANK-01'].size;"
+        },
+        {
+          "line": 127,
+          "text": "const h = 34 + i % 4 * 7; return p(`ice-${i}`, 'MAP-C-ICEBANK-01', 'ice-bank', [-101 - i % 3 * 18, 5 - h / 2, 42 - i * 16], [h * ice[0] / ice[1], h, h * ice[2] / ice[1]], i * 0.45);"
+        },
+        {
+          "line": 129,
+          "text": "const heat = SOURCE_PROFILES['BG-HEAT'].size;"
+        },
+        {
+          "line": 131,
+          "text": "const h = 12 + i * 4; return p(`heat-${i}`, 'BG-HEAT', 'landmark', [77 + i * 17, 0, 30 - i * 19], [h * heat[0] / heat[1], h, h * heat[2] / heat[1]]);"
+        },
+        {
+          "line": 133,
+          "text": "const cargo = [[-11, -79], [-4, -79], [3, -79], [29, 26]].map(([x, z], i) => p(`cargo-${i}`, 'ARCH-CARGO-CONTAINER', 'cargo-container', [x, 0, z], [2.9, 2.68, 6.7], Math.PI / 2));"
+        },
+        {
+          "line": 134,
+          "text": "groups.push(group('S05-freight-containers', file, 109, 'four PortKit.container visual scopes, all corrugation/locking-bar members', cargo, ['Actual Tripo long axis is +Z; quarter-turn retains existing shipping-container footprint. Closed exterior; no new enter"
+        },
+        {
+          "line": 137,
+          "text": "const coverProfile = SOURCE_PROFILES['ARCH-COVER-CONCRETE'], coverPlacements = covers.flatMap(([x, z, length, yaw], i) => {"
+        },
+        {
+          "line": 142,
+          "text": "return p(`cover-${i}-${j}`, 'ARCH-COVER-CONCRETE', 'cover', [x + Math.cos(yaw) * offset, 0, z - Math.sin(yaw) * offset], [width, 1.2, 1.05], yaw);"
+        },
+        {
+          "line": 145,
+          "text": "groups.push(group('S05-cover', file, 113, '15 PortKit.cover scopes; preserve warning color overlays if used as information', coverPlacements,"
+        },
+        {
+          "line": 148,
+          "text": "{ entity: 'worker repair shallow-vault roof, 18×14m', reason: 'Existing MAP-A/MAP-F source aspect does not match shallow 18m span; requires approved shallow canopy arrangement or a dedicated module.' },"
+        },
+        {
+          "line": 158,
+          "text": "groups.push(group('S11-ground', file, 22, 'port-ground AND the medical-ground box instance; one atomic transaction', slabGrid('S11-ground', 'ARCH-FLOOR-METAL', -402, 58, 44, 52, -0.2, 0.2), ['143 tiles / 4 spatial chunks. Both coincident old floor visuals must"
+        },
+        {
+          "line": 166,
+          "text": "groups.push(group('S11-ceiling', file, 31, 'medical-roof flat box only, not the separate arch geometry', slabGrid('S11-ceiling', 'ARCH-ROOF-METAL', -402, 56, 37, 41, 5.6, 0.3),"
+        },
+        {
+          "line": 169,
+          "text": "{ entity: '37×41m shallow vaulted outer roof at y=6', reason: 'MAP-F-ROOF uniform span37 gives ≈18.17m rise, unlike old ≈3.75m rise. Do not stretch it to fit; dedicated shallow-vault asset/segmentation is needed.' },"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/chapter-environments.ts",
+      "sha256": "ab18ae1a0d171397e84df665bd73227b6f3aecfdf4e65b57c3d597069fb3ca6f",
+      "lines": 388,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 4,
+          "text": "import { characterMaterial, VertexParts } from './model-tools';"
+        },
+        {
+          "line": 5,
+          "text": "import { addGround, PortKit, type SceneBounds, type Surface } from './port-kit';"
+        },
+        {
+          "line": 15,
+          "text": "function wall(kit: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'concrete'): void {"
+        },
+        {
+          "line": 20,
+          "text": "function chapterGround(kit: PortKit, bounds: SceneBounds): void {"
+        },
+        {
+          "line": 29,
+          "text": "function room(kit: PortKit, id: string, minX: number, maxX: number, minZ: number, maxZ: number, doorZ: number, openingSide: 'left' | 'right'): void {"
+        },
+        {
+          "line": 46,
+          "text": "function light(kit: PortKit, at: Vec3, color: number, intensity: number, range: number): void {"
+        },
+        {
+          "line": 54,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 65,
+          "text": "function fan(kit: PortKit): { rotor: Group; obstruction: Group; lamp: MeshStandardMaterial } {"
+        },
+        {
+          "line": 71,
+          "text": "const pieces = new VertexParts().cylinder(0.25, 0.22, [0, 0, 0], 0xc5c9b7, [Math.PI / 2, 0, 0]);"
+        },
+        {
+          "line": 79,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 84,
+          "text": "const lamp = new MeshStandardMaterial({ color: 0xe3ab56, emissive: 0xe3ab56, emissiveIntensity: 1.2, roughness: 0.35 });"
+        },
+        {
+          "line": 85,
+          "text": "const signal = new Mesh(new CylinderGeometry(0.11, 0.11, 0.05, 12), lamp);"
+        },
+        {
+          "line": 92,
+          "text": "export function buildNightShift(kit: PortKit): SceneDynamics {"
+        },
+        {
+          "line": 184,
+          "text": "function slidingGate(kit: PortKit, id: string, z: number, width: number, fact: string): (opened: boolean) => void {"
+        },
+        {
+          "line": 187,
+          "text": "const panel = new PortKit();"
+        },
+        {
+          "line": 206,
+          "text": "function crossWall(kit: PortKit, id: string, z: number, opening: number): void {"
+        },
+        {
+          "line": 215,
+          "text": "function militaryTruck(kit: PortKit, x: number, z: number): void {"
+        },
+        {
+          "line": 233,
+          "text": "function transferBus(kit: PortKit): void {"
+        },
+        {
+          "line": 247,
+          "text": "function stairAndGallery(kit: PortKit): void {"
+        },
+        {
+          "line": 288,
+          "text": "function streetLandmarks(kit: PortKit): void {"
+        },
+        {
+          "line": 310,
+          "text": "export function buildWorkersSector(kit: PortKit): SceneDynamics {"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/characters.ts",
+      "sha256": "bca48fecc3e3d6c734b7b5aa37e832b44879b3b365eab39b996eb15c58166164",
+      "lines": 235,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 3,
+          "text": "import { characterMaterial, disposeModelTree, VertexParts } from './model-tools';"
+        },
+        {
+          "line": 4,
+          "text": "import { createPatientCart } from './patient-cart';"
+        },
+        {
+          "line": 25,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 42,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 47,
+          "text": "new VertexParts().box([0.045, 0.027, 0.065], [0, 0, 0], C.steel).mesh(bolt, material, 'charging-handle');"
+        },
+        {
+          "line": 55,
+          "text": "new VertexParts().box([0.08, 0.09, 0.28], [0, 0, -0.14], C.steel)"
+        },
+        {
+          "line": 63,
+          "text": "export function createCharacter(role: CharacterRole): CharacterModel {"
+        },
+        {
+          "line": 64,
+          "text": "if (role === 'cart') return createPatientCart();"
+        },
+        {
+          "line": 83,
+          "text": "const torso = new VertexParts()"
+        },
+        {
+          "line": 108,
+          "text": "const face = new VertexParts().box([headSize, headSize, headSize * 0.9], [0, 0, 0], C.skin);"
+        },
+        {
+          "line": 128,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 133,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 139,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 206,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 212,
+          "text": "new VertexParts()"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/environment.ts",
+      "sha256": "1e1fcacbd3266c56781f4d89281222b0f537e2182c529b57277c20a711cc00aa",
+      "lines": 239,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 8,
+          "text": "import { addGround, PortKit } from './port-kit';"
+        },
+        {
+          "line": 35,
+          "text": "const texture = new DataTexture(data, width, height, RGBAFormat); texture.colorSpace = SRGBColorSpace; texture.needsUpdate = true;"
+        },
+        {
+          "line": 38,
+          "text": "const planet = new Mesh(new SphereGeometry(radius, 40, 24), new MeshBasicMaterial({ map: texture, fog: false, depthWrite: false }));"
+        },
+        {
+          "line": 46,
+          "text": "function siteBase(kit: PortKit): void {"
+        },
+        {
+          "line": 84,
+          "text": "function northGate(kit: PortKit): void {"
+        },
+        {
+          "line": 121,
+          "text": "function prologueHall(kit: PortKit): void {"
+        },
+        {
+          "line": 154,
+          "text": "function handoverSite(kit: PortKit): void {"
+        },
+        {
+          "line": 186,
+          "text": "const kit = new PortKit();"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/epilogue-environment.ts",
+      "sha256": "f9f69262e079e95a3d54ec0c4311f6fe579f3458a1d87c37bfa422c0e03177b7",
+      "lines": 82,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 5,
+          "text": "import { addGround, PortKit, type Surface } from './port-kit';"
+        },
+        {
+          "line": 8,
+          "text": "function block(k: PortKit, id: string, p: Vec3, size: Vec3, surface: Surface = 'pale') {"
+        },
+        {
+          "line": 11,
+          "text": "function shoreLeg(k: PortKit, a: Vec3, b: Vec3) {"
+        },
+        {
+          "line": 21,
+          "text": "export function buildEpilogue(k: PortKit): SceneDynamics {"
+        },
+        {
+          "line": 62,
+          "text": "const panel = new Mesh(new BoxGeometry(6, 3.4, 0.24), new MeshStandardMaterial({ color: 0x65838a, metalness: 0.35, roughness: 0.7 }));"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/escort-environment.ts",
+      "sha256": "04608328cc139c5a1c1909151bc84f9ed165b05b91743ab5035a0bd4328f1f16",
+      "lines": 213,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 5,
+          "text": "import { addGround, PortKit, type Surface } from './port-kit';"
+        },
+        {
+          "line": 7,
+          "text": "function block(k: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'concrete'): void {"
+        },
+        {
+          "line": 10,
+          "text": "function screen(k: PortKit, id: string, a: Vec3, b: Vec3, height = 2.8, thickness = 0.45): void {"
+        },
+        {
+          "line": 17,
+          "text": "function bridge(k: PortKit, i: number, r: { minX: number; maxX: number; minZ: number; maxZ: number }): void {"
+        },
+        {
+          "line": 35,
+          "text": "function terrain(k: PortKit): void {"
+        },
+        {
+          "line": 67,
+          "text": "function reception(k: PortKit) {"
+        },
+        {
+          "line": 89,
+          "text": "const door = new PortKit(); door.root.name = 'escort-loading-door';"
+        },
+        {
+          "line": 98,
+          "text": "function shelterRoutes(k: PortKit): void {"
+        },
+        {
+          "line": 121,
+          "text": "function sidePlatform(k: PortKit): void {"
+        },
+        {
+          "line": 144,
+          "text": "function industrialFields(k: PortKit): void {"
+        },
+        {
+          "line": 172,
+          "text": "function medicalStation(k: PortKit) {"
+        },
+        {
+          "line": 185,
+          "text": "const pillow = new PortKit(); pillow.root.name = 'escort-patient-pillow';"
+        },
+        {
+          "line": 193,
+          "text": "export function buildEscort(k: PortKit): SceneDynamics {"
+        },
+        {
+          "line": 197,
+          "text": "const mat = new MeshStandardMaterial({ color: 0x6d8584, emissive: 0x6d8584, emissiveIntensity: 0.25, roughness: 0.45 });"
+        },
+        {
+          "line": 198,
+          "text": "const mesh = new Mesh(new BoxGeometry(0.20, 0.16, 0.10), mat); mesh.name = name; mesh.position.set(...at); k.root.add(mesh); return mat;"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/flank-environment.ts",
+      "sha256": "deb6f4da42c716a2aa1924c2d2fbef835b9eb35bb5dcd1532e41a2ccd7defa74",
+      "lines": 153,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 5,
+          "text": "import { PortKit, type Surface } from './port-kit';"
+        },
+        {
+          "line": 8,
+          "text": "function block(kit: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'steel'): void {"
+        },
+        {
+          "line": 13,
+          "text": "function stairs(kit: PortKit, id: string, x: number, firstZ: number, width: number, count: number, rise: number, run: number, direction: 1 | -1, ascending: boolean): void {"
+        },
+        {
+          "line": 22,
+          "text": "function sideRail(kit: PortKit, id: string, x: number, y: number, startZ: number, endZ: number): void {"
+        },
+        {
+          "line": 31,
+          "text": "function maintenancePlatform(kit: PortKit): void {"
+        },
+        {
+          "line": 66,
+          "text": "function pumpAndTanks(kit: PortKit): void {"
+        },
+        {
+          "line": 84,
+          "text": "function separatedTransport(kit: PortKit): void {"
+        },
+        {
+          "line": 124,
+          "text": "export function buildFlank(kit: PortKit): SceneDynamics {"
+        },
+        {
+          "line": 130,
+          "text": "const shape = new CylinderGeometry(0.12, 0.12, 0.07, 12);"
+        },
+        {
+          "line": 132,
+          "text": "const material = new MeshStandardMaterial({ color: 0x647f84, emissive: 0x647f84, emissiveIntensity: 0.25, roughness: 0.4 });"
+        },
+        {
+          "line": 133,
+          "text": "const mesh = new Mesh(shape, material); mesh.name = name; mesh.position.set(...at); mesh.rotation.x = Math.PI / 2; kit.root.add(mesh);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/frontgate-environment.ts",
+      "sha256": "4c1406764928e6debce8c29ea9cc99406eef72e525ffe8bbde2362c08035b0df",
+      "lines": 187,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 5,
+          "text": "import { addGround, PortKit, type Surface } from './port-kit';"
+        },
+        {
+          "line": 7,
+          "text": "function block(kit: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'concrete'): void {"
+        },
+        {
+          "line": 11,
+          "text": "function gantry(kit: PortKit, x: number, z: number, width: number, text: string): void {"
+        },
+        {
+          "line": 25,
+          "text": "function filterBank(kit: PortKit): void {"
+        },
+        {
+          "line": 38,
+          "text": "function workerBackRoute(kit: PortKit): void {"
+        },
+        {
+          "line": 71,
+          "text": "function distantPort(kit: PortKit): void {"
+        },
+        {
+          "line": 90,
+          "text": "export function buildFrontGate(kit: PortKit): SceneDynamics {"
+        },
+        {
+          "line": 161,
+          "text": "const signalShape = new CylinderGeometry(0.15, 0.15, 0.09, 12);"
+        },
+        {
+          "line": 163,
+          "text": "const material = new MeshStandardMaterial({ color: 0x617b81, emissive: 0x617b81, emissiveIntensity: 0.3, roughness: 0.35 });"
+        },
+        {
+          "line": 164,
+          "text": "const mesh = new Mesh(signalShape, material); mesh.name = name; mesh.position.set(...at);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/history-environments.ts",
+      "sha256": "33e1be218aacefb0f8a1781a517b5a8fcb72b33c2baa626cedf6c1a53f793ad6",
+      "lines": 242,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 5,
+          "text": "import { addGround, PortKit, type SceneBounds, type Surface } from './port-kit';"
+        },
+        {
+          "line": 9,
+          "text": "function block(kit: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'concrete', openFact?: string): void {"
+        },
+        {
+          "line": 14,
+          "text": "function floor(kit: PortKit, id: string, bounds: SceneBounds, height: number): void {"
+        },
+        {
+          "line": 21,
+          "text": "function light(kit: PortKit, at: Vec3, color: number, intensity: number, range: number): PointLight {"
+        },
+        {
+          "line": 25,
+          "text": "function bench(kit: PortKit, x: number, z: number, length = 6): void {"
+        },
+        {
+          "line": 36,
+          "text": "const model = new PortKit(); model.root.name = name;"
+        },
+        {
+          "line": 46,
+          "text": "export function buildHistoryHall(kit: PortKit): SceneDynamics {"
+        },
+        {
+          "line": 70,
+          "text": "const section = new PortKit(); section.root.name = `history-roof-section-${roofPanels.length}`;"
+        },
+        {
+          "line": 99,
+          "text": "const lunch = new PortKit(); lunch.root.name = 'history-lunchbox-on-bench';"
+        },
+        {
+          "line": 112,
+          "text": "const mattress = new PortKit(); mattress.root.name = 'history-mattress-in-aisle';"
+        },
+        {
+          "line": 122,
+          "text": "const upright = new PortKit(); upright.root.name = 'history-mattress-moved'; upright.root.visible = false;"
+        },
+        {
+          "line": 165,
+          "text": "const gate = new PortKit(); gate.root.name = 'history-maintenance-door'; gate.root.userData.openFact = 'history-gate-open';"
+        },
+        {
+          "line": 171,
+          "text": "const partition = new PortKit(); partition.root.name = 'history-lower-partition';"
+        },
+        {
+          "line": 176,
+          "text": "const rubble = new PortKit(); rubble.root.name = 'history-collapse-debris'; rubble.root.visible = false;"
+        },
+        {
+          "line": 187,
+          "text": "const rafter = new PortKit(); rafter.root.name = 'history-intact-rafter';"
+        },
+        {
+          "line": 194,
+          "text": "const spilled = new PortKit(); spilled.root.name = 'history-spilled-lunch'; spilled.root.visible = false;"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/medical-environment.ts",
+      "sha256": "1aea2e05560dcb16ed34afb28bc342896e39d3fbb73b4ff028980a33cd9cbe6c",
+      "lines": 92,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 5,
+          "text": "import { addGround, PortKit, type Surface } from './port-kit';"
+        },
+        {
+          "line": 7,
+          "text": "function block(k: PortKit, id: string, p: Vec3, size: Vec3, surface: Surface = 'pale') {"
+        },
+        {
+          "line": 10,
+          "text": "function desk(k: PortKit, id: string, p: Vec3) {"
+        },
+        {
+          "line": 17,
+          "text": "export function buildMedical(k: PortKit): SceneDynamics {"
+        },
+        {
+          "line": 38,
+          "text": "const locker = (slot: PortKit) => {"
+        },
+        {
+          "line": 79,
+          "text": "const material = new MeshStandardMaterial({ color: 0xa7c0b4, roughness: 0.95 });"
+        },
+        {
+          "line": 80,
+          "text": "const sheet = new Mesh(new BoxGeometry(7, 3.6, 0.06), material); sheet.position.x = 3.5; sheet.castShadow = true; sheet.receiveShadow = true; curtain.add(sheet);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/model-tools.ts",
+      "sha256": "0c6fd2a1cfaa7f247c555264d9a8580f62143aee4f75b1141b514acec7d39259",
+      "lines": 95,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 10,
+          "text": "export class VertexParts {"
+        },
+        {
+          "line": 13,
+          "text": "return this.add(new BoxGeometry(...size), at, color, rotation);"
+        },
+        {
+          "line": 16,
+          "text": "return this.add(new CylinderGeometry(radius, radius, height, sides), at, color, rotation);"
+        },
+        {
+          "line": 39,
+          "text": "const mesh = new Mesh(merged, material);"
+        },
+        {
+          "line": 49,
+          "text": "return new MeshStandardMaterial({ vertexColors: true, roughness: 0.78, metalness: 0.12 });"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/patient-cart.ts",
+      "sha256": "aa85349798bdd63275d45ff7f944dfab753e5c86d69ad61b7f8a98e1052f542b",
+      "lines": 63,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 3,
+          "text": "import { characterMaterial, disposeModelTree, VertexParts } from './model-tools';"
+        },
+        {
+          "line": 6,
+          "text": "export function createPatientCart(): CharacterModel {"
+        },
+        {
+          "line": 10,
+          "text": "new VertexParts()"
+        },
+        {
+          "line": 19,
+          "text": "new VertexParts().box([0.63, 0.5, 0.72], [0, 1.05, -0.5], 0x728e89)"
+        },
+        {
+          "line": 24,
+          "text": "new VertexParts().box([0.58, 0.23, 1.30], [0, 0.91, -0.15], 0x87a3a3)"
+        },
+        {
+          "line": 31,
+          "text": "new VertexParts().box([0.045, 0.42, 0.045], [x, 0.40, z], 0x788f96).mesh(root, material, 'leg');"
+        },
+        {
+          "line": 33,
+          "text": "new VertexParts().cylinder(0.15, 0.10, [0, 0, 0], 0x28373d, [0, 0, Math.PI / 2])"
+        },
+        {
+          "line": 39,
+          "text": "new VertexParts().box([0.42, 0.59, 0.28], [0, 1.10, 0], 0xc3c9c2)"
+        },
+        {
+          "line": 50,
+          "text": "new VertexParts().box([0.16, 0.67, 0.18], [0, -0.34, 0], 0x36454c)"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/port-kit.ts",
+      "sha256": "376fad70765f5deb83508f8e1790a2ae460746549e2bafdcb79e815b7f016d72",
+      "lines": 270,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 29,
+          "text": "const geometry = new ExtrudeGeometry(shape, { depth: 1, bevelEnabled: false, steps: 1 });"
+        },
+        {
+          "line": 35,
+          "text": "export class PortKit {"
+        },
+        {
+          "line": 49,
+          "text": "visualSlot(id: string, build: (slot: PortKit) => void): Group {"
+        },
+        {
+          "line": 52,
+          "text": "const slot = new PortKit();"
+        },
+        {
+          "line": 69,
+          "text": "material = new MeshStandardMaterial({ color: PALETTE[surface], roughness: surface === 'glass' ? 0.3 : 0.8, metalness: ['steel', 'paint', 'pale'].includes(surface) ? 0.33 : 0.06 });"
+        },
+        {
+          "line": 80,
+          "text": "geometry = kind === 'cylinder' ? new CylinderGeometry(1, 1, 1, 12) : kind === 'cone' ? new ConeGeometry(1, 1, 5) : kind === 'elbow' ? new TorusGeometry(1, 0.13, 6, 14, Math.PI / 2) : kind === 'arch' ? archGeometry() : new BoxGeometry(1, 1, 1);"
+        },
+        {
+          "line": 131,
+          "text": "const texture = new CanvasTexture(canvas); texture.colorSpace = SRGBColorSpace;"
+        },
+        {
+          "line": 132,
+          "text": "const mesh = new Mesh(new PlaneGeometry(width, height), new MeshBasicMaterial({ map: texture, toneMapped: false }));"
+        },
+        {
+          "line": 237,
+          "text": "const mesh = new InstancedMesh(batch.geometry, batch.material, batch.matrices.length);"
+        },
+        {
+          "line": 263,
+          "text": "const texture = new DataTexture(bytes, edge, edge, RGBAFormat);"
+        },
+        {
+          "line": 266,
+          "text": "const material = new MeshStandardMaterial({ map: texture, roughness: 0.98, metalness: 0.03 });"
+        },
+        {
+          "line": 267,
+          "text": "const mesh = new Mesh(new BoxGeometry(bounds.maxX - bounds.minX, 0.4, bounds.maxZ - bounds.minZ), material);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/relief-environment.ts",
+      "sha256": "b5eb8851d98e1138cf71e5b783dcbde927a8f82c73fd7b32a663478e405386c8",
+      "lines": 120,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 5,
+          "text": "import { addGround, PortKit, type Surface } from './port-kit';"
+        },
+        {
+          "line": 7,
+          "text": "function block(k: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'concrete'): void {"
+        },
+        {
+          "line": 10,
+          "text": "function yard(k: PortKit): void {"
+        },
+        {
+          "line": 40,
+          "text": "function protectedArrival(k: PortKit): void {"
+        },
+        {
+          "line": 52,
+          "text": "function firingAndWithdrawal(k: PortKit): void {"
+        },
+        {
+          "line": 71,
+          "text": "function restShelter(k: PortKit) {"
+        },
+        {
+          "line": 97,
+          "text": "const brace = new PortKit(); brace.root.name = 'relief-care-spare-strap';"
+        },
+        {
+          "line": 104,
+          "text": "export function buildRelief(k: PortKit): SceneDynamics {"
+        },
+        {
+          "line": 107,
+          "text": "const shape = new CylinderGeometry(0.12, 0.12, 0.07, 12);"
+        },
+        {
+          "line": 109,
+          "text": "const mat = new MeshStandardMaterial({ color: 0x647b80, emissive: 0x647b80, emissiveIntensity: 0.25, roughness: 0.4 });"
+        },
+        {
+          "line": 110,
+          "text": "const mesh = new Mesh(shape, mat); mesh.name = name; mesh.position.set(...at); mesh.rotation.x = Math.PI / 2; k.root.add(mesh); return mat;"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/rescue-environment.ts",
+      "sha256": "b3758eb88a2611603e261a481d314c3d50d65548c965a3892e92a511c559503d",
+      "lines": 78,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 4,
+          "text": "import { addGround, PortKit, type Surface } from './port-kit';"
+        },
+        {
+          "line": 6,
+          "text": "function block(k: PortKit, id: string, p: Vec3, size: Vec3, surface: Surface = 'concrete') {"
+        },
+        {
+          "line": 9,
+          "text": "function road(k: PortKit, a: Vec3, b: Vec3) {"
+        },
+        {
+          "line": 24,
+          "text": "export function buildRescue(k: PortKit): SceneDynamics {"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-palette.js",
+      "sha256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae",
+      "lines": 6,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-source.js",
+      "sha256": "ec554326e57f5ef3f36748af7030b2d7503da828dddf6a10ad7da5415e3de8f2",
+      "lines": 5,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.d.ts",
+      "sha256": "6027797a540fcd1ffdcb4d45947f544295889f6564b20970b36fdc1b120dbedd",
+      "lines": 12,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 4,
+          "text": "export function createF35B(three: typeof import('three'), options?: {"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.js",
+      "sha256": "9e804e42d3b1c8b0cf2c3c9013fe85a409a8d49aad9004b945ce3249d77303c4",
+      "lines": 203,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 29,
+          "text": "materials[role]=new T.MeshStandardMaterial({vertexColors:true,roughness:glass ? .16 : metal ? .40 : .62,metalness:glass ? .6 : metal ? .70 : .22,side:T.DoubleSide,transparent:glass,opacity:glass ? .40 : 1,depthWrite:!glass});"
+        },
+        {
+          "line": 101,
+          "text": "const g=new T.BufferGeometry();"
+        },
+        {
+          "line": 138,
+          "text": "export function createF35B(T,options){"
+        },
+        {
+          "line": 152,
+          "text": "const mesh=new T.Mesh(g,materials[role]);mesh.name=node.name+'-geometry';mesh.castShadow=true;mesh.receiveShadow=true;group.add(mesh);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/reused-aircraft.ts",
+      "sha256": "3160547dcaffcf99578d8dfda58ee2786166d3854aa161ba34cd3b3c760181a7",
+      "lines": 78,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 2,
+          "text": "import { createF35B } from './reused-aircraft/f35b.js';"
+        },
+        {
+          "line": 31,
+          "text": "const root = createF35B(THREE, { pylons: false });"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/presentation/transfer-environment.ts",
+      "sha256": "0108ca36e6087ec058c34de02ccb933cd002085c05ab9b7584085da8c3a0bc89",
+      "lines": 119,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 6,
+          "text": "import { PortKit, type Surface } from './port-kit';"
+        },
+        {
+          "line": 8,
+          "text": "function block(kit: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'concrete'): void {"
+        },
+        {
+          "line": 13,
+          "text": "export function buildTransfer(kit: PortKit, completed = false): SceneDynamics {"
+        },
+        {
+          "line": 22,
+          "text": "const shutter = new PortKit(); shutter.root.name = 'transfer-shutter'; shutter.root.userData.openFact = 'transfer-gate-open';"
+        },
+        {
+          "line": 45,
+          "text": "const cover = new PortKit(); cover.root.name = 'transfer-control-cover'; cover.root.position.set(-37.05, 1.15, 21.99);"
+        },
+        {
+          "line": 48,
+          "text": "const rod = new PortKit(); rod.root.name = 'transfer-lock-rod';"
+        },
+        {
+          "line": 51,
+          "text": "const gateLampMaterial = new MeshStandardMaterial({ color: 0xd7a468, emissive: 0xd7a468, emissiveIntensity: 1, roughness: 0.4 });"
+        },
+        {
+          "line": 52,
+          "text": "const gateLamp = new Mesh(new CylinderGeometry(0.11, 0.11, 0.05, 12), gateLampMaterial);"
+        },
+        {
+          "line": 89,
+          "text": "const bandage = new PortKit(); bandage.root.name = 'transfer-clean-dressing';"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/runtime/PageLifecycle.ts",
+      "sha256": "60520fa2b3cfc61d9a9aa9956198c320fd613a508b4e38cc418c15437fe6b73d",
+      "lines": 24,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/runtime/Physics.ts",
+      "sha256": "1ecbe77b8c0a36b35e47c604f192e786a81cc81a316f7d626aea93e609105e8f",
+      "lines": 193,
+      "modelConstructionOrReferenceHits": [
+        {
+          "line": 26,
+          "text": "private readonly controller = this.world.createCharacterController(0.015);"
+        }
+      ],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/runtime/random.ts",
+      "sha256": "c1fa182484525fcaa198d529d51ef54bfb0ed9510f5ddc409153770dfac4805e",
+      "lines": 9,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/AimIdentityHUD.ts",
+      "sha256": "7204dc0123a46c7fe19f191dbe61cee5f6162b2b654b4f7d3b8e5da6e9916f28",
+      "lines": 72,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/GameUI.ts",
+      "sha256": "61100ed59d74277d8645c9a9375896b510e7d8c9afea96fb8daa2c08a273533b",
+      "lines": 356,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/HitConfirmation.ts",
+      "sha256": "bec25a1264d33491cc5f1efe1f753da22b7c73fc570ba7d2baeba0b2a7105bd2",
+      "lines": 20,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/ObjectiveIndicator.ts",
+      "sha256": "3d898d26f3374e7f2cbd46afa132d4cd1ffd472ddfd658ba10c246c26f9d8d78",
+      "lines": 55,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/SubtitlePresentation.ts",
+      "sha256": "4af0d8adad665b87efedf8dc516e59a27030e21d408e9d579aec006df01a739f",
+      "lines": 133,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/TouchControls.ts",
+      "sha256": "dc7b5a45cb20e9b77080e63e72a80229ce974459213819ff1fb02cd7bb5efea2",
+      "lines": 333,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/modern-combat.css",
+      "sha256": "527816f12f1a4cc90a2546a56c829420d51ca6d34f3f44469aef588c29ad50f1",
+      "lines": 96,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/objective-focus.ts",
+      "sha256": "bec813a4d4a5270175acaa81451537877c8afebeca229adb6ac3c4df18f33db2",
+      "lines": 33,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/objective-indicator.css",
+      "sha256": "5ab4cc4d8a8451e17c547d294705daa91ed98536e8cf3831e49c8a5476183337",
+      "lines": 21,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/objective-projection.ts",
+      "sha256": "3175bd687ec5f6acd3ee6d5bc5375543e18dd2159016dd51382bca0fe8e82563",
+      "lines": 59,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/style.css",
+      "sha256": "4f0acfed6214941f3a9cc153ed816bc5e1567b0bef50ca3b1d588e7a7518d5f0",
+      "lines": 236,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/touch-controls.css",
+      "sha256": "63ef86b4e037bbfd55b08a0c2f94d61ce624352a7954605bfa56222b196e1006",
+      "lines": 153,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    },
+    {
+      "path": "src/ui/touch-gestures.ts",
+      "sha256": "026bac09fc1606f5310970a56bad37faf336d52441a74a0d19edd0fb9a947873",
+      "lines": 96,
+      "modelConstructionOrReferenceHits": [],
+      "scan": "Full source text scanned for constructors, production IDs and model sources; semantic reading mode is recorded in coverage reports."
+    }
+  ],
+  "fileCount": 130,
+  "lines": 22466,
+  "filesWithModelReferences": 37
+}
