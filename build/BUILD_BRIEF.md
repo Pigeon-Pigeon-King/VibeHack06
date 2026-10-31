@@ -8,7 +8,7 @@ targetFinish: 当前先交可操作的风险验证候选；最终继承完整 Wi
 
 依据：[GAME_DESIGN](../design/GAME_DESIGN.md)、[ART_DIRECTION](../design/ART_DIRECTION.md)、[技术规范](../docs/THREEJS_FPS_STANDARDS.md)。最大风险是飞行弹丸／掩体与撤离事实能否形成可玩的循环，随后覆盖儿童视点及协作表演。
 
-当前 0.5.0 连通 S01—S09，另保留 V2/V1/V3 三个缩短验证入口。Simulation 保持状态权威；Opening／Frontgate／Transfer／Flank／Escort／Relief 组织段落，共用60Hz仿真、弹丸、导航、严格检查点和表现。S08患者车、陪护和返回接防组实际移动；S09交接后同伴真实开火，玩家坐下接受护具调整与家人消息。旧L1兼容。运行资源仍为占位，成年闻川已有ImageGen概念但尚无模型。signature_command: N/A。
+当前 0.6.0 连通 S01—S12，另保留 V2/V1/V3。Simulation 保持状态权威；Opening／Frontgate／Transfer／Flank／Escort／Relief／Rescue／Medical／Epilogue 组织段落，共用 60 Hz 仿真、弹丸、导航、严格检查点和表现。NPC 根据安全、真实到位与职责自主推进。S10 Q 请求实际掩护、协作搬运受队形／碰撞约束；S11 救治接续与 S12 首批真实接收落地。运行仍使用占位资产，成人／儿童正式骨架与完整演出待制作。signature_command: N/A。
 
 targetPlatform: Windows desktop
 
@@ -27,6 +27,7 @@ npm run typecheck
 npm test
 npm run check:transport
 npm run check:escort
+npm run check:finale
 npm run build
 npm run desktop
 npm run package:win
@@ -39,12 +40,12 @@ Electron 下载在本机通过已有系统代理对应的进程级 `HTTP_PROXY`�
 
 verification.owner: 当前开发会话
 
-verification.evidence: 当前 `artifacts/escort-evidence.md`；0.4历史 `artifacts/transfer-evidence.md`；0.3历史 `artifacts/opening-evidence.md`；0.2历史 `artifacts/chapter-evidence.md`；首轮历史 `artifacts/final-evidence.md`；测试在 `tests/`。
+verification.evidence: 当前 `artifacts/autonomy-finale-evidence.md`；0.5历史 `artifacts/escort-evidence.md`；0.4历史 `artifacts/transfer-evidence.md`；0.3历史 `artifacts/opening-evidence.md`；0.2历史 `artifacts/chapter-evidence.md`；首轮历史 `artifacts/final-evidence.md`；测试在 `tests/`。
 
 物理选择：Rapier 运动学胶囊＋简化静态盒，固定 1/60 秒；NPC 按带间距的网格导航。弹丸独立积分并逐段扫掠，飞行重力 1.428 m/s²；射手胶囊排除，最近遮挡优先。枪口目前为保守物理代理，低掩体阻挡有反例测试，最终骨骼枪口对齐仍待正式动画。
 
 存档采用 schema/version 包装、阶段及字段校验、稳定角色 ID／入场编号校验，主记录加上一份有效备份。损坏记录可只读回退，后续覆盖前保留损坏原文；未来版本拒绝覆盖。检查点包含人物、路径、随机状态、弹药、任务与门事实；恢复会清空旧弹丸并重建物理世界。写入失败可见，不取消本次内存检查点。浏览器刷新与设置恢复已有操作证据，Electron 重启恢复尚待原生运行验收。
 
-限制：12个场景ID仍是开发候选；S01—S09具有真实场地公开输入完整回放，不代表真人全程首通。S08浏览器覆盖接收、修复、监控与初次交火；S09已有入口实操，接触画面另从真实检查点恢复观察。尚缺S10—S12、完整时长、正式模型／声音／精细接触和担架救援。患者车有床体环境碰撞，普通角色不全身互相挤压。IAB拒绝Pointer Lock；Windows鼠标、声音、长时性能和启动恢复待实机。
+限制：15 个场景 ID（12 段正式白盒、3 个历史入口）。S01—S12 全段任务都有真实物理场地上的公开输入回放；不代表真人全程首通。S10 浏览器验证 Q 掩护与局部搬运，S11／S12 从真实检查点复查自动救治／接收。正式模型／声音／精细接触、完整时长及 Windows 实机仍待完成。患者车具备床体环境碰撞，普通角色未实现全身互相挤压；已知方向射击仍为剧情代理。IAB 拒绝 Pointer Lock，使用方向键和 F 替代。
 
 开发版“检查点文件”恢复真实回放存档，用于局部视觉验收；使用同一严格SaveStore解析，隔离于持久存档，不计为从头通关。设置 `RECORD_VISUAL_FIXTURES=1 npm test` 可重新生成 `artifacts/runs/visual-fixtures/` 中的入口记录及来源散列；0.5留档见 `artifacts/escort-visual-fixtures/`。此入口由DEV开关移除，不包含在生产界面。

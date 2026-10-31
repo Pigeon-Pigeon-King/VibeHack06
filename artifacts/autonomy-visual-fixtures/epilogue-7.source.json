@@ -1,0 +1,10 @@
+{
+  "kind": "public-intent-replay-checkpoint",
+  "sourceTest": "tests/finale-paths.test.ts",
+  "scenario": "epilogue",
+  "phase": 7,
+  "elapsed": 114.01666666666148,
+  "phaseTime": 0,
+  "sha256": "3c24d535afc64a527bcb5e1df5a5af103972e88121b500b665fa1b7d4c9711e5",
+  "note": "真实公开输入回放的自然路线检查点；局部恢复不是完整人工首通。"
+}

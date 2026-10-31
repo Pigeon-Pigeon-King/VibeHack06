@@ -1,0 +1,18 @@
+{
+  "kind": "public-intent-replay-checkpoint",
+  "sourceTest": "tests/opening-paths.test.ts",
+  "sourceCase": "physically evacuates six residents before fixed hall loss, preserving natural/skip terminal facts and positions",
+  "replay": {
+    "skip": false,
+    "restore": false,
+    "firstPhaseEntry": true
+  },
+  "artifact": "hall-autonomy-1.json",
+  "slot": "mainhall",
+  "scenario": "mainhall",
+  "phase": 1,
+  "elapsed": 0.016666666666666666,
+  "phaseTime": 0,
+  "sha256": "c72450cffe63d6a57f725a35b36d54abf9fedc7f7fa3fe4707e82a5c66edb675",
+  "note": "正常公开输入回放的开门后检查点；六名居民尚未放行。供恢复后的局部操作验证，不代表人工通关。"
+}

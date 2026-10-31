@@ -2,7 +2,7 @@
 
 Three.js 单人线性第一人称射击战役。开发环境为 Mac，最终目标为 Windows EXE。完整产品保留序章、三个主关卡和尾声，约 60 分钟是待实测目标。
 
-当前 0.5.0 已接通 S01—S09。新增知情后留下护送、跨区车队、协作换车、接防人员实际占岗、同伴射击掩护和坐姿护具调整。完整任务回放已通过，浏览器覆盖范围见验证记录。运行人物、场景和表演仍为可替换占位；成年闻川概念图已归档，尚无生成模型。S10—S12、完整约一小时实测与 Windows 实机验收继续推进。
+当前 0.6.0 已接通 S01—S12 功能白盒，另保留三条历史验证入口。新增共同撤回、医护接手、如实报告与首批接收；全战役已审查自主推进，居民和同伴按安全条件与实际到位自行行动，亲手操作仍需玩家输入。126 项主回归与 28 项独立场地检查通过，浏览器覆盖范围见验证记录。正式角色、完整声音、连续动作、约一小时实测与 Windows 实机验收仍在推进。
 
 ## 运行候选
 
@@ -11,11 +11,11 @@ npm ci
 npm run dev
 ```
 
-浏览器入口 `http://127.0.0.1:5188`。桌面容器用 `npm run build` 后 `npm run desktop`；Windows 候选打包用 `npm run package:win`。实际覆盖与限制见 [构建说明](build/BUILD_BRIEF.md) 和 [当前验证记录](artifacts/escort-evidence.md)。此前转接门／侧翼见 [0.4 记录](artifacts/transfer-evidence.md)，序章与北闸见 [0.3 记录](artifacts/opening-evidence.md)；三白盒与 S03／S04 的操作证据分别保存在 [白盒记录](artifacts/final-evidence.md)、[0.2 记录](artifacts/chapter-evidence.md)。
+浏览器入口 `http://127.0.0.1:5188`。桌面容器用 `npm run build` 后 `npm run desktop`；Windows 候选打包用 `npm run package:win`。实际覆盖与限制见 [构建说明](build/BUILD_BRIEF.md) 和 [当前验证记录](artifacts/autonomy-finale-evidence.md)。此前转接门／侧翼见 [0.4 记录](artifacts/transfer-evidence.md)，序章与北闸见 [0.3 记录](artifacts/opening-evidence.md)；三白盒与 S03／S04 的操作证据分别保存在 [白盒记录](artifacts/final-evidence.md)、[0.2 记录](artifacts/chapter-evidence.md)。
 
-WASD 移动，Shift 冲刺，C 蹲伏，Space 跳跃，鼠标观察，左键／F 射击，右键瞄准，R 换弹，E 交互，Esc 暂停。方向键提供转向替代；Enter 只跳过允许的演出。暂停中可重试检查点、重开、调整音量／灵敏度与减少晃动。
+WASD 移动，Shift 冲刺，C 蹲伏，Space 跳跃，鼠标观察，左键／F 射击，右键瞄准，R 换弹，E 亲手交互，Q 请求同伴掩护（S10），Esc 暂停。方向键提供转向替代；Enter 只跳过允许的演出。暂停中可重试检查点、重开、调整音量／灵敏度与减少晃动。
 
-主菜单“继续”恢复连续章节最近的检查点；独立验证场景使用分开的存档槽。“重开本场”重置当前段落，“从序章重新开始”重置这段连续流程。存档使用当前浏览器／Electron用户目录的本机存储；不同端口、浏览器和桌面容器不共享存档。生产版没有跨设备同步或导入导出；开发文件入口只做隔离的检查点验收。后续完整S01—S12接入时仍需要正式版本迁移策略。
+主菜单“继续”恢复连续章节最近的检查点；独立验证场景使用分开的存档槽。“重开本场”重置当前段落，“从序章重新开始”重置这段连续流程。存档使用当前浏览器／Electron用户目录的本机存储；不同端口、浏览器和桌面容器不共享存档。生产版没有跨设备同步或导入导出；开发文件入口只做隔离的检查点验收。后续正式资产与发布版本仍需持续维护迁移策略。
 
 ## 从这里开始
 
@@ -23,6 +23,8 @@ WASD 移动，Shift 冲刺，C 蹲伏，Space 跳跃，鼠标观察，左键／F
 | --- | --- |
 | [项目方案与验证顺序](docs/PROJECT_BLUEPRINT.md) | 原创内容边界、系统职责、三条验证线与全战役扩展 |
 | [Three.js FPS 技术规范](docs/THREEJS_FPS_STANDARDS.md) | 输入、碰撞、飞行弹丸、动画、任务、性能与 EXE 交付 |
+| [自主推进逐段审查](docs/AUTONOMY_AUDIT.md) | 各章哪些行为自行发生、哪些保留操作，以及代码和回归范围 |
+| [人物骨骼与动作验收](docs/CHARACTER_RIG_STANDARD.md) | 成人共用基础骨架、儿童适配和模型产出后的逐关节检查 |
 | [资产生产与验收接口](docs/ASSET_PIPELINE.md) | Tripo／Hyper3D／Blender 到运行资产的交付要求 |
 | [本机军事资产来源](docs/LOCAL_ASSET_SOURCES.md) | 已有模型、代码工厂、选型与复制入口 |
 | [美术方向](design/ART_DIRECTION.md) | 方块人物与更精细工业场景的视觉边界 |
@@ -51,3 +53,5 @@ WASD 移动，Shift 冲刺，C 蹲伏，Space 跳跃，鼠标观察，左键／F
 - **旧版证据**：仅证明来源记录描述的旧环境与版本，不视为本仓库验收。
 
 原始附件保存在 `docs/handoff/`，原 ZIP 保留在项目根目录并由 Git 忽略；`.nativue/` 为忽略的本机运行状态。
+
+专用讨论窗口分别处理人物／地图美术审查、问题反馈与功能改进、音乐／音效／配音；本窗口继续统筹玩法与完整白盒。各窗口保留独立文件职责，具体反馈见 `docs/feedback/`，声音规划见 `design/audio/`。

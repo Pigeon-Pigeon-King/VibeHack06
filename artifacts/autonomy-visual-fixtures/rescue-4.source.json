@@ -1,0 +1,10 @@
+{
+  "kind": "public-intent-replay-checkpoint",
+  "sourceTest": "tests/finale-paths.test.ts",
+  "scenario": "rescue",
+  "phase": 4,
+  "elapsed": 52.833333333331616,
+  "phaseTime": 0,
+  "sha256": "fa26754f8ba2d04a1edc505ecd43157619fc59690b286350eb4816fdb54975ea",
+  "note": "真实公开输入回放的自然路线检查点；局部恢复不是完整人工首通。"
+}
