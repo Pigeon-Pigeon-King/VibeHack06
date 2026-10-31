@@ -20,7 +20,7 @@ try {
     out: path.join(root, 'release'), overwrite: true,
   });
   for (const output of outputs) await writeFile(path.join(output, 'START_HERE.txt'),
-    '重返木卫三 · 开发候选\n\n请保留整个文件夹，运行 ReturnToGanymede.exe。\n当前连续流程为S01—S09，另保留三个机制验证入口。美术与表演仍为占位，完整一小时战役仍在制作。\nWASD移动，Shift冲刺，C蹲伏，Space跳跃，左键/F射击，右键瞄准，R换弹，E交互，Esc暂停。\n当前构建在Mac完成，Windows实际输入、音频和性能需在目标电脑验收。\n');
+    '重返木卫三 · 开发候选\n\n请保留整个文件夹，运行 ReturnToGanymede.exe。\n当前连续流程为S01—S12，另保留三个机制验证入口。美术与表演仍为占位，完整一小时实测与正式表现仍在制作。\nWASD移动，Shift冲刺，C蹲伏，Space跳跃，左键/F射击，右键瞄准，R换弹，E亲手交互，Q请求掩护（S10），Esc暂停。\n当前构建在Mac完成，Windows实际输入、音频和性能需在目标电脑验收。\n');
   console.log(JSON.stringify({ outputs, target: 'Windows x64', runtimeVerifiedOnWindows: false }, null, 2));
 } finally {
   await rm(stage, { recursive: true, force: true });

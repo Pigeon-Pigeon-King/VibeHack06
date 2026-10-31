@@ -64,7 +64,6 @@ function playEscort(skip: boolean, restore: boolean) {
   let maxActive = 0, maxAimers = 0, fireInputs = 0, cooperativeStart = 0, readyFrames = 0;
   let deniedSkip = false, repairStart = 0, repairEnd = 0, decisionStart = 0, decisionEnd = 0;
   const retiredRestored = new Set<string>(), retreatStarts = new Map<string, Vec3>();
-  let exitApproached = false;
   const summary = () => JSON.stringify({ phase: s.mission.phase, time: s.mission.elapsed, player: s.player.position,
     health: s.player.health, ammo: [s.player.ammo, s.player.reserve], objective: s.objective, next: path[0], climb, descend,
     facts: s.mission.facts, actors: s.actors.map(a => ({ id: a.id, name: a.name, p: a.position, safe: a.safe, down: a.down,
@@ -83,6 +82,9 @@ function playEscort(skip: boolean, restore: boolean) {
     while (!s.mission.complete && !s.mission.failed && steps < 1400 / FIXED_DT) {
       const phase = s.mission.phase;
       let goal = s.objective.point, authored = false, precision = false;
+      if (phase === 1) goal = E.reception;
+      if (phase === 12) goal = [E.manifest[0] - 4, E.manifest[1], E.manifest[2] - 2];
+      if (phase === 14) goal = E.manifest;
       if (phase === 7) {
         const stairs = [E.platformStairStart, E.platformStairTop, E.sidePlatform];
         if (climb < 2 && d3(s.player.position, stairs[climb]) < 0.6) { climb++; path = []; }
@@ -96,18 +98,13 @@ function playEscort(skip: boolean, restore: boolean) {
       // A staged skip must not substitute for the positioned cooperative action.
       const denyingCooperation = phase === 11 && steps - cooperativeStart < 9 / FIXED_DT;
       if (phase === 11) { goal = denyingCooperation ? s.player.position : E.changeAssist; precision = true; }
-      if (phase === 14) {
-        const approach: Vec3 = [E.exit[0] + 4, E.exit[1], E.exit[2]];
-        if (distance(s.player.position, approach) < 0.015) exitApproached = true;
-        goal = exitApproached ? [E.exit[0] + 2.79, E.exit[1], E.exit[2]] : approach;
-        precision = true;
-      }
-      if (s.mission.control === 'combat' && s.player.reserve + s.player.ammo < 25 && !authored) {
+      const resupplying = s.mission.control === 'combat' && s.player.reserve + s.player.ammo < 25 && !authored;
+      if (resupplying) {
         goal = [...E.ammo].sort((a, b) => distance(a, s.player.position) - distance(b, s.player.position))[0]; precision = true;
       }
       const key = `${phase}:${authored}:${goal.map(v => v.toFixed(1)).join(',')}`;
       if (goalKey !== key) { goalKey = key; path = []; }
-      const stop = phase === 14 ? 0.01 : precision ? 0.35 : 1.5;
+      const stop = precision ? 0.35 : 1.5;
       if (!authored && !path.length && distance(s.player.position, goal) > stop) path = s.navigation.path(s.player.position, goal);
       while (path.length && distance(s.player.position, path[0]) < 0.3) path.shift();
       const next = authored ? goal : path[0] ?? goal;
@@ -115,7 +112,6 @@ function playEscort(skip: boolean, restore: boolean) {
       if (distance(s.player.position, goal) > stop && s.mission.control !== 'staged') {
         const dx = next[0] - s.player.position[0], dz = next[2] - s.player.position[2], length = Math.max(0.01, Math.hypot(dx, dz));
         mx = dx / length; mz = dz / length;
-        if (phase === 14) { const scale = Math.min(1, length / (6.3 * FIXED_DT)); mx *= scale; mz *= scale; }
       }
       const target = s.mission.control === 'combat' ? s.aliveEnemies.slice().sort((a, b) => distance(a.position, s.player.position) - distance(b.position, s.player.position))
         // The restore run only suppresses the current objective's fire line. It
@@ -133,10 +129,13 @@ function playEscort(skip: boolean, restore: boolean) {
       const medic = s.actors.find(a => a.id === 'medic')!;
       if (phase === 11 && distance(s.player.position, E.changeAssist) < 1.2 && !medic.goals.length && medic.released && distance(medic.position, E.medic) < 1.2) readyFrames++;
       else readyFrames = 0;
+      const interact = ([0, 3, 10, 13].includes(phase) || resupplying && E.ammo.some(p => distance(s.player.position, p) < 1.5)) && phaseSteps % 12 === 0;
       s.step({ ...emptyIntent, yaw, pitch, forward: -Math.sin(yaw) * mx - Math.cos(yaw) * mz,
         right: Math.cos(yaw) * mx - Math.sin(yaw) * mz, sprint: !target, ads: !!target, fire: !!target,
         reload: s.mission.control === 'combat' && !s.player.ammo && !s.player.reload,
-        interact: phaseSteps % 12 === 0, skip: phase === 11 || skip });
+        // Combat-sector clearance, Luo's return and actual convoy/team arrivals
+        // never receive an interaction; E only performs a manual task or refill.
+        interact, skip: phase === 11 || skip });
       steps++; phaseSteps++; if (target) fireInputs++; env.setFacts?.(s.mission.facts);
       for (const fact of s.mission.facts) if (!factAt.has(fact)) factAt.set(fact, steps);
       maxHeight = Math.max(maxHeight, s.player.position[1]);
@@ -150,6 +149,10 @@ function playEscort(skip: boolean, restore: boolean) {
       check(maxActive <= 8 && maxAimers <= 2, 'pressure cap exceeded');
       for (const [group, budget] of [['E06', 32], ['E07', 38]] as const) check(s.actors.filter(a => a.id.startsWith(`enemy-${group}-`)).length <= budget, `${group} budget exceeded`);
       if (phase !== s.mission.phase) {
+        if ([1, 5, 6, 7, 8, 9, 12, 14].includes(phase)) check(!interact, 'automatic progression received E');
+        if (phase === 1) check(distance(s.player.position, E.luoDesk) > 2.8, 'Luo return still required following him to the exact desk');
+        if (phase === 12) check(distance(s.player.position, E.arrival) > 2.8, 'convoy arrival still required the old marker');
+        if (phase === 14) check(distance(s.player.position, E.exit) > 2.8, 'allied departure still required the player exit marker');
         phases.push(s.mission.phase); path = []; phaseSteps = 0;
         if (!skip && !restore && s.mission.phase === 4) recordVisualFixture(s, 'escort-monitor');
         if (!skip && !restore && s.mission.phase === 11) recordVisualFixture(s, 'escort-transfer');

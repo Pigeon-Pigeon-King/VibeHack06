@@ -13,6 +13,9 @@ import { buildTransfer } from './transfer-environment';
 import { buildFlank } from './flank-environment';
 import { buildEscort } from './escort-environment';
 import { buildRelief } from './relief-environment';
+import { buildRescue } from './rescue-environment';
+import { buildMedical } from './medical-environment';
+import { buildEpilogue } from './epilogue-environment';
 
 
 function addJupiter(root: Group): Group {
@@ -196,6 +199,9 @@ export function buildEnvironment(scenario: ScenarioId): EnvironmentModel {
   else if (scenario === 'flank') dynamics = buildFlank(kit);
   else if (scenario === 'escort') dynamics = buildEscort(kit);
   else if (scenario === 'relief') dynamics = buildRelief(kit);
+  else if (scenario === 'rescue') dynamics = buildRescue(kit);
+  else if (scenario === 'medical') dynamics = buildMedical(kit);
+  else if (scenario === 'epilogue') dynamics = buildEpilogue(kit);
   else if (scenario === 'nightshift') dynamics = buildNightShift(kit);
   else if (scenario === 'workers') dynamics = buildWorkersSector(kit);
   else {

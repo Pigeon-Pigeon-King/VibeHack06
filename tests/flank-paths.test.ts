@@ -44,6 +44,9 @@ function playFlank(skip: boolean, restore: boolean) {
     while (!s.mission.complete && !s.mission.failed && steps < 900 / FIXED_DT) {
       const phase = s.mission.phase;
       let goal = s.objective.point, authored = false;
+      // The two manifest reports are received by radio; do not visit the former
+      // observation marker merely to unlock arrival that has already occurred.
+      if (phase === 4) goal = F.report;
       if (phase === 0) {
         const stairs = [F.platformStairStart, F.platformStairTop, F.platform];
         if (climb < 2 && d3(s.player.position, stairs[climb]) < 0.6) { climb++; path = []; }
@@ -90,10 +93,15 @@ function playFlank(skip: boolean, restore: boolean) {
       s.step({ ...emptyIntent, yaw, pitch, forward: -Math.sin(yaw) * mx - Math.cos(yaw) * mz,
         right: Math.cos(yaw) * mx - Math.sin(yaw) * mz, sprint: !target, ads: !!target, fire: !!target,
         reload: s.mission.control === 'combat' && !s.player.ammo && !s.player.reload,
-        interact: steps % 12 === 0, skip: phase !== 5 || skip });
+        // Defended sectors and actual arrivals progress without E; adoption of
+        // the route, the original report and accepting relief remain deliberate.
+        interact: [3, 6, 7].includes(phase) && steps % 12 === 0, skip: phase !== 5 || skip });
       steps++; if (target) fireInputs++; env.setFacts?.(s.mission.facts);
       if (phase === 0 && s.mission.phase === 1) {
         expect(s.player.position[1], summary()).toBeGreaterThan(2.2); reachedPlatform = true;
+      }
+      if (phase === 4 && s.mission.phase === 5) {
+        expect(distance(s.player.position, F.routeWatch), 'arrival report still required the old observation marker').toBeGreaterThan(2.8);
       }
       if (phases.at(-1) !== s.mission.phase) { phases.push(s.mission.phase); path = []; }
       for (const fact of s.mission.facts) if (!factsAt.has(fact)) factsAt.set(fact, steps);

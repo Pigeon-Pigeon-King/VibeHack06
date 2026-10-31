@@ -15,6 +15,12 @@ export function createPatientCart(): CharacterModel {
     .box([0.78, 0.05, 0.05], [0, 1.03, -1.13], 0x788f96)
     .mesh(root, material, 'bed-frame');
   const patient = new Group(); patient.name = 'patient-and-pillow'; root.add(patient);
+  const cargo = new Group(); cargo.name = 'medical-supply-crates'; root.add(cargo);
+  new VertexParts().box([0.63, 0.5, 0.72], [0, 1.05, -0.5], 0x728e89)
+    .box([0.63, 0.38, 0.72], [0, 0.99, 0.45], 0xb7b9a4)
+    .box([0.08, 0.51, 0.74], [0.18, 1.05, -0.5], 0xdcb66c)
+    .box([0.08, 0.39, 0.74], [-0.18, 0.99, 0.45], 0xdcb66c)
+    .mesh(cargo, material, 'secured-medical-supplies');
   new VertexParts().box([0.58, 0.23, 1.30], [0, 0.91, -0.15], 0x87a3a3)
     .box([0.30, 0.30, 0.30], [0, 0.96, 0.76], 0xc49977)
     .box([0.48, 0.10, 0.38], [0, 0.83, 0.79], 0xe3e1cf)
@@ -46,10 +52,11 @@ export function createPatientCart(): CharacterModel {
     legs.push(leg);
   }
   let disposed = false;
-  return { root, setPose({ walk, occupied = true, damaged = false, patientOffset }) {
+  return { root, setPose({ walk, occupied = true, damaged = false, patientOffset, cargo: isCargo = false, orderly: showOrderly = true }) {
     patient.visible = occupied;
+    cargo.visible = isCargo;
     patient.position.set(...(patientOffset ?? [0, 0, 0]));
-    orderly.visible = !damaged;
+    orderly.visible = !damaged && showOrderly;
     wheels.forEach((w, i) => { w.rotation.x = walk / 0.6; w.rotation.z = damaged && i === 0 ? 0.55 : 0; });
     legs.forEach((leg, i) => leg.rotation.x = Math.sin(walk) * 0.3 * (i ? -1 : 1));
   }, dispose() { if (!disposed) { disposed = true; disposeModelTree(root); } } };

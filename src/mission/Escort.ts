@@ -87,7 +87,7 @@ export function updateEscort(s: Simulation, input: Intent): void {
   if (m.phase === 0 && input.interact && at(s, E.reception)) {
     s.fact('escort-families-confirmed'); s.route(a(s, 'luo'), [E.luoDesk]);
     s.phase(1, '妻子和孩子都安置好了，药也核对过。你们忙护送，我把这轮试机看完。', 'work', '罗敬');
-  } else if (m.phase === 1 && arrived(a(s, 'luo'), E.luoDesk) && input.interact && at(s, E.luoDesk)) {
+  } else if (m.phase === 1 && m.phaseTime >= 1 && arrived(a(s, 'luo'), E.luoDesk)) {
     s.fact('luo-stays-voluntarily'); s.phase(2, REPAIR[0][2], 'staged', REPAIR[0][1]);
   } else if (m.phase === 2) {
     lookWithin(s, E.luoDesk); playDialogue(s, 'escort-repair', REPAIR);
@@ -110,7 +110,7 @@ export function updateEscort(s: Simulation, input: Intent): void {
     // Convoy movement overlaps the player's next fight. Reaching a later task
     // point never teleports a late patient, nor replaces an earlier route.
     if (index <= 2) convoyReady(s, 0); else convoyReady(s, 1);
-    if (input.interact && at(s, posts()[index]) && quiet(s, posts()[index]) && s.has(`escort-pressure-${index}`)
+    if (m.phaseTime >= 1 && at(s, posts()[index], index === 2 ? 5 : 8) && quiet(s, posts()[index]) && s.has(`escort-pressure-${index}`)
       && (index !== 2 || convoyReady(s, 0))) {
       s.fact(`escort-sector-${index}-clear`);
       if (index === 0) convoy(s, 0);
@@ -134,14 +134,14 @@ export function updateEscort(s: Simulation, input: Intent): void {
       a(s, 'cart-2').name = a(s, 'cart-0').name; a(s, 'cart-0').name = '故障空车'; convoy(s, 2);
       s.phase(12, '患者安稳了，枕头和卡也在。沿医疗桥继续走，后面的陪护跟住。', 'work', '随车医护');
     }
-  } else if (m.phase === 12 && convoyReady(s, 2) && at(s, E.arrival)) {
+  } else if (m.phase === 12 && convoyReady(s, 2)) {
     s.fact('escort-convoy-arrived'); s.fact('shaoyuan-passed-dispatch');
     s.phase(13, '东货场车队已过调度站。这里还差一个陪护登记在正确的车下，去向本人核对，再交最后的名单。', 'work', '孟齐');
   } else if (m.phase === 13 && input.interact && at(s, a(s, 'walker-1').position)) {
     s.fact('escort-manifest-checked');
     [a(s, 'meng'), a(s, 'relief-0'), a(s, 'relief-1')].forEach((person, i) => s.route(person, [...E.returnVia, [E.returnExit[0], E.returnExit[1], E.returnExit[2] + i * 1.5]]));
     s.phase(14, '名单对齐了，最后两辆车与陪护都已交给医护。接防组跟我回北闸。', 'work', '孟齐');
-  } else if (m.phase === 14 && [a(s, 'meng'), a(s, 'relief-0'), a(s, 'relief-1')].every(person => !person.goals.length && distance(person.position, E.returnExit) < 4) && at(s, E.exit)) {
+  } else if (m.phase === 14 && [a(s, 'meng'), a(s, 'relief-0'), a(s, 'relief-1')].every(person => !person.goals.length && distance(person.position, E.returnExit) < 4)) {
     s.fact('meng-returned-for-relief'); s.phase(15, '', 'work');
     s.finish('最后一批患者与陪护实际到站，名单已核对。邵原已驶离调度站；孟齐带接防组返回北闸。');
   }
@@ -165,19 +165,18 @@ export function escortObjective(s: Simulation) {
   const p = s.mission.phase;
   let point: Vec3 = E.reception, text = '', detail = '', action = '';
   if (p === 0) { text = '查看接收记录'; detail = '核对家属姓名、安置房间和用药。'; action = '确认家属已到站'; }
-  else if (p === 1) { point = E.luoDesk; text = '跟罗敬回到值班台'; detail = '他选择留下完成试机。'; action = arrived(a(s, 'luo'), E.luoDesk) ? '与罗敬确认工作，联系周延' : ''; }
+  else if (p === 1) { point = E.luoDesk; text = '罗敬回台继续试机'; detail = '他选择留下完成这轮工作，正在回到值班台。'; }
   else if (p === 2) { point = E.luoDesk; text = '收回不公道的话'; detail = '可以环顾。Enter 跳过对白。'; }
   else if (p === 3 || p === 4) { point = E.monitor; text = '核对东货场原始影像'; detail = p === 3 ? '周延与你收到的是同一份确认。' : '监控影像与现场分开。Enter 跳过此段。'; action = p === 3 ? '查看监控与共同报告' : ''; }
   else if (p <= 9) {
     const index = p - 5; point = posts()[index];
     text = ['清出货运坪', '守住第一桥头', '从侧平台压住对侧检修桥', '清出医疗支路', '阻止侧门绕向换车湾'][index];
     detail = index === 0 ? '从监控旁的北门去货运坪。按报点压住敌人，后方补给箱可补弹。'
-      : index === 2 && !convoyReady(s, 0, false) ? '车队正在到第一桥前。守住侧平台，等最后一人到位。' : '注意已报点的敌人。靠近掩体边缘开火，后方补给箱可补弹。';
-    action = quiet(s, point) && s.has(`escort-pressure-${index}`) && (index !== 2 || convoyReady(s, 0, false)) ? '确认本段火线受控' : '';
+      : index === 2 && !convoyReady(s, 0, false) ? '车队正在到第一桥前。守住侧平台，等最后一人到位。' : '守住当前防区，火线受控后车队会接续前进。后方补给箱可补弹。';
   } else if (p === 10) { point = E.pillow; text = '准备换车 · 带上枕头与身份卡'; detail = '车队到齐后再操作；患者不能自行下地。'; action = s.has('escort-wheel-jammed') ? '把枕头与卡移到空车' : ''; }
   else if (p === 11) { point = E.changeAssist; text = '扶住移位布，与医护一起换车'; detail = `站到床边协作 · ${Math.min(8, Math.floor(s.mission.phaseTime))}/8 秒`; }
   else if (p === 12) { point = E.arrival; text = '护送最后一批过医疗桥'; detail = '车与陪护都要到站，孟齐才可返回接防。'; }
   else if (p === 13) { point = a(s, 'walker-1').position; text = '向陪护本人核对登记'; detail = '她已跟上家属，记录仍写在另一辆车下。'; action = '确认陪护姓名与安置去向'; }
-  else { point = E.exit; text = '目送孟齐与接防组返回'; detail = '替我看看老周的腿。'; }
+  else { point = E.exit; text = '孟齐与接防组返回北闸'; detail = '他们正在沿接防通道离开。替我看看老周的腿。'; }
   return { phase: 'S08 · 留下护送', point, text, detail, interaction: action && at(s, point) ? action : '' };
 }

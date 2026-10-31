@@ -5,7 +5,7 @@ import { distance, type Simulation } from './Simulation';
 import { finishDialogue, lookWithin, playDialogue, type DialogueLine } from './Dialogue';
 
 const actor = (s: Simulation, id: string) => s.actors.find(a => a.id === id)!;
-const at = (s: Simulation, p: Vec3) => distance(s.player.position, p) < 2.8 && Math.abs(s.player.position[1] - p[1]) < 0.6;
+const at = (s: Simulation, p: Vec3, range = 2.8) => distance(s.player.position, p) < range && Math.abs(s.player.position[1] - p[1]) < 0.6;
 const quiet = (s: Simulation, p: Vec3) => !s.exposedThreat(p, 52);
 const ADMISSION: readonly DialogueLine[] = [
   [0, '孟齐 · 无线电', '这批过了，两边名单对得上。医院最后两辆车还要一点时间。'],
@@ -58,7 +58,9 @@ function northPressure(s: Simulation): void {
 
 export function updateFlank(s: Simulation, input: Intent): void {
   const m = s.mission;
-  if (m.phase === 0 && input.interact && at(s, F.platform) && quiet(s, F.platform)) {
+  // These are defended areas, not buttons. Height still requires taking the
+  // actual platform stairs before the east-side position can be handed over.
+  if (m.phase === 0 && m.phaseTime >= 1 && at(s, F.platform, 6) && quiet(s, F.platform)) {
     s.fact('flank-platform-held'); s.fact('flank-north-warned');
     s.route(actor(s, 'zheng'), [F.pump]);
     s.phase(1, '北侧车道有人转进来！下侧阶，经泵房外侧换位，先看清北面。', 'combat', '郑铎');
@@ -69,18 +71,18 @@ export function updateFlank(s: Simulation, input: Intent): void {
     if (s.has('flank-north-deployed') && (north.every(a => a.down) || north.some(a => !a.down
       && distance(a.position, F.pump) < 48
       && !s.physics.trace([F.pump[0], F.pump[1] + 1.66, F.pump[2]], [a.position[0], a.position[1] + 1.66, a.position[2]], undefined, true)))) s.fact('flank-north-established');
-    if (s.has('flank-north-established') && input.interact && at(s, F.pump) && quiet(s, F.pump)) {
+    if (s.has('flank-north-established') && at(s, F.pump, 8) && quiet(s, F.pump)) {
       s.fact('flank-pump-held'); s.route(actor(s, 'zheng'), [F.northPost]);
       s.phase(2, '泵房这段接住了。从储罐基座看住北面，再带维修组撤回内门。', 'combat', '周延');
     }
   } else if (m.phase === 2) {
-    if (!s.has('flank-tank-base-secured') && input.interact && at(s, F.northPost) && quiet(s, F.northPost)) {
+    if (!s.has('flank-tank-base-secured') && m.phaseTime >= 1 && at(s, F.northPost, 8) && quiet(s, F.northPost)) {
       s.fact('flank-tank-base-secured');
       s.workers.forEach((a, i) => s.route(a, [...F.technicianVia, [F.techSafe[0] + (i - 1) * 1.2, F.techSafe[1], F.techSafe[2]]]));
       s.route(actor(s, 'zheng'), [F.innerGate]);
       s.phase(2, '维修组沿内侧通道撤，郑铎跟我收回内门。', 'combat', '周延');
     } else if (s.has('flank-tank-base-secured') && s.safeCount === 3 && distance(actor(s, 'zheng').position, F.innerGate) < 1.2
-      && input.interact && at(s, F.innerGate) && quiet(s, F.innerGate)) {
+      && !actor(s, 'zheng').goals.length && at(s, F.innerGate, 8) && quiet(s, F.innerGate)) {
       s.fact('flank-team-back'); s.ballistics.clear(); s.route(actor(s, 'zheng'), [F.water]);
       s.phase(3, '会车位被废设备占了。我查过侧边铺板梯，只让能走的人过；患者的车走主廊，两边都留名单。', 'work', '孟齐 · 无线电');
     }
@@ -96,7 +98,7 @@ export function updateFlank(s: Simulation, input: Intent): void {
         if (a.released && !a.goals.length && distance(a.position, target) < 1.2 && Math.abs(a.position[1] - target[1]) < 0.5) a.safe = true;
       });
     }
-    if (s.actors.filter(a => a.role === 'cart' || a.id.startsWith('walker-')).every(a => a.safe) && at(s, F.routeWatch)) {
+    if (s.actors.filter(a => a.role === 'cart' || a.id.startsWith('walker-')).every(a => a.safe)) {
       s.fact('meng-route-proven'); s.fact('patients-used-cargo-route'); s.fact('walkers-used-side-route');
       s.phase(5, '这批过了，两边名单对得上。医院最后两辆车还要一点时间。', 'staged', '孟齐 · 无线电');
     }
@@ -137,14 +139,13 @@ export function flankObjective(s: Simulation) {
   const p = s.mission.phase;
   let point: Vec3 = [F.platform, F.pump, F.northPost, F.report, F.routeWatch, F.routeWatch, F.report, F.water, F.exit][p];
   let text = '', action = '', detail = '';
-  if (p === 0) { text = '登上检修台，压住东侧'; detail = '侧阶通往上层；到台面前沿或掩体边缘，避开枪口前的遮挡。'; action = quiet(s, point) ? '报告东侧已稳住' : ''; }
-  else if (p === 1) { text = '经侧阶转到泵房外侧'; detail = '北车道已报点。清掉能压住泵房外侧的敌人。'; action = s.has('flank-north-established') && quiet(s, point) ? '报告泵房外侧安全' : ''; }
-  else if (p === 2 && !s.has('flank-tank-base-secured')) { text = '清出储罐基座的撤回线'; detail = '从这里看住北面，给维修组留下回内门的路。'; action = quiet(s, point) ? '通知维修组撤回' : ''; }
+  if (p === 0) { text = '登上检修台，压住东侧'; detail = '从侧阶到上层守住前沿；火线受控后郑铎会接续换位。'; }
+  else if (p === 1) { text = '经侧阶转到泵房外侧'; detail = '北车道已报点。清掉能压住泵房外侧的敌人，接着往储罐基座撤。'; }
+  else if (p === 2 && !s.has('flank-tank-base-secured')) { text = '清出储罐基座的撤回线'; detail = '从这里看住北面；撤回线安全后维修组自行沿内侧退回。'; }
   else if (p === 2) {
-    point = F.innerGate; text = `退回内门 · 维修组 ${s.safeCount}/3`; detail = '维修员与郑铎正在撤回。到内门确认到齐。';
-    action = s.safeCount === 3 && distance(actor(s, 'zheng').position, point) < 1.2 && quiet(s, point) ? '确认人员退回' : '';
+    point = F.innerGate; text = `退回内门 · 维修组 ${s.safeCount}/3`; detail = '维修员与郑铎正在撤回。退入内门防区，等同伴实际到齐。';
   } else if (p === 3) { text = '查看孟齐已经踏勘的路线'; detail = '车走主廊，能步行的人走铺板梯；两边各留名单。'; action = '采用孟齐的分流方案'; }
-  else if (p === 4) { text = '到通道观察位，确认分流通过'; detail = `患者车 ${s.actors.filter(a => a.role === 'cart' && a.safe).length}/2 · 步行家属 ${s.actors.filter(a => a.id.startsWith('walker-') && a.safe).length}/2。两条路在内侧重新会合。`; }
+  else if (p === 4) { text = '照看患者与家属分流'; detail = `患者车 ${s.actors.filter(a => a.role === 'cart' && a.safe).length}/2 · 步行家属 ${s.actors.filter(a => a.id.startsWith('walker-') && a.safe).length}/2。两路到齐后孟齐会报回名单。`; }
   else if (p === 5) { text = '向闻川说明扣下预告的事'; detail = '可以环顾。Enter 跳过此段对话。'; }
   else if (p === 6) { text = '共享完整报告与缺项'; detail = '核实项、未确认项、人手和接应成本都要说明。'; action = s.has('full-report-transmission') ? '' : '发送原文和完整情况'; }
   else if (p === 7 && !s.has('zhou-asks-relief')) { text = '与郑铎交接通讯，提出换班需要'; detail = '郑铎在内侧等你。喝口水，把自己也写进撤回名单。'; action = distance(actor(s, 'zheng').position, point) < 1.2 ? '交出备用机，提出接替' : ''; }

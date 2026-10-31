@@ -58,7 +58,7 @@ export class GameUI {
             <p class="eyebrow">连续战役</p>
             <button class="primary-button" type="button" data-action="chapter-continue" data-ui="chapter-continue" hidden></button>
             <button type="button" data-action="chapter-start" data-ui="chapter-start">从序章开始</button>
-            <p class="chapter-description">序章 · 占领区 · 通路 · 接受换班</p>
+            <p class="chapter-description">序章 · 占领区 · 通路 · 下一班 · 进场之前</p>
           </div>
           <details class="validation-reference"><summary>独立验证场景</summary>
           <div class="scenario-list" aria-label="选择验证场景">
@@ -76,7 +76,7 @@ export class GameUI {
             <div class="controls-grid">
               <span><kbd>WASD</kbd> 移动</span><span><kbd>鼠标</kbd> 观察</span><span><kbd>左键</kbd> 射击</span>
               <span><kbd>Shift</kbd> 冲刺</span><span><kbd>右键</kbd> 瞄准</span><span><kbd>R</kbd> 换弹</span>
-              <span><kbd>C</kbd> 蹲伏</span><span><kbd>Space</kbd> 跳跃</span><span><kbd>E</kbd> 交互</span>
+              <span><kbd>C</kbd> 蹲伏</span><span><kbd>Space</kbd> 跳跃</span><span><kbd>E</kbd> 交互</span><span><kbd>Q</kbd> 请求掩护（S10）</span>
             </div>
             <p class="alternate-controls"><kbd>方向键</kbd> 也可转动视角 · <kbd>F</kbd> 也可开火</p>
           </details>
@@ -152,6 +152,7 @@ export class GameUI {
     this.show('evacuation', state.workerTotal > 0);
     this.text('time', elapsed(state.elapsed));
     this.text('health', integer(clamp(state.health, 100)));
+    this.show('health-cluster', !state.storyInjury);
     this.style('health-fill', 'transform', `scaleX(${clamp(state.health / 100)})`);
     this.node('health-cluster').classList.toggle('is-critical', state.health <= 30);
     this.text('ammo', integer(state.ammo));
@@ -187,7 +188,7 @@ export class GameUI {
     this.text('pause-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('failure-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('complete-scenario', state.scenarioName);
-    const resultTitles: Partial<Record<ScenarioId, string>> = { childhood: '隔断合拢', mainhall: '主厅失守', nightshift: '准备出发', workers: '人员已交接', frontgate: '北闸暂稳', transfer: '转接门已通', flank: '把事情交给同伴', escort: '最后一批已到站', relief: '有人接你回去' };
+    const resultTitles: Partial<Record<ScenarioId, string>> = { childhood: '隔断合拢', mainhall: '主厅失守', nightshift: '准备出发', workers: '人员已交接', frontgate: '北闸暂稳', transfer: '转接门已通', flank: '把事情交给同伴', escort: '最后一批已到站', relief: '有人接你回去', rescue: '两人已送抵', medical: '继续接收下一班', epilogue: '第一批开始进场' };
     this.text('complete-title', state.chapter ? resultTitles[state.scenario] ?? '本段完成' : '本场行动完成');
     this.text('complete-detail', state.detail || state.objective);
     this.text('complete-workers', state.workerTotal > 0 ? `人员到达 ${integer(state.workersSafe)} / ${integer(state.workerTotal)}` : '本段结束');

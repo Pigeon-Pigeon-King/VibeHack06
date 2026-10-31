@@ -77,8 +77,14 @@ export class Physics {
     return body;
   }
 
-  orient(id: string, yaw: number): void {
-    this.bodies.get(id)?.rigid.setNextKinematicRotation({ x: 0, y: Math.sin(yaw / 2), z: 0, w: Math.cos(yaw / 2) });
+  orient(id: string, yaw: number, tolerance = 0.025): void {
+    const body = this.bodies.get(id); if (!body) return;
+    const current = body.rigid.rotation();
+    const previous = 2 * Math.atan2(current.y, current.w);
+    const delta = Math.atan2(Math.sin(yaw - previous), Math.cos(yaw - previous));
+    // Sub-degree navigation corrections should not rotate a resting bed box
+    // into the ground every fixed tick. Its external dimensions are unchanged.
+    if (!tolerance || Math.abs(delta) > tolerance) body.rigid.setNextKinematicRotation({ x: 0, y: Math.sin(yaw / 2), z: 0, w: Math.cos(yaw / 2) });
   }
 
   remove(id: string): void {

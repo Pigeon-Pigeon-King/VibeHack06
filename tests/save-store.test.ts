@@ -297,7 +297,7 @@ describe('SaveStore: real simulation snapshots with injected storage', () => {
 describe('campaign expansion and version 0.2 chapter compatibility', () => {
   const addedScenes: Array<[ScenarioId, ChapterStageId]> = [
     ['childhood', 'S01'], ['mainhall', 'S02'], ['frontgate', 'S05'], ['transfer', 'S06'], ['flank', 'S07'],
-    ['escort', 'S08'], ['relief', 'S09'],
+    ['escort', 'S08'], ['relief', 'S09'], ['rescue', 'S10'], ['medical', 'S11'], ['epilogue', 'S12'],
   ];
 
   it.each(addedScenes)('round-trips the actual %s initial snapshot in campaign stage %s', (scene, stage) => {

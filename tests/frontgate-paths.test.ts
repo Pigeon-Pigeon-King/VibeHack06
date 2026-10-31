@@ -54,7 +54,7 @@ function run(skip: boolean, restore: boolean) {
       const before = new Map(s.workers.map(a => [a.id, [...a.position] as Vec3]));
       s.step({ ...emptyIntent, yaw, pitch, forward: -Math.sin(yaw) * mx - Math.cos(yaw) * mz,
         right: Math.cos(yaw) * mx - Math.sin(yaw) * mz, sprint: !candidate, ads: !!candidate, fire: !!candidate, reload,
-        interact: steps % 12 === 0, skip: skip && steps % 12 === 0 });
+        interact: false, skip: skip && steps % 12 === 0 });
       steps++; if (candidate) fireInputs++; if (reload) reloadInputs++;
       env.setFacts?.(s.mission.facts);
       if (phases.at(-1) !== s.mission.phase) { phases.push(s.mission.phase); path = []; }
@@ -90,6 +90,65 @@ function run(skip: boolean, restore: boolean) {
 }
 
 describe('S05 continuous northgate encounter', () => {
+  it('automatically reports north only when the player looks toward the visible road from the observation area', () => {
+    const env = buildEnvironment('frontgate'), seed = new Simulation('frontgate', env.solids), snapshot = seed.snapshot(); seed.dispose();
+    snapshot.player.position = [...F.observe]; snapshot.mission.nextSpawn = 1000;
+    try {
+      for (const blocked of [false, true]) {
+        const solids = blocked ? [...env.solids, { id: 'observation-test-screen', position: [0, 2, -2] as Vec3, size: [100, 4, 0.6] as Vec3 }] : env.solids;
+        const s = new Simulation('frontgate', solids, snapshot);
+        try {
+          s.step({ ...emptyIntent, yaw: Math.PI });
+          expect(s.mission.phase).toBe(0); expect(s.has('north-road-observed')).toBe(false);
+          s.step(emptyIntent);
+          expect(s.mission.phase).toBe(blocked ? 0 : 1);
+          expect(s.has('north-road-observed')).toBe(!blocked);
+          expect(s.objective.interaction).toBe('');
+        } finally { s.dispose(); }
+      }
+    } finally { env.dispose(); }
+  });
+
+  it('holds the first workers when their actual back route is exposed even though the weigh station is quiet', () => {
+    const env = buildEnvironment('frontgate'), seed = new Simulation('frontgate', env.solids), snapshot = seed.snapshot(); seed.dispose();
+    Object.assign(snapshot.mission, { phase: 1, nextSpawn: 1000, facts: ['north-road-observed'] });
+    snapshot.actors.filter(a => a.role === 'enemy').forEach((a, i) => {
+      a.goals = []; a.path = [];
+      if (!i) a.position = [...F.workerVia[0]];
+      else { a.down = true; a.health = 0; }
+    });
+    const s = new Simulation('frontgate', env.solids, snapshot);
+    try {
+      expect(s.exposedThreat(F.weighA, 24)).toBe(false);
+      expect(s.exposedThreat(F.workerVia[0], 18)).toBe(true);
+      for (let i = 0; i < 30; i++) s.step(emptyIntent);
+      expect(s.has('front-first-released')).toBe(false);
+      expect(s.workers.every(a => !a.released && !a.goals.length)).toBe(true);
+      expect(s.objective.interaction).toBe('');
+    } finally { s.dispose(); env.dispose(); }
+  });
+
+  it('starts the radio automatically anywhere in the safe rear area after workers and allies actually arrive', () => {
+    const env = buildEnvironment('frontgate'), seed = new Simulation('frontgate', env.solids), snapshot = seed.snapshot(); seed.dispose();
+    Object.assign(snapshot.mission, { phase: 3, nextSpawn: 1000, facts: ['front-relieved'] });
+    snapshot.player.position = [-18, 0, 38];
+    snapshot.actors.forEach(a => {
+      a.goals = []; a.path = [];
+      if (a.role === 'worker') { a.position = [...F.safe]; a.released = true; a.safe = true; }
+      if (a.id === 'zheng') a.position = [...F.rearPost];
+      if (a.id === 'relief') a.position = [...F.weighA];
+    });
+    const s = new Simulation('frontgate', env.solids, snapshot);
+    try {
+      expect(distance(s.player.position, F.rearPost)).toBeGreaterThan(15);
+      expect(s.exposedThreat(F.rearPost, 52)).toBe(false);
+      s.step(emptyIntent);
+      expect(s.mission.phase).toBe(4); expect(s.mission.control).toBe('staged');
+      expect(s.has('front-workers-safe')).toBe(true); expect(s.has('front-team-returned')).toBe(true);
+      expect(s.aliveEnemies.length).toBeGreaterThan(0);
+    } finally { s.dispose(); env.dispose(); }
+  });
+
   it('ends a safe radio scene with the same combat health after natural playback or skip', () => {
     const env = buildEnvironment('frontgate'), seed = new Simulation('frontgate', env.solids), snapshot = seed.snapshot(); seed.dispose();
     Object.assign(snapshot.mission, { phase: 4, elapsed: 20, phaseTime: 0, control: 'staged' });
@@ -138,7 +197,7 @@ describe('S05 continuous northgate encounter', () => {
       }
     } finally { env.dispose(); }
   });
-  it('moves both groups behind cover, receives a real relief and preserves withheld knowledge on natural/skip playback', () => {
+  it('uses no E input to move both groups behind cover, receive a real relief and preserve withheld knowledge on natural/skip/restore playback', () => {
     const natural = run(false, false), skipped = run(true, true);
     expect(skipped.facts).toEqual(natural.facts); expect(skipped.safe).toBe(natural.safe);
   }, 40_000);

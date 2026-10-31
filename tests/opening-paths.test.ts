@@ -1,8 +1,10 @@
 import { beforeAll, describe, expect, it } from 'vitest';
+import { createHash } from 'node:crypto';
+import { mkdirSync, writeFileSync } from 'node:fs';
 import type { EnvironmentModel, Vec3 } from '../src/contracts';
 import { HISTORY as H } from '../src/content/history-layout';
 import { distance, emptyIntent, Simulation } from '../src/mission/Simulation';
-import { SaveStore, type StorageLike } from '../src/persistence/SaveStore';
+import { SaveStore, SAVE_KEY_PREFIX, type StorageLike } from '../src/persistence/SaveStore';
 import type { Intent } from '../src/player/Input';
 import { buildEnvironment } from '../src/presentation/environment';
 import { FIXED_DT, initializePhysics } from '../src/runtime/Physics';
@@ -23,6 +25,30 @@ class MemoryStorage implements StorageLike {
   removeItem(key: string): void { this.data.delete(key); }
 }
 
+let recordedHallFixture = false;
+function recordHallVisualFixture(s: Simulation): void {
+  if (process.env.RECORD_VISUAL_FIXTURES !== '1' || recordedHallFixture) return;
+  const snapshot = s.checkpoint, storage = new MemoryStorage(), store = new SaveStore(storage);
+  expect(snapshot.mission.phase).toBe(1);
+  expect(snapshot.actors.filter(a => a.role === 'worker').every(a => !a.released)).toBe(true);
+  expect(store.save('mainhall', snapshot)).toEqual({ ok: true });
+  expect(store.load('mainhall').save!.snapshot).toEqual(snapshot);
+  const raw = storage.getItem(`${SAVE_KEY_PREFIX}mainhall`)!;
+  const directory = new URL('../artifacts/runs/visual-fixtures/', import.meta.url);
+  mkdirSync(directory, { recursive: true });
+  writeFileSync(new URL('hall-autonomy-1.json', directory), raw, 'utf8');
+  writeFileSync(new URL('hall-autonomy-1.source.json', directory), JSON.stringify({
+    kind: 'public-intent-replay-checkpoint', sourceTest: 'tests/opening-paths.test.ts',
+    sourceCase: 'physically evacuates six residents before fixed hall loss, preserving natural/skip terminal facts and positions',
+    replay: { skip: false, restore: false, firstPhaseEntry: true },
+    artifact: 'hall-autonomy-1.json', slot: 'mainhall', scenario: snapshot.mission.scenario,
+    phase: snapshot.mission.phase, elapsed: snapshot.mission.elapsed, phaseTime: snapshot.mission.phaseTime,
+    sha256: createHash('sha256').update(raw, 'utf8').digest('hex'),
+    note: '正常公开输入回放的开门后检查点；六名居民尚未放行。供恢复后的局部操作验证，不代表人工通关。',
+  }, null, 2) + '\n', 'utf8');
+  recordedHallFixture = true;
+}
+
 class OpeningReplay {
   readonly environment: EnvironmentModel;
   simulation: Simulation;
@@ -33,6 +59,7 @@ class OpeningReplay {
   readonly safeArrival = new Map<string, { step: number; position: Vec3 }>();
   readonly trace: Array<{ time: number; phase: number; player: number[]; goal: number[]; safe: number }> = [];
   readonly inputs = { move: 0, fire: 0, interact: 0, skip: 0 };
+  readonly interactionPhases = new Set<number>();
   steps = 0;
   restored = false;
   private path: Vec3[] = [];
@@ -73,6 +100,7 @@ class OpeningReplay {
     const input = { ...emptyIntent, yaw: s.player.yaw, pitch: s.player.pitch, ...partial };
     if (input.forward || input.right) this.inputs.move++;
     for (const name of ['fire', 'interact', 'skip'] as const) if (input[name]) this.inputs[name]++;
+    if (input.interact) this.interactionPhases.add(s.mission.phase);
     s.step(input); this.steps++;
     this.environment.setFacts?.(s.mission.facts);
     if (s.mission.failed) throw new Error(`Opening player failed: ${this.summary()}`);
@@ -164,12 +192,13 @@ function terminalActors(s: Simulation, ids: string[]) {
 function playChild(replay: OpeningReplay, skip: boolean): void {
   replay.until('S01 work and handover', () => replay.simulation.mission.phase === 3, () => {
     const point = [H.lunch, H.mattress, H.gateOutside][replay.simulation.mission.phase];
-    replay.drive(point, { interact: true, combat: false });
+    replay.drive(point, { interact: replay.simulation.mission.phase < 2, combat: false });
   });
   expect(replay.simulation.mission.facts).toEqual(expect.arrayContaining(['lunch-packed', 'mattress-cleared', 'history-gate-open', 'child-handed-over']));
   replay.until('S01 fixed evacuation', () => replay.simulation.mission.complete, () => replay.step({ skip }), 30);
   const s = replay.simulation;
   expect(replay.phases).toEqual([0, 1, 2, 3, 4]);
+  expect([...replay.interactionPhases]).toEqual([0, 1]);
   expect(s.player.height).toBe(1.1); expect(s.player.ammo).toBe(0); expect(s.mission.failed).toBe(false);
   expect(distance3(s.player.position, [H.womanEnd[0] - 0.3, H.womanEnd[1] + 0.45, H.womanEnd[2] + 0.35])).toBeLessThan(0.001);
   expect(distance3(s.actors.find(a => a.id === 'evacuator')!.position, H.womanEnd)).toBeLessThan(0.001);
@@ -184,7 +213,9 @@ function reachHallCollapse(replay: OpeningReplay): void {
   expect(s.workers.map(a => a.id)).toEqual(Array.from({ length: 6 }, (_, i) => `worker-${i}`));
   expect(s.mission.facts).not.toContain('shao-identified-by-zhou');
   replay.until('S02 gate and connected defense positions', () => s.mission.phase === 3, () => {
-    replay.drive([H.gatePanel, H.defenseA, H.defenseB][s.mission.phase], { interact: true });
+    const previous = s.mission.phase;
+    replay.drive([H.gatePanel, H.defenseA, H.defenseB][s.mission.phase], { interact: s.mission.phase === 0 });
+    if (previous === 0 && s.mission.phase === 1) recordHallVisualFixture(s);
   });
   expect(s.safeCount).toBeLessThan(6);
   replay.step({ skip: true });
@@ -195,6 +226,7 @@ function reachHallCollapse(replay: OpeningReplay): void {
     replay.drive(threat ? [Math.round(threat.position[0]), 0, Math.round(threat.position[2])] : H.defenseB, { range: threat ? 2.5 : 1.6 });
   });
   expect(s.player.height).toBe(0.65); expect(s.safeCount).toBe(6);
+  expect([...replay.interactionPhases]).toEqual([0]);
   expect(s.mission.facts).toEqual(expect.arrayContaining(['zhou-trusts-zhao', 'hall-front-secured', 'hall-side-secured', 'civilians-evacuated', 'history-collapse']));
   for (const worker of s.workers) {
     expect(replay.traveled.get(worker.id), replay.summary()).toBeGreaterThan(20);
@@ -288,6 +320,39 @@ describe('S01/S02 historical hall: public-input scene regressions', () => {
       expect(replay.restored).toBe(true); expect(replay.simulation.safeCount).toBe(6);
       finishHall(replay, false);
       console.info('OPENING_REPLAY S02 restored collapse', replay.summary());
+    } finally { replay.dispose(); }
+  }, 60_000);
+
+  it('restores residents already walking through the gate without releasing them again or requiring E', () => {
+    const replay = new OpeningReplay('mainhall');
+    try {
+      replay.until('S02 first autonomous departure', () => replay.simulation.mission.phase === 2, () => {
+        const s = replay.simulation;
+        replay.drive(s.mission.phase === 0 ? H.gatePanel : H.defenseA, { interact: s.mission.phase === 0 });
+      });
+      replay.until('S02 first resident completes the first route leg', () => replay.simulation.workers.slice(0, 3)
+        .some(a => a.goals.length && distance(a.goals[0], H.gateOutside) > 1), () => replay.drive(H.defenseB));
+      expect(replay.simulation.mission.phase).toBe(2);
+      const snapshot = replay.simulation.snapshot(), store = new SaveStore(new MemoryStorage());
+      expect(store.save('campaign', snapshot, { chapter: 'campaign', stage: 'S02', elapsedBefore: 80 })).toEqual({ ok: true });
+      const loaded = store.load('campaign');
+      expect(loaded.warning).toBeUndefined();
+      const resumed = new Simulation('mainhall', replay.environment.solids, loaded.save!.snapshot);
+      expect(resumed.snapshot()).toEqual(snapshot);
+      replay.simulation.dispose(); replay.simulation = resumed; replay.restored = true;
+      const remaining = resumed.workers.slice(0, 3).map(a => ({ id: a.id, goals: structuredClone(a.goals) }));
+      for (let i = 0; i < 60; i++) {
+        replay.drive(H.defenseB);
+        for (const before of remaining) {
+          const a = resumed.workers.find(a => a.id === before.id)!;
+          // Continued navigation may consume route legs; it may not reinsert a
+          // completed doorway or reset the character to their old waiting spot.
+          expect(a.goals).toEqual(before.goals.slice(before.goals.length - a.goals.length));
+        }
+      }
+      reachHallCollapse(replay); finishHall(replay, false);
+      expect(resumed.safeCount).toBe(6);
+      expect([...replay.interactionPhases]).toEqual([0]);
     } finally { replay.dispose(); }
   }, 60_000);
 });

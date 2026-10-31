@@ -105,7 +105,7 @@ describe('authored scenes: simulation-layer input paths', () => {
       replay.until(() => s.mission.complete, () => {
         if (s.mission.phase === 0) replay.drive(l.terminal, { interact: true });
         else if (s.mission.phase < 3) replay.drive(l.post);
-        else if (!s.mission.facts.includes('handoff')) replay.drive(l.post, { interact: true });
+        else if (!s.mission.facts.includes('handoff')) replay.drive(l.post);
         else replay.drive(l.exit);
       });
       expect(s.safeCount, replay.summary()).toBe(7);
@@ -165,7 +165,7 @@ describe('authored scenes: simulation-layer input paths', () => {
       replay.until(() => s.mission.complete, () => {
         const phase = s.mission.phase;
         if (phase === 0) replay.drive(l.terminal, { interact: true });
-        else if (phase === 1 || phase === 2) replay.drive(l.post, { interact: true });
+        else if (phase === 1 || phase === 2) replay.drive(l.post, { interact: phase === 2 });
         else if (phase === 3) replay.drive(l.rescue, { interact: true });
         else if (phase === 4) {
           const before = s.player.ammo;

@@ -88,7 +88,18 @@ function playChildhood(s: Simulation, input: Intent): void {
 }
 
 function releaseResidents(s: Simulation, first: number, end: number): void {
-  s.workers.slice(first, end).forEach((a, i) => s.route(a, [...H.civilianVia, [H.childSafe[0] + i % 2, H.childSafe[1], H.childSafe[2] - 1 + Math.floor(i / 2)]]));
+  s.workers.slice(first, end).forEach((a, i) => {
+    if (!a.released && !a.safe) s.route(a, [...H.civilianVia,
+      [H.childSafe[0] + i % 2, H.childSafe[1], H.childSafe[2] - 1 + Math.floor(i / 2)]]);
+  });
+}
+
+/** Departure is the residents' response to a protected route, not a player confirmation. */
+function residentRouteClear(s: Simulation, first: number, end: number): boolean {
+  if (!s.has('history-gate-open')) return false;
+  const route = [H.gateOutside, H.gateInside, H.stairsStart, H.stairsEnd];
+  return route.every(p => !s.exposedThreat(p, 18))
+    && s.workers.slice(first, end).every(a => !s.exposedThreat(a.position, 18));
 }
 function beginHallCollapse(s: Simulation): void {
   s.fact('civilians-evacuated'); s.fact('history-collapse'); s.fact('history-partition-closed');
@@ -142,7 +153,8 @@ export function updateOpening(s: Simulation, input: Intent): void {
     } else if (m.phase === 1 && input.interact && at(H.mattress) && distance(actor(s, 'father').position, H.mattress) < 2) {
       s.fact('mattress-cleared'); s.fact('history-gate-open'); s.route(actor(s, 'father'), [H.gateOutside]);
       s.phase(2, '门开了。妈妈在医院，有人会去报信。我们往西边走。', 'work', '父亲');
-    } else if (m.phase === 2 && input.interact && at(H.gateOutside) && distance(actor(s, 'father').position, H.gateOutside) < 2) {
+    } else if (m.phase === 2 && at(H.gateOutside) && !actor(s, 'father').goals.length
+      && distance(actor(s, 'father').position, H.gateOutside) < 1) {
       s.fact('child-handed-over');
       H.civilians.forEach((_, i) => { const a = s.actors.find(a => a.id === `civilian-${i}`); if (a) s.route(a, [...H.civilianVia, H.childSafe]); });
       s.phase(3, '他九岁，能自己走。麻烦照看一下。闻川，跟紧前面的人。', 'staged', '父亲');
@@ -155,11 +167,12 @@ export function updateOpening(s: Simulation, input: Intent): void {
     s.route(actor(s, 'father'), [H.fatherStart]);
     s.spawnChapterGroup('E00', H.enemyPosts.slice(0, 4)); m.nextSpawn = m.elapsed + 14;
     s.phase(1, '拉环就在红线旁边，谢谢。门已经开了——班长，西侧我来守。', 'combat', '周延');
-  } else if (m.phase === 1 && input.interact && at(H.defenseA) && !s.exposedThreat(H.defenseA, 20)) {
+  } else if (m.phase === 1 && !s.exposedThreat(H.defenseA, 20) && residentRouteClear(s, 0, 3)) {
     s.fact('hall-front-secured'); releaseResidents(s, 0, 3);
     s.phase(2, '前面这三位，沿西边过去。周延，换到柱后接住侧通道；正门我守着。', 'combat', '赵启明');
     s.spawnChapterGroup('E00', H.enemyEntries.slice(0, 2), H.enemyPosts.slice(4)); m.nextSpawn = m.elapsed + 14;
-  } else if (m.phase === 2 && input.interact && at(H.defenseB) && !s.exposedThreat(H.defenseB, 18)) {
+  } else if (m.phase === 2 && s.workers.slice(0, 3).every(a => a.position[0] < H.gateX - 0.5 || a.safe)
+    && !s.exposedThreat(H.defenseB, 18) && residentRouteClear(s, 3, s.workers.length)) {
     s.fact('hall-side-secured'); releaseResidents(s, 3, s.workers.length);
     s.route(actor(s, 'evacuator'), [...H.civilianVia.slice(1), H.womanEnd]);
     s.route(actor(s, 'daughter'), [...H.civilianVia.slice(1), H.childSafe]);
@@ -182,7 +195,7 @@ export function openingObjective(s: Simulation) {
     [text, action, detail] = [
       ['收好长凳旁的饭盒', '收好饭盒', '妈妈去了医院。父亲在身边等你。'],
       ['跟父亲清出检修门前的过道', distance(actor(s, 'father').position, H.mattress) < 2 ? '帮父亲挪开床垫' : '', '父亲在西侧帮人腾出通路。'],
-      ['随父亲走到西检修门', distance(actor(s, 'father').position, H.gateOutside) < 2 ? '跟上门里的撤离者' : '', '门已经打开，里面通向设备层。'],
+      ['随父亲走到西检修门', '', '跟上父亲。你们到门口后，他会把你交给撤离者。'],
       ['穿过隔断', '', '可回望。Enter 跳过此段演出。'],
       ['检修门', '', ''],
     ][phase];
@@ -190,8 +203,8 @@ export function openingObjective(s: Simulation) {
     point = [H.gatePanel, H.defenseA, H.defenseB, H.gateOutside, H.zhaoCaptured, H.zhaoCaptured][phase];
     [text, action, detail] = [
       ['打开西侧检修门', '拉开检修锁环', '班长把西侧交给你。控制盒在门边。'],
-      ['清出前沿火线，护送首批居民', s.exposedThreat(point, 20) ? '' : '通知首批居民通行', '从柱子和运输柜之间换位，留出西侧过道。'],
-      ['转到侧通道，接住最后一批', s.exposedThreat(point, 18) ? '' : '通知其余居民通行', '前一批仍在移动，沿相通掩体回到西侧。'],
+      ['清出前沿火线，护送首批居民', '', '保护西侧过道与居民身边的通路；安全后他们会自行出发。'],
+      ['转到侧通道，接住最后一批', '', '首批穿门后，剩余居民会沿安全的侧通道自行撤离。'],
       [`保护指定居民通过隔断 · ${s.safeCount}/${s.workers.length}`, '', '近处火力会压住居民，护送到下方安全段。'],
       ['主厅失守', '', '已救出的居民不会因后续演出撤销。可观察；Enter 跳过。'],
       ['十年前的主厅', '', ''],

@@ -1,6 +1,7 @@
 import { SCENARIO_IDS, type CharacterRole, type ScenarioId } from '../contracts';
 import { CHAPTER_STAGES, SCENARIO_PHASE_LIMITS, type ChapterProgress } from '../content/chapter-flow';
 import { HISTORY } from '../content/history-layout';
+import { EPILOGUE } from '../content/epilogue-layout';
 import type { Snapshot } from '../mission/Simulation';
 
 export interface StorageLike {
@@ -84,7 +85,8 @@ function validateSnapshot(value: unknown): Snapshot {
   const mission = record(snapshot.mission, '任务', ['scenario', 'phase', 'elapsed', 'phaseTime', 'control', 'facts', 'complete', 'failed', 'checkpointLabel', 'subtitle', 'speaker', 'subtitleUntil', 'spawned', 'nextSpawn']);
   scenario(mission.scenario);
   numeric(mission.phase, '任务阶段', 0, SCENARIO_PHASE_LIMITS[mission.scenario], true);
-  numeric(player.height, '玩家高度', mission.scenario === 'mainhall' && mission.phase >= 4 ? 0.65 : 0.8, 3);
+  numeric(player.height, '玩家高度', (mission.scenario === 'mainhall' && mission.phase >= 4)
+    || (mission.scenario === 'rescue' && mission.phase >= 6) ? 0.65 : 0.8, 3);
   if (mission.scenario === 'childhood' && player.height !== 1.1) throw new InvalidRecord('童年视点高度与角色不一致。');
   if (mission.scenario === 'mainhall' && mission.phase >= 4 && player.height !== 0.65) throw new InvalidRecord('主厅演出高度与角色状态不一致。');
   if (mission.scenario === 'relief' && mission.phase === 7 && player.height !== 1.1) throw new InvalidRecord('内门坐姿高度与角色状态不一致。');
@@ -99,6 +101,7 @@ function validateSnapshot(value: unknown): Snapshot {
   text(mission.checkpointLabel, '检查点名称', 160);
   text(mission.subtitle, '字幕', 2000, true); text(mission.speaker, '说话者', 120, true);
   list(mission.facts, '任务事实', 256);
+  const facts = mission.facts;
   mission.facts.forEach(fact => text(fact, '任务事实', 120));
   if (new Set(mission.facts).size !== mission.facts.length) throw new InvalidRecord('任务事实重复。');
   // The patient keeps their identity while changing physical cart. A mismatched
@@ -108,6 +111,86 @@ function validateSnapshot(value: unknown): Snapshot {
   }
   if (mission.scenario === 'relief' && mission.facts.includes('relief-handover-complete') !== (mission.phase >= 4)) {
     throw new InvalidRecord('接防交接状态与撤回阶段不一致。');
+  }
+  if (mission.scenario === 'rescue') {
+    // Injuries belong to the authored rescue, not ordinary combat death. These
+    // milestones also select the patient's collider and the player's body pose.
+    const milestones: Array<[string, number]> = [
+      ['rescue-meng-lifted', 4], ['rescue-meng-under-cover', 5], ['rescue-zhou-wounded', 6],
+      ['zhou-reported-injury', 7], ['zhou-requested-rescue', 7], ['rescue-both-loaded', 8],
+      ['rescue-transport-departed', 9], ['rescue-both-received', 10],
+    ];
+    for (const [fact, phase] of milestones) if (mission.facts.includes(fact) !== (mission.phase >= phase)) {
+      throw new InvalidRecord(`救援状态 ${fact} 与阶段不一致。`);
+    }
+    if ((mission.phase >= 2 && !mission.facts.includes('rescue-meng-wounded'))
+      || (mission.phase < 1 && mission.facts.includes('rescue-meng-wounded'))
+      || (mission.phase >= 8 && !mission.facts.includes('rescue-medics-arrived'))
+      || (mission.phase < 7 && mission.facts.includes('rescue-medics-arrived'))) {
+      throw new InvalidRecord('救援伤情或接应事实与阶段不一致。');
+    }
+    const controls = ['combat', 'staged', 'combat', 'staged', 'cooperative', 'staged', 'work', 'staged', 'staged', 'staged', 'staged'];
+    if (mission.control !== controls[mission.phase]) throw new InvalidRecord('救援控制权与阶段不一致。');
+    if (mission.phase >= 6) {
+      const height = mission.facts.includes('rescue-medics-arrived') ? 1.1 : 0.65;
+      if (player.height !== height) throw new InvalidRecord('救援伤后视点高度与接应状态不一致。');
+    }
+    if (mission.phase >= 5 && (mission.failed || player.health <= 0)) throw new InvalidRecord('固定救援伤情不能变成普通战斗失败。');
+    if (mission.complete !== (mission.phase === 10)) throw new InvalidRecord('救援完成状态与送达阶段不一致。');
+  }
+  if (mission.scenario === 'medical') {
+    const milestones: Array<[string, number]> = [
+      ['medical-equipment-carried', 1], ['medical-equipment-handed-over', 2], ['medical-records-delivered', 3],
+      ['medical-curtain-closed', 5], ['medical-treatment-attempted', 6], ['xu-rest-accepted', 9],
+      ['lu-accepts-help', 9], ['medical-needs-recorded', 9],
+    ];
+    for (const [fact, phase] of milestones) if (mission.facts.includes(fact) !== (mission.phase >= phase)) {
+      throw new InvalidRecord(`医疗交接状态 ${fact} 与阶段不一致。`);
+    }
+    const responsive = mission.phase > 4 || mission.phase === 4 && mission.phaseTime >= 16;
+    const deathConfirmed = mission.phase > 6 || mission.phase === 6 && mission.phaseTime >= 40;
+    if (mission.facts.includes('medical-zhou-responsive') !== responsive
+      || mission.facts.includes('zhou-death-confirmed') !== deathConfirmed
+      || mission.facts.includes('medical-curtain-open') !== deathConfirmed
+      || !mission.facts.includes('rescue-both-received') || !mission.facts.includes('meng-treatment-continues')) {
+      throw new InvalidRecord('医疗人物结果与救治阶段不一致。');
+    }
+    if ((mission.phase < 9 && mission.facts.includes('reception-contact-received'))
+      || (mission.phase === 10 && !mission.facts.includes('reception-contact-received'))) {
+      throw new InvalidRecord('医疗联络状态与离开阶段不一致。');
+    }
+    const control = [4, 6, 8].includes(mission.phase) ? 'staged' : 'work';
+    if (mission.control !== control || mission.failed || player.health <= 0) throw new InvalidRecord('医疗段落不能进入作战或操作失败状态。');
+    if (mission.complete !== (mission.phase === 10)) throw new InvalidRecord('医疗完成状态与离开阶段不一致。');
+  }
+  if (mission.scenario === 'epilogue') {
+    const milestones: Array<[string, number]> = [
+      ['truthful-report-sent', 2], ['report-includes-losses', 2], ['report-includes-shaoyuan-escape', 2],
+      ['lu-accepts-zheng-report-help', 2], ['medical-needs-carried', 3], ['reception-reached', 4],
+      ['medical-needs-delivered', 5], ['berth-manifest-confirmed', 5], ['fleet-reception-acknowledged', 6],
+      ['first-wave-approaching', 6], ['reception-door-open', 7], ['first-workers-received', 8],
+      ['first-medical-supplies-received', 8],
+    ];
+    for (const [fact, phase] of milestones) if (mission.facts.includes(fact) !== (mission.phase >= phase)) {
+      throw new InvalidRecord(`接收状态 ${fact} 与阶段不一致。`);
+    }
+    if (['zhou-death-confirmed', 'meng-treatment-continues', 'medical-needs-recorded', 'reception-contact-received']
+      .some(fact => !facts.includes(fact))) throw new InvalidRecord('尾声缺少已确认的医疗与联络信息。');
+    if ((mission.phase < 7 && mission.facts.includes('first-workers-entering'))
+      || (mission.phase === 8 && !mission.facts.includes('first-workers-entering'))) {
+      throw new InvalidRecord('接收人员入场状态与开门阶段不一致。');
+    }
+    let missingWaypoint = false;
+    for (let i = 0; i < EPILOGUE.shoreVia.length; i++) {
+      const visited = facts.includes(`shore-waypoint-${i}`);
+      if (visited && (mission.phase < 3 || missingWaypoint) || !visited && mission.phase >= 4) {
+        throw new InvalidRecord('安全岸路经过顺序与接收位置不一致。');
+      }
+      if (!visited) missingWaypoint = true;
+    }
+    const control = [1, 5].includes(mission.phase) ? 'staged' : mission.phase === 7 ? 'cooperative' : 'work';
+    if (mission.control !== control || mission.failed || player.health <= 0) throw new InvalidRecord('接收尾声不能进入作战或操作失败状态。');
+    if (mission.complete !== (mission.phase === 8)) throw new InvalidRecord('接收完成状态与首批到达阶段不一致。');
   }
 
   list(snapshot.actors, '人物', 256);
@@ -133,7 +216,8 @@ function validateSnapshot(value: unknown): Snapshot {
     if (actor?.role !== role) throw new InvalidRecord(`场景缺少必需人物 ${id}，或其身份错误。`);
     // These missions protect every mandatory participant. A dead required body
     // cannot follow its route, leaving the later handover permanently incomplete.
-    if ((mission.scenario === 'transfer' || mission.scenario === 'flank' || mission.scenario === 'escort' || mission.scenario === 'relief')
+    if ((mission.scenario === 'transfer' || mission.scenario === 'flank' || mission.scenario === 'escort' || mission.scenario === 'relief'
+      || mission.scenario === 'rescue' || mission.scenario === 'medical' || mission.scenario === 'epilogue')
       && (actor.down !== false || (actor.health as number) <= 0)) throw new InvalidRecord(`必需人物 ${id} 已失去行动能力，存档状态与场景不一致。`);
   };
   if (mission.scenario === 'childhood' || mission.scenario === 'mainhall') {
@@ -144,6 +228,29 @@ function validateSnapshot(value: unknown): Snapshot {
   else if (mission.scenario === 'transfer') { need('courier', 'civilian'); need('xu', 'medic'); need('zhou', 'ally'); need('luo', 'worker'); }
   else if (mission.scenario === 'escort') { need('luo', 'worker'); need('meng', 'ally'); need('medic', 'medic'); }
   else need('zheng', 'ally');
+  if (mission.scenario === 'rescue') {
+    need('meng', mission.phase >= 4 ? 'cart' : 'ally'); need('medic', 'medic'); need('medic-1', 'medic'); need('zhou-cart', 'cart');
+  }
+  if (mission.scenario === 'medical') {
+    need('zhou', 'cart'); need('meng', 'cart'); need('doctor', 'medic'); need('nurse', 'medic'); need('xu', 'medic');
+  }
+  if (mission.scenario === 'epilogue') {
+    need('luo', 'worker'); need('supply-cart', 'cart');
+    for (let i = 0; i < 3; i++) need(`worker-${i}`, 'worker');
+    if (mission.phase === 8) {
+      const safe = ['worker-0', 'worker-1', 'worker-2', 'supply-cart'].every(id => actors.get(id)!.safe === true);
+      const workersArrived = EPILOGUE.workersGoals.every((goal, i) => {
+        const actor = actors.get(`worker-${i}`)!, position = actor.position as number[];
+        return !(actor.goals as unknown[]).length && Math.hypot(position[0] - goal[0], position[2] - goal[2]) < 0.12;
+      });
+      const cart = actors.get('supply-cart')!;
+      if (!safe || !workersArrived || (cart.goals as unknown[]).length || (cart.position as number[])[2] >= -5) {
+        throw new InvalidRecord('首批接收完成但人员或物资未实际到达。');
+      }
+    }
+  }
+  if ((mission.scenario === 'medical' || mission.scenario === 'epilogue')
+    && [...actors.values()].some(a => a.role === 'enemy')) throw new InvalidRecord('医疗与接收场景不能含常规交战敌人。');
   if (mission.scenario === 'prologue') need('father', 'father');
   if (mission.scenario === 'workers') need('meng', 'ally');
   if (mission.scenario === 'frontgate') need('relief', 'ally');
@@ -170,16 +277,22 @@ function validateSnapshot(value: unknown): Snapshot {
   const workerCount: Record<ScenarioId, number> = {
     northgate: 7, prologue: 3, handover: 2, nightshift: 0, workers: 9,
     childhood: 0, mainhall: HISTORY.civilians.length, frontgate: 7, transfer: 1, flank: 3, escort: 1, relief: 3,
+    rescue: 0, medical: 0, epilogue: 4,
   };
   // Luo remains a worker in S06/S08, but is not a patient or worker-N evacuee.
-  if (mission.scenario !== 'transfer' && mission.scenario !== 'escort') for (let i = 0; i < workerCount[mission.scenario]; i++) need(`worker-${i}`, 'worker');
+  if (mission.scenario !== 'transfer' && mission.scenario !== 'escort' && mission.scenario !== 'epilogue') {
+    for (let i = 0; i < workerCount[mission.scenario]; i++) need(`worker-${i}`, 'worker');
+  }
   if ([...actors.values()].filter(actor => actor.role === 'worker').length !== workerCount[mission.scenario]) {
     throw new InvalidRecord('场景工作人员数量与要求不一致。');
   }
   // S08 retains all three bodies, including the empty replacement/original cart.
   // Patient occupancy is mission-owned; it is not the number of cart actors.
-  const cartCount = mission.scenario === 'transfer' || mission.scenario === 'escort' ? 3 : mission.scenario === 'flank' ? 2 : 0;
-  for (let i = 0; i < cartCount; i++) need(`cart-${i}`, 'cart');
+  const cartCount = mission.scenario === 'transfer' || mission.scenario === 'escort' ? 3 : mission.scenario === 'flank' ? 2
+    : mission.scenario === 'rescue' ? mission.phase >= 4 ? 2 : 1 : mission.scenario === 'medical' ? 2 : mission.scenario === 'epilogue' ? 1 : 0;
+  if (mission.scenario === 'transfer' || mission.scenario === 'escort' || mission.scenario === 'flank') {
+    for (let i = 0; i < cartCount; i++) need(`cart-${i}`, 'cart');
+  }
   if ([...actors.values()].filter(actor => actor.role === 'cart').length !== cartCount) {
     throw new InvalidRecord('患者车数量与场景不一致。');
   }

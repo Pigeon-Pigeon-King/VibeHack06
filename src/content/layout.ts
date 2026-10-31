@@ -6,8 +6,26 @@ import { TRANSFER } from './transfer-layout';
 import { FLANK } from './flank-layout';
 import { ESCORT } from './escort-layout';
 import { RELIEF } from './relief-layout';
+import { RESCUE } from './rescue-layout';
+import { MEDICAL } from './medical-layout';
+import { EPILOGUE } from './epilogue-layout';
 
 export const LAYOUT = {
+  rescue: {
+    name: '下一班 · 共同撤回', spawn: RESCUE.spawn, yaw: Math.PI,
+    terminal: RESCUE.entry, post: RESCUE.junction, exit: RESCUE.medicalArrival, safe: RESCUE.medicalArrival,
+    workerSpawns: [] as Vec3[], enemySpawns: RESCUE.enemyEntries[0],
+  },
+  medical: {
+    name: '尾声 · 救护点', spawn: MEDICAL.spawn, yaw: 0,
+    terminal: MEDICAL.registration, post: MEDICAL.zhouVisit, exit: MEDICAL.exit, safe: MEDICAL.exit,
+    workerSpawns: [] as Vec3[], enemySpawns: [] as Vec3[],
+  },
+  epilogue: {
+    name: '尾声 · 进场之前', spawn: EPILOGUE.spawn, yaw: Math.PI / 2,
+    terminal: EPILOGUE.report, post: EPILOGUE.reception, exit: EPILOGUE.exit, safe: EPILOGUE.exit,
+    workerSpawns: EPILOGUE.workersSpawns, enemySpawns: [] as Vec3[],
+  },
   escort: {
     name: '通路 · 留下护送', spawn: ESCORT.spawn, yaw: 0,
     terminal: ESCORT.reception, post: ESCORT.cargo, exit: ESCORT.exit, safe: ESCORT.arrival,

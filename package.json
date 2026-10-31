@@ -1,6 +1,6 @@
 {
   "name": "return-to-ganymede",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "author": "VibeHack06 contributors",
   "private": true,
   "type": "module",
@@ -14,7 +14,8 @@
     "desktop": "electron .",
     "package:win": "npm run build && node scripts/package-windows.mjs",
     "check:transport": "vitest run --config scripts/transport-checks/vitest.config.ts",
-    "check:escort": "vitest run --config scripts/escort-checks/vitest.config.ts"
+    "check:escort": "vitest run --config scripts/escort-checks/vitest.config.ts",
+    "check:finale": "vitest run --config scripts/finale-checks/vitest.config.ts"
   },
   "dependencies": {
     "@dimforge/rapier3d-compat": "0.21.0",

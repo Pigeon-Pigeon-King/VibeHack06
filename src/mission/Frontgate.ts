@@ -8,6 +8,31 @@ const found = (s: Simulation, id: string) => s.actors.find(a => a.id === id)!;
 const at = (s: Simulation, p: Vec3) => distance(s.player.position, p) < 2.8;
 const quiet = (s: Simulation, p: Vec3, r = 24) => !s.exposedThreat(p, r);
 
+function observingNorthRoad(s: Simulation): boolean {
+  const p = s.player;
+  if (distance(p.position, F.observe) > 10) return false;
+  const eye = s.playerEye;
+  const view: Vec3 = [-Math.sin(p.yaw) * Math.cos(p.pitch), Math.sin(p.pitch), -Math.cos(p.yaw) * Math.cos(p.pitch)];
+  return F.northPosts.slice(3).some(post => {
+    const target: Vec3 = [post[0], post[1] + 1.66, post[2]];
+    const delta = target.map((v, i) => v - eye[i]);
+    const length = Math.hypot(...delta);
+    return delta.reduce((sum, v, i) => sum + v * view[i], 0) / length > Math.cos(1.1)
+      && !s.physics.trace(eye, target, undefined, true);
+  });
+}
+
+function workerRouteClear(s: Simulation, first: number, last: number): boolean {
+  return [...F.workerVia, F.safe].every(p => quiet(s, p, 18))
+    && s.workers.slice(first, last).every(a => quiet(s, a.position, 18));
+}
+
+function playerInSafeRear(s: Simulation): boolean {
+  const [x, y, z] = s.player.position;
+  return x > -28 && x < 14 && Math.abs(y) < 1 && z >= F.rearPost[2] - 6
+    && quiet(s, s.player.position, 52) && quiet(s, F.rearPost, 52);
+}
+
 export function populateFrontgate(s: Simulation): void {
   F.workers.forEach((p, i) => s.createActor(`worker-${i}`, `北闸维修工 ${i + 1}`, 'worker', p));
   s.createActor('zheng', '郑铎', 'ally', F.zheng);
@@ -17,8 +42,10 @@ export function populateFrontgate(s: Simulation): void {
 }
 
 function release(s: Simulation, first: number, last: number): void {
-  s.workers.slice(first, last).forEach((a, i) => s.route(a, [...F.workerVia,
-    [F.safe[0] + (i % 3 - 1) * 1.2, 0, F.safe[2] - Math.floor(i / 3) * 1.5]]));
+  s.workers.slice(first, last).forEach((a, i) => {
+    if (!a.released && !a.safe) s.route(a, [...F.workerVia,
+      [F.safe[0] + (i % 3 - 1) * 1.2, 0, F.safe[2] - Math.floor(i / 3) * 1.5]]);
+  });
 }
 
 function reinforce(s: Simulation): void {
@@ -35,16 +62,17 @@ function reinforce(s: Simulation): void {
 
 export function updateFrontgate(s: Simulation, input: Intent): void {
   const m = s.mission, zheng = found(s, 'zheng'), relief = found(s, 'relief');
-  if (m.phase === 0 && input.interact && at(s, F.observe)) {
+  if (m.phase === 0 && observingNorthRoad(s)) {
     s.fact('north-road-observed'); s.route(zheng, [F.weighB]);
     s.phase(1, '北路确认。称重台和检查棚能互相接应，先把首批的后路放开。', 'combat', '周延');
   } else if (m.phase === 1) {
-    if (!s.has('front-first-released') && input.interact && at(s, F.weighA) && quiet(s, F.weighA)) {
+    if (!s.has('front-first-released') && quiet(s, F.weighA) && workerRouteClear(s, 0, 3)) {
       s.fact('front-first-released'); release(s, 0, 3);
       s.phase(1, '首批开始走西侧。你从另一处掩体接住北路，我盯着东边。', 'combat', '郑铎');
-    } else if (s.has('front-first-released') && s.safeCount >= 3 && input.interact && at(s, F.weighB) && quiet(s, F.weighB)) {
+    } else if (s.has('front-first-released') && s.safeCount >= 3 && !zheng.goals.length
+      && distance(zheng.position, F.weighB) < 1 && quiet(s, F.weighB)) {
       s.fact('east-road-warned');
-      s.phase(2, '东侧车道！先转到有东向射界的掩体，剩下的人等你信号。', 'combat', '郑铎');
+      s.phase(2, '东侧车道！转到有东向射界的掩体。侧面安全以后，剩下的人就走。', 'combat', '郑铎');
       m.nextSpawn = m.elapsed + 4;
     }
   } else if (m.phase === 2) {
@@ -61,16 +89,16 @@ export function updateFrontgate(s: Simulation, input: Intent): void {
     if (s.has('east-deployed') && !s.has('east-line-established') && (eastGroup.every(a => a.down)
       || eastGroup.some(a => !a.down && distance(a.position, F.eastPost) < 38
         && !s.physics.trace([F.eastPost[0], 1.66, F.eastPost[2]], [a.position[0], a.position[1] + 1.66, a.position[2]], undefined, true)))) s.fact('east-line-established');
-    if (s.has('east-line-established') && input.interact && at(s, F.eastPost) && quiet(s, F.eastPost, 52)) {
+    if (s.has('east-line-established') && quiet(s, F.eastPost, 52) && workerRouteClear(s, 3, s.workers.length)) {
       s.fact('front-last-released'); release(s, 3, s.workers.length); s.route(relief, [F.rearPost, F.weighA]);
       s.phase(3, '末批沿西侧撤。接替的人从后院上来，你先退到后线掩体，等我一起收回来。', 'combat', '郑铎');
     }
   } else if (m.phase === 3) {
-    if (!s.has('front-relieved') && distance(relief.position, F.weighA) < 1) {
+    if (!s.has('front-relieved') && !relief.goals.length && distance(relief.position, F.weighA) < 1) {
       s.fact('front-relieved'); s.route(zheng, [F.rearPost]); s.say('接替队员', '称重台我接住了。周延、郑铎，向内门撤。');
     }
-    if (s.has('front-relieved') && s.safeCount === s.workers.length && distance(zheng.position, F.rearPost) < 1
-      && input.interact && at(s, F.rearPost) && quiet(s, F.rearPost, 52)) {
+    if (s.has('front-relieved') && s.safeCount === s.workers.length && !zheng.goals.length
+      && distance(zheng.position, F.rearPost) < 1 && playerInSafeRear(s)) {
       s.fact('front-workers-safe'); s.fact('front-team-returned'); s.ballistics.clear();
       s.phase(4, '北闸暂时稳住。联络员：邵原预计七点前后从东货场转移，尚待确认；机动部队可能反扑。', 'staged', '无线电');
     }
@@ -98,21 +126,20 @@ export function updateFrontgate(s: Simulation, input: Intent): void {
 export function frontgateObjective(s: Simulation) {
   const p = s.mission.phase;
   let point: Vec3 = [F.observe, F.weighA, F.eastPost, F.rearPost, F.rearPost, F.exit, F.exit][p];
-  let action = '', text = '', detail = '';
-  if (p === 0) { text = '到观察位确认北路'; action = '报告北路压力'; detail = '北路在前方，工人从隔墙后方撤离。'; }
+  let text = '', detail = '';
+  if (p === 0) { text = '靠近观察位，查看北路'; detail = '面向北路看清来向后自动报告。工人走隔墙后方的通道。'; }
   else if (p === 1 && !s.has('front-first-released')) {
-    text = '清出称重台，放行首批工人'; action = quiet(s, point) ? '通知首批三人撤离' : ''; detail = '利用检查棚与称重台掩体推进。';
+    text = '清出称重台，掩护首批工人'; detail = '称重台与西侧后路安全后，首批三人会自行撤离。';
   } else if (p === 1) {
     point = F.weighB; text = `接住另一处火线 · 首批 ${Math.min(3, s.safeCount)}/3`;
-    action = s.safeCount >= 3 && quiet(s, point) ? '确认首批通过' : ''; detail = '工人正在西侧后路移动。压住入口后，从相通掩体换位。';
+    detail = '工人正在西侧后路移动。首批通过且郑铎到位后，他会继续报点。';
   } else if (p === 2) {
-    text = '转向东侧，护送末批'; action = s.has('east-line-established') && quiet(s, point, 52) ? '通知末批四人撤离' : '';
-    detail = '侧路已报点。清掉能压住东向掩体的敌人，再让人员通过。';
+    text = '转向东侧，护送末批';
+    detail = '守住东向射界与西侧后路，末批四人会在安全后自行出发。';
   } else if (p === 3) {
-    text = '退到后线掩体，接回郑铎'; detail = s.has('front-relieved') ? '前位已由接替者守住。等七名工人与郑铎全部到内侧。' : '接替队员正在前往称重台，先移动到后线掩体。';
-    action = s.has('front-relieved') && s.safeCount === 7 && distance(found(s, 'zheng').position, F.rearPost) < 1 && quiet(s, point, 52) ? '确认人员到齐' : '';
+    text = '退到后线，接回郑铎'; detail = s.has('front-relieved') ? '前位已有接替者。人员到齐、后线安全后自动接入无线电。' : '接替队员正在前往称重台，到位后郑铎会自行撤回。';
   } else if (p === 4) { text = '接收转移预告'; detail = '局势暂时稳定。Enter 跳过此段对话。'; }
   else if (p === 5) { text = '沿内门撤回'; detail = '机动力量警告已转发。继续前往接收中心与设备间。'; }
   else { text = '北闸的预告'; detail = ''; }
-  return { phase: 'S05 · 北闸的预告', text, detail, point, interaction: action && at(s, point) ? action : '' };
+  return { phase: 'S05 · 北闸的预告', text, detail, point, interaction: '' };
 }

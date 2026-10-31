@@ -10,6 +10,9 @@ export const CHAPTER_STAGES = [
   { id: 'S07', scenario: 'flank', title: '交给别人' },
   { id: 'S08', scenario: 'escort', title: '留下护送' },
   { id: 'S09', scenario: 'relief', title: '接受换班' },
+  { id: 'S10', scenario: 'rescue', title: '共同撤回' },
+  { id: 'S11', scenario: 'medical', title: '救护点' },
+  { id: 'S12', scenario: 'epilogue', title: '进场之前' },
 ] as const;
 export type ChapterStageId = typeof CHAPTER_STAGES[number]['id'];
 export const NIGHT_CARRY_FACTS = ['fleet-approaching', 'sharing-promised', 'handoff-planned', 'weapon-collected', 'departed-for-port'] as const;
@@ -29,6 +32,7 @@ export function nextStage(scenario: ScenarioId) {
 export const SCENARIO_PHASE_LIMITS: Record<ScenarioId, number> = {
   northgate: 3, prologue: 3, handover: 5, nightshift: 8, workers: 7,
   childhood: 4, mainhall: 5, frontgate: 6, transfer: 7, flank: 8, escort: 15, relief: 10,
+  rescue: 10, medical: 10, epilogue: 8,
 };
 
 const CARRY_FACTS_BY_STAGE: Record<ChapterStageId, readonly string[]> = {
@@ -59,6 +63,23 @@ const CARRY_FACTS_BY_STAGE: Record<ChapterStageId, readonly string[]> = {
     'shaoyuan-departure-confirmed', 'pursuit-was-viable', 'pursuit-staffing-cost-known', 'lu-keeps-escort-promise',
     'escort-patient-transferred', 'escort-pillow-card-preserved', 'escort-convoy-arrived', 'escort-manifest-checked',
     'shaoyuan-passed-dispatch', 'meng-returned-for-relief'],
+  S10: ['full-report-shared', 'lu-has-full-report', 'lu-keeps-escort-promise', 'relationship-repaired',
+    'escort-convoy-arrived', 'escort-manifest-checked', 'shaoyuan-departure-confirmed', 'shaoyuan-passed-dispatch',
+    'relief-posts-held', 'relief-handover-complete', 'zhou-gives-up-post', 'zhou-accepts-help', 'zhou-brace-adjusted',
+    'zhou-own-gear-on-list', 'zhou-heard-family', 'zhou-wants-to-live', 'zhou-family-reply-queued',
+    'zhou-will-seek-treatment', 'zhou-leaves-under-protection', 'lu-checks-zhou-rest'],
+  S11: ['full-report-shared', 'lu-has-full-report', 'lu-keeps-escort-promise', 'relationship-repaired',
+    'escort-convoy-arrived', 'escort-manifest-checked', 'shaoyuan-departure-confirmed', 'shaoyuan-passed-dispatch',
+    'relief-posts-held', 'relief-handover-complete', 'zhou-gives-up-post', 'zhou-accepts-help', 'zhou-wants-to-live',
+    'zhou-family-reply-queued', 'zhou-will-seek-treatment', 'rescue-meng-wounded', 'rescue-meng-under-cover',
+    'rescue-zhou-wounded', 'zhou-reported-injury', 'zhou-requested-rescue', 'rescue-both-received'],
+  S12: ['full-report-shared', 'lu-keeps-escort-promise', 'relationship-repaired', 'escort-convoy-arrived',
+    'escort-manifest-checked', 'shaoyuan-departure-confirmed', 'shaoyuan-passed-dispatch', 'relief-posts-held',
+    'zhou-gives-up-post', 'zhou-accepts-help', 'zhou-wants-to-live', 'zhou-family-reply-queued',
+    'rescue-meng-under-cover', 'zhou-reported-injury', 'zhou-requested-rescue', 'rescue-both-received',
+    'medical-equipment-handed-over', 'medical-records-delivered', 'medical-zhou-responsive',
+    'medical-treatment-attempted', 'zhou-death-confirmed', 'meng-treatment-continues',
+    'xu-rest-accepted', 'lu-accepts-help', 'medical-needs-recorded', 'reception-contact-received'],
 };
 export function carryFacts(stage: ChapterStageId, facts: readonly string[]): string[] {
   return facts.filter(fact => CARRY_FACTS_BY_STAGE[stage].includes(fact));

@@ -171,7 +171,7 @@ const NIGHT_FACTS = ['fan-cleared', 'fan-restarted', 'supplies-collected', 'supp
   'fleet-approaching', 'briefing-zhou-spoke', 'sharing-promised', 'handoff-planned', 'weapon-collected', 'departed-for-port'];
 function advanceNight(replay: ChapterReplay, skip: boolean): void {
   const points = [NIGHT.fan, NIGHT.fanReset, NIGHT.supplies, NIGHT.delivery, NIGHT.map, NIGHT.map, NIGHT.weapons, NIGHT.exit];
-  replay.drive(points[replay.simulation.mission.phase], { interact: true, skip, combat: false });
+  replay.drive(points[replay.simulation.mission.phase], { interact: [0, 1, 2, 3, 6].includes(replay.simulation.mission.phase), skip, combat: false });
 }
 function finishNight(replay: ChapterReplay, skip: boolean): void {
   replay.until('S03 departure', () => replay.simulation.mission.complete, () => advanceNight(replay, skip), 180);
@@ -252,7 +252,7 @@ describe('S03/S04 authored geometry: public-input simulation regressions', () =>
       replay.step({ yaw: towardConvoy + Math.PI, interact: true, skip: true });
       expect(replay.simulation.mission.phase).toBe(0);
       expect(replay.simulation.mission.facts).not.toContain('convoy-reported');
-      replay.step({ yaw: towardConvoy, interact: true });
+      replay.step({ yaw: towardConvoy });
       expect(replay.simulation.mission.phase).toBe(1);
       expect(replay.simulation.mission.facts).toEqual(expect.arrayContaining(['convoy-reported', 'zhou-adopts-lu-report']));
 
@@ -272,7 +272,7 @@ describe('S03/S04 authored geometry: public-input simulation regressions', () =>
       expect(replay.simulation.player.position[1], replay.summary()).toBeGreaterThan(2.8);
       expect(replay.simulation.player.position[1]).toBeLessThan(3.3);
       replay.until('S04 upper observation', () => replay.simulation.mission.phase === 4,
-        () => replay.drive(w.overlook, { direct: true, interact: true, range: 0.8, sprint: false }));
+        () => replay.drive(w.overlook, { direct: true, range: 0.8, sprint: false }));
       expect(replay.simulation.player.position[1], replay.summary()).toBeGreaterThan(2.8);
       replay.walk(w.descent, { direct: true, range: 0.3, sprint: false });
       for (let i = 0; i < 30; i++) replay.step();
@@ -291,7 +291,7 @@ describe('S03/S04 authored geometry: public-input simulation regressions', () =>
       expect(gateTrace(replay, 0)).toBeNull(); expect(gateTrace(replay, -78)).toBeNull();
       replay.walk([0, 0, -81], { direct: true, range: 0.6 });
       expect(replay.simulation.player.position[2]).toBeLessThan(-80.4);
-      replay.until('S04 release technicians', () => replay.simulation.mission.phase === 6, () => replay.drive(w.release, { interact: true }));
+      replay.until('S04 release technicians', () => replay.simulation.mission.phase === 6, () => replay.drive(w.release));
       replay.until('S04 safe arrival', () => replay.simulation.mission.phase === 7, () => escortWorkers(replay), 240);
       replay.until('S04 handoff', () => replay.simulation.mission.complete, () => replay.drive(w.post, { interact: true }));
 

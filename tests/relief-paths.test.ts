@@ -74,12 +74,15 @@ function playRelief(skip: boolean, restore: boolean) {
         if (secondVia < R.crossingVia[1].length - 1 && distance(s.player.position, R.crossingVia[1][secondVia]) < 0.6) { secondVia++; path = []; }
         goal = R.crossingVia[1][secondVia]; precision = secondVia === 0;
       }
-      if (phase < 3 && s.player.reserve + s.player.ammo < 25) {
+      const resupplying = phase < 3 && s.player.reserve + s.player.ammo < 25;
+      if (resupplying) {
         goal = [...R.ammo].sort((a, b) => distance(a, s.player.position) - distance(b, s.player.position))[0]; precision = true;
       }
       const nextKey = `${phase}:${goal.map(v => v.toFixed(1)).join(',')}`;
       if (key !== nextKey) { key = nextKey; path = []; }
-      const stop = precision ? 0.35 : 1.5;
+      // A precise final public-input approach avoids comparing two arbitrary
+      // positions within the old 1.5 m bot stopping range after different skips.
+      const stop = phase === 9 ? 0.01 : precision ? 0.35 : 1.5;
       if (!path.length && distance(s.player.position, goal) > stop) path = s.navigation.path(s.player.position, goal);
       while (path.length && distance(s.player.position, path[0]) < 0.3) path.shift();
       const next = path[0] ?? goal;
@@ -87,6 +90,7 @@ function playRelief(skip: boolean, restore: boolean) {
       if (distance(s.player.position, goal) > stop && s.mission.control !== 'staged') {
         const dx = next[0] - s.player.position[0], dz = next[2] - s.player.position[2], length = Math.max(0.01, Math.hypot(dx, dz));
         mx = dx / length; mz = dz / length;
+        if (phase === 9) { const scale = Math.min(1, length / (6.3 * FIXED_DT)); mx *= scale; mz *= scale; }
       }
       const target = phase < 3 ? s.aliveEnemies.slice().sort((a, b) => distance(a.position, s.player.position) - distance(b.position, s.player.position))
         .find(a => distance(a.position, s.player.position) < 52 && s.physics.trace(s.playerEye,
@@ -99,9 +103,13 @@ function playRelief(skip: boolean, restore: boolean) {
       const before = new Map(s.actors.map(a => [a.id, { position: [...a.position] as Vec3, health: a.health }]));
       const noPlayerBullet = phase >= 4 && !s.ballistics.projectiles.some(p => p.owner === 'player');
       if (noPlayerBullet && !playerCombatFinished) playerCombatFinished = { hits: s.hits, kills: s.kills };
+      const interact = ([6, 8].includes(phase) || resupplying && R.ammo.some(p => distance(s.player.position, p) < 1.5)) && steps % 12 === 0;
       s.step({ ...emptyIntent, yaw, pitch, forward: -Math.sin(yaw) * mx - Math.cos(yaw) * mz,
         right: Math.cos(yaw) * mx - Math.sin(yaw) * mz, sprint: !target, ads: !!target, fire: !!target,
-        reload: phase < 3 && !s.player.ammo && !s.player.reload, interact: steps % 12 === 0, skip });
+        reload: phase < 3 && !s.player.ammo && !s.player.reload,
+        // Entry clearance and physical post handover require no E; sitting,
+        // replying to family and taking ammunition remain manual actions.
+        interact, skip });
       steps++; if (target) fireInputs++; env.setFacts?.(s.mission.facts);
       for (const fact of s.mission.facts) if (!factAt.has(fact)) factAt.set(fact, steps);
       for (const id of ids) {
@@ -118,6 +126,7 @@ function playRelief(skip: boolean, restore: boolean) {
       maxActive = Math.max(maxActive, s.aliveEnemies.length); maxAimers = Math.max(maxAimers, s.aliveEnemies.filter(a => a.aiming).length);
       check(maxActive <= 8 && maxAimers <= 2 && s.mission.spawned <= 44, 'E08 pressure cap exceeded');
       if (phase !== s.mission.phase) {
+        if (phase < 3) check(!interact, 'automatic team entry/handover received E');
         phases.push(s.mission.phase); path = [];
         if (!skip && !restore && s.mission.phase === 7) recordVisualFixture(s);
         if (s.mission.phase === 2) {

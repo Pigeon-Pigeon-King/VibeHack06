@@ -51,7 +51,7 @@ class Game {
   private monitor?: DepartureMonitor;
   private readonly ui: GameUI;
   private readonly input: Input;
-  private readonly characters = new Map<string, { model: CharacterModel; label?: Sprite; name: string }>();
+  private readonly characters = new Map<string, { model: CharacterModel; label?: Sprite; name: string; role: string }>();
   private readonly marker = new Group();
   private readonly markerLabel = label('目标', '#f4d49e');
   private environment!: EnvironmentModel;
@@ -245,7 +245,8 @@ class Game {
     this.ads += ((p.ads ? 1 : 0) - this.ads) * Math.min(1, dt * 14);
     this.camera.fov = 75 - this.ads * 21; this.camera.updateProjectionMatrix();
     this.weapon.root.visible = m.control === 'combat';
-    this.supply.visible = sim.scenario === 'nightshift' && m.facts.includes('supplies-collected') && !m.facts.includes('supplies-delivered');
+    this.supply.visible = sim.scenario === 'nightshift' && m.facts.includes('supplies-collected') && !m.facts.includes('supplies-delivered')
+      || sim.scenario === 'medical' && m.phase === 1;
     this.weapon.setPose(p.recoil, p.reload > 0 ? 1 - p.reload / 2.1 : 0, this.ads, this.lowMotion ? 0 : p.walk);
     const forward = new Vector3(0, 0, -1).applyQuaternion(this.camera.quaternion);
     const near = this.camera.position.clone().addScaledVector(forward, 0.9);
@@ -259,17 +260,24 @@ class Game {
     const newBed = transferring ? sim.actors.find(a => a.id === 'cart-2') : undefined;
     const transferPatient: Vec3 | undefined = oldBed && newBed ? oldBed.position.map((v, i) => v + (newBed.position[i] - v) * transferProgress) as Vec3 : undefined;
     const transferYaw = transferPatient ? Math.atan2(-(transferPatient[0] - p.position[0]), -(transferPatient[2] - p.position[2])) : p.yaw;
-    this.care.update(p.position, seated ? RELIEF.seatYaw : transferYaw, seated ? 'seat' : transferring ? 'transfer' : 'none',
-      seated ? m.phaseTime / 13 : transferProgress, sim.has('zhou-brace-adjusted'));
+    const rescueCarry = sim.scenario === 'rescue' && (m.phase === 3 || m.phase === 4);
+    this.care.update(p.position, rescueCarry ? -Math.PI / 2 : seated ? RELIEF.seatYaw : transferYaw,
+      seated ? 'seat' : transferring || rescueCarry ? 'transfer' : 'none',
+      rescueCarry ? m.phase === 3 ? m.phaseTime / 6 : 1 : seated ? m.phaseTime / 13 : transferProgress, sim.has('zhou-brace-adjusted'));
     this.sound.setVentilation(sim.scenario === 'nightshift' && m.facts.includes('fan-restarted'));
     const seen = new Set<string>();
     for (const actor of sim.actors) {
       seen.add(actor.id);
       let item = this.characters.get(actor.id);
+      if (item && item.role !== actor.role) {
+        this.scene.remove(item.model.root); item.model.dispose();
+        if (item.label) { this.scene.remove(item.label); disposeLabel(item.label); }
+        this.characters.delete(actor.id); item = undefined;
+      }
       if (!item) {
         const model = createCharacter(actor.role);
         const tag = actor.role !== 'enemy' ? label(actor.name, actor.role === 'worker' ? '#efc78b' : '#c5e3dc') : undefined;
-        item = { model, label: tag, name: actor.name }; this.characters.set(actor.id, item); this.scene.add(model.root); if (tag) this.scene.add(tag);
+        item = { model, label: tag, name: actor.name, role: actor.role }; this.characters.set(actor.id, item); this.scene.add(model.root); if (tag) this.scene.add(tag);
       }
       if (item.label && item.name !== actor.name) {
         this.scene.remove(item.label); disposeLabel(item.label);
@@ -298,6 +306,8 @@ class Game {
           && !(sim.scenario === 'flank' && (m.control !== 'combat' || actor.id === 'meng'))
           && !(sim.scenario === 'escort' && m.control !== 'combat')
           && !(sim.scenario === 'relief' && actor.id === 'zheng' && m.phase >= 6)
+          && !(sim.scenario === 'rescue' && (m.control !== 'combat' || actor.id === 'meng' && m.phase >= 1))
+          && sim.scenario !== 'medical' && sim.scenario !== 'epilogue'
           && !(sim.scenario === 'mainhall' && actor.id === 'zhao' && m.phase >= 4)
           || actor.role === 'opponent' && (m.phase > 4 || m.phaseTime >= 18)
           || actor.id === 'father' && m.facts.includes('father-rifle-collected') && !actor.down,
@@ -307,13 +317,15 @@ class Game {
         care: actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
         gesture: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.speaker === '周延' ? 0.35 + Math.sin(m.phaseTime * 2.2) * 0.12 : 0,
         lookAway: sim.scenario === 'transfer' && actor.id === 'zhou' && m.phase === 4 && m.phaseTime >= 42 && m.phaseTime < 49 ? -0.3 : 0,
-        occupied: sim.scenario !== 'escort' || actor.id !== 'cart-0' && actor.id !== 'cart-2'
-          || actor.id === 'cart-0' && !sim.has('escort-patient-transferred') || actor.id === 'cart-2' && sim.has('escort-patient-transferred'),
+        occupied: actor.id !== 'supply-cart' && actor.id !== 'zhou-cart' && (sim.scenario !== 'escort' || actor.id !== 'cart-0' && actor.id !== 'cart-2'
+          || actor.id === 'cart-0' && !sim.has('escort-patient-transferred') || actor.id === 'cart-2' && sim.has('escort-patient-transferred')),
         damaged: sim.scenario === 'escort' && actor.id === 'cart-0' && sim.has('escort-wheel-jammed'), patientOffset,
+        cargo: actor.id === 'supply-cart', orderly: sim.scenario !== 'medical' && !(sim.scenario === 'rescue' && m.phase <= 7),
         carrying: (actor.id === 'father' && sim.scenario === 'prologue' && m.phase === 1)
           || (actor.id === 'evacuator' && sim.scenario === 'childhood' && m.phase >= 3 && (m.phase === 4 || m.phaseTime >= 12))
           || (actor.id === 'evacuator' && sim.scenario === 'mainhall' && m.phase >= 4)
           || (actor.id === 'zheng' && sim.scenario === 'handover' && m.phase === 4)
+          || (actor.id === 'zheng' && rescueCarry)
           || (actor.id === 'medic' && transferring) });
       if (item.label) {
         item.label.position.set(actor.position[0], actor.position[1] + 2.1, actor.position[2]);
@@ -328,6 +340,7 @@ class Game {
     const diagnostics = import.meta.env.DEV ? (this.qaImported ? '检查点恢复 · 局部视觉验收\n' : '') + `阶段 ${m.phase} · ${p.name} · 坐标 ${p.position.map(v => v.toFixed(1)).join(', ')} · ${Math.round(this.fps)} FPS\n` +
       `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}` : undefined;
     const evacuees = sim.scenario === 'transfer' ? sim.actors.filter(a => a.role === 'cart')
+      : sim.scenario === 'epilogue' ? sim.actors.filter(a => a.id.startsWith('worker-') || a.id === 'supply-cart')
       : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-'))
       : sim.scenario === 'escort' ? [...escortPatients(sim), ...sim.actors.filter(a => a.id.startsWith('walker-'))] : sim.workers;
     const state: UiState = {
@@ -335,6 +348,7 @@ class Game {
       availableScenarios: ['northgate', 'prologue', 'handover', ...(import.meta.env.DEV ? CHAPTER_STAGES.map(stage => stage.scenario) : [])], phaseName: objective.phase,
       objective: objective.text, detail: this.mode === 'complete' ? m.subtitle : `${objective.detail} 目标 ${Math.round(distance(p.position, objective.point))} m`,
       health: p.health, ammo: p.ammo, reserve: p.reserve, reload: p.reload > 0 ? 1 - p.reload / 2.1 : 0,
+      storyInjury: sim.scenario === 'rescue' && sim.has('rescue-zhou-wounded'),
       workersSafe: evacuees.filter(a => a.safe).length, workerTotal: evacuees.length, elapsed: m.elapsed + (this.chapter?.elapsedBefore ?? 0), interaction: objective.interaction,
       subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, hurtFlash: sim.hurtFlash,

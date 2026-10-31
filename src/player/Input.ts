@@ -2,6 +2,7 @@ export interface Intent {
   forward: number; right: number; sprint: boolean; crouch: boolean; jump: boolean;
   fire: boolean; ads: boolean; reload: boolean; interact: boolean; skip: boolean;
   yaw: number; pitch: number;
+  cover?: boolean;
 }
 export class Input {
   enabled = false;
@@ -53,7 +54,7 @@ export class Input {
       forward: k('KeyW') - k('KeyS'), right: k('KeyD') - k('KeyA'),
       sprint: !!(k('ShiftLeft') || k('ShiftRight')), crouch: !!(k('KeyC') || k('ControlLeft')),
       jump: this.pressed.has('Space'), fire: this.mouse.has(0) || !!k('KeyF'), ads: this.mouse.has(2),
-      reload: this.pressed.has('KeyR'), interact: this.pressed.has('KeyE'), skip: this.pressed.has('Enter'), yaw: this.yaw, pitch: this.pitch,
+      reload: this.pressed.has('KeyR'), interact: this.pressed.has('KeyE'), cover: this.pressed.has('KeyQ'), skip: this.pressed.has('Enter'), yaw: this.yaw, pitch: this.pitch,
     };
     this.pressed.clear();
     return result;

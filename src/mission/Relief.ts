@@ -54,7 +54,7 @@ function pressure(s: Simulation): void {
 
 export function updateRelief(s: Simulation, input: Intent): void {
   const m = s.mission;
-  if (m.phase === 0 && input.interact && at(s, R.entryHold) && quiet(s, R.entryHold)) {
+  if (m.phase === 0 && m.phaseTime >= 1 && quiet(s, R.entryHold)) {
     s.fact('relief-entry-secured');
     s.workers.forEach((actor, i) => s.route(actor, [...R.techVia, [R.techSafe[0] + (i - 1) * 1.5, R.techSafe[1], R.techSafe[2]]]));
     enterPositions(s);
@@ -62,7 +62,7 @@ export function updateRelief(s: Simulation, input: Intent): void {
   } else if (m.phase === 1 && s.safeCount === 3 && arrived(s)) {
     s.fact('relief-arrived'); s.fact('relief-posts-held');
     s.phase(2, '人都到位了。名单在这里，许岚已经确认过房间。你把通信和阵位交给我。', 'combat', '孟齐');
-  } else if (m.phase === 2 && arrived(s) && input.interact && at(s, handoverPoint) && quiet(s, R.post)) {
+  } else if (m.phase === 2 && m.phaseTime >= 1 && arrived(s) && at(s, handoverPoint, 8) && quiet(s, R.post)) {
     s.phase(3, HANDOVER[0][2], 'staged', HANDOVER[0][1]);
   } else if (m.phase === 3) {
     lookWithin(s, R.reliefPosts[1]); playDialogue(s, 'relief-handover', HANDOVER);
@@ -116,9 +116,9 @@ export function updateRelief(s: Simulation, input: Intent): void {
 export function reliefObjective(s: Simulation) {
   const p = s.mission.phase;
   let point: Vec3 = R.entryHold, text = '', detail = '', action = '';
-  if (p === 0) { text = '守住后线接防入口'; detail = '内侧缩回已获批准。先接住车道与储料棚火线。'; action = quiet(s, point) ? '通知设备员与接防组通过' : ''; }
+  if (p === 0) { text = '守住后线接防入口'; detail = '守住车道与储料棚火线；入口安全后设备员和接防组自行通过。'; }
   else if (p === 1) { point = handoverPoint; text = `掩护设备员撤入 · ${s.safeCount}/3`; detail = '孟齐与两名接防队员正在沿西侧进场。'; }
-  else if (p === 2) { point = handoverPoint; text = '核对已接手的名单与通信'; detail = '孟齐已经站到交出的岗位。'; action = quiet(s, R.post) ? '按核实的记录交接' : ''; }
+  else if (p === 2) { point = handoverPoint; text = '与孟齐交接名单与通信'; detail = '接防组已到岗。进入阵位内侧，火线安全后孟齐会与你交接。'; }
   else if (p === 3) { point = handoverPoint; text = '把阵位交出去'; detail = '可以环顾。Enter 跳过此段交接。'; }
   else if (p === 4 || p === 5) { point = R.crossings[p - 4]; text = p === 4 ? '在同伴掩护下走过第一段横道' : '沿挡墙走过第二段撤回线'; detail = '孟齐与接防队员正在开火，不必返回原位。'; }
   else if (p === 6) { point = R.rest; text = '到内门矮箱旁坐下'; detail = '靠近矮箱，郑铎在前面等你。'; action = at(s, point, 1.0) ? '坐下，请郑铎调整护具' : ''; }

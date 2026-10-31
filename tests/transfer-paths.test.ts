@@ -27,7 +27,7 @@ function playTransfer(skip: boolean, restore: boolean) {
   let s = new Simulation('transfer', env.solids, undefined, context);
   const ids = s.actors.filter(a => a.role === 'cart').map(a => a.id);
   const walked = new Map<string, number>(), crossed = new Set<string>(), arrivedAt = new Map<string, number>();
-  const factsAt = new Map<string, number>(), phases = [0], restores = new Set<number>();
+  const factsAt = new Map<string, number>(), phases = [0], restores = new Set<number>(), autonomous = new Set<number>();
   let steps = 0, path: Vec3[] = [], goalKey = '', argumentPosition: Vec3 | undefined;
   let argumentAmmo = 0, argumentStarted = 0, argumentEnded = 0;
   const gateTrace = () => s.physics.trace([T.gateCenter[0], 1, T.gateCenter[2] - 1.5],
@@ -47,7 +47,10 @@ function playTransfer(skip: boolean, restore: boolean) {
     expect(s.mission.phase).toBe(0); expect(s.has('lu-knows-shaoyuan-time')).toBe(false);
 
     while (!s.mission.complete && !s.mission.failed && steps < 600 / FIXED_DT) {
-      const phase = s.mission.phase, goal = s.objective.point;
+      const phase = s.mission.phase;
+      // Stay beside the repaired panel while the convoy leaves: its report must
+      // not depend on the player visiting the former observation marker.
+      const goal = phase === 2 ? T.panel : s.objective.point;
       const key = `${phase}:${goal.join(',')}`;
       if (key !== goalKey) { path = []; goalKey = key; }
       if (!path.length && distance(s.player.position, goal) > 1.5) path = s.navigation.path(s.player.position, goal);
@@ -57,9 +60,15 @@ function playTransfer(skip: boolean, restore: boolean) {
       const yaw = moving ? Math.atan2(-dx, -dz) : s.player.yaw;
       const before = new Map(s.actors.map(a => [a.id, [...a.position] as Vec3]));
       s.step({ ...emptyIntent, yaw, pitch: s.player.pitch, forward: moving ? 1 : 0, sprint: true,
-        interact: steps % 12 === 0, skip: phase !== 4 || skip, fire: true, ads: true });
+        // Only opening/repairing the box and treating the hand use E. Arrival
+        // reports and entering the already agreed conversation receive no E.
+        interact: [0, 1, 5].includes(phase) && steps % 12 === 0, skip: phase !== 4 || skip, fire: true, ads: true });
       steps++; env.setFacts?.(s.mission.facts);
       if (phases.at(-1) !== s.mission.phase) { phases.push(s.mission.phase); path = []; }
+      if ([2, 3].includes(phase) && phase !== s.mission.phase) {
+        autonomous.add(phase);
+        expect(distance(s.player.position, phase === 2 ? T.watch : T.equipment), 'automatic progression still required the old exact marker').toBeGreaterThan(2.8);
+      }
       for (const fact of s.mission.facts) if (!factsAt.has(fact)) factsAt.set(fact, steps);
       for (const actor of s.actors) {
         if (actor.role !== 'cart' && actor.id !== 'xu' && actor.id !== 'luo') continue;
@@ -102,6 +111,7 @@ function playTransfer(skip: boolean, restore: boolean) {
       }
     }
     expect(s.mission.failed, summary()).toBe(false); expect(s.mission.complete, summary()).toBe(true);
+    expect([...autonomous]).toEqual([2, 3]);
     expect(phases).toEqual([0, 1, 2, 3, 4, 5, 6, 7]);
     expect(s.actors.filter(a => a.role === 'cart').map(a => a.id)).toEqual(ids);
     for (const id of ids) {
