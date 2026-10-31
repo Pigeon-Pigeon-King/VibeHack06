@@ -1,0 +1,236 @@
+[
+  {
+    "id": "bridge-s01-s02",
+    "from": "S01",
+    "to": "S02",
+    "heading": "主厅",
+    "kicker": "同一次失守 · 周延视点",
+    "cues": [
+      {
+        "id": "bridge-s01-s02-01",
+        "text": "父亲拾枪冲向防线，闻川随人流挤过西侧隔断，进了撤离通道。",
+        "readingSeconds": 7.5
+      },
+      {
+        "id": "bridge-s01-s02-02",
+        "text": "回到同一次失守稍早的时刻，年轻的周延接下了主厅西侧的防守。",
+        "readingSeconds": 8.0
+      },
+      {
+        "id": "bridge-s01-s02-03",
+        "text": "他要打开检修门，护送居民穿过下一道隔断。",
+        "readingSeconds": 5.5
+      }
+    ]
+  },
+  {
+    "id": "bridge-s02-s03",
+    "from": "S02",
+    "to": "S03",
+    "heading": "夜班与出发",
+    "kicker": "十年后 · 闻川视点",
+    "cues": [
+      {
+        "id": "bridge-s02-s03-01",
+        "text": "周延从那场失守中活了下来。",
+        "readingSeconds": 3.5
+      },
+      {
+        "id": "bridge-s02-s03-02",
+        "text": "十年后，闻川已长大成人，和周延一起为港区的接应行动做准备。",
+        "readingSeconds": 7.5
+      },
+      {
+        "id": "bridge-s02-s03-03",
+        "text": "集合之前，闻川还要修好通风，把护理物资交到许岚手里。",
+        "readingSeconds": 7.0
+      }
+    ]
+  },
+  {
+    "id": "bridge-s03-s04",
+    "from": "S03",
+    "to": "S04",
+    "heading": "带回港务人员",
+    "kicker": "占领区 · 闻川视点",
+    "cues": [
+      {
+        "id": "bridge-s03-s04-01",
+        "text": "闻川与周延约好共享情报，等护送人员到站，再安排接防换班。",
+        "readingSeconds": 7.5
+      },
+      {
+        "id": "bridge-s03-s04-02",
+        "text": "夜班交完，闻川带上装备，与郑铎进入占领区。",
+        "readingSeconds": 5.5
+      },
+      {
+        "id": "bridge-s03-s04-03",
+        "text": "他们要先接回熟悉港口设备的技工，恢复接收中心的运作。",
+        "readingSeconds": 7.0
+      }
+    ]
+  },
+  {
+    "id": "bridge-s04-s05",
+    "from": "S04",
+    "to": "S05",
+    "heading": "北闸的预告",
+    "kicker": "同一轮接应 · 周延视点",
+    "cues": [
+      {
+        "id": "bridge-s04-s05-01",
+        "text": "港务人员已在转运位交接，闻川也答应把罗敬的家属送到安全地点。",
+        "readingSeconds": 8.0
+      },
+      {
+        "id": "bridge-s04-s05-02",
+        "text": "北闸的维修工还在等撤离，周延要守住来路，掩护他们沿西侧后路退入内门。",
+        "readingSeconds": 9.0
+      }
+    ]
+  },
+  {
+    "id": "bridge-s05-s06",
+    "from": "S05",
+    "to": "S06",
+    "heading": "转接门与争执",
+    "kicker": "西货廊 · 闻川视点",
+    "cues": [
+      {
+        "id": "bridge-s05-s06-01",
+        "text": "北闸的维修工已退到内侧，周延和郑铎也沿后线撤回。",
+        "readingSeconds": 6.5
+      },
+      {
+        "id": "bridge-s05-s06-02",
+        "text": "周延把敌军机动部队仍在港区的消息传给闻川，闻川继续协助转运。",
+        "readingSeconds": 8.0
+      },
+      {
+        "id": "bridge-s05-s06-03",
+        "text": "西货廊的患者车堵在一道转接门前，正等闻川排除故障。",
+        "readingSeconds": 7.0
+      }
+    ]
+  },
+  {
+    "id": "bridge-s06-s07",
+    "from": "S06",
+    "to": "S07",
+    "heading": "交给别人",
+    "kicker": "侧翼检修台 · 周延视点",
+    "cues": [
+      {
+        "id": "bridge-s06-s07-01",
+        "text": "患者通过转接门后，闻川为周延扣下邵原转移预告的事与他争执，随后跟罗敬回去做维修。",
+        "readingSeconds": 11.0
+      },
+      {
+        "id": "bridge-s06-s07-02",
+        "text": "东侧机动队正逼近检修台，周延要掩护维修人员经泵房退入内门。",
+        "readingSeconds": 8.0
+      }
+    ]
+  },
+  {
+    "id": "bridge-s07-s08",
+    "from": "S07",
+    "to": "S08",
+    "heading": "留下护送",
+    "kicker": "接应区 · 闻川视点",
+    "cues": [
+      {
+        "id": "bridge-s07-s08-01",
+        "text": "维修组退回内门，孟齐的分流路线也走通了。",
+        "readingSeconds": 5.5
+      },
+      {
+        "id": "bridge-s07-s08-02",
+        "text": "周延把完整报告连同来源交给闻川，并把自己列入换班名单。",
+        "readingSeconds": 7.5
+      },
+      {
+        "id": "bridge-s07-s08-03",
+        "text": "闻川回到接应区，要先核对罗敬家属的安置，再接下一段护送。",
+        "readingSeconds": 7.5
+      }
+    ]
+  },
+  {
+    "id": "bridge-s08-s09",
+    "from": "S08",
+    "to": "S09",
+    "heading": "接受换班",
+    "kicker": "北闸后线 · 周延视点",
+    "cues": [
+      {
+        "id": "bridge-s08-s09-01",
+        "text": "患者和陪护已到旧检修站，名单核对齐了，孟齐带着接防组返回北闸。",
+        "readingSeconds": 8.0
+      },
+      {
+        "id": "bridge-s08-s09-02",
+        "text": "周延守住后线，等同伴进到阵位，接过通信和防区，他这一组就能撤回。",
+        "readingSeconds": 8.0
+      }
+    ]
+  },
+  {
+    "id": "bridge-s09-s10",
+    "from": "S09",
+    "to": "S10",
+    "heading": "共同撤回",
+    "kicker": "内门外 · 周延视点",
+    "cues": [
+      {
+        "id": "bridge-s09-s10-01",
+        "text": "接防队员留守阵位，周延让郑铎调好了护具，也给家里留了回复。",
+        "readingSeconds": 7.5
+      },
+      {
+        "id": "bridge-s09-s10-02",
+        "text": "周延跟孟齐、郑铎继续撤回，要穿过设备交叉口，去旧检修站报到。",
+        "readingSeconds": 7.5
+      }
+    ]
+  },
+  {
+    "id": "bridge-s10-s11",
+    "from": "S10",
+    "to": "S11",
+    "heading": "救护点",
+    "kicker": "旧检修站 · 闻川视点",
+    "cues": [
+      {
+        "id": "bridge-s10-s11-01",
+        "text": "郑铎和医护沿着保住的西货廊，把周延与孟齐送到了旧检修站。",
+        "readingSeconds": 7.5
+      },
+      {
+        "id": "bridge-s10-s11-02",
+        "text": "闻川来到救护点，郑铎带着装备和转运记录在等他，里面的医护已开始救治。",
+        "readingSeconds": 9.0
+      }
+    ]
+  },
+  {
+    "id": "bridge-s11-s12",
+    "from": "S11",
+    "to": "S12",
+    "heading": "进场之前",
+    "kicker": "救护点外 · 闻川视点",
+    "cues": [
+      {
+        "id": "bridge-s11-s12-01",
+        "text": "医师确认周延抢救失败，孟齐继续留在救护点治疗。",
+        "readingSeconds": 6.0
+      },
+      {
+        "id": "bridge-s11-s12-02",
+        "text": "闻川和郑铎带上医疗需求单，准备向接收台报告伤亡和通路情况；罗敬正在那边等他们。",
+        "readingSeconds": 10.5
+      }
+    ]
+  }
+]
