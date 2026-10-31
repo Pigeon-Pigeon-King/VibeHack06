@@ -1,0 +1,41 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06
+
+stdout | tests/campaign-qa/s05-s08.remaining-natural.check.mjs > S05 one natural public-input route; locked original driver and route assertions
+S05_SINGLE_NATURAL {"time":119.06666666666119,"spawned":14,"kills":9,"safe":7,"reloads":1}
+
+stdout | tests/campaign-qa/s05-s08.remaining-natural.check.mjs > S06 one natural public-input route; locked original driver and route assertions
+TRANSFER_REPLAY skip=false restore=false {"seconds":115.98333333332803,"phases":[0,1,2,3,4,5,6,7],"restores":[],"patientDistance":[["cart-0",24.1551561739987],["cart-1",24.1691103741392],["cart-2",24.16788781861725]]}
+
+stdout | tests/campaign-qa/s05-s08.remaining-natural.check.mjs > S07 one natural public-input route; locked original driver and route assertions
+FLANK_REPLAY skip=false restore=false {"seconds":211.6166666667272,"spawned":9,"kills":8,"maxActive":5,"maxAimers":2,"phases":[0,1,2,3,4,5,6,7,8],"restores":[]}
+
+ ✓ tests/campaign-qa/s05-s08.remaining-natural.check.mjs (3 tests) 92432ms
+   ✓ S05 one natural public-input route; locked original driver and route assertions 33874ms
+   ✓ S06 one natural public-input route; locked original driver and route assertions 24765ms
+   ✓ S07 one natural public-input route; locked original driver and route assertions 33348ms
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  13:34:31
+   Duration  96.09s (tests 97%, transform 2%)
+
+JSON report written to /Users/penguin/VibeHack06/artifacts/campaign-qa/s05-s08/remaining-natural/remaining-natural-results.json
+       99.66 real        28.42 user         6.29 sys
+           256262144  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              279763  page reclaims
+                6755  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                 164  messages sent
+                 134  messages received
+                   1  signals received
+               11456  voluntary context switches
+              403229  involuntary context switches
+          7774221664  instructions retired
+          5322361645  cycles elapsed
+           149881872  peak memory footprint

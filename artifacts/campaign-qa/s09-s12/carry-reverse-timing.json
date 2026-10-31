@@ -1,0 +1,63 @@
+{
+  "source": "run2-carry-reverse-diagnostic.json",
+  "scope": "Only value-captured phase, position and time; intermediate facts omitted due to observation aliasing.",
+  "reversed": {
+    "phase": 4,
+    "control": "cooperative",
+    "complete": false,
+    "failed": false,
+    "elapsed": 54.8333333333315,
+    "health": 100,
+    "position": [
+      -27.05124282836914,
+      0.015286242961883523,
+      225.97523498535156
+    ]
+  },
+  "playerArrived": {
+    "state": {
+      "phase": 4,
+      "control": "cooperative",
+      "complete": false,
+      "failed": false,
+      "elapsed": 73.53333333333045,
+      "health": 100,
+      "position": [
+        -53.78914260864258,
+        0.014660513401031472,
+        225.99993896484375
+      ]
+    },
+    "participants": [
+      {
+        "id": "meng",
+        "position": [
+          -51.76413345336914,
+          0.007985460758209273,
+          225.99993896484375
+        ]
+      },
+      {
+        "id": "zheng",
+        "position": [
+          -49.44316482543945,
+          0.01499441862106321,
+          225.99954223632812
+        ]
+      }
+    ]
+  },
+  "afterWaiting": {
+    "phase": 5,
+    "control": "staged",
+    "complete": false,
+    "failed": false,
+    "elapsed": 74.53333333333039,
+    "health": 100,
+    "position": [
+      -53.81789779663086,
+      0.0150997996330261,
+      226.83282470703125
+    ]
+  }
+}

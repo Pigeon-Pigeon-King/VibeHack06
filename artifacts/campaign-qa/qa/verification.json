@@ -1,0 +1,68 @@
+{
+  "schemaVersion": 3,
+  "status": "NOT_RUN",
+  "verify": {
+    "command": "node tests/campaign-qa/browser-session.mjs s01-first-pass; actual stdin trace in evidence",
+    "exitCode": 0,
+    "suites": [
+      {
+        "scope": "S01-S04 mechanisms",
+        "status": "FAIL",
+        "pass": 10,
+        "fail": 3,
+        "reason": "three original wall-clock timeouts retained"
+      },
+      {
+        "scope": "S05-S08 mechanisms",
+        "status": "FAIL",
+        "pass": 12,
+        "fail": 1,
+        "reason": "S08 diagnostic driver did not achieve death; S08 ordinary retry remains NOT_RUN"
+      },
+      {
+        "scope": "S09-S12 selected mechanisms",
+        "status": "PASS",
+        "pass": 6,
+        "fail": 0,
+        "reason": "first 4 PASS/2 driver FAIL plus separate targeted 2 PASS; original evidence retained"
+      }
+    ]
+  },
+  "completeRun": {
+    "id": "s01-first-pass",
+    "cleanContext": true,
+    "terminal": "S12_NOT_REACHED; S01 completed naturally, S02 ordinary failure and checkpoint recovery observed",
+    "restart": "S01 phase 0, facts 0, displayed time 00:00, health 100",
+    "evidence": "artifacts/campaign-qa/qa/evidence.json"
+  },
+  "checks": {
+    "launch": "PASS",
+    "render": "PASS",
+    "input": "PASS",
+    "coreLoop": "NOT_RUN",
+    "outcome": "NOT_RUN",
+    "restart": "PASS"
+  },
+  "limitations": [
+    {
+      "scope": "full continuous campaign",
+      "reason": "No uninterrupted browser S01-S12 first play. Independent mechanism paths do not replace it."
+    },
+    {
+      "scope": "additional S11 browser run",
+      "reason": "A separate clean S11 entry completed and restarted with public input; it is not S10-S11 continuous browser play."
+    },
+    {
+      "scope": "human pacing and target devices",
+      "reason": "55-70 minute human first-play timing, Windows EXE and real mobile devices NOT_RUN."
+    },
+    {
+      "scope": "candidate version",
+      "reason": "Locked 7877cbf plus dirty content; later main 043c8b6 was only typechecked for QA-config integration."
+    },
+    {
+      "scope": "browser input and observation",
+      "reason": "Pointer lock unavailable; keyboard alternative worked. No audio hearing assessment or continuous contact-animation recording."
+    }
+  ]
+}

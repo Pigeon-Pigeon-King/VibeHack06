@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "command": [
+    "/usr/bin/time",
+    "-l",
+    "/Users/penguin/.local/node-runtime/node-v22.14.0-darwin-arm64/bin/node",
+    "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031/node_modules/vitest/vitest.mjs",
+    "run",
+    "--configLoader",
+    "runner",
+    "--config",
+    "/Users/penguin/VibeHack06/tests/campaign-qa/s05-s08.config.mjs"
+  ],
+  "startedAt": "2026-10-31T05:06:12.040Z",
+  "wallSeconds": 28.66730875,
+  "cpuTiming": "boundary-output.txt contains /usr/bin/time -l user/system seconds",
+  "exitCode": 1,
+  "signal": null,
+  "sourceCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+  "candidateAggregateSha256": "24699d53881f950b92c0cb0ca4c435c44b16c55f0bef67167f698558bf305713",
+  "candidate": "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031",
+  "browser": "NOT_RUN",
+  "humanPlaythrough": "NOT_RUN"
+}

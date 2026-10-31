@@ -1,0 +1,61 @@
+{
+  "checks": [
+    {
+      "file": "tests/campaign-qa/browser-session.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s01-s04.check.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s01-s04.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s05-s08.baseline.check.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s05-s08.check.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s05-s08.config.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s05-s08.observe.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s05-s08.remaining-natural.check.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s05-s08.run.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s09-s12.check.mjs",
+      "exitCode": 0,
+      "output": ""
+    },
+    {
+      "file": "tests/campaign-qa/s09-s12.config.mjs",
+      "exitCode": 0,
+      "output": ""
+    }
+  ],
+  "pythonCompile": "PASS",
+  "scope": "Syntax only, no gameplay rerun"
+}

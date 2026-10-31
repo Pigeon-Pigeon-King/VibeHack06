@@ -1,0 +1,515 @@
+{
+  "schemaVersion": 1,
+  "candidate": "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031",
+  "method": "public Intent only, then genuine checkpoint serialization/reload; no state injection",
+  "wallSeconds": 83.17250525,
+  "final": {
+    "scenario": "workers",
+    "phase": 7,
+    "elapsed": 131.05,
+    "steppedSeconds": 143.4167,
+    "hp": 100,
+    "failed": false,
+    "complete": true,
+    "position": [
+      23.0057,
+      0.0151,
+      -113.2054
+    ],
+    "safe": 9,
+    "hits": 52,
+    "kills": 26,
+    "facts": [
+      "convoy-reported",
+      "zhou-adopts-lu-report",
+      "checkpoint-open",
+      "maintenance-access",
+      "reinforcements-E02-4",
+      "maintenance-overlook-secured",
+      "yard-open",
+      "workers-released",
+      "reinforcements-E03-6",
+      "reinforcements-E03-8",
+      "reinforcements-E03-10",
+      "reinforcements-E03-12",
+      "reinforcements-E03-14",
+      "reinforcements-E03-16",
+      "technicians-received",
+      "family-escort-promised",
+      "reception-damage-known"
+    ],
+    "ammo": [
+      20,
+      100
+    ],
+    "inputs": {
+      "move": 5819,
+      "fire": 536,
+      "reload": 2,
+      "interact": 102,
+      "skip": 0
+    },
+    "path": [],
+    "trace": [
+      {
+        "phase": 6,
+        "at": 115.6333,
+        "hp": 100,
+        "position": [
+          33.8379,
+          0.0201,
+          -123.8367
+        ],
+        "safe": 7
+      },
+      {
+        "phase": 6,
+        "at": 117.6333,
+        "hp": 100,
+        "position": [
+          24.157,
+          0.0144,
+          -117.0684
+        ],
+        "safe": 7
+      },
+      {
+        "phase": 6,
+        "at": 119.6333,
+        "hp": 100,
+        "position": [
+          23.0057,
+          0.0151,
+          -113.2054
+        ],
+        "safe": 7
+      },
+      {
+        "phase": 6,
+        "at": 121.6333,
+        "hp": 100,
+        "position": [
+          23.0057,
+          0.0151,
+          -113.2054
+        ],
+        "safe": 7
+      },
+      {
+        "phase": 6,
+        "at": 123.6333,
+        "hp": 100,
+        "position": [
+          23.0057,
+          0.0151,
+          -113.2054
+        ],
+        "safe": 7
+      },
+      {
+        "phase": 7,
+        "at": 125.6333,
+        "hp": 100,
+        "position": [
+          23.0057,
+          0.0151,
+          -113.2054
+        ],
+        "safe": 9
+      },
+      {
+        "phase": 7,
+        "at": 127.6333,
+        "hp": 100,
+        "position": [
+          23.0057,
+          0.0151,
+          -113.2054
+        ],
+        "safe": 9
+      },
+      {
+        "phase": 7,
+        "at": 129.6333,
+        "hp": 100,
+        "position": [
+          23.0057,
+          0.0151,
+          -113.2054
+        ],
+        "safe": 9
+      }
+    ]
+  },
+  "hurtEvents": [
+    {
+      "at": 5.1833,
+      "from": 100,
+      "to": 91,
+      "projectileHurt": true,
+      "position": [
+        5.919,
+        0.0149,
+        11.5904
+      ]
+    },
+    {
+      "at": 6.1167,
+      "from": 91,
+      "to": 82,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 6.55,
+      "from": 82,
+      "to": 73,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 7.4667,
+      "from": 73,
+      "to": 64,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 8.7667,
+      "from": 64,
+      "to": 55,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 9.7333,
+      "from": 55,
+      "to": 46,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 11,
+      "from": 46,
+      "to": 37,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 11.6833,
+      "from": 37,
+      "to": 28,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 12.3333,
+      "from": 28,
+      "to": 19,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 13.0667,
+      "from": 19,
+      "to": 10,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 13.3833,
+      "from": 10,
+      "to": 1,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 14.0167,
+      "from": 1,
+      "to": 0,
+      "projectileHurt": true,
+      "position": [
+        6.0271,
+        0.0151,
+        11.1994
+      ]
+    },
+    {
+      "at": 103.55,
+      "from": 100,
+      "to": 91,
+      "projectileHurt": true,
+      "position": [
+        37.4135,
+        0.015,
+        -126.9262
+      ]
+    },
+    {
+      "at": 104.5167,
+      "from": 91,
+      "to": 82,
+      "projectileHurt": true,
+      "position": [
+        37.4135,
+        0.015,
+        -126.9262
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "at": 1.65,
+      "from": 0,
+      "to": 1,
+      "interact": false,
+      "safe": 0,
+      "position": [
+        0,
+        0.0046,
+        31.695
+      ]
+    },
+    {
+      "at": 6.25,
+      "from": 1,
+      "to": 2,
+      "interact": true,
+      "safe": 0,
+      "position": [
+        0.0001,
+        0.013,
+        4.8745
+      ]
+    },
+    {
+      "at": 13.45,
+      "from": 2,
+      "to": 3,
+      "interact": true,
+      "safe": 0,
+      "position": [
+        -16.9879,
+        0.0123,
+        -26.5123
+      ]
+    },
+    {
+      "at": 23.6667,
+      "from": 3,
+      "to": 4,
+      "interact": false,
+      "safe": 0,
+      "position": [
+        -17.9991,
+        3.0151,
+        -51.2038
+      ]
+    },
+    {
+      "at": 35.65,
+      "from": 4,
+      "to": 5,
+      "interact": true,
+      "safe": 0,
+      "position": [
+        -2.5638,
+        0.0141,
+        -74.9257
+      ]
+    },
+    {
+      "at": 37.1667,
+      "from": 5,
+      "to": 6,
+      "interact": false,
+      "safe": 0,
+      "position": [
+        -3.9472,
+        0.0143,
+        -76.7489
+      ]
+    },
+    {
+      "at": 125.4667,
+      "from": 6,
+      "to": 7,
+      "interact": false,
+      "safe": 9,
+      "position": [
+        23.0057,
+        0.0151,
+        -113.2054
+      ]
+    }
+  ],
+  "status": "PASS",
+  "failed": {
+    "scenario": "workers",
+    "phase": 1,
+    "elapsed": 14.0167,
+    "steppedSeconds": 14.0167,
+    "hp": 0,
+    "failed": true,
+    "complete": false,
+    "position": [
+      6.0271,
+      0.0151,
+      11.1994
+    ],
+    "safe": 0,
+    "hits": 0,
+    "kills": 0,
+    "facts": [
+      "convoy-reported",
+      "zhou-adopts-lu-report",
+      "reinforcements-E01-4"
+    ],
+    "ammo": [
+      25,
+      150
+    ],
+    "inputs": {
+      "move": 315,
+      "fire": 0,
+      "reload": 0,
+      "interact": 0,
+      "skip": 0
+    },
+    "path": [
+      [
+        7,
+        0,
+        10
+      ]
+    ],
+    "trace": [
+      {
+        "phase": 1,
+        "at": 2,
+        "hp": 100,
+        "position": [
+          0,
+          0.0065,
+          29.49
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 4,
+        "hp": 100,
+        "position": [
+          3.1337,
+          0.0127,
+          18.0495
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 6,
+        "hp": 91,
+        "position": [
+          6.0271,
+          0.0151,
+          11.1994
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 8,
+        "hp": 64,
+        "position": [
+          6.0271,
+          0.0151,
+          11.1994
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 10,
+        "hp": 46,
+        "position": [
+          6.0271,
+          0.0151,
+          11.1994
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 12,
+        "hp": 28,
+        "position": [
+          6.0271,
+          0.0151,
+          11.1994
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 14,
+        "hp": 1,
+        "position": [
+          6.0271,
+          0.0151,
+          11.1994
+        ],
+        "safe": 0
+      }
+    ]
+  },
+  "checkpoint": {
+    "phase": 1,
+    "elapsed": 1.65,
+    "hp": 100,
+    "facts": [
+      "convoy-reported",
+      "zhou-adopts-lu-report"
+    ]
+  }
+}
