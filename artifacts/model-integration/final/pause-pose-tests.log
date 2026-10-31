@@ -1,0 +1,19 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+ ✓ tests/imported-character.test.ts (21 tests) 4058ms
+   ✓ the exact 13 production characters, not extrapolated LU/ZHOU coverage (13)
+     ✓ CH-DOCTOR preserves source skin and has stable target-rest walk and runtime poses 334ms
+     ✓ CH-ENEMY preserves source skin and has stable target-rest walk and runtime poses 306ms
+     ✓ CH-FATHER preserves source skin and has stable target-rest walk and runtime poses 324ms
+     ✓ CH-LU preserves source skin and has stable target-rest walk and runtime poses 345ms
+ ✓ tests/tactical-character-state.test.ts (5 tests) 299ms
+ ✓ tests/chapter-transition/game-host.test.ts (18 tests) 252ms
+ ✓ tests/character-motion-tracker.test.ts (4 tests) 4ms
+
+ Test Files  4 passed (4)
+      Tests  48 passed (48)
+   Start at  17:08:23
+   Duration  5.41s (tests 92%, import 5%, transform 4%)
+
+JSON report written to /Users/penguin/VibeHack06-worktree/artifacts/model-integration/final/pause-pose-tests.json

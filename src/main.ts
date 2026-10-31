@@ -520,7 +520,7 @@ export class Game {
         patientOffset = [(dx * Math.cos(actor.yaw) - dz * Math.sin(actor.yaw)) * transferProgress,
           Math.sin(transferProgress * Math.PI) * 0.13, (dx * Math.sin(actor.yaw) + dz * Math.cos(actor.yaw)) * transferProgress];
       }
-      const stagedWalker = active && m.control === 'staged' && (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
+      const stagedWalker = m.control === 'staged' && (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
         && (['father', 'evacuator', 'daughter', 'young-lu', 'zhao', 'shao'].includes(actor.id)
           || /^(hall-invader-|hall-defender-|late-civilian-|evac-crowd-)/.test(actor.id));
       const crowdHitTime = actor.id.startsWith('late-civilian-') ? openingCrowdHitTime(Number(actor.id.slice(14))) : undefined;

@@ -1,8 +1,8 @@
 {
   "files": {
-    "assets/EpilogueAirCover-DpHg5IR6.js": {
+    "assets/EpilogueAirCover-C0HYj5Fb.js": {
       "bytes": 2724451,
-      "sha256": "38493334262f0a9adc16b2c9debd15a508b8dcf227badde3b96fe209cafce691"
+      "sha256": "040be51c6d620b0e1711add7d3461480b08aefdedd72632e3ea4f801e8a5c1d9"
     },
     "assets/generated/production-20261031/BG-CRANE.glb": {
       "bytes": 3154172,
@@ -124,9 +124,9 @@
       "bytes": 70356,
       "sha256": "c42ade69de2d60a7d68c52a8989527713c9c3727d078c8b1bd44ce46d341b2fc"
     },
-    "assets/index-BGexUHYd.js": {
-      "bytes": 6069371,
-      "sha256": "4a34b827aec918c15b2307b4c37f6dccb18588f5d91544af25f852c082f12c3d"
+    "assets/index-CVoXhOkC.js": {
+      "bytes": 6069368,
+      "sha256": "1b2c550faa477f2d9f57997faa98eef10770e7727f56d1f86d9e228c06999764"
     },
     "assets/index-DD44-tyX.css": {
       "bytes": 28200,
@@ -1090,7 +1090,7 @@
     },
     "index.html": {
       "bytes": 654,
-      "sha256": "b0fc76c17802ffd70ee9cfd9fa9740bf89ffa21c8a0028401328882a20055da8"
+      "sha256": "877313875eb8ed6fb269033a31ad4faaef39668d820bd2475e33b169bfeed83e"
     },
     "licenses/WP-AK47/LICENSE": {
       "bytes": 1068,

@@ -1822,8 +1822,8 @@
       "sha256": "d56ad0c13e6586826a5653179d28fd48bbe27ada47f3b44f8aecdab179fe82bd"
     },
     "src/main.ts": {
-      "bytes": 43691,
-      "sha256": "39d76ee8ed99405193b596d9ccd3d546f94753eeba852e79d1cf045d09756aec"
+      "bytes": 43681,
+      "sha256": "c02a4c90147b8a7c9f2483940c14ff8ef7471f8c7c0d576c587be03787c91abc"
     },
     "src/mission/Dialogue.ts": {
       "bytes": 1107,

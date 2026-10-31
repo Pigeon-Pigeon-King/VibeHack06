@@ -9,10 +9,10 @@ rendering chunks...
 computing gzip size...
 dist/index.html                               0.65 kB │ gzip:     0.42 kB
 dist/assets/index-DD44-tyX.css               28.20 kB │ gzip:     6.61 kB
-dist/assets/EpilogueAirCover-DpHg5IR6.js  2,724.45 kB │ gzip:   508.10 kB
-dist/assets/index-BGexUHYd.js             6,069.37 kB │ gzip: 2,183.41 kB
+dist/assets/EpilogueAirCover-C0HYj5Fb.js  2,724.45 kB │ gzip:   508.10 kB
+dist/assets/index-CVoXhOkC.js             6,069.36 kB │ gzip: 2,183.41 kB
 
-✓ built in 1.42s
+✓ built in 1.43s
 [plugin builtin:vite-reporter] 
 (!) Some chunks are larger than 1800 kB after minification. Consider:
 - Using dynamic import() to code-split the application
