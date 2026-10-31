@@ -1,0 +1,4 @@
+{
+  "extends": "../../tsconfig.json",
+  "include": ["../../src/chapter-transition", "../../tests/chapter-transition", "../../dev/chapter-transition"]
+}
