@@ -54,9 +54,14 @@ export class HtmlNarrationPlayer {
     let url: URL;
     try {
       const base = new URL(this.baseURL);
-      if (!asset.file || asset.file.startsWith('/') || asset.file.includes('\\') || asset.file.split('/').includes('..')) return unavailable();
+      // Custom-scheme URLs have an opaque origin, so compare protocol/host as well.
+      const localBase = ['http:', 'https:', 'file:'].includes(base.protocol)
+        || (base.protocol === 'game:' && base.host === 'local');
+      const file = decodeURIComponent(asset.file);
+      if (!localBase || base.username || base.password || base.search || base.hash || !base.pathname.endsWith('/')) return unavailable();
+      if (!file || file.startsWith('/') || file.includes('\\') || file.split('/').includes('..') || /^[a-z][a-z\d+.-]*:/i.test(file)) return unavailable();
       url = new URL(asset.file, base);
-      if (url.origin !== base.origin || !url.pathname.startsWith(base.pathname) || !['http:', 'https:', 'file:'].includes(url.protocol)) return unavailable();
+      if (url.protocol !== base.protocol || url.host !== base.host || url.origin !== base.origin || !url.pathname.startsWith(base.pathname) || url.search || url.hash) return unavailable();
     } catch { return unavailable(); }
     const media = this.createMedia();
     this.media = media;

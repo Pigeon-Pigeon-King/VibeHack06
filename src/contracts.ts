@@ -4,7 +4,7 @@ export const SCENARIO_IDS = ['northgate', 'prologue', 'handover', 'nightshift', 
 export type ScenarioId = typeof SCENARIO_IDS[number];
 export type Vec3 = [number, number, number];
 export type ControlMode = 'combat' | 'work' | 'cooperative' | 'staged';
-export type RunMode = 'menu' | 'playing' | 'paused' | 'failed' | 'complete';
+export type RunMode = 'menu' | 'playing' | 'paused' | 'failed' | 'complete' | 'transition';
 export interface SolidSpec {
   id: string;
   position: Vec3;

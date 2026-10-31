@@ -1,0 +1,256 @@
+{
+  "scope": "Actual Vite HTTP file delivery, not rendered browser/media playback",
+  "base": "http://127.0.0.1:5191/audio/chapter-bridge-01/",
+  "checkedAtUtc": "2026-10-31T08:00:31.524471+00:00",
+  "count": 31,
+  "files": [
+    {
+      "file": "audio/opening-campaign/opening-campaign-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 173996,
+      "sha256": "b3fccbac77c6bdd452fa32458c9211833350789855933600a2e54b18a390a681",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/opening-campaign/opening-campaign-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 173996,
+      "sha256": "2d6f881061121434d6a1f8575e6cbec2717317c70bb5031517c5628ff3c99019",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/opening-campaign/opening-campaign-03.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 124460,
+      "sha256": "7689faa1d826716d0776873ddb54a8622ec4d21353ea57df9c34264551b01704",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/opening-campaign/opening-campaign-04.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 154988,
+      "sha256": "eeb27e75ac5c0832a15b4c39b30bb506bfe45ca8231a151d8ec9fd39e1dc074c",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s01-s02/bridge-s01-s02-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 147500,
+      "sha256": "5265eab6f0d22d5102acadd7c7a8737b263f8cd46cfdc4bb47666d0bd31131c8",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s01-s02/bridge-s01-s02-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 133676,
+      "sha256": "7f7b6f58e68ec95c9186530d8aa879094d9a225254bfd78ec28bf6d865ddb139",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s01-s02/bridge-s01-s02-03.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 99116,
+      "sha256": "5efa26e5983acb18ba6ea4c53b740cf76c37295a270c6fabf2f018c9d542340d",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s02-s03/bridge-s02-s03-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 72620,
+      "sha256": "c73afc665aeae011fdef02ffadc8397a05089df2f171584d9ba2e418ea23f2de",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s02-s03/bridge-s02-s03-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 130220,
+      "sha256": "7958f5bca0ea0f2d8f9d95921c1f60401633e9201e5cfb490f116fbb53f8a034",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s02-s03/bridge-s02-s03-03.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 126188,
+      "sha256": "adfaa5566d3f28a556427a090bcd291f082a1ab54c496c3e6fed0ec90d85d006",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s03-s04/bridge-s03-s04-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 139436,
+      "sha256": "e89a45b4af0fb53fd7f311f994bb08f1fb0a05313d7ad0efc681f799e79e249d",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s03-s04/bridge-s03-s04-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 107180,
+      "sha256": "5cd10f1e85e55c458277572acbbdd8e4ba874689984d8ca93032aa1b4198d89a",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s03-s04/bridge-s03-s04-03.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 116396,
+      "sha256": "bbd58df2a82964f2b8801c7aa0c0af33572841344c34df0a870abf6468103039",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s04-s05/bridge-s04-s05-01.t02.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 131948,
+      "sha256": "aceff97d4a7b71993337fa9557cf826bf67d65bc429d474d0f0fcf11ca16dfd4",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s04-s05/bridge-s04-s05-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 149228,
+      "sha256": "9f0d9b210abe628ac484072409ceb3d65d039f5873a83fcbf3f7e1c138d31df7",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s05-s06/bridge-s05-s06-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 127916,
+      "sha256": "a6409aaea2347f047e25ecd3c3a9b48ca6a5a6ae9a573b3e9e81ea0db71d26a7",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s05-s06/bridge-s05-s06-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 147500,
+      "sha256": "af4123776cc1b6ae2795a214e6bfdb83ac50132b2ab4af6b6e3a378874ae3375",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s05-s06/bridge-s05-s06-03.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 126188,
+      "sha256": "df030e32eeae4829a3fc965a25e487f0e7ef344e52f52522d67df44dc9aa3145",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s06-s07/bridge-s06-s07-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 183788,
+      "sha256": "1b0d1ba6cd67f5b51612843607bf5acda911d0f9b4fe0928e6af779a482d6396",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s06-s07/bridge-s06-s07-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 154988,
+      "sha256": "a97a19e6dd67100f9747311eaae948b3ec0918e463045c3c8fd6c45c1e9ba211",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s07-s08/bridge-s07-s08-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 99116,
+      "sha256": "e9cc27c79a426ab0996d28422a3a72f71c46d97768f9dc5b29ceea0c62862d21",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s07-s08/bridge-s07-s08-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 131948,
+      "sha256": "d02debd6e21cdf7e56a317ef15894fede8774cd5694fa83db3b210ff8db3f556",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s07-s08/bridge-s07-s08-03.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 130220,
+      "sha256": "e950211d30b2594054ba0cebe59df2d5dba1a4152acfc2c7c038951eb037bcb9",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s08-s09/bridge-s08-s09-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 147500,
+      "sha256": "b280beb689016d77acd5e90540f4e5a1371df759f2facb4677c164b15baa0510",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s08-s09/bridge-s08-s09-02.t02.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 160748,
+      "sha256": "22bee8380d2510d187ab2d425657f1ec48af10c41957acae56e0ec75e9199327",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s09-s10/bridge-s09-s10-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 126188,
+      "sha256": "4a9f6bb722795d84ba1775a72eb22daf7c6439cc883baf55d861bf66dcfc31d7",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s09-s10/bridge-s09-s10-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 137708,
+      "sha256": "4bb18810e56302dda75ebf32f5b5a67bd3d5a2772fd7dac6f6ad845f0718fed1",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s10-s11/bridge-s10-s11-01.t02.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 150956,
+      "sha256": "89416ede1a9b5b6fdba8d791c906db22e302a83ba59fac6d5236f6e7880635d0",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s10-s11/bridge-s10-s11-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 137708,
+      "sha256": "9e25aeab5113380dd1288ad48e823c9be3f1ebbffa7ffb8ec4fc728dcb0ac997",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s11-s12/bridge-s11-s12-01.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 110636,
+      "sha256": "a9aca12254c268d727a429970df35a9f4dbc99f63e285898641b3575bd8b5ff1",
+      "matchesFrozen": true
+    },
+    {
+      "file": "audio/bridge-s11-s12/bridge-s11-s12-02.t01.mp3",
+      "status": 200,
+      "mime": "audio/mpeg",
+      "bytes": 176300,
+      "sha256": "8605fa569a222787cffd9ac24c07cab061d8502ab487d8ae7a18c0760ba70c5e",
+      "matchesFrozen": true
+    }
+  ]
+}

@@ -43,7 +43,9 @@ describe('frozen production runtime audio', () => {
       expect(asset.url).not.toMatch(/source|base\.wav|audition|rotor|hover/i);
     }
     expect(total).toBe(ledger.bytes);
-    expect(readdirSync(resolve(root, 'public/audio')).sort()).toEqual(['music', 'provenance.json', 'sfx', 'voice']);
+    // The separately frozen narration batch has its own complete manifest/hash
+    // audit; retain an explicit allowlist so no other production files can ship.
+    expect(readdirSync(resolve(root, 'public/audio')).sort()).toEqual(['chapter-bridge-01', 'music', 'provenance.json', 'sfx', 'voice']);
   });
   it('parses the complete PCM WAV containers and confirms all selected effects have actual sample data', () => {
     for (const asset of Object.values(AUDIO_CATALOG).filter(asset => asset.kind === 'sfx')) {

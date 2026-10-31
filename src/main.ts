@@ -1,8 +1,9 @@
 import { ACESFilmicToneMapping, BoxGeometry, CanvasTexture, Color, ConeGeometry, FogExp2, Group, Mesh, MeshBasicMaterial, MeshStandardMaterial, PCFShadowMap, PerspectiveCamera, RingGeometry, Scene, Sprite, SpriteMaterial, SRGBColorSpace, Vector3, WebGLRenderer } from 'three';
 import type { CharacterModel, EnvironmentModel, RunMode, ScenarioId, UiState, Vec3 } from './contracts';
-import { buildEnvironment } from './presentation/environment';
 import { createImportedCharacter } from './presentation/ImportedCharacter';
-import { GeneratedSceneAssets } from './presentation/GeneratedSceneAssets';
+import { ChapterTransition, HtmlNarrationPlayer, planCampaignEntry, planCampaignTransition, type CampaignEntryPlan, type CampaignTransitionPlan } from './chapter-transition';
+import { createGameLevel, prepareGameLevel, type PreparedGameLevel } from './chapter-transition/PreparedGameLevel';
+import { NARRATION_ASSETS, getNarrationBaseURL } from './chapter-transition/narration-assets';
 import type { MissionAudioState } from './audio/contracts';
 import { dialogueCues, dialogueSkipAvailable } from './audio/dialogue-events';
 import { ImportedWeaponView } from './presentation/ImportedWeaponView';
@@ -25,7 +26,7 @@ import { openingView } from './presentation/OpeningView';
 import { OPENING_TIMELINE, openingCrowdHitTime } from './content/opening-timeline';
 import { CrowdView } from './presentation/CrowdView';
 import { LAYOUT } from './content/layout';
-import { carryFacts, CHAPTER_STAGES, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
+import { carryFacts, CHAPTER_STAGES, stageFor, type ChapterProgress } from './content/chapter-flow';
 import { SAVE_KEY_PREFIX, SaveStore, type SavedGame, type SaveSlot } from './persistence/SaveStore';
 import { escortPatients } from './mission/Escort';
 import { ESCORT } from './content/escort-layout';
@@ -61,7 +62,10 @@ function carriedSupply(): Group {
   root.position.set(0, -0.44, -0.72); return root;
 }
 
-class Game {
+type CampaignPlan = CampaignEntryPlan | CampaignTransitionPlan;
+interface PreparedCampaign { level: PreparedGameLevel; plan: CampaignPlan }
+
+export class Game {
   private readonly aiDiagnostics = import.meta.env.DEV && new URLSearchParams(location.search).has('ai-debug');
   private presentationEpoch = 0;
   private readonly scene = new Scene();
@@ -88,8 +92,10 @@ class Game {
   private readonly markerMaterials: Array<{ material: MeshBasicMaterial | SpriteMaterial; opacity: number }> = [];
   private markerOpacity = 1;
   private environment!: EnvironmentModel;
-  private generatedScenery?: GeneratedSceneAssets;
-  private readonly sceneAssetErrors = new Set<string>();
+  private level?: PreparedGameLevel;
+  private readonly narration = new HtmlNarrationPlayer(NARRATION_ASSETS, getNarrationBaseURL());
+  private readonly transition: ChapterTransition<PreparedCampaign>;
+  private transitionPlan?: CampaignPlan;
   private readonly characterAssetErrors = new Set<string>();
   private pendingJetApproach = false;
   private sim!: Simulation;
@@ -151,7 +157,7 @@ class Game {
       resume: () => this.resume(), retry: () => this.retry(), restart: () => this.restart(),
       menu: () => this.menu(), setSensitivity: value => { this.input.sensitivity = value; this.persistSettings(); },
       importCheckpoint: import.meta.env.DEV ? file => { void this.importCheckpoint(file); } : undefined,
-      setVolume: value => { this.sound.setVolume(value); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
+      setVolume: value => { this.sound.setVolume(value); this.narration.setVolume(this.sound.volume); this.persistSettings(); }, setLowMotion: value => { this.lowMotion = value; this.persistSettings(); },
       setTouchControls: value => { this.touchPreference = value; this.input.setTouchEnabled(value); this.pointerError = ''; this.persistSettings(); },
       retryEquipment: () => this.weapon.retry(),
     });
@@ -162,6 +168,8 @@ class Game {
       active: action => this.input.isTouchActionDown(action), pause: () => this.pause(),
     });
     this.objectiveIndicator = new ObjectiveIndicator(document.querySelector('#game-ui')!);
+    this.narration.setVolume(this.sound.volume);
+    this.transition = this.createTransition();
     this.load('nightshift');
     window.addEventListener('resize', () => {
       this.input.clearTouch();
@@ -184,6 +192,31 @@ class Game {
     this.animate();
   }
 
+  private createTransition(): ChapterTransition<PreparedCampaign> {
+    return new ChapterTransition(document.querySelector('#app')!, {
+      narration: this.narration,
+      preload: async (bridge, signal, onProgress) => {
+        const plan = this.transitionPlan;
+        if (!plan || signal.aborted || plan.bridge.id !== bridge.id || plan.bridge.from !== bridge.from || plan.bridge.to !== bridge.to) throw new Error('章节准备已取消。');
+        const level = await prepareGameLevel(this.modelLibrary, {
+          scenario: plan.scenario, facts: plan.facts, baseURL: document.baseURI,
+        }, signal, onProgress);
+        return { level, plan };
+      },
+      enter: prepared => {
+        if (this.disposed || this.transitionPlan !== prepared.plan || prepared.level.isDisposed) throw new Error('章节准备已失效。');
+        this.activateLevel(prepared.level);
+        this.chapter = structuredClone(prepared.plan.chapter);
+        if (prepared.plan.bridge.from === null) this.qaImported = false;
+        this.transitionPlan = undefined;
+        this.showTransition(false);
+        this.persistCheckpoint();
+        this.begin();
+      },
+      release: prepared => prepared.level.dispose(),
+    }, () => this.menu());
+  }
+
   private get heldItem(): HeldItem {
     const { mission: m, scenario } = this.sim;
     if (m.control === 'combat') return 'weapon';
@@ -192,33 +225,36 @@ class Game {
   }
 
   private load(id: ScenarioId, saved?: Snapshot, priorFacts: readonly string[] = []): void {
+    this.cancelTransition();
+    // Build before releasing the old scene. Campaign transitions also await
+    // its actual model resources, then transfer the same prepared object here.
+    const level = createGameLevel(this.modelLibrary, { scenario: id, saved, facts: priorFacts, baseURL: document.baseURI });
+    try { this.activateLevel(level, Boolean(saved)); }
+    catch (error) { if (this.level !== level) level.dispose(); throw error; }
+  }
+  private activateLevel(level: PreparedGameLevel, restored = false): void {
+    const id = level.sim.scenario;
+    // This canvas-backed view can fail during construction. Prepare it while
+    // the previous scene and checkpoint are still owned by the host.
+    const monitor = id === 'escort' ? new DepartureMonitor() : undefined;
     this.presentationEpoch++;
     this.pendingJetApproach = false;
-    this.generatedScenery?.dispose(); this.generatedScenery = undefined; this.sceneAssetErrors.clear();
     this.characterAssetErrors.clear();
-    this.sim?.dispose();
     if (this.monitor) { this.scene.remove(this.monitor.screen); this.monitor.dispose(); this.monitor = undefined; }
-    if (this.environment) { this.scene.remove(this.environment.root); this.environment.dispose(); }
+    this.environment?.root.removeFromParent();
+    this.level?.dispose();
     for (const { model, label: tag } of this.characters.values()) { this.scene.remove(model.root); model.dispose(); if (tag) { this.scene.remove(tag); disposeLabel(tag); } }
     this.characters.clear(); this.crowd.clear(); this.feedback.clear(); this.sound.stopTransient();
-    this.environment = buildEnvironment(id); this.scene.add(this.environment.root);
-    const sceneEpoch = this.presentationEpoch;
-    this.generatedScenery = new GeneratedSceneAssets(this.modelLibrary, {
-      parent: this.environment.root, scenario: id, baseURL: document.baseURI,
-      onStatus: status => {
-        if (this.disposed || sceneEpoch !== this.presentationEpoch) return;
-        if (status.state === 'error') this.sceneAssetErrors.add(status.id);
-        else this.sceneAssetErrors.delete(status.id);
-      },
-    });
+    this.level = level; this.environment = level.environment; this.sim = level.sim;
+    this.scene.add(this.environment.root);
     // S12 opens onto the distant arrival corridor; the combat-area haze hid
     // the incoming escorts at a few hundred metres. Restore it in other scenes.
     this.scene.fog = new FogExp2(0x677e8d, id === 'epilogue' ? 0.004 : 0.008);
-    this.sim = new Simulation(id, this.environment.solids, saved, priorFacts);
     this.sound.setScene(this.presentationEpoch, this.missionAudioState());
-    if (!saved) this.speakCurrentLine();
+    if (!restored) this.speakCurrentLine();
     this.heldItems.reset(this.heldItem);
-    if (id === 'escort') { this.monitor = new DepartureMonitor(); this.scene.add(this.monitor.screen); }
+    this.monitor = monitor;
+    if (monitor) this.scene.add(monitor.screen);
     this.input.yaw = this.sim.player.yaw; this.input.pitch = this.sim.player.pitch;
     this.input.clear(); this.accumulator = 0; this.ads = 0; this.lastFootstep = 0;
   }
@@ -231,9 +267,7 @@ class Game {
     this.persistCheckpoint(); this.begin();
   }
   private startChapter(): void {
-    this.qaImported = false;
-    this.chapter = { chapter: 'campaign', stage: 'S01', elapsedBefore: 0 };
-    this.load('childhood'); this.persistCheckpoint(); this.begin();
+    this.startTransition(planCampaignEntry('new-game')!);
   }
   private continueChapter(): void {
     this.qaImported = false;
@@ -243,11 +277,29 @@ class Game {
     this.load(this.savedCampaign.snapshot.mission.scenario, this.savedCampaign.snapshot); this.begin();
   }
   private advanceChapter(): void {
-    const next = nextStage(this.sim.scenario);
-    if (!this.chapter || !this.sim.mission.complete || !next) return;
-    const facts = carryFacts(next.id, this.sim.mission.facts);
-    this.chapter = { chapter: 'campaign', stage: next.id, elapsedBefore: this.chapter.elapsedBefore + this.sim.mission.elapsed };
-    this.load(next.scenario, undefined, facts); this.persistCheckpoint(); this.begin();
+    if (this.mode === 'transition' || this.sound.hasPendingDialogue()) return;
+    const plan = planCampaignTransition(this.chapter, this.sim.mission);
+    if (plan) this.startTransition(plan);
+  }
+  private showTransition(active: boolean): void {
+    const host = document.querySelector<HTMLElement>('#game-ui')!;
+    host.inert = active; host.hidden = active;
+    if (active) this.touchControls.render({ enabled: this.input.touchEnabled, mode: 'transition',
+      control: this.sim.mission.control, interaction: '', coverAvailable: false, skipAvailable: false, epoch: this.presentationEpoch });
+  }
+  private cancelTransition(): void {
+    this.transitionPlan = undefined;
+    this.transition?.cancel(); this.showTransition(false);
+  }
+  private startTransition(plan: CampaignPlan): void {
+    this.cancelTransition();
+    this.transitionPlan = plan;
+    this.mode = 'transition'; this.input.enabled = false; this.input.clear(); this.accumulator = 0;
+    // Keep an existing pointer lock across adjacent chapters. The persistent
+    // overlay drains held controls before the new chapter accepts input.
+    this.sound.stopTransient(); this.sound.pause();
+    this.narration.setVolume(this.sound.volume); this.showTransition(true);
+    this.transition.start(plan.bridge);
   }
   private restart(): void {
     const facts = this.chapter ? carryFacts(this.chapter.stage, this.sim.mission.facts) : [];
@@ -255,21 +307,23 @@ class Game {
   }
   private begin(): void {
     this.error = ''; this.pointerError = '';
-    if (this.sim.mission.complete) { this.mode = 'complete'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.pause(); return; }
+    if (this.sim.mission.complete) { this.finishPresentation(); return; }
     this.mode = 'playing'; this.input.enabled = true; this.renderer.domElement.focus(); this.input.lock();
     void this.sound.unlock().catch(() => { this.error = '音频未能启动；字幕和视觉反馈仍可用。'; });
   }
   private pause(): void {
+    if (this.mode === 'transition') { this.transition.setPaused(true); this.input.clear(); return; }
     if (this.mode !== 'playing') return;
     this.mode = 'paused'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.accumulator = 0; this.sound.pause();
   }
   private resume(): void {
+    if (this.mode === 'transition') { this.transition.setPaused(false); this.input.clear(); return; }
     if (this.mode !== 'paused') return;
     this.mode = 'playing'; this.input.enabled = true; this.input.clear(); this.renderer.domElement.focus(); this.input.lock();
     void this.sound.unlock().catch(() => { this.error = '音频未能恢复；字幕和视觉反馈仍可用。'; });
   }
   private retry(): void { const saved = this.sim.checkpoint; this.load(this.sim.scenario, saved); this.mode = 'paused'; this.resume(); }
-  private menu(): void { this.pause(); this.mode = 'menu'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.stopTransient(); this.sound.pause(); this.refreshCampaign(); }
+  private menu(): void { this.cancelTransition(); this.mode = 'menu'; this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.stopTransient(); this.sound.pause(); this.refreshCampaign(); }
   private refreshCampaign(): void {
     const result = this.store?.load('campaign');
     this.savedCampaign = result?.save;
@@ -318,6 +372,10 @@ class Game {
       speaker: m.speaker, text: m.subtitle, elapsed: m.elapsed, expiresAt: m.subtitleUntil });
   }
   private finishPresentation(): void {
+    if (!this.sim.mission.failed && !this.sound.hasPendingDialogue()) {
+      this.advanceChapter();
+      if (this.mode === 'transition') return;
+    }
     this.mode = this.sim.mission.failed ? 'failed' : 'complete';
     this.input.enabled = false; this.input.clear(); this.input.unlock(); this.sound.pause();
   }
@@ -544,10 +602,10 @@ class Game {
       equipmentError: this.equipment.state === 'error',
       chapter: Boolean(this.chapter),
       continueLabel: this.savedCampaign ? `继续 · ${stageFor(this.savedCampaign.snapshot.mission.scenario)?.title ?? '第一关'}` : undefined,
-      nextLabel: this.chapter && nextStage(sim.scenario) ? `继续 · ${nextStage(sim.scenario)!.title}` : undefined,
+      nextLabel: undefined,
       error: [this.error, this.mode === 'playing' ? this.pointerError : '', this.saveNotice, this.writeErrors.checkpoint, this.writeErrors.settings,
         this.equipment.state === 'error' ? `装备载入失败。${this.mode === 'playing' ? '可在暂停菜单重试。' : ''}` : '',
-        this.sceneAssetErrors.size ? '部分场景素材未能载入，已保留临时模型。' : '',
+        this.level?.sceneAssetErrors.size ? '部分场景素材未能载入，已保留临时模型。' : '',
         this.characterAssetErrors.size ? '部分人物素材未能载入，已保留临时模型。' : '',
         this.sound.getStatus().errors.length ? '部分声音素材未能载入；字幕和任务仍可继续。' : ''].filter(Boolean).join(' '), diagnostics,
     };
@@ -571,15 +629,17 @@ class Game {
       this.accumulator += dt;
       while (this.accumulator >= FIXED_DT && this.mode === 'playing') { this.simulate(); this.accumulator -= FIXED_DT; }
     }
-    this.present(dt); this.frame++; this.raf = requestAnimationFrame(this.animate);
+    if (this.mode !== 'transition') this.present(dt);
+    this.frame++; this.raf = requestAnimationFrame(this.animate);
   };
   dispose(): void {
     if (this.disposed) return;
     this.disposed = true;
+    this.transition.dispose(); this.narration.dispose();
     this.objectiveIndicator.dispose();
     cancelAnimationFrame(this.raf); this.abort.abort(); this.touchControls.dispose(); this.input.dispose(); this.sound.dispose(); this.ui.dispose();
-    this.generatedScenery?.dispose();
-    this.sim.dispose(); this.environment.dispose(); this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
+    this.level?.dispose();
+    this.feedback.dispose(); this.weapon.dispose(); this.care.dispose(); this.monitor?.dispose();
     this.supply.traverse(object => { if (object instanceof Mesh) { object.geometry.dispose(); (object.material as MeshStandardMaterial).dispose(); } });
     for (const { model, label: tag } of this.characters.values()) { model.dispose(); if (tag) disposeLabel(tag); }
     this.modelLibrary.dispose();
@@ -591,7 +651,7 @@ class Game {
   }
 }
 
-initializePhysics().then(() => new Game()).catch(error => {
+if (import.meta.env.MODE !== 'test') initializePhysics().then(() => new Game()).catch(error => {
   const ui = document.querySelector<HTMLElement>('#game-ui')!;
   ui.replaceChildren(); const message = document.createElement('p');
   message.textContent = `游戏启动失败：${error instanceof Error ? error.message : String(error)}`;

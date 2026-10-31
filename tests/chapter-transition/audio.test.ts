@@ -9,9 +9,9 @@ class Media extends EventTarget implements NarrationMedia {
 }
 const cue = { id: 'cue-01', text: '车队转向北闸。', readingSeconds: 5 };
 const asset = { cueId: cue.id, text: cue.text, file: 'bridge/cue-01.mp3', durationSeconds: 4.5 };
-function setup(file = asset.file) {
+function setup(file = asset.file, baseURL = 'https://game.test/campaign/audio/') {
   const media: Media[] = [];
-  const player = new HtmlNarrationPlayer([{ ...asset, file }], new URL('https://game.test/campaign/audio/'), () => { const m = new Media(); media.push(m); return m; });
+  const player = new HtmlNarrationPlayer([{ ...asset, file }], new URL(baseURL), () => { const m = new Media(); media.push(m); return m; });
   return { player, media, signal: new AbortController() };
 }
 
@@ -49,5 +49,50 @@ describe('local narration playback', () => {
     const { player, media, signal } = setup(); const first = player.play(cue, signal.signal); const second = player.play(cue, signal.signal);
     await expect(first.finished).resolves.toBe('unavailable'); expect(media[0].src).toBe('');
     player.dispose(); await expect(second.finished).resolves.toBe('unavailable'); await expect(player.play(cue, signal.signal).finished).resolves.toBe('unavailable'); expect(media).toHaveLength(2);
+  });
+  it('plays inside game://local and follows live volume, pause and actual ended', async () => {
+    const { player, media, signal } = setup(asset.file, 'game://local/campaign/audio/');
+    player.setVolume(0.35);
+    const playback = player.play(cue, signal.signal);
+    expect(media[0].src).toBe('game://local/campaign/audio/bridge/cue-01.mp3');
+    expect(media[0].volume).toBe(0.35);
+    player.setVolume(0); expect(media[0].volume).toBe(0);
+    playback.pause(); await Promise.resolve(); playback.resume();
+    expect(media[0].play).toHaveBeenCalledTimes(2);
+    let finished = false; void playback.finished.then(() => { finished = true; });
+    await Promise.resolve(); expect(finished).toBe(false);
+    media[0].dispatchEvent(new Event('ended'));
+    await expect(playback.finished).resolves.toBe('ended');
+    expect(media[0].src).toBe(''); expect(media[0].load).toHaveBeenCalledOnce();
+    player.dispose();
+  });
+  it('releases a cancelled desktop cue and rejects text changed after recording', async () => {
+    const { player, media, signal } = setup(asset.file, 'game://local/audio/');
+    await expect(player.play({ ...cue, text: `${cue.text}新文字。` }, signal.signal).finished).resolves.toBe('unavailable');
+    expect(media).toHaveLength(0);
+    const playback = player.play(cue, signal.signal); signal.abort();
+    await expect(playback.finished).resolves.toBe('unavailable');
+    media[0].dispatchEvent(new Event('ended'));
+    expect(media[0].src).toBe(''); expect(media[0].load).toHaveBeenCalledOnce();
+    player.dispose();
+  });
+  it.each([
+    'game://remote/audio/', 'game://local:443/audio/', 'game://local.evil/audio/',
+    'game://user@local/audio/', 'game://local/audio', 'game://local/audio/?from=provider',
+    'game:///audio/', 'ftp://local/audio/',
+  ])('rejects an unsupported desktop authority or non-directory base: %s', async base => {
+    const { player, media, signal } = setup(asset.file, base);
+    await expect(player.play(cue, signal.signal).finished).resolves.toBe('unavailable');
+    expect(media).toHaveLength(0);
+  });
+  it.each([
+    'game://remote/campaign/audio/cue.mp3', '//remote/campaign/audio/cue.mp3',
+    'game://local/campaign/audio/cue.mp3', 'https://provider.test/cue.mp3',
+    '../audio-other/cue.mp3', '%2e%2e%2foutside.mp3', 'bridge%5c..%5coutside.mp3',
+    '/campaign/audio/cue.mp3', 'bridge/cue.mp3?url=https://provider.test/file',
+  ])('keeps desktop playback within the explicit local audio base: %s', async file => {
+    const { player, media, signal } = setup(file, 'game://local/campaign/audio/');
+    await expect(player.play(cue, signal.signal).finished).resolves.toBe('unavailable');
+    expect(media).toHaveLength(0);
   });
 });

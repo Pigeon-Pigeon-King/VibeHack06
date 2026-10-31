@@ -237,7 +237,7 @@ export class GameUI {
 
     if (state.mode !== this.previousMode) {
       this.previousMode = state.mode;
-      if (!playing) {
+      if (!playing && state.mode !== 'transition') {
         const panel = this.node(state.mode);
         [...panel.querySelectorAll<HTMLButtonElement>('button:not(:disabled)')]
           .find(button => button.getClientRects().length > 0)?.focus({ preventScroll: true });

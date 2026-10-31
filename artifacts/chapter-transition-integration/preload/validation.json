@@ -1,0 +1,62 @@
+{
+  "status": "focused-preload-boundary-passed-browser-not-run",
+  "recordedAt": "2026-10-31T07:55:26.337823+00:00",
+  "files": [
+    {
+      "path": "src/chapter-transition/PreparedGameLevel.ts",
+      "sha256": "8e1bb3f42863ac8aa38a695ad29632b8b0a79baf3d0be17af909da52925dc48f",
+      "bytes": 9386
+    },
+    {
+      "path": "tests/chapter-transition/prepared-game-level.test.ts",
+      "sha256": "5f74e5dc7d8dde4c3c662357d426d46302b8361bef45849d0e0edda161cc1a28",
+      "bytes": 21189
+    }
+  ],
+  "tests": {
+    "passed": 18,
+    "failed": 0,
+    "testFiles": 1,
+    "command": "npx vitest run tests/chapter-transition/prepared-game-level.test.ts --maxWorkers=1 --reporter=default --reporter=json --outputFile.json=artifacts/chapter-transition-integration/preload/focused-tests.json",
+    "observedExitCode": 0,
+    "reportedTestDurationMs": 133,
+    "reportedRunDurationMs": 356,
+    "evidence": "focused-tests.json"
+  },
+  "isolatedTypecheck": {
+    "status": "passed",
+    "observedExitCode": 0,
+    "evidence": "typecheck.log",
+    "command": "npx tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --strict --skipLibCheck --types vite/client,node src/chapter-transition/PreparedGameLevel.ts tests/chapter-transition/prepared-game-level.test.ts"
+  },
+  "whitespaceCheck": "No trailing whitespace in either owned TypeScript file",
+  "realDependenciesExercised": [
+    "buildEnvironment + Simulation synchronous construction",
+    "GeneratedSceneAssets.ready and fallback slot replacement",
+    "ModelLibrary shared templates, leases, cancellation isolation and final GPU resource release"
+  ],
+  "controlledBoundaries": [
+    "Environment/Simulation/GeneratedSceneAssets constructor exceptions and pending-ready promises",
+    "Model acquire resolved-before-continuation and ignored-abort late completions",
+    "Primitive geometry and Texture fixtures; no vendor image decoding"
+  ],
+  "ownership": [
+    "Detached new environment",
+    "No Simulation.step or SaveStore calls by this module",
+    "Warm leases retained until level.dispose",
+    "Successful caller owns the level; shared ModelLibrary remains Game-owned",
+    "Scenery detached before environment generic disposal",
+    "Old active leases remain valid"
+  ],
+  "initializationBoundary": "Existing Physics/Simulation constructors still perform their own physics initialization step and initial in-memory checkpoint; no mission tick or external persistence is performed.",
+  "notRun": [
+    "full suite",
+    "build",
+    "browser",
+    "real GPU upload/shader compilation",
+    "real phone",
+    "Windows",
+    "publication"
+  ],
+  "committed": false
+}
