@@ -240,6 +240,7 @@ export function buildEnvironment(scenario: ScenarioId): EnvironmentModel {
       if (disposed) return;
       disposed = true;
       key.shadow.dispose();
+      dynamics?.dispose?.();
       disposeModelTree(kit.root);
     },
   };

@@ -1,0 +1,28 @@
+{
+  "profile": "adult",
+  "version": "tripo-humanoid-semantics-v1",
+  "bones": {
+    "root": "Root",
+    "pelvis": "Hip",
+    "abdomen": "Waist",
+    "chest": "Spine02",
+    "neck": "NeckTwist02",
+    "head": "Head",
+    "clavicle.L": "L_Clavicle",
+    "upper_arm.L": "L_Upperarm",
+    "forearm.L": "L_Forearm",
+    "hand.L": "L_Hand",
+    "thigh.L": "L_Thigh",
+    "shin.L": "L_Calf",
+    "foot.L": "L_Foot",
+    "toe.L": "L_ToeBase",
+    "clavicle.R": "R_Clavicle",
+    "upper_arm.R": "R_Upperarm",
+    "forearm.R": "R_Forearm",
+    "hand.R": "R_Hand",
+    "thigh.R": "R_Thigh",
+    "shin.R": "R_Calf",
+    "foot.R": "R_Foot",
+    "toe.R": "R_ToeBase"
+  }
+}

@@ -1,6 +1,6 @@
 import type {
-  ChapterBridge, NarrationPlayback, TransitionCue, TransitionError, TransitionLoadState,
-  TransitionNarrationState, TransitionPhase, TransitionPorts, TransitionSnapshot,
+  NarrationPlayback, TransitionCue, TransitionError, TransitionLoadState,
+  TransitionNarrationState, TransitionPhase, TransitionPorts, TransitionScript, TransitionSnapshot,
 } from './types';
 
 interface LoadAttempt {
@@ -14,7 +14,7 @@ interface Voice {
 }
 
 interface Run<T> {
-  readonly bridge: ChapterBridge;
+  readonly bridge: TransitionScript;
   phase: TransitionPhase;
   loadState: TransitionLoadState;
   loadProgress: number | null;
@@ -40,7 +40,7 @@ function failure(stage: TransitionError['stage'], cause: unknown): TransitionErr
 }
 
 /**
- * Owns the gap between completed chapters, not mission completion or persistence.
+ * Owns narration and preparation before chapter entry, not mission completion or persistence.
  * Promise callbacks only record outcomes. Narration advances and enter commits in tick.
  */
 export class TransitionController<T> {
@@ -72,12 +72,12 @@ export class TransitionController<T> {
   }
 
   /** Same active/entered bridge ID is idempotent; another bridge cancels the old run. */
-  start(bridge: ChapterBridge): boolean {
+  start(bridge: TransitionScript): boolean {
     if (this.disposed) return false;
     if (this.run && (this.run.phase === 'active' || this.run.phase === 'entered') && this.run.bridge.id === bridge.id) return false;
     this.cancel();
     // Keep authoring data stable even if the caller later replaces or edits its object.
-    const copiedBridge: ChapterBridge = { ...bridge, cues: bridge.cues.map(cue => ({ ...cue })) };
+    const copiedBridge: TransitionScript = { ...bridge, cues: bridge.cues.map(cue => ({ ...cue })) };
     const run: Run<T> = {
       bridge: copiedBridge, phase: 'active', loadState: 'idle', loadProgress: null,
       narrationState: 'idle', cueIndex: 0, cueElapsedSeconds: 0,

@@ -1,0 +1,563 @@
+{
+  "schemaVersion": 1,
+  "assetId": "AIR-VTOL-F35B-REUSED",
+  "status": "prepared",
+  "generatedAt": "2026-10-31T03:12:22.063Z",
+  "auditEnvironment": {
+    "node": "v22.14.0",
+    "three": "186",
+    "worktreeBaseAtStart": "7877cbf",
+    "browserUsed": false
+  },
+  "authorization": {
+    "date": "2026-10-31",
+    "scope": "用户确认 VTOL 与 BREAKWATER 为其历史制作成果，明确授权本项目复用；保留来源与已有第三方署名。",
+    "publicationReviewPerformed": false,
+    "projectLicenseChanged": false
+  },
+  "sources": [
+    {
+      "chat": "codex://threads/01a16c0f-a4de-73d3-b463-0737d18e9e57",
+      "path": "/Users/penguin/test_game_01/vtol-pigeonking",
+      "title": "规划VTOL空战故事线"
+    },
+    {
+      "chat": "codex://threads/01a13404-e062-7741-97f6-755c3e8e94ef",
+      "path": "/Users/penguin/test_game_01/deck-zero/battle",
+      "title": "BREAKWATER 大战场开发"
+    }
+  ],
+  "selected": {
+    "name": "F-35B retained aircraft",
+    "sourceEntry": "src/f35b.js:createF35B",
+    "sourceData": "src/aircraft/f35b-source.js",
+    "upstreamRepository": "https://github.com/FGMEMBERS/F-35B",
+    "upstreamRevision": "2726b3bdf3c7c54ea09a5d4a248e86a739604ca7",
+    "licenseAsRecorded": "GPL-3.0",
+    "authors": [
+      "Petar Jedvaj",
+      "Detlef Faber",
+      "F-GTUX",
+      "Stuart Cassie",
+      "Gary Brown",
+      "upstream contributors",
+      "Headwind Corridor adaptation"
+    ],
+    "coordinates": {
+      "units": "metres",
+      "up": "+Y",
+      "forward": "-Z",
+      "origin": "source airframe origin; not wheel contact point"
+    },
+    "role": "S12 distant air cover only",
+    "notTransport": true,
+    "sourceTopologyChanged": false,
+    "sourceTexturesImported": false,
+    "sourceBaseline": {
+      "meshParts": 80,
+      "triangles": 36613,
+      "submittedVertices": 109839,
+      "uniqueGeometries": 80,
+      "allocatedSharedMaterials": 13,
+      "attachedBaseMaterialRoles": 10,
+      "uniqueEngineMaterialsPerInstance": 1,
+      "geometryBytes": 4832916
+    },
+    "states": {
+      "engineOff": {
+        "state": {
+          "thrust": 0,
+          "gear": 0,
+          "tilt": 0
+        },
+        "visibleMeshes": 78,
+        "triangles": 35561,
+        "uniqueGeometries": 78,
+        "uniqueMaterials": 10,
+        "textures": 0,
+        "geometryBytes": 4694052,
+        "estimatedMainPassDraws": 79,
+        "drawEstimateIsRendererMeasurement": false,
+        "boundsMetres": {
+          "min": [
+            -5.525945663452148,
+            -0.9090288698201165,
+            -9.257140159606934
+          ],
+          "max": [
+            5.525934219360352,
+            2.8443338871002197,
+            7.896121025085449
+          ],
+          "sizeXYZ": [
+            11.0518798828125,
+            3.7533627569203363,
+            17.153261184692383
+          ]
+        }
+      },
+      "cruise": {
+        "state": {
+          "thrust": 0.7,
+          "gear": 0,
+          "tilt": 0
+        },
+        "visibleMeshes": 79,
+        "triangles": 35753,
+        "uniqueGeometries": 79,
+        "uniqueMaterials": 11,
+        "textures": 0,
+        "geometryBytes": 4719396,
+        "estimatedMainPassDraws": 81,
+        "drawEstimateIsRendererMeasurement": false,
+        "boundsMetres": {
+          "min": [
+            -5.525945663452148,
+            -0.9090288698201165,
+            -9.257140159606934
+          ],
+          "max": [
+            5.525934219360352,
+            2.8443338871002197,
+            7.896121025085449
+          ],
+          "sizeXYZ": [
+            11.0518798828125,
+            3.7533627569203363,
+            17.153261184692383
+          ]
+        }
+      },
+      "hoverGearDown": {
+        "state": {
+          "thrust": 0.7,
+          "gear": 1,
+          "tilt": 1
+        },
+        "visibleMeshes": 79,
+        "triangles": 35753,
+        "uniqueGeometries": 79,
+        "uniqueMaterials": 11,
+        "textures": 0,
+        "geometryBytes": 4719396,
+        "estimatedMainPassDraws": 81,
+        "drawEstimateIsRendererMeasurement": false,
+        "boundsMetres": {
+          "min": [
+            -5.525945663452148,
+            -1.9980520009994507,
+            -9.257140159606934
+          ],
+          "max": [
+            5.525934219360352,
+            3.156370105779577,
+            7.896121025085449
+          ],
+          "sizeXYZ": [
+            11.0518798828125,
+            5.154422106779028,
+            17.153261184692383
+          ]
+        }
+      },
+      "transition": {
+        "state": {
+          "thrust": 0.5,
+          "gear": 0.5,
+          "tilt": 0.5
+        },
+        "visibleMeshes": 79,
+        "triangles": 35753,
+        "uniqueGeometries": 79,
+        "uniqueMaterials": 11,
+        "textures": 0,
+        "geometryBytes": 4719396,
+        "estimatedMainPassDraws": 81,
+        "drawEstimateIsRendererMeasurement": false,
+        "boundsMetres": {
+          "min": [
+            -5.525945663452148,
+            -1.2297880001912473,
+            -9.257140159606934
+          ],
+          "max": [
+            5.525934219360352,
+            3.156370105779577,
+            7.896121025085449
+          ],
+          "sizeXYZ": [
+            11.0518798828125,
+            4.386158105970824,
+            17.153261184692383
+          ]
+        }
+      }
+    }
+  },
+  "verification": {
+    "numericSourceSHA256": "ec554326e57f5ef3f36748af7030b2d7503da828dddf6a10ad7da5415e3de8f2",
+    "sourcePaletteSHA256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae",
+    "maxCoordinateErrorMetres": 3.002929691575673e-07,
+    "maxEuclideanErrorMetres": 3.006607984657796e-07,
+    "sourceVertexCornersCompared": 109839,
+    "conversionSteps": 401,
+    "maxTrackedVertexStepMetres": 0.05520920484487265,
+    "sharedGeometriesAcrossTwoInstances": 80,
+    "sharedGeometryDisposeEventsAfterFirstOwner": 0,
+    "sharedGeometryDisposeEventsAfterFinalOwner": 80,
+    "eachGeometryDisposedExactlyOnce": true,
+    "focusedTests": {
+      "command": "npm test -- tests/reused-aircraft.test.ts --maxWorkers=1 --testTimeout=60000",
+      "passed": 7,
+      "failed": 0,
+      "durationSeconds": 26.59,
+      "priorRetry": "One ownership test timed out at default 5s during other-window test activity; final test has 60s resource-construction timeout. No geometry or disposal assertion was relaxed."
+    },
+    "typecheck": {
+      "command": "npm run typecheck",
+      "passed": true
+    },
+    "correspondingSourceArchiveFiles": [
+      {
+        "path": "License.txt",
+        "bytes": 35147,
+        "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+        "verifiedSHA256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+        "matchesManifest": true
+      },
+      {
+        "path": "F-35B-yasim-set.xml",
+        "bytes": 19681,
+        "sha256": "f1c9d95580ed4bd06ea8c8d86f5d1c1da1bb8dffd1dbcd9db602b4ec8e798623",
+        "verifiedSHA256": "f1c9d95580ed4bd06ea8c8d86f5d1c1da1bb8dffd1dbcd9db602b4ec8e798623",
+        "matchesManifest": true
+      },
+      {
+        "path": "Models/F-35B.ac",
+        "bytes": 1628471,
+        "sha256": "fce5758edc01a37c741605c4044425ba785790eaefad39c9d7ef772ee132e878",
+        "verifiedSHA256": "fce5758edc01a37c741605c4044425ba785790eaefad39c9d7ef772ee132e878",
+        "matchesManifest": true
+      },
+      {
+        "path": "Models/F-35B.xml",
+        "bytes": 19493,
+        "sha256": "343478543918bd77bd9d213db372680f62128508e53ee3801b49ffa14761d36b",
+        "verifiedSHA256": "343478543918bd77bd9d213db372680f62128508e53ee3801b49ffa14761d36b",
+        "matchesManifest": true
+      },
+      {
+        "path": "Models/Engine.ac",
+        "bytes": 94685,
+        "sha256": "c7638a624428f9163b19242fa9a24b3c9f7ccbf8488ac6feeec04707d515a4f1",
+        "verifiedSHA256": "c7638a624428f9163b19242fa9a24b3c9f7ccbf8488ac6feeec04707d515a4f1",
+        "matchesManifest": true
+      },
+      {
+        "path": "Models/Engine.xml",
+        "bytes": 6495,
+        "sha256": "2206938c0294490bada2caf04cccf7cd93f224508c202f173856fbfdd2630009",
+        "verifiedSHA256": "2206938c0294490bada2caf04cccf7cd93f224508c202f173856fbfdd2630009",
+        "matchesManifest": true
+      },
+      {
+        "path": "Models/Gear.ac",
+        "bytes": 306146,
+        "sha256": "36de5d1a47132f8b5004783b9d1829eea466037b0129ab1beeba2bb12427caa9",
+        "verifiedSHA256": "36de5d1a47132f8b5004783b9d1829eea466037b0129ab1beeba2bb12427caa9",
+        "matchesManifest": true
+      },
+      {
+        "path": "Models/Gear.xml",
+        "bytes": 7772,
+        "sha256": "3f71d521d10f9b64c02d2c96e00f7d7b4e3e8d91c36bd745e5a7e93c938090d1",
+        "verifiedSHA256": "3f71d521d10f9b64c02d2c96e00f7d7b4e3e8d91c36bd745e5a7e93c938090d1",
+        "matchesManifest": true
+      },
+      {
+        "path": "Models/Cockpit.ac",
+        "bytes": 544161,
+        "sha256": "0d90400e3311e616c3c246fb4378d2031c8d71c416ef460c9bbe8310e2d3fee3",
+        "verifiedSHA256": "0d90400e3311e616c3c246fb4378d2031c8d71c416ef460c9bbe8310e2d3fee3",
+        "matchesManifest": true
+      },
+      {
+        "path": "Models/Cockpit.xml",
+        "bytes": 2229,
+        "sha256": "cdef4c33b47a2533172b476a2c59d17e4731a586e1373b10702edb536bb3f94e",
+        "verifiedSHA256": "cdef4c33b47a2533172b476a2c59d17e4731a586e1373b10702edb536bb3f94e",
+        "matchesManifest": true
+      }
+    ]
+  },
+  "integration": {
+    "plannedFiles": [
+      "src/presentation/epilogue-environment.ts",
+      "src/presentation/EpilogueAirCover.ts"
+    ],
+    "initialInstanceLimit": 2,
+    "hostOwns": [
+      "root flight path",
+      "simulation clock",
+      "mission state",
+      "scene disposal ordering"
+    ],
+    "removeFromSceneBeforeGenericCleanup": true,
+    "sceneVerified": false
+  },
+  "unverified": [
+    "实际S12场景视距与识别度",
+    "浏览器渲染和透明排序",
+    "物理手机GPU和帧时间",
+    "Windows EXE",
+    "多机LOD和大编队",
+    "碰撞/弹道/导航（本工厂不提供）",
+    "完整发布许可检查（本轮仅保留原记录与授权）"
+  ],
+  "files": [
+    {
+      "path": "src/presentation/reused-aircraft.ts",
+      "bytes": 3526,
+      "sha256": "3160547dcaffcf99578d8dfda58ee2786166d3854aa161ba34cd3b3c760181a7"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.js",
+      "bytes": 11374,
+      "sha256": "9e804e42d3b1c8b0cf2c3c9013fe85a409a8d49aad9004b945ce3249d77303c4"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b.d.ts",
+      "bytes": 360,
+      "sha256": "6027797a540fcd1ffdcb4d45947f544295889f6564b20970b36fdc1b120dbedd"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-source.js",
+      "bytes": 3025331,
+      "sha256": "ec554326e57f5ef3f36748af7030b2d7503da828dddf6a10ad7da5415e3de8f2"
+    },
+    {
+      "path": "src/presentation/reused-aircraft/f35b-palette.js",
+      "bytes": 301,
+      "sha256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-runtime.original.js",
+      "bytes": 10287,
+      "sha256": "3e2b34a62a6a9b6e4d3abd5a25d7ea5524629c96208b73b0377c34bff15fb7c6"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-palette.original.js",
+      "bytes": 301,
+      "sha256": "ef795d52e8dc70e47b84224557384eb30cbbaeb079d2b023808bfc199d8035ae"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-airframe.original.md",
+      "bytes": 3929,
+      "sha256": "a4ad413fa45c9787b2382496f2f13f80d5922fe1115c3232122bad71f467f2ba"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-source-manifest.json",
+      "bytes": 1675,
+      "sha256": "be7a9b3f50839bc707cbac69a68c1c8407298b6f1c7410984474fef59b3f8d2e"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/F35B-GPL-3.0.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903"
+    },
+    {
+      "path": "assets/source/reused-aircraft/vtol-f35b/f35b-source.zip",
+      "bytes": 511836,
+      "sha256": "d2f47f7ebf313b8337f655580d4076258878405a757c49e9e28efab046c6c12b"
+    },
+    {
+      "path": "docs/REUSE_MILITARY_AIR_ASSETS.md",
+      "bytes": 14442,
+      "sha256": "5cc672f2d8e4dffd0ae18d7ee60864c747eaaee68022c8d3fed84f0274b07837"
+    },
+    {
+      "path": "tests/reused-aircraft.test.ts",
+      "bytes": 11345,
+      "sha256": "5727b1a3eb3807b75d9fbc0d5af4b7530c26a90a50611a37b4011be6882ea8b6"
+    }
+  ],
+  "candidates": [
+    {
+      "id": "vtol-f35b",
+      "sourceIndex": 0,
+      "entry": "src/f35b.js",
+      "data": [
+        "src/aircraft/f35b-source.js",
+        "src/aircraft/f35b-palette.js"
+      ],
+      "format": "retained AC3D/XML geometry and mechanisms as JavaScript",
+      "activeInSource": true,
+      "copied": true,
+      "conceptOnly": false,
+      "sourceTriangles": 36613,
+      "runtimeTriangles": 35753,
+      "runtimeVisibleMeshes": 79,
+      "runtimeVisibleMaterials": 11,
+      "runtimeVisibleGeometries": 79,
+      "textures": 0,
+      "motion": [
+        "continuous gear",
+        "source conversion nozzle and lift doors",
+        "lift fan",
+        "original flight control surfaces retained but not exposed by this wrapper"
+      ],
+      "recommendedSegments": [
+        "S12 distant air cover"
+      ],
+      "transport": false
+    },
+    {
+      "id": "vtol-ec135",
+      "sourceIndex": 0,
+      "entry": "src/aircraft/fleet-runtime.js",
+      "data": [
+        "src/aircraft/helicopter-source.js"
+      ],
+      "format": "retained AC3D/XML source in JavaScript",
+      "activeInSource": true,
+      "copied": false,
+      "conceptOnly": false,
+      "sourceTriangles": 48644,
+      "runtimeTriangles": 32291,
+      "runtimeVisibleMeshes": 3,
+      "runtimeVisibleMaterials": 3,
+      "runtimeVisibleGeometries": 3,
+      "textures": 0,
+      "animatedGPUMatrices": 3,
+      "motion": [
+        "main rotor",
+        "tail rotor",
+        "retained source spin mechanism"
+      ],
+      "limits": [
+        "fixed skids, no continuous retractable gear",
+        "winch geometry is not a completed rescue animation",
+        "boarding and loading not verified"
+      ],
+      "recommendedSegments": [
+        "S01-S02 rescue candidate",
+        "S12 medical arrival candidate"
+      ],
+      "licenseAsRecorded": "GPL-2.0-or-later"
+    },
+    {
+      "id": "vtol-mq28",
+      "sourceIndex": 0,
+      "entry": "src/aircraft/cca-retained.js",
+      "data": [
+        "src/aircraft/cca-source.js"
+      ],
+      "format": "retained STL triangles in JavaScript",
+      "activeInSource": true,
+      "copied": false,
+      "conceptOnly": false,
+      "sourceTriangles": 59954,
+      "runtimeTriangles": 59954,
+      "runtimeVisibleMeshes": 1,
+      "runtimeVisibleMaterials": 1,
+      "runtimeVisibleGeometries": 1,
+      "textures": 0,
+      "motion": [],
+      "recommendedSegments": [
+        "S12 distant escort candidate"
+      ],
+      "licenseAsRecorded": "CC-BY-4.0",
+      "author": "Waseem-"
+    },
+    {
+      "id": "vtol-kestrel7",
+      "sourceIndex": 0,
+      "entry": "src/aircraft/cca-procedural.js",
+      "format": "original parametric JavaScript geometry",
+      "activeInSource": false,
+      "copied": false,
+      "conceptOnly": false,
+      "runtimeTriangles": 1818,
+      "runtimeVisibleMeshes": 2,
+      "runtimeVisibleMaterials": 2,
+      "textures": 0,
+      "motion": [
+        "gear batch visibility switch only"
+      ],
+      "limits": [
+        "not MQ-28 retained geometry",
+        "not the current default cca factory"
+      ],
+      "recommendedSegments": [
+        "distant original UAV candidate"
+      ],
+      "licenseAsRecorded": "MIT"
+    },
+    {
+      "id": "breakwater-f18",
+      "sourceIndex": 1,
+      "entry": "assets/aircraft/f18-functional.js",
+      "activeGameEntry": "js/combined-actors.js:createFighter",
+      "data": [
+        "assets/aircraft/generated-f18-code.js",
+        "assets/retained/data.js",
+        "assets/retained/numeric-codec.js",
+        "assets/retained/lzma-decoder.js"
+      ],
+      "format": "retained GLB geometry in numeric JavaScript bundle plus functional adapter",
+      "activeInSource": true,
+      "copied": false,
+      "conceptOnly": false,
+      "sourceTrianglesAsRecorded": 49910,
+      "runtimeTriangles": 31893,
+      "runtimeVisibleMeshes": 48,
+      "runtimeVisibleMaterials": 19,
+      "runtimeVisibleGeometries": 48,
+      "runtimeMeasurementState": "gear up, thrust .6, four missiles visible",
+      "textures": 0,
+      "motion": [
+        "six source triangle control surfaces",
+        "two gear mesh configurations only",
+        "code-authored missile release",
+        "afterburner"
+      ],
+      "limits": [
+        "standalone presentation unit must be scaled by source host 2.5 for metre-based game",
+        "no continuous gear retraction",
+        "procedural/hornet.js is a rejected historical approximation, not current entry"
+      ],
+      "recommendedSegments": [
+        "S01-S02 distant bombardment candidate",
+        "S12 distant escort candidate"
+      ],
+      "licenseAsRecorded": "CC BY-NC-SA 4.0",
+      "author": "bohmerang; CyberSea source route"
+    }
+  ],
+  "distribution": {
+    "sourceAndLicenseCopiedIntoDistByThisTask": false,
+    "reason": "Vite does not automatically copy assets/source; this task did not create public/licenses or public/sources.",
+    "handoffToMain": [
+      "Copy license and attribution into public/licenses/reused-aircraft/f35b/",
+      "Package assets/source/reused-aircraft/vtol-f35b/ plus src/presentation/reused-aircraft.ts, src/presentation/reused-aircraft/, docs/REUSE_MILITARY_AIR_ASSETS.md with relative paths into public/sources/reused-aircraft/f35b-ganymede-source.zip",
+      "Verify resulting dist files and URLs as part of the main delivery task"
+    ],
+    "publicationReviewPerformed": false
+  },
+  "hostIntegration": {
+    "status": "integrated-rendering-pending",
+    "scene": "S12",
+    "controller": "src/presentation/EpilogueAirCover.ts",
+    "trigger": "first-wave-approaching",
+    "maxAircraft": 2,
+    "sourceBundle": {
+      "path": "public/sources/reused-aircraft/f35b-ganymede-source.zip",
+      "bytes": 1071911,
+      "sha256": "2309ebd2b9017be78ccdc159ce03388598203d8d059f1ac6649593dcb9724b48",
+      "files": 18
+    },
+    "licensePath": "public/licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt",
+    "distVerified": true,
+    "distEvidence": "artifacts/asset-dist-audit.json"
+  }
+}

@@ -79,13 +79,11 @@ function distantPort(kit: PortKit): void {
     kit.box('pale', [x, height + 0.3, z], [15, 0.6, 17], [0, 0, 0], false);
     kit.cylinder('steel', [x + 3, height + 3, z], 0.75, 6);
   }
-  kit.asset('BG-CRANE', { instanceId: 'front-distant-crane', position: [79, 0, 6], size: [36.64, 28, 17.30] }, () => {
   kit.box('steel', [79, 14, 6], [3.4, 28, 3.4], [0, 0, 0], false);
   kit.beam('pale', [79, 28, 6], [58, 22, 19], 1.1);
   kit.beam('amber', [79, 28, 6], [103, 22, -7], 1.1);
   kit.beam('steel', [79, 20, 6], [62, 23, 16], 0.6);
   kit.cylinder('rubber', [59, 15, 18], 0.055, 14);
-  });
 }
 
 /** Formal E04 front line, separate from the compact northgate validation arena. */
@@ -133,7 +131,7 @@ export function buildFrontGate(kit: PortKit): SceneDynamics {
   kit.cover(F.rearPost[0], F.rearPost[2] - 2.7, 6.2);
   kit.label('02 查验线', [11, 3.8, -13.6], 4.4, 0.6);
   kit.box('steel', [13.5, 1.9, -13.7], [0.10, 3.8, 0.10]);
-  kit.tractor(21, 20, -0.15);
+  kit.visualSlot('front-tug', slot => slot.tractor(21, 20, -0.15));
   kit.container(29, 26, Math.PI / 2, 'pale');
 
   // East entry has its own staging bend, gateway, visible road and east-facing hard cover.
@@ -147,7 +145,7 @@ export function buildFrontGate(kit: PortKit): SceneDynamics {
   kit.cover(30.7, -5, 4.2, Math.PI / 2);
   kit.cover(F.eastPost[0] + 2.3, F.eastPost[2], 7.0, Math.PI / 2);
   filterBank(kit);
-  kit.tank(43, 10, 3.1, 8.8);
+  kit.visualSlot('front-east-tank', slot => slot.tank(43, 10, 3.1, 8.8));
   kit.tank(44, 27, 2.2, 7);
   kit.cylinder('amber', [37, 2.5, 19], 0.18, 21, [Math.PI / 2, 0, 0]);
   kit.cylinder('pale', [38.1, 2.9, 19], 0.14, 21, [Math.PI / 2, 0, 0]);

@@ -3,6 +3,7 @@ import type { Vec3 } from '../contracts';
 import { EPILOGUE as E } from '../content/epilogue-layout';
 import type { SceneDynamics } from './chapter-environments';
 import { addGround, PortKit, type Surface } from './port-kit';
+import { DeferredAirCover } from './DeferredAirCover';
 
 function block(k: PortKit, id: string, p: Vec3, size: Vec3, surface: Surface = 'pale') {
   k.box(surface, p, size); k.solid(id, p, size);
@@ -53,8 +54,10 @@ export function buildEpilogue(k: PortKit): SceneDynamics {
   block(k, 'epilogue-reception-roof', [3, 5.4, 8], [35, 0.4, 25], 'pale');
   k.part('arch', 'pale', [3, 5.65, 8], [35, 7, 25]);
   k.label('C03 接收中心 / 首批进场', [-4, 4.35, 1.35], 6, 0.65);
-  block(k, 'epilogue-reception-table', [2.2, 0.5, 6], [4, 1, 1.2], 'steel');
-  k.box('glass', [2.2, 1.3, 6], [0.8, 0.5, 0.08]);
+  k.visualSlot('epilogue-reception-console', slot => {
+    block(slot, 'epilogue-reception-table', [2.2, 0.5, 6], [4, 1, 1.2], 'steel');
+    slot.box('glass', [2.2, 1.3, 6], [0.8, 0.5, 0.08]);
+  });
   k.label('泊位与接收终端', [2.2, 2.05, 6], 4, 0.55);
   k.box('signal', [3, 5.0, 10], [23, 0.08, 0.28]);
   const light = new PointLight(0xffdbad, 70, 32, 2); light.position.set(2, 4.7, 10); k.root.add(light);
@@ -69,12 +72,15 @@ export function buildEpilogue(k: PortKit): SceneDynamics {
     k.box('signal', [x, 4.5, z], [1.2, 0.4, 1.2], [0, 0, 0], false);
   }
   let target = 0, progress = 0, previous: number | undefined, first = true;
+  const airCover = new DeferredAirCover(k.root);
   const apply = () => { door.position.y = 1.7 + progress * 3.5; };
   return { bounds: E.bounds, setFacts(facts) {
+    airCover.setFacts(facts);
     target = facts.includes('reception-door-open') ? 1 : 0;
     if (first) { first = false; progress = target; apply(); }
   }, update(time) {
+    airCover.update(time);
     const dt = previous === undefined ? 0 : Math.max(0, Math.min(0.1, time - previous)); previous = time;
     progress += Math.max(-dt / 2.0, Math.min(dt / 2.0, target - progress)); apply();
-  } };
+  }, dispose() { airCover.dispose(); } };
 }

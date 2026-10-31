@@ -276,6 +276,14 @@ class Audit:
             for m in re.finditer(calls, text):
                 uri = m.group(2)
                 call = m.group(0)
+                # Vite's relative BASE_URL is an origin for later asset URLs,
+                # not a request for a file named './' beside the JS chunk.
+                if uri in {".", "./"} and re.match(r"\bnew\s+URL\s*\(", call) and re.match(
+                    r"\s*,\s*document\.baseURI\s*\)", text[m.end():]
+                ):
+                    found.add(uri)
+                    self.check_ref(base, "index.html", "index.html", "document-directory-base", available)
+                    continue
                 if re.match(r"\.(?:load|loadAsync)\s*\(", call) and not RESOURCE_EXT.search(uri) and "/" not in uri:
                     continue  # e.g. the application's save.load('campaign') is not a fetch.
                 if uri == "rapier_wasm3d_bg.wasm" and embedded_rapier:

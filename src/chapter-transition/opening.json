@@ -1,0 +1,29 @@
+{
+  "id": "opening-campaign",
+  "from": null,
+  "to": "S01",
+  "heading": "重返木卫三",
+  "kicker": "十年前 · 冰脊港",
+  "cues": [
+    {
+      "id": "opening-campaign-01",
+      "text": "木卫三经过几代人的改造，有了可呼吸的空气；冰脊港的居民靠供热设施抵御寒冷。",
+      "readingSeconds": 10.0
+    },
+    {
+      "id": "opening-campaign-02",
+      "text": "当地爆发叛乱，工区居民挤进避难所，驻军守着入口，准备掩护人们从检修通道撤离。",
+      "readingSeconds": 10.0
+    },
+    {
+      "id": "opening-campaign-03",
+      "text": "九岁的陆闻川和父亲陆建平待在主厅，母亲许岚去了医院。",
+      "readingSeconds": 7.0
+    },
+    {
+      "id": "opening-campaign-04",
+      "text": "检修门前的过道被一张床垫堵住，陆建平准备过去帮人清出通路。",
+      "readingSeconds": 8.0
+    }
+  ]
+}

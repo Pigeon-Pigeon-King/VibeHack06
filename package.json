@@ -9,6 +9,7 @@
     "dev": "vite --host 127.0.0.1 --port 5188 --strictPort",
     "build": "tsc --noEmit && vite build",
     "typecheck": "tsc --noEmit",
+    "audit:rig": "node --experimental-strip-types scripts/audit-character-rig.mjs",
     "preview": "vite preview --host 127.0.0.1 --port 5189 --strictPort",
     "test": "vitest run",
     "desktop": "electron .",

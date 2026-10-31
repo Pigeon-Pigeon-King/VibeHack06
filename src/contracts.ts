@@ -68,6 +68,9 @@ export interface UiState {
   blackout?: number;
   hurtFlash: number;
   lowMotion: boolean;
+  touchControls: boolean;
+  equipmentStatus?: string;
+  equipmentError?: boolean;
   muted: boolean;
   sensitivity: number;
   volume: number;
@@ -90,4 +93,6 @@ export interface UiActions {
   setSensitivity(value: number): void;
   setVolume(value: number): void;
   setLowMotion(value: boolean): void;
+  setTouchControls(value: boolean): void;
+  retryEquipment(): void;
 }

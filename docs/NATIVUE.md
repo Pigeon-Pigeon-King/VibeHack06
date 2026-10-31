@@ -57,6 +57,8 @@ nativue analyze .
 
 ## 文档或代码变更后的刷新
 
+本轮资产整合后，需把“人物运行仍占位”“模型未制作”和“触控缺失”等历史节点改为实际范围：13 套人物、8 件场景、共享 AK 与声音已经进入运行候选；完整地图、正式接触、目标设备及连续战役仍待验。共享资源与骨骼数值检查可以指向具体证据，新模型实景不能标 verified。本轮真实导入状态以最新 `.nativue` 快照为准，准备脚本或草稿不等于已经刷新。
+
 1. 运行 `nativue scan .` 和 `nativue analyze .`。
 2. 读取 `.nativue/analysis-request.json`，按其中真实 inputId、文件索引和项目变更重新分析。
 3. 将 schemaVersion 为 1 的 modules、edges、journeys 保存到 `.nativue/analysis-response.json`。所有证据引用现存且被索引的路径与行号。
@@ -66,6 +68,8 @@ nativue analyze .
 源文件改变会使旧分析过期；应重新读新的分析包，不通过替换旧结果的 inputId 强行导入。服务的文件扫描可以自动刷新，语义更新仍由交互分析完成，不能称为已启用无人值守模型分析。
 
 ## 扫描范围
+
+本轮还排除持续制作且尚未接入的 `assets/prepared/`。原文件保留；正式运行版通过 `src`、`public` 的安全清单及本轮整合记录引用，不把独立制作中的 LOD／动作候选当作主战役完成。
 
 本轮本地配置将仍在写入、且尚未由本画布审核的并行生产区排除：`artifacts/asset-jobs/`、`artifacts/campaign-qa/`、`artifacts/mobile-compat/`、`artifacts/submission/`、`artifacts/trailer-45s/`、`assets/source/`、`design/audio/`、`docs/campaign-qa/`、`docs/mobile-compat/`、`docs/submission/`、`scripts/submission/`、`tests/campaign-qa/`。这些文件仍完整保留在项目中，窗口归属由 `docs/PARALLEL_WORKSTREAMS.md` 表示；它们的持续日志变化不参与这张主线代码图的来源校验。当前 58 个节点的文件证据均在扫描范围内。后续审核这些工作流时应逐项重新纳入，而不是从本图推断其完成状态。
 

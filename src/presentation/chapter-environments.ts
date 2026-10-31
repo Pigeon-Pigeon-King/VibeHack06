@@ -8,6 +8,8 @@ export interface SceneDynamics {
   bounds: SceneBounds;
   update(time: number, frame?: SceneFrame): void;
   setFacts(facts: readonly string[]): void;
+  /** Release leased/shared resources before the environment's generic tree cleanup. */
+  dispose?(): void;
 }
 
 function wall(kit: PortKit, id: string, at: Vec3, size: Vec3, surface: Surface = 'concrete'): void {

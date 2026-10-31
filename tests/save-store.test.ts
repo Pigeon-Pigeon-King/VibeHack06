@@ -624,6 +624,16 @@ describe('S08/S09 escort and relief save identities', () => {
 });
 
 describe('SaveStore settings and inaccessible storage', () => {
+  it('keeps legacy device detection automatic and round-trips an explicit touch preference', () => {
+    const storage = new MemoryStorage(), store = new SaveStore(storage);
+    expect(store.getSettings().settings.touchControls).toBeUndefined();
+    expect(store.saveSettings({ ...DEFAULT_SETTINGS, touchControls: true }).ok).toBe(true);
+    expect(new SaveStore(storage).getSettings().settings.touchControls).toBe(true);
+    expect(store.saveSettings({ ...DEFAULT_SETTINGS, touchControls: false }).ok).toBe(true);
+    expect(new SaveStore(storage).getSettings().settings.touchControls).toBe(false);
+    expect(store.saveSettings({ ...DEFAULT_SETTINGS, touchControls: 'yes' } as unknown as GameSettings).ok).toBe(false);
+    expect(store.getSettings().settings.touchControls).toBe(false);
+  });
   it('returns fresh defaults and persists bounded settings across instances', () => {
     const storage = new MemoryStorage(), store = new SaveStore(storage);
     const defaults = store.getSettings();

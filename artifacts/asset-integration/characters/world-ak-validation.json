@@ -1,0 +1,64 @@
+{
+  "status": "focused-numerical-integration-passed-browser-not-run",
+  "files": [
+    {
+      "path": "src/presentation/ImportedCharacter.ts",
+      "sha256": "c76806a984ad9ddf3ca17aa8dcb0b8a5e0670093328c7e87f595b60132c407b4",
+      "bytes": 13648
+    },
+    {
+      "path": "src/presentation/WorldAK47.ts",
+      "sha256": "57bc779842e029f6cd628c8000cdf7676b6788a935e20424b9c28fe5ffe232e1",
+      "bytes": 17602
+    },
+    {
+      "path": "tests/imported-character.test.ts",
+      "sha256": "bc78cd8cfa772ffb87cebba890e017b6e542f8c31b4e2bedd1821288abb63e5b",
+      "bytes": 26575
+    },
+    {
+      "path": "tests/world-ak47.test.ts",
+      "sha256": "9b8c8199f6a47d9df4b8e6d13661c3189ccd4a7125a82969c8e1afde4cf66741",
+      "bytes": 17530
+    },
+    {
+      "path": "public/models/weapons/ak47-world-r1.glb",
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+      "bytes": 2046524
+    }
+  ],
+  "tests": {
+    "passed": 15,
+    "failed": 0,
+    "skipped": 18,
+    "evidence": "world-ak-focused-tests.json",
+    "command": "npx vitest run tests/world-ak47.test.ts tests/imported-character.test.ts --maxWorkers=1 -t 'world AK|NPC world AK' --reporter=default --reporter=json --outputFile.json=artifacts/asset-integration/characters/world-ak-focused-tests.json",
+    "observedExitCode": 0
+  },
+  "isolatedTypecheck": {
+    "status": "passed",
+    "observedExitCode": 0,
+    "command": "npx tsc --ignoreConfig --noEmit --target ES2022 --module ESNext --moduleResolution Bundler --strict --skipLibCheck --types vite/client,node src/presentation/ImportedCharacter.ts src/presentation/WorldAK47.ts tests/world-ak47.test.ts tests/imported-character.test.ts"
+  },
+  "diffCheck": "passed",
+  "numericEvidence": "world-ak-npc-calibration.json",
+  "actualNPCs": 5,
+  "lengthRangeMeters": [
+    0.8900000000000023,
+    0.8900000000000023
+  ],
+  "singleAKTemplateLoadForFiveNPCs": 1,
+  "firstPersonAndNPCSharing": "separate actual-ImportedWeaponView test; one ModelLoader call; same geometry/material/texture identity; last-owner-only resource release",
+  "ownership": "only ModelLibrary owns game AK GPU templates; NPC attachments own lease and transform nodes",
+  "notRun": [
+    "browser",
+    "PBR/hand-contact visual acceptance",
+    "multiactor GPU performance",
+    "production build",
+    "full suite",
+    "publish"
+  ],
+  "newProviderCalls": 0,
+  "newProviderCost": 0,
+  "committed": false
+}

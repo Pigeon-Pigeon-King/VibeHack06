@@ -1,0 +1,143 @@
+{
+  "source": "/Users/penguin/VibeHack06/assets/source/tripo/CH-LU-CHILD/rig-v1/rig/1aeea69b-8de0-49c8-8028-b3fff31436be-model.glb",
+  "runtime": "/Users/penguin/VibeHack06-worktree/public/models/characters/ch-lu-child-rig-v1.glb",
+  "sourceSha256": "1d33683fcf92e1db07de9ca73b059052d16fd841551d927f25022efc72cf83c1",
+  "runtimeSha256": "13f8f41d6852a69b6844c51118825e8a0017d7a86856daf6ba1cf1c51ca63f31",
+  "sourceBytes": 9603700,
+  "runtimeBytes": 1673800,
+  "maxTextureEdge": 1024,
+  "encoding": {
+    "Pillow": "11.3.0",
+    "JPEGQuality": 90,
+    "JPEGSubsampling": 0,
+    "PNGCompressLevel": 9,
+    "resample": "LANCZOS"
+  },
+  "images": [
+    {
+      "image": 0,
+      "mimeType": "image/png",
+      "roles": [
+        "normal-linear"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 4463482,
+      "runtimeBytes": 561531,
+      "sourceSha256": "ace11a80f177501c0ba6efc97d20868ac43054e6feec97cf8183148a44ca1819",
+      "runtimeSha256": "a0763c6ecccfd64991ba3d57d3d4ab59782c0b3e61578db9158082f8592441d7",
+      "normalRenormalized": true
+    },
+    {
+      "image": 1,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "baseColor-sRGB"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 2878445,
+      "runtimeBytes": 257694,
+      "sourceSha256": "6a776c1bbc9ca4bf75611fd6e1bcdc92afecd918af49591d445542424ac294cf",
+      "runtimeSha256": "d9632cf1f62d0b38f12f71cc81ec85c42da0bb37c6d3d534cb64e14e9b53b3ea",
+      "normalRenormalized": false
+    },
+    {
+      "image": 2,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "metallicRoughness-linear"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 1579714,
+      "runtimeBytes": 172521,
+      "sourceSha256": "45d14defe6d71ce9928321280bb9199cc38486749a293ed6df290d24937edf1b",
+      "runtimeSha256": "cdc127e3dfd961e541a2de82fe45d34142fd0be16ab7f3497c85361f279e1a09",
+      "normalRenormalized": false
+    }
+  ],
+  "nonImageBufferViewsPreserved": [
+    {
+      "bufferView": 0,
+      "bytes": 130212,
+      "sha256": "1dd9475a44d50f2416870fbec3711b31e447338b8ba0033eb6ed7e53e234e17d"
+    },
+    {
+      "bufferView": 1,
+      "bytes": 130212,
+      "sha256": "f2f949003902b2e78a8b205c258cebb234a6d179cee4d340245eca49f9e1b606"
+    },
+    {
+      "bufferView": 2,
+      "bytes": 86808,
+      "sha256": "87f4d2e25677197ffdd635015afae2dc813040a65d00dcdf926b3e9967435c61"
+    },
+    {
+      "bufferView": 3,
+      "bytes": 43404,
+      "sha256": "c5ca7c81ada838abe5a45a997c358dcf4f6fabad08cedfd10eb9f5cc92574fad"
+    },
+    {
+      "bufferView": 4,
+      "bytes": 173616,
+      "sha256": "1c6b32843ca465081cc2e93a54bf8e416acb027ffca2d65f1dc2d26991a8554d"
+    },
+    {
+      "bufferView": 5,
+      "bytes": 102984,
+      "sha256": "5107ec48e637b40e73359ace134047a4c3a01e7d1df7f065885946e055637f54"
+    },
+    {
+      "bufferView": 9,
+      "bytes": 2624,
+      "sha256": "b780efae50a9089be1a17dcd0c2cb883453bee4dc1b3e925d5e0ad34febcb12b"
+    }
+  ],
+  "jsonInvariantsPreserved": [
+    "asset",
+    "scenes",
+    "scene",
+    "nodes",
+    "meshes",
+    "accessors",
+    "materials",
+    "textures",
+    "samplers",
+    "skins",
+    "animations",
+    "extensionsUsed",
+    "extensionsRequired"
+  ],
+  "estimatedRGBA8WithMipmapsBytes": {
+    "source": 268435456,
+    "runtime": 16777216
+  },
+  "limitations": [
+    "Estimated uncompressed RGBA8+mipmaps only; actual renderer allocation requires runtime profiling.",
+    "Image resizing does not establish rendered PBR, collision, gameplay or Windows acceptance."
+  ],
+  "assetId": "CH-LU-CHILD",
+  "converterSha256": "af81e6ea7ac3c5fe6df8d6a2a49dd5b5722a7c543ca66b0ee715aae6f8f87f8d"
+}

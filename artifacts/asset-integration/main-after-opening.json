@@ -1,0 +1,18 @@
+{
+  "additionalCandidate": "bf78e63 merged as 049191c; host entry not connected",
+  "changedOriginalInputs": [
+    "src/chapter-transition/ChapterTransition.ts",
+    "src/chapter-transition/TransitionController.ts",
+    "src/chapter-transition/catalog.ts",
+    "src/chapter-transition/index.ts",
+    "src/chapter-transition/types.ts"
+  ],
+  "unchangedOriginalInputs": 422,
+  "runtimeDistStillIdentical": true,
+  "tests": {
+    "passed": 76,
+    "failed": 0,
+    "pending": 0
+  },
+  "scope": "Existing main campaign runtime and 245 output files remain the 83da4a8 tested behavior; the opening/bridge module is an independent next-batch candidate."
+}

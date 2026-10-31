@@ -5,6 +5,9 @@ import { BoxGeometry, Group, Mesh, MeshStandardMaterial, Texture, Vector3 } from
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import { attachWorldAK47, WORLD_AK47, WorldAK47Pool, worldAK47Url, type WorldAK47Loader } from '../src/presentation/WorldAK47';
 import { disposeModelTree } from '../src/presentation/model-tools';
+import { ModelLibrary } from '../src/assets/ModelLibrary';
+import { ak47Source } from '../src/assets/weapon-catalog';
+import { ImportedWeaponView } from '../src/presentation/ImportedWeaponView';
 
 const raw = readFileSync(new URL('../public/models/weapons/ak47-world-r1.glb', import.meta.url));
 const cleanups: (() => void)[] = [];
@@ -59,7 +62,7 @@ describe('world AK actual-source calibration', () => {
     expect(p.gun.visible).toBe(false); expect(p.actorBody.visible).toBe(true); expect(p.parent.visible).toBe(true);
     expect(p.parent.position.equals(at)).toBe(true); expect(p.parent.scale.equals(scale)).toBe(true); expect(p.parent.quaternion.equals(rotation)).toBe(true);
     const mount = p.parent.getObjectByName('world-ak47-mount')!;
-    expect(mount.scale.x).toBeCloseTo(0.89 / 1.4000500738620758, 8);
+    expect(mount.scale.x).toBeCloseTo(0.89 / (1.4000500738620758 * 0.68), 8);
     expect(mount.scale.x).toBe(mount.scale.y); expect(mount.scale.x).toBe(mount.scale.z);
     expect(mount.userData.calibration.presentationLengthMeters).toBe(0.89);
     for (const name of WORLD_AK47.hiddenNodes) expect(mount.getObjectByName(name)!.visible).toBe(false);
@@ -73,6 +76,17 @@ describe('world AK actual-source calibration', () => {
     expect(attachment.muzzle.getWorldPosition(new Vector3()).distanceTo(sourceMuzzle.getWorldPosition(new Vector3()))).toBeLessThan(1e-6);
     const direction = new Vector3(0, 0, -1).transformDirection(attachment.muzzle.matrixWorld);
     expect(direction.dot(new Vector3(0, 0, -1).transformDirection(p.parent.matrixWorld))).toBeGreaterThan(0.999);
+    let front = -Infinity, back = Infinity;
+    const vertex = new Vector3();
+    mount.traverseVisible(object => {
+      if (!(object instanceof Mesh)) return;
+      const positions = object.geometry.getAttribute('position');
+      for (let i = 0; i < positions.count; i++) {
+        const value = vertex.fromBufferAttribute(positions, i).applyMatrix4(object.matrixWorld).dot(direction);
+        front = Math.max(front, value); back = Math.min(back, value);
+      }
+    });
+    expect(front - back).toBeGreaterThan(0.88); expect(front - back).toBeLessThan(0.90);
     p.parent.position.set(-1, 2, 3); p.parent.rotation.set(-0.4, 0.6, 0); p.actor.updateMatrixWorld(true);
     expect(attachment.muzzle.getWorldPosition(new Vector3()).distanceTo(sourceMuzzle.getWorldPosition(new Vector3()))).toBeLessThan(1e-6);
     attachment.dispose(); attachment.dispose();
@@ -86,6 +100,64 @@ describe('world AK actual-source calibration', () => {
     expect(await attachment.ready).toBe('ready'); expect(p.parent.visible).toBe(false);
     expect(attachment.muzzle.parent!.name).toBe('MuzzleDeviceTip');
     attachment.dispose(); expect(p.parent.getObjectByName('muzzle')).toBeUndefined(); expect(p.parent.visible).toBe(false);
+  });
+});
+
+describe('world AK uses the game ModelLibrary', () => {
+  it('shares the real first-person template and textures with NPCs, with independent transforms and last-lease release', async () => {
+    const root = await geometry(), receiver = root.getObjectByName('WeaponBodyGeometry') as Mesh;
+    const material = Array.isArray(receiver.material) ? receiver.material[0] : receiver.material;
+    const freeGeometry = vi.spyOn(receiver.geometry, 'dispose'), freeMaterial = vi.spyOn(material, 'dispose');
+    const texture = (material as MeshStandardMaterial).map!; expect(texture).toBeDefined();
+    const freeTexture = vi.spyOn(texture, 'dispose');
+    const loader = vi.fn(async () => ({ scene: root, animations: [] })), library = new ModelLibrary(loader);
+    cleanups.push(() => library.dispose());
+    const source = ak47Source('https://example.test/game/index.html');
+    let resolveFirstPerson!: () => void;
+    const firstPersonReady = new Promise<void>(resolve => { resolveFirstPerson = resolve; });
+    const firstPerson = new ImportedWeaponView(library, source, status => { if (status.state === 'ready') resolveFirstPerson(); });
+    cleanups.push(() => firstPerson.dispose());
+    const a = proxy(), b = proxy(), first = attachWorldAK47(a.parent, { library, source }), second = attachWorldAK47(b.parent, { library, source });
+    expect(await Promise.all([first.ready, second.ready, firstPersonReady])).toEqual(['ready', 'ready', undefined]);
+    expect(loader).toHaveBeenCalledTimes(1);
+    const fp = firstPerson.root.getObjectByName('WeaponBodyGeometry') as Mesh;
+    const left = a.parent.getObjectByName('WeaponBodyGeometry') as Mesh, right = b.parent.getObjectByName('WeaponBodyGeometry') as Mesh;
+    expect(fp.geometry).toBe(left.geometry); expect(left.geometry).toBe(right.geometry);
+    expect(fp.material).toBe(left.material); expect(left.material).toBe(right.material);
+    expect((left.material as MeshStandardMaterial).map).toBe(texture);
+    expect(firstPerson.root.getObjectByName('world-ak47-mount')).toBeUndefined();
+    expect(a.parent.getObjectByName('right-grip-arm')).toBeUndefined();
+    const worldMagazine = a.parent.getObjectByName('Magazine')!, before = worldMagazine.position.clone();
+    firstPerson.setPose(1, 0.45, 0, 0);
+    expect(worldMagazine.position.equals(before)).toBe(true);
+    expect(b.parent.getObjectByName('Magazine')).not.toBe(worldMagazine);
+    firstPerson.dispose(); disposeModelTree(a.actor);
+    expect(freeGeometry).not.toHaveBeenCalled(); expect(freeMaterial).not.toHaveBeenCalled(); expect(freeTexture).not.toHaveBeenCalled();
+    disposeModelTree(b.actor);
+    expect(freeGeometry).toHaveBeenCalledTimes(1); expect(freeMaterial).toHaveBeenCalledTimes(1); expect(freeTexture).toHaveBeenCalledTimes(1);
+  });
+
+  it('cancels an individual library waiter without aborting the remaining NPC', async () => {
+    let resolve!: (template: { scene: Group; animations: [] }) => void, signal!: AbortSignal;
+    const loader = vi.fn((_source, inputSignal: AbortSignal) => { signal = inputSignal; return new Promise<{ scene: Group; animations: [] }>(yes => { resolve = yes; }); });
+    const library = new ModelLibrary(loader); cleanups.push(() => library.dispose());
+    const source = ak47Source('https://example.test/game/index.html'), a = proxy(), b = proxy();
+    const first = attachWorldAK47(a.parent, { library, source }), second = attachWorldAK47(b.parent, { library, source });
+    disposeModelTree(a.actor);
+    expect(await first.ready).toBe('disposed'); expect(signal.aborted).toBe(false);
+    resolve({ scene: await geometry(), animations: [] });
+    expect(await second.ready).toBe('ready'); expect(loader).toHaveBeenCalledTimes(1); expect(a.actor.children).toHaveLength(0);
+  });
+
+  it('releases a fulfilled library lease if its parent dies before the attachment continuation', async () => {
+    const root = await geometry(), freed = vi.spyOn((root.getObjectByName('WeaponBodyGeometry') as Mesh).geometry, 'dispose');
+    const library = new ModelLibrary(async () => ({ scene: root, animations: [] })); cleanups.push(() => library.dispose());
+    const source = ak47Source('https://example.test/game/index.html'), keeper = await library.acquire(source), p = proxy();
+    cleanups.push(() => keeper.dispose());
+    const attachment = attachWorldAK47(p.parent, { library, source });
+    disposeModelTree(p.actor); expect(await attachment.ready).toBe('disposed'); await flush();
+    expect(p.actor.children).toHaveLength(0); expect(freed).not.toHaveBeenCalled();
+    keeper.dispose(); expect(freed).toHaveBeenCalledTimes(1);
   });
 });
 

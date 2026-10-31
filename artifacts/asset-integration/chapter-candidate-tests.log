@@ -1,0 +1,21 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06
+
+ ✓ tests/chapter-transition/controller.test.ts (25 tests) 10ms
+ ✓ tests/chapter-transition/entry-plan.test.ts (14 tests) 8ms
+ ✓ tests/chapter-transition/input.test.ts (8 tests) 11ms
+ ✓ tests/chapter-transition/bridges.test.ts (8 tests) 7ms
+ ✓ tests/chapter-transition/audio.test.ts (10 tests) 6ms
+ ✓ tests/chapter-transition/browser-shell.test.ts (2 tests) 4ms
+ ✓ tests/chapter-transition/opening.test.ts (4 tests) 4ms
+ ✓ tests/chapter-transition/campaign-plan.test.ts (5 tests) 3ms
+
+ Test Files  8 passed (8)
+      Tests  76 passed (76)
+   Start at  15:19:23
+   Duration  759ms (tests 36%, import 35%, transform 16%, worker 13%)
+
+    Isolate  8 workers spawned · ~73ms startup each (spawn + environment, per file)
+             at least ~509ms faster with isolate: false — reuses workers across files instead of one per file
+
+JSON report written to /Users/penguin/VibeHack06/artifacts/asset-integration/chapter-candidate-tests.json

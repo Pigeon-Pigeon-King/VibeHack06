@@ -1,0 +1,107 @@
+#app .touch-controls {
+  --touch-left: max(16px, env(safe-area-inset-left));
+  --touch-right: max(16px, env(safe-area-inset-right));
+  --touch-bottom: max(16px, env(safe-area-inset-bottom));
+  position: absolute;
+  inset: 0;
+  z-index: 6;
+  pointer-events: none;
+  user-select: none;
+  -webkit-user-select: none;
+  -webkit-touch-callout: none;
+}
+
+#app .touch-look-zone { position: absolute; inset: 0 0 0 42%; pointer-events: auto; touch-action: none; }
+#app .touch-joystick {
+  position: absolute;
+  left: var(--touch-left);
+  bottom: var(--touch-bottom);
+  width: 128px;
+  height: 128px;
+  border: 1px solid rgb(225 236 230 / 38%);
+  border-radius: 50%;
+  background: rgb(8 22 30 / 28%);
+  box-shadow: inset 0 0 0 12px rgb(220 232 222 / 3%);
+  pointer-events: auto;
+  touch-action: none;
+}
+#app .touch-stick-track { position: absolute; inset: 24px; border: 1px solid rgb(222 233 226 / 18%); border-radius: 50%; pointer-events: none; }
+#app .touch-stick-knob {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 50px;
+  height: 50px;
+  display: grid;
+  place-items: center;
+  transform: translate(calc(-50% + var(--stick-x, 0px)), calc(-50% + var(--stick-y, 0px)));
+  border: 1px solid rgb(237 242 228 / 62%);
+  border-radius: 50%;
+  background: rgb(23 42 51 / 80%);
+  font-size: 16px;
+  line-height: 1;
+  pointer-events: none;
+}
+#app .touch-joystick.is-held { border-color: var(--ui-amber); }
+#app .touch-joystick.is-held .touch-stick-knob { background: rgb(81 89 77 / 86%); border-color: var(--ui-amber); }
+
+#app .touch-action-grid {
+  position: absolute;
+  right: var(--touch-right);
+  bottom: var(--touch-bottom);
+  display: grid;
+  grid-template-columns: repeat(3, 52px);
+  grid-template-rows: repeat(3, 52px);
+  grid-template-areas: "reload fire fire" "ads fire fire" "sprint crouch jump";
+  gap: 8px;
+}
+#app .touch-action-button, #app .touch-pause {
+  min-width: 44px;
+  min-height: 44px;
+  padding: 5px;
+  pointer-events: auto;
+  touch-action: none;
+  border: 1px solid rgb(220 232 225 / 48%);
+  background: rgb(12 29 38 / 68%);
+  box-shadow: 0 2px 10px rgb(1 10 16 / 25%);
+  text-shadow: 0 1px 3px #07121a;
+  font-size: 16px;
+  line-height: 1.35;
+  font-weight: 550;
+}
+#app .touch-action-grid > button { width: 52px; height: 52px; border-radius: 50%; }
+#app .touch-reload { grid-area: reload; }
+#app .touch-ads { grid-area: ads; }
+#app .touch-sprint { grid-area: sprint; }
+#app .touch-crouch { grid-area: crouch; }
+#app .touch-jump { grid-area: jump; }
+#app .touch-action-grid > .touch-fire { grid-area: fire; width: 112px; height: 112px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 7px; border-color: rgb(239 196 119 / 80%); background: rgb(45 48 39 / 58%); font-size: 17px; }
+#app .touch-fire-icon { width: 34px; height: 34px; fill: none; stroke: currentColor; stroke-width: 1.8; stroke-linecap: round; pointer-events: none; }
+#app .touch-action-button > span { pointer-events: none; }
+#app .touch-action-button[aria-pressed="true"], #app .touch-action-button.is-held { border-color: var(--ui-amber); background: rgb(103 89 57 / 88%); color: #fff0cf; }
+#app .touch-controls[data-control="work"] .touch-action-grid { grid-template-areas: "sprint crouch jump"; grid-template-rows: 52px; }
+
+#app .touch-context-actions {
+  position: absolute;
+  left: calc(var(--touch-left) + 144px);
+  right: calc(var(--touch-right) + 200px);
+  bottom: var(--touch-bottom);
+  display: flex;
+  align-items: stretch;
+  justify-content: center;
+  gap: 8px;
+}
+#app .touch-context-actions > button { flex: 1 1 auto; max-width: 360px; min-width: 44px; min-height: 52px; padding: 8px 12px; border-radius: 4px; overflow-wrap: anywhere; font-size: 17px; background: rgb(28 43 45 / 94%); border-color: var(--ui-amber); color: #fff0cf; }
+#app .touch-controls[data-control="staged"] .touch-context-actions { left: max(24px, env(safe-area-inset-left)); right: max(24px, env(safe-area-inset-right)); }
+#app .touch-pause { position: absolute; right: var(--touch-right); top: max(12px, env(safe-area-inset-top)); width: 44px; height: 44px; border-radius: 4px; padding: 10px; }
+#app .touch-pause svg { display: block; width: 22px; height: 22px; fill: none; stroke: currentColor; stroke-width: 3; stroke-linecap: square; pointer-events: none; }
+
+@media (orientation: portrait) {
+  #app .touch-controls { --touch-bottom: max(24px, env(safe-area-inset-bottom)); }
+  #app .touch-context-actions { left: var(--touch-left); right: var(--touch-right); bottom: calc(var(--touch-bottom) + 192px); }
+  #app .touch-controls[data-control="staged"] .touch-context-actions { bottom: var(--touch-bottom); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #app .touch-action-button, #app .touch-pause { transition: none; }
+}

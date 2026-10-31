@@ -1,6 +1,24 @@
 # 章节过场模块接入说明
 
-模块已独立实现，主战役尚未接线。入口为 `src/chapter-transition/index.ts`；11 段旁白的正文和 ID 位于 `bridges.json`。本轮仅新增独立文件，没有修改 `src/main.ts`、`GameUI.ts`、`contracts.ts`、`Sound.ts` 或各关任务脚本。
+模块已独立实现，主战役接线由主窗口执行。入口为 `src/chapter-transition/index.ts`；开场正文在 `opening.json`，11 段章节衔接在 `bridges.json`。反馈窗口负责这些独立文件与测试，主窗口拥有 `src/main.ts`、GameUI、真实加载与存档接线，配音窗口拥有声音生产及 Sound/对白调度。
+
+2026-10-31 用户明确要求：补齐开场后，将整套过场交主窗口接主战役，声音完成后一起接上。既有护送、接防、剧情条件与检查点规则继续由原任务系统负责。
+
+## 开场与存档入口
+
+`planCampaignEntry(intent)` 生成纯计划，返回与章节衔接相同的 `{ bridge, chapter, scenario, facts }` 形状。开场脚本 `from:null, to:'S01'`，不是新增关卡；存档关卡列表仍为 S01—S12。
+
+| 用户动作 | 开场行为 | 进度处理 |
+| --- | --- | --- |
+| 新游戏 | 播开场，同时准备 S01 | 进入后才提交 campaign/S01、elapsedBefore=0、facts=[] |
+| 从序章重新开始 | 明确重播开场 | 旧战役检查点保留到 S01 激活 |
+| 继续检查点 | 恢复原关；已完成源关走相应章节桥 | 使用原 snapshot、chapter 和累计时间 |
+| 重试检查点、重开本场 | 沿用原关内入口 | 不重播开场，不清零战役累计时间 |
+| 独立验证场景 | 沿用验证入口 | 使用独立存档槽 |
+
+在明确的新游戏或重开战役操作中，先 `transition.cancel()` 再 `transition.start(plan.bridge)`，允许同一 opening ID 再次播放。普通完成检查保留原有同 ID 幂等行为。
+
+准备开场时不要先调用原 `startChapter()` 中的 `chapter=...; load(...); persistCheckpoint()`，这会在旁白取消前就覆盖旧档。先在局部计划里保存目标；加载失败、跳过后继续等加载、返回菜单都不写新战役存档。在 `enter` 激活 S01 时才更新 chapter 与检查点。菜单返回应取消过场并刷新原存档的“继续”项。
 
 ## 运行与检查
 
@@ -12,7 +30,7 @@ npx tsc --noEmit -p scripts/chapter-transition/tsconfig.json
 npx vite --config scripts/chapter-transition/vite.config.mjs
 ```
 
-预览地址为 `http://127.0.0.1:5198/dev/chapter-transition/`。它用模拟加载器展示快速加载、慢速加载和首次失败后重试，便于隔离检查调度。当前没有正式旁白音频，按清单阅读时长播放字幕。预览不保存游戏进度，也不加载真实战役。独立构建命令：
+预览地址为 `http://127.0.0.1:5198/dev/chapter-transition/`，首项是开场，随后是 11 桥。它用模拟加载器展示快速加载、慢速加载和首次失败后重试，便于隔离检查调度。正式旁白未接入预览前，按清单阅读时长播放字幕。预览不保存游戏进度，也不加载真实战役。独立构建命令：
 
 ```sh
 npx vite build --config scripts/chapter-transition/vite.config.mjs
@@ -22,11 +40,13 @@ npx vite build --config scripts/chapter-transition/vite.config.mjs
 
 ## 在主窗口接线
 
-1. 在战役任务完成后，先保存已完成的源关检查点。调用 `planCampaignTransition(chapter, { scenario, complete, failed, elapsed, facts })`。它只为连续战役的相邻关卡生成计划；失败、独立验证场景和最终 S12 不产生过场。再次完成判断或重复回调应复用该次计划，避免累计两次时间。
+1. 在战役任务完成后，先保存已完成的源关检查点。保留当前 `hasPendingDialogue()` 收尾门控，在本关对白完整结束后启动章节桥，防止新旁白压住上一关台词。调用 `planCampaignTransition(chapter, { scenario, complete, failed, elapsed, facts })`。它只为连续战役的相邻关卡生成计划；失败、独立验证场景和最终 S12 不产生过场。再次完成判断或重复回调应复用该次计划，避免累计两次时间。
 2. 启动过场前停下 simulation.step，禁用并 clear 游戏输入，暂停战斗音频和旧 HUD。保留已有 pointer lock；`Input` 在 enabled=false 时不响应解锁引发的暂停事件。挂载 overlay 的父节点必须位于宿主 inert 子树之外。
 3. `preload` 根据计划准备下一关资源、物理与呈现对象，使用传入的 AbortSignal 和进度回调。准备阶段不修改当前 chapter、事实、检查点，不运行下一关任务计时，也不提前触发剧情。
 4. `enter(prepared, bridge)` 在一个未暂停的 RAF 中只调用一次。宿主同步转交 prepared 的所有权，安装新场景和 simulation，采用计划中的 chapter/facts，清空输入，保存新关初始检查点，恢复运行。所有可能异步失败的准备放在 preload；enter 抛错表示没有激活或写盘，控制器会释放 prepared 并显示返回菜单。如果激活已经提交，保存失败应作为已激活场景的存档错误处理，不能再向控制器抛出“未提交”错误。
 5. 同步移除正常连续战役的旧“下一段”按钮调用。不要在过场期间继续画旧 complete overlay；失败重试、独立验证、终章完成与返回菜单保留各自原有入口。
+
+当前备用工作树把完成后的对白尾句留在 `simulate()` / `finishPresentation()` 分支处理，适合在那里统一决定“进入章节桥或最终完成页”。不要把桥的开始绑到固定秒数；S07 等对白节奏正在由配音窗口调整，应等待其最终声音状态。继续已完成检查点也要经过同一计划入口，不停在旧的“下一段”按钮页。
 
 当前 `Game.load()` 会立即销毁旧关，不能直接当成 preload。主窗口应把“准备资源与对象”和“激活／销毁旧场景”拆开。准备结果可持有主窗口现有 ModelLibrary 的资源 lease；交付后由新场景释放，取消或迟到交付由本模块 release 释放。loader 返回 ready 必须代表达到可进入标准，不能只代表下载完成。单个失败资源的部分清理由 loader 负责；控制器只收到完整的成功结果。
 
@@ -77,6 +97,7 @@ text 必须精确匹配，避免文案改过仍播放旧配音。file 相对 bas
 
 ## 合入后需要的真实战役验收
 
+- 已有S09等中段存档时开始新战役，在开场中返回菜单或加载失败，原“继续”及存档内容保持不变；成功进入S01才替换。新游戏、明确从序章重开分别播开场；继续、重试和重开本场不重播。
 - S01 完成后换到 S02，明确回溯同一场失守；S02 至 S03 十年跳转。两关事实使用既有 carryFacts 白名单。
 - S08 至 S11 真实护送完成、接防完成和医疗事件按原条件触发；在准备期间不得预演下一关任务或推进事实。
 - 完成后存档再继续、过场中返回菜单、加载失败重试、慢速加载、旁白结束自动进入、左键跳过；每次只写一次下一关初始状态。

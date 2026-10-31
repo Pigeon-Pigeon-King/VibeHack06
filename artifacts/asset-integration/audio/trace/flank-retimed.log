@@ -1,0 +1,13 @@
+
+> return-to-ganymede@0.6.0 test
+> vitest run tests/flank-paths.test.ts --config artifacts/asset-integration/audio/trace/vitest.config.ts
+
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06-worktree
+
+
+ Test Files  1 passed (1)
+      Tests  3 passed (3)
+   Start at  15:02:34
+   Duration  11.82s (tests 98%, transform 1%)
+

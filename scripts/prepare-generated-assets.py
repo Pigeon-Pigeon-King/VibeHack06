@@ -85,6 +85,15 @@ def main():
     parser.add_argument("--ids", nargs="+", default=DEFAULT_IDS)
     parser.add_argument("--allow-pending", action="store_true")
     args = parser.parse_args()
+    # This source-copy tool must not undo a separately reviewed runtime conversion.
+    existing_manifest = PUBLIC / "manifest.json"
+    if existing_manifest.exists():
+        existing = read_json(existing_manifest)
+        if existing.get("textureResizing") or existing.get("textureTranscoding") or existing.get("textureConversion") or any(
+            item.get("sourceSha256") and item["sourceSha256"] != item.get("sha256")
+            for item in existing.get("assets", [])
+        ):
+            parser.error("Optimized runtime already exists; prepare originals in a separate staging batch, then use the reviewed texture-conversion pipeline.")
     sources = inventory()
     PUBLIC.mkdir(parents=True, exist_ok=True)
     entries, pending = [], []

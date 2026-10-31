@@ -1,0 +1,3923 @@
+[
+  {
+    "id": "s01.lu_jianping.09f2e5d6ac",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s01.lu_jianping.09f2e5d6ac",
+        "scene": "S01",
+        "sourceLine": 189,
+        "sourceKind": "say",
+        "measuredAudio_s": 5.84,
+        "authoredWindow_s": 7,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s01.zhao.72298e7c75",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s01.zhao.72298e7c75",
+        "scene": "S01",
+        "sourceLine": 227,
+        "sourceKind": "sayOnce",
+        "measuredAudio_s": 3.6,
+        "authoredWindow_s": 1,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 2.6,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s01.lu_jianping.00e1e4f438",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s01.lu_jianping.00e1e4f438",
+        "scene": "S01",
+        "sourceLine": 242,
+        "sourceKind": "sayOnce",
+        "measuredAudio_s": 3.04,
+        "authoredWindow_s": 1,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 2.04,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s01.evacuator.0038448428",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s01.evacuator.0038448428",
+        "scene": "S01",
+        "sourceLine": 244,
+        "sourceKind": "sayOnce",
+        "measuredAudio_s": 2.72,
+        "authoredWindow_s": 10,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s01.lu_jianping.50b13ff931",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s01.lu_jianping.50b13ff931",
+        "scene": "S01",
+        "sourceLine": 429,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.68,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s01.lu_jianping.01463ba524",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s01.lu_jianping.01463ba524",
+        "scene": "S01",
+        "sourceLine": 432,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.12,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s01.zhao.3ab18e748a",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s01.zhao.3ab18e748a",
+        "scene": "S01",
+        "sourceLine": 435,
+        "sourceKind": "phase",
+        "measuredAudio_s": 3.6,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s02.zhao.e5c858721f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhao.e5c858721f",
+        "scene": "S02",
+        "sourceLine": 193,
+        "sourceKind": "say",
+        "measuredAudio_s": 8.48,
+        "authoredWindow_s": 10.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s02.zhao.0ad2290e72",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhao.0ad2290e72",
+        "scene": "S02",
+        "sourceLine": 292,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s02.zhao.ef14e4e94b",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhao.ef14e4e94b",
+        "scene": "S02",
+        "sourceLine": 335,
+        "sourceKind": "say",
+        "measuredAudio_s": 2.96,
+        "authoredWindow_s": 2.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0.96,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review",
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s02.zhao.e402dc63ac",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhao.e402dc63ac",
+        "scene": "S02",
+        "sourceLine": 354,
+        "sourceKind": "line",
+        "measuredAudio_s": 2.96,
+        "authoredWindow_s": 2.5,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 0.46,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s02.zhou.a23.d522c287da",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhou.a23.d522c287da",
+        "scene": "S02",
+        "sourceLine": 358,
+        "sourceKind": "line",
+        "measuredAudio_s": 2.56,
+        "authoredWindow_s": 3.2,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s02.hall_resident.2412435f5c",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.hall_resident.2412435f5c",
+        "scene": "S02",
+        "sourceLine": 363,
+        "sourceKind": "line",
+        "measuredAudio_s": 1.04,
+        "authoredWindow_s": 0.39999999999999947,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 0.64,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s02.shao.8ee24e2c47",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.shao.8ee24e2c47",
+        "scene": "S02",
+        "sourceLine": 365,
+        "sourceKind": "line",
+        "measuredAudio_s": 1.36,
+        "authoredWindow_s": 1.4000000000000004,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s02.zhou.a23.1ca4b57c7f",
+    "productionStatus": "needs_review",
+    "primaryAsrFlags": [
+      "wording_listenback"
+    ],
+    "disposition": "listenback_name_or_code",
+    "needsListenback": true,
+    "timing": [
+      {
+        "lineId": "s02.zhou.a23.1ca4b57c7f",
+        "scene": "S02",
+        "sourceLine": 366,
+        "sourceKind": "line",
+        "measuredAudio_s": 1.28,
+        "authoredWindow_s": 5,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "asr-needs-review-or-incomplete",
+      "unresolved-asr-flags",
+      "asr-listenback-required"
+    ]
+  },
+  {
+    "id": "s02.zhao.8c3552ee7c",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhao.8c3552ee7c",
+        "scene": "S02",
+        "sourceLine": 369,
+        "sourceKind": "line",
+        "measuredAudio_s": 3.52,
+        "authoredWindow_s": 3,
+        "windowMeaning": "next authored opening voice/event cue, may allow intentional overlap",
+        "exceedsWindow_s": 0.52,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s02.zhou.a23.2155707692",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhou.a23.2155707692",
+        "scene": "S02",
+        "sourceLine": 445,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s02.zhao.40fab2fa0a",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhao.40fab2fa0a",
+        "scene": "S02",
+        "sourceLine": 448,
+        "sourceKind": "phase",
+        "measuredAudio_s": 7.68,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0.68,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s02.zhao.0b0e9ca28f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s02.zhao.0b0e9ca28f",
+        "scene": "S02",
+        "sourceLine": 458,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.36,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s03.xu.00a52eebe4",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.xu.00a52eebe4",
+        "scene": "S03",
+        "sourceLine": 121,
+        "sourceKind": "say",
+        "measuredAudio_s": 7.28,
+        "authoredWindow_s": 7,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0.28,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s03.lu.a19.2c59ad2f9f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.lu.a19.2c59ad2f9f",
+        "scene": "S03",
+        "sourceLine": 567,
+        "sourceKind": "phase",
+        "measuredAudio_s": 3.12,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s03.lu.a19.42c2ec14a8",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.lu.a19.42c2ec14a8",
+        "scene": "S03",
+        "sourceLine": 569,
+        "sourceKind": "phase",
+        "measuredAudio_s": 2.8,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s03.xu.fbd8222bbb",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.xu.fbd8222bbb",
+        "scene": "S03",
+        "sourceLine": 571,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.24,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s03.xu.4ce9212cb3",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.xu.4ce9212cb3",
+        "scene": "S03",
+        "sourceLine": 573,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.44,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s03.meng.5761e25007",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [
+      "possible_changed_negation"
+    ],
+    "disposition": "asr_text_variant",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.meng.5761e25007",
+        "scene": "S03",
+        "sourceLine": 575,
+        "sourceKind": "phase",
+        "measuredAudio_s": 8.48,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 1.48,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s03.zhou.a33.f561465b72",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.zhou.a33.f561465b72",
+        "scene": "S03",
+        "sourceLine": 578,
+        "sourceKind": "say",
+        "measuredAudio_s": 9.28,
+        "authoredWindow_s": 7,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 2.28,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s03.zhou.a33.857f74466f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.zhou.a33.857f74466f",
+        "scene": "S03",
+        "sourceLine": 582,
+        "sourceKind": "say",
+        "measuredAudio_s": 5.04,
+        "authoredWindow_s": 6.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s03.lu.a19.b007fab8ff",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.lu.a19.b007fab8ff",
+        "scene": "S03",
+        "sourceLine": 588,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.68,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s03.lu.a19.5a6d4110f5",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s03.lu.a19.5a6d4110f5",
+        "scene": "S03",
+        "sourceLine": 592,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.64,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s04.zheng.3dea5190cf",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.zheng.3dea5190cf",
+        "scene": "S04",
+        "sourceLine": 130,
+        "sourceKind": "say",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 7,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s04.zhou.a33.f27f49ece7",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.zhou.a33.f27f49ece7",
+        "scene": "S04",
+        "sourceLine": 606,
+        "sourceKind": "phase",
+        "measuredAudio_s": 10.0,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 3.0,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s04.zheng.8bf142d87c",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.zheng.8bf142d87c",
+        "scene": "S04",
+        "sourceLine": 609,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.28,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s04.zheng.634fec787b",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.zheng.634fec787b",
+        "scene": "S04",
+        "sourceLine": 612,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.48,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s04.zheng.8adc6efdc8",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.zheng.8adc6efdc8",
+        "scene": "S04",
+        "sourceLine": 615,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.6,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s04.lu.a19.485b7c85a7",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.lu.a19.485b7c85a7",
+        "scene": "S04",
+        "sourceLine": 618,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.36,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s04.meng.53f12d6ef0",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.meng.53f12d6ef0",
+        "scene": "S04",
+        "sourceLine": 623,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s04.luo.93d1930e8d",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.luo.93d1930e8d",
+        "scene": "S04",
+        "sourceLine": 626,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.76,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s04.zheng.13b0479aaa",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.zheng.13b0479aaa",
+        "scene": "S04",
+        "sourceLine": 658,
+        "sourceKind": "say",
+        "measuredAudio_s": 3.2,
+        "authoredWindow_s": 3.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0.2,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review",
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s04.zheng.264e6847f8",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s04.zheng.264e6847f8",
+        "scene": "S04",
+        "sourceLine": 658,
+        "sourceKind": "say",
+        "measuredAudio_s": 2.56,
+        "authoredWindow_s": 3.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s05.zheng.49a847d2cc",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s05.zheng.49a847d2cc",
+        "scene": "S05",
+        "sourceLine": 41,
+        "sourceKind": "say",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 10.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s05.zhou.a33.88cfb64fde",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s05.zhou.a33.88cfb64fde",
+        "scene": "S05",
+        "sourceLine": 66,
+        "sourceKind": "phase",
+        "measuredAudio_s": 8.64,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 1.64,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s05.zheng.975e54aa91",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s05.zheng.975e54aa91",
+        "scene": "S05",
+        "sourceLine": 70,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.48,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s05.zheng.ff0c1b5833",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s05.zheng.ff0c1b5833",
+        "scene": "S05",
+        "sourceLine": 74,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.76,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s05.zheng.6cf4e4ff2f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s05.zheng.6cf4e4ff2f",
+        "scene": "S05",
+        "sourceLine": 93,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.56,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s05.relief_team.fa19be7c86",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s05.relief_team.fa19be7c86",
+        "scene": "S05",
+        "sourceLine": 97,
+        "sourceKind": "say",
+        "measuredAudio_s": 4.24,
+        "authoredWindow_s": 7,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s05.frontgate_liaison.857fa508b1",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s05.frontgate_liaison.857fa508b1",
+        "scene": "S05",
+        "sourceLine": 102,
+        "sourceKind": "phase",
+        "measuredAudio_s": 7.6,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0.6,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review",
+      "spoken-text-differs-from-script"
+    ]
+  },
+  {
+    "id": "s05.lu.a19.d53e201d98",
+    "productionStatus": "needs_review",
+    "primaryAsrFlags": [
+      "wording_listenback"
+    ],
+    "disposition": "listenback_name_or_code",
+    "needsListenback": true,
+    "timing": [
+      {
+        "lineId": "s05.lu.a19.d53e201d98",
+        "scene": "S05",
+        "sourceLine": 106,
+        "sourceKind": "say",
+        "measuredAudio_s": 2.56,
+        "authoredWindow_s": 4.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "asr-needs-review-or-incomplete",
+      "unresolved-asr-flags",
+      "asr-listenback-required"
+    ]
+  },
+  {
+    "id": "s05.zhou.a33.b9812e5b53",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s05.zhou.a33.b9812e5b53",
+        "scene": "S05",
+        "sourceLine": 110,
+        "sourceKind": "say",
+        "measuredAudio_s": 7.76,
+        "authoredWindow_s": 6.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 1.76,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s06.lu.a19.f935c2a652",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.lu.a19.f935c2a652",
+        "scene": "S06",
+        "sourceLine": 14,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.88,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      },
+      {
+        "lineId": "s06.lu.a19.f935c2a652",
+        "scene": "S06",
+        "sourceLine": 69,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.88,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.zhou.a33.8a96e1929d",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.zhou.a33.8a96e1929d",
+        "scene": "S06",
+        "sourceLine": 15,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 7.28,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 1.28,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s06.lu.a19.ab3962e338",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.lu.a19.ab3962e338",
+        "scene": "S06",
+        "sourceLine": 16,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.28,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.lu.a19.974b5426c4",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.lu.a19.974b5426c4",
+        "scene": "S06",
+        "sourceLine": 17,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.4,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s06.zhou.a33.cc26a0d38b",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.zhou.a33.cc26a0d38b",
+        "scene": "S06",
+        "sourceLine": 18,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.16,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.16,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s06.lu.a19.b894eb0885",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.lu.a19.b894eb0885",
+        "scene": "S06",
+        "sourceLine": 19,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.12,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.zhou.a33.6f36b63b4f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.zhou.a33.6f36b63b4f",
+        "scene": "S06",
+        "sourceLine": 20,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.16,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.16,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s06.lu.a19.b372e487a6",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.lu.a19.b372e487a6",
+        "scene": "S06",
+        "sourceLine": 21,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.64,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.zhou.a33.dc17fe847b",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.zhou.a33.dc17fe847b",
+        "scene": "S06",
+        "sourceLine": 22,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.lu.a19.0100c113e9",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.lu.a19.0100c113e9",
+        "scene": "S06",
+        "sourceLine": 23,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 7.44,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.zhou.a33.1f7e2055f1",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [
+      "possible_changed_negation"
+    ],
+    "disposition": "asr_text_variant",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.zhou.a33.1f7e2055f1",
+        "scene": "S06",
+        "sourceLine": 24,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.52,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.hospital_liaison.63aee8ae13",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.hospital_liaison.63aee8ae13",
+        "scene": "S06",
+        "sourceLine": 34,
+        "sourceKind": "say",
+        "measuredAudio_s": 5.92,
+        "authoredWindow_s": 10.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.hospital_liaison.74beac1d4a",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.hospital_liaison.74beac1d4a",
+        "scene": "S06",
+        "sourceLine": 42,
+        "sourceKind": "phase",
+        "measuredAudio_s": 9.12,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 2.12,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s06.lu.a19.6bddc5cdbb",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [
+      "possible_extra_words"
+    ],
+    "disposition": "resolved_by_unprompted_recheck",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.lu.a19.6bddc5cdbb",
+        "scene": "S06",
+        "sourceLine": 48,
+        "sourceKind": "phase",
+        "measuredAudio_s": 3.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.xu.b5757e7b9e",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.xu.b5757e7b9e",
+        "scene": "S06",
+        "sourceLine": 56,
+        "sourceKind": "say",
+        "measuredAudio_s": 4.8,
+        "authoredWindow_s": 7.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.lu.a19.8a01f63b82",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.lu.a19.8a01f63b82",
+        "scene": "S06",
+        "sourceLine": 65,
+        "sourceKind": "phase",
+        "measuredAudio_s": 3.12,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.luo.c9cba769e7",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.luo.c9cba769e7",
+        "scene": "S06",
+        "sourceLine": 75,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.12,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s06.zhou.a33.00b4379821",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [
+      "possible_changed_negation"
+    ],
+    "disposition": "asr_text_variant",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s06.zhou.a33.00b4379821",
+        "scene": "S06",
+        "sourceLine": 80,
+        "sourceKind": "phase",
+        "measuredAudio_s": 7.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0.04,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.meng.903bc9cfaa",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.meng.903bc9cfaa",
+        "scene": "S07",
+        "sourceLine": 12,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.92,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      },
+      {
+        "lineId": "s07.meng.903bc9cfaa",
+        "scene": "S07",
+        "sourceLine": 107,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.92,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.zhou.a33.f9d7f153ac",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.f9d7f153ac",
+        "scene": "S07",
+        "sourceLine": 13,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 7.2,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 1.2,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.lu.a19.368e84c7f1",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.lu.a19.368e84c7f1",
+        "scene": "S07",
+        "sourceLine": 14,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.4,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.zhou.a33.69a23bffd7",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.69a23bffd7",
+        "scene": "S07",
+        "sourceLine": 15,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 8.24,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 1.24,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.zhou.a33.a956f90d2f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.a956f90d2f",
+        "scene": "S07",
+        "sourceLine": 18,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 8.96,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 2.96,
+        "needsIntegrationTimingReview": true
+      },
+      {
+        "lineId": "s07.zhou.a33.a956f90d2f",
+        "scene": "S07",
+        "sourceLine": 118,
+        "sourceKind": "phase",
+        "measuredAudio_s": 8.96,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 1.96,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.zhou.a33.7cb4a50a7e",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [
+      "possible_changed_negation"
+    ],
+    "disposition": "asr_text_variant",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.7cb4a50a7e",
+        "scene": "S07",
+        "sourceLine": 19,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 8.56,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 2.56,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.zhou.a33.5d49a79a73",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.5d49a79a73",
+        "scene": "S07",
+        "sourceLine": 20,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 9.12,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 3.12,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.lu.a19.288fc41669",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.lu.a19.288fc41669",
+        "scene": "S07",
+        "sourceLine": 21,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.8,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.zhou.a33.149b3531d8",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.149b3531d8",
+        "scene": "S07",
+        "sourceLine": 22,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 8.8,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 1.8,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.zheng.cb6a9d9e14",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zheng.cb6a9d9e14",
+        "scene": "S07",
+        "sourceLine": 36,
+        "sourceKind": "say",
+        "measuredAudio_s": 6.24,
+        "authoredWindow_s": 10.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.zheng.5e731a2ea1",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zheng.5e731a2ea1",
+        "scene": "S07",
+        "sourceLine": 68,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.92,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.zhou.a33.298a875819",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.298a875819",
+        "scene": "S07",
+        "sourceLine": 78,
+        "sourceKind": "phase",
+        "measuredAudio_s": 7.84,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0.84,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.zhou.a33.adf7974def",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.adf7974def",
+        "scene": "S07",
+        "sourceLine": 85,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.88,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.meng.016c48e444",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.meng.016c48e444",
+        "scene": "S07",
+        "sourceLine": 89,
+        "sourceKind": "phase",
+        "measuredAudio_s": 9.92,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 2.92,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.zhou.a33.8e895b69b2",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.8e895b69b2",
+        "scene": "S07",
+        "sourceLine": 96,
+        "sourceKind": "phase",
+        "measuredAudio_s": 8.24,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 1.24,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.zhou.a33.2fdbed83bd",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.2fdbed83bd",
+        "scene": "S07",
+        "sourceLine": 114,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.8,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.zheng.c4cd351104",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zheng.c4cd351104",
+        "scene": "S07",
+        "sourceLine": 124,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s07.zhou.a33.0db42c61f0",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.zhou.a33.0db42c61f0",
+        "scene": "S07",
+        "sourceLine": 130,
+        "sourceKind": "phase",
+        "measuredAudio_s": 10.48,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 3.48,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s07.meng.c5782d9829",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s07.meng.c5782d9829",
+        "scene": "S07",
+        "sourceLine": 133,
+        "sourceKind": "say",
+        "measuredAudio_s": 9.28,
+        "authoredWindow_s": 8.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 1.28,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s08.luo.49eb40e8f1",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.luo.49eb40e8f1",
+        "scene": "S08",
+        "sourceLine": 9,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 7.76,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 1.76,
+        "needsIntegrationTimingReview": true
+      },
+      {
+        "lineId": "s08.luo.49eb40e8f1",
+        "scene": "S08",
+        "sourceLine": 94,
+        "sourceKind": "phase",
+        "measuredAudio_s": 7.76,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0.76,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s08.lu.a19.3ce1311008",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.lu.a19.3ce1311008",
+        "scene": "S08",
+        "sourceLine": 10,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.92,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.zhou.a33.ad886df558",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.zhou.a33.ad886df558",
+        "scene": "S08",
+        "sourceLine": 11,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.8,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.8,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s08.lu.a19.2ce9c99284",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.lu.a19.2ce9c99284",
+        "scene": "S08",
+        "sourceLine": 12,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 7.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.04,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.lu.a19.08c76e9f9f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.lu.a19.08c76e9f9f",
+        "scene": "S08",
+        "sourceLine": 16,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.96,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.meng.1301b9ac8f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.1301b9ac8f",
+        "scene": "S08",
+        "sourceLine": 17,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 8.88,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.88,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s08.zhou.a33.37e54a99e9",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.zhou.a33.37e54a99e9",
+        "scene": "S08",
+        "sourceLine": 18,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 8.08,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.08,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.meng.e3a50eea6a",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.e3a50eea6a",
+        "scene": "S08",
+        "sourceLine": 19,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.96,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.lu.a19.235799130c",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.lu.a19.235799130c",
+        "scene": "S08",
+        "sourceLine": 20,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.92,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.zhou.a33.1d1ce9fb89",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [
+      "possible_omitted_words",
+      "possible_missing_substantial_text",
+      "low_phonetic_alignment"
+    ],
+    "disposition": "resolved_by_unprompted_recheck",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.zhou.a33.1d1ce9fb89",
+        "scene": "S08",
+        "sourceLine": 21,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.96,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.meng.2e278111b8",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.2e278111b8",
+        "scene": "S08",
+        "sourceLine": 54,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s08.meng.38db39b957",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.38db39b957",
+        "scene": "S08",
+        "sourceLine": 54,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s08.meng.7408c38687",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.7408c38687",
+        "scene": "S08",
+        "sourceLine": 54,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.08,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s08.meng.842fe50bb0",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.842fe50bb0",
+        "scene": "S08",
+        "sourceLine": 54,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.84,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s08.meng.d09fb21b51",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.d09fb21b51",
+        "scene": "S08",
+        "sourceLine": 54,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.88,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s08.luo.0d8f034dfe",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.luo.0d8f034dfe",
+        "scene": "S08",
+        "sourceLine": 85,
+        "sourceKind": "say",
+        "measuredAudio_s": 4.56,
+        "authoredWindow_s": 7,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.luo.352e50a85c",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.luo.352e50a85c",
+        "scene": "S08",
+        "sourceLine": 92,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.8,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.zhou.a33.d2c84d3f7e",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.zhou.a33.d2c84d3f7e",
+        "scene": "S08",
+        "sourceLine": 99,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.12,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.meng.3b6da49c78",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.3b6da49c78",
+        "scene": "S08",
+        "sourceLine": 122,
+        "sourceKind": "phase",
+        "measuredAudio_s": 9.44,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 2.44,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s08.lu.a19.1a2d8f4eeb",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.lu.a19.1a2d8f4eeb",
+        "scene": "S08",
+        "sourceLine": 130,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.92,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.escort_medic.504ec695ea",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.escort_medic.504ec695ea",
+        "scene": "S08",
+        "sourceLine": 138,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s08.meng.cc1191565d",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.cc1191565d",
+        "scene": "S08",
+        "sourceLine": 142,
+        "sourceKind": "phase",
+        "measuredAudio_s": 10.16,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 3.16,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s08.meng.9cafa9f093",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s08.meng.9cafa9f093",
+        "scene": "S08",
+        "sourceLine": 146,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.8,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.meng.f7305e6354",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.meng.f7305e6354",
+        "scene": "S09",
+        "sourceLine": 8,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.72,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      },
+      {
+        "lineId": "s09.meng.f7305e6354",
+        "scene": "S09",
+        "sourceLine": 66,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.72,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou.a33.925d1520a9",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou.a33.925d1520a9",
+        "scene": "S09",
+        "sourceLine": 9,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.0,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.meng.71d32bf439",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.meng.71d32bf439",
+        "scene": "S09",
+        "sourceLine": 10,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.08,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou.a33.f0f4cf3ca7",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou.a33.f0f4cf3ca7",
+        "scene": "S09",
+        "sourceLine": 11,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.96,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou.a33.0bd334ebdb",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou.a33.0bd334ebdb",
+        "scene": "S09",
+        "sourceLine": 14,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 7.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.04,
+        "needsIntegrationTimingReview": false
+      },
+      {
+        "lineId": "s09.zhou.a33.0bd334ebdb",
+        "scene": "S09",
+        "sourceLine": 81,
+        "sourceKind": "phase",
+        "measuredAudio_s": 7.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0.04,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zheng.1a3bae1366",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zheng.1a3bae1366",
+        "scene": "S09",
+        "sourceLine": 15,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.72,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou.a33.da2dbe04c8",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou.a33.da2dbe04c8",
+        "scene": "S09",
+        "sourceLine": 16,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.72,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou_sister.message.37e741ca84",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou_sister.message.37e741ca84",
+        "scene": "S09",
+        "sourceLine": 17,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 8.88,
+        "authoredWindow_s": 10,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou_sister.message.9c2ce2c675",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou_sister.message.9c2ce2c675",
+        "scene": "S09",
+        "sourceLine": 18,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.76,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zheng.4f87a36835",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zheng.4f87a36835",
+        "scene": "S09",
+        "sourceLine": 35,
+        "sourceKind": "say",
+        "measuredAudio_s": 7.52,
+        "authoredWindow_s": 10.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou.a33.e743c8d208",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou.a33.e743c8d208",
+        "scene": "S09",
+        "sourceLine": 61,
+        "sourceKind": "phase",
+        "measuredAudio_s": 9.6,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 2.6,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s09.meng.ddf06bc6f3",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.meng.ddf06bc6f3",
+        "scene": "S09",
+        "sourceLine": 64,
+        "sourceKind": "phase",
+        "measuredAudio_s": 7.28,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0.28,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s09.meng.7e571872d7",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.meng.7e571872d7",
+        "scene": "S09",
+        "sourceLine": 73,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.68,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.meng.04f3f9df35",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.meng.04f3f9df35",
+        "scene": "S09",
+        "sourceLine": 76,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.0,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zheng.23a8e2055e",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zheng.23a8e2055e",
+        "scene": "S09",
+        "sourceLine": 79,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.08,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou.a33.219c46afe9",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou.a33.219c46afe9",
+        "scene": "S09",
+        "sourceLine": 95,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.0,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s09.zhou.a33.8817233bfe",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.zhou.a33.8817233bfe",
+        "scene": "S09",
+        "sourceLine": 100,
+        "sourceKind": "phase",
+        "measuredAudio_s": 10.56,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 3.56,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s09.lu.a19.e9a5ced215",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s09.lu.a19.e9a5ced215",
+        "scene": "S09",
+        "sourceLine": 103,
+        "sourceKind": "say",
+        "measuredAudio_s": 7.6,
+        "authoredWindow_s": 10.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.meng.c69108efac",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.meng.c69108efac",
+        "scene": "S10",
+        "sourceLine": 25,
+        "sourceKind": "say",
+        "measuredAudio_s": 8.08,
+        "authoredWindow_s": 11.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zheng.62b1c35241",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zheng.62b1c35241",
+        "scene": "S10",
+        "sourceLine": 98,
+        "sourceKind": "say",
+        "measuredAudio_s": 5.36,
+        "authoredWindow_s": 8.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zhou.a33.3a06e7ae26",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zhou.a33.3a06e7ae26",
+        "scene": "S10",
+        "sourceLine": 103,
+        "sourceKind": "say",
+        "measuredAudio_s": 8.16,
+        "authoredWindow_s": 9.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zheng.c760dcad4d",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zheng.c760dcad4d",
+        "scene": "S10",
+        "sourceLine": 106,
+        "sourceKind": "phase",
+        "measuredAudio_s": 3.6,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.meng.498f6598c2",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.meng.498f6598c2",
+        "scene": "S10",
+        "sourceLine": 112,
+        "sourceKind": "say",
+        "measuredAudio_s": 4.4,
+        "authoredWindow_s": 5.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zheng.e078ac1223",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zheng.e078ac1223",
+        "scene": "S10",
+        "sourceLine": 116,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.68,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zhou.a33.a94aee3fde",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zhou.a33.a94aee3fde",
+        "scene": "S10",
+        "sourceLine": 122,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.72,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zheng.1d53c234b5",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zheng.1d53c234b5",
+        "scene": "S10",
+        "sourceLine": 127,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.32,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zheng.e8e7755611",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zheng.e8e7755611",
+        "scene": "S10",
+        "sourceLine": 133,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.24,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zhou.a33.916326edad",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zhou.a33.916326edad",
+        "scene": "S10",
+        "sourceLine": 141,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.64,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zheng.0b1123bf96",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zheng.0b1123bf96",
+        "scene": "S10",
+        "sourceLine": 147,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.8,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.rescue_medic.0d317d3a83",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.rescue_medic.0d317d3a83",
+        "scene": "S10",
+        "sourceLine": 155,
+        "sourceKind": "say",
+        "measuredAudio_s": 6.8,
+        "authoredWindow_s": 9.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zheng.6ab5a8df4e",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zheng.6ab5a8df4e",
+        "scene": "S10",
+        "sourceLine": 162,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.64,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.zheng.1350213b48",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.zheng.1350213b48",
+        "scene": "S10",
+        "sourceLine": 171,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.84,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s10.receiving_medic.c9ddeb4e9d",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s10.receiving_medic.c9ddeb4e9d",
+        "scene": "S10",
+        "sourceLine": 176,
+        "sourceKind": "say",
+        "measuredAudio_s": 5.04,
+        "authoredWindow_s": 9.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.doctor.4c37f62533",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.doctor.4c37f62533",
+        "scene": "S11",
+        "sourceLine": 8,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 9.92,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 1.92,
+        "needsIntegrationTimingReview": true
+      },
+      {
+        "lineId": "s11.doctor.4c37f62533",
+        "scene": "S11",
+        "sourceLine": 54,
+        "sourceKind": "phase",
+        "measuredAudio_s": 9.92,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 2.92,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s11.lu.a19.8a41e77f52",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.lu.a19.8a41e77f52",
+        "scene": "S11",
+        "sourceLine": 9,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.08,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.zhou.a33.b95a6f54af",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.zhou.a33.b95a6f54af",
+        "scene": "S11",
+        "sourceLine": 10,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 1.36,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.doctor.bba36decba",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.doctor.bba36decba",
+        "scene": "S11",
+        "sourceLine": 11,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.08,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.nurse.5e53ee9d11",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.nurse.5e53ee9d11",
+        "scene": "S11",
+        "sourceLine": 14,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 3.44,
+        "authoredWindow_s": 18,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      },
+      {
+        "lineId": "s11.nurse.5e53ee9d11",
+        "scene": "S11",
+        "sourceLine": 65,
+        "sourceKind": "phase",
+        "measuredAudio_s": 3.44,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.xu.1e1972500c",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.xu.1e1972500c",
+        "scene": "S11",
+        "sourceLine": 15,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.44,
+        "authoredWindow_s": 22,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.doctor.d7769c8d8d",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.doctor.d7769c8d8d",
+        "scene": "S11",
+        "sourceLine": 16,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.64,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.doctor.9a41283112",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.doctor.9a41283112",
+        "scene": "S11",
+        "sourceLine": 17,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.36,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.lu.a19.1135ba1c6d",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.lu.a19.1135ba1c6d",
+        "scene": "S11",
+        "sourceLine": 20,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 3.84,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      },
+      {
+        "lineId": "s11.lu.a19.1135ba1c6d",
+        "scene": "S11",
+        "sourceLine": 84,
+        "sourceKind": "phase",
+        "measuredAudio_s": 3.84,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.xu.c990896527",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.xu.c990896527",
+        "scene": "S11",
+        "sourceLine": 21,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.4,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.zheng.588dff1867",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.zheng.588dff1867",
+        "scene": "S11",
+        "sourceLine": 22,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.76,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.zheng.f59d8fe014",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.zheng.f59d8fe014",
+        "scene": "S11",
+        "sourceLine": 40,
+        "sourceKind": "say",
+        "measuredAudio_s": 6.72,
+        "authoredWindow_s": 10.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.meng.4c084419f7",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.meng.4c084419f7",
+        "scene": "S11",
+        "sourceLine": 45,
+        "sourceKind": "say",
+        "measuredAudio_s": 4.32,
+        "authoredWindow_s": 7.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.registration_nurse.1365334bb3",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.registration_nurse.1365334bb3",
+        "scene": "S11",
+        "sourceLine": 48,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.16,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.registration_nurse.e574f58d65",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.registration_nurse.e574f58d65",
+        "scene": "S11",
+        "sourceLine": 50,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.52,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.doctor.9c43d15e4a",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.doctor.9c43d15e4a",
+        "scene": "S11",
+        "sourceLine": 52,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.2,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.xu.4c1067327c",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.xu.4c1067327c",
+        "scene": "S11",
+        "sourceLine": 61,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.92,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s11.xu.3d53fcba04",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.xu.3d53fcba04",
+        "scene": "S11",
+        "sourceLine": 91,
+        "sourceKind": "phase",
+        "measuredAudio_s": 8.32,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 1.32,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s11.luo.0b745b9607",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s11.luo.0b745b9607",
+        "scene": "S11",
+        "sourceLine": 96,
+        "sourceKind": "say",
+        "measuredAudio_s": 7.84,
+        "authoredWindow_s": 8.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.lu.a19.e90e1ce267",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.lu.a19.e90e1ce267",
+        "scene": "S12",
+        "sourceLine": 9,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 6.4,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "not-current-main-dialogue"
+    ]
+  },
+  {
+    "id": "s12.lu.a19.44c4702c63",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.lu.a19.44c4702c63",
+        "scene": "S12",
+        "sourceLine": 10,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 0.88,
+        "authoredWindow_s": 3,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.zheng.5b7a2f42b9",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.zheng.5b7a2f42b9",
+        "scene": "S12",
+        "sourceLine": 11,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 7.12,
+        "authoredWindow_s": 8,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.lu.a19.e37993128f",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.lu.a19.e37993128f",
+        "scene": "S12",
+        "sourceLine": 12,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 4.48,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.lu.a19.19d268fe5a",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.zheng.f056aa1e54",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.zheng.f056aa1e54",
+        "scene": "S12",
+        "sourceLine": 20,
+        "sourceKind": "say",
+        "measuredAudio_s": 8.72,
+        "authoredWindow_s": 10.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.luo.249c1706e8",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.luo.249c1706e8",
+        "scene": "S12",
+        "sourceLine": 23,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 7.52,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0.52,
+        "needsIntegrationTimingReview": true
+      },
+      {
+        "lineId": "s12.luo.249c1706e8",
+        "scene": "S12",
+        "sourceLine": 67,
+        "sourceKind": "phase",
+        "measuredAudio_s": 7.52,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0.52,
+        "needsIntegrationTimingReview": true
+      }
+    ],
+    "excludedReasons": [
+      "timing-needs-review"
+    ]
+  },
+  {
+    "id": "s12.fleet_liaison.357d0099c5",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.fleet_liaison.357d0099c5",
+        "scene": "S12",
+        "sourceLine": 24,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.28,
+        "authoredWindow_s": 6,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.luo.38084a6fc4",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.luo.38084a6fc4",
+        "scene": "S12",
+        "sourceLine": 25,
+        "sourceKind": "dialogue_tuple",
+        "measuredAudio_s": 5.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "dialogue-array next offset or playDialogue fallback",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.zheng.7a79e815bc",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.zheng.7a79e815bc",
+        "scene": "S12",
+        "sourceLine": 51,
+        "sourceKind": "phase",
+        "measuredAudio_s": 4.32,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.zheng.531bba91d6",
+    "productionStatus": "needs_review",
+    "primaryAsrFlags": [
+      "wording_listenback"
+    ],
+    "disposition": "listenback_name_or_code",
+    "needsListenback": true,
+    "timing": [
+      {
+        "lineId": "s12.zheng.531bba91d6",
+        "scene": "S12",
+        "sourceLine": 55,
+        "sourceKind": "phase",
+        "measuredAudio_s": 6.48,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "asr-needs-review-or-incomplete",
+      "spoken-text-differs-from-script",
+      "unresolved-asr-flags",
+      "asr-listenback-required"
+    ]
+  },
+  {
+    "id": "s12.luo.3edcbb8ed7",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.luo.3edcbb8ed7",
+        "scene": "S12",
+        "sourceLine": 63,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.04,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.luo.3d7b502797",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.luo.3d7b502797",
+        "scene": "S12",
+        "sourceLine": 72,
+        "sourceKind": "phase",
+        "measuredAudio_s": 5.12,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "s12.lu.a19.5b92705ad1",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "s12.lu.a19.5b92705ad1",
+        "scene": "S12",
+        "sourceLine": 75,
+        "sourceKind": "phase",
+        "measuredAudio_s": 3.6,
+        "authoredWindow_s": 7,
+        "windowMeaning": "phase() default subtitle duration; actual phase may wait on gameplay",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": []
+  },
+  {
+    "id": "shared.zheng.eff1e432b9",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [
+      {
+        "lineId": "shared.zheng.eff1e432b9",
+        "scene": "SHARED",
+        "sourceLine": 335,
+        "sourceKind": "say",
+        "measuredAudio_s": 2.0,
+        "authoredWindow_s": 2.0,
+        "windowMeaning": "authored subtitle duration; not necessarily the next voice onset",
+        "exceedsWindow_s": 0,
+        "needsIntegrationTimingReview": false
+      }
+    ],
+    "excludedReasons": [
+      "shared-or-compatibility-needs-event-mapping",
+      "dynamic-line-needs-explicit-mapping"
+    ]
+  },
+  {
+    "id": "s04.candidate.lu.a19.93e11884d1",
+    "productionStatus": "asr_checked",
+    "primaryAsrFlags": [],
+    "disposition": "no-machine-flags",
+    "needsListenback": false,
+    "timing": [],
+    "excludedReasons": [
+      "not-current-main-dialogue"
+    ]
+  }
+]

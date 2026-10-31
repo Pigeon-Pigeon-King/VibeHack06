@@ -1,0 +1,28 @@
+{
+  "profile": "adult",
+  "version": "reference-bamen-only-v1",
+  "bones": {
+    "root": "BamenMilitarySoldierRig",
+    "pelvis": "mixamorigHips",
+    "abdomen": "mixamorigSpine",
+    "chest": "mixamorigSpine2",
+    "neck": "mixamorigNeck",
+    "head": "mixamorigHead",
+    "clavicle.L": "mixamorigLeftShoulder",
+    "upper_arm.L": "mixamorigLeftArm",
+    "forearm.L": "mixamorigLeftForeArm",
+    "hand.L": "mixamorigLeftHand",
+    "thigh.L": "mixamorigLeftUpLeg",
+    "shin.L": "mixamorigLeftLeg",
+    "foot.L": "mixamorigLeftFoot",
+    "toe.L": "mixamorigLeftToeBase",
+    "clavicle.R": "mixamorigRightShoulder",
+    "upper_arm.R": "mixamorigRightArm",
+    "forearm.R": "mixamorigRightForeArm",
+    "hand.R": "mixamorigRightHand",
+    "thigh.R": "mixamorigRightUpLeg",
+    "shin.R": "mixamorigRightLeg",
+    "foot.R": "mixamorigRightFoot",
+    "toe.R": "mixamorigRightToeBase"
+  }
+}

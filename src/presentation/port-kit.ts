@@ -5,7 +5,6 @@ import {
   Shape, SRGBColorSpace, TorusGeometry, Vector3,
 } from 'three';
 import type { SolidSpec, Vec3 } from '../contracts';
-import { GeneratedStaticAssets, type GeneratedAssetSlot, type GeneratedStaticAssetId, type GeneratedStaticOptions, type StaticAssetPlacement } from './generated-static-assets';
 
 export type Surface = 'steel' | 'paint' | 'pale' | 'concrete' | 'rubber' | 'amber' | 'white' | 'glass' | 'signal' | 'ice';
 type Primitive = 'box' | 'cylinder' | 'cone' | 'elbow' | 'arch';
@@ -38,30 +37,31 @@ export class PortKit {
   readonly solids: SolidSpec[] = [];
   private materials = new Map<Surface, MeshStandardMaterial>();
   private geometries = new Map<Primitive, BufferGeometry>();
-  private batches = new Map<string, { name: string; parent: Group; geometry: BufferGeometry; material: MeshStandardMaterial; matrices: Matrix4[]; shadows: boolean }>();
+  private batches = new Map<string, { geometry: BufferGeometry; material: MeshStandardMaterial; matrices: Matrix4[]; shadows: boolean }>();
   private serial = 0;
   private origin = new Matrix4();
-  private visualTarget = this.root;
-  private visualScope = 0;
-  private visualSerial = 0;
-  private readonly generated?: GeneratedStaticAssets;
 
-  constructor(options: { generatedAssets?: false | GeneratedStaticOptions } = {}) {
+  constructor() {
     this.root.name = 'industrial-port-placeholder';
     this.root.userData.assetStatus = 'placeholder';
-    if (options.generatedAssets !== false) this.generated = new GeneratedStaticAssets(this.root, options.generatedAssets);
   }
-  /** Capture only this slot's visual primitives. solid()/serial/located remain unchanged. */
-  asset(id: GeneratedStaticAssetId, placement: StaticAssetPlacement, buildFallback: () => void): GeneratedAssetSlot | undefined {
-    if (!this.generated) { buildFallback(); return undefined; }
-    const matrix = this.origin.clone().multiply(new Matrix4().makeRotationY(placement.yaw ?? 0).setPosition(...placement.position));
-    const slot = this.generated.add(id, placement, matrix);
-    // Existing builders emit origin-transformed matrices. Cancel the slot transform for their fallback.
-    slot.fallback.matrixAutoUpdate = false; slot.fallback.matrix.copy(matrix).invert();
-    const previousTarget = this.visualTarget, previousScope = this.visualScope;
-    this.visualTarget = slot.fallback; this.visualScope = ++this.visualSerial;
-    try { buildFallback(); } finally { this.visualTarget = previousTarget; this.visualScope = previousScope; }
-    return slot;
+  /** An independently replaceable visual, with unchanged collider IDs and transforms. */
+  visualSlot(id: string, build: (slot: PortKit) => void): Group {
+    const name = `generated-fallback:${id}`;
+    if (this.root.getObjectByName(name)) throw new Error(`Duplicate visual slot: ${id}`);
+    const slot = new PortKit();
+    slot.origin.copy(this.origin);
+    slot.serial = this.serial;
+    slot.materials = this.materials;
+    slot.geometries = this.geometries;
+    build(slot);
+    slot.flush();
+    this.serial = slot.serial;
+    this.solids.push(...slot.solids);
+    slot.root.name = name;
+    slot.root.userData.generatedSlot = id;
+    this.root.add(slot.root);
+    return slot.root;
   }
   material(surface: Surface): MeshStandardMaterial {
     let material = this.materials.get(surface);
@@ -85,10 +85,10 @@ export class PortKit {
   part(kind: Primitive, surface: Surface, at: Vec3, size: Vec3, rotation: Vec3 = [0, 0, 0], shadows = true): void {
     const matrix = new Matrix4().compose(new Vector3(...at), new Quaternion().setFromEuler(new Euler(...rotation)), new Vector3(...size));
     matrix.premultiply(this.origin);
-    const name = `${kind}-${surface}-${shadows}`, key = `${this.visualScope}:${name}`;
+    const key = `${kind}-${surface}-${shadows}`;
     let batch = this.batches.get(key);
     if (!batch) {
-      batch = { name, parent: this.visualTarget, geometry: this.shape(kind), material: this.material(surface), matrices: [], shadows };
+      batch = { geometry: this.shape(kind), material: this.material(surface), matrices: [], shadows };
       this.batches.set(key, batch);
     }
     batch.matrices.push(matrix);
@@ -132,7 +132,7 @@ export class PortKit {
     mesh.name = `sign-${text}`;
     mesh.position.set(...at); mesh.rotation.y = yaw;
     mesh.applyMatrix4(this.origin);
-    this.visualTarget.add(mesh);
+    this.root.add(mesh);
   }
   cover(x: number, z: number, length = 4, yaw = 0): void {
     const id = `cover-${this.serial++}`;
@@ -182,7 +182,6 @@ export class PortKit {
   }
   tank(x: number, z: number, radius = 2.2, height = 6): void {
     const id = `tank-${this.serial++}`;
-    this.asset('PROP-TANK', { instanceId: id, position: [x, 0, z], size: [radius * 2.15, height + 0.4, radius * 2.15] }, () => {
     this.located([x, 0, z], 0, () => {
       this.cylinder('pale', [0, height / 2 + 0.4, 0], radius, height);
       for (const y of [0.48, height * 0.5 + 0.4, height + 0.35]) this.cylinder('steel', [0, y, 0], radius + 0.09, 0.12);
@@ -192,11 +191,9 @@ export class PortKit {
       for (let y = 0.6; y < height; y += 0.42) this.box('steel', [-0.65, y, radius + 0.09], [0.60, 0.05, 0.13]);
       this.solid(id, [0, height / 2 + 0.2, 0], [radius * 2.15, height + 0.4, radius * 2.15]);
     });
-    });
   }
   tractor(x: number, z: number, yaw = 0): void {
     const id = `tractor-${this.serial++}`;
-    this.asset('PROP-VEH-TUG', { instanceId: id, position: [x, 0, z], size: [2.65, 2.70, 4.35], yaw }, () => {
     this.located([x, 0, z], yaw, () => {
       this.box('steel', [0, 0.67, 0], [2.3, 0.55, 4.1]);
       this.box('amber', [0, 1.35, -1.0], [2.2, 0.85, 1.8]);
@@ -215,7 +212,6 @@ export class PortKit {
       this.box('amber', [0.7, 3.32, 0.6], [0.20, 0.15, 0.20]);
       this.solid(id, [0, 1.35, 0], [2.65, 2.70, 4.35]);
     });
-    });
   }
   terminal(at: Vec3): void {
     const id = `terminal-${this.serial++}`;
@@ -231,22 +227,20 @@ export class PortKit {
     this.box('amber', [at[0], 0.018, at[2] + 0.2], [1.25, 0.018, 0.08], [0, 0, 0], false);
   }
   light(x: number, z: number, height = 5.5): void {
-    this.asset('ENV-LIGHTKIT-POLE', { position: [x, 0, z], size: [height * 0.458, height, height * 0.188] }, () => {
     this.cylinder('steel', [x, height / 2, z], 0.075, height);
     this.box('steel', [x + 0.50, height, z], [1.1, 0.08, 0.09]);
     this.box('signal', [x + 0.85, height - 0.09, z], [0.60, 0.07, 0.28], [0, 0, 0], false);
-    });
   }
   flush(): void {
-    for (const batch of this.batches.values()) {
+    for (const [name, batch] of this.batches) {
       const mesh = new InstancedMesh(batch.geometry, batch.material, batch.matrices.length);
-      mesh.name = `static-${batch.name}`;
+      mesh.name = `static-${name}`;
       batch.matrices.forEach((matrix, index) => mesh.setMatrixAt(index, matrix));
       mesh.instanceMatrix.needsUpdate = true;
       mesh.castShadow = batch.shadows;
       mesh.receiveShadow = true;
       mesh.computeBoundingBox(); mesh.computeBoundingSphere();
-      batch.parent.add(mesh);
+      this.root.add(mesh);
     }
     this.batches.clear();
   }

@@ -20,7 +20,7 @@ export class ObjectiveIndicator {
     this.arrow.innerHTML = '<svg viewBox="0 0 24 24"><path d="M7 4l8 8-8 8" /></svg>';
     this.text.className = 'objective-direction-label';
     this.root.append(this.arrow, this.text);
-    this.hud = [...container.querySelectorAll<HTMLElement>('.objective-cluster, .hud-session, .radio-subtitle, .survival-cluster, .ammunition-cluster, .game-error, .game-diagnostics, .interaction-prompt')];
+    this.hud = [...container.querySelectorAll<HTMLElement>('.objective-cluster, .hud-session, .radio-subtitle, .survival-cluster, .ammunition-cluster, .game-error, .game-diagnostics, .interaction-prompt, .touch-joystick, .touch-action-button, .touch-context-actions, .touch-pause')];
     container.append(this.root);
   }
 

@@ -1,0 +1,279 @@
+{
+  "file": "../VibeHack06/assets/source/tripo/CH-LU/rig-v1/rig/77ed8fb0-4b83-4c79-8bc8-f5cd7820c9d3-model.glb",
+  "sha256": "33579cb205c11d50c6fa6dfa42f93f022e387cbcf07b5a24c9a6be0b37961501",
+  "textureValidation": "NOT_RUN: image decoding replaced for structural CLI inspection",
+  "boneNames": [
+    {
+      "name": "Root",
+      "parent": "Armature"
+    },
+    {
+      "name": "Hip",
+      "parent": "Root"
+    },
+    {
+      "name": "Pelvis",
+      "parent": "Hip"
+    },
+    {
+      "name": "L_Thigh",
+      "parent": "Pelvis"
+    },
+    {
+      "name": "L_Calf",
+      "parent": "L_Thigh"
+    },
+    {
+      "name": "L_Foot",
+      "parent": "L_Calf"
+    },
+    {
+      "name": "L_ToeBase",
+      "parent": "L_Foot"
+    },
+    {
+      "name": "L_CalfTwist01",
+      "parent": "L_Calf"
+    },
+    {
+      "name": "L_CalfTwist02",
+      "parent": "L_CalfTwist01"
+    },
+    {
+      "name": "L_ThighTwist01",
+      "parent": "L_Thigh"
+    },
+    {
+      "name": "L_ThighTwist02",
+      "parent": "L_ThighTwist01"
+    },
+    {
+      "name": "R_Thigh",
+      "parent": "Pelvis"
+    },
+    {
+      "name": "R_ThighTwist01",
+      "parent": "R_Thigh"
+    },
+    {
+      "name": "R_ThighTwist02",
+      "parent": "R_ThighTwist01"
+    },
+    {
+      "name": "R_Calf",
+      "parent": "R_Thigh"
+    },
+    {
+      "name": "R_Foot",
+      "parent": "R_Calf"
+    },
+    {
+      "name": "R_ToeBase",
+      "parent": "R_Foot"
+    },
+    {
+      "name": "R_CalfTwist01",
+      "parent": "R_Calf"
+    },
+    {
+      "name": "R_CalfTwist02",
+      "parent": "R_CalfTwist01"
+    },
+    {
+      "name": "Waist",
+      "parent": "Hip"
+    },
+    {
+      "name": "Spine01",
+      "parent": "Waist"
+    },
+    {
+      "name": "Spine02",
+      "parent": "Spine01"
+    },
+    {
+      "name": "NeckTwist01",
+      "parent": "Spine02"
+    },
+    {
+      "name": "NeckTwist02",
+      "parent": "NeckTwist01"
+    },
+    {
+      "name": "Head",
+      "parent": "NeckTwist02"
+    },
+    {
+      "name": "L_Clavicle",
+      "parent": "Spine02"
+    },
+    {
+      "name": "L_Upperarm",
+      "parent": "L_Clavicle"
+    },
+    {
+      "name": "L_Forearm",
+      "parent": "L_Upperarm"
+    },
+    {
+      "name": "L_ForearmTwist01",
+      "parent": "L_Forearm"
+    },
+    {
+      "name": "L_ForearmTwist02",
+      "parent": "L_ForearmTwist01"
+    },
+    {
+      "name": "L_Hand",
+      "parent": "L_Forearm"
+    },
+    {
+      "name": "L_UpperarmTwist01",
+      "parent": "L_Upperarm"
+    },
+    {
+      "name": "L_UpperarmTwist02",
+      "parent": "L_UpperarmTwist01"
+    },
+    {
+      "name": "R_Clavicle",
+      "parent": "Spine02"
+    },
+    {
+      "name": "R_Upperarm",
+      "parent": "R_Clavicle"
+    },
+    {
+      "name": "R_UpperarmTwist01",
+      "parent": "R_Upperarm"
+    },
+    {
+      "name": "R_UpperarmTwist02",
+      "parent": "R_UpperarmTwist01"
+    },
+    {
+      "name": "R_Forearm",
+      "parent": "R_Upperarm"
+    },
+    {
+      "name": "R_ForearmTwist01",
+      "parent": "R_Forearm"
+    },
+    {
+      "name": "R_ForearmTwist02",
+      "parent": "R_ForearmTwist01"
+    },
+    {
+      "name": "R_Hand",
+      "parent": "R_Forearm"
+    }
+  ],
+  "profile": "adult",
+  "version": "",
+  "structureReady": false,
+  "errors": [
+    {
+      "code": "missing-version",
+      "detail": "基础骨架须有版本。"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "root"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "pelvis"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "abdomen"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "chest"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "neck"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "head"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "clavicle.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "upper_arm.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "forearm.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "hand.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "clavicle.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "upper_arm.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "forearm.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "hand.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "thigh.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "shin.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "foot.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "toe.L"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "thigh.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "shin.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "foot.R"
+    },
+    {
+      "code": "missing-mapping",
+      "detail": "toe.R"
+    }
+  ],
+  "warnings": [],
+  "joints": [],
+  "skinnedMeshes": 1,
+  "vertices": 10637,
+  "clips": [],
+  "manualChecks": [
+    "逐关节转动：权重串动、拉伸、穿插与关节旋转中心",
+    "脚底、握持、枪械、担架和抱持接触；开始、循环与结束",
+    "第二名成人共用动作实测；儿童步幅、重心及抱持独立校准",
+    "第一人称关卡、暂停、跳过、检查点恢复与Windows运行"
+  ]
+}

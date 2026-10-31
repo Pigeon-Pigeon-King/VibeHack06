@@ -1,0 +1,155 @@
+{
+  "capturedAt": "2026-10-31T06:02:50.465114+00:00",
+  "sourceWorkspace": "/Users/penguin/VibeHack06",
+  "manifestPath": "public/assets/generated/production-20261031/manifest.json",
+  "manifestSha256": "56b763f761c3e2d2c582563edc0879f270727a95e8a0e5ab15e8c385705000ee",
+  "manifestUpdatedAt": "2026-10-31T05:53:52.783870+00:00",
+  "copiedRuntimeBytes": 73533616,
+  "copiedCount": 8,
+  "method": "Read-only stable runtime size+mtime and SHA256 checks, original source SHA256 checks, then byte-identical initial runtime copies. Provider originals were not modified. Subsequent runtime-only texture resizing is recorded separately in the runtime manifest and textures-*.json.",
+  "assets": [
+    {
+      "id": "BG-CRANE",
+      "provider": "Hyper3D",
+      "taskId": "0af41b69-a2f2-448d-ad4a-b8d348e8f0bb",
+      "source": "assets/source/hyper3d/BG-CRANE/v1/base_basic_pbr.glb",
+      "runtime": "public/assets/generated/production-20261031/BG-CRANE.glb",
+      "sha256": "db2856bf9bf59c22ba408e98a35cf471871d21db2727659d5ec44c3470d0845d",
+      "bytes": 5331512,
+      "concept": "assets/concepts/environment-production-20261031/BG-CRANE-v1.png",
+      "conceptSha256": "dd7a6e7cb8d0194381fccb3bd4e884f1be7994bc4bcd58a5ba5c345ac3a3b88d",
+      "intendedDimensions": [
+        22,
+        30,
+        14
+      ],
+      "sourceLimitations": "Unique shared geographical landmark; no playable interior, moving arms/hooks not proven separately controllable.",
+      "sourceReview": {
+        "status": "passed-single-asset-reference",
+        "notes": [
+          "Inspected complete single asset silhouette without people, independent props, text or collage.",
+          "Image review does not verify hidden geometry, exact dimensions or separable moving parts."
+        ]
+      }
+    },
+    {
+      "id": "ENV-LIGHTKIT-POLE",
+      "provider": "Hyper3D",
+      "taskId": "44be1ace-2da5-40d3-b990-a5e476aa1df9",
+      "source": "assets/source/hyper3d/ENV-LIGHTKIT-POLE/v1/base_basic_pbr.glb",
+      "runtime": "public/assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb",
+      "sha256": "c2b66359af56e25609032fa2f0826d89436e1ce76c9d6003713ba9ce1ff83248",
+      "bytes": 2319412,
+      "concept": "assets/concepts/environment-production-20261031/ENV-LIGHTKIT-POLE-v1.png",
+      "conceptSha256": "fcd95e80c536b4458bdb67f9645173b9cda6c3e412c34c7a1e5963e3125a9441",
+      "intendedDimensions": [
+        1.8,
+        5,
+        1
+      ],
+      "sourceLimitations": "Light emission runtime-controlled separately; pole model creates no lighting or task-state logic.",
+      "sourceReview": {
+        "status": "passed-single-asset-reference",
+        "notes": [
+          "Inspected complete single asset silhouette without people, independent props, text or collage.",
+          "Image review does not verify hidden geometry, exact dimensions or separable moving parts."
+        ]
+      }
+    },
+    {
+      "id": "PROP-BENCH",
+      "provider": "Tripo",
+      "taskId": "f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247",
+      "source": "assets/source/tripo/PROP-BENCH/f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-BENCH.glb",
+      "sha256": "bafcb58d9cd1d40badbbbf4a7bc05ad19b0e5df657a2dae423d156b82cd01022",
+      "bytes": 11641764,
+      "concept": "assets/concepts/prop-production-20261031/PROP-BENCH-v1.png",
+      "conceptSha256": "bd12203732610fdfedbb0308e9cafff95fa9f26c79343e36cdb4b4b66fa45b6e",
+      "intendedDimensions": "2.4×0.55×0.45m",
+      "sourceLimitations": "座面、脚底接触点待标定",
+      "sourceReview": "Passed: one empty gray bench matching approved seated reference; no person or armor."
+    },
+    {
+      "id": "PROP-LIFE-MUG",
+      "provider": "Tripo",
+      "taskId": "a509e55e-d414-42db-ba04-1c2b0a44b03b",
+      "source": "assets/source/tripo/PROP-LIFE-MUG/a509e55e-d414-42db-ba04-1c2b0a44b03b-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+      "sha256": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+      "bytes": 8377524,
+      "concept": "assets/concepts/prop-production-20261031/PROP-LIFE-MUG-v1.png",
+      "conceptSha256": "c7452aed4f0b9ba1971b62dc9d196b0e8f357e10f84ccd7d8eb54b50318e9fe1",
+      "intendedDimensions": "约0.1m高工作值",
+      "sourceLimitations": "单杯；库存未检出贴合近景款，图生新件",
+      "sourceReview": "已视觉检查：单个完整搪瓷杯，空心杯口和连接把手清楚，黑边及轻微掉漆保留；无液体、蒸汽、匙碟、文字、手或桌面。杯内底部及实际壁厚需3D检查。"
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "provider": "Tripo",
+      "taskId": "76629177-8de5-4c65-a8dc-34dcfd2b938b",
+      "source": "assets/source/tripo/PROP-MEDICAL-BAG/76629177-8de5-4c65-a8dc-34dcfd2b938b-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+      "sha256": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+      "bytes": 17454464,
+      "concept": "assets/concepts/prop-production-20261031/PROP-MEDICAL-BAG-v1.png",
+      "conceptSha256": "eec73a2dd407689fdd18b3839c32a3b32c5f5c3bf5a051e1417543f9926b9ec0",
+      "intendedDimensions": "约0.4×0.22×0.3m工作值",
+      "sourceLimitations": "护理包独立；敷料毯另后制，不并入人体",
+      "sourceReview": "已视觉检查：单个闭合护理包，浅灰布料、灰绿包边、提把、拉链和空白识别片完整；无人体、家具、药品、工具、标志、散件或拼贴。"
+    },
+    {
+      "id": "PROP-TANK",
+      "provider": "Hyper3D",
+      "taskId": "222957ed-2b0b-4800-a022-a1244bc25e88",
+      "source": "assets/source/hyper3d/PROP-TANK/v1/base_basic_pbr.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-TANK.glb",
+      "sha256": "fa1688f012e5dfa93e28dc6147a9215e84334f855c7d850d1c68c5270574ee8c",
+      "bytes": 3169960,
+      "concept": "assets/concepts/environment-production-20261031/PROP-TANK-v1.png",
+      "conceptSha256": "fc0f3aa07f6a7f14585a75641382cce632524111fefeaac8490e7d40e7982aa7",
+      "intendedDimensions": [
+        4,
+        6,
+        4
+      ],
+      "sourceLimitations": "Static tank shell; valve/pipes separate, tank dimensions and ballistic proxy must be authored.",
+      "sourceReview": {
+        "status": "passed-single-asset-reference",
+        "notes": [
+          "Inspected complete single asset silhouette without people, independent props, text or collage.",
+          "Image review does not verify hidden geometry, exact dimensions or separable moving parts."
+        ]
+      }
+    },
+    {
+      "id": "PROP-TERMINAL-CONSOLE",
+      "provider": "Tripo",
+      "taskId": "914701ef-9b63-4d3e-9064-b1cf113aa4fe",
+      "source": "assets/source/tripo/PROP-TERMINAL-CONSOLE/914701ef-9b63-4d3e-9064-b1cf113aa4fe-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+      "sha256": "8213a3b4a182c5df399dd56e06f7a9de31e1745d18aaafdf2f4bb36dbdf415a2",
+      "bytes": 10952596,
+      "concept": "assets/concepts/prop-production-20261031/PROP-TERMINAL-CONSOLE-v1.png",
+      "conceptSha256": "ffec322ee97b44933d43800d48ef775c48bf23bcf33a34101cef31a1e5d80cfa",
+      "intendedDimensions": "2.6×0.9×1.1m",
+      "sourceLimitations": "柜体、屏幕、开关后制；屏幕运行时生成",
+      "sourceReview": "Passed: one standalone terminal, blank screens, no people or loose scenery; screen material and interactive controls remain preparation tasks."
+    },
+    {
+      "id": "PROP-VEH-TUG",
+      "provider": "Tripo",
+      "taskId": "561b30a3-8648-4ea8-84ef-7091de2d68a1",
+      "source": "assets/source/tripo/PROP-VEH-TUG/561b30a3-8648-4ea8-84ef-7091de2d68a1-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-VEH-TUG.glb",
+      "sha256": "41012891d28356f8e57810b96b1620af34aa81ea59ab98f386411ad408d428da",
+      "bytes": 14286384,
+      "concept": "assets/concepts/prop-production-20261031/PROP-VEH-TUG-v1.png",
+      "conceptSha256": "987d8721b34bb5ea95a9e6021c2e9ba1555f3492004fcc08699b8fcbaafef2f9",
+      "intendedDimensions": "3.8×1.8×1.65m工作值",
+      "sourceLimitations": "轮组、检修盖、拖钩后制分件；弹道代理另作",
+      "sourceReview": "Passed: one complete industrial vehicle, no driver/trailer/scenery; wheels, doors and mechanisms remain source-mesh preparation tasks."
+    }
+  ],
+  "acceptance": "Local structure, dimensions and lifecycle checks are separate from first-person rendering, collision contact and Windows acceptance."
+}

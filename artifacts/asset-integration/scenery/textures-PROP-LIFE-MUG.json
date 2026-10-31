@@ -1,0 +1,126 @@
+{
+  "source": "/Users/penguin/VibeHack06/assets/source/tripo/PROP-LIFE-MUG/a509e55e-d414-42db-ba04-1c2b0a44b03b-pbr-model.glb",
+  "runtime": "public/assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+  "sourceSha256": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+  "runtimeSha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+  "sourceBytes": 8377524,
+  "runtimeBytes": 834268,
+  "maxTextureEdge": 1024,
+  "encoding": {
+    "Pillow": "11.3.0",
+    "JPEGQuality": 90,
+    "JPEGSubsampling": 0,
+    "PNGCompressLevel": 9,
+    "resample": "LANCZOS"
+  },
+  "images": [
+    {
+      "image": 0,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "baseColor-sRGB"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 2925964,
+      "runtimeBytes": 181958,
+      "sourceSha256": "06e904b8cf06e9083399a373da0eea5844aab7e9bceacf5c43aa50b7e2089e5b",
+      "runtimeSha256": "a77272912948fbde5501ae29dcc8d7f2b8191dbb04deef70ad67b230f98e2ba1",
+      "normalRenormalized": false
+    },
+    {
+      "image": 1,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "metallicRoughness-linear"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 940798,
+      "runtimeBytes": 87300,
+      "sourceSha256": "8b6c4764373233b926cf0cbd930c5331351dd4a8f61aeb8bff8c98580f92086e",
+      "runtimeSha256": "c15b17c50901d706ca83d3bd155f373224a8619d82dadb57c4badf84cdfcf8da",
+      "normalRenormalized": false
+    },
+    {
+      "image": 2,
+      "mimeType": "image/png",
+      "roles": [
+        "normal-linear"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 4381618,
+      "runtimeBytes": 435871,
+      "sourceSha256": "583a0b40571a58a40e6756b36f0972d97e795d28aa1c4ace3f582386830e69e3",
+      "runtimeSha256": "d7afebba053dc158add3475ba9300baca7f5622521887423744cdf8c40075693",
+      "normalRenormalized": true
+    }
+  ],
+  "nonImageBufferViewsPreserved": [
+    {
+      "bufferView": 0,
+      "bytes": 43512,
+      "sha256": "3e9f98ebb1f9f924ec64aca7d306c9c565f410dfdc186dfedef3d289d1616311"
+    },
+    {
+      "bufferView": 1,
+      "bytes": 31320,
+      "sha256": "664ce679d449f8e9e02af71d967567e29e72555763f4daf4fe894cde76b4b6a1"
+    },
+    {
+      "bufferView": 2,
+      "bytes": 20880,
+      "sha256": "a3e52dedab0b23b534751794481d8584eed5a27aaa358500b3c2bddd694acfa9"
+    },
+    {
+      "bufferView": 3,
+      "bytes": 31320,
+      "sha256": "251f9315a29fe217806a767e9b8a3c6339c021f7b47d8a3e533a3e11d58664ef"
+    }
+  ],
+  "jsonInvariantsPreserved": [
+    "asset",
+    "scenes",
+    "scene",
+    "nodes",
+    "meshes",
+    "accessors",
+    "materials",
+    "textures",
+    "samplers",
+    "skins",
+    "animations",
+    "extensionsUsed",
+    "extensionsRequired"
+  ],
+  "estimatedRGBA8WithMipmapsBytes": {
+    "source": 268435456,
+    "runtime": 16777216
+  },
+  "limitations": [
+    "Estimated uncompressed RGBA8+mipmaps only; actual renderer allocation requires runtime profiling.",
+    "Image resizing does not establish rendered PBR, collision, gameplay or Windows acceptance."
+  ]
+}

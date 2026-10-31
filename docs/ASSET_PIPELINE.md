@@ -1,6 +1,8 @@
 # 原创资产生产与验收接口
 
-本项目采用自制、Tripo／Hyper3D 生成与有来源的可用素材。Blender 用于必要的检查、修整和动画；简单且已符合契约的资产可直接进入 Three.js 验证。当前收到的三个 ZIP 都是资料，29 项资产表是需求清单，尚无对应模型成品随包到达。
+本项目采用自制、Tripo／Hyper3D 生成与有来源的可用素材。Blender 用于必要的检查、修整和动画；简单且已符合契约的资产可直接进入 Three.js 验证。最初收到的三个 ZIP 都是资料，29 项资产表是需求清单，不是随包模型。
+
+2026-10-31 更新：美术窗口已在主工作区保存 Tripo 的两位主角绑定 GLB 及多件 Hyper3D 场景件；生成文件仍需逐项完成动作、接触和关卡验收。备用工作树已接入一把本机 AK-47、两架 S12 护航 VTOL、异步模型管线与骨架检查器，见 [运行资产接入](IMPORTED_ASSET_RUNTIME.md)。生产文件存在、结构检查通过与实机可用继续分别记录。
 
 基础来源：[当前资产分册](handoff/current/06_ASSETS_HYPER3D_TRIPO.md)、[29 项资产表](handoff/current/data/assets.csv)、[旧 Blender 组织方式](handoff/legacy-himalia/02_BUILD_AND_DELIVERY.md)。旧包的命名、分件与检查方法可参考，地点与范围以当前方案为准。
 
@@ -18,7 +20,7 @@ Dot 是另一条可用制作路线：向本机 Dot 提供概念图、尺寸、�
 
 生成成功、文件下载、能导入、动作可用、碰撞可用和实景验收是不同状态。状态建议依次为 planned、briefed、submitted、downloaded、prepared、integrated、validated；不适用的阶段说明原因，不凭预览图直接跳到 validated。
 
-已使用 ImageGen 内置工具完成并检查 [陆闻川成年概念图](../assets/concepts/CH-LU/adult-v2.png)，[提示词与生产状态](../artifacts/asset-jobs/CH-LU-adult-concept.md)已归档。首图方块结构不足，定向修订后选用 v2。本机配置探测显示 Tripo API 密钥未设置，尚未提交任何 3D 生成任务；Hyper3D／Dot 云端连接也未验证。接入服务时重新核对实际插件／API 版本、账户与预算；交接中的 API 迁移日期等外部信息不作为永久有效配置。
+早期 [陆闻川成年概念图](../assets/concepts/CH-LU/adult-v2.png) 和 [提示词记录](../artifacts/asset-jobs/CH-LU-adult-concept.md)保留作过程资料。该阶段记录的 Tripo 未配置和未提交仅是当时状态；后续用户已审查概念图，美术窗口实际完成了 Tripo／Hyper3D 首批模型生产。不要据旧探测结果判断当前没有模型，也不要将某个服务的授权扩大到 Dot 或其它服务。接入时重新核对实际账户、预算和接口；文档不保存密钥。
 
 ## 资产清单字段
 

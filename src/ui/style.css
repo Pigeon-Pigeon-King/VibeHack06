@@ -58,6 +58,7 @@
 #app .controls-grid kbd { min-width: 52px; margin-right: 5px; }
 #app .alternate-controls { margin-top: 13px; font-size: 16px; color: #afc0c4; }
 #app .candidate-note { position: absolute; bottom: max(24px, env(safe-area-inset-bottom)); right: max(30px, env(safe-area-inset-right)); color: #c2cccb; font-size: 16px; text-shadow: 0 2px 8px #061015; }
+#app .candidate-note a { color: inherit; text-underline-offset: 0.22em; }
 
 #app .dialog-panel { width: min(480px, 100%); max-height: 100%; overflow-y: auto; background: linear-gradient(145deg, #1b2e38, #111e27); padding: 34px; border: 1px solid #4b6066; border-top: 3px solid var(--ui-amber); box-shadow: 0 24px 80px rgb(0 0 0 / 40%); }
 #app .dialog-panel h2 { font-size: 35px; font-weight: 550; letter-spacing: .08em; margin: 6px 0 12px; }
@@ -137,6 +138,8 @@
 #app .sound-state { position: absolute; right: max(32px, env(safe-area-inset-right)); top: 67px; font-size: 16px; color: #d0d8cf; }
 #app .hurt-vignette { position: absolute; inset: 0; box-shadow: inset 0 0 140px 45px rgb(133 45 26 / 80%); opacity: 0; pointer-events: none; }
 #app .game-error { position: absolute; z-index: 5; bottom: 16px; left: 50%; transform: translateX(-50%); max-width: min(900px, 92vw); padding: 10px 18px; background: #402d24; border-left: 3px solid #ffbf85; color: #ffead4; font-size: 17px; white-space: pre-wrap; }
+#app .equipment-status { margin-top: 8px; color: var(--ui-muted); font-size: 17px; }
+#app .equipment-retry { display: block; min-height: 44px; padding: 8px 14px; margin: 8px auto 0; font-size: 17px; }
 #app .game-diagnostics { position: absolute; top: 90px; right: max(28px, env(safe-area-inset-right)); max-width: 36vw; padding: 8px 10px; margin: 0; background: rgb(5 17 24 / 78%); color: #bdd5cf; font: 13px/1.5 ui-monospace, SFMono-Regular, Consolas, monospace; white-space: pre-wrap; pointer-events: none; }
 #app .low-motion *, #app .low-motion *::before, #app .low-motion *::after { transition: none !important; animation: none !important; }
 
@@ -176,4 +179,58 @@
   #app .radio-subtitle { width: calc(100% - 40px); padding-inline: 12px; }
   #app .radio-subtitle p { font-size: 18px; }
   #app .interaction-prompt { max-width: 90vw; font-size: 17px; }
+}
+
+/* Touch HUD uses a top status row and keeps the lower corners for real controls.
+   Non-touch desktop presentation retains the authored layout above. */
+#app.touch-input .hud-session,
+#app.touch-input .interaction-prompt,
+#app.touch-input .game-interface[data-mode="playing"] .game-diagnostics { display: none; }
+#app.touch-input .objective-cluster { top: max(12px, env(safe-area-inset-top)); left: max(16px, env(safe-area-inset-left)); width: min(420px, calc(100% - 326px - env(safe-area-inset-left) - env(safe-area-inset-right))); padding: 0 10px 3px; }
+#app.touch-input .phase-label { font-size: 16px; line-height: 1.4; letter-spacing: 0; }
+#app.touch-input .current-objective { font-size: 18px; line-height: 1.4; margin-top: 2px; }
+#app.touch-input .objective-detail { display: none; }
+#app.touch-input .evacuation-count { margin-top: 3px; font-size: 16px; line-height: 1.4; }
+#app.touch-input .survival-cluster { top: max(12px, env(safe-area-inset-top)); bottom: auto; right: calc(max(16px, env(safe-area-inset-right)) + 192px); left: auto; width: 104px; }
+#app.touch-input .health-label { gap: 5px; }
+#app.touch-input .health-cross { display: none; }
+#app.touch-input .health-label strong { min-width: 44px; font-size: 28px; line-height: 1.3; }
+#app.touch-input .health-label > span:last-child { font-size: 16px; white-space: nowrap; flex: 0 0 auto; }
+#app.touch-input .health-track { margin-top: 3px; }
+#app.touch-input .ammunition-cluster { top: max(12px, env(safe-area-inset-top)); bottom: auto; right: calc(max(16px, env(safe-area-inset-right)) + 60px); min-width: 108px; }
+#app.touch-input .ammunition-values { gap: 6px; }
+#app.touch-input .ammunition-values strong { font-size: 28px; line-height: 1.3; min-width: 34px; }
+#app.touch-input .ammunition-values > span:last-child { font-size: 18px; min-width: 32px; }
+#app.touch-input .ammo-separator { font-size: 18px; }
+#app.touch-input .ammo-label, #app.touch-input .reload-label { font-size: 16px; line-height: 1.4; }
+#app.touch-input .radio-subtitle {
+  top: auto;
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + var(--touch-context-height, 52px) + 12px + var(--notice-clearance, 0px));
+  left: calc(max(16px, env(safe-area-inset-left)) + 144px);
+  right: calc(max(16px, env(safe-area-inset-right)) + 200px);
+  width: auto;
+  transform: none;
+  padding: 6px 10px 8px;
+}
+#app.touch-input .radio-subtitle p { font-size: 18px; line-height: 1.5; }
+#app.touch-input .subtitle-speaker { font-size: 16px; margin-bottom: 2px; line-height: 1.4; }
+#app.touch-input .sound-state { right: max(16px, env(safe-area-inset-right)); top: max(88px, calc(env(safe-area-inset-top) + 76px)); }
+#app.touch-input .game-error { bottom: calc(max(16px, env(safe-area-inset-bottom)) + var(--touch-context-height, 52px) + 12px); max-width: calc(100% - 368px); }
+#app.touch-input .checkbox-setting { min-height: 44px; }
+#app.touch-input .slider-setting input { min-height: 30px; }
+#app.touch-input .touch-help { margin-top: 10px; font-size: 17px; line-height: 1.6; color: var(--ui-muted); }
+
+@media (orientation: portrait) {
+  #app.touch-input .objective-cluster { width: calc(100% - 92px - env(safe-area-inset-left) - env(safe-area-inset-right)); }
+  #app.touch-input .survival-cluster { left: max(16px, env(safe-area-inset-left)); right: auto; top: auto; bottom: max(290px, calc(env(safe-area-inset-bottom) + 266px)); }
+  #app.touch-input .ammunition-cluster { top: auto; right: max(16px, env(safe-area-inset-right)); bottom: max(290px, calc(env(safe-area-inset-bottom) + 266px)); }
+  #app.touch-input .radio-subtitle { top: calc(var(--touch-hud-bottom, 88px) + 10px); bottom: auto; left: max(16px, env(safe-area-inset-left)); right: max(16px, env(safe-area-inset-right)); }
+  #app.touch-input .sound-state { top: auto; bottom: max(365px, calc(env(safe-area-inset-bottom) + 341px)); right: max(16px, env(safe-area-inset-right)); }
+  #app.touch-input .game-error { bottom: max(370px, calc(env(safe-area-inset-bottom) + 346px)); max-width: 92vw; }
+}
+
+@media (max-height: 500px) and (orientation: landscape) {
+  #app.touch-input .game-overlay { padding: max(14px, env(safe-area-inset-top)) max(20px, env(safe-area-inset-right)) max(14px, env(safe-area-inset-bottom)) max(20px, env(safe-area-inset-left)); }
+  #app.touch-input .menu-content { max-width: 620px; }
+  #app.touch-input .dialog-panel { padding: 18px 24px; }
 }

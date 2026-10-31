@@ -1,4 +1,6 @@
 import { beforeAll, describe, expect, it } from 'vitest';
+import { FLANK_DIALOGUE_TIMING as D } from '../src/content/flank-dialogue-timing';
+import { DIALOGUE_CATALOG } from '../src/audio/catalog';
 import type { Vec3 } from '../src/contracts';
 import { carryFacts } from '../src/content/chapter-flow';
 import { FLANK as F } from '../src/content/flank-layout';
@@ -155,8 +157,8 @@ function playFlank(skip: boolean, restore: boolean) {
       'lu-has-full-report', 'departure-unconfirmed-shared', 'escort-staffing-shared', 'uncertainty-explicit',
       'zhou-asks-rest', 'zhou-asks-relief', 'zhou-on-withdrawal-list', 'backup-radio-handed-to-zheng', 'family-medicine-reported']));
     expect(s.has('zhou-growth-complete')).toBe(false);
-    expect((reportEnd - reportStart) * FIXED_DT).toBeGreaterThanOrEqual(31);
-    if (!skip) expect((admissionEnd - admissionStart) * FIXED_DT).toBeGreaterThanOrEqual(19);
+    expect((reportEnd - reportStart) * FIXED_DT).toBeGreaterThanOrEqual(D.reportEnd);
+    if (!skip) expect((admissionEnd - admissionStart) * FIXED_DT).toBeGreaterThanOrEqual(D.admissionEnd - FIXED_DT);
     expect(fireInputs).toBeGreaterThan(0); expect(s.hits).toBeGreaterThan(0);
     expect(s.player.health).toBe(100); expect(s.mission.control).toBe('work');
     if (restore) expect([...restores]).toEqual([2, 4, 6]);
@@ -170,6 +172,18 @@ function playFlank(skip: boolean, restore: boolean) {
 }
 
 describe('S07 flank: public-input stairs, combat and split routes', () => {
+  it('spaces the report and handover against the approved full voice durations', () => {
+    const duration = (prefix: string) => DIALOGUE_CATALOG.find(line => line.scenario === 'flank' && line.text.startsWith(prefix))!.duration;
+    const admission = ['这批过了', '刚才的预告', '我知道你怎么想', '包括。我答应'];
+    const report = ['已核实：', '尚未确认：', '北闸仍有压力', '升降机试完', '第二段的接手'];
+    for (const [offsets, end, prefixes] of [[D.admission, D.admissionEnd, admission], [D.report, D.reportEnd, report]] as const) {
+      prefixes.forEach((prefix, i) => expect((offsets[i + 1] ?? end) - offsets[i]).toBeGreaterThan(duration(prefix) + 0.12));
+    }
+    expect(D.reportReady).toBeGreaterThan(duration('把原文、核实情况') + 0.12);
+    expect(D.reliefReady).toBeGreaterThan(duration('你先换一下位置') + 0.12);
+    expect(D.medicineReport).toBeGreaterThan(duration('缩回去我得缓') + 0.12);
+    expect(D.exitReady - D.medicineReport).toBeGreaterThan(duration('罗敬妻子缺的药') + 0.12);
+  });
   it('physically uses both platform stairs and the split routes before full disclosure and natural/skip endings converge', () => {
     const actual = playFlank(true, false), expected = playFlank(false, false);
     expect(actual.facts).toEqual(expected.facts);

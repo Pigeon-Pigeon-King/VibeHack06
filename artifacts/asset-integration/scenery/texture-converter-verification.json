@@ -1,0 +1,22 @@
+{
+  "deterministicSecondPassAsset": "PROP-BENCH",
+  "byteIdentical": true,
+  "runtimeSha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+  "alphaFixture": {
+    "source": [
+      16,
+      8
+    ],
+    "runtime": [
+      4,
+      2
+    ],
+    "mode": "RGBA",
+    "alphaRange": [
+      110,
+      110
+    ]
+  },
+  "networkUsed": false,
+  "sourceModified": false
+}

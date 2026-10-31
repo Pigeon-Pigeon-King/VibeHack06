@@ -1,5 +1,7 @@
 # 首批八件静态资产接入候选
 
+> 合并裁决：`574ac27` 已选择 ModelLibrary／GeneratedSceneAssets／visualSlot 方案。以下是 `823273d` 的历史候选记录；原加载器与测试已移至 `artifacts/asset-integration/scenery/legacy-823273d/`，不再参与当前运行或测试扫描。活动 prepared-assets 与 public manifest 使用 1024 运行副本，原源件 SHA 保留。最新检查见 `artifacts/asset-integration/README.md`。
+
 2026-10-31。本记录保存美术制作窗口的已检查候选，供主窗口统一合并。不是全地图完成状态。
 
 已接入 TANK、LIGHTKIT-POLE、VEH-TUG、TERMINAL-CONSOLE、BG-CRANE、BENCH、LIFE-MUG、MEDICAL-BAG。PortKit.asset 只分离可见模型，现有碰撞编号、顺序、尺寸及任务交互保留。当前六个实现/测试文件归主窗口接手，避免与备用分支的 ModelLibrary / GeneratedSceneAssets / visualSlot 同时运行。

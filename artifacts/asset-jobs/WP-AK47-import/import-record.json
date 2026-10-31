@@ -1,0 +1,362 @@
+{
+  "recordedDate": "2026-10-31",
+  "asset": "WP-AK47",
+  "scope": "One representative AK-47 body; block arms remain placeholders",
+  "cost": {
+    "externalGenerationJobs": 0,
+    "networkDownloads": 0,
+    "paidServices": 0
+  },
+  "origin": {
+    "localPack": "/Users/penguin/Assets/lowpoly-military/packs/github-operation-steel-tide-ak47",
+    "originalCreator": "taradavies",
+    "adaptation": "Operation Steel Tide / AetherRadar",
+    "adaptationCommit": "7ef7b539af1e0166e1d2735dc0ba200a08ba6492"
+  },
+  "license": {
+    "geometry": "CC0-1.0",
+    "adaptationAndEmbeddedTextures": "MIT",
+    "verifiedAgainstLocalFiles": [
+      "SOURCE_LICENSE.md",
+      "LICENSE",
+      "pack.json",
+      "catalog/assets.json entry"
+    ],
+    "originalExternalImagesAndHDR": "Not included according to SOURCE_LICENSE.md; adapted embedded images retained",
+    "independentOnlineLicenseRevalidation": false
+  },
+  "files": {
+    "source": {
+      "path": "assets/source/WP-AK47/ak47_reloadable_world.glb",
+      "bytes": 2046524,
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+    },
+    "runtime": {
+      "path": "public/models/weapons/ak47-world-r1.glb",
+      "bytes": 2046524,
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+    },
+    "byteIdentical": true
+  },
+  "resources": {
+    "externalURIs": [],
+    "requiredExtensions": [],
+    "skins": 0,
+    "animationClips": 0,
+    "sourceMeshResources": 11,
+    "materials": 6,
+    "textureEntries": 10,
+    "samplerEntries": 1,
+    "embeddedImages": [
+      {
+        "name": "ak47_blued_metal_base_color",
+        "embedded": true,
+        "bytes": 445731,
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "name": "ak47_blued_metal_roughness",
+        "embedded": true,
+        "bytes": 375546,
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "name": "ak47_laminated_wood_base_color",
+        "embedded": true,
+        "bytes": 74429,
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "name": "ak47_laminated_wood_roughness",
+        "embedded": true,
+        "bytes": 66424,
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "name": "ak47_bakelite_polymer_base_color",
+        "embedded": true,
+        "bytes": 113713,
+        "width": 1024,
+        "height": 1024
+      },
+      {
+        "name": "ak47_bakelite_polymer_roughness",
+        "embedded": true,
+        "bytes": 403935,
+        "width": 1024,
+        "height": 1024
+      }
+    ],
+    "visibleDefaultMeshes": 10,
+    "visibleDefaultTriangles": 23644,
+    "measuredRendererDrawCalls": null,
+    "measuredGPUTextureBytes": null
+  },
+  "nodeInspection": [
+    {
+      "name": "ChargingHandle",
+      "translation": [
+        0.032930001616477966,
+        0.03085198998451233,
+        -0.4857166111469269
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "FrontIronSight",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "FurnitureGeometry",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Magazine",
+      "translation": [
+        0,
+        -0.0019889995455741882,
+        -0.39707261323928833
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "MuzzleDeviceTip",
+      "translation": [
+        0,
+        0.005309000611305237,
+        -1.1347935199737549
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "RearIronSight",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    },
+    {
+      "name": "Stock",
+      "translation": [
+        0,
+        0,
+        0
+      ],
+      "rotation": [
+        0,
+        0,
+        0,
+        1
+      ]
+    }
+  ],
+  "calibration": {
+    "sourceBounds": {
+      "min": [
+        -0.030422069132328033,
+        -0.3346736952662468,
+        -1.1347936391830444
+      ],
+      "max": [
+        0.058053843677043915,
+        0.08524584025144577,
+        0.26525643467903137
+      ]
+    },
+    "uniformScale": 0.6356915489064695,
+    "presentationLengthMeters": 0.89,
+    "sourceForward": "-Z",
+    "sourceUp": "+Y",
+    "sightBasis": [
+      -0.000678297758968579,
+      0.00047692758269157135,
+      0,
+      0.9999996562260564
+    ],
+    "sourceMuzzle": [
+      0,
+      0.005309000611305237,
+      -1.1347935199737549
+    ],
+    "sourceFrontPostTip": [
+      5.2677933126688004e-8,
+      0.08114868402481079,
+      -1.0902529954910278
+    ],
+    "sourceRearNotch": [
+      -0.0005771140567958355,
+      0.0803278237581253,
+      -0.48516517877578735
+    ],
+    "rearNotchBottom": 0.07754378020763397,
+    "rearNotchTop": 0.08311186730861664,
+    "sourceFiringGrip": [
+      -0.0005482425913214684,
+      -0.14665502309799194,
+      -0.16788557916879654
+    ],
+    "sourceSupportGrip": [
+      -0.0004889434203505516,
+      -0.0385458767414093,
+      -0.6919634342193604
+    ],
+    "supplierAnimationClips": 0,
+    "animation": "Project procedural magazine and charging-handle motion; placeholder block hands"
+  },
+  "defaultHiddenNodes": [
+    "SpareMagazine",
+    "Suppressor",
+    "OpticMount",
+    "OpticRailAdapterGeometry",
+    "OpticRailContact"
+  ],
+  "geometryChecks": {
+    "parser": "Three.js 0.186 GLTFLoader.parseAsync; only image decoding replaced by empty Texture objects",
+    "ads": [
+      {
+        "width": 1366,
+        "height": 768,
+        "markers": {
+          "ganymede-front-sight": {
+            "ndc": [
+              2.729697872452308e-19,
+              0,
+              0.8974086172275882
+            ],
+            "pixelErrorFromCenter": [
+              1.8643836468849266e-16,
+              0
+            ]
+          },
+          "ganymede-rear-sight": {
+            "ndc": [
+              2.432143561931399e-19,
+              0,
+              0.8171130699278711
+            ],
+            "pixelErrorFromCenter": [
+              1.6611540527991456e-16,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "width": 844,
+        "height": 390,
+        "markers": {
+          "ganymede-front-sight": {
+            "ndc": [
+              2.2435007599141034e-19,
+              0,
+              0.8974086172275882
+            ],
+            "pixelErrorFromCenter": [
+              9.467573206837516e-17,
+              0
+            ]
+          },
+          "ganymede-rear-sight": {
+            "ndc": [
+              1.998945005775038e-19,
+              0,
+              0.8171130699278711
+            ],
+            "pixelErrorFromCenter": [
+              8.43554792437066e-17,
+              0
+            ]
+          }
+        }
+      },
+      {
+        "width": 390,
+        "height": 844,
+        "markers": {
+          "ganymede-front-sight": {
+            "ndc": [
+              1.0507076642433747e-18,
+              0,
+              0.8974086172275882
+            ],
+            "pixelErrorFromCenter": [
+              2.0488799452745807e-16,
+              0
+            ]
+          },
+          "ganymede-rear-sight": {
+            "ndc": [
+              9.361738919354159e-19,
+              0,
+              0.8171130699278711
+            ],
+            "pixelErrorFromCenter": [
+              1.825539089274061e-16,
+              0
+            ]
+          }
+        }
+      }
+    ],
+    "heldItemFullyLowered": {
+      "samples": 48,
+      "sampledVertices": 639792,
+      "maximumBottomMargin": -0.6795405302712586,
+      "allVerticesBelowBottomClipPlane": true
+    }
+  },
+  "remaining": [
+    "Real embedded PNG decoding and PBR materials in the game renderer",
+    "First-person near hand/contact and reload timing review",
+    "Normal-speed hip fire / ADS / reload / wall lowering / transition visual checks",
+    "Desktop and mobile GPU cost, thermal and memory measurements",
+    "Windows EXE packaged resource loading",
+    "No other named firearm is imported or enabled by this change"
+  ]
+}

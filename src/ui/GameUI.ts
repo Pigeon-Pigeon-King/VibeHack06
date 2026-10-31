@@ -83,28 +83,34 @@ export class GameUI {
           </details>
           <details class="control-reference" open>
             <summary>操作</summary>
-            <div class="controls-grid">
+            <label class="checkbox-setting"><input type="checkbox" data-setting="touch" data-ui="touch-menu-input" /><span>触屏操作</span></label>
+            <div class="controls-grid" data-ui="keyboard-controls">
               <span><kbd>WASD</kbd> 移动</span><span><kbd>鼠标</kbd> 观察</span><span><kbd>左键</kbd> 射击</span>
               <span><kbd>Shift</kbd> 冲刺</span><span><kbd>右键</kbd> 瞄准</span><span><kbd>R</kbd> 换弹</span>
               <span><kbd>C</kbd> 蹲伏</span><span><kbd>Space</kbd> 跳跃</span><span><kbd>E</kbd> 交互</span><span><kbd>Q</kbd> 请求掩护（S10）</span>
             </div>
-            <p class="alternate-controls"><kbd>方向键</kbd> 也可转动视角 · <kbd>F</kbd> 也可开火</p>
+            <p class="alternate-controls" data-ui="alternate-controls"><kbd>方向键</kbd> 也可转动视角 · <kbd>F</kbd> 也可开火</p>
+            <p class="touch-help" data-ui="touch-help" hidden>左侧移动，右侧观察。按住开火可同时拖动瞄准。</p>
           </details>
         </div>
-        <p class="candidate-note">占位资产 · 功能验证</p>
+        <p class="candidate-note">开发中 · <a href="${import.meta.env.BASE_URL}credits.html">制作与来源</a></p>
+        <p class="equipment-status" data-ui="equipment-status" role="status" hidden></p>
+        <button type="button" class="equipment-retry" data-ui="menu-retry-equipment" data-action="retry-equipment" hidden>重新载入装备</button>
       </section>
 
       <section class="game-overlay" data-ui="paused" role="dialog" aria-modal="true" aria-labelledby="pause-title" hidden>
         <div class="dialog-panel pause-panel">
           <p class="eyebrow" data-ui="pause-scenario"></p><h2 id="pause-title">暂停</h2>
           <p class="checkpoint-label" data-ui="pause-checkpoint"></p>
+          <button type="button" class="equipment-retry" data-ui="pause-retry-equipment" data-action="retry-equipment" hidden>重新载入装备</button>
           <button type="button" class="primary-button" data-action="resume">继续行动</button>
           <div class="button-pair"><button type="button" data-action="retry">重试检查点</button><button type="button" data-action="restart">重开本场</button></div>
           <details class="settings-panel">
             <summary>操作与声音</summary>
-            <label class="slider-setting" for="ganymede-sensitivity"><span>鼠标灵敏度</span><output data-ui="sensitivity-value">1.00</output><input id="ganymede-sensitivity" data-ui="sensitivity-input" data-setting="sensitivity" type="range" min="0.25" max="2.5" value="1" step="0.05" /></label>
+            <label class="slider-setting" for="ganymede-sensitivity"><span>视角灵敏度</span><output data-ui="sensitivity-value">1.00</output><input id="ganymede-sensitivity" data-ui="sensitivity-input" data-setting="sensitivity" type="range" min="0.25" max="2.5" value="1" step="0.05" /></label>
             <label class="slider-setting" for="ganymede-volume"><span>音量</span><output data-ui="volume-value">70%</output><input id="ganymede-volume" data-setting="volume" type="range" min="0" max="100" value="70" step="1" data-ui="volume-input" /></label>
             <label class="checkbox-setting"><input type="checkbox" data-setting="motion" data-ui="motion-input" /><span>减少镜头晃动</span></label>
+            <label class="checkbox-setting"><input type="checkbox" data-setting="touch" data-ui="touch-pause-input" /><span>触屏操作</span></label>
           </details>
           <button type="button" class="quiet-button" data-action="menu">返回场景选择</button>
         </div>
@@ -184,7 +190,7 @@ export class GameUI {
     this.style('hit', 'opacity', String(hit.opacity));
     this.style('hit', 'color', hit.color);
     this.style('hurt', 'opacity', String(playing ? clamp(state.hurtFlash) : 0));
-    this.show('interaction', playing && Boolean(state.interaction));
+    this.show('interaction', playing && Boolean(state.interaction) && !state.touchControls);
     this.text('interaction-text', state.interaction);
     this.renderSubtitles(state);
     this.show('sound-state', state.muted);
@@ -211,12 +217,21 @@ export class GameUI {
     this.text('complete-workers', state.workerTotal > 0 ? `人员到达 ${integer(state.workersSafe)} / ${integer(state.workerTotal)}` : '本段结束');
     this.text('complete-time', elapsed(state.elapsed));
     (this.node('motion-input') as HTMLInputElement).checked = state.lowMotion;
+    (this.node('touch-menu-input') as HTMLInputElement).checked = state.touchControls;
+    (this.node('touch-pause-input') as HTMLInputElement).checked = state.touchControls;
+    this.show('keyboard-controls', !state.touchControls);
+    this.show('alternate-controls', !state.touchControls);
+    this.show('touch-help', state.touchControls);
     (this.node('sensitivity-input') as HTMLInputElement).value = String(state.sensitivity);
     this.text('sensitivity-value', state.sensitivity.toFixed(2));
     (this.node('volume-input') as HTMLInputElement).value = String(Math.round(state.volume * 100));
     this.text('volume-value', state.muted ? '静音' : `${Math.round(state.volume * 100)}%`);
     this.show('error', Boolean(state.error) && !(playing && (state.blackout ?? 0) > 0.95));
     this.text('error', state.error || '');
+    this.show('menu-retry-equipment', Boolean(state.equipmentError));
+    this.show('pause-retry-equipment', Boolean(state.equipmentError));
+    this.show('equipment-status', state.mode === 'menu' && Boolean(state.equipmentStatus));
+    this.text('equipment-status', state.equipmentStatus ?? '');
     this.show('diagnostics', playing && Boolean(state.diagnostics));
     this.text('diagnostics', state.diagnostics || '');
 
@@ -302,6 +317,7 @@ export class GameUI {
       case 'retry': this.actions.retry(); break;
       case 'restart': this.actions.restart(); break;
       case 'menu': this.actions.menu(); break;
+      case 'retry-equipment': this.actions.retryEquipment(); break;
     }
   };
 
@@ -318,6 +334,7 @@ export class GameUI {
         this.actions.setVolume(Number(input.value) / 100);
         break;
       case 'motion': this.actions.setLowMotion(input.checked); break;
+      case 'touch': this.actions.setTouchControls(input.checked); break;
     }
   };
 

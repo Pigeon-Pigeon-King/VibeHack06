@@ -1,0 +1,143 @@
+{
+  "source": "/Users/penguin/VibeHack06/assets/source/tripo/CH-DOCTOR/rig-v1/rig/1f3fb503-1bd8-474b-b7ce-574f8f16b650-model.glb",
+  "runtime": "/Users/penguin/VibeHack06-worktree/public/models/characters/ch-doctor-rig-v1.glb",
+  "sourceSha256": "bdf7f567d245dc555393a53423a6ce7fb52d2a09c8ab82eb7b2e39fe17bb7a24",
+  "runtimeSha256": "ac40a5bd08473ccd844ec77146c264dfc0cdaea65fb28f314626f121d38cb8cd",
+  "sourceBytes": 7991068,
+  "runtimeBytes": 1474328,
+  "maxTextureEdge": 1024,
+  "encoding": {
+    "Pillow": "11.3.0",
+    "JPEGQuality": 90,
+    "JPEGSubsampling": 0,
+    "PNGCompressLevel": 9,
+    "resample": "LANCZOS"
+  },
+  "images": [
+    {
+      "image": 0,
+      "mimeType": "image/png",
+      "roles": [
+        "normal-linear"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 2935977,
+      "runtimeBytes": 384525,
+      "sourceSha256": "682c36a4679db39f4ac1498fe01eb1ce8cde1fe8600d32465df2719c2c354bf3",
+      "runtimeSha256": "32634f8bb753335406a748f8efc5c5e93cfb19631977b949b3e5140e3a064a20",
+      "normalRenormalized": true
+    },
+    {
+      "image": 1,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "baseColor-sRGB"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 2680629,
+      "runtimeBytes": 234862,
+      "sourceSha256": "6507caaa96b93d6f7aaba89443e765eb5f119bb3d15acdffb2191158b8441d06",
+      "runtimeSha256": "8427f61e4d270fda45987abbe40fad0c2988df892cfaf6c673926c9adc6915bb",
+      "normalRenormalized": false
+    },
+    {
+      "image": 2,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "metallicRoughness-linear"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 1711233,
+      "runtimeBytes": 191713,
+      "sourceSha256": "bc504c36d1dfbd872d11b6c8ad557a21c6cfffbd88b264aed451d8fe0508cbca",
+      "runtimeSha256": "6b0dd5b919bc27ba436e84a825a500f1d18563c32f680ab14a19f5ab3897858a",
+      "normalRenormalized": false
+    }
+  ],
+  "nonImageBufferViewsPreserved": [
+    {
+      "bufferView": 0,
+      "bytes": 126552,
+      "sha256": "1724f2c3b354e8495cc385641c56ac4f8f8c08abb75e53f77725364993fbbd2b"
+    },
+    {
+      "bufferView": 1,
+      "bytes": 126552,
+      "sha256": "da9498584fc643fc01e2bcf27d91827052d0eae70ec7bc55c512b002ff067935"
+    },
+    {
+      "bufferView": 2,
+      "bytes": 84368,
+      "sha256": "d589a19a50a554b91e7d5077da61f5cbf1cf48674df50e91f144079c16933654"
+    },
+    {
+      "bufferView": 3,
+      "bytes": 42184,
+      "sha256": "56bd5cc97e2acf8cce87cf6ee0dc53a9579d0a01902d9b374424f50d0db55628"
+    },
+    {
+      "bufferView": 4,
+      "bytes": 168736,
+      "sha256": "7f9849e91f4326c5785de59e68584599ea6a433dfa554445732b53f835ad954c"
+    },
+    {
+      "bufferView": 5,
+      "bytes": 99876,
+      "sha256": "1e83477c4d4177a79928662c12428a2bf6989ad804dc02697df6161d205bbe96"
+    },
+    {
+      "bufferView": 9,
+      "bytes": 2624,
+      "sha256": "e98c7b5cd7bce04112bb4705e3d23d8184b5fc5163d550016f989b0b344c064a"
+    }
+  ],
+  "jsonInvariantsPreserved": [
+    "asset",
+    "scenes",
+    "scene",
+    "nodes",
+    "meshes",
+    "accessors",
+    "materials",
+    "textures",
+    "samplers",
+    "skins",
+    "animations",
+    "extensionsUsed",
+    "extensionsRequired"
+  ],
+  "estimatedRGBA8WithMipmapsBytes": {
+    "source": 268435456,
+    "runtime": 16777216
+  },
+  "limitations": [
+    "Estimated uncompressed RGBA8+mipmaps only; actual renderer allocation requires runtime profiling.",
+    "Image resizing does not establish rendered PBR, collision, gameplay or Windows acceptance."
+  ],
+  "assetId": "CH-DOCTOR",
+  "converterSha256": "af81e6ea7ac3c5fe6df8d6a2a49dd5b5722a7c543ca66b0ee715aae6f8f87f8d"
+}

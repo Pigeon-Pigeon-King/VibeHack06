@@ -1,0 +1,143 @@
+{
+  "source": "/Users/penguin/VibeHack06/assets/source/tripo/CH-SHAO/rig-v1/rig/ae88fddf-945c-4716-9776-1758d063fb27-model.glb",
+  "runtime": "/Users/penguin/VibeHack06-worktree/public/models/characters/ch-shao-rig-v1.glb",
+  "sourceSha256": "8b13b2f6aecc9689df545e93387cc82277775b53feca6ecd73b495376170358d",
+  "runtimeSha256": "b972baf3bb59fa52f25e7d449e913ae13d5a5dcc9c95c51d02644a67816c72d4",
+  "sourceBytes": 9687232,
+  "runtimeBytes": 1656292,
+  "maxTextureEdge": 1024,
+  "encoding": {
+    "Pillow": "11.3.0",
+    "JPEGQuality": 90,
+    "JPEGSubsampling": 0,
+    "PNGCompressLevel": 9,
+    "resample": "LANCZOS"
+  },
+  "images": [
+    {
+      "image": 0,
+      "mimeType": "image/png",
+      "roles": [
+        "normal-linear"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 4336797,
+      "runtimeBytes": 541106,
+      "sourceSha256": "81e0e7422de775a2dec9bd3b7d034113e6783199adc7b6c05877d77f20917a3e",
+      "runtimeSha256": "52b487ac32658413532ecd5857f5bf7a3c3a140cdf1a62be20f291b736bb58b7",
+      "normalRenormalized": true
+    },
+    {
+      "image": 1,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "baseColor-sRGB"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 2931246,
+      "runtimeBytes": 236419,
+      "sourceSha256": "6f6e1f5472be90d399191bc9de886414b1041f6a0981465d91fb80ebf0f282f9",
+      "runtimeSha256": "d9cc653704cd27355fb624f5f6e51268eb13a734afba8be51552d8f97e305654",
+      "normalRenormalized": false
+    },
+    {
+      "image": 2,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "metallicRoughness-linear"
+      ],
+      "sourceDimensions": [
+        4096,
+        4096
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 1738480,
+      "runtimeBytes": 198058,
+      "sourceSha256": "d2efe647a763313b321a08506a839f18875d344ea8c3c4a17ad3fe12de781815",
+      "runtimeSha256": "3cb5aa559ded2d973264d62524df1e29f5ed9f340bcf351511f6c2c74420e085",
+      "normalRenormalized": false
+    }
+  ],
+  "nonImageBufferViewsPreserved": [
+    {
+      "bufferView": 0,
+      "bytes": 129624,
+      "sha256": "317cdfc47036edd89925b7418e97a903f4d3b09253a3ab2fe806bd9a0a9bc4ac"
+    },
+    {
+      "bufferView": 1,
+      "bytes": 129624,
+      "sha256": "257e61d4ba75364574031f0b23ce6b2f6a1d0a613be2c9d9d56cf07108c18d70"
+    },
+    {
+      "bufferView": 2,
+      "bytes": 86416,
+      "sha256": "0101dfe1ca68656d05cb6d361b4b2906543ca00e58918cf89c035785304c1bf5"
+    },
+    {
+      "bufferView": 3,
+      "bytes": 43208,
+      "sha256": "d89946fe0c01ed31274b21353f5d8b7e8d2ec7e7efa30f6784f3ca5c3fbbd476"
+    },
+    {
+      "bufferView": 4,
+      "bytes": 172832,
+      "sha256": "e1f7c1b168b9a9be8838639802d6e856d1965e4104cbbd9f3ddcfb1b5372e629"
+    },
+    {
+      "bufferView": 5,
+      "bytes": 104046,
+      "sha256": "98e252e1f7ada912ea933d787c576de01950c13f6ac5cb8a01016e70f512c197"
+    },
+    {
+      "bufferView": 9,
+      "bytes": 2624,
+      "sha256": "cece7149782d48e9ad8cffa95f76a10eff724784b2e6c623c9e9fcccd4d23766"
+    }
+  ],
+  "jsonInvariantsPreserved": [
+    "asset",
+    "scenes",
+    "scene",
+    "nodes",
+    "meshes",
+    "accessors",
+    "materials",
+    "textures",
+    "samplers",
+    "skins",
+    "animations",
+    "extensionsUsed",
+    "extensionsRequired"
+  ],
+  "estimatedRGBA8WithMipmapsBytes": {
+    "source": 268435456,
+    "runtime": 16777216
+  },
+  "limitations": [
+    "Estimated uncompressed RGBA8+mipmaps only; actual renderer allocation requires runtime profiling.",
+    "Image resizing does not establish rendered PBR, collision, gameplay or Windows acceptance."
+  ],
+  "assetId": "CH-SHAO",
+  "converterSha256": "af81e6ea7ac3c5fe6df8d6a2a49dd5b5722a7c543ca66b0ee715aae6f8f87f8d"
+}

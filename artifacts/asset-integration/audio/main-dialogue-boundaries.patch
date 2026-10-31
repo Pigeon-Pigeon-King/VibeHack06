@@ -1,0 +1,22 @@
+--- a/src/main.ts
++++ b/src/main.ts
+@@ -528,7 +528,7 @@
+       : sim.scenario === 'epilogue' ? sim.actors.filter(a => a.id.startsWith('worker-') || a.id === 'supply-cart')
+       : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-'))
+       : sim.scenario === 'escort' ? [...escortPatients(sim), ...sim.actors.filter(a => a.id.startsWith('walker-'))] : sim.workers;
+-    const dialogue = this.sound.getDialoguePresentation();
++    const dialogue = this.sound.getDialoguePresentation({ text: m.subtitle, speaker: m.speaker, elapsed: m.elapsed, expiresAt: m.subtitleUntil });
+     const state: UiState = {
+       mode: this.mode, control: m.control, scenario: sim.scenario, scenarioName: LAYOUT[sim.scenario].name,
+       availableScenarios: ['northgate', 'prologue', 'handover', ...(import.meta.env.DEV ? CHAPTER_STAGES.map(stage => stage.scenario) : [])], phaseName: objective.phase,
+@@ -536,8 +536,8 @@
+       health: p.health, ammo: p.ammo, reserve: p.reserve, reload: p.reload > 0 ? 1 - p.reload / 2.1 : 0,
+       storyInjury: sim.scenario === 'rescue' && sim.has('rescue-zhou-wounded'),
+       workersSafe: evacuees.filter(a => a.safe).length, workerTotal: evacuees.length, elapsed: m.elapsed + (this.chapter?.elapsedBefore ?? 0), interaction: objective.interaction,
+-      presentationEpoch: this.presentationEpoch, subtitleTime: dialogue?.time ?? m.elapsed, subtitleRevision: dialogue?.until ?? m.subtitleUntil,
+-      subtitle: dialogue?.text ?? (m.elapsed < m.subtitleUntil ? m.subtitle : ''), speaker: dialogue?.speaker ?? m.speaker, checkpoint: m.checkpointLabel,
++      presentationEpoch: this.presentationEpoch, subtitleTime: this.sound.getDialogueTime(), subtitleRevision: dialogue?.until ?? this.sound.getDialogueTime(),
++      subtitle: dialogue?.text ?? '', speaker: dialogue?.speaker ?? '', checkpoint: m.checkpointLabel,
+       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, killFlash: sim.killFlash, hurtFlash: sim.hurtFlash,
+       blackout: history.blackout,
+       lowMotion: this.lowMotion, touchControls: this.input.touchEnabled, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,

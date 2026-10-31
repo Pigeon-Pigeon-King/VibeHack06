@@ -1,0 +1,126 @@
+{
+  "source": "/Users/penguin/VibeHack06/assets/source/hyper3d/ENV-LIGHTKIT-POLE/v1/base_basic_pbr.glb",
+  "runtime": "public/assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb",
+  "sourceSha256": "c2b66359af56e25609032fa2f0826d89436e1ce76c9d6003713ba9ce1ff83248",
+  "runtimeSha256": "afe2b14a3580fe5445f4cef5441acf9532a5b25c9f127236cfb3d6fa9e0f220d",
+  "sourceBytes": 2319412,
+  "runtimeBytes": 1393544,
+  "maxTextureEdge": 1024,
+  "encoding": {
+    "Pillow": "11.3.0",
+    "JPEGQuality": 90,
+    "JPEGSubsampling": 0,
+    "PNGCompressLevel": 9,
+    "resample": "LANCZOS"
+  },
+  "images": [
+    {
+      "image": 0,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "baseColor-sRGB"
+      ],
+      "sourceDimensions": [
+        2048,
+        2048
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 480725,
+      "runtimeBytes": 232204,
+      "sourceSha256": "bdfc5b93414dd38b4757ec71e31cfcd05f8885843d9d4e90a22d9f6c1451d980",
+      "runtimeSha256": "5b6e2643b58742da51bd41a566f496ff620cf7cc4225730065f0232923f72285",
+      "normalRenormalized": false
+    },
+    {
+      "image": 1,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "metallicRoughness-linear"
+      ],
+      "sourceDimensions": [
+        2048,
+        2048
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 576102,
+      "runtimeBytes": 326123,
+      "sourceSha256": "afcbe37cfb7d7b146cfa0e7b26a2e06eb2497e43f37af74bb316c4f74c2b3f4d",
+      "runtimeSha256": "fdac612363bdf484c430728280c07650fb305b1f6c65258d3ebb8e8327dd230c",
+      "normalRenormalized": false
+    },
+    {
+      "image": 2,
+      "mimeType": "image/jpeg",
+      "roles": [
+        "normal-linear"
+      ],
+      "sourceDimensions": [
+        2048,
+        2048
+      ],
+      "runtimeDimensions": [
+        1024,
+        1024
+      ],
+      "alphaPreserved": false,
+      "sourceBytes": 761448,
+      "runtimeBytes": 334083,
+      "sourceSha256": "4c2383f6af1abf9e355e12008d1270ee880d1cda8829538a343972c83e20dcee",
+      "runtimeSha256": "1c08e4369ab9c68cc7e73848750bbd4d8aa9976435abf1b1100c9c1dc9e1435c",
+      "normalRenormalized": true
+    }
+  ],
+  "nonImageBufferViewsPreserved": [
+    {
+      "bufferView": 0,
+      "bytes": 136020,
+      "sha256": "d090288a6b399433573aee4bff9717b6645f01febd01424b5759386bd019e963"
+    },
+    {
+      "bufferView": 1,
+      "bytes": 136020,
+      "sha256": "72b36af7e02d53994234f523edd38a64fce8268b79f2d29d12b4439c038e058a"
+    },
+    {
+      "bufferView": 2,
+      "bytes": 90680,
+      "sha256": "d34a3ac027c9d8f4a92e7df0fe6f72144913f0ec6d9e182502199fcf56aff257"
+    },
+    {
+      "bufferView": 3,
+      "bytes": 136488,
+      "sha256": "5bc451fb739681323e276cd8e0ece95c52b50d0644195685f7cbc4d8233ba946"
+    }
+  ],
+  "jsonInvariantsPreserved": [
+    "asset",
+    "scenes",
+    "scene",
+    "nodes",
+    "meshes",
+    "accessors",
+    "materials",
+    "textures",
+    "samplers",
+    "skins",
+    "animations",
+    "extensionsUsed",
+    "extensionsRequired"
+  ],
+  "estimatedRGBA8WithMipmapsBytes": {
+    "source": 67108864,
+    "runtime": 16777216
+  },
+  "limitations": [
+    "Estimated uncompressed RGBA8+mipmaps only; actual renderer allocation requires runtime profiling.",
+    "Image resizing does not establish rendered PBR, collision, gameplay or Windows acceptance."
+  ]
+}

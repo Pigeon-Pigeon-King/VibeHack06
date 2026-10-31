@@ -1,0 +1,79 @@
+{
+  "status": "PASS",
+  "scope": "public to dist byte match and component source archive reconstruction",
+  "files": [
+    {
+      "public": "public/licenses/WP-AK47/LICENSE",
+      "dist": "dist/licenses/WP-AK47/LICENSE",
+      "bytes": 1068,
+      "sha256": "6795e9bfe7d67b87c0233b4fca631435982341efadc55702af61cfb3a71d717e",
+      "equal": true
+    },
+    {
+      "public": "public/licenses/WP-AK47/NOTICE.md",
+      "dist": "dist/licenses/WP-AK47/NOTICE.md",
+      "bytes": 991,
+      "sha256": "5b2de4eeca4d18d8a682f9dfd43fd940432ced7e4b89b5d11c7294fc946eaf70",
+      "equal": true
+    },
+    {
+      "public": "public/licenses/WP-AK47/SOURCE_LICENSE.md",
+      "dist": "dist/licenses/WP-AK47/SOURCE_LICENSE.md",
+      "bytes": 6270,
+      "sha256": "2732d0d34c18bc4eb83248d9dff1226cac1892a0a0f682d3027d349fba08a959",
+      "equal": true
+    },
+    {
+      "public": "public/licenses/dependencies/Rapier.txt",
+      "dist": "dist/licenses/dependencies/Rapier.txt",
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519",
+      "equal": true
+    },
+    {
+      "public": "public/licenses/dependencies/Three.txt",
+      "dist": "dist/licenses/dependencies/Three.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "equal": true
+    },
+    {
+      "public": "public/licenses/dependencies/manifest.json",
+      "dist": "dist/licenses/dependencies/manifest.json",
+      "bytes": 481,
+      "sha256": "19462a6cd140fd1808828571697687b84f941b7b3ce920b2ea6cffe7b99ad648",
+      "equal": true
+    },
+    {
+      "public": "public/licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt",
+      "dist": "dist/licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt",
+      "bytes": 35147,
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "equal": true
+    },
+    {
+      "public": "public/licenses/reused-aircraft/f35b/NOTICE.md",
+      "dist": "dist/licenses/reused-aircraft/f35b/NOTICE.md",
+      "bytes": 737,
+      "sha256": "0543f6640095ff1f277b68f65e7145a8c6fcf446c36a2d5ffb6aab9af1106a2d",
+      "equal": true
+    },
+    {
+      "public": "public/models/weapons/ak47-world-r1.glb",
+      "dist": "dist/models/weapons/ak47-world-r1.glb",
+      "bytes": 2046524,
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+      "equal": true
+    },
+    {
+      "public": "public/sources/reused-aircraft/f35b-ganymede-source.zip",
+      "dist": "dist/sources/reused-aircraft/f35b-ganymede-source.zip",
+      "bytes": 1071911,
+      "sha256": "2309ebd2b9017be78ccdc159ce03388598203d8d059f1ac6649593dcb9724b48",
+      "equal": true
+    }
+  ],
+  "sourceBundleEntries": 18,
+  "windowsExecution": "NOT_RUN",
+  "published": false
+}

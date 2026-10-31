@@ -15,6 +15,18 @@ export interface ChapterBridge {
   readonly cues: readonly TransitionCue[];
 }
 
+/** The new-campaign introduction has no preceding chapter or inherited facts. */
+export interface CampaignOpening {
+  readonly id: string;
+  readonly from: null;
+  readonly to: 'S01';
+  readonly heading: string;
+  readonly kicker: string;
+  readonly cues: readonly TransitionCue[];
+}
+
+export type TransitionScript = ChapterBridge | CampaignOpening;
+
 export interface NarrationPlayback {
   /** Settle even when muted; unavailable covers missing, blocked or failed audio. */
   readonly finished: Promise<'ended' | 'unavailable'>;
@@ -25,9 +37,9 @@ export interface NarrationPlayback {
 
 export interface TransitionPorts<T> {
   /** Prepare without activating the next chapter or changing the current save. */
-  preload(bridge: ChapterBridge, signal: AbortSignal, onProgress: (fraction: number) => void): Promise<T>;
+  preload(bridge: TransitionScript, signal: AbortSignal, onProgress: (fraction: number) => void): Promise<T>;
   /** Synchronous, atomic ownership transfer. A throw means no activation or save occurred. */
-  enter(prepared: T, bridge: ChapterBridge): void;
+  enter(prepared: T, bridge: TransitionScript): void;
   /** Release controller-owned preparations, including late results after cancellation. */
   release(prepared: T): void;
   readonly narration?: {
@@ -47,7 +59,7 @@ export interface TransitionError {
 
 export interface TransitionSnapshot {
   readonly phase: TransitionPhase;
-  readonly bridge: ChapterBridge | null;
+  readonly bridge: TransitionScript | null;
   readonly paused: boolean;
   readonly loadState: TransitionLoadState;
   /** 0..1 when supplied by the loader; null means indeterminate. */
