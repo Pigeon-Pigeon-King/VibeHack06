@@ -153,15 +153,16 @@ export function createCharacter(role: CharacterRole): CharacterModel {
     if (object instanceof Mesh) object.castShadow = ['torso-and-equipment', 'head-face-and-headwear', 'leg-knee-and-boot'].includes(object.name);
   });
   let disposed = false;
-  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false, gesture = 0, lookAway = 0, care = false }) => {
+  const setPose: CharacterModel['setPose'] = ({ walk, aiming, down, carrying, armed = military, kneeling = false, crouched = false, gesture = 0, lookAway = 0, care = false }) => {
     const stride = Math.sin(walk) * 0.48;
-    body.position.y = down ? 0.24 : kneeling ? -0.36 : Math.abs(Math.sin(walk * 2)) * 0.018;
+    body.position.y = down ? 0.24 : crouched ? -0.68 : kneeling ? -0.36 : Math.abs(Math.sin(walk * 2)) * 0.018;
     body.rotation.set(down ? Math.PI / 2 : 0, 0, 0);
     head.rotation.x = down ? 0.12 : aiming ? -0.055 : 0;
     head.rotation.y = down ? 0 : lookAway;
     for (let i = 0; i < 2; i++) {
       const sign = i === 0 ? 1 : -1;
-      legs[i].rotation.x = down ? 0.05 * sign : kneeling ? 1.03 : stride * sign;
+      legs[i].position.y = hip + (crouched && !down ? 0.28 : 0);
+      legs[i].rotation.x = down ? 0.05 * sign : crouched ? 1.25 + stride * sign * 0.1 : kneeling ? 1.03 : stride * sign;
       arms[i].rotation.set(down ? 0.35 * sign : carrying ? -1.40 : aiming && armed ? -1.18 : -stride * sign * 0.7, 0, down ? 0.25 * sign : aiming || carrying ? sign * 0.20 : sign * 0.035);
       elbows[i].rotation.x = carrying ? -0.10 : aiming && armed ? -0.40 : -0.06;
     }
@@ -174,7 +175,7 @@ export function createCharacter(role: CharacterRole): CharacterModel {
       arms.forEach((arm, i) => { arm.rotation.set(-0.56, 0, i ? -0.30 : 0.30); elbows[i].rotation.x = -0.04; });
     }
     if (weapon) {
-      weapon.root.position.set(0.14, aiming ? 1.10 : 1.00, aiming ? 0.30 : 0.24);
+      weapon.root.position.set(0.14, aiming ? 1.35 : 1.00, aiming ? 0.30 : 0.24);
       weapon.root.rotation.x = aiming ? 0 : -0.66;
       weapon.root.visible = armed && !carrying;
     }

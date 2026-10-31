@@ -41,6 +41,7 @@ function carriedSupply(): Group {
 }
 
 class Game {
+  private readonly aiDiagnostics = import.meta.env.DEV && new URLSearchParams(location.search).has('ai-debug');
   private readonly scene = new Scene();
   private readonly camera = new PerspectiveCamera(75, innerWidth / innerHeight, 0.045, 1000);
   private readonly renderer = new WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
@@ -304,7 +305,7 @@ class Game {
       }
       const stagedWalker = active && m.control === 'staged' && (sim.scenario === 'childhood' || sim.scenario === 'mainhall')
         && ['father', 'evacuator', 'daughter', 'zhao', 'shao'].includes(actor.id);
-      item.model.setPose({ walk: actor.goals.length || stagedWalker ? actor.walk : 0, aiming: actor.aiming, down: actor.down,
+      item.model.setPose({ walk: actor.goals.length || actor.combat?.moving || stagedWalker ? actor.walk : 0, aiming: actor.aiming, down: actor.down,
         armed: actor.role === 'enemy' || actor.role === 'ally' && sim.scenario !== 'transfer'
           && !(sim.scenario === 'flank' && (m.control !== 'combat' || actor.id === 'meng'))
           && !(sim.scenario === 'escort' && m.control !== 'combat')
@@ -314,6 +315,7 @@ class Game {
           && !(sim.scenario === 'mainhall' && actor.id === 'zhao' && m.phase >= 4)
           || actor.role === 'opponent' && (m.phase > 4 || m.phaseTime >= 18)
           || actor.id === 'father' && m.facts.includes('father-rifle-collected') && !actor.down,
+        crouched: actor.combat?.crouched,
         kneeling: actor.id === 'zhao' && sim.scenario === 'mainhall' && m.phase === 4 && m.phaseTime >= 7 && m.phaseTime < 20
           || actor.id === 'father' && sim.scenario === 'childhood' && m.phase === 3 && m.phaseTime >= 4 && m.phaseTime < 7
           || actor.id === 'zheng' && seated && !actor.goals.length && m.phaseTime < 14,
@@ -341,7 +343,9 @@ class Game {
     this.marker.position.set(...objective.point);
     this.feedback.update(active ? dt : 0, sim.ballistics.projectiles);
     const diagnostics = import.meta.env.DEV ? (this.qaImported ? '检查点恢复 · 局部视觉验收\n' : '') + `阶段 ${m.phase} · ${p.name} · 坐标 ${p.position.map(v => v.toFixed(1)).join(', ')} · ${Math.round(this.fps)} FPS\n` +
-      `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}` : undefined;
+      `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}`
+      + (this.aiDiagnostics ? '\n' + sim.actors.filter(a => !a.down && a.combat).slice().sort((a, b) => Number(b.role === 'ally') - Number(a.role === 'ally')).slice(0, 4)
+        .map(a => `${a.id} ${a.combat!.phase} ${a.position[0].toFixed(1)},${a.position[2].toFixed(1)} ${a.combat!.cover?.solid ?? '无掩体'}`).join('\n') : '') : undefined;
     const evacuees = sim.scenario === 'transfer' ? sim.actors.filter(a => a.role === 'cart')
       : sim.scenario === 'epilogue' ? sim.actors.filter(a => a.id.startsWith('worker-') || a.id === 'supply-cart')
       : sim.scenario === 'flank' ? sim.actors.filter(a => a.role === 'worker' || a.role === 'cart' || a.id.startsWith('walker-'))
@@ -354,7 +358,7 @@ class Game {
       storyInjury: sim.scenario === 'rescue' && sim.has('rescue-zhou-wounded'),
       workersSafe: evacuees.filter(a => a.safe).length, workerTotal: evacuees.length, elapsed: m.elapsed + (this.chapter?.elapsedBefore ?? 0), interaction: objective.interaction,
       subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
-      hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, hurtFlash: sim.hurtFlash,
+      hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, killFlash: sim.killFlash, hurtFlash: sim.hurtFlash,
       lowMotion: this.lowMotion, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,
       chapter: Boolean(this.chapter),
       continueLabel: this.savedCampaign ? `继续 · ${stageFor(this.savedCampaign.snapshot.mission.scenario)?.title ?? '第一关'}` : undefined,

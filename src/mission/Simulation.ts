@@ -23,12 +23,14 @@ import { Physics, FIXED_DT } from '../runtime/Physics';
 import { Random } from '../runtime/random';
 import { Ballistics } from '../combat/Ballistics';
 import { Navigation, type NavBounds } from '../actors/Navigation';
+import { CombatTactics, COVER_HEIGHT, type CombatState } from '../actors/CombatTactics';
 import type { Intent } from '../player/Input';
 
 export interface Actor {
   id: string; name: string; role: CharacterRole; position: Vec3; health: number; yaw: number;
   goals: Vec3[]; path: Vec3[]; walk: number; aiming: boolean; aimTime: number;
   cooldown: number; safe: boolean; released: boolean; down: boolean;
+  combat?: CombatState;
 }
 export interface Player {
   position: Vec3; yaw: number; pitch: number; health: number; ammo: number; reserve: number;
@@ -60,10 +62,11 @@ export class Simulation {
   mission: Mission;
   checkpoint!: Snapshot;
   events: GameEvent[] = [];
-  hits = 0; kills = 0; hitFlash = 0; hurtFlash = 0;
+  hits = 0; kills = 0; hitFlash = 0; killFlash = 0; hurtFlash = 0;
   private checkpointPending = false;
   private readonly navBounds?: NavBounds;
   private readonly pathRetry = new Map<string, number>();
+  private readonly tactics = new CombatTactics();
 
   constructor(readonly scenario: ScenarioId, readonly solids: SolidSpec[], saved?: Snapshot, priorFacts: readonly string[] = []) {
     this.physics = new Physics(solids);
@@ -91,7 +94,7 @@ export class Simulation {
     this.physics.add('player', this.player.position, this.player.height);
     for (const actor of this.actors) if (!actor.down && !(scenario === 'escort' && actor.role === 'enemy' && actor.safe)) {
       if (actor.role === 'cart') this.physics.addCart(actor.id, actor.position, actor.yaw);
-      else this.physics.add(actor.id, actor.position, actor.role === 'child' ? 1.1 : 1.8);
+      else this.physics.add(actor.id, actor.position, actor.role === 'child' ? 1.1 : actor.combat?.crouched ? COVER_HEIGHT : 1.8);
     }
     this.syncTopology(false);
     this.physics.step();
@@ -160,7 +163,37 @@ export class Simulation {
     actor.goals = [east ? [14, 0, -2] : [this.random.between(-9, 9), 0, this.random.between(-15, -9)]];
     if (addBody) this.physics.add(actor.id, actor.position);
   }
-  route(actor: Actor, goals: Vec3[]): void { actor.goals = clone(goals); actor.path = []; actor.released = true; }
+  route(actor: Actor, goals: Vec3[]): void {
+    this.clearCombat(actor);
+    actor.goals = clone(goals); actor.path = []; actor.released = true;
+  }
+  private clearCombat(actor: Actor): void {
+    if (!actor.combat) return;
+    if ((actor.role === 'ally' || actor.role === 'enemy') && this.physics.bodies.has(actor.id)) this.physics.setHeight(actor.id, 1.8);
+    delete actor.combat;
+  }
+  private actorEye(actor: Actor): Vec3 { return eye(actor.position, this.physics.bodies.get(actor.id)?.height ?? 1.8); }
+  /** Narrative/arrival posts retain their real position; unrestricted defenders can bound within 8 m. */
+  private combatLeash(actor: Actor): number {
+    const p = this.mission.phase;
+    if (actor.role === 'enemy') return 8;
+    if (this.scenario === 'frontgate' && (p === 3 || p === 1 && !this.exposedThreat(FRONTGATE.weighB, 52))
+      || this.scenario === 'relief' && (p <= 3 || actor.id === 'meng' && p >= 9)
+      || this.scenario === 'escort' && p >= 14 || this.scenario === 'rescue' && actor.id === 'meng'
+      || this.scenario === 'flank' && [3, 7].includes(p)
+      || this.scenario === 'northgate' && p === 3) return 0; // mandatory exact arrival, no tactical offset
+    return this.scenario === 'escort' ? 6 : 14;
+  }
+  private canFight(actor: Actor, covering: boolean): boolean {
+    if (actor.role === 'enemy') return this.mission.control === 'combat';
+    if (actor.role !== 'ally' || this.mission.control !== 'combat' && !covering) return false;
+    if (this.scenario === 'flank' && actor.id === 'meng') return false;
+    if (this.scenario === 'relief' && actor.id === 'zheng' && this.mission.phase >= 6) return false;
+    if (this.scenario === 'rescue') return actor.id === 'zheng'
+      ? this.has('rescue-cover-requested') && !this.has('rescue-zheng-approaching')
+      : false; // Meng follows the authored withdrawal/injury sequence; Q assigns Zheng to cover.
+    return true;
+  }
   private syncTopology(clearPaths = true): void {
     if (!this.physics.applyFacts(this.mission.facts)) return;
     this.navigation = new Navigation(this.solids.filter(solid => !solid.openFact || !this.has(solid.openFact)), this.navBounds);
@@ -179,11 +212,11 @@ export class Simulation {
   }
   exposedThreat(point: Vec3, radius: number): boolean {
     return this.aliveEnemies.some(actor => distance(actor.position, point) < radius
-      && !this.physics.trace(eye(point), eye(actor.position), undefined, true));
+      && !this.physics.trace(eye(point), this.actorEye(actor), undefined, true));
   }
   private workerThreatened(actor: Actor): boolean {
     return this.aliveEnemies.some(enemy => distance(actor.position, enemy.position) < 8
-      && !this.physics.trace(eye(actor.position), eye(enemy.position), actor.id, true));
+      && !this.physics.trace(eye(actor.position), this.actorEye(enemy), actor.id, true));
   }
   fact(id: string): void { if (!this.mission.facts.includes(id)) this.mission.facts.push(id); }
   has(id: string): boolean { return this.mission.facts.includes(id); }
@@ -218,6 +251,7 @@ export class Simulation {
     const p = this.player, m = this.mission;
     m.elapsed += dt; m.phaseTime += dt;
     this.hitFlash = Math.max(0, this.hitFlash - dt * 5);
+    this.killFlash = Math.max(0, this.killFlash - dt * 3);
     this.hurtFlash = Math.max(0, this.hurtFlash - dt * 2);
     p.recoil *= Math.exp(-dt * 12);
     p.yaw = intent.yaw; p.pitch = intent.pitch;
@@ -288,7 +322,10 @@ export class Simulation {
             this.fact('rescue-cover-hit'); actor.aimTime = 0; actor.cooldown = Math.max(actor.cooldown, 1.8);
           }
           if (playerShot) { this.hits++; this.hitFlash = 1; this.events.push({ type: 'hit' }); }
-          if (actor.health <= 0) { actor.down = true; actor.aiming = false; this.physics.remove(actor.id); if (playerShot) this.kills++; }
+          if (actor.health <= 0) {
+            this.clearCombat(actor); actor.down = true; actor.aiming = false; this.physics.remove(actor.id);
+            if (playerShot) { this.kills++; this.killFlash = 1; }
+          }
         } else if (actor && actor.role !== 'enemy' && projectile.owner === 'player') {
           this.say(this.scenario === 'mainhall' ? '赵启明' : '郑铎', '停火，自己人！', 2);
         }
@@ -306,8 +343,9 @@ export class Simulation {
   private updateActors(dt: number): void {
     const m = this.mission;
     const closest = this.aliveEnemies.slice().sort((a, b) => distance(a.position, this.player.position) - distance(b.position, this.player.position)).slice(0, 2);
+    const occupants = [...this.actors, { id: 'player', position: this.player.position }];
     for (const a of this.actors) {
-      if (a.down || !this.physics.bodies.has(a.id)) continue;
+      if (a.down || !this.physics.bodies.has(a.id)) { this.clearCombat(a); continue; }
       let speed = a.role === 'enemy' ? 1.5 : a.role === 'cart' ? this.scenario === 'escort' ? 1.7 : 1.25 : 2.1;
       if (this.scenario === 'rescue' && a.role !== 'enemy') {
         if (m.phase === 9) speed = 5.5;
@@ -318,43 +356,24 @@ export class Simulation {
         && distance(this.player.position, EPILOGUE.holdDoor) > 1.3) speed = 0;
       a.cooldown = Math.max(0, a.cooldown - dt);
       a.aiming = false;
-      if (a.role === 'enemy') {
-        const visible = distance(a.position, this.player.position) < 52 && !this.physics.trace(eye(a.position), this.playerEye, a.id, true);
-        if (visible && m.control === 'combat' && closest.includes(a)) {
-          a.aimTime += dt; a.aiming = true;
-          a.yaw = Math.atan2(this.player.position[0] - a.position[0], this.player.position[2] - a.position[2]);
-          if (a.aimTime > 0.8 && a.cooldown === 0) {
-            const from = eye(a.position), target = this.playerEye;
-            const range = Math.max(1, distance(a.position, this.player.position));
-            const spread = range * 0.03;
-            this.ballistics.fire(a.id, from, [target[0] - from[0] + this.random.between(-spread, spread),
-              target[1] - from[1] + this.random.between(-spread, spread), target[2] - from[2] + this.random.between(-spread, spread)], 9, 360);
-            a.cooldown = this.random.between(0.8, 1.5);
-            this.events.push({ type: 'shot', position: from, enemy: true });
-          }
-          speed = 0;
-        } else a.aimTime = 0;
-      }
       if (a.role === 'worker' && a.released && !a.safe && this.workerThreatened(a)) speed = 0;
       const covering = this.scenario === 'relief' && this.has('relief-handover-complete') && a.id !== 'zheng';
-      if (a.role === 'ally' && (a.id !== 'meng' || this.scenario === 'escort' || this.scenario === 'relief') && !a.goals.length
-        && (m.control === 'combat' || covering) && (this.scenario === 'mainhall' || this.scenario === 'frontgate' || this.scenario === 'flank' || this.scenario === 'escort' || this.scenario === 'relief'
-          || this.scenario === 'rescue' && a.id === 'zheng' && this.has('rescue-cover-requested') && !this.has('rescue-zheng-approaching'))) {
-        const target = this.aliveEnemies.find(enemy => distance(a.position, enemy.position) < 48
-          && !this.physics.trace(eye(a.position), eye(enemy.position), a.id, true));
-        if (target) {
-          a.aiming = true; a.yaw = Math.atan2(target.position[0] - a.position[0], target.position[2] - a.position[2]);
-          if (a.cooldown === 0) {
-            const from = eye(a.position), to = eye(target.position);
-            this.ballistics.fire(a.id, from, [to[0] - from[0] + this.random.between(-0.8, 0.8),
-              to[1] - from[1], to[2] - from[2] + this.random.between(-0.8, 0.8)], 17, 420);
-            a.cooldown = this.random.between(1.6, 2.8);
-            this.events.push({ type: 'shot', position: from });
-            if (covering) this.fact('relief-cover-fired');
-            if (this.scenario === 'rescue') this.fact('rescue-cover-fired');
-          }
-        }
-      }
+      const combat = this.canFight(a, covering);
+      const targets = a.role === 'enemy' ? [{ id: 'player', position: this.player.position, point: this.playerEye }]
+        : this.aliveEnemies.map(enemy => ({ id: enemy.id, position: enemy.position, point: this.actorEye(enemy) }));
+      const visible = combat ? targets.filter(target => distance(a.position, target.position) < (a.role === 'enemy' ? 52 : 48)
+        && !this.physics.trace(this.actorEye(a), target.point, a.id, true))
+        .sort((x, y) => (x.id === a.combat?.targetId ? -1 : y.id === a.combat?.targetId ? 1
+          : distance(a.position, x.position) - distance(a.position, y.position)))[0] : undefined;
+      // A mission route always wins, including enemy ingress/retreat. Fire no longer freezes that route.
+      if (!combat || a.goals.length) this.clearCombat(a);
+      const tactical = combat && !a.goals.length ? this.tactics.update(a, visible,
+        targets.some(target => target.id === a.combat?.targetId), {
+          physics: this.physics, navigation: this.navigation, actors: occupants,
+          now: m.elapsed, dt, leash: this.combatLeash(a), speed: a.role === 'enemy' ? 1.9 : 2.1,
+          // Q promises fire once Zheng reaches the side post, before selecting a new bound.
+          openingFireWindow: this.scenario === 'rescue' && a.id === 'zheng' ? 1.2 : 0,
+        }) : undefined;
       let vx = 0, vz = 0;
       if (a.goals.length && speed) {
         const goal = a.goals[0];
@@ -384,6 +403,34 @@ export class Simulation {
           }
         }
       }
+      if (tactical) {
+        vx = tactical.vx; vz = tactical.vz;
+        if (vx || vz) { a.yaw = Math.atan2(vx, vz); a.walk += Math.hypot(vx, vz) * dt * 4; }
+      }
+      const mayFire = combat && visible && (tactical?.canFire ?? true) && (a.role !== 'enemy' || closest.includes(a))
+        && !(this.scenario === 'rescue' && a.role === 'ally' && a.goals.length);
+      const from: Vec3 = [a.position[0], a.position[1] + (this.physics.bodies.get(a.id)?.height ?? 1.8) - 0.42, a.position[2]];
+      // Both the eye and the lower weapon origin need a real clear line. Hidden/returning actors cannot shoot.
+      if (mayFire && !this.physics.trace(from, visible.point, a.id, true)) {
+        const obstruction = this.physics.trace(from, visible.point, a.id);
+        const friendlyInLine = obstruction && obstruction.id !== visible.id && !obstruction.id.startsWith('solid:')
+          && (a.role === 'ally' ? !this.actors.some(other => other.id === obstruction.id && other.role === 'enemy')
+            : this.actors.some(other => other.id === obstruction.id && other.role === 'enemy'));
+        a.aimTime += dt; a.aiming = true;
+        a.yaw = Math.atan2(visible.point[0] - a.position[0], visible.point[2] - a.position[2]);
+        if (!friendlyInLine && a.aimTime > (a.role === 'enemy' ? 0.8 : 0.35) && a.cooldown === 0) {
+          const enemy = a.role === 'enemy', range = Math.max(1, distance(a.position, visible.point));
+          const spread = enemy ? range * 0.03 : 0.12 + range * 0.003;
+          const to = visible.point;
+          this.ballistics.fire(a.id, from, [to[0] - from[0] + this.random.between(-spread, spread),
+            to[1] - from[1] + (enemy ? this.random.between(-spread, spread) : 0),
+            to[2] - from[2] + this.random.between(-spread, spread)], enemy ? 9 : 17, enemy ? 360 : 420);
+          a.cooldown = this.random.between(enemy ? 0.8 : 1.6, enemy ? 1.5 : 2.8);
+          this.events.push({ type: 'shot', position: from, enemy });
+          if (a.role === 'ally' && covering) this.fact('relief-cover-fired');
+          if (a.role === 'ally' && this.scenario === 'rescue') this.fact('rescue-cover-fired');
+        }
+      } else a.aimTime = 0;
       if (a.role === 'cart' && (vx || vz)) {
         const length = Math.hypot(vx, vz), dx = vx / length, dz = vz / length;
         const queueAhead = this.actors.some(other => {

@@ -21,7 +21,7 @@ export interface EnvironmentModel {
 }
 export interface CharacterModel {
   root: Group;
-  setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean; gesture?: number; lookAway?: number;
+  setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean; crouched?: boolean; gesture?: number; lookAway?: number;
     occupied?: boolean; damaged?: boolean; patientOffset?: Vec3; care?: boolean; cargo?: boolean; orderly?: boolean }): void;
   dispose(): void;
 }
@@ -57,6 +57,7 @@ export interface UiState {
   kills: number;
   ads: boolean;
   hitFlash: number;
+  killFlash?: number;
   hurtFlash: number;
   lowMotion: boolean;
   muted: boolean;

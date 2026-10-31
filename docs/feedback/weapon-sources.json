@@ -1,0 +1,1026 @@
+{
+  "schema_version": 1,
+  "checked_at": "2026-10-31",
+  "project": "重返木卫三",
+  "purpose": "FB-004 成熟武器来源筛选；不表示资产已接入或武器功能已完成。",
+  "scope": {
+    "github_commits_pinned": true,
+    "upstream_repository_scripts_executed": false,
+    "project_runtime_assets_added": false,
+    "runtime_code_changed": false,
+    "paid_or_authenticated_actions": false,
+    "temporary_inspection_directory": "/tmp/ganymede-weapon-research",
+    "temporary_directory_required_at_runtime": false,
+    "verification_limits": [
+      "未进行本作 Three.js 导入、近景、ADS 或动作验收",
+      "未进行 Windows 包验收",
+      "公开平台元数据与本机测量分开记录",
+      "未找到表示本轮检索未确认，不表示互联网不存在该型号"
+    ]
+  },
+  "repositories": [
+    {
+      "id": "steel",
+      "repository": "AetherRadar/operation-steel-tide",
+      "commit": "7ef7b539af1e0166e1d2735dc0ba200a08ba6492",
+      "tree_api_url": "https://api.github.com/repos/AetherRadar/operation-steel-tide/git/trees/7ef7b539af1e0166e1d2735dc0ba200a08ba6492?recursive=1",
+      "tree_truncated": false,
+      "tree_entries": 2015
+    },
+    {
+      "id": "collection",
+      "repository": "AsmundSchei/WeaponCollection",
+      "commit": "a3fd6b507230a7a8b4ecc38beb05caffc58d16f0",
+      "tree_api_url": "https://api.github.com/repos/AsmundSchei/WeaponCollection/git/trees/a3fd6b507230a7a8b4ecc38beb05caffc58d16f0?recursive=1",
+      "tree_truncated": false,
+      "tree_entries": 558
+    },
+    {
+      "id": "flat",
+      "repository": "petroulacl/fps-asset-kit",
+      "commit": "a19b7458a593598211c95ec46ef4eb4b6d1f94d7",
+      "tree_api_url": "https://api.github.com/repos/petroulacl/fps-asset-kit/git/trees/a19b7458a593598211c95ec46ef4eb4b6d1f94d7?recursive=1",
+      "tree_truncated": false,
+      "tree_entries": 509
+    },
+    {
+      "id": "deeming",
+      "repository": "deeming-games/unity-fps-asset",
+      "commit": "e0974630b914d9ecb6e31e726039cceaa69b9610",
+      "tree_api_url": "https://api.github.com/repos/deeming-games/unity-fps-asset/git/trees/e0974630b914d9ecb6e31e726039cceaa69b9610?recursive=1",
+      "tree_truncated": false,
+      "tree_entries": 329
+    },
+    {
+      "id": "team6",
+      "repository": "tldbs0420/Team_6-GameSoftware_2025",
+      "commit": "5e0fee31300fc7481b6cd2473e3c600977c157e6",
+      "tree_api_url": "https://api.github.com/repos/tldbs0420/Team_6-GameSoftware_2025/git/trees/5e0fee31300fc7481b6cd2473e3c600977c157e6?recursive=1",
+      "tree_truncated": false,
+      "tree_entries": 10830
+    },
+    {
+      "id": "hardlines",
+      "repository": "yegors/hard-lines",
+      "commit": "4a3de089a6be0a8000c130123ac7108736d1d1a9",
+      "tree_api_url": "https://api.github.com/repos/yegors/hard-lines/git/trees/4a3de089a6be0a8000c130123ac7108736d1d1a9?recursive=1",
+      "tree_truncated": false,
+      "tree_entries": 893
+    }
+  ],
+  "requested_models": [
+    {
+      "model": "AK-47",
+      "candidate_ids": [
+        "github-steel-ak47"
+      ],
+      "status": "priority_adaptation_candidate"
+    },
+    {
+      "model": "HK416",
+      "candidate_ids": [
+        "github-collection-hk416",
+        "github-hardlines-hk416"
+      ],
+      "status": "github_candidates_deferred",
+      "original_fallback": "original-hk416-r4m"
+    },
+    {
+      "model": "SVD / Dragunov",
+      "candidate_ids": [],
+      "status": "no_verified_exact_github_candidate",
+      "original_fallback": "original-tabasco-svd"
+    },
+    {
+      "model": "FAL",
+      "candidate_ids": [],
+      "status": "no_verified_exact_github_candidate",
+      "original_fallback": "original-fal-notcplkerry"
+    },
+    {
+      "model": "MP7",
+      "candidate_ids": [
+        "github-collection-mp7"
+      ],
+      "status": "github_candidate_deferred",
+      "original_fallback": "original-mp7-steve-henry"
+    },
+    {
+      "model": "蝎式",
+      "variant_unresolved": [
+        "vz.61",
+        "Scorpion EVO"
+      ],
+      "candidate_ids": [],
+      "status": "no_verified_exact_github_candidate",
+      "original_fallback": "original-skorpion-kutejnikov"
+    },
+    {
+      "model": "Uzi",
+      "candidate_ids": [
+        "github-team6-uzi"
+      ],
+      "status": "github_combined_asset_deferred",
+      "original_fallback": "original-uzi-gintoki"
+    },
+    {
+      "model": "PTRD-41",
+      "priority": "future_candidate",
+      "candidate_ids": [],
+      "status": "no_verified_exact_github_candidate",
+      "original_fallback": "original-ptrd-goldbergr"
+    }
+  ],
+  "github_candidates": [
+    {
+      "id": "github-steel-ak47",
+      "requested_model": "AK-47",
+      "repository_id": "steel",
+      "decision": "priority_adaptation_candidate",
+      "decision_reason": "原作者许可、适配许可、固定文件和结构均可追溯；未完成本作第一人称或运行验收。",
+      "files": [
+        {
+          "path": "assets/models/steel_tide_ak74/ak47_reloadable_world.glb",
+          "url": "https://github.com/AetherRadar/operation-steel-tide/blob/7ef7b539af1e0166e1d2735dc0ba200a08ba6492/assets/models/steel_tide_ak74/ak47_reloadable_world.glb",
+          "bytes": 2046524,
+          "git_blob_sha1": "350714a533e6e1596a8643af44ad669e3e0745d3",
+          "format": "glb"
+        },
+        {
+          "path": "assets/models/steel_tide_ak74/ak47_reloadable_fp.glb",
+          "url": "https://github.com/AetherRadar/operation-steel-tide/blob/7ef7b539af1e0166e1d2735dc0ba200a08ba6492/assets/models/steel_tide_ak74/ak47_reloadable_fp.glb",
+          "bytes": 3604612,
+          "git_blob_sha1": "2f4ce4d5cffb8f964305324f42d0158a123d1b6d",
+          "format": "glb"
+        }
+      ],
+      "editable_source": {
+        "path": "source_art/reloadable_weapons/ak47_reloadable.blend",
+        "url": "https://github.com/AetherRadar/operation-steel-tide/blob/7ef7b539af1e0166e1d2735dc0ba200a08ba6492/source_art/reloadable_weapons/ak47_reloadable.blend",
+        "bytes": 7994357,
+        "git_blob_sha1": "7893624e57944b84b57ef31669e8ae00a9c4e0a1",
+        "format": "blend"
+      },
+      "license": {
+        "geometry": "CC0-1.0",
+        "original_author": "taradavies",
+        "original_url": "https://opengameart.org/content/ak-47-1",
+        "original_download_url": "https://opengameart.org/sites/default/files/ak47.blend",
+        "adaptation_author": "AetherRadar / Operation Steel Tide",
+        "new_textures_and_build_code": "MIT",
+        "asset_license_url": "https://github.com/AetherRadar/operation-steel-tide/blob/7ef7b539af1e0166e1d2735dc0ba200a08ba6492/assets/models/steel_tide_ak74/LICENSE.md",
+        "provenance_url": "https://github.com/AetherRadar/operation-steel-tide/blob/7ef7b539af1e0166e1d2735dc0ba200a08ba6492/source_art/third_party/taradavies_ak47/LICENSE_EVIDENCE.md",
+        "root_license_url": "https://github.com/AetherRadar/operation-steel-tide/blob/7ef7b539af1e0166e1d2735dc0ba200a08ba6492/LICENSE",
+        "status": "original_page_and_asset_scoped_statement_checked",
+        "scope_note": "上游明确保留原几何 CC0，源文件无来源的木纹/HDR 被移除，新制纹理及构建脚本为 MIT；未运行上游重建脚本。"
+      },
+      "inspection": {
+        "world": {
+          "id": "ak47-world",
+          "bytes": 2046524,
+          "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+          "git_blob_sha1": "350714a533e6e1596a8643af44ad669e3e0745d3",
+          "unique_mesh_triangles": 24488,
+          "node_instance_triangles_all": 28870,
+          "meshes": 11,
+          "materials": 6,
+          "images": 6,
+          "external_uris": [],
+          "skins": 0,
+          "animations": [],
+          "nodes": [
+            "BoltHardwareGeometry",
+            "ChargingHandleGeometry",
+            "ChargingHandle",
+            "EjectionPort",
+            "Foregrip",
+            "FrontIronGeometry",
+            "FrontIronSight",
+            "FurnitureGeometry",
+            "MagazineGeometry",
+            "MagazineGrip",
+            "Magazine",
+            "MuzzleDeviceTip",
+            "MuzzleDevice",
+            "OpticReticleAnchor",
+            "OpticMount",
+            "OpticRailAdapterGeometry",
+            "OpticRailContact",
+            "RearIronGeometry",
+            "RearIronSight",
+            "ReceiverGeometry",
+            "SpareMagazineGeometry",
+            "SpareMagazineGrip",
+            "SpareMagazine",
+            "StockButtpadGeometry",
+            "StockWoodGeometry",
+            "Stock",
+            "SuppressorTip",
+            "Suppressor",
+            "WeaponBodyGeometry",
+            "SteelTideAK47"
+          ],
+          "primitive_modes": [
+            4
+          ]
+        },
+        "first_person": {
+          "id": "ak47-fp",
+          "bytes": 3604612,
+          "sha256": "54d719c39b30963b5e52294e8601ee203f1eab607ba7e4da0ad70c6da43406e2",
+          "unique_mesh_triangles": 97372,
+          "node_instance_triangles_all": 114900,
+          "meshes": 11,
+          "materials": 6,
+          "images": 6,
+          "external_uris": [],
+          "skins": 0,
+          "joints_per_skin": [],
+          "animations": [],
+          "nodes": [
+            "BoltHardwareGeometry",
+            "ChargingHandleGeometry",
+            "ChargingHandle",
+            "EjectionPort",
+            "Foregrip",
+            "FrontIronGeometry",
+            "FrontIronSight",
+            "FurnitureGeometry",
+            "MagazineGeometry",
+            "MagazineGrip",
+            "Magazine",
+            "MuzzleDeviceTip",
+            "MuzzleDevice",
+            "OpticReticleAnchor",
+            "OpticMount",
+            "OpticRailAdapterGeometry",
+            "OpticRailContact",
+            "RearIronGeometry",
+            "RearIronSight",
+            "ReceiverGeometry",
+            "SpareMagazineGeometry",
+            "SpareMagazineGrip",
+            "SpareMagazine",
+            "StockButtpadGeometry",
+            "StockWoodGeometry",
+            "Stock",
+            "SuppressorTip",
+            "Suppressor",
+            "WeaponBodyGeometry",
+            "SteelTideAK47"
+          ]
+        },
+        "method": "Python 直接读 GLB 2.0 JSON chunk；三角形来自 accessor counts。全部网格节点实例计数不是实际可见面数或帧时间。",
+        "local_world_matches_remote_git_blob": true,
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      },
+      "remaining": [
+        "校准尺度与轴向",
+        "检验可动件枢轴和运动范围",
+        "本作手臂与握持",
+        "ADS 对齐",
+        "射击／完整换弹动作和状态事件",
+        "LOD、材质与帧时间实测",
+        "Windows 包资源加载"
+      ]
+    },
+    {
+      "id": "github-collection-hk416",
+      "requested_model": "HK416",
+      "repository_id": "collection",
+      "files": [
+        {
+          "path": "Content/Game/Assets/Models/Weapons/HK416/HK416.uasset",
+          "url": "https://github.com/AsmundSchei/WeaponCollection/blob/a3fd6b507230a7a8b4ecc38beb05caffc58d16f0/Content/Game/Assets/Models/Weapons/HK416/HK416.uasset",
+          "bytes": 4922116,
+          "git_blob_sha1": "f71b698a5bed9bf2504d900b7ace146ae828c386",
+          "format": "uasset"
+        }
+      ],
+      "decision": "defer_format_and_provenance",
+      "decision_reason": "README 称 OBJ 且 CC0，但完整文件树没有 OBJ/FBX/GLB；这两件模型只找到 Unreal 资产，未找到对应原作者和原始许可。",
+      "license": {
+        "repository_claim": "CC0-1.0",
+        "root_license_url": "https://github.com/AsmundSchei/WeaponCollection/blob/a3fd6b507230a7a8b4ecc38beb05caffc58d16f0/LICENSE",
+        "readme_url": "https://github.com/AsmundSchei/WeaponCollection/blob/a3fd6b507230a7a8b4ecc38beb05caffc58d16f0/README.md",
+        "collection_url": "https://sketchfab.com/aasmundschei/collections/downloadable-military-weapons",
+        "original_author": null,
+        "original_asset_license": null,
+        "status": "mirror_claim_only"
+      },
+      "inspection": {
+        "method": "只下载主 uasset 并读取字符串；未转换或完整解析 Unreal 模型。",
+        "sha256": "8a13c7bbf79676c57967d02fb1f27906e52e23723e03883a24779db35f47f50f",
+        "asset_class_in_strings": "SkeletalMesh",
+        "imported_fbx_filename": "HK416.fbx",
+        "imported_fbx_present_in_repository": false,
+        "skins": null,
+        "animation_count": null,
+        "parts": null,
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      }
+    },
+    {
+      "id": "github-collection-mp7",
+      "requested_model": "MP7",
+      "repository_id": "collection",
+      "files": [
+        {
+          "path": "Content/Game/Assets/Models/Weapons/MP7/MP7.uasset",
+          "url": "https://github.com/AsmundSchei/WeaponCollection/blob/a3fd6b507230a7a8b4ecc38beb05caffc58d16f0/Content/Game/Assets/Models/Weapons/MP7/MP7.uasset",
+          "bytes": 731697,
+          "git_blob_sha1": "23ae1aebf6b9439686eeb4f72d78854715ce3926",
+          "format": "uasset"
+        }
+      ],
+      "decision": "defer_format_and_provenance",
+      "decision_reason": "README 称 OBJ 且 CC0，但完整文件树没有 OBJ/FBX/GLB；这两件模型只找到 Unreal 资产，未找到对应原作者和原始许可。",
+      "license": {
+        "repository_claim": "CC0-1.0",
+        "root_license_url": "https://github.com/AsmundSchei/WeaponCollection/blob/a3fd6b507230a7a8b4ecc38beb05caffc58d16f0/LICENSE",
+        "readme_url": "https://github.com/AsmundSchei/WeaponCollection/blob/a3fd6b507230a7a8b4ecc38beb05caffc58d16f0/README.md",
+        "collection_url": "https://sketchfab.com/aasmundschei/collections/downloadable-military-weapons",
+        "original_author": null,
+        "original_asset_license": null,
+        "status": "mirror_claim_only"
+      },
+      "inspection": {
+        "method": "只下载主 uasset 并读取字符串；未转换或完整解析 Unreal 模型。",
+        "sha256": "9c91a172349740c31ba42e44ff3a05d84f413ed860d0e5b48f34ed33c6d2ba1a",
+        "asset_class_in_strings": "StaticMesh",
+        "imported_fbx_filename": "MP7.fbx",
+        "imported_fbx_present_in_repository": false,
+        "skins": null,
+        "animation_count": null,
+        "parts": null,
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      }
+    },
+    {
+      "id": "github-hardlines-hk416",
+      "requested_model": "HK416 A5",
+      "repository_id": "hardlines",
+      "files": [
+        {
+          "path": "public/models/hk416.glb",
+          "url": "https://github.com/yegors/hard-lines/blob/4a3de089a6be0a8000c130123ac7108736d1d1a9/public/models/hk416.glb",
+          "bytes": 690108,
+          "git_blob_sha1": "01d7737a41977ec0e7dfe65e091a1b45d9c54a82",
+          "format": "glb"
+        },
+        {
+          "path": "art/hk416.blend",
+          "url": "https://github.com/yegors/hard-lines/blob/4a3de089a6be0a8000c130123ac7108736d1d1a9/art/hk416.blend",
+          "bytes": 613651,
+          "git_blob_sha1": "cba23c16af35575d598a2379d94b454f15fc213c",
+          "format": "blend"
+        }
+      ],
+      "decision": "defer_no_model_license",
+      "decision_reason": "公开仓库中可见精确命名的 GLB/Blender 文件，但所查根目录、README、package.json 没有覆盖该模型的复用许可；不能由 Tripo 生成记录推定再分发权。",
+      "license": {
+        "model_license": null,
+        "root_license_file_found": false,
+        "readme_url": "https://github.com/yegors/hard-lines/blob/4a3de089a6be0a8000c130123ac7108736d1d1a9/README.md",
+        "package_json_url": "https://github.com/yegors/hard-lines/blob/4a3de089a6be0a8000c130123ac7108736d1d1a9/package.json",
+        "provenance_hint_url": "https://github.com/yegors/hard-lines/blob/4a3de089a6be0a8000c130123ac7108736d1d1a9/art/tools/build_hk416.py",
+        "provenance_hint": "上游构建脚本描述来源为 Tripo Gen 2，分件与重整是上游自述。",
+        "status": "no_applicable_license_confirmed"
+      },
+      "inspection": {
+        "downloaded": false,
+        "method": "文件树与构建说明；未执行脚本。",
+        "skins": null,
+        "animation_count": null,
+        "triangles": null,
+        "parts": null,
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      }
+    },
+    {
+      "id": "github-team6-uzi",
+      "requested_model": "Uzi",
+      "repository_id": "team6",
+      "files": [
+        {
+          "path": "Assets/5 Models/Weapons/Uzi/Uzi.fbx",
+          "url": "https://github.com/tldbs0420/Team_6-GameSoftware_2025/blob/5e0fee31300fc7481b6cd2473e3c600977c157e6/Assets/5%20Models/Weapons/Uzi/Uzi.fbx",
+          "bytes": 61642172,
+          "git_blob_sha1": "9d34c37a5880f526debaed8d4d2a99f6af38c296",
+          "format": "fbx"
+        }
+      ],
+      "metadata_file": {
+        "path": "Assets/5 Models/Weapons/Uzi/Uzi.fbx.meta",
+        "url": "https://github.com/tldbs0420/Team_6-GameSoftware_2025/blob/5e0fee31300fc7481b6cd2473e3c600977c157e6/Assets/5%20Models/Weapons/Uzi/Uzi.fbx.meta",
+        "bytes": 16133,
+        "git_blob_sha1": "75fdc8dc19bb920bc7804e33bed46c7703f95bed",
+        "format": "meta"
+      },
+      "decision": "defer_combined_asset_rights",
+      "decision_reason": "枪本体和动画可追到原作者，但镜像组合包含另换手网格，未核清其独立权利；FBX 为 61 MB，未整包下载或转换。",
+      "license": {
+        "repository_root_license_file_found": false,
+        "readme_url": "https://github.com/tldbs0420/Team_6-GameSoftware_2025/blob/5e0fee31300fc7481b6cd2473e3c600977c157e6/README.md",
+        "upstream_animation_author": "1Matzh",
+        "upstream_animation_url": "https://sketchfab.com/3d-models/uzi-first-person-animations-2026-remake-73266e9f1eb949b69a3ab11d8f636048",
+        "upstream_animation_page_license": "CC-BY-4.0",
+        "gun_author": "Gintoki1234",
+        "gun_license": "CC-BY-4.0",
+        "gun_url": "https://gintoki1234.itch.io/uzi",
+        "other_upstream_credit": "Division Agent (Rigged) by Blue-Spirit",
+        "other_upstream_credit_url": "https://skfb.ly/oLVSU",
+        "unresolved": "镜像 README 表示替换／修改手网格；该手网格许可未查明。原动画页已更新为 2026 版，不能推定与镜像 FBX 同版。",
+        "status": "combined_asset_chain_incomplete"
+      },
+      "inspection": {
+        "fbx_downloaded": false,
+        "read_unity_import_metadata": true,
+        "clip_names_in_import_metadata": [
+          "rig|Equip",
+          "rig|Fire",
+          "rig|Firemode",
+          "rig|Idle",
+          "rig|Idle_2",
+          "rig|Inspect",
+          "rig|Ref_Pose",
+          "rig|Reload",
+          "rig|Reload_Empty",
+          "rig|Run",
+          "rig|SK_Miliary_FPS_Arms_Gloves1.001Action",
+          "rig|SK_Miliary_FPS_Arms_Gloves1.002Action",
+          "rig|SK_Miliary_Military_FPS_Shirt3.001Action",
+          "rig|SK_Miliary_Military_FPS_Shirt3.002Action",
+          "rig|Unequip",
+          "rig|Walk"
+        ],
+        "clip_playback_verified": false,
+        "skins": null,
+        "parts": null,
+        "project_runtime_tested": false
+      }
+    },
+    {
+      "id": "github-flat-rifle_assault_west",
+      "requested_model": null,
+      "generic_name": "Rifle_Assault_West",
+      "repository_id": "flat",
+      "files": [
+        {
+          "path": "weapons/flat_guns_west/Flat Guns West/GLB/Rifle_Assault_West.glb",
+          "url": "https://github.com/petroulacl/fps-asset-kit/blob/a19b7458a593598211c95ec46ef4eb4b6d1f94d7/weapons/flat_guns_west/Flat%20Guns%20West/GLB/Rifle_Assault_West.glb",
+          "bytes": 457644,
+          "git_blob_sha1": "bf1c79ba1f0f32e7764dfc8d95511d385012eccf",
+          "format": "glb"
+        }
+      ],
+      "decision": "generic_proxy_only",
+      "decision_reason": "许可与 GLB 可核查，但原作及文件只给通用枪类名；不能冒充 AK-47、HK416、SVD、FAL、MP7、Uzi 或蝎式精确型号。",
+      "license": {
+        "asset_license": "CC0-1.0",
+        "original_author": "Pichuliru",
+        "original_url": "https://opengameart.org/content/cc0-flat-guns-west",
+        "mirror_readme_url": "https://github.com/petroulacl/fps-asset-kit/blob/a19b7458a593598211c95ec46ef4eb4b6d1f94d7/README.md",
+        "status": "original_author_page_checked"
+      },
+      "inspection": {
+        "id": "Rifle_Assault_West",
+        "bytes": 457644,
+        "sha256": "0d80dd2118c884172a856455968be14eadc97f041d27d52bfa75fedb708fa486",
+        "unique_mesh_triangles": 4353,
+        "node_instance_triangles_all": 4353,
+        "meshes": 1,
+        "materials": 7,
+        "images": 0,
+        "external_uris": [],
+        "skins": 1,
+        "joints_per_skin": [
+          19
+        ],
+        "animations": [],
+        "nodes": [
+          "Magazine",
+          "Trigger",
+          "Selector",
+          "Bolt Release",
+          "Magazine Release",
+          "Forward Assist",
+          "Charging Handle",
+          "Stock",
+          "Bolt",
+          "Rear Sights",
+          "Front Sights",
+          "Dust Cover",
+          "Attach_Scope",
+          "Attach_Rail.Bottom",
+          "Attach_Muzzle",
+          "Attach_Rail.Top",
+          "Attach_Rail.SideLeft",
+          "Attach_Rail.SideRight",
+          "Body",
+          "Rifle_Assault_West",
+          "Rifle_Assault_West.Rig"
+        ],
+        "method": "Python 直接读取 GLB JSON；未检测权重品质或骨骼活动范围。",
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      }
+    },
+    {
+      "id": "github-flat-rifle_battle_west",
+      "requested_model": null,
+      "generic_name": "Rifle_Battle_West",
+      "repository_id": "flat",
+      "files": [
+        {
+          "path": "weapons/flat_guns_west/Flat Guns West/GLB/Rifle_Battle_West.glb",
+          "url": "https://github.com/petroulacl/fps-asset-kit/blob/a19b7458a593598211c95ec46ef4eb4b6d1f94d7/weapons/flat_guns_west/Flat%20Guns%20West/GLB/Rifle_Battle_West.glb",
+          "bytes": 335084,
+          "git_blob_sha1": "4e2aca093255c0032160e385f4cd9b61970a5db6",
+          "format": "glb"
+        }
+      ],
+      "decision": "generic_proxy_only",
+      "decision_reason": "许可与 GLB 可核查，但原作及文件只给通用枪类名；不能冒充 AK-47、HK416、SVD、FAL、MP7、Uzi 或蝎式精确型号。",
+      "license": {
+        "asset_license": "CC0-1.0",
+        "original_author": "Pichuliru",
+        "original_url": "https://opengameart.org/content/cc0-flat-guns-west",
+        "mirror_readme_url": "https://github.com/petroulacl/fps-asset-kit/blob/a19b7458a593598211c95ec46ef4eb4b6d1f94d7/README.md",
+        "status": "original_author_page_checked"
+      },
+      "inspection": {
+        "id": "Rifle_Battle_West",
+        "bytes": 335084,
+        "sha256": "69d2db533e9eeee80a4bc27f32a9bcbde36e66b2ec4adf82db53334687a625e1",
+        "unique_mesh_triangles": 3173,
+        "node_instance_triangles_all": 3173,
+        "meshes": 1,
+        "materials": 7,
+        "images": 0,
+        "external_uris": [],
+        "skins": 1,
+        "joints_per_skin": [
+          17
+        ],
+        "animations": [],
+        "nodes": [
+          "Magazine",
+          "Bolt",
+          "Charging Handle",
+          "Selector",
+          "Trigger",
+          "Bolt Release",
+          "Magazine Release",
+          "Stock",
+          "Rear Sights",
+          "Front Sights",
+          "Attach_Scope",
+          "Attach_Rail.Bottom",
+          "Attach_Muzzle",
+          "Attach_Rail.Top",
+          "Attach_Rail.SideLeft",
+          "Attach_Rail.SideRight",
+          "Body",
+          "Rifle_Battle_West",
+          "Rifle_Battle_West.Rig"
+        ],
+        "method": "Python 直接读取 GLB JSON；未检测权重品质或骨骼活动范围。",
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      }
+    },
+    {
+      "id": "github-flat-smg_compact_west",
+      "requested_model": null,
+      "generic_name": "SMG_Compact_West",
+      "repository_id": "flat",
+      "files": [
+        {
+          "path": "weapons/flat_guns_west/Flat Guns West/GLB/SMG_Compact_West.glb",
+          "url": "https://github.com/petroulacl/fps-asset-kit/blob/a19b7458a593598211c95ec46ef4eb4b6d1f94d7/weapons/flat_guns_west/Flat%20Guns%20West/GLB/SMG_Compact_West.glb",
+          "bytes": 237800,
+          "git_blob_sha1": "6218bb5a91bbc20babdbca47f57e3d2a23d48a33",
+          "format": "glb"
+        }
+      ],
+      "decision": "generic_proxy_only",
+      "decision_reason": "许可与 GLB 可核查，但原作及文件只给通用枪类名；不能冒充 AK-47、HK416、SVD、FAL、MP7、Uzi 或蝎式精确型号。",
+      "license": {
+        "asset_license": "CC0-1.0",
+        "original_author": "Pichuliru",
+        "original_url": "https://opengameart.org/content/cc0-flat-guns-west",
+        "mirror_readme_url": "https://github.com/petroulacl/fps-asset-kit/blob/a19b7458a593598211c95ec46ef4eb4b6d1f94d7/README.md",
+        "status": "original_author_page_checked"
+      },
+      "inspection": {
+        "id": "SMG_Compact_West",
+        "bytes": 237800,
+        "sha256": "6846006dc47f751a7baa1079c8c679de861fa70eaaf0d28d505a8bda8327c23e",
+        "unique_mesh_triangles": 2201,
+        "node_instance_triangles_all": 2201,
+        "meshes": 1,
+        "materials": 7,
+        "images": 0,
+        "external_uris": [],
+        "skins": 1,
+        "joints_per_skin": [
+          14
+        ],
+        "animations": [],
+        "nodes": [
+          "Magazine",
+          "Trigger",
+          "Selector",
+          "Bolt",
+          "Charging Handle",
+          "Stock",
+          "Magazine Release",
+          "Attach_Scope",
+          "Attach_Rail.Bottom",
+          "Attach_Muzzle",
+          "Attach_Rail.Top",
+          "Attach_Rail.SideLeft",
+          "Attach_Rail.SideRight",
+          "Body",
+          "SMG_Compact_West",
+          "SMG_Compact_West.Rig"
+        ],
+        "method": "Python 直接读取 GLB JSON；未检测权重品质或骨骼活动范围。",
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      }
+    },
+    {
+      "id": "github-flat-sniper_rifle_east",
+      "requested_model": null,
+      "generic_name": "Sniper_Rifle_East",
+      "repository_id": "flat",
+      "files": [
+        {
+          "path": "weapons/flat_guns_east/Flat Guns East/GLB/Sniper_Rifle_East.glb",
+          "url": "https://github.com/petroulacl/fps-asset-kit/blob/a19b7458a593598211c95ec46ef4eb4b6d1f94d7/weapons/flat_guns_east/Flat%20Guns%20East/GLB/Sniper_Rifle_East.glb",
+          "bytes": 270556,
+          "git_blob_sha1": "fffcf4126e9ff033c4df76b8ad55ee2cf0114901",
+          "format": "glb"
+        }
+      ],
+      "decision": "generic_proxy_only",
+      "decision_reason": "许可与 GLB 可核查，但原作及文件只给通用枪类名；不能冒充 AK-47、HK416、SVD、FAL、MP7、Uzi 或蝎式精确型号。",
+      "license": {
+        "asset_license": "CC0-1.0",
+        "original_author": "Pichuliru",
+        "original_url": "https://opengameart.org/content/cc0-flat-guns-east",
+        "mirror_readme_url": "https://github.com/petroulacl/fps-asset-kit/blob/a19b7458a593598211c95ec46ef4eb4b6d1f94d7/README.md",
+        "status": "original_author_page_checked"
+      },
+      "inspection": {
+        "id": "Sniper_Rifle_East",
+        "bytes": 270556,
+        "sha256": "12034ff2772357c5405fc7c03265fa0b97eea8df85e45642f693f20c3f2f3169",
+        "unique_mesh_triangles": 2943,
+        "node_instance_triangles_all": 2943,
+        "meshes": 1,
+        "materials": 7,
+        "images": 0,
+        "external_uris": [],
+        "skins": 1,
+        "joints_per_skin": [
+          13
+        ],
+        "animations": [],
+        "nodes": [
+          "Bolt",
+          "Stock",
+          "Safety",
+          "Trigger",
+          "Magazine Release",
+          "Magazine",
+          "Attach_Scope",
+          "Attach_Rail.Bottom",
+          "Attach_Muzzle",
+          "Attach_Rail.Top",
+          "Attach_Rail.SideLeft",
+          "Attach_Rail.SideRight",
+          "Body",
+          "Sniper_Rifle_East",
+          "Sniper_Rifle_East.Rig"
+        ],
+        "method": "Python 直接读取 GLB JSON；未检测权重品质或骨骼活动范围。",
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      }
+    },
+    {
+      "id": "github-deeming-assault-rifle",
+      "requested_model": null,
+      "generic_name": "AssaultRifle",
+      "repository_id": "deeming",
+      "files": [
+        {
+          "path": "Assets/Models/Weapons/AssaultRifle/source/AssaultRifle.fbx",
+          "url": "https://github.com/deeming-games/unity-fps-asset/blob/e0974630b914d9ecb6e31e726039cceaa69b9610/Assets/Models/Weapons/AssaultRifle/source/AssaultRifle.fbx",
+          "bytes": 1423088,
+          "git_blob_sha1": "c455c8f5bc46633f58920e22ad79eb7447775c88",
+          "format": "fbx"
+        }
+      ],
+      "decision": "not_an_identified_requested_model",
+      "decision_reason": "README 与文件树未把该通用模型确认为本轮指定枪型；未下载模型。",
+      "license": {
+        "code_license": "MIT",
+        "models_animations_audio_license": "CC-BY-4.0",
+        "asset_author": "DJMaesen",
+        "modifier": "chrisdeeming",
+        "readme_url": "https://github.com/deeming-games/unity-fps-asset/blob/e0974630b914d9ecb6e31e726039cceaa69b9610/README.md",
+        "code_license_url": "https://github.com/deeming-games/unity-fps-asset/blob/e0974630b914d9ecb6e31e726039cceaa69b9610/LICENSE-CODE.md",
+        "author_profile": "https://sketchfab.com/bumstrum",
+        "per_asset_original_url": null,
+        "status": "repo_declares_code_and_assets_separately"
+      },
+      "inspection": {
+        "downloaded": false,
+        "parts": null,
+        "skins": null,
+        "animation_count": null,
+        "project_runtime_tested": false
+      }
+    }
+  ],
+  "original_author_fallbacks": [
+    {
+      "id": "original-hk416-r4m",
+      "host": "Sketchfab",
+      "github_model_found": false,
+      "model_name": "HK 416 A7 (free download)",
+      "author": "r4m",
+      "author_account": "r4m",
+      "url": "https://sketchfab.com/3d-models/hk-416-a7-free-download-a16768f0ffa24737a4fe324a411cfbd9",
+      "metadata_api_url": "https://api.sketchfab.com/v3/models/a16768f0ffa24737a4fe324a411cfbd9",
+      "license": "CC-BY-4.0",
+      "license_url": "http://creativecommons.org/licenses/by/4.0/",
+      "reported_triangles": 30088,
+      "reported_animation_count": 0,
+      "downloaded": false,
+      "local_format": null,
+      "local_parts": null,
+      "local_skins": null,
+      "project_runtime_tested": false,
+      "decision": "original_author_fallback_not_github_delivery",
+      "provenance_note": "不是 Asmund 镜像的已证实来源。"
+    },
+    {
+      "id": "original-fal-notcplkerry",
+      "host": "Sketchfab",
+      "github_model_found": false,
+      "model_name": "Low-Poly FN FAL Paratrooper",
+      "author": "notcplkerry",
+      "author_account": "notcplkerry",
+      "url": "https://sketchfab.com/3d-models/low-poly-fn-fal-paratrooper-d00782d68be24259a9f19612706ce6c4",
+      "metadata_api_url": "https://api.sketchfab.com/v3/models/d00782d68be24259a9f19612706ce6c4",
+      "license": "CC-BY-4.0",
+      "license_url": "http://creativecommons.org/licenses/by/4.0/",
+      "reported_triangles": 8059,
+      "reported_animation_count": 0,
+      "downloaded": false,
+      "local_format": null,
+      "local_parts": null,
+      "local_skins": null,
+      "project_runtime_tested": false,
+      "decision": "original_author_fallback_not_github_delivery"
+    },
+    {
+      "id": "original-mp7-steve-henry",
+      "host": "Sketchfab",
+      "github_model_found": false,
+      "model_name": "H&K MP7 A1",
+      "author": "Steve Henry",
+      "author_account": "Trinitite_Studio",
+      "url": "https://sketchfab.com/3d-models/hk-mp7-a1-27cd4b48fb14451c86adad4c559082d6",
+      "metadata_api_url": "https://api.sketchfab.com/v3/models/27cd4b48fb14451c86adad4c559082d6",
+      "license": "CC-BY-4.0",
+      "license_url": "http://creativecommons.org/licenses/by/4.0/",
+      "reported_triangles": 32487,
+      "reported_animation_count": 0,
+      "downloaded": false,
+      "local_format": null,
+      "local_parts": null,
+      "local_skins": null,
+      "project_runtime_tested": false,
+      "decision": "original_author_fallback_not_github_delivery",
+      "author_caveat": "作者说明形态并非完全准确；不是 Asmund 镜像的已证实来源。"
+    },
+    {
+      "id": "original-skorpion-kutejnikov",
+      "host": "Sketchfab",
+      "github_model_found": false,
+      "model_name": "Škorpion vz. 61",
+      "author": "kutejnikov",
+      "author_account": "kutejnikov",
+      "url": "https://sketchfab.com/3d-models/skorpion-vz-61-07bc7764f1d2460586c2907ff7f32753",
+      "metadata_api_url": "https://api.sketchfab.com/v3/models/07bc7764f1d2460586c2907ff7f32753",
+      "license": "CC-BY-4.0",
+      "license_url": "http://creativecommons.org/licenses/by/4.0/",
+      "reported_triangles": 5758,
+      "reported_animation_count": 0,
+      "downloaded": false,
+      "local_format": null,
+      "local_parts": null,
+      "local_skins": null,
+      "project_runtime_tested": false,
+      "decision": "original_author_fallback_not_github_delivery",
+      "variant_note": "明确为 vz.61，不作为用户已选择 EVO 或 vz.61 的证据。"
+    },
+    {
+      "id": "original-uzi-gintoki",
+      "host": "Sketchfab",
+      "github_model_found": false,
+      "model_name": "UZI",
+      "author": "Gintoki1234",
+      "author_account": "Gintoki1234",
+      "url": "https://sketchfab.com/3d-models/uzi-6d997976cf5845b48c6e8b7495b3551b",
+      "metadata_api_url": "https://api.sketchfab.com/v3/models/6d997976cf5845b48c6e8b7495b3551b",
+      "license": "CC-BY-4.0",
+      "license_url": "http://creativecommons.org/licenses/by/4.0/",
+      "reported_triangles": 22205,
+      "reported_animation_count": 1,
+      "downloaded": false,
+      "local_format": null,
+      "local_parts": null,
+      "local_skins": null,
+      "project_runtime_tested": false,
+      "decision": "original_author_fallback_not_github_delivery",
+      "author_publication_url": "https://gintoki1234.itch.io/uzi",
+      "animation_note": "作者说明该动画是枪托展开，不是换弹。"
+    },
+    {
+      "id": "original-ptrd-goldbergr",
+      "host": "Sketchfab",
+      "github_model_found": false,
+      "model_name": "PTRD-41 (Low-Poly)",
+      "author": "GoldbergR",
+      "author_account": "GoldbergR",
+      "url": "https://sketchfab.com/3d-models/ptrd-41-low-poly-a488a286014648c2981790d864e74a03",
+      "metadata_api_url": "https://api.sketchfab.com/v3/models/a488a286014648c2981790d864e74a03",
+      "license": "CC-BY-4.0",
+      "license_url": "http://creativecommons.org/licenses/by/4.0/",
+      "reported_triangles": 3680,
+      "reported_animation_count": 0,
+      "downloaded": false,
+      "local_format": null,
+      "local_parts": null,
+      "local_skins": null,
+      "project_runtime_tested": false,
+      "decision": "original_author_fallback_not_github_delivery"
+    },
+    {
+      "id": "original-tabasco-svd",
+      "host": "OpenGameArt",
+      "github_model_found": false,
+      "model_name": "Dragunov (SVD) in Various Small Arms",
+      "author": "Tabasco",
+      "url": "https://lpc.opengameart.org/content/various-small-arms-assault-rifles-sniper-pistol",
+      "download_url": "https://lpc.opengameart.org/sites/default/files/smallarms.zip",
+      "license": "CC0-1.0",
+      "license_history": "原作者页并列旧 CC-BY-3.0，正文明确于 2023-12-15 转为 public domain。",
+      "downloaded": true,
+      "archive_bytes": 401491,
+      "archive_sha256": "fac981bb2df3dac9574e3567ef40df0fa5b77f0d6be0a36b83bdd95fcc86a492",
+      "archive_member": "dragunov.blend",
+      "format": "blend",
+      "inspection": {
+        "sha256": "ccdc960c722b58752cf33cd04f391b7fb9ea9a2352d4299c3605c409d5868eda",
+        "blender": "5.2.3 LTS",
+        "objects": [
+          {
+            "name": "Armature",
+            "type": "ARMATURE",
+            "parent": null,
+            "bones": [
+              "Bolt"
+            ]
+          },
+          {
+            "name": "Camera",
+            "type": "CAMERA",
+            "parent": null
+          },
+          {
+            "name": "Cube",
+            "type": "MESH",
+            "parent": null,
+            "triangles": 2063,
+            "materials": [
+              "Material",
+              "Material.001",
+              "Material.002",
+              "Material.003",
+              "Material.004"
+            ],
+            "modifiers": [
+              "ARMATURE"
+            ],
+            "vertex_groups": [
+              "Stock",
+              "Receiver",
+              "Bolt"
+            ]
+          },
+          {
+            "name": "Lamp",
+            "type": "LIGHT",
+            "parent": null
+          }
+        ],
+        "actions": [
+          {
+            "name": "Action",
+            "frame_range": [
+              0.0,
+              0.0
+            ]
+          }
+        ],
+        "images": [
+          {
+            "name": "SVD_Rifle.jpg",
+            "path": "/home/tabasco/downloads/modelimgs/SVD_Rifle.jpg"
+          }
+        ],
+        "animation_loading_warning": "Blender 5.2.3: Loaded a pre-2.50 blend file, animation data has not been loaded. Open & save the file with Blender v4.5 to convert animation data.",
+        "animation_status": "not_loaded_legacy_format_do_not_treat_action_zero_range_as_absence",
+        "auto_execution_disabled": true,
+        "visually_reviewed": false,
+        "project_runtime_tested": false
+      },
+      "decision": "original_author_fallback_needs_legacy_animation_migration",
+      "remaining": [
+        "用 Blender 4.5 迁移旧动画再检查",
+        "核清／移除未打包 SVD_Rifle.jpg 图像引用",
+        "弹匣／所需可动件与本作手臂",
+        "导出 GLB 并验材质与尺度"
+      ]
+    }
+  ],
+  "original_archive_comparisons": [
+    {
+      "pack": "west",
+      "source_url": "https://opengameart.org/sites/default/files/flat_guns_west.zip",
+      "archive_bytes": 1856435,
+      "archive_sha256": "0e83e670f7c85a2c024887662f5f6ab584daceb5c8a38bac5a3f14a0397a1d29",
+      "matches": [
+        {
+          "archive_path": "Flat Guns West/GLB/Rifle_Assault_West.glb",
+          "sha256": "0d80dd2118c884172a856455968be14eadc97f041d27d52bfa75fedb708fa486",
+          "matches_github_file": true
+        },
+        {
+          "archive_path": "Flat Guns West/GLB/SMG_Compact_West.glb",
+          "sha256": "6846006dc47f751a7baa1079c8c679de861fa70eaaf0d28d505a8bda8327c23e",
+          "matches_github_file": true
+        },
+        {
+          "archive_path": "Flat Guns West/GLB/Rifle_Battle_West.glb",
+          "sha256": "69d2db533e9eeee80a4bc27f32a9bcbde36e66b2ec4adf82db53334687a625e1",
+          "matches_github_file": true
+        }
+      ]
+    },
+    {
+      "pack": "east",
+      "source_url": "https://opengameart.org/sites/default/files/flat_guns_east.zip",
+      "archive_bytes": 1536969,
+      "archive_sha256": "3d989ac8e9f0f1f0efe66098fc8f09f31cfadcebb1ed51260201f691946700d4",
+      "matches": [
+        {
+          "archive_path": "Flat Guns East/GLB/Sniper_Rifle_East.glb",
+          "sha256": "12034ff2772357c5405fc7c03265fa0b97eea8df85e45642f693f20c3f2f3169",
+          "matches_github_file": true
+        }
+      ]
+    }
+  ],
+  "excluded_examples": [
+    {
+      "url": "https://sketchfab.com/3d-models/mp7-codmw2019-pbr-8daf308d8f0f4858b2c7f505bfaa88c8",
+      "reason": "页面自述从 Call of Duty Modern Warfare 2019 提取模型与贴图；上传者的 CC 标签不能完成上游来源授权。",
+      "downloaded": false
+    },
+    {
+      "url": "https://sketchfab.com/3d-models/mp7-counter-strike-2-a4daa40f66124b29b8c0c5118ff8abc7",
+      "reason": "页面自述由他人从 Counter Strike 2 提取；不当作原创开源武器。",
+      "downloaded": false
+    }
+  ],
+  "search_methods": [
+    "指定型号与 glb/fbx/obj/blend、CC0、license、Sketchfab、GitHub 组合检索",
+    "GitHub 公共 API 完整递归文件树及固定提交原文",
+    "原作者 OpenGameArt／itch.io 页面及 Sketchfab 公共模型元数据",
+    "少量 GLB JSON chunk、uasset 字符串、Unity 导入元数据检查",
+    "Tabasco 单件 blend 以 Blender --background --disable-autoexec 读取；未保存或执行内嵌脚本"
+  ]
+}

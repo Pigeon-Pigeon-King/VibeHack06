@@ -1,0 +1,102 @@
+[
+  {
+    "file": "cover-cycle-00.png",
+    "at": 1793413547742,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 23 · 命中 0 · 敌 2\n事实 0 · 无\nzheng return 16.6,24.0 无掩体\nenemy-1 hide 5.9,-19.0 solid:cover-9\nenemy-2 seek 8.4,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-01.png",
+    "at": 1793413548888,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 23 · 命中 0 · 敌 2\n事实 0 · 无\nzheng seek 15.6,24.0 solid:container-3\nenemy-1 peek 5.9,-19.0 solid:cover-9\nenemy-2 peek 8.1,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-02.png",
+    "at": 1793413550008,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 98 · Tri 16,646 · 弹丸 0 · 发射 25 · 命中 0 · 敌 2\n事实 0 · 无\nzheng seek 17.7,23.3 solid:container-3\nenemy-1 peek 5.9,-19.0 solid:cover-9\nenemy-2 peek 8.1,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-03.png",
+    "at": 1793413551141,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 1 · 发射 27 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.4,23.0 solid:container-3\nenemy-1 peek 5.9,-19.0 solid:cover-9\nenemy-2 peek 8.1,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-04.png",
+    "at": 1793413552263,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 1 · 发射 30 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.1,23.0 solid:container-3\nenemy-1 seek 6.0,-19.2 solid:cover-9\nenemy-2 peek 8.1,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-05.png",
+    "at": 1793413553406,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 30 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.1,23.0 solid:container-3\nenemy-1 hide 7.0,-20.9 solid:cover-9\nenemy-2 peek 8.1,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-06.png",
+    "at": 1793413554538,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 98 · Tri 16,646 · 弹丸 0 · 发射 32 · 命中 0 · 敌 2\n事实 0 · 无\nzheng recover 17.3,23.0 solid:container-3\nenemy-1 peek 7.0,-20.9 solid:cover-9\nenemy-2 peek 8.1,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-07.png",
+    "at": 1793413555651,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 1 · 发射 34 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.6,23.0 solid:container-3\nenemy-1 peek 7.0,-20.9 solid:cover-9\nenemy-2 peek 8.1,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-08.png",
+    "at": 1793413556827,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 3 · 发射 37 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.1,23.0 solid:container-3\nenemy-1 peek 7.0,-20.9 solid:cover-9\nenemy-2 recover 8.1,-19.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-09.png",
+    "at": 1793413557972,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 2 · 发射 38 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.1,23.0 solid:container-3\nenemy-1 hide 7.0,-20.9 solid:cover-9\nenemy-2 seek 6.2,-19.9 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-10.png",
+    "at": 1793413559104,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 38 · 命中 0 · 敌 2\n事实 0 · 无\nzheng recover 17.2,23.0 solid:container-3\nenemy-1 peek 7.0,-20.9 solid:cover-9\nenemy-2 peek 6.1,-20.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-11.png",
+    "at": 1793413560257,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 1 · 发射 40 · 命中 0 · 敌 2\n事实 0 · 无\nzheng hide 17.9,23.0 solid:container-3\nenemy-1 peek 7.0,-20.9 solid:cover-9\nenemy-2 peek 6.1,-20.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-12.png",
+    "at": 1793413561406,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 98 · Tri 16,646 · 弹丸 1 · 发射 43 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.1,23.0 solid:container-3\nenemy-1 peek 7.0,-20.9 solid:cover-9\nenemy-2 peek 6.1,-20.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-13.png",
+    "at": 1793413562532,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 98 · Tri 16,646 · 弹丸 0 · 发射 45 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.1,23.0 solid:container-3\nenemy-1 seek 7.2,-20.4 solid:cover-9\nenemy-2 hide 6.1,-20.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-14.png",
+    "at": 1793413563643,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 45 · 命中 0 · 敌 2\n事实 0 · 无\nzheng peek 17.1,23.0 solid:container-3\nenemy-1 hide 8.0,-19.1 solid:cover-9\nenemy-2 peek 6.1,-20.0 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-15.png",
+    "at": 1793413564866,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 46 · 命中 0 · 敌 1\n事实 0 · 无\nzheng return 15.3,23.0 无掩体\nenemy-1 peek 8.0,-19.1 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-16.png",
+    "at": 1793413565949,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 47 · 命中 0 · 敌 1\n事实 0 · 无\nzheng return 13.2,23.0 无掩体\nenemy-1 peek 8.0,-19.1 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-17.png",
+    "at": 1793413567047,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 48 · 命中 0 · 敌 1\n事实 0 · 无\nzheng seek 15.3,23.0 solid:container-3\nenemy-1 peek 8.0,-19.1 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-18.png",
+    "at": 1793413568186,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 98 · Tri 16,646 · 弹丸 0 · 发射 49 · 命中 0 · 敌 1\n事实 0 · 无\nzheng seek 17.6,23.0 solid:container-3\nenemy-1 hide 8.0,-19.1 solid:cover-9"
+  },
+  {
+    "file": "cover-cycle-19.png",
+    "at": 1793413569321,
+    "diagnostics": "阶段 0 · 周延 · 三十三岁 · 坐标 8.7, 0.0, 25.3 · 60 FPS\nDraw 97 · Tri 16,610 · 弹丸 0 · 发射 49 · 命中 0 · 敌 1\n事实 0 · 无\nzheng peek 17.4,23.0 solid:container-3\nenemy-1 peek 8.0,-19.1 solid:cover-9"
+  }
+]

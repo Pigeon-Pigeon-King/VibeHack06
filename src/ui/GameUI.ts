@@ -1,6 +1,8 @@
 import type { RunMode, ScenarioId, UiActions, UiState } from '../contracts';
 import { CHAPTER_STAGES } from '../content/chapter-flow';
+import { hitConfirmation } from './HitConfirmation';
 import './style.css';
+import './modern-combat.css';
 
 const SCENARIOS: Array<{ id: ScenarioId; index: string; title: string; description: string }> = [
   { id: 'northgate', index: 'V2', title: '北闸', description: '掩护工人撤离，交接最后一处阵位。' },
@@ -163,7 +165,9 @@ export class GameUI {
     this.show('reload-track', state.reload > 0);
     this.style('reload-fill', 'transform', `scaleX(${clamp(state.reload)})`);
     this.node('crosshair').classList.toggle('is-aiming', state.ads);
-    this.style('hit', 'opacity', String(playing ? clamp(state.hitFlash) : 0));
+    const hit = hitConfirmation(state.hitFlash, state.killFlash ?? 0, playing);
+    this.style('hit', 'opacity', String(hit.opacity));
+    this.style('hit', 'color', hit.color);
     this.style('hurt', 'opacity', String(playing ? clamp(state.hurtFlash) : 0));
     this.show('interaction', playing && Boolean(state.interaction));
     this.text('interaction-text', state.interaction);

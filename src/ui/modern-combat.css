@@ -1,0 +1,94 @@
+/* Original combat HUD treatment. Import after style.css; retain its layout and visibility rules. */
+#app .game-hud {
+  --combat-paper: #f6f8fa;
+  --combat-muted: #b8c1c8;
+  --combat-line: rgb(220 229 235 / 36%);
+  --combat-panel: rgb(16 21 26 / 68%);
+}
+
+#app .objective-cluster,
+#app .hud-session,
+#app .survival-cluster,
+#app .ammunition-cluster,
+#app .interaction-prompt {
+  color: var(--combat-paper);
+  text-shadow: 0 1px 3px rgb(0 0 0 / 92%);
+}
+
+#app .objective-cluster {
+  border-left: 1px solid var(--combat-line);
+  background: linear-gradient(90deg, var(--combat-panel), rgb(16 21 26 / 12%) 75%, transparent);
+}
+
+#app .phase-label {
+  color: var(--combat-muted);
+  letter-spacing: .06em;
+}
+
+#app .current-objective { font-weight: 600; }
+#app .objective-detail,
+#app .hud-session,
+#app .health-label > span:last-child,
+#app .ammo-label { color: var(--combat-muted); }
+
+#app .evacuation-count,
+#app .health-cross { color: var(--combat-paper); }
+#app .status-diamond { border-color: var(--combat-line); }
+#app .hud-session kbd,
+#app .interaction-prompt kbd {
+  color: var(--combat-paper);
+  border-color: var(--combat-line);
+  border-radius: 1px;
+  background: var(--combat-panel);
+}
+
+#app .crosshair i,
+#app .crosshair b {
+  background: rgb(246 248 250 / 90%);
+  box-shadow: 0 0 2px rgb(0 0 0 / 90%);
+}
+
+/* The four existing arms and their 45° parent rotation form the confirmation X. */
+#app .hit-marker {
+  color: #f6f8fa;
+  filter: drop-shadow(0 0 1px #080c10) drop-shadow(0 1px 2px rgb(0 0 0 / 85%));
+  transition: none;
+}
+#app .hit-marker i { background: currentColor; }
+
+#app .interaction-prompt {
+  background: var(--combat-panel);
+  border-bottom: 1px solid var(--combat-line);
+}
+
+#app .health-label strong { font-weight: 600; }
+#app .health-track {
+  background: rgb(16 21 26 / 80%);
+  border-color: var(--combat-line);
+}
+#app .health-track > div { background: var(--combat-paper); }
+#app .is-critical .health-track > div { background: #eaa082; }
+#app .is-critical .health-label strong,
+#app .ammunition-values .is-empty { color: #ffc09b; }
+
+#app .ammunition-values { gap: 10px; }
+#app .ammunition-values strong {
+  font-size: 48px;
+  font-weight: 650;
+  line-height: 1.15;
+  min-width: 2ch;
+}
+#app .ammunition-values > span:last-child {
+  color: var(--combat-muted);
+  font-size: 24px;
+  min-width: 3ch;
+}
+#app .ammo-separator { color: #83909b; }
+#app .reload-label { color: var(--combat-paper); }
+#app .reload-track { background: rgb(184 193 200 / 25%); }
+#app .reload-track > div { background: var(--combat-paper); }
+
+@media (max-width: 600px) {
+  #app .ammunition-values strong { font-size: 40px; }
+  #app .ammunition-values > span:last-child { font-size: 22px; }
+}

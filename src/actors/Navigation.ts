@@ -49,6 +49,8 @@ export class Navigation {
   private free(x: number, z: number): boolean {
     return x > this.bounds.minX && x < this.bounds.maxX && z > this.bounds.minZ && z < this.bounds.maxZ && !this.blocked.has(this.key(x, z));
   }
+  /** Unlike path(), this never silently snaps a tactical slot across a wall. */
+  isOpen(point: Vec3): boolean { return this.free(Math.round(point[0]), Math.round(point[2])); }
   private nearest(p: Vec3): [number, number] | undefined {
     const x = Math.round(p[0]), z = Math.round(p[2]);
     for (let r = 0; r < 8; r++) {
