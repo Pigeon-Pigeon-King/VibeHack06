@@ -1,0 +1,11 @@
+{
+  "commit": "b3c0572f948cdb66780da4af2020d067560946b2",
+  "checkedAtUtc": "2026-10-31T08:10:52.265027+00:00",
+  "inputCount": 478,
+  "distCount": 278,
+  "distBytes": 91023459,
+  "allInputAndDistHashesMatchCandidate": true,
+  "mainHTTPNarrationFiles": 31,
+  "browserOrListeningAcceptance": false,
+  "scope": "Post-fast-forward main build and actual 5188 file service; no public deployment or Windows execution"
+}

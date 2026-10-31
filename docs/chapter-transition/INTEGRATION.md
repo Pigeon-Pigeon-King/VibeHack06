@@ -1,6 +1,6 @@
 # 章节过场模块接入说明
 
-模块已独立实现，主战役接线由主窗口执行。入口为 `src/chapter-transition/index.ts`；开场正文在 `opening.json`，11 段章节衔接在 `bridges.json`。反馈窗口负责这些独立文件与测试，主窗口拥有 `src/main.ts`、GameUI、真实加载与存档接线，配音窗口拥有声音生产及 Sound/对白调度。
+2026-10-31 主窗口已在 `b3c0572` 将本模块及31条正式旁白接入真实主战役；准备、激活与存档边界见 [整合证据](../../artifacts/chapter-transition-integration/README.md)。下文保留模块合同与验收说明；“独立预览”仍是隔离测试入口，不代表主游戏运行路径。入口为 `src/chapter-transition/index.ts`；开场正文在 `opening.json`，11 段章节衔接在 `bridges.json`。反馈窗口负责这些独立文件与测试，主窗口拥有 `src/main.ts`、GameUI、真实加载与存档接线，配音窗口拥有声音生产及 Sound/对白调度。
 
 2026-10-31 用户明确要求：补齐开场后，将整套过场交主窗口接主战役，声音完成后一起接上。既有护送、接防、剧情条件与检查点规则继续由原任务系统负责。
 
