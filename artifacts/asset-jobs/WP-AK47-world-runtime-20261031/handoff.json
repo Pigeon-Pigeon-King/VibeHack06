@@ -1,0 +1,94 @@
+{
+  "date": "2026-10-31",
+  "status": "independent-module-tested-awaiting-owner-wiring-and-runtime-review",
+  "ownership": {
+    "code": "src/presentation/WorldAK47.ts",
+    "test": "tests/world-ak47.test.ts",
+    "existingFilesEdited": [],
+    "gitActions": [],
+    "uiOrBlenderRun": false
+  },
+  "asset": {
+    "id": "WP-AK47",
+    "revision": "world-r1-d121eb62491e",
+    "runtimePath": "public/models/weapons/ak47-world-r1.glb",
+    "bytes": 2046524,
+    "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+    "calibrationSource": "Committed 3244ab1 src/presentation/ImportedWeaponView.ts prepareWeapon; no uncommitted implementation copied",
+    "sourceCatalog": "Committed 3244ab1 src/assets/weapon-catalog.ts",
+    "geometryCreator": "taradavies",
+    "geometrySource": "https://opengameart.org/content/ak-47-1",
+    "geometryLicense": "CC0-1.0",
+    "adapter": "Operation Steel Tide / AetherRadar",
+    "adaptationLicense": "MIT",
+    "licenseRuntimePath": "public/licenses/WP-AK47/",
+    "visibleMeshes": 10,
+    "visibleTrianglesPerWeapon": 23644,
+    "materials": 6,
+    "embeddedImages": 6,
+    "supplierAnimationClips": 0
+  },
+  "api": {
+    "entry": "attachWorldAK47(parentWeaponRoot: Group, options?: WorldAK47Options): WorldAK47Attachment",
+    "minimumCall": "attachWorldAK47(weapon.root)",
+    "callLocation": "Owner's world/NPC gun construction after makeCarbine or makeSidearm returns. Pass only that gun root; never an actor root or first-person arms root.",
+    "returns": ["ready: Promise<'ready' | 'error' | 'disposed'>", "state: loading | ready | error | disposed", "muzzle: stable Object3D", "dispose(): void"],
+    "options": ["pool?: WorldAK47Pool", "baseURL?: string", "pageURL?: string"],
+    "mockInjection": "new WorldAK47Pool((url, abortSignal) => Promise<Group>)",
+    "disposeIntegration": "registerModelDisposer on the gun root calls attachment.dispose before disposeModelTree traverses GPU resources. It detaches imported clone, restores original muzzle/fallback, and releases the source lease.",
+    "defaultPath": "import.meta.env.BASE_URL + models/weapons/ak47-world-r1.glb, resolved against location.href when available",
+    "statusMetadata": "parentWeaponRoot.userData.worldWeapon",
+    "calibrationMetadata": "world-ak47-mount.userData.calibration"
+  },
+  "calibration": {
+    "sourceForward": "-Z",
+    "sourceUp": "+Y",
+    "visibleSourceLength": 1.4000500738620758,
+    "presentationLengthMeters": 0.89,
+    "lengthFrame": "weapon-parent-local-before-existing-outer-scale",
+    "firingGripInWeaponParent": [0, -0.14, -0.02],
+    "parentTransformChanged": false,
+    "parentVisibilityChanged": false,
+    "outerCharacterWeaponScale": 0.68,
+    "approximateFinalLengthAtExistingOuterScale": 0.6052,
+    "scaleNote": "Only source-to-0.89 local calibration is applied. The existing outer 0.68 remains and is not applied a second time. Owner should judge final size with character proportions; if 0.89 is intended as final world length, adjust that outer convention deliberately.",
+    "hiddenNodes": ["SpareMagazine", "Suppressor", "OpticMount", "OpticRailAdapterGeometry", "OpticRailContact"],
+    "markerNames": ["MuzzleDeviceTip", "ganymede-front-sight", "ganymede-rear-sight", "ganymede-firing-grip", "ganymede-support-grip"],
+    "muzzle": "Original muzzle node object is reparented to MuzzleDeviceTip with identity local transform. A sidearm placeholder without one gets an owned muzzle marker. Dispose restores/removes it appropriately."
+  },
+  "lifecycle": {
+    "sharing": "One default module-owned reference-counted pool, keyed by resolved local runtime URL. Concurrent NPCs share one download/template, geometries/materials/textures; each clone has independent transform nodes.",
+    "fallback": "Captured original gun meshes remain visible during loading and after failure; only those meshes hide after complete calibration and attachment.",
+    "retry": "No automatic retry. Repeated attach on the same live parent returns its existing handle. Explicit dispose followed by attach may start a new request.",
+    "cancellation": "Removing one pending consumer preserves siblings. Removing the last consumer aborts download; a decoder that finishes late is released without attaching.",
+    "resourceRelease": "Borrowed clones are detached before procedural tree disposal; template GPU resources are freed once after the last reference.",
+    "firstPerson": "Independent of the first-person ModelLibrary. NPCs deduplicate with one another; world and first-person caches are currently separate."
+  },
+  "validation": {
+    "typecheck": "passed: node node_modules/typescript/bin/tsc --noEmit",
+    "tests": "passed: node node_modules/vitest/vitest.mjs run tests/world-ak47.test.ts",
+    "testsPassed": 9,
+    "actualGeometryParsed": true,
+    "imageDecoderMocked": true,
+    "renderEvidence": false,
+    "cases": [
+      "Pinned source byte count/SHA, self-contained GLB, BASE_URL/file/game protocol URL resolution",
+      "Deferred success keeps fallback; true geometry length/hidden nodes/grip/muzzle and inherited pose preserved",
+      "Sidearm root without a muzzle, preserving armed/hidden parent visibility",
+      "Concurrent one-load sharing, independent magazine transforms, last-owner-only GPU/image release",
+      "One pending owner disposed while sibling remains alive",
+      "Last pending owner abort and late parse cleanup",
+      "Download failure and missing-node contract failure retain fallback without repeated requests",
+      "Resolved source followed by disposal before await continuation",
+      "HTML/non-GLB response rejected before decode"
+    ]
+  },
+  "remaining": [
+    "Root must wire allied/enemy/opponent world gun factories; this module alone does not replace any actor yet.",
+    "Root owns runtime GLB/license copy and main/characters integration.",
+    "Actual PBR rendering, hand contact, weapon size and scene performance need in-game review.",
+    "No AI, firing, damage, collision or navigation rules changed. Moving the visual muzzle marker does not itself change simulation ballistics origins.",
+    "No world gun recoil/reload animation or LOD is added. Each visible gun currently costs 10 meshes / 23644 triangles; geometry/material reuse does not reduce its draw calls.",
+    "Default loader checks pinned size, GLB header, self-contained resources and node geometry contract; SHA identity is verified by the test/artifact, not recomputed for every browser load."
+  ]
+}

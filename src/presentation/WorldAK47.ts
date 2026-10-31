@@ -1,0 +1,218 @@
+import { Box3, Group, LoadingManager, Matrix4, Mesh, Object3D, Quaternion, Vector3 } from 'three';
+import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import { disposeModelTree, registerModelDisposer } from './model-tools';
+
+/** Same committed source as ImportedWeaponView, without first-person arms or animation rules. */
+export const WORLD_AK47 = {
+  id: 'WP-AK47', revision: 'world-r1-d121eb62491e',
+  runtimePath: 'models/weapons/ak47-world-r1.glb',
+  sha256: 'd121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1',
+  bytes: 2_046_524,
+  /** In the existing weapon parent's local metre frame. Its outer 0.68 scale is not applied again. */
+  presentationLengthMeters: 0.89,
+  hiddenNodes: ['SpareMagazine', 'Suppressor', 'OpticMount', 'OpticRailAdapterGeometry', 'OpticRailContact'],
+  requiredNodes: ['Magazine', 'ChargingHandle', 'FrontIronSight', 'RearIronSight', 'MuzzleDeviceTip', 'FurnitureGeometry', 'Stock'],
+} as const;
+
+export type WorldAK47Loader = (url: string, signal: AbortSignal) => Promise<Group>;
+export type WorldAK47State = 'loading' | 'ready' | 'error' | 'disposed';
+export interface WorldAK47Attachment {
+  /** Never rejects; error retains the original gun, disposed never attaches a late result. */
+  readonly ready: Promise<Exclude<WorldAK47State, 'loading'>>;
+  readonly state: WorldAK47State;
+  /** Stable original muzzle object, moved to the imported marker on success. */
+  readonly muzzle: Object3D;
+  dispose(): void;
+}
+export interface WorldAK47Options { pool?: WorldAK47Pool; baseURL?: string; pageURL?: string }
+
+export function worldAK47Url(baseURL = import.meta.env.BASE_URL, pageURL?: string): string {
+  const path = `${baseURL.endsWith('/') ? baseURL : `${baseURL}/`}${WORLD_AK47.runtimePath}`;
+  const page = pageURL ?? (typeof location === 'undefined' ? undefined : location.href);
+  return page ? new URL(path, page).href : path;
+}
+
+const loadWorldAK47: WorldAK47Loader = async (url, signal) => {
+  const response = await fetch(url, { signal, credentials: 'same-origin', redirect: 'error' });
+  if (!response.ok) throw new Error('World weapon is unavailable');
+  const bytes = await response.arrayBuffer(), view = new DataView(bytes);
+  if (signal.aborted) throw new Error('World weapon load cancelled');
+  if (bytes.byteLength !== WORLD_AK47.bytes || view.getUint32(0, true) !== 0x46546c67 || view.getUint32(4, true) !== 2
+    || view.getUint32(8, true) !== bytes.byteLength || view.getUint32(16, true) !== 0x4e4f534a
+    || view.getUint32(12, true) > bytes.byteLength - 20) throw new Error('Unexpected world weapon GLB');
+  const metadata = JSON.parse(new TextDecoder().decode(new Uint8Array(bytes, 20, view.getUint32(12, true))));
+  if (metadata.scenes?.length !== 1 || metadata.skins?.length || metadata.animations?.length
+    || ['images', 'buffers'].some(key => (metadata[key] ?? []).some((item: { uri?: string }) => item.uri !== undefined))) {
+    throw new Error('World weapon must be a self-contained static model');
+  }
+  const manager = new LoadingManager(); let imageFailed = false;
+  manager.onError = failed => { imageFailed = true; if (failed.startsWith('blob:')) URL.revokeObjectURL(failed); };
+  const gltf = await new GLTFLoader(manager).parseAsync(bytes, '');
+  if (signal.aborted || imageFailed) { disposeModelTree(gltf.scene); throw new Error('World weapon decode failed or cancelled'); }
+  return gltf.scene;
+};
+
+function requireNode(root: Group, name: string): Object3D {
+  const node = root.getObjectByName(name);
+  if (!node) throw new Error(`World weapon lacks ${name}`);
+  return node;
+}
+
+/** Read actual vertices in the source frame; hidden accessories cannot inflate the fitted length. */
+function pointsInRoot(root: Group, node: Object3D): Vector3[] {
+  const points: Vector3[] = [], inverse = root.matrixWorld.clone().invert();
+  node.traverseVisible(object => {
+    if (!(object instanceof Mesh)) return;
+    if ((object as Mesh & { isSkinnedMesh?: boolean }).isSkinnedMesh) throw new Error('World weapon cannot contain a skin');
+    const positions = object.geometry.getAttribute('position');
+    const transform = new Matrix4().multiplyMatrices(inverse, object.matrixWorld);
+    for (let i = 0; i < positions.count; i++) points.push(new Vector3().fromBufferAttribute(positions, i).applyMatrix4(transform));
+  });
+  if (!points.length) throw new Error(`World weapon ${node.name} lacks geometry`);
+  return points;
+}
+
+/** Geometry-derived calibration from the committed AK view, performed once per shared source. */
+function prepareWorldAK47(source: Group): Group {
+  for (const name of WORLD_AK47.requiredNodes) requireNode(source, name);
+  for (const name of WORLD_AK47.hiddenNodes) source.getObjectByName(name)?.traverse(node => { node.visible = false; });
+  source.updateMatrixWorld(true);
+  const bounds = new Box3().setFromPoints(pointsInRoot(source, source)), size = bounds.getSize(new Vector3());
+  if (!Number.isFinite(size.z) || size.z < 1.3 || size.z > 1.5 || size.y > 0.6) throw new Error('Unexpected AK source frame');
+  const scale = WORLD_AK47.presentationLengthMeters / size.z;
+  const sourceMuzzle = source.worldToLocal(requireNode(source, 'MuzzleDeviceTip').getWorldPosition(new Vector3()));
+  if (Math.abs(sourceMuzzle.x) > 0.01 || Math.abs(sourceMuzzle.z - bounds.min.z) > 0.02) throw new Error('AK muzzle is not at the -Z barrel tip');
+  const frontPoints = pointsInRoot(source, requireNode(source, 'FrontIronSight'));
+  const post = frontPoints.filter(point => Math.abs(point.x - sourceMuzzle.x) < 0.002);
+  const postTop = Math.max(...post.map(point => point.y));
+  const postTip = post.filter(point => Math.abs(point.y - postTop) < 0.000001);
+  if (!postTip.length) throw new Error('AK front post could not be identified');
+  const front = new Box3().setFromPoints(postTip).getCenter(new Vector3());
+  const rearPoints = pointsInRoot(source, requireNode(source, 'RearIronSight'));
+  const rearBounds = new Box3().setFromPoints(rearPoints), rearX = (rearBounds.min.x + rearBounds.max.x) / 2;
+  const notch = rearPoints.filter(point => Math.abs(point.x - rearX) < 0.0008);
+  const notchBottom = Math.max(...notch.map(point => point.y));
+  if (!notch.length || rearBounds.max.y - notchBottom < 0.003) throw new Error('AK rear notch could not be identified');
+  const rear = new Vector3(rearX, (notchBottom + rearBounds.max.y) / 2, rearBounds.max.z);
+  const direction = front.clone().sub(rear).normalize(), forward = new Vector3(0, 0, -1);
+  if (direction.dot(forward) < 0.999) throw new Error('AK sights do not face -Z');
+  const basis = new Quaternion().setFromUnitVectors(direction, forward);
+  const furniture = pointsInRoot(source, requireNode(source, 'FurnitureGeometry'));
+  const gripPoints = furniture.filter(point => point.y < -0.065 && point.z > -0.30);
+  const supportPoints = furniture.filter(point => point.z < -0.60);
+  if (!gripPoints.length || !supportPoints.length) throw new Error('AK grip geometry could not be identified');
+  const grip = new Box3().setFromPoints(gripPoints).getCenter(new Vector3());
+  const supportBounds = new Box3().setFromPoints(supportPoints), support = supportBounds.getCenter(new Vector3()); support.y = supportBounds.min.y;
+  const mount = new Group(); mount.name = 'world-ak47-mount';
+  mount.scale.setScalar(scale); mount.quaternion.copy(basis);
+  mount.position.set(0, -0.14, -0.02).sub(grip.clone().applyQuaternion(basis).multiplyScalar(scale));
+  mount.add(source);
+  for (const [name, position] of [['ganymede-front-sight', front], ['ganymede-rear-sight', rear],
+    ['ganymede-firing-grip', grip], ['ganymede-support-grip', support]] as const) {
+    const marker = new Group(); marker.name = name; marker.position.copy(position); source.add(marker);
+  }
+  source.traverse(object => { if (object instanceof Mesh) { object.castShadow = false; object.receiveShadow = true; } });
+  mount.userData.calibration = { sourceForward: '-Z', sourceUp: '+Y', uniformScale: scale,
+    sourceBounds: { min: bounds.min.toArray(), max: bounds.max.toArray() },
+    presentationLengthMeters: WORLD_AK47.presentationLengthMeters, lengthFrame: 'weapon-parent-local-before-existing-outer-scale',
+    sourceMuzzle: sourceMuzzle.toArray(), sourceFiringGrip: grip.toArray(), sourceSupportGrip: support.toArray(),
+    sightBasis: basis.toArray(), supplierAnimationClips: 0, handContact: 'runtime-review-pending' };
+  return mount;
+}
+
+interface PoolEntry { refs: number; retired: boolean; controller: AbortController; promise: Promise<Group>; template?: Group }
+interface WeaponLease { template: Promise<Group>; release(): void }
+
+/** Explicit reference counting: no scene owns another character's shared geometry/materials. */
+export class WorldAK47Pool {
+  private readonly entries = new Map<string, PoolEntry>();
+  constructor(private readonly loader: WorldAK47Loader = loadWorldAK47) {}
+  acquire(url: string): WeaponLease {
+    let entry = this.entries.get(url);
+    if (!entry) {
+      const current: PoolEntry = { refs: 0, retired: false, controller: new AbortController(), promise: undefined! };
+      this.entries.set(url, current); entry = current;
+      current.promise = Promise.resolve().then(() => {
+        if (current.retired) throw new Error('World weapon request released');
+        return this.loader(url, current.controller.signal);
+      }).then(source => {
+        if (current.retired) { disposeModelTree(source); throw new Error('World weapon request released'); }
+        try { current.template = prepareWorldAK47(source); return current.template; }
+        catch (error) { disposeModelTree(source); throw error; }
+      });
+    }
+    const current = entry; current.refs++; let released = false;
+    return { template: current.promise, release: () => {
+      if (released) return;
+      released = true;
+      if (--current.refs) return;
+      current.retired = true; current.controller.abort();
+      if (this.entries.get(url) === current) this.entries.delete(url);
+      if (current.template) { disposeModelTree(current.template); current.template = undefined; }
+    } };
+  }
+}
+
+const sharedWorldWeapons = new WorldAK47Pool();
+const attachments = new WeakMap<Group, WorldAK47Attachment>();
+
+/**
+ * Pass only makeCarbine/makeSidearm's gun root, never the actor or first-person arms root.
+ * Its transform/visibility remain owned by the existing character pose. The registered
+ * pre-disposal callback detaches borrowed resources before disposeModelTree traverses them.
+ */
+export function attachWorldAK47(parentWeaponRoot: Group, options: WorldAK47Options = {}): WorldAK47Attachment {
+  const existing = attachments.get(parentWeaponRoot); if (existing) return existing;
+  const found = parentWeaponRoot.getObjectByName('muzzle'), muzzle = found ?? new Group();
+  if (!found) { muzzle.name = 'muzzle'; muzzle.position.set(0, 0.018, -0.97); parentWeaponRoot.add(muzzle); }
+  const rest = { parent: muzzle.parent!, position: muzzle.position.clone(), quaternion: muzzle.quaternion.clone(),
+    scale: muzzle.scale.clone(), matrix: muzzle.matrix.clone(), autoUpdate: muzzle.matrixAutoUpdate };
+  const fallback: { mesh: Mesh; visible: boolean }[] = [];
+  parentWeaponRoot.traverse(object => {
+    if (!(object instanceof Mesh)) return;
+    for (let ancestor: Object3D | null = object; ancestor; ancestor = ancestor.parent) if (ancestor === muzzle) return;
+    fallback.push({ mesh: object, visible: object.visible });
+  });
+  let state: WorldAK47State = 'loading', mount: Group | undefined;
+  const oldStatus = parentWeaponRoot.userData.assetStatus, oldWeapon = parentWeaponRoot.userData.worldWeapon;
+  const lease = (options.pool ?? sharedWorldWeapons).acquire(worldAK47Url(options.baseURL, options.pageURL));
+  let resolveReady!: (value: Exclude<WorldAK47State, 'loading'>) => void;
+  const ready = new Promise<Exclude<WorldAK47State, 'loading'>>(resolve => { resolveReady = resolve; });
+  let unregister = () => {};
+  const restoreMuzzle = () => {
+    rest.parent.add(muzzle); muzzle.position.copy(rest.position); muzzle.quaternion.copy(rest.quaternion); muzzle.scale.copy(rest.scale);
+    muzzle.matrixAutoUpdate = rest.autoUpdate; muzzle.matrix.copy(rest.matrix); muzzle.matrixWorldNeedsUpdate = true;
+  };
+  const attachment: WorldAK47Attachment = { ready, muzzle, get state() { return state; }, dispose() {
+    if (state === 'disposed') return;
+    state = 'disposed'; unregister();
+    // Detach first: the caller's tree cleanup must not visit reference-counted GPU resources.
+    restoreMuzzle(); mount?.removeFromParent(); mount = undefined; lease.release();
+    for (const part of fallback) part.mesh.visible = part.visible;
+    if (!found) muzzle.removeFromParent();
+    if (oldStatus === undefined) delete parentWeaponRoot.userData.assetStatus; else parentWeaponRoot.userData.assetStatus = oldStatus;
+    if (oldWeapon === undefined) delete parentWeaponRoot.userData.worldWeapon; else parentWeaponRoot.userData.worldWeapon = oldWeapon;
+    attachments.delete(parentWeaponRoot); resolveReady('disposed');
+  } };
+  attachments.set(parentWeaponRoot, attachment);
+  unregister = registerModelDisposer(parentWeaponRoot, () => attachment.dispose());
+  parentWeaponRoot.userData.worldWeapon = { id: WORLD_AK47.id, revision: WORLD_AK47.revision, state };
+  void lease.template.then(template => {
+    if (state === 'disposed') return;
+    mount = template.clone(true); parentWeaponRoot.add(mount);
+    const marker = requireNode(mount, 'MuzzleDeviceTip');
+    marker.add(muzzle); muzzle.position.set(0, 0, 0); muzzle.quaternion.identity(); muzzle.scale.setScalar(1);
+    muzzle.matrixAutoUpdate = true; muzzle.updateMatrix(); muzzle.userData.forward = '-Z';
+    for (const part of fallback) part.mesh.visible = false;
+    state = 'ready'; parentWeaponRoot.userData.assetStatus = 'imported-world-weapon';
+    parentWeaponRoot.userData.worldWeapon = { id: WORLD_AK47.id, revision: WORLD_AK47.revision, state, sha256: WORLD_AK47.sha256 };
+    resolveReady('ready');
+  }).catch(() => {
+    if (state === 'disposed') return;
+    restoreMuzzle(); mount?.removeFromParent(); mount = undefined; lease.release();
+    for (const part of fallback) part.mesh.visible = part.visible;
+    state = 'error'; parentWeaponRoot.userData.worldWeapon = { id: WORLD_AK47.id, revision: WORLD_AK47.revision, state };
+    resolveReady('error');
+  });
+  return attachment;
+}
