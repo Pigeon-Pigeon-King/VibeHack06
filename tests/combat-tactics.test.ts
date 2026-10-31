@@ -118,9 +118,10 @@ describe('physical combat tactics', () => {
       h.context.actors = [...h.actors, { id: 'player', position: occupied }];
       delete a.combat;
       h.tick();
-      expect(a.combat?.cover).toBeTruthy();
-      expect(distance(a.combat!.cover!.hide, occupied)).toBeGreaterThanOrEqual(0.8);
-      expect(distance(a.combat!.cover!.peek, occupied)).toBeGreaterThanOrEqual(0.8);
+      const next = h.actors[0].combat?.cover;
+      expect(next).toBeTruthy();
+      expect(distance(next!.hide, occupied)).toBeGreaterThanOrEqual(0.8);
+      expect(distance(next!.peek, occupied)).toBeGreaterThanOrEqual(0.8);
     } finally { h.dispose(); }
   });
   it('uses reachable lateral movement without cover, then returns to its post when the threat disappears', () => {

@@ -9,6 +9,7 @@ import { initializePhysics, FIXED_DT } from './runtime/Physics';
 import { Simulation, distance, type Snapshot } from './mission/Simulation';
 import { GameUI } from './ui/GameUI';
 import { ObjectiveIndicator } from './ui/ObjectiveIndicator';
+import { objectiveFocusOpacity, smoothObjectiveOpacity } from './ui/objective-focus';
 import { HeldItemMotion, type HeldItem } from './presentation/HeldItemMotion';
 import { LAYOUT } from './content/layout';
 import { carryFacts, CHAPTER_STAGES, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
@@ -66,6 +67,8 @@ class Game {
   private readonly characters = new Map<string, { model: CharacterModel; label?: Sprite; name: string; role: string }>();
   private readonly marker = new Group();
   private readonly markerLabel = label('目标', '#f4d49e');
+  private readonly markerMaterials: Array<{ material: MeshBasicMaterial | SpriteMaterial; opacity: number }> = [];
+  private markerOpacity = 1;
   private environment!: EnvironmentModel;
   private sim!: Simulation;
   private mode: RunMode = 'menu';
@@ -98,11 +101,12 @@ class Game {
     this.renderer.domElement.tabIndex = -1;
     this.scene.background = new Color(0x677e8d); this.scene.fog = new FogExp2(0x677e8d, 0.008);
     this.camera.rotation.order = 'YXZ'; this.camera.add(this.weapon.root, this.supply); this.scene.add(this.camera, this.feedback.root, this.marker, this.care.root);
-    const ring = new Mesh(new RingGeometry(0.5, 0.58, 32), new MeshBasicMaterial({ color: 0xe7c782, side: 2, transparent: true, opacity: 0.8 }));
+    const ring = new Mesh(new RingGeometry(0.5, 0.58, 32), new MeshBasicMaterial({ color: 0xe7c782, side: 2, transparent: true, opacity: 0.8, depthWrite: false }));
     ring.rotation.x = -Math.PI / 2; ring.position.y = 0.04;
-    const arrow = new Mesh(new ConeGeometry(0.16, 0.35, 4), new MeshBasicMaterial({ color: 0xe7c782 }));
+    const arrow = new Mesh(new ConeGeometry(0.16, 0.35, 4), new MeshBasicMaterial({ color: 0xe7c782, transparent: true, depthWrite: false }));
     arrow.rotation.z = Math.PI; arrow.position.y = 2.7; this.markerLabel.position.y = 3.2;
     this.marker.add(ring, arrow, this.markerLabel);
+    this.markerMaterials.push({ material: ring.material, opacity: 0.8 }, { material: arrow.material, opacity: 1 }, { material: this.markerLabel.material, opacity: 1 });
     this.input = new Input(this.renderer.domElement, () => this.pause(), message => { this.pointerError = message; });
     try {
       this.store = new SaveStore(window.localStorage);
@@ -365,6 +369,8 @@ class Game {
     }
     this.marker.visible = active && m.control !== 'staged';
     this.marker.position.set(...objective.point);
+    this.markerOpacity = smoothObjectiveOpacity(this.markerOpacity, objectiveFocusOpacity(this.camera, objective.point), dt, this.lowMotion);
+    for (const marker of this.markerMaterials) marker.material.opacity = marker.opacity * this.markerOpacity;
     this.feedback.update(active ? dt : 0, sim.ballistics.projectiles);
     const diagnostics = import.meta.env.DEV ? (this.qaImported ? '检查点恢复 · 局部视觉验收\n' : '') + `阶段 ${m.phase} · ${p.name} · 坐标 ${p.position.map(v => v.toFixed(1)).join(', ')} · ${Math.round(this.fps)} FPS\n` +
       `Draw ${this.renderer.info.render.calls} · Tri ${this.renderer.info.render.triangles.toLocaleString()} · 弹丸 ${sim.ballistics.projectiles.length} · 发射 ${sim.ballistics.fired} · 命中 ${sim.hits} · 敌 ${sim.aliveEnemies.length}\n事实 ${m.facts.length} · ${m.facts.slice(-6).join('/') || '无'}`
