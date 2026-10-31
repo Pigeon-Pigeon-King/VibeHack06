@@ -1,0 +1,106 @@
+{
+  "schema": "ganymede-roadshow-timeline-v1",
+  "status": "SCRIPT_ONLY_HUMAN_REHEARSAL_NOT_RUN",
+  "total_seconds": 180,
+  "clock": "wall clock; complete early, hold to next cue; do not accelerate game or voice",
+  "sections": {
+    "intro": [
+      0,
+      20
+    ],
+    "film": [
+      20,
+      65
+    ],
+    "gameplay": [
+      65,
+      160
+    ],
+    "outro": [
+      160,
+      180
+    ]
+  },
+  "segments": [
+    {
+      "start_s": 0,
+      "end_s": 12,
+      "kind": "intro",
+      "text": "《重返木卫三》是一款原创双主角第一人称射击游戏。两个人在木卫三港区，把撤离的人交给下一班。"
+    },
+    {
+      "start_s": 12,
+      "end_s": 20,
+      "kind": "intro",
+      "text": "这是开发中的可玩 Demo。先看四十五秒实机剪辑，再看我现场操作。"
+    },
+    {
+      "start_s": 20,
+      "end_s": 65,
+      "kind": "film",
+      "text": "",
+      "action": "播放已通过验收的45秒整合实机宣传片；当前影片NOT_RUN。"
+    },
+    {
+      "start_s": 65,
+      "end_s": 72,
+      "kind": "gameplay_or_transition",
+      "text": "现在是 S10 的独立开发演示。先看按 Q 后，同伴到底做了什么。",
+      "action": "切 A，恢复 S10 开发章节入口备演状态。"
+    },
+    {
+      "start_s": 72,
+      "end_s": 100,
+      "kind": "gameplay_or_transition",
+      "text": "我先不射击，只按 Q。郑铎要先到侧面，再开火；同伴的弹丸也走碰撞和伤害计算。请看他的枪口和敌人反应，玩家弹药保持不变。",
+      "action": "Q 一次；玩家不射击。观察同伴真实开火与敌人反应；不清楚则使用未验证结果替换句。"
+    },
+    {
+      "start_s": 100,
+      "end_s": 110,
+      "kind": "gameplay_or_transition",
+      "text": "接着切到已存的搬运检查点。这是局部恢复，不代表前面战斗现场打完。",
+      "action": "明示切 B；从原有rescue-4导入，非连续首通。"
+    },
+    {
+      "start_s": 110,
+      "end_s": 120,
+      "kind": "gameplay_or_transition",
+      "text": "现在两人共同抬着孟齐。双手占用时，玩家不能一边搬运一边开枪。",
+      "action": "正常移动，短按F并松开，弹药不变。"
+    },
+    {
+      "start_s": 120,
+      "end_s": 135,
+      "kind": "gameplay_or_transition",
+      "text": "担架要避开实体障碍，两人也要保持间距。靠墙受阻时，队伍停住；先退一步，再绕开。",
+      "action": "只有真人排练通过才执行原生挡墙路线，否则使用直线路线与如实替换句。"
+    },
+    {
+      "start_s": 135,
+      "end_s": 150,
+      "kind": "gameplay_or_transition",
+      "text": "我把路线让出来，再一起送进挡墙后。这里的救援，要靠玩家和同伴共同完成。",
+      "action": "搬到硬遮护，目标变化后Esc暂停。"
+    },
+    {
+      "start_s": 150,
+      "end_s": 160,
+      "kind": "gameplay_or_transition",
+      "text": "刚才是两个局部机制：同伴真实掩护，以及受队形和环境限制的转运。完整动作还在制作。",
+      "action": "按真实观察使用成功/缺少命中/未完成转运替换句。"
+    },
+    {
+      "start_s": 160,
+      "end_s": 171,
+      "kind": "outro",
+      "text": "我们用 Codex 实现任务、弹丸、碰撞和检查点，再用真实输入和回归检查行为。美术和声音仍在整合。"
+    },
+    {
+      "start_s": 171,
+      "end_s": 180,
+      "kind": "outro",
+      "text": "十二段白盒已连通。约一小时战役、Windows 和手机试玩仍待验收。谢谢。"
+    }
+  ]
+}

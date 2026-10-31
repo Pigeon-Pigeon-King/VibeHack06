@@ -1,0 +1,89 @@
+{
+  "source": "public-input replay checkpoint child-timeline-3.json; no hidden state writes; natural playback",
+  "samples": [
+    {
+      "file": "child-00.png",
+      "ms": 2200,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -23.6, 0.0, 6.3 · 44 FPS\nDraw 308 · Tri 15,640 · 弹丸 0 · 发射 1 · 命中 0 · 敌 0\n事实 6 · lunch-packed/mattress-cleared/history-gate-open/history-defense-active/history-defense-shot/history-evacuation-underway\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-01.png",
+      "ms": 3681,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -23.6, 0.0, 6.3 · 40 FPS\nDraw 309 · Tri 15,642 · 弹丸 0 · 发射 1 · 命中 0 · 敌 0\n事实 6 · lunch-packed/mattress-cleared/history-gate-open/history-defense-active/history-defense-shot/history-evacuation-underway\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-02.png",
+      "ms": 6513,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -23.6, 0.0, 6.3 · 38 FPS\nDraw 320 · Tri 15,836 · 弹丸 0 · 发射 1 · 命中 0 · 敌 0\n事实 10 · history-defense-shot/history-evacuation-underway/history-defender-0-down/history-defender-1-down/history-heavy-losses/childhood-losses-line\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-03.png",
+      "ms": 8459,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -24.4, 0.5, 6.3 · 50 FPS\nDraw 315 · Tri 15,938 · 弹丸 0 · 发射 1 · 命中 0 · 敌 0\n事实 14 · history-heavy-losses/childhood-losses-line/father-rifle-collected/childhood-pickup-line/child-handed-over/childhood-evacuator-line\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-04.png",
+      "ms": 11120,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -26.3, -0.1, 6.3 · 52 FPS\nDraw 316 · Tri 15,998 · 弹丸 0 · 发射 1 · 命中 0 · 敌 0\n事实 15 · childhood-losses-line/father-rifle-collected/childhood-pickup-line/child-handed-over/childhood-evacuator-line/father-charged-defense\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-05.png",
+      "ms": 13002,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -29.0, -0.9, 6.3 · 55 FPS\nDraw 315 · Tri 15,972 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 16 · father-rifle-collected/childhood-pickup-line/child-handed-over/childhood-evacuator-line/father-charged-defense/father-cover-shot\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-06.png",
+      "ms": 16868,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -35.2, -1.9, 6.3 · 38 FPS\nDraw 303 · Tri 15,754 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 16 · father-rifle-collected/childhood-pickup-line/child-handed-over/childhood-evacuator-line/father-charged-defense/father-cover-shot\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-07.png",
+      "ms": 18580,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -38.0, -1.9, 6.3 · 40 FPS\nDraw 296 · Tri 15,594 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 16 · father-rifle-collected/childhood-pickup-line/child-handed-over/childhood-evacuator-line/father-charged-defense/father-cover-shot\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-08.png",
+      "ms": 20338,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 3 · 陆闻川 · 九岁 · 坐标 -39.6, -1.9, 6.3 · 35 FPS\nDraw 160 · Tri 8,540 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 19 · childhood-evacuator-line/father-charged-defense/father-cover-shot/child-evacuated/child-out-of-sight/history-partition-closed\n",
+      "objective": "随撤离者穿过隔断"
+    },
+    {
+      "file": "child-09.png",
+      "ms": 21827,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 4 · 陆闻川 · 九岁 · 坐标 -40.3, -1.9, 6.3 · 43 FPS\nDraw 189 · Tri 9,362 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 19 · childhood-evacuator-line/father-charged-defense/father-cover-shot/child-evacuated/child-out-of-sight/history-partition-closed\n",
+      "objective": "检修门"
+    },
+    {
+      "file": "child-10.png",
+      "ms": 23264,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 4 · 陆闻川 · 九岁 · 坐标 -40.3, -1.9, 6.3 · 33 FPS\nDraw 189 · Tri 9,362 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 19 · childhood-evacuator-line/father-charged-defense/father-cover-shot/child-evacuated/child-out-of-sight/history-partition-closed\n",
+      "objective": "检修门"
+    },
+    {
+      "file": "child-11.png",
+      "ms": 24964,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 4 · 陆闻川 · 九岁 · 坐标 -40.3, -1.9, 6.3 · 33 FPS\nDraw 189 · Tri 9,362 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 19 · childhood-evacuator-line/father-charged-defense/father-cover-shot/child-evacuated/child-out-of-sight/history-partition-closed\n",
+      "objective": "检修门"
+    },
+    {
+      "file": "child-12.png",
+      "ms": 26622,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 4 · 陆闻川 · 九岁 · 坐标 -40.3, -1.9, 6.3 · 36 FPS\nDraw 189 · Tri 9,362 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 19 · childhood-evacuator-line/father-charged-defense/father-cover-shot/child-evacuated/child-out-of-sight/history-partition-closed\n",
+      "objective": "检修门"
+    },
+    {
+      "file": "child-13.png",
+      "ms": 28137,
+      "diagnostics": "检查点恢复 · 局部视觉验收\n阶段 4 · 陆闻川 · 九岁 · 坐标 -40.3, -1.9, 6.3 · 43 FPS\nDraw 189 · Tri 9,362 · 弹丸 0 · 发射 2 · 命中 0 · 敌 0\n事实 19 · childhood-evacuator-line/father-charged-defense/father-cover-shot/child-evacuated/child-out-of-sight/history-partition-closed\n",
+      "objective": "检修门"
+    }
+  ]
+}

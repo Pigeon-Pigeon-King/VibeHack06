@@ -1,0 +1,498 @@
+{
+  "schema": "ganymede-submission-form-draft-v1",
+  "recordKind": "DRAFT_NOT_SUBMITTED",
+  "preparedAt": "2026-10-31T12:53:15+08:00",
+  "timezone": "Asia/Shanghai",
+  "baseline": {
+    "mainReadingCommit": "9ec9bc669096991efabe373e8e5307408431a80b",
+    "mainRuntimeLastChangeCommit": "1ebd8faef9720e697f1b6bffd364f52ed7d67d48",
+    "packageVersion": "0.6.0",
+    "candidateHead": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+    "candidateHasUncommittedChanges": true,
+    "candidateIntegratedIntoMain": false,
+    "snapshotAtomic": false,
+    "evidenceAudit": "artifacts/submission/rules-source-audit.json",
+    "mainRuntimeLastChangeScope": "WITHIN_ORIGINAL_9ec9bc6_READING_BASELINE_NOT_CURRENT_MAIN"
+  },
+  "submission": {
+    "navigationUrl": "https://vibecafe.ai/hacks/6/projects/submit",
+    "navigationUrlSource": "docs/SUBMISSION_PLAN.md (secondary guide summary)",
+    "officialProjectUrl": null,
+    "submittedAt": null,
+    "status": "DRAFT_ONLY",
+    "canSubmitNow": false,
+    "externalActionsAuthorized": false,
+    "teamName": null,
+    "teamUrl": null,
+    "websiteUrl": null,
+    "githubUrl": null,
+    "repositoryVisibility": null,
+    "xiaohongshuUrl": null,
+    "selectedScreenshotPaths": []
+  },
+  "copy": {
+    "projectName": "重返木卫三",
+    "shortIntroduction": "在木卫三工业港区，请求同伴真实开火掩护，协作转运伤员，接收人员与物资。原创单人双主角 FPS，把救援与交接变成玩家亲手完成的任务。",
+    "longIntroduction": "《重返木卫三》是一款原创科幻单人线性第一人称射击战役。玩家以陆闻川与周延两个视点，穿过寒冷的木卫三工业港区，在推进、守点、护送和接防中恢复援军接收条件。玩家要做的不只有射击，还要把眼前的人安全交给下一班。\n\nS10 的同伴掩护和协作转运已经具有实际效果：请求掩护后，同伴会移动到侧位，发射能够命中敌人的弹丸；共同转运伤员时，玩家双手被占用，需要保持队形并避开环境障碍。居民、医护和接防人员按安全条件与实际到位推进任务；在接收段落，玩家留在扶门位置才能让人员和物资持续通过。",
+    "developmentStatusNote": "当前为开发中的可玩 Demo，S01—S12 功能白盒已连通。正式人物与场景资产、完整声音、连续接触演出及完整首通仍在制作和验收；约一小时、双主角、三关战役与 Windows EXE 是保留的完整产品目标，尚不代表已完成验收。",
+    "controlsMainBaseline": "WASD 移动，鼠标观察，左键／F 射击，右键瞄准，R 换弹；Shift 冲刺，C 蹲伏，Space 跳跃；E 亲手交互，Q 在 S10 适用阶段请求同伴掩护；Esc 暂停、重试检查点或重开。Enter 仅跳过允许的演出。当前主线说明适用于桌面键鼠；手机触控候选尚待合入及真机验收。",
+    "toolsAndModelsStatement": "Codex 用于玩法实现、调试、测试与文档整理，ImageGen 用于原创人物、地图与道具概念图；Tripo 已用于概念图转模型、绑定及动作样本，Hyper3D Rodin 已用于环境模块与远景资产制作。音乐采用本地 ACE-Step 1.5／MLX 流程，原创声线与短句试音采用 Qwen3-TTS，Whisper-base 辅助自动转写检查。Nativue 用于本机架构整理。游戏采用 Three.js、Rapier、TypeScript、Vite 与 Electron。素材生产、游戏集成和运行验收分别记录；模型和音频产出不代表全部进入当前可玩版本。",
+    "combinedIntroduction": "《重返木卫三》是一款原创科幻单人线性第一人称射击战役。玩家以陆闻川与周延两个视点，穿过寒冷的木卫三工业港区，在推进、守点、护送和接防中恢复援军接收条件。玩家要做的不只有射击，还要把眼前的人安全交给下一班。\n\nS10 的同伴掩护和协作转运已经具有实际效果：请求掩护后，同伴会移动到侧位，发射能够命中敌人的弹丸；共同转运伤员时，玩家双手被占用，需要保持队形并避开环境障碍。居民、医护和接防人员按安全条件与实际到位推进任务；在接收段落，玩家留在扶门位置才能让人员和物资持续通过。\n\n当前为开发中的可玩 Demo，S01—S12 功能白盒已连通。正式人物与场景资产、完整声音、连续接触演出及完整首通仍在制作和验收；约一小时、双主角、三关战役与 Windows EXE 是保留的完整产品目标，尚不代表已完成验收。\n\n操作：WASD 移动，鼠标观察，左键／F 射击，右键瞄准，R 换弹；Shift 冲刺，C 蹲伏，Space 跳跃；E 亲手交互，Q 在 S10 适用阶段请求同伴掩护；Esc 暂停、重试检查点或重开。Enter 仅跳过允许的演出。当前主线说明适用于桌面键鼠；手机触控候选尚待合入及真机验收。",
+    "spoilerPolicy": "不披露 S11 固定剧情结果；短介绍聚焦掩护、转运与接收。"
+  },
+  "formFieldMapping": {
+    "inspectionStatus": "NOT_INSPECTED",
+    "sourceKind": "SECONDARY_LOCAL_GUIDE_SUMMARY",
+    "source": "docs/SUBMISSION_PLAN.md",
+    "fields": [
+      {
+        "label": "项目名称",
+        "copyKey": "projectName",
+        "required": null,
+        "maxCharacters": null
+      },
+      {
+        "label": "项目介绍",
+        "copyKey": "combinedIntroduction",
+        "required": null,
+        "maxCharacters": null,
+        "note": "短／长介绍为本项目备选文案，不声称官方有两个介绍栏。"
+      },
+      {
+        "label": "网站链接",
+        "submissionKey": "websiteUrl",
+        "required": null
+      },
+      {
+        "label": "GitHub 链接",
+        "submissionKey": "githubUrl",
+        "required": null
+      },
+      {
+        "label": "项目截图",
+        "submissionKey": "selectedScreenshotPaths",
+        "required": null,
+        "limits": null
+      },
+      {
+        "label": "小红书链接",
+        "submissionKey": "xiaohongshuUrl",
+        "required": null
+      },
+      {
+        "label": "使用的工具与模型",
+        "copyKey": "toolsAndModelsStatement",
+        "required": null,
+        "officialOptions": null
+      }
+    ]
+  },
+  "coreGameplay": [
+    {
+      "id": "ballistics",
+      "text": "枪械发射有飞行时间的弹丸，掩体与实体碰撞影响命中。",
+      "state": "IMPLEMENTED_MAIN",
+      "evidence": [
+        "src/mission/Simulation.ts",
+        "docs/THREEJS_FPS_STANDARDS.md",
+        "artifacts/autonomy-finale-evidence.md"
+      ]
+    },
+    {
+      "id": "cover",
+      "text": "S10 的有效 Q 请求让郑铎移动至侧位并发射可伤害敌人的弹丸。",
+      "state": "IMPLEMENTED_MAIN_LOCAL_EVIDENCE",
+      "evidence": [
+        "src/mission/Rescue.ts",
+        "src/mission/Simulation.ts",
+        "tests/finale-interactions.test.ts",
+        "artifacts/autonomy-finale-evidence.md"
+      ],
+      "limit": "已有机制回归与浏览器局部操作；未证明完整正式接触演出或全章人工首通。"
+    },
+    {
+      "id": "cooperative_carry",
+      "text": "S10 转运占用双手，受床体环境碰撞和参与者间距约束；受阻可退让。",
+      "state": "IMPLEMENTED_MAIN_LOCAL_EVIDENCE",
+      "evidence": [
+        "src/mission/Rescue.ts",
+        "tests/finale-interactions.test.ts",
+        "artifacts/autonomy-finale-evidence.md"
+      ],
+      "limit": "目前是功能代理；手部、关节、人体互撞和连续接触仍需制作。"
+    },
+    {
+      "id": "autonomy",
+      "text": "人员按实际安全条件与到位推进撤离、交接和医疗任务，亲手操作保留输入。",
+      "state": "IMPLEMENTED_MAIN",
+      "evidence": [
+        "docs/AUTONOMY_AUDIT.md",
+        "artifacts/autonomy-finale-evidence.md"
+      ]
+    },
+    {
+      "id": "reception",
+      "text": "S12 留在扶门位置时人员与物资通过，离岗暂停，返回继续。",
+      "state": "IMPLEMENTED_MAIN_LOCAL_EVIDENCE",
+      "evidence": [
+        "src/mission/Epilogue.ts",
+        "tests/finale-interactions.test.ts",
+        "artifacts/autonomy-finale-evidence.md"
+      ],
+      "limit": "浏览器证据从真实检查点开始，不能称为完整战役连续通关。"
+    },
+    {
+      "id": "checkpoint",
+      "text": "暂停中可重试检查点与重开；本机存档保存任务状态。",
+      "state": "IMPLEMENTED_MAIN",
+      "evidence": [
+        "README.md",
+        "src/persistence/SaveStore.ts"
+      ],
+      "limit": "不同浏览器、域名、端口与桌面容器不共享存档。"
+    }
+  ],
+  "toolsActuallyUsed": [
+    {
+      "name": "Codex",
+      "category": "AI 编程",
+      "actualUse": true,
+      "use": "玩法、实现、调试、回归、审查与文档",
+      "evidence": [
+        "artifacts/game-progress.md",
+        "artifacts/autonomy-finale-evidence.md"
+      ],
+      "modelDisclosure": "本提交材料子任务的指定配置为 gpt-6-astra / max；不把它追溯为所有历史对话的模型。",
+      "runtimeInclusion": "SOURCE_WORKFLOW"
+    },
+    {
+      "name": "ImageGen",
+      "category": "概念图",
+      "actualUse": true,
+      "use": "原创人物、地图及道具参考图与修订",
+      "evidence": [
+        "artifacts/asset-jobs/CH-LU-adult-concept.md",
+        "artifacts/asset-jobs/art-review-20261031/manifest.json"
+      ],
+      "modelDisclosure": "记录为内置 ImageGen，未据记录推测底层具体模型。",
+      "runtimeInclusion": "PRODUCTION_REFERENCES_NOT_GAMEPLAY"
+    },
+    {
+      "name": "Tripo",
+      "category": "3D 生产",
+      "actualUse": true,
+      "use": "图生模型、自动绑定与动作样本",
+      "modelDisclosure": "已查到图生模型任务 model_version v3.1-20260211。",
+      "evidence": [
+        "artifacts/asset-jobs/production-20261031/production-status.json",
+        "artifacts/asset-jobs/production-20261031/props/report.json",
+        "assets/source/tripo/shared-animations/walk-v1/manifest.json"
+      ],
+      "runtimeInclusion": "SOURCE_ASSETS_NOT_IN_MAIN_CHARACTER_RUNTIME",
+      "limit": "候选只读检查首批主角骨架；共享行走样本视觉、脚底和手部接触仍未审查，不能称正式角色动作已完成。"
+    },
+    {
+      "name": "Hyper3D Rodin Gen-2.5",
+      "category": "3D 生产",
+      "actualUse": true,
+      "use": "依据概念图制作环境结构模块与远景资产",
+      "evidence": [
+        "artifacts/asset-jobs/production-20261031/hyper3d/report.json"
+      ],
+      "runtimeInclusion": "SOURCE_ASSETS_NOT_GAME_INTEGRATED",
+      "limit": "生产报告有生成与下载记录；尺寸适配、分件、碰撞、导航和引擎运行未完成。"
+    },
+    {
+      "name": "ACE-Step 1.5 / MLX",
+      "category": "音乐生成",
+      "actualUse": true,
+      "use": "人物主题、战斗与叙事音乐候选",
+      "evidence": [
+        "design/audio/production-01/MUSIC_PRODUCTION.md",
+        "design/audio/production-01/runtime/CREDITS.md"
+      ],
+      "runtimeInclusion": "AUDIO_PREPARED_NOT_GAME_INTEGRATED",
+      "limit": "本地实验分支、模型及修订有记录；听审、游戏混音和 Windows 验收分别进行。"
+    },
+    {
+      "name": "Qwen3-TTS / MLX-Audio",
+      "category": "声线与试音",
+      "actualUse": true,
+      "use": "1.7B VoiceDesign 4bit → 0.6B Base 4bit，原创角色声线和短句试音",
+      "evidence": [
+        "design/audio/production-01/VOICE_CAST_REVIEW.md",
+        "design/audio/production-01/INTEGRATION_HANDOFF.md"
+      ],
+      "runtimeInclusion": "VOICE_SAMPLES_NOT_FULL_CAMPAIGN_VOICEOVER",
+      "limit": "新增角色需试听；不能把短句试音写成完整战役配音。"
+    },
+    {
+      "name": "Whisper-base",
+      "category": "生产辅助核查",
+      "actualUse": true,
+      "use": "试音自动转写，定位可能漏字或截断",
+      "evidence": [
+        "design/audio/production-01/VOICE_CAST_REVIEW.md"
+      ],
+      "runtimeInclusion": "OFFLINE_QA_ONLY",
+      "limit": "自动转写不替代真人听审。"
+    },
+    {
+      "name": "Nativue",
+      "category": "架构工具",
+      "actualUse": true,
+      "use": "本机架构图与实际请求对应的来源分析",
+      "evidence": [
+        "artifacts/game-progress.md",
+        "artifacts/autonomy-finale-evidence.md"
+      ],
+      "runtimeInclusion": "DEVELOPMENT_ONLY"
+    },
+    {
+      "name": "Blender",
+      "category": "离线资产检查",
+      "actualUse": true,
+      "use": "Hyper3D 批次的离线导入与预览",
+      "evidence": [
+        "artifacts/asset-jobs/production-20261031/hyper3d/report.json"
+      ],
+      "runtimeInclusion": "PRODUCTION_INSPECTION_ONLY",
+      "limit": "这里只依据本地生产报告；Dot 云端建模是否实际执行未取得证据。"
+    }
+  ],
+  "implementationStack": {
+    "three": "0.186.0",
+    "@dimforge/rapier3d-compat": "0.21.0",
+    "typescript": "7.0.2",
+    "vite": "8.3.5",
+    "electron": "45.1.0",
+    "evidence": "package.json at 9ec9bc669096991efabe373e8e5307408431a80b",
+    "note": "工程依赖与 AI 工具分开披露；版本来自锁定仓库，不是对外部最新版本的判断。"
+  },
+  "notClaimedAsCompleted": [
+    "约一小时普通玩家首通",
+    "全战役真人连续通关",
+    "正式主角与场景全部集成",
+    "完整配音与正式连续接触演出",
+    "手机真机多指与长时间性能验收",
+    "Windows 实机运行验收",
+    "公网部署、GitHub 上传和比赛提交",
+    "45 秒实机成片及三分钟现场排练"
+  ],
+  "candidateOnlyCapabilities": {
+    "workspace": "/Users/penguin/VibeHack06-worktree",
+    "evidence": [
+      "docs/IMPORTED_ASSET_RUNTIME.md",
+      "docs/MOBILE_WEB_DELIVERY.md",
+      "artifacts/asset-runtime-evidence.md"
+    ],
+    "items": [
+      "触控输入及布局候选",
+      "真实 AK-47 与加载重试",
+      "S12 F-35B 护航模块",
+      "首批主角骨架结构审计"
+    ],
+    "limit": "尚未合入本草稿的主线基线；桌面触控模拟不等于手机真机，F-35B 视觉可见性未通过，骨架结构不等于动作验收。"
+  },
+  "missingFields": [
+    {
+      "id": "team",
+      "label": "队伍及参赛账号",
+      "value": null,
+      "status": "NOT_VERIFIED",
+      "needed": "已有队伍名称／链接、报名审核状态及最终填表人；不据本机缺记录断言未报名。"
+    },
+    {
+      "id": "website",
+      "label": "网站链接",
+      "value": null,
+      "status": "NOT_PUBLISHED",
+      "needed": "同一冻结构建的公网 HTTPS 可玩 URL，以及外部桌面、手机实际操作证据。"
+    },
+    {
+      "id": "github",
+      "label": "GitHub 链接",
+      "value": null,
+      "status": "NO_REMOTE_CONFIGURED",
+      "needed": "保留真实历史的仓库 URL、公开／私有选择与评委访问验证。"
+    },
+    {
+      "id": "screenshots",
+      "label": "项目截图",
+      "value": [],
+      "status": "NOT_SELECTED_FOR_FINAL_BUILD",
+      "needed": "与冻结构建一致的实际画面；既有检查点局部截图可参考，不自动当作最终上传材料。"
+    },
+    {
+      "id": "xiaohongshu",
+      "label": "小红书笔记链接",
+      "value": null,
+      "status": "NOT_REGISTERED_IN_REPO",
+      "needed": "已有完整笔记链接与话题核对；没有证据即保留空值。"
+    },
+    {
+      "id": "form_constraints",
+      "label": "实际表单限制",
+      "value": null,
+      "status": "FORM_NOT_INSPECTED",
+      "needed": "必填标记、字数、图片格式／数量／容量、工具选项、保存和提交按钮行为。"
+    },
+    {
+      "id": "release",
+      "label": "最终构建与提交回执",
+      "value": null,
+      "status": "NOT_FROZEN_NOT_SUBMITTED",
+      "needed": "集成 commit、构建与包散列、实际公开项目 URL、提交时间及回执。"
+    }
+  ],
+  "provisionalScreenshotReferences": [
+    {
+      "workspace": "/Users/penguin/VibeHack06",
+      "path": "artifacts/autonomy-cover-request.png",
+      "kind": "旧主线 S10 局部操作",
+      "finalSelection": false
+    },
+    {
+      "workspace": "/Users/penguin/VibeHack06",
+      "path": "artifacts/autonomy-carry-cover.png",
+      "kind": "旧主线真实检查点局部搬运",
+      "finalSelection": false
+    },
+    {
+      "workspace": "/Users/penguin/VibeHack06",
+      "path": "artifacts/autonomy-reception-result.png",
+      "kind": "旧主线真实检查点局部接收",
+      "finalSelection": false
+    },
+    {
+      "workspace": "/Users/penguin/VibeHack06-worktree",
+      "path": "artifacts/asset-runtime-browser/ak47-ads-desktop.png",
+      "kind": "待整合候选实际 AK-47 画面",
+      "finalSelection": false
+    }
+  ],
+  "publicationChecks": [
+    "冻结同一份代码与运行资源，记录实际散列",
+    "公网地址从外部设备可加载并真实操作，资源无缺失",
+    "桌面键鼠与手机触控分别完成指定玩法、失败／重试、暂停／恢复和续玩",
+    "GitHub 保留原始提交历史，按可见性验证评委访问",
+    "核查第三方许可、素材署名与生产记录；排除凭据、临时签名 URL、个人机器信息和无关原件",
+    "表单、截图、录像、网页及下载包指向同一构建",
+    "提交后核对公开项目页并保存回执；草稿不计完成"
+  ],
+  "verificationScope": "原始只读审计与文案准备，另对指定0f0026f作公开描述相关差异核对；原9ec9bc6基线保留。未运行新的玩法测试，未发布、上传、邀请协作者或提交表单。",
+  "postBaselineUpdate": {
+    "recordedAt": "2026-10-31T13:07:36+08:00",
+    "kind": "TARGETED_POST_BASELINE_DIFF_REVIEW_NOT_RELEASE_ACCEPTANCE",
+    "originalMainReadingCommit": "9ec9bc669096991efabe373e8e5307408431a80b",
+    "specifiedLaterMainCommit": "0f0026f424b01838860946e96e52b65a38c665b8",
+    "includedCommitReferences": [
+      "19cc5a5",
+      "15962d0"
+    ],
+    "scope": "只核对9ec9bc6到指定0f0026f中公开描述相关的输入、菜单/HUD、自动换弹与S10机制差异；不追随之后每次HEAD。",
+    "runtimeChangesPresent": true,
+    "summary": "该提交链包含战斗AI/HUD及序章时序、群众站位、自动换弹等运行实现，不能描述为只有日志更新。",
+    "findings": [
+      {
+        "id": "input_mapping",
+        "result": "UNCHANGED_IN_TARGETED_DIFF",
+        "paths": [
+          "src/player/Input.ts"
+        ],
+        "meaning": "原有键位映射没有变化。"
+      },
+      {
+        "id": "automatic_reload",
+        "result": "SOURCE_CHANGE_READ_NOT_RETESTED",
+        "paths": [
+          "src/mission/Simulation.ts",
+          "src/ui/GameUI.ts",
+          "docs/feedback/FB-009-automatic-reload.md"
+        ],
+        "meaning": "战斗控制下弹匣打空、最后一发冷却结束且有备弹时自动开始原换弹流程；R仍可提前换弹。"
+      },
+      {
+        "id": "published_entry",
+        "result": "NO_NEW_ENTRY_CONFIRMED_BY_THIS_REVIEW",
+        "paths": [
+          "src/ui/GameUI.ts"
+        ],
+        "meaning": "菜单相关差异未新增S10发布版直达入口；不能把旧开发检查点入口当成最终发布玩法入口。"
+      },
+      {
+        "id": "s10",
+        "result": "SOURCE_CONTRACTS_RETAINED_SHARED_COMBAT_CHANGED",
+        "paths": [
+          "src/mission/Rescue.ts",
+          "src/mission/Simulation.ts",
+          "tests/finale-interactions.test.ts",
+          "src/content/rescue-layout.ts"
+        ],
+        "meaning": "Rescue改动调整阶段目标文字的出现条件；Q请求与协作搬运主条件仍在。Simulation已改用战术战斗逻辑并保留郑铎请求掩护后的真实弹丸发射、命中事实及搬运移动限制。旧测试文件未变不代表本子任务已在新版本执行。"
+      }
+    ],
+    "proposedControlsAmendment": "R可提前换弹；战斗中弹匣打空且仍有备弹时自动换弹。",
+    "copyDisposition": "保留原基线文案和已知边界；最终冻结若包含上述实现，由主窗口更新操作说明并复核公开玩法与演示入口。",
+    "originalEvidencePreserved": true,
+    "originalEvidenceAppliesAutomaticallyToLaterCommit": false,
+    "newGameplayTestsRun": false,
+    "newBuildRun": false,
+    "newPlaytestRun": false,
+    "newMobileOrWindowsAcceptance": false,
+    "finalReleaseFrozen": false,
+    "releaseOwner": "主窗口",
+    "sourceFiles": [
+      {
+        "path": "src/player/Input.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 3759,
+        "sha256": "fd5ef0154b8db31f272874d2fd2a2ad63f8ddc73f2f28a679612f6474dbbf1f2"
+      },
+      {
+        "path": "src/ui/GameUI.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 20959,
+        "sha256": "694eaccf5a0017211bc316a8d349d10e03d64e0cf0aeb69f74eb3bd20b8ac514"
+      },
+      {
+        "path": "src/mission/Rescue.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 14129,
+        "sha256": "6b9c04bce3ef4305a688f030ba6a60ada128ba57863bb7b0e6e3a30b366ac096"
+      },
+      {
+        "path": "src/mission/Simulation.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 52478,
+        "sha256": "faf10b024988bcee5a46858f0af183f4d084e4f30b0cfa8ce9ba47240ce24947"
+      },
+      {
+        "path": "tests/finale-interactions.test.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 10452,
+        "sha256": "b7153005f1cd613e2d4bf177f869f1bf0852b2a1ced5c4a6360539fe55da2717"
+      },
+      {
+        "path": "src/content/rescue-layout.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 1233,
+        "sha256": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61"
+      },
+      {
+        "path": "docs/feedback/FB-009-automatic-reload.md",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 1071,
+        "sha256": "f1cfeba4dcf1ec8f62e2eb1a76aee363a30a9b39f564bc5c2f76be810e88947e"
+      }
+    ]
+  },
+  "lastAmendedAt": "2026-10-31T13:07:36+08:00"
+}

@@ -1,0 +1,11 @@
+> return-to-ganymede@0.6.0 check:transport
+> vitest run --config scripts/transport-checks/vitest.config.ts
+
+
+ RUN  v5.0.5 /Users/penguin/.codex/worktrees/ganymede-combat-ai/VibeHack06
+
+
+ Test Files  2 passed (2)
+      Tests  8 passed (8)
+   Start at  10:27:19
+   Duration  3.07s (tests 81%, transform 13%, import 6%)

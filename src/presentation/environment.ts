@@ -231,10 +231,10 @@ export function buildEnvironment(scenario: ScenarioId): EnvironmentModel {
     root: kit.root,
     solids: kit.solids,
     setFacts(facts) { dynamics?.setFacts(facts); },
-    update(time, cameraPosition) {
+    update(time, cameraPosition, frame) {
       // Translation only. Turning the camera never turns the celestial direction.
       sky.position.copy(cameraPosition);
-      dynamics?.update(time);
+      dynamics?.update(time, frame);
     },
     dispose() {
       if (disposed) return;

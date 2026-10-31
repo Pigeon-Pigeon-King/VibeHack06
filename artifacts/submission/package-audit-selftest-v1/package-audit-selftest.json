@@ -1,0 +1,78 @@
+{
+  "status": "PASS",
+  "scope": "Audit tool fixtures, not game tests",
+  "checks": [
+    {
+      "name": "valid build incl. license URL and non-loader strings",
+      "pass": true
+    },
+    {
+      "name": "missing runtime reference is failure",
+      "pass": true
+    },
+    {
+      "name": "empty directory is not PASS",
+      "pass": true
+    },
+    {
+      "name": "missing build is INCOMPLETE",
+      "pass": true
+    },
+    {
+      "name": "missing project is INCOMPLETE",
+      "pass": true
+    },
+    {
+      "name": "missing input selection has usage exit 3",
+      "pass": true
+    },
+    {
+      "name": "reports cannot overwrite selected build",
+      "pass": true
+    },
+    {
+      "name": "GLB generator metadata URL is not a dependency",
+      "pass": true
+    },
+    {
+      "name": "GLB external dependency blocked: https://example.test/texture.png",
+      "pass": true
+    },
+    {
+      "name": "GLB external dependency blocked: ../texture.png",
+      "pass": true
+    },
+    {
+      "name": "GLB external dependency blocked: /Users/example/texture.png",
+      "pass": true
+    },
+    {
+      "name": "corrupt GLB is failure",
+      "pass": true
+    },
+    {
+      "name": "remote, site-absolute and escaping references fail",
+      "pass": true
+    },
+    {
+      "name": "Rapier compat exemption needs exact embedded WASM",
+      "pass": true
+    },
+    {
+      "name": "unproven WASM fallback is not exempt",
+      "pass": true
+    },
+    {
+      "name": "audio manifest discrepancy fails",
+      "pass": true
+    },
+    {
+      "name": "empty audio manifest is not PASS",
+      "pass": true
+    },
+    {
+      "name": "unsafe/private archive members never inventoried",
+      "pass": true
+    }
+  ]
+}

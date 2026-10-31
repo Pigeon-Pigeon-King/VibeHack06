@@ -130,6 +130,16 @@ export class Physics {
     return true;
   }
 
+  /** Full standing clearance and nearby support, used only by the throttled cover search. */
+  canOccupy(foot: Vec3): boolean {
+    const blocked = this.world.intersectionWithShape(
+      { x: foot[0], y: foot[1] + 0.925, z: foot[2] }, { x: 0, y: 0, z: 0, w: 1 },
+      new RAPIER.Capsule(0.62, 0.28), undefined, undefined, undefined, undefined,
+      c => !this.disabled.has(c.handle) && (this.ids.get(c.handle) ?? '').startsWith('solid:'),
+    );
+    return !blocked && !!this.trace([foot[0], foot[1] + 0.15, foot[2]], [foot[0], foot[1] - 0.4, foot[2]], '', true);
+  }
+
   move(id: string, x: number, z: number, dt: number, jump = false): void {
     const body = this.bodies.get(id)!;
     if (jump && body.grounded) body.verticalSpeed = 1.65;

@@ -56,7 +56,7 @@ export function updateRelief(s: Simulation, input: Intent): void {
   const m = s.mission;
   if (m.phase === 0 && m.phaseTime >= 1 && quiet(s, R.entryHold)) {
     s.fact('relief-entry-secured');
-    s.workers.forEach((actor, i) => s.route(actor, [...R.techVia, [R.techSafe[0] + (i - 1) * 1.5, R.techSafe[1], R.techSafe[2]]]));
+    s.workers.forEach((actor, i) => s.route(actor, [...R.techVia, R.technicianStops[i]]));
     enterPositions(s);
     s.phase(1, '入口稳住了，设备员先退。孟齐，沿西侧已经清出的通道进来，别横穿前面的空地。', 'combat', '周延');
   } else if (m.phase === 1 && s.safeCount === 3 && arrived(s)) {

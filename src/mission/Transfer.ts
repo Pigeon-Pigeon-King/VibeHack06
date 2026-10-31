@@ -39,7 +39,7 @@ export function updateTransfer(s: Simulation, input: Intent): void {
   if (m.phase === 0 && input.interact && at(s, T.panel)) {
     // These are Lu's newly acquired facts, distinct from Zhou's carried knowledge.
     s.fact('lu-knows-shaoyuan-time'); s.fact('lu-knows-zhou-withheld'); s.fact('transfer-cover-open');
-    s.phase(1, '邵原的车预计七点前后走，北闸刚转过清路预告。车已经到门外了——锁杆没退回去。', 'work', '医院联络员');
+    s.phase(1, '邵原的车预计七点前后走。这是先前发给周延的原预告，收报时间在这里。车堵在门外了——锁杆没退回去。', 'work', '医院联络员');
   } else if (m.phase === 1 && input.interact && at(s, T.panel)) {
     s.fact('transfer-gate-open'); s.fact('lu-hand-scratched');
     T.cartSafe.forEach((target, i) => s.route(actor(s, `cart-${i}`), [...T.cartVia, target]));

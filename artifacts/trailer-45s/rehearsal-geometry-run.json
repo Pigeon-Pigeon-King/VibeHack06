@@ -1,0 +1,32 @@
+{
+  "status": "PASS_AUTOMATED_GEOMETRY_ONLY",
+  "main_head_at_record": "0f0026f424b01838860946e96e52b65a38c665b8",
+  "runtime": "/Users/penguin/.local/node-runtime/node-v22.14.0-darwin-arm64/bin/node",
+  "runtime_version": "v22.14.0",
+  "command": "/Users/penguin/.local/node-runtime/node-v22.14.0-darwin-arm64/bin/node node_modules/vitest/vitest.mjs run --config artifacts/trailer-45s/rehearsal-geometry.config.mjs",
+  "vitest_version": "5.0.5",
+  "test_files_passed": 1,
+  "tests_passed": 1,
+  "exit_code": 0,
+  "reported_wall_clock_seconds": 70.12,
+  "wall_clock_note": "Same-machine background work and startup contribute. This is not game duration, 95-second human rehearsal timing, or a performance measurement.",
+  "initial_shell_attempt": {
+    "exit_code": 127,
+    "reason": "env: node: No such file or directory",
+    "resolved_by": "Using the existing absolute runtime; no installation."
+  },
+  "human_rehearsal": "NOT_RUN",
+  "browser_capture": "NOT_RUN",
+  "rendering_verification": "NOT_RUN",
+  "injected_obstacles": false,
+  "modified_task_facts": false,
+  "source_sha256": {
+    "artifacts/trailer-45s/rehearsal-geometry.check.ts": "c0868960e9669c324a11d47bb62ce810b6276c46f139d4a6dd068aeb378dbf42",
+    "artifacts/trailer-45s/rehearsal-geometry.config.mjs": "602f20bf5a0f8ba68c3df4bf12188e7133a60bb47d3449111cc86d4c48793720",
+    "artifacts/trailer-45s/rehearsal-geometry.json": "89b7f50ea49b14c8bf64198a8f40ae000d97c022d1efb984ef9b4d8fe3dea6fe"
+  },
+  "worktree_frozen_at_execution": false,
+  "exact_execution_source_commit": "NOT_PINNED",
+  "post_run_static_review_commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+  "scope_note": "Observed numeric result from the running worktree only. The main branch updated during this documentation task; no claim of frozen-build, browser, or human rehearsal acceptance."
+}

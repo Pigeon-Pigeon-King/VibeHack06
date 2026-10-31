@@ -1,0 +1,350 @@
+{
+  "schemaVersion": 1,
+  "toolVersion": "1.0.0",
+  "label": "historical-windows-zip-compared-to-candidate",
+  "recordedUtc": "2026-10-31T05:00:24.293909+00:00",
+  "root": "/Users/penguin/VibeHack06-worktree",
+  "python": "3.9.6",
+  "windowsRuntime": "NOT_RUN",
+  "browserRuntime": "NOT_RUN",
+  "sourceBuildCorrespondence": "NOT_REBUILT",
+  "scope": "Static files, headers, references, provenance and package integrity only",
+  "limits": [
+    "No rendering, decoding/playback, first-run, network trace, or target-device test.",
+    "Static JavaScript matching does not resolve arbitrary computed URLs or every bundler transform.",
+    "A source snapshot does not prove these sources compiled to an existing build.",
+    "License/source presence and exact copies do not decide legal sufficiency or the whole-game license.",
+    "Raw provider responses, credential directories, model caches and unlisted originals are not inventoried."
+  ],
+  "checks": {
+    "rapierEmbeddedWasm": [
+      {
+        "bundle": "assets/index-C11eSd1C.js",
+        "bytes": 3082103,
+        "sha256": "17cfa80eebd8de0291b948496dbffba724b98b489687f8272ca236a7bbf1dd4b",
+        "matchesInstalled": true
+      },
+      {
+        "bundle": "assets/index-FkGOe_1b.js",
+        "bytes": 3082103,
+        "sha256": "17cfa80eebd8de0291b948496dbffba724b98b489687f8272ca236a7bbf1dd4b",
+        "matchesInstalled": true
+      }
+    ],
+    "f35SourceBundle": {
+      "manifestEntriesChecked": 18,
+      "matchCurrentSource": 16,
+      "upstreamFilesMatched": 10,
+      "completeGameSource": false
+    },
+    "web": {
+      "files": 14,
+      "bytes": 11352087,
+      "publicFilesMatched": 10,
+      "fileAudioCount": 0
+    },
+    "windowsZip": {
+      "bytes": 160042607,
+      "sha256": "2a922436e3fd1c480b7496665cfdcc9300ee6fce14fec1ebe58ad996f5a571e3",
+      "crc": "PASS_ALL_READ_MEMBERS"
+    },
+    "windows": {
+      "files": 74,
+      "bytes": 379201949,
+      "executable": "PE/x86-64",
+      "electronVersion": "45.1.0",
+      "asarEntries": 7,
+      "webFilesMatched": 0,
+      "runtime": "NOT_RUN"
+    }
+  },
+  "references": [
+    {
+      "from": "index.html",
+      "uri": "./assets/index-C11eSd1C.js",
+      "kind": "html",
+      "resolved": "assets/index-C11eSd1C.js",
+      "status": "PRESENT"
+    },
+    {
+      "from": "index.html",
+      "uri": "./assets/index-BkFxWYCf.css",
+      "kind": "html",
+      "resolved": "assets/index-BkFxWYCf.css",
+      "status": "PRESENT"
+    },
+    {
+      "from": "assets/EpilogueAirCover-C_Zqspkh.js",
+      "uri": "./index-C11eSd1C.js",
+      "kind": "module",
+      "resolved": "assets/index-C11eSd1C.js",
+      "status": "PRESENT"
+    },
+    {
+      "from": "assets/index-C11eSd1C.js",
+      "uri": "./EpilogueAirCover-C_Zqspkh.js",
+      "kind": "loader-literal",
+      "resolved": "assets/EpilogueAirCover-C_Zqspkh.js",
+      "status": "PRESENT"
+    },
+    {
+      "from": "assets/index-C11eSd1C.js",
+      "uri": "models/weapons/ak47-world-r1.glb",
+      "kind": "resource-literal",
+      "resolved": "models/weapons/ak47-world-r1.glb",
+      "status": "PRESENT"
+    },
+    {
+      "from": "index.html",
+      "uri": "./assets/index-FkGOe_1b.js",
+      "kind": "html",
+      "resolved": "assets/index-FkGOe_1b.js",
+      "status": "PRESENT"
+    },
+    {
+      "from": "index.html",
+      "uri": "./assets/index-BX6zSE41.css",
+      "kind": "html",
+      "resolved": "assets/index-BX6zSE41.css",
+      "status": "PRESENT"
+    }
+  ],
+  "glb": [
+    {
+      "path": "models/weapons/ak47-world-r1.glb",
+      "bytes": 2046524,
+      "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1",
+      "status": "PASS_HEADER",
+      "version": 2,
+      "externalUris": [],
+      "extensions": [
+        "KHR_materials_clearcoat"
+      ],
+      "images": 6,
+      "meshes": 11,
+      "skins": 0,
+      "animations": 0,
+      "decoded": false
+    }
+  ],
+  "audioHeaders": [],
+  "licenseCopies": [
+    {
+      "package": "three",
+      "source": "node_modules/three/LICENSE",
+      "packaged": "licenses/dependencies/Three.txt",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "byteIdentical": true
+    },
+    {
+      "package": "@dimforge/rapier3d-compat",
+      "source": "node_modules/@dimforge/rapier3d-compat/LICENSE",
+      "packaged": "licenses/dependencies/Rapier.txt",
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519",
+      "byteIdentical": true
+    },
+    {
+      "package": "WP-AK47",
+      "source": "assets/source/WP-AK47/LICENSE",
+      "packaged": "licenses/WP-AK47/LICENSE",
+      "sha256": "6795e9bfe7d67b87c0233b4fca631435982341efadc55702af61cfb3a71d717e",
+      "byteIdentical": true
+    },
+    {
+      "package": "WP-AK47",
+      "source": "assets/source/WP-AK47/SOURCE_LICENSE.md",
+      "packaged": "licenses/WP-AK47/SOURCE_LICENSE.md",
+      "sha256": "2732d0d34c18bc4eb83248d9dff1226cac1892a0a0f682d3027d349fba08a959",
+      "byteIdentical": true
+    },
+    {
+      "package": "F-35B",
+      "source": "assets/source/reused-aircraft/vtol-f35b/F35B-GPL-3.0.txt",
+      "packaged": "licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt",
+      "sha256": "8ceb4b9ee5adedde47b31e975c1d90c73ad27b6b165a1dcd80c7c545eb65b903",
+      "byteIdentical": true
+    },
+    {
+      "package": "three",
+      "source": "node_modules/three/LICENSE",
+      "packaged": "LICENSES/Three.txt",
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc",
+      "byteIdentical": true
+    },
+    {
+      "package": "@dimforge/rapier3d-compat",
+      "source": "node_modules/@dimforge/rapier3d-compat/LICENSE",
+      "packaged": "LICENSES/Rapier.txt",
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519",
+      "byteIdentical": true
+    }
+  ],
+  "git": {
+    "head": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+    "trackedDirty": true,
+    "untrackedPathsListed": false
+  },
+  "webInput": "/Users/penguin/VibeHack06-worktree/dist",
+  "windowsInput": "/Users/penguin/VibeHack06/release/ReturnToGanymede-autonomy-finale-preview-win-x64.zip",
+  "asarFiles": [
+    {
+      "path": "LICENSES/Rapier.txt",
+      "bytes": 11343,
+      "sha256": "4c05555705e3efde601fb1252ae48f1d63992af8a8fb8947745b7fa834e8f519"
+    },
+    {
+      "path": "LICENSES/Three.txt",
+      "bytes": 1081,
+      "sha256": "8b378ebe60e2fe500158cb0ac71cb5e8b7d92953c2abcc63a0eb90499653b5bc"
+    },
+    {
+      "path": "desktop/main.cjs",
+      "bytes": 3151,
+      "sha256": "9ed8c5e9662e11e4b46bdc1336ebf4af64d2e0e3ba714f31a804a86407161735"
+    },
+    {
+      "path": "dist/assets/index-BX6zSE41.css",
+      "bytes": 12988,
+      "sha256": "56b4bd32e550d496947487cc2c43e762fa397c08af15bc4d8882c3425ee5d5e7"
+    },
+    {
+      "path": "dist/assets/index-FkGOe_1b.js",
+      "bytes": 5182380,
+      "sha256": "0ec2b3f43631b19d3b3737526886f7256d0cb71aebf6ba5df057a90be2abf4e9"
+    },
+    {
+      "path": "dist/index.html",
+      "bytes": 634,
+      "sha256": "9d8f15c775fc202a8fc69dfa78e44e513129daccfa558b2e30d7a2daac8f1742"
+    },
+    {
+      "path": "package.json",
+      "bytes": 126,
+      "sha256": "fa7b942257cdc86be48b8818d3c878a0b774b8d8129b23247f004e1910285790"
+    }
+  ],
+  "status": "FAIL",
+  "exitCode": 1,
+  "findings": [
+    {
+      "severity": "error",
+      "code": "INPUT_CHANGED",
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "message": "Repeated reads differ within this audit; rerun a frozen candidate."
+    },
+    {
+      "severity": "error",
+      "code": "SOURCE_BUNDLE_STALE",
+      "path": "src/presentation/EpilogueAirCover.ts",
+      "message": "Packaged component source differs from selected current source."
+    },
+    {
+      "severity": "error",
+      "code": "SOURCE_BUNDLE_STALE",
+      "path": "tests/epilogue-air-cover.test.ts",
+      "message": "Packaged component source differs from selected current source."
+    },
+    {
+      "severity": "review",
+      "code": "GPL_DISTRIBUTION_SCOPE_REVIEW",
+      "path": "sources/reused-aircraft/f35b-ganymede-source.zip",
+      "message": "GPL-3.0 text and component source are present; overall distribution/corresponding-source sufficiency remains a separate review, not a legal PASS."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/index.html",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/licenses/reused-aircraft/f35b/F35B-GPL-3.0.txt",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/licenses/reused-aircraft/f35b/NOTICE.md",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/licenses/dependencies/Rapier.txt",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/licenses/dependencies/Three.txt",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/licenses/dependencies/manifest.json",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/licenses/WP-AK47/LICENSE",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/licenses/WP-AK47/NOTICE.md",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/licenses/WP-AK47/SOURCE_LICENSE.md",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/models/weapons/ak47-world-r1.glb",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/sources/reused-aircraft/f35b-ganymede-source.zip",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/assets/EpilogueAirCover-C_Zqspkh.js",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/assets/index-BkFxWYCf.css",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_MISMATCH",
+      "path": "dist/assets/index-C11eSd1C.js",
+      "message": "Windows ASAR is not the selected web candidate."
+    },
+    {
+      "severity": "error",
+      "code": "WINDOWS_WEB_FILESET_MISMATCH",
+      "path": "dist",
+      "message": "Windows and selected web build contain different files."
+    }
+  ],
+  "findingCounts": {
+    "error": 18,
+    "review": 1
+  },
+  "elapsedSeconds": 84.943,
+  "inventorySha256": "918b958858e42d10e6a5dfe6d234c39c50fcb647f714fecf57e12fe694c41c78"
+}

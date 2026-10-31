@@ -1,0 +1,11 @@
+> return-to-ganymede@0.6.0 test
+> vitest run --run tests/objective-focus.test.ts tests/objective-indicator.test.ts tests/hit-confirmation.test.ts tests/held-item-motion.test.ts tests/subtitle-presentation.test.ts
+
+
+ RUN  v5.0.5 /Users/penguin/.codex/worktrees/ganymede-combat-ai/VibeHack06
+
+
+ Test Files  5 passed (5)
+      Tests  56 passed (56)
+   Start at  10:37:40
+   Duration  489ms (transform 51%, import 35%, tests 12%, worker 1%)

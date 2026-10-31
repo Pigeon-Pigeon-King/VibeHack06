@@ -104,7 +104,9 @@ function playEscort(skip: boolean, restore: boolean) {
       }
       const key = `${phase}:${authored}:${goal.map(v => v.toFixed(1)).join(',')}`;
       if (goalKey !== key) { goalKey = key; path = []; }
-      const stop = precision ? 0.35 : 1.5;
+      // Compare ending poses after the same precise public-input approach;
+      // moving opponents can alter the earlier bot approach within its 1.5 m radius.
+      const stop = phase === 14 ? 0.01 : precision ? 0.35 : 1.5;
       if (!authored && !path.length && distance(s.player.position, goal) > stop) path = s.navigation.path(s.player.position, goal);
       while (path.length && distance(s.player.position, path[0]) < 0.3) path.shift();
       const next = authored ? goal : path[0] ?? goal;
@@ -112,6 +114,7 @@ function playEscort(skip: boolean, restore: boolean) {
       if (distance(s.player.position, goal) > stop && s.mission.control !== 'staged') {
         const dx = next[0] - s.player.position[0], dz = next[2] - s.player.position[2], length = Math.max(0.01, Math.hypot(dx, dz));
         mx = dx / length; mz = dz / length;
+        if (phase === 14) { const scale = Math.min(1, length / (6.3 * FIXED_DT)); mx *= scale; mz *= scale; }
       }
       const target = s.mission.control === 'combat' ? s.aliveEnemies.slice().sort((a, b) => distance(a.position, s.player.position) - distance(b.position, s.player.position))
         // The restore run only suppresses the current objective's fire line. It

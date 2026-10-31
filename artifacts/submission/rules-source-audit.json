@@ -1,0 +1,775 @@
+{
+  "schema": "ganymede-submission-rules-source-audit-v1",
+  "recordKind": "READ_ONLY_RULES_AND_DRAFT_AUDIT",
+  "checkedAt": "2026-10-31T12:53:15+08:00",
+  "timezone": "Asia/Shanghai",
+  "baseline": {
+    "initialAssignedMainCommit": "6a6da76",
+    "mainReadingCommit": "9ec9bc669096991efabe373e8e5307408431a80b",
+    "mainHeadAtWriting": "9ec9bc669096991efabe373e8e5307408431a80b",
+    "candidateHeadAtWriting": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+    "candidateHasTrackedChanges": true,
+    "snapshotAtomic": false,
+    "mainIncludesUntrackedOtherWorkstreams": true,
+    "packageVersion": "0.6.0",
+    "mainRuntimeLastChangeCommit": "1ebd8faef9720e697f1b6bffd364f52ed7d67d48",
+    "mainRuntimeLastChangeScope": "WITHIN_ORIGINAL_9ec9bc6_READING_BASELINE_NOT_CURRENT_MAIN",
+    "mainHeadAtWritingScope": "INITIAL_AUDIT_WRITING_NOT_LATEST_HEAD"
+  },
+  "sources": [
+    {
+      "id": "official_public_page",
+      "url": "https://vibecafe.ai/hacks/6",
+      "kind": "PRIMARY_PUBLIC_PAGE",
+      "readAtDate": "2026-10-31",
+      "directReadSucceeded": true,
+      "publishedOrUpdatedAt": null,
+      "readMethod": "read-only web open",
+      "locations": {
+        "schedule": "活动日程",
+        "git": "开发与原创规则",
+        "xiaohongshu": "小红书社区人气奖"
+      },
+      "dateCaveat": "页面顶部显示2026-10-30 10:00—2026-10-31 13:00，未标明时区；正文另列18:00提交。不能把顶部结束时间当提交截止，也未确认呈现差异原因。"
+    },
+    {
+      "id": "official_guide",
+      "url": "https://vibecafe.feishu.cn/docx/X0nvdcjB0o6KjKxJdKGcEF9unne",
+      "kind": "PRIMARY_URL_WITHOUT_RETRIEVED_TEXT",
+      "directReadSucceeded": false,
+      "readFailure": "只读 web 工具返回不可访问；本轮未取得正文。",
+      "documentDate": null,
+      "fullTextFoundInRepository": false,
+      "claimOfPriorUserPaste": "artifacts/competition-audit-20261031.json says full text pasted by user; the pasted text itself was not saved in the files found by this audit.",
+      "note": "不能把旧核查者的读过声明当成本轮已读完整原文。"
+    },
+    {
+      "id": "local_submission_plan",
+      "path": "docs/SUBMISSION_PLAN.md",
+      "kind": "SECONDARY_LOCAL_GUIDE_SUMMARY",
+      "recordedDate": "2026-10-31",
+      "guideDateVerified": false
+    },
+    {
+      "id": "local_compliance",
+      "path": "docs/COMPETITION_COMPLIANCE.md",
+      "kind": "SECONDARY_LOCAL_AUDIT",
+      "recordedDate": "2026-10-31",
+      "olderSourceCommit": "ad1872c36071a7f424433a891428919e12c66a06"
+    },
+    {
+      "id": "prior_audit",
+      "path": "artifacts/competition-audit-20261031.json",
+      "kind": "SECONDARY_LOCAL_AUDIT",
+      "recordedAt": "2026-10-31T09:37:54+08:00"
+    },
+    {
+      "id": "project_submission_plan",
+      "path": "docs/SUBMISSION_PLAN.md",
+      "kind": "PROJECT_DELIVERY_PLAN"
+    }
+  ],
+  "guideSearch": {
+    "scope": "仓库可读 md/txt/json/html 文件（含隐藏文件，排除 .git、node_modules、dist、release、.nativue 和大型音频制作目录）；docs/artifacts 定向全文检索；根目录3个交接ZIP的文件名清单。",
+    "patterns": [
+      "参赛者指南",
+      "X0nvdcjB0o6KjKxJdKGcEF9unne",
+      "作品提交截止后",
+      "首个 commit",
+      "Glowin"
+    ],
+    "fullOfficialOrUserTranscribedGuideFound": false,
+    "originalGuidePublicationDate": null,
+    "foundRuleReferences": [
+      "docs/COMPETITION_COMPLIANCE.md",
+      "docs/SUBMISSION_PLAN.md",
+      "artifacts/competition-audit-20261031.json",
+      "artifacts/game-progress.md",
+      "docs/handoff/current/07_MAC_REBUILD_PLAN.md",
+      "docs/handoff/current/PRODUCT_HANDOFF.md"
+    ],
+    "zipInventoryOnly": true,
+    "note": "没有解压覆盖原始附件；未搜索账户聊天记录、浏览器缓存或私密凭据目录。"
+  },
+  "rules": [
+    {
+      "id": "theme",
+      "source": "official_public_page",
+      "verification": "PRIMARY_READ",
+      "value": "可试玩、可现场演示的 3D Demo"
+    },
+    {
+      "id": "deadline",
+      "source": "official_public_page",
+      "verification": "PRIMARY_READ_WITH_LOCAL_TIME_CONTEXT",
+      "value": "2026-10-31T18:00:00+08:00",
+      "note": "详细日程写 18:00；北京时间依上海活动语境与既有指南摘要，顶部无时区区间不作截止依据。"
+    },
+    {
+      "id": "pitch",
+      "source": "official_public_page",
+      "verification": "PRIMARY_READ",
+      "seconds": 180
+    },
+    {
+      "id": "first_commit",
+      "source": "official_public_page",
+      "verification": "PRIMARY_READ",
+      "strictlyAfter": "2026-10-30T18:00:00+08:00",
+      "advancePlanningAndEmptyRepositoryAllowed": true
+    },
+    {
+      "id": "originality_and_history",
+      "source": "official_public_page",
+      "verification": "PRIMARY_READ",
+      "vibeCodingRequired": true,
+      "completeProcessInCommitsRequired": true,
+      "reskinnedOldProjectDisallowed": true,
+      "note": "本地时间记录不构成完整原创性裁决。"
+    },
+    {
+      "id": "private_repository",
+      "source": "official_public_page",
+      "verification": "PRIMARY_READ",
+      "collaborator": "Glowin",
+      "publicSourceCodeMandatory": false,
+      "note": "本次没有邀请或更改权限。"
+    },
+    {
+      "id": "after_deadline",
+      "source": "official_public_page",
+      "verification": "PRIMARY_READ",
+      "onlyEditableField": "xiaohongshuUrl",
+      "supplementDeadline": "2026-11-06T18:00:00+08:00",
+      "hashtags": [
+        "#VibeHacks",
+        "#buildinpublic"
+      ]
+    },
+    {
+      "id": "form_fields",
+      "source": "local_submission_plan",
+      "verification": "SECONDARY_PENDING_PRIMARY",
+      "values": [
+        "项目名称",
+        "项目介绍",
+        "网站链接",
+        "GitHub 链接",
+        "项目截图",
+        "小红书链接",
+        "使用的工具与模型"
+      ],
+      "requiredFlagsVerified": false,
+      "limitsVerified": false
+    },
+    {
+      "id": "playable_website_field",
+      "source": "local_submission_plan",
+      "verification": "SECONDARY_PENDING_PRIMARY",
+      "claim": "网站栏应填可访问且可玩的游戏地址。",
+      "exeDownloadPageAcceptedAsSubstitute": null,
+      "note": "公开官网确证可试玩 Demo；明确网站栏语义来自旧摘要。手机直接体验另是已明确的项目要求。"
+    },
+    {
+      "id": "team_submission_path",
+      "source": "local_submission_plan",
+      "verification": "SECONDARY_PENDING_PRIMARY",
+      "navigationUrl": "https://vibecafe.ai/hacks/6/projects/submit",
+      "accountFormInspected": false,
+      "note": "队伍页及每队一份作品的具体表单流程待账号页核对；不推断用户未报名。"
+    },
+    {
+      "id": "trailer_45_seconds",
+      "source": "project_submission_plan",
+      "verification": "PROJECT_REQUIREMENT_NOT_OFFICIAL_RULE",
+      "seconds": 45,
+      "mandatoryOfficialAttachment": null,
+      "note": "没有一手证据将45秒视频、PPT或Windows包列为官方必交附件。",
+      "projectRequested": true
+    }
+  ],
+  "git": {
+    "rootCommits": [
+      "d52b6605ea15c7f73b51cef6f65e459b0bd8f02e"
+    ],
+    "rootAuthorDate": "2026-10-30T19:52:46+08:00",
+    "rootCommitDate": "2026-10-30T19:52:46+08:00",
+    "rootIsEmpty": true,
+    "firstRuntimeCommit": "ed4395e91373ca40c5e375c59a350dbfdc0fe062",
+    "firstRuntimeAuthorDate": "2026-10-31T01:24:41+08:00",
+    "firstRuntimeCommitDate": "2026-10-31T01:24:41+08:00",
+    "firstCommitAfterKickoff": true,
+    "remotes": [],
+    "methods": [
+      "git rev-list --max-parents=0 HEAD",
+      "git show --format=fuller --stat <root>",
+      "git ls-tree -r --name-only <root>",
+      "git log --reverse --format=<hash,date,subject> -- src desktop package.json",
+      "git remote -v"
+    ],
+    "limitation": "满足所见时间门槛；空根提交、首份源码时间及后续记录均披露，不据此证明全部原创资格或赛前素材使用边界。"
+  },
+  "delivery": {
+    "publicPlayableUrl": null,
+    "githubUrl": null,
+    "teamUrl": null,
+    "officialProjectUrl": null,
+    "xiaohongshuUrl": null,
+    "websitePublished": false,
+    "liveFormInspected": false,
+    "windowsRuntimeStatus": "NOT_RUN",
+    "humanFullCampaignRun": "NOT_VERIFIED",
+    "mobileRealDeviceStatus": "NOT_VERIFIED",
+    "candidateLocalUrl": "http://127.0.0.1:5191/",
+    "candidateLocalUrlIsPublic": false,
+    "mainLocalUrl": "http://127.0.0.1:5188/",
+    "mainLocalUrlIsPublic": false,
+    "localUrlsCheckedThisAudit": false
+  },
+  "materialConflicts": [
+    {
+      "id": "tool_disclosure_stale",
+      "oldSources": [
+        "docs/COMPETITION_COMPLIANCE.md",
+        "docs/ASSET_PIPELINE.md"
+      ],
+      "oldClaim": "当时 Tripo／Hyper3D 尚未提交。",
+      "currentEvidence": [
+        "artifacts/asset-jobs/production-20261031/production-status.json",
+        "artifacts/asset-jobs/production-20261031/hyper3d/report.json",
+        "artifacts/asset-jobs/production-20261031/props/report.json"
+      ],
+      "resolution": "按已发生的素材生产披露实际使用；不把旧时点结论当作当前无使用，也不把生产计作运行集成。"
+    },
+    {
+      "id": "runtime_vs_source_assets",
+      "resolution": "当前 main 仍为功能白盒；正式角色源 GLB、动画样本、音频原件与候选接入分开登记。"
+    },
+    {
+      "id": "main_vs_candidate",
+      "resolution": "5191、触控、AK-47、F-35B 及候选许可补齐不自动归入 main 或旧 Windows ZIP。"
+    },
+    {
+      "id": "source_responses_publish_review",
+      "evidence": "assets/source/tripo/CH-LU/v1/ea7042bb-c0c3-4331-9fbd-8d64ec0e16b1.json",
+      "observation": "原始供应商任务响应中存在临时签名下载地址；本审计不复制这些地址。",
+      "resolution": "公开仓库准备时先审查并排除／净化原始响应，仅保留安全来源记录、任务ID及文件摘要；不在本任务修改原件。"
+    },
+    {
+      "id": "asset_policy",
+      "resolution": "继续采用本项目已授权 GLB／音频与概念图先行路线；潜在 Clide 托管不构成删资产或改为纯代码的理由。"
+    }
+  ],
+  "missingItems": [
+    {
+      "id": "team",
+      "label": "队伍及参赛账号",
+      "value": null,
+      "status": "NOT_VERIFIED",
+      "needed": "已有队伍名称／链接、报名审核状态及最终填表人；不据本机缺记录断言未报名。"
+    },
+    {
+      "id": "website",
+      "label": "网站链接",
+      "value": null,
+      "status": "NOT_PUBLISHED",
+      "needed": "同一冻结构建的公网 HTTPS 可玩 URL，以及外部桌面、手机实际操作证据。"
+    },
+    {
+      "id": "github",
+      "label": "GitHub 链接",
+      "value": null,
+      "status": "NO_REMOTE_CONFIGURED",
+      "needed": "保留真实历史的仓库 URL、公开／私有选择与评委访问验证。"
+    },
+    {
+      "id": "screenshots",
+      "label": "项目截图",
+      "value": [],
+      "status": "NOT_SELECTED_FOR_FINAL_BUILD",
+      "needed": "与冻结构建一致的实际画面；既有检查点局部截图可参考，不自动当作最终上传材料。"
+    },
+    {
+      "id": "xiaohongshu",
+      "label": "小红书笔记链接",
+      "value": null,
+      "status": "NOT_REGISTERED_IN_REPO",
+      "needed": "已有完整笔记链接与话题核对；没有证据即保留空值。"
+    },
+    {
+      "id": "form_constraints",
+      "label": "实际表单限制",
+      "value": null,
+      "status": "FORM_NOT_INSPECTED",
+      "needed": "必填标记、字数、图片格式／数量／容量、工具选项、保存和提交按钮行为。"
+    },
+    {
+      "id": "release",
+      "label": "最终构建与提交回执",
+      "value": null,
+      "status": "NOT_FROZEN_NOT_SUBMITTED",
+      "needed": "集成 commit、构建与包散列、实际公开项目 URL、提交时间及回执。"
+    }
+  ],
+  "needsMainWindowDecision": [
+    "选择实际冻结的集成版本与演示范围，更新文案尾注",
+    "提供已有队伍／笔记信息并核对登录后的字段限制",
+    "在获准发布阶段确定托管、GitHub可见性及评委访问安排",
+    "确认赛前通用素材披露方式；原文未足以单独裁定参赛资格",
+    "确认最终截图、工具勾选与未完成项和交付构建一致"
+  ],
+  "files": [
+    {
+      "path": "AGENTS.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 3944,
+      "sha256": "0c10b30faafbe921e4e2463a380ab43bad7fc991a33f70008eb6af561567fa22"
+    },
+    {
+      "path": "README.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 6294,
+      "sha256": "01455cd551b742b00d35c9df6aadee2a486ac4f5963871eac3a7ffdba95e56aa"
+    },
+    {
+      "path": "docs/PROJECT_BLUEPRINT.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 11113,
+      "sha256": "d11b9e2269857395ec52a0a79f83ce344dd09742075c96b4a8ff291835953e85"
+    },
+    {
+      "path": "docs/THREEJS_FPS_STANDARDS.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 15369,
+      "sha256": "d867d66aaa345ec0e26c4a93b2869f961165f430f9a505cd31bdf451f5df64bb"
+    },
+    {
+      "path": "docs/ASSET_PIPELINE.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 10170,
+      "sha256": "52d8a21a004798f31d2ae5811d70744b90134ad083caf12a74725c229003985f"
+    },
+    {
+      "path": "docs/COMPETITION_COMPLIANCE.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 6779,
+      "sha256": "1546c43d81c4dd5f54575229ae2a1f57cd823880c5e249d68060c45832fd920f"
+    },
+    {
+      "path": "docs/SUBMISSION_PLAN.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 7586,
+      "sha256": "ba13e2d074d24ebdf816c2d404414120c9178fb754dbb956b3d1e7589b19bfed"
+    },
+    {
+      "path": "docs/handoff/current/07_MAC_REBUILD_PLAN.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 5053,
+      "sha256": "e6100ac8a42c2b9151d71668cf69e55def5db1e9d584e843f675ab5325a98d81"
+    },
+    {
+      "path": "artifacts/competition-audit-20261031.json",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 2074,
+      "sha256": "c01e0f55411dcd747287c4b5b5c79a64e3d52aefe68dc27cde649fac4a27864b"
+    },
+    {
+      "path": "artifacts/game-progress.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 18419,
+      "sha256": "d3afb6e1925acdcdb8a986119f5efeaf9715ccb4aec2802fd8fe163fd7251240"
+    },
+    {
+      "path": "artifacts/autonomy-finale-evidence.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 7438,
+      "sha256": "361a9f24f5c3cdd87423d5ff327e521bced6657f3e5b3927e42282db095ccfcc"
+    },
+    {
+      "path": "artifacts/presentation-evidence.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 4999,
+      "sha256": "be2d8dc9f720212d3e19d3fd697ab90985d23689933d05471d48dca5a953943a"
+    },
+    {
+      "path": "artifacts/asset-jobs/CH-LU-adult-concept.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 5576,
+      "sha256": "9da3c9f2b3155a243664aaf31ed2f21384d504491cb262edc215efe97c128e28"
+    },
+    {
+      "path": "src/mission/Rescue.ts",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 13983,
+      "sha256": "1b373538994c304ef66ce9cbeb43ca48aeea72a7db8cc886ac3a469dc8c68e7c"
+    },
+    {
+      "path": "src/mission/Simulation.ts",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 48450,
+      "sha256": "ac45aa97aa4ef181fdcb80a6f18f0018526f5ab90d857ad8d7f032165a4e21c0"
+    },
+    {
+      "path": "tests/finale-interactions.test.ts",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 10452,
+      "sha256": "b7153005f1cd613e2d4bf177f869f1bf0852b2a1ced5c4a6360539fe55da2717"
+    },
+    {
+      "path": "package.json",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "git-object",
+      "commit": "9ec9bc669096991efabe373e8e5307408431a80b",
+      "bytes": 1055,
+      "sha256": "4c5258e78ca56c759b4b2a29126eeeca7cf61f66b1cb697956af6cf2bd0dc8ae"
+    },
+    {
+      "path": "artifacts/asset-jobs/art-review-20261031/manifest.json",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 126719,
+      "sha256": "a6f183c024a57ed33aad6bf3062c0d4369854218d5dfda4ce4f2f3435d83b33a",
+      "mtime": "2026-10-31T11:45:08+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/production-status.json",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 5526,
+      "sha256": "629ac8b382c3b89c0e8f33e84a085b5441719933725a3a1bbb685e399c55360f",
+      "mtime": "2026-10-31T12:02:03+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/hyper3d/report.json",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 148364,
+      "sha256": "b541be0782424327cfe1f14c55e84e6178eec4aa738662b06e4f692bf49ec2f6",
+      "mtime": "2026-10-31T11:45:44+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "artifacts/asset-jobs/production-20261031/props/report.json",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 76219,
+      "sha256": "b0b1fd44ba9b2100f4b3269620f4a06c4c3294b32cf46fa8a3c7d9e772cd739a",
+      "mtime": "2026-10-31T12:32:45+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "assets/source/tripo/shared-animations/walk-v1/manifest.json",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 3116,
+      "sha256": "840b0a7f24d39a686c9d93095c716313905521426fb8758e5484272ec25f5d9b",
+      "mtime": "2026-10-31T12:07:42+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "design/audio/production-01/README.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 2559,
+      "sha256": "e3e8b8eb9cbd26f3b54f9753b877a65794a7e769779aaa05a6a2f6db98771805",
+      "mtime": "2026-10-31T11:48:29+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "design/audio/production-01/INTEGRATION_HANDOFF.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 9330,
+      "sha256": "f225ea6158a4249f7b88ee02855c027112f93dc92bce225d13c735ac83cfeae6",
+      "mtime": "2026-10-31T11:50:29+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "design/audio/production-01/MUSIC_PRODUCTION.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 9938,
+      "sha256": "d3d604f7143186644c9cd02bc4f7c1f5d9c1339d46146e4efccd345f60f50f4b",
+      "mtime": "2026-10-31T12:49:25+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "design/audio/production-01/VOICE_CAST_REVIEW.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 13107,
+      "sha256": "b6abadb3bb86a12efa21c4b0d096a0c44fb7ad6cc96f8ed732095ecfc92f63c0",
+      "mtime": "2026-10-31T12:04:17+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "design/audio/production-01/runtime/CREDITS.md",
+      "workspace": "/Users/penguin/VibeHack06",
+      "origin": "concurrent-untracked-production",
+      "bytes": 2965,
+      "sha256": "dc250f7fdcece677825eeb4868d602204e22c7fb016d8b67bb143d44fb9041b1",
+      "mtime": "2026-10-31T12:18:50+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "docs/IMPORTED_ASSET_RUNTIME.md",
+      "workspace": "/Users/penguin/VibeHack06-worktree",
+      "origin": "candidate-working-tree",
+      "bytes": 5984,
+      "sha256": "005e5ecc53c2c7eb947a43b24053d820cb2f2aa53e0f6e0261b8296165b4b0e3",
+      "mtime": "2026-10-31T12:28:35+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "docs/MOBILE_WEB_DELIVERY.md",
+      "workspace": "/Users/penguin/VibeHack06-worktree",
+      "origin": "candidate-working-tree",
+      "bytes": 7784,
+      "sha256": "1f65d78a02c8c6bbbb0cf2c8aada43b1b72d0499fde64e5a4a1ba985b722eca2",
+      "mtime": "2026-10-31T11:40:56+08:00",
+      "stableWhileRead": true
+    },
+    {
+      "path": "artifacts/asset-runtime-evidence.md",
+      "workspace": "/Users/penguin/VibeHack06-worktree",
+      "origin": "candidate-working-tree",
+      "bytes": 4635,
+      "sha256": "3e8e5213fc7923b7f53343831109a412ffc9f19872491d326b6261726a769095",
+      "mtime": "2026-10-31T12:43:58+08:00",
+      "stableWhileRead": true
+    }
+  ],
+  "validation": {
+    "newGameplayTestsRun": false,
+    "newBuildRun": false,
+    "windowsRun": false,
+    "browserPlaytestRun": false,
+    "formSubmitted": false,
+    "gitCommitted": false,
+    "externalPublication": false,
+    "collaboratorInvited": false,
+    "thirdPartyMessageSent": false,
+    "jsonParseChecked": true,
+    "scope": "记录与文稿；不作赛事资格、逐行原创、全面素材许可或成品验收裁决。",
+    "materialChecks": {
+      "allPassed": true,
+      "checks": {
+        "public_copy_no_S11_outcome": true,
+        "public_copy_no_full_suppression_AI_claim": true,
+        "all_delivery_links_null": true,
+        "public_copy_no_localhost": true,
+        "not_submitted": true,
+        "official_fields_not_overclaimed": true,
+        "official_guide_not_claimed_retrieved": true,
+        "tool_names_distinct": true,
+        "missing_fields_unique": true,
+        "copy_sync_shortIntroduction": true,
+        "copy_sync_longIntroduction": true,
+        "copy_sync_developmentStatusNote": true,
+        "copy_sync_controlsMainBaseline": true,
+        "copy_sync_toolsAndModelsStatement": true,
+        "markdown_local_links_exist": true,
+        "screenshot_reference_artifacts/autonomy-cover-request.png": true,
+        "screenshot_reference_artifacts/autonomy-carry-cover.png": true,
+        "screenshot_reference_artifacts/autonomy-reception-result.png": true,
+        "screenshot_reference_artifacts/asset-runtime-browser/ak47-ads-desktop.png": true,
+        "nonempty_evidence_AGENTS.md": true,
+        "nonempty_evidence_README.md": true,
+        "nonempty_evidence_docs/PROJECT_BLUEPRINT.md": true,
+        "nonempty_evidence_docs/THREEJS_FPS_STANDARDS.md": true,
+        "nonempty_evidence_docs/ASSET_PIPELINE.md": true,
+        "nonempty_evidence_docs/COMPETITION_COMPLIANCE.md": true,
+        "nonempty_evidence_docs/SUBMISSION_PLAN.md": true,
+        "nonempty_evidence_docs/handoff/current/07_MAC_REBUILD_PLAN.md": true,
+        "nonempty_evidence_artifacts/competition-audit-20261031.json": true,
+        "nonempty_evidence_artifacts/game-progress.md": true,
+        "nonempty_evidence_artifacts/autonomy-finale-evidence.md": true,
+        "nonempty_evidence_artifacts/presentation-evidence.md": true,
+        "nonempty_evidence_artifacts/asset-jobs/CH-LU-adult-concept.md": true,
+        "nonempty_evidence_src/mission/Rescue.ts": true,
+        "nonempty_evidence_src/mission/Simulation.ts": true,
+        "nonempty_evidence_tests/finale-interactions.test.ts": true,
+        "nonempty_evidence_package.json": true,
+        "nonempty_evidence_artifacts/asset-jobs/art-review-20261031/manifest.json": true,
+        "nonempty_evidence_artifacts/asset-jobs/production-20261031/production-status.json": true,
+        "nonempty_evidence_artifacts/asset-jobs/production-20261031/hyper3d/report.json": true,
+        "nonempty_evidence_artifacts/asset-jobs/production-20261031/props/report.json": true,
+        "nonempty_evidence_assets/source/tripo/shared-animations/walk-v1/manifest.json": true,
+        "nonempty_evidence_design/audio/production-01/README.md": true,
+        "nonempty_evidence_design/audio/production-01/INTEGRATION_HANDOFF.md": true,
+        "nonempty_evidence_design/audio/production-01/MUSIC_PRODUCTION.md": true,
+        "nonempty_evidence_design/audio/production-01/VOICE_CAST_REVIEW.md": true,
+        "nonempty_evidence_design/audio/production-01/runtime/CREDITS.md": true,
+        "nonempty_evidence_docs/IMPORTED_ASSET_RUNTIME.md": true,
+        "nonempty_evidence_docs/MOBILE_WEB_DELIVERY.md": true,
+        "nonempty_evidence_artifacts/asset-runtime-evidence.md": true,
+        "all_live_source_reads_stable": true
+      },
+      "missingLocalLinks": [],
+      "scope": "JSON parse, null fields, copy equality, local link existence and wording checks; not gameplay testing."
+    },
+    "postBaselineMaterialChecks": {
+      "checkedAt": "2026-10-31T13:07:36+08:00",
+      "checks": {
+        "originalAuditFileInventoryUnchanged": true,
+        "originalPublicCopyUnchanged": true,
+        "originalReadingCommitPreserved": true,
+        "originalTimesPreserved": true,
+        "specifiedCommitOnly": true,
+        "noNewAcceptanceClaim": true,
+        "markdownLinksExist": true,
+        "publicCopyStillMatchesMarkdown": true
+      },
+      "allPassed": true,
+      "scope": "材料一致性检查，不是新版本玩法测试。"
+    }
+  },
+  "postBaselineUpdate": {
+    "recordedAt": "2026-10-31T13:07:36+08:00",
+    "kind": "TARGETED_POST_BASELINE_DIFF_REVIEW_NOT_RELEASE_ACCEPTANCE",
+    "originalMainReadingCommit": "9ec9bc669096991efabe373e8e5307408431a80b",
+    "specifiedLaterMainCommit": "0f0026f424b01838860946e96e52b65a38c665b8",
+    "includedCommitReferences": [
+      "19cc5a5",
+      "15962d0"
+    ],
+    "scope": "只核对9ec9bc6到指定0f0026f中公开描述相关的输入、菜单/HUD、自动换弹与S10机制差异；不追随之后每次HEAD。",
+    "runtimeChangesPresent": true,
+    "summary": "该提交链包含战斗AI/HUD及序章时序、群众站位、自动换弹等运行实现，不能描述为只有日志更新。",
+    "findings": [
+      {
+        "id": "input_mapping",
+        "result": "UNCHANGED_IN_TARGETED_DIFF",
+        "paths": [
+          "src/player/Input.ts"
+        ],
+        "meaning": "原有键位映射没有变化。"
+      },
+      {
+        "id": "automatic_reload",
+        "result": "SOURCE_CHANGE_READ_NOT_RETESTED",
+        "paths": [
+          "src/mission/Simulation.ts",
+          "src/ui/GameUI.ts",
+          "docs/feedback/FB-009-automatic-reload.md"
+        ],
+        "meaning": "战斗控制下弹匣打空、最后一发冷却结束且有备弹时自动开始原换弹流程；R仍可提前换弹。"
+      },
+      {
+        "id": "published_entry",
+        "result": "NO_NEW_ENTRY_CONFIRMED_BY_THIS_REVIEW",
+        "paths": [
+          "src/ui/GameUI.ts"
+        ],
+        "meaning": "菜单相关差异未新增S10发布版直达入口；不能把旧开发检查点入口当成最终发布玩法入口。"
+      },
+      {
+        "id": "s10",
+        "result": "SOURCE_CONTRACTS_RETAINED_SHARED_COMBAT_CHANGED",
+        "paths": [
+          "src/mission/Rescue.ts",
+          "src/mission/Simulation.ts",
+          "tests/finale-interactions.test.ts",
+          "src/content/rescue-layout.ts"
+        ],
+        "meaning": "Rescue改动调整阶段目标文字的出现条件；Q请求与协作搬运主条件仍在。Simulation已改用战术战斗逻辑并保留郑铎请求掩护后的真实弹丸发射、命中事实及搬运移动限制。旧测试文件未变不代表本子任务已在新版本执行。"
+      }
+    ],
+    "proposedControlsAmendment": "R可提前换弹；战斗中弹匣打空且仍有备弹时自动换弹。",
+    "copyDisposition": "保留原基线文案和已知边界；最终冻结若包含上述实现，由主窗口更新操作说明并复核公开玩法与演示入口。",
+    "originalEvidencePreserved": true,
+    "originalEvidenceAppliesAutomaticallyToLaterCommit": false,
+    "newGameplayTestsRun": false,
+    "newBuildRun": false,
+    "newPlaytestRun": false,
+    "newMobileOrWindowsAcceptance": false,
+    "finalReleaseFrozen": false,
+    "releaseOwner": "主窗口",
+    "sourceFiles": [
+      {
+        "path": "src/player/Input.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 3759,
+        "sha256": "fd5ef0154b8db31f272874d2fd2a2ad63f8ddc73f2f28a679612f6474dbbf1f2"
+      },
+      {
+        "path": "src/ui/GameUI.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 20959,
+        "sha256": "694eaccf5a0017211bc316a8d349d10e03d64e0cf0aeb69f74eb3bd20b8ac514"
+      },
+      {
+        "path": "src/mission/Rescue.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 14129,
+        "sha256": "6b9c04bce3ef4305a688f030ba6a60ada128ba57863bb7b0e6e3a30b366ac096"
+      },
+      {
+        "path": "src/mission/Simulation.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 52478,
+        "sha256": "faf10b024988bcee5a46858f0af183f4d084e4f30b0cfa8ce9ba47240ce24947"
+      },
+      {
+        "path": "tests/finale-interactions.test.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 10452,
+        "sha256": "b7153005f1cd613e2d4bf177f869f1bf0852b2a1ced5c4a6360539fe55da2717"
+      },
+      {
+        "path": "src/content/rescue-layout.ts",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 1233,
+        "sha256": "a05b33295987d0f0087c3605381ee63783e2dffcff67c08f3ed1279a50688b61"
+      },
+      {
+        "path": "docs/feedback/FB-009-automatic-reload.md",
+        "origin": "git-object",
+        "commit": "0f0026f424b01838860946e96e52b65a38c665b8",
+        "bytes": 1071,
+        "sha256": "f1cfeba4dcf1ec8f62e2eb1a76aee363a30a9b39f564bc5c2f76be810e88947e"
+      }
+    ]
+  },
+  "lastAmendedAt": "2026-10-31T13:07:36+08:00"
+}

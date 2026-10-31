@@ -15,14 +15,15 @@ export interface SolidSpec {
 export interface EnvironmentModel {
   root: Group;
   solids: SolidSpec[];
-  update(time: number, cameraPosition: Vector3): void;
+  update(time: number, cameraPosition: Vector3, frame?: SceneFrame): void;
   setFacts?(facts: readonly string[]): void;
   dispose(): void;
 }
+export interface SceneFrame { scenario: ScenarioId; phase: number; phaseTime: number; lowMotion: boolean }
 export interface CharacterModel {
   root: Group;
-  setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean; gesture?: number; lookAway?: number;
-    occupied?: boolean; damaged?: boolean; patientOffset?: Vec3; care?: boolean; cargo?: boolean; orderly?: boolean }): void;
+  setPose(pose: { walk: number; aiming: boolean; down: boolean; carrying?: boolean; armed?: boolean; kneeling?: boolean; crouched?: boolean; gesture?: number; lookAway?: number;
+    occupied?: boolean; damaged?: boolean; patientOffset?: Vec3; care?: boolean; cargo?: boolean; orderly?: boolean; reaching?: number; restrained?: boolean; fallProgress?: number }): void;
   dispose(): void;
 }
 export type CharacterRole = 'enemy' | 'ally' | 'worker' | 'father' | 'child' | 'medic' | 'civilian' | 'opponent' | 'cart';
@@ -63,6 +64,8 @@ export interface UiState {
   kills: number;
   ads: boolean;
   hitFlash: number;
+  killFlash?: number;
+  blackout?: number;
   hurtFlash: number;
   lowMotion: boolean;
   touchControls: boolean;

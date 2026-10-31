@@ -1,7 +1,9 @@
 import type { RunMode, ScenarioId, UiActions, UiState } from '../contracts';
 import { CHAPTER_STAGES } from '../content/chapter-flow';
+import { hitConfirmation } from './HitConfirmation';
 import { SubtitlePresentation, type SubtitleLayer } from './SubtitlePresentation';
 import './style.css';
+import './modern-combat.css';
 
 const SCENARIOS: Array<{ id: ScenarioId; index: string; title: string; description: string }> = [
   { id: 'northgate', index: 'V2', title: '北闸', description: '掩护工人撤离，交接最后一处阵位。' },
@@ -35,6 +37,7 @@ export class GameUI {
     this.root = document.createElement('div');
     this.root.className = 'game-interface';
     this.root.innerHTML = `
+      <div class="story-blackout" data-ui="blackout" aria-hidden="true"></div>
       <div class="hurt-vignette" data-ui="hurt" aria-hidden="true"></div>
       <section class="game-hud" data-ui="hud" aria-label="战斗状态" hidden>
         <div class="objective-cluster">
@@ -157,6 +160,7 @@ export class GameUI {
     if (this.disposed) return;
     this.state = state;
     const playing = state.mode === 'playing';
+    this.style('blackout', 'opacity', String(clamp(state.blackout ?? 0)));
     this.root.dataset.mode = state.mode;
     this.root.dataset.control = state.control;
     this.root.classList.toggle('low-motion', state.lowMotion);
@@ -177,12 +181,14 @@ export class GameUI {
     this.text('ammo', integer(state.ammo));
     this.text('reserve', integer(state.reserve));
     this.node('ammo').classList.toggle('is-empty', state.ammo <= 0);
-    this.text('ammo-label', state.ammo <= 0 && state.reserve > 0 ? state.touchControls ? '换弹' : 'R 换弹' : '弹药');
+    this.text('ammo-label', state.ammo <= 0 && state.reserve <= 0 ? '弹药耗尽' : '弹药');
     this.show('reload-label', state.reload > 0);
     this.show('reload-track', state.reload > 0);
     this.style('reload-fill', 'transform', `scaleX(${clamp(state.reload)})`);
     this.node('crosshair').classList.toggle('is-aiming', state.ads);
-    this.style('hit', 'opacity', String(playing ? clamp(state.hitFlash) : 0));
+    const hit = hitConfirmation(state.hitFlash, state.killFlash ?? 0, playing);
+    this.style('hit', 'opacity', String(hit.opacity));
+    this.style('hit', 'color', hit.color);
     this.style('hurt', 'opacity', String(playing ? clamp(state.hurtFlash) : 0));
     this.show('interaction', playing && Boolean(state.interaction) && !state.touchControls);
     this.text('interaction-text', state.interaction);
@@ -205,7 +211,8 @@ export class GameUI {
     this.text('failure-checkpoint', state.checkpoint ? `检查点 · ${state.checkpoint}` : '检查点 · 场景入口');
     this.text('complete-scenario', state.scenarioName);
     const resultTitles: Partial<Record<ScenarioId, string>> = { childhood: '隔断合拢', mainhall: '主厅失守', nightshift: '准备出发', workers: '人员已交接', frontgate: '北闸暂稳', transfer: '转接门已通', flank: '把事情交给同伴', escort: '最后一批已到站', relief: '有人接你回去', rescue: '两人已送抵', medical: '继续接收下一班', epilogue: '第一批开始进场' };
-    this.text('complete-title', state.chapter ? resultTitles[state.scenario] ?? '本段完成' : '本场行动完成');
+    this.text('complete-title', state.chapter || state.scenario === 'childhood' || state.scenario === 'mainhall'
+      ? resultTitles[state.scenario] ?? '本段完成' : '本场行动完成');
     this.text('complete-detail', state.detail || state.objective);
     this.text('complete-workers', state.workerTotal > 0 ? `人员到达 ${integer(state.workersSafe)} / ${integer(state.workerTotal)}` : '本段结束');
     this.text('complete-time', elapsed(state.elapsed));
@@ -219,7 +226,7 @@ export class GameUI {
     this.text('sensitivity-value', state.sensitivity.toFixed(2));
     (this.node('volume-input') as HTMLInputElement).value = String(Math.round(state.volume * 100));
     this.text('volume-value', state.muted ? '静音' : `${Math.round(state.volume * 100)}%`);
-    this.show('error', Boolean(state.error));
+    this.show('error', Boolean(state.error) && !(playing && (state.blackout ?? 0) > 0.95));
     this.text('error', state.error || '');
     this.show('menu-retry-equipment', Boolean(state.equipmentError));
     this.show('pause-retry-equipment', Boolean(state.equipmentError));

@@ -1,0 +1,83 @@
+{
+  "schema": "ganymede-submission-release-record-v1",
+  "recordKind": "TEMPLATE_NOT_COMPLETION_EVIDENCE",
+  "project": "重返木卫三",
+  "timezone": "Asia/Shanghai",
+  "preparedAt": null,
+  "frozenBuild": {
+    "sourceCommit": null,
+    "sourceTree": null,
+    "workingTreeCleanForReleaseInputs": null,
+    "packageVersion": null,
+    "lockfileSha256": null,
+    "runtimeInventoryPath": null,
+    "runtimeInventorySha256": null,
+    "includedWorkstreams": [],
+    "knownLimitations": []
+  },
+  "web": {
+    "buildCommand": null,
+    "outputPath": null,
+    "inventorySha256": null,
+    "packageAuditPath": null,
+    "url": null,
+    "deploymentStatus": "NOT_PUBLISHED",
+    "externalAccessEvidence": null,
+    "desktopInputEvidence": null,
+    "mobileDeviceEvidence": [],
+    "offlineLocalServerEvidence": null
+  },
+  "windows": {
+    "platform": "win32",
+    "arch": "x64",
+    "packagePath": null,
+    "packageSha256": null,
+    "packageAuditPath": null,
+    "runtimeStatus": "NOT_RUN",
+    "device": null,
+    "runtimeEvidence": null
+  },
+  "repository": {
+    "url": null,
+    "visibility": null,
+    "originalHistoryPreserved": null,
+    "judgeAccessStatus": "NOT_VERIFIED",
+    "judgeAccessEvidence": null
+  },
+  "campaign": {
+    "automatedEvidence": [],
+    "checkpointLocalEvidence": [],
+    "humanContinuousRunStatus": "NOT_RUN",
+    "humanContinuousRunEvidence": null,
+    "normalSpeedFirstRunMinutes": null
+  },
+  "media": {
+    "trailerStatus": "NOT_RECORDED",
+    "trailerPath": null,
+    "trailerSha256": null,
+    "trailerDurationSeconds": null,
+    "shotProvenancePath": null,
+    "subtitleRevision": null,
+    "normalSpeedGameplayPath": null,
+    "normalSpeedGameplaySha256": null,
+    "roadshowRehearsalStatus": "NOT_RUN",
+    "roadshowRehearsalEvidence": null,
+    "screenshotPaths": []
+  },
+  "submission": {
+    "status": "DRAFT_ONLY",
+    "externalActionsAuthorized": false,
+    "teamName": null,
+    "submittedAt": null,
+    "officialProjectUrl": null,
+    "receiptEvidence": null,
+    "formDraftRevision": null,
+    "buildInPublicUrls": []
+  },
+  "review": {
+    "reviewer": null,
+    "reviewedAt": null,
+    "materialValidationPath": null,
+    "remainingIssues": []
+  }
+}

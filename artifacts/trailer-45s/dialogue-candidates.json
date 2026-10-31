@@ -1,0 +1,90 @@
+{
+  "schema": "ganymede-trailer-dialogue-candidates-v1",
+  "warning": "全部未批准；本文件不是字幕轨。不得把候选导入正式字幕、批量录音或替换游戏母带。",
+  "candidates": [
+    {
+      "id": "P01",
+      "start_ms": 5700,
+      "end_ms": 7000,
+      "speaker": "成年周延",
+      "text": "地球……",
+      "source_status": "proposed_bridge",
+      "reason": "声音桥由原宣传片方案提出，不属于用户三组已定对白。",
+      "approval": "NOT_APPROVED",
+      "burn_in": false,
+      "recording_allowed": false
+    },
+    {
+      "id": "P02",
+      "start_ms": 14200,
+      "end_ms": 17600,
+      "speaker": "无线电（角色待锁）",
+      "text": "后路通了，让他们先走！",
+      "source_status": "proposed_bridge",
+      "reason": "新增战斗报点。",
+      "approval": "NOT_APPROVED",
+      "burn_in": false,
+      "recording_allowed": false
+    },
+    {
+      "id": "P03",
+      "start_ms": 18300,
+      "end_ms": 20500,
+      "speaker": "同伴（角色待锁）",
+      "text": "这边交给我！",
+      "source_status": "proposed_bridge",
+      "reason": "新增战斗桥接。",
+      "approval": "NOT_APPROVED",
+      "burn_in": false,
+      "recording_allowed": false
+    },
+    {
+      "id": "P04",
+      "start_ms": 22400,
+      "end_ms": 25100,
+      "speaker": "闻川",
+      "text": "先把他们送过去。",
+      "source_status": "proposed_bridge",
+      "reason": "新增取舍短句；不得冒充小说原句。",
+      "approval": "NOT_APPROVED",
+      "burn_in": false,
+      "recording_allowed": false
+    },
+    {
+      "id": "P05",
+      "start_ms": 30000,
+      "end_ms": 32800,
+      "speaker": "周延",
+      "text": "郑铎，托住另一边。",
+      "source_status": "game_excerpt",
+      "reason": "源为 Rescue.ts 的完整台词；原分镜仍将短截／重录列候选，未批准前不进入正式字幕。",
+      "approval": "NOT_APPROVED",
+      "burn_in": false,
+      "recording_allowed": false
+    },
+    {
+      "id": "P06",
+      "start_ms": 38200,
+      "end_ms": 42200,
+      "speaker": "舰队回执",
+      "text": "接收信号确认。第一梯队开始进场。",
+      "source_status": "proposed_bridge",
+      "reason": "重录压缩候选；不能静默覆盖游戏中含医疗需求的回执。",
+      "approval": "NOT_APPROVED",
+      "burn_in": false,
+      "recording_allowed": false
+    },
+    {
+      "id": "P07",
+      "start_ms": 42600,
+      "end_ms": 44800,
+      "speaker": "旁白（待锁）",
+      "text": "下一班，正在进场。",
+      "source_status": "proposed_bridge",
+      "reason": "尾句候选；优先留片名阅读空间，可不采用。",
+      "approval": "NOT_APPROVED",
+      "burn_in": false,
+      "recording_allowed": false
+    }
+  ]
+}

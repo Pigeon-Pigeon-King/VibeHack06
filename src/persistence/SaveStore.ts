@@ -3,6 +3,7 @@ import { CHAPTER_STAGES, SCENARIO_PHASE_LIMITS, type ChapterProgress } from '../
 import { HISTORY } from '../content/history-layout';
 import { EPILOGUE } from '../content/epilogue-layout';
 import type { Snapshot } from '../mission/Simulation';
+import { COMBAT_PHASES } from '../actors/CombatTactics';
 
 export interface StorageLike {
   getItem(key: string): string | null;
@@ -59,6 +60,23 @@ function vector(value: unknown, label: string): void {
 function scenario(value: unknown): asserts value is ScenarioId {
   if (typeof value !== 'string' || !(SCENARIO_IDS as readonly string[]).includes(value)) throw new InvalidRecord('场景标识不受支持。');
 }
+
+function validateCombat(value: unknown): void {
+  const c = record(value, '战术状态', ['anchor', 'phase', 'targetId', 'lastSeen', 'seenAt', 'until', 'nextThink', 'cycles',
+    'cover', 'destination', 'path', 'crouched', 'moving', 'stuck', 'lastPosition']);
+  for (const key of ['anchor', 'lastSeen', 'lastPosition']) vector(c[key], '战术坐标');
+  if (typeof c.phase !== 'string' || !(COMBAT_PHASES as readonly string[]).includes(c.phase)) throw new InvalidRecord('战术阶段不受支持。');
+  text(c.targetId, '战术目标', 80, true);
+  for (const key of ['seenAt', 'until', 'nextThink', 'stuck']) numeric(c[key], '战术时间', 0, MAX_SECONDS);
+  numeric(c.cycles, '战术轮次', 0, 1_000_000, true);
+  boolean(c.crouched, '战术低姿'); boolean(c.moving, '战术移动');
+  if (c.destination !== null) vector(c.destination, '战术目的地');
+  list(c.path, '战术路线', 256); c.path.forEach(point => vector(point, '战术路点'));
+  if (c.cover !== null) {
+    const cover = record(c.cover, '掩体', ['solid', 'hide', 'peek']);
+    text(cover.solid, '掩体 ID', 160); vector(cover.hide, '隐蔽位置'); vector(cover.peek, '探出位置');
+  }
+}
 function validateSlot(slot: unknown): asserts slot is SaveSlot { if (slot !== 'campaign') scenario(slot); }
 
 function validateSnapshot(value: unknown): Snapshot {
@@ -88,7 +106,6 @@ function validateSnapshot(value: unknown): Snapshot {
   numeric(player.height, '玩家高度', (mission.scenario === 'mainhall' && mission.phase >= 4)
     || (mission.scenario === 'rescue' && mission.phase >= 6) ? 0.65 : 0.8, 3);
   if (mission.scenario === 'childhood' && player.height !== 1.1) throw new InvalidRecord('童年视点高度与角色不一致。');
-  if (mission.scenario === 'mainhall' && mission.phase >= 4 && player.height !== 0.65) throw new InvalidRecord('主厅演出高度与角色状态不一致。');
   if (mission.scenario === 'relief' && mission.phase === 7 && player.height !== 1.1) throw new InvalidRecord('内门坐姿高度与角色状态不一致。');
   numeric(mission.elapsed, '场景用时', 0, MAX_SECONDS);
   numeric(mission.phaseTime, '阶段用时', 0, mission.elapsed + 0.0001);
@@ -104,6 +121,10 @@ function validateSnapshot(value: unknown): Snapshot {
   const facts = mission.facts;
   mission.facts.forEach(fact => text(fact, '任务事实', 120));
   if (new Set(mission.facts).size !== mission.facts.length) throw new InvalidRecord('任务事实重复。');
+  if (mission.scenario === 'mainhall' && mission.phase >= 4
+    && player.height !== (!facts.includes('history-timeline-v2') || facts.includes('history-collapse') ? 0.65 : 1.8)) {
+    throw new InvalidRecord('主厅演出高度与坍塌状态不一致。');
+  }
   // The patient keeps their identity while changing physical cart. A mismatched
   // occupancy fact would wait forever for the empty cart left at the exchange bay.
   if (mission.scenario === 'escort' && mission.facts.includes('escort-patient-transferred') !== (mission.phase >= 12)) {
@@ -196,7 +217,7 @@ function validateSnapshot(value: unknown): Snapshot {
   list(snapshot.actors, '人物', 256);
   const actors = new Map<string, Record<string, unknown>>();
   for (const value of snapshot.actors) {
-    const actor = record(value, '人物', ['id', 'name', 'role', 'position', 'health', 'yaw', 'goals', 'path', 'walk', 'aiming', 'aimTime', 'cooldown', 'safe', 'released', 'down']);
+    const actor = record(value, '人物', ['id', 'name', 'role', 'position', 'health', 'yaw', 'goals', 'path', 'walk', 'aiming', 'aimTime', 'cooldown', 'safe', 'released', 'down'], ['combat']);
     text(actor.id, '人物 ID', 80); text(actor.name, '人物姓名', 120);
     if (!/^[A-Za-z0-9][A-Za-z0-9_.:-]*$/.test(actor.id) || actor.id === 'player' || actors.has(actor.id)) throw new InvalidRecord('人物 ID 重复、非法或与玩家冲突。');
     if (typeof actor.role !== 'string' || !['enemy', 'ally', 'worker', 'father', 'child', 'medic', 'civilian', 'opponent', 'cart'].includes(actor.role)) throw new InvalidRecord('人物类型不受支持。');
@@ -207,6 +228,10 @@ function validateSnapshot(value: unknown): Snapshot {
     for (const key of ['aiming', 'safe', 'released', 'down']) boolean(actor[key], `人物 ${key}`);
     list(actor.goals, '目标路线', 128); list(actor.path, '导航路径', 4096);
     actor.goals.forEach(point => vector(point, '目标路点')); actor.path.forEach(point => vector(point, '导航路点'));
+    if (actor.combat !== undefined) {
+      validateCombat(actor.combat);
+      if (actor.role !== 'ally' && actor.role !== 'enemy') throw new InvalidRecord('非战斗人员不能持有战术状态。');
+    }
     const enemyIndex = /^enemy-(?:E0[0-9]-)?(\d+)$/.exec(actor.id);
     if (enemyIndex && Number(enemyIndex[1]) >= mission.spawned) throw new InvalidRecord('敌人 ID 与入场计数冲突。');
     actors.set(actor.id, actor);

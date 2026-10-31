@@ -1,0 +1,12 @@
+
+> return-to-ganymede@0.6.0 test
+> vitest run --maxWorkers=1 --no-isolate --testTimeout=20000
+
+
+ RUN  v5.0.5 /Users/penguin/.codex/worktrees/ganymede-combat-ai/VibeHack06
+
+
+ Test Files  30 passed (30)
+      Tests  236 passed (236)
+   Start at  12:31:47
+   Duration  179.26s (tests 99%)
