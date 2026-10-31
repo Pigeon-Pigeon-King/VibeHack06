@@ -128,6 +128,10 @@ describe('finale functional interactions rather than subtitle-only progression',
       let ownProjectileSeen = false, actualDamage = false, shotEvents = 0;
       const ammo = sim.player.ammo;
       for (let i = 0; i < 25 / dt && !sim.mission.failed && !actualDamage; i++) {
+        // Faster ingress can bring the next genuine reinforcement into the
+        // firing window. Register its health before the step, just like the
+        // original group, so real allied hits are not discarded by enemy ID.
+        for (const enemy of sim.aliveEnemies) if (!enemyHealth.has(enemy.id)) enemyHealth.set(enemy.id, enemy.health);
         sim.step({ ...emptyIntent, yaw: sim.player.yaw, crouch: true, cover: i === 0 });
         if (sim.ballistics.projectiles.some(p => p.owner === 'zheng')) ownProjectileSeen = true;
         if (sim.events.some(event => event.type === 'shot' && event.position && distance(event.position, actor(sim, 'zheng').position) < 0.1)) shotEvents++;
