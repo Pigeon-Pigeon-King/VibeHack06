@@ -1,0 +1,60 @@
+{
+  "success": true,
+  "action": "dry-run",
+  "publishDir": "dist",
+  "mode": "hosting-only",
+  "destination": "Clide hosting only (*.clide.app; no Apps Square listing)",
+  "ignoredBy": ".clideignore",
+  "writesLocalState": false,
+  "requestedHandle": null,
+  "effectiveHandle": null,
+  "effectiveHandleSource": "server-assigned",
+  "requestedUrl": null,
+  "runtimeCompatibility": {
+    "status": "static-compatible",
+    "detected": null
+  },
+  "metadata": {
+    "title": "重返木卫三",
+    "summary": "",
+    "category": "custom",
+    "tags": []
+  },
+  "license": "MIT",
+  "titleSource": "flag",
+  "assetWarnings": [
+    "Missing top-level favicon.svg. Publishing is allowed, but generate one before listing if possible."
+  ],
+  "remix": null,
+  "access": null,
+  "secretScan": {
+    "status": "passed",
+    "findings": []
+  },
+  "fileCount": 3,
+  "totalBytes": 5205309,
+  "largestFiles": [
+    {
+      "file": "assets/index-B4vILZ3T.js",
+      "bytes": 5190493
+    },
+    {
+      "file": "assets/index-BIGrrUdk.css",
+      "bytes": 14182
+    },
+    {
+      "file": "index.html",
+      "bytes": 634
+    }
+  ],
+  "extensions": {
+    ".css": 1,
+    ".html": 1,
+    ".js": 1
+  },
+  "sampleFiles": [
+    "assets/index-B4vILZ3T.js",
+    "assets/index-BIGrrUdk.css",
+    "index.html"
+  ]
+}

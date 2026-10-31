@@ -49,6 +49,12 @@ export interface UiState {
   workersSafe: number;
   workerTotal: number;
   elapsed: number;
+  /** Changes whenever the simulation is replaced, including retry/import. */
+  presentationEpoch: number;
+  /** Scene-local simulation time; stops during pause. */
+  subtitleTime: number;
+  /** Authored cue identity, including repeated lines with a new expiry. */
+  subtitleRevision: number;
   interaction: string;
   subtitle: string;
   speaker: string;

@@ -1,0 +1,30 @@
+{
+  "elements": [
+    {
+      "hidden": false,
+      "rect": {
+        "height": 80,
+        "width": 680,
+        "x": 82,
+        "y": 192
+      },
+      "selector": ".radio-subtitle",
+      "text": "\n          父亲勺子又没带？先用盒盖。糖留着，等妈妈从医院回来。\n          \n        "
+    },
+    {
+      "hidden": false,
+      "rect": {
+        "height": 51.1953125,
+        "width": 154,
+        "x": 345,
+        "y": 237.8984375
+      },
+      "selector": ".interaction-prompt",
+      "text": "E收好饭盒"
+    }
+  ],
+  "viewport": [
+    844,
+    390
+  ]
+}

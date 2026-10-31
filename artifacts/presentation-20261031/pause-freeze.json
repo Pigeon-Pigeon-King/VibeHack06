@@ -1,0 +1,15 @@
+{
+  "before": {
+    "clock": "00:45",
+    "hidden": true,
+    "opacity": "1",
+    "text": "放到里侧的交接台。名字和接收单要放在一起。"
+  },
+  "after": {
+    "clock": "00:45",
+    "hidden": true,
+    "opacity": "1",
+    "text": "放到里侧的交接台。名字和接收单要放在一起。"
+  },
+  "unchanged": true
+}
