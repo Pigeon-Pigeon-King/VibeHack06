@@ -1,0 +1,12 @@
+{
+  "reviewer": "gpt-6-astra",
+  "reasoningEffort": "max",
+  "scope": "read-only actual weapon geometry projection, not browser execution",
+  "exitCode": 0,
+  "warning": "WebSocket server error: Port 24678 is already in use; SSR model loading and projection completed",
+  "poseCombinationsPerTilt": 630,
+  "results": [
+    {"tilt":0.55,"visibleVertices":116085,"totalVertices":574560,"maximumBottomMargin":0.5899166274080231,"worst":{"ads":0,"recoil":0,"reload":0.95,"walk":0.7,"mesh":"receiver-stock-barrel","clip":[0.17877745801849873,-0.38387157866019306,0.8838718007685236,0.9737882060682161]}},
+    {"tilt":-0.55,"visibleVertices":0,"totalVertices":574560,"maximumBottomMargin":-0.3777975761734189,"worst":{"ads":0,"recoil":0,"reload":0.5,"walk":0.7,"mesh":"receiver-stock-barrel","clip":[0.2531722685100037,-1.5158509169834518,1.0481517200377708,1.1380533408100328]}}
+  ]
+}

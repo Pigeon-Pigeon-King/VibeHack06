@@ -1,6 +1,7 @@
 import type { RunMode, ScenarioId, UiActions, UiState } from '../contracts';
 import { CHAPTER_STAGES } from '../content/chapter-flow';
 import { hitConfirmation } from './HitConfirmation';
+import { SubtitlePresentation, type SubtitleLayer } from './SubtitlePresentation';
 import './style.css';
 import './modern-combat.css';
 
@@ -25,6 +26,9 @@ export class GameUI {
   private readonly root: HTMLDivElement;
   private readonly nodes = new Map<string, HTMLElement>();
   private readonly events = new AbortController();
+  private readonly subtitles = new SubtitlePresentation();
+  private readonly reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+  private readonly noticeObserver: ResizeObserver;
   private previousMode: RunMode | null = null;
   private state: UiState | null = null;
   private disposed = false;
@@ -45,7 +49,10 @@ export class GameUI {
         <div class="crosshair" data-ui="crosshair" aria-hidden="true"><i></i><i></i><i></i><i></i><b></b></div>
         <div class="hit-marker" data-ui="hit" aria-hidden="true"><i></i><i></i><i></i><i></i></div>
         <div class="interaction-prompt" data-ui="interaction" hidden><kbd>E</kbd><span data-ui="interaction-text"></span></div>
-        <div class="radio-subtitle" data-ui="subtitle" role="status" aria-live="polite" aria-atomic="true" hidden><span class="subtitle-speaker" data-ui="speaker"></span><p data-ui="subtitle-text"></p></div>
+        <div class="radio-subtitle" data-ui="subtitle" hidden>
+          <div class="subtitle-layer" data-ui="subtitle-current" role="status" aria-live="polite" aria-atomic="true"><span class="subtitle-speaker" data-ui="speaker"></span><p data-ui="subtitle-text"></p></div>
+          <div class="subtitle-layer" data-ui="subtitle-outgoing" aria-hidden="true"><span class="subtitle-speaker" data-ui="outgoing-speaker"></span><p data-ui="outgoing-text"></p></div>
+        </div>
         <div class="survival-cluster" data-ui="health-cluster"><div class="health-label"><span class="health-cross" aria-hidden="true">＋</span><strong data-ui="health">100</strong><span>生命</span></div><div class="health-track" aria-hidden="true"><div data-ui="health-fill"></div></div></div>
         <div class="ammunition-cluster"><p class="reload-label" data-ui="reload-label" hidden>装填中</p><div class="reload-track" data-ui="reload-track" hidden><div data-ui="reload-fill"></div></div><div class="ammunition-values"><strong data-ui="ammo">30</strong><span class="ammo-separator">/</span><span data-ui="reserve">120</span></div><span class="ammo-label" data-ui="ammo-label">弹药</span></div>
         <p class="sound-state" data-ui="sound-state" hidden>声音已静音</p>
@@ -134,6 +141,12 @@ export class GameUI {
     this.root.addEventListener('click', this.onClick, { signal: this.events.signal });
     this.root.addEventListener('input', this.onInput, { signal: this.events.signal });
     this.root.addEventListener('keydown', this.onKeyDown, { signal: this.events.signal });
+    this.noticeObserver = new ResizeObserver(() => {
+      const notice = this.node('error');
+      const clearance = notice.hidden ? 0 : Math.ceil(notice.getBoundingClientRect().height) + 28;
+      this.root.style.setProperty('--notice-clearance', `${clearance}px`);
+    });
+    this.noticeObserver.observe(this.node('error'));
   }
 
   render(state: UiState): void {
@@ -171,10 +184,7 @@ export class GameUI {
     this.style('hurt', 'opacity', String(playing ? clamp(state.hurtFlash) : 0));
     this.show('interaction', playing && Boolean(state.interaction));
     this.text('interaction-text', state.interaction);
-    this.show('subtitle', playing && Boolean(state.subtitle));
-    this.text('subtitle-text', state.subtitle);
-    this.text('speaker', state.speaker);
-    this.show('speaker', Boolean(state.speaker));
+    this.renderSubtitles(state);
     this.show('sound-state', state.muted);
 
     for (const { id } of SCENARIOS) {
@@ -221,6 +231,8 @@ export class GameUI {
     if (this.disposed) return;
     this.disposed = true;
     this.events.abort();
+    this.noticeObserver.disconnect();
+    this.subtitles.clear();
     this.root.remove();
     this.nodes.clear();
     this.state = null;
@@ -230,6 +242,23 @@ export class GameUI {
     const node = this.nodes.get(key);
     if (!node) throw new Error(`Missing UI node: ${key}`);
     return node;
+  }
+
+  private renderSubtitles(state: UiState): void {
+    const caption = this.subtitles.update({ mode: state.mode, epoch: state.presentationEpoch,
+      time: state.subtitleTime, revision: state.subtitleRevision, text: state.subtitle, speaker: state.speaker,
+      reducedMotion: state.lowMotion || this.reducedMotion.matches });
+    const apply = (layer: SubtitleLayer, group: string, speaker: string, text: string): void => {
+      this.text(speaker, layer.speaker); this.text(text, layer.text);
+      this.show(speaker, Boolean(layer.speaker));
+      this.style(group, 'opacity', String(Math.round(layer.opacity * 10000) / 10000));
+      this.style(group, 'transform', `translateY(${layer.offsetY.toFixed(2)}px)`);
+    };
+    apply(caption.current, 'subtitle-current', 'speaker', 'subtitle-text');
+    apply(caption.outgoing, 'subtitle-outgoing', 'outgoing-speaker', 'outgoing-text');
+    this.show('subtitle-outgoing', Boolean(caption.outgoing.text));
+    this.style('subtitle', '--subtitle-opacity', caption.panelOpacity.toFixed(4));
+    this.show('subtitle', caption.visible);
   }
 
   private text(key: string, value: string): void {

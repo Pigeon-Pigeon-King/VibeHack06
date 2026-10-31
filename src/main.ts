@@ -9,6 +9,7 @@ import { initializePhysics, FIXED_DT } from './runtime/Physics';
 import { Simulation, distance, type Snapshot } from './mission/Simulation';
 import { GameUI } from './ui/GameUI';
 import { ObjectiveIndicator } from './ui/ObjectiveIndicator';
+import { HeldItemMotion, type HeldItem } from './presentation/HeldItemMotion';
 import { LAYOUT } from './content/layout';
 import { carryFacts, CHAPTER_STAGES, nextStage, stageFor, type ChapterProgress } from './content/chapter-flow';
 import { SAVE_KEY_PREFIX, SaveStore, type SavedGame, type SaveSlot } from './persistence/SaveStore';
@@ -37,11 +38,18 @@ function carriedSupply(): Group {
     const strap = new Mesh(new BoxGeometry(0.045, 0.35, 0.43), new MeshStandardMaterial({ color: 0xc6b077, roughness: 0.9 }));
     strap.position.x = x; root.add(strap);
   }
+  for (const side of [-1, 1]) {
+    const glove = new Mesh(new BoxGeometry(0.13, 0.12, 0.20), new MeshStandardMaterial({ color: 0x26353b, roughness: 0.9 }));
+    glove.position.set(side * 0.34, -0.02, 0.035); root.add(glove);
+    const sleeve = new Mesh(new BoxGeometry(0.15, 0.15, 0.35), new MeshStandardMaterial({ color: 0x56696c, roughness: 0.9 }));
+    sleeve.position.set(side * 0.40, -0.08, 0.24); sleeve.rotation.y = -side * 0.28; root.add(sleeve);
+  }
   root.position.set(0, -0.44, -0.72); return root;
 }
 
 class Game {
   private readonly aiDiagnostics = import.meta.env.DEV && new URLSearchParams(location.search).has('ai-debug');
+  private presentationEpoch = 0;
   private readonly scene = new Scene();
   private readonly camera = new PerspectiveCamera(75, innerWidth / innerHeight, 0.045, 1000);
   private readonly renderer = new WebGLRenderer({ antialias: true, powerPreference: 'high-performance' });
@@ -49,6 +57,7 @@ class Game {
   private readonly feedback = new Feedback();
   private readonly weapon = createWeaponView();
   private readonly supply = carriedSupply();
+  private readonly heldItems = new HeldItemMotion();
   private readonly care = new CareView();
   private monitor?: DepartureMonitor;
   private readonly ui: GameUI;
@@ -119,7 +128,15 @@ class Game {
     this.animate();
   }
 
+  private get heldItem(): HeldItem {
+    const { mission: m, scenario } = this.sim;
+    if (m.control === 'combat') return 'weapon';
+    return scenario === 'nightshift' && m.facts.includes('supplies-collected') && !m.facts.includes('supplies-delivered')
+      || scenario === 'medical' && m.phase === 1 ? 'supply' : 'none';
+  }
+
   private load(id: ScenarioId, saved?: Snapshot, priorFacts: readonly string[] = []): void {
+    this.presentationEpoch++;
     this.sim?.dispose();
     if (this.monitor) { this.scene.remove(this.monitor.screen); this.monitor.dispose(); this.monitor = undefined; }
     if (this.environment) { this.scene.remove(this.environment.root); this.environment.dispose(); }
@@ -127,6 +144,7 @@ class Game {
     this.characters.clear(); this.feedback.clear(); this.sound.stopTransient();
     this.environment = buildEnvironment(id); this.scene.add(this.environment.root);
     this.sim = new Simulation(id, this.environment.solids, saved, priorFacts);
+    this.heldItems.reset(this.heldItem);
     if (id === 'escort') { this.monitor = new DepartureMonitor(); this.scene.add(this.monitor.screen); }
     this.input.yaw = this.sim.player.yaw; this.input.pitch = this.sim.player.pitch;
     this.input.clear(); this.accumulator = 0; this.ads = 0; this.lastFootstep = 0;
@@ -246,15 +264,21 @@ class Game {
     this.camera.position.set(...sim.playerEye);
     if (!this.lowMotion && active && m.control !== 'staged') this.camera.position.y += Math.sin(p.walk * 2) * 0.018;
     this.camera.rotation.set(p.pitch + (this.lowMotion ? 0 : p.recoil * 0.012), p.yaw, 0, 'YXZ');
-    this.ads += ((p.ads ? 1 : 0) - this.ads) * Math.min(1, dt * 14);
+    const motionDt = active ? dt : 0;
+    this.ads += ((p.ads ? 1 : 0) - this.ads) * Math.min(1, motionDt * 14);
     this.camera.fov = 75 - this.ads * 21; this.camera.updateProjectionMatrix();
-    this.weapon.root.visible = m.control === 'combat';
-    this.supply.visible = sim.scenario === 'nightshift' && m.facts.includes('supplies-collected') && !m.facts.includes('supplies-delivered')
-      || sim.scenario === 'medical' && m.phase === 1;
     this.weapon.setPose(p.recoil, p.reload > 0 ? 1 - p.reload / 2.1 : 0, this.ads, this.lowMotion ? 0 : p.walk);
     const forward = new Vector3(0, 0, -1).applyQuaternion(this.camera.quaternion);
     const near = this.camera.position.clone().addScaledVector(forward, 0.9);
-    if (sim.physics.trace(sim.playerEye, [near.x, near.y, near.z], 'player', true)) this.weapon.root.position.y -= 0.15;
+    const pose = this.heldItems.update(this.heldItem, motionDt, this.lowMotion, p.cooldown > 0,
+      Boolean(sim.physics.trace(sim.playerEye, [near.x, near.y, near.z], 'player', true)));
+    this.weapon.root.visible = pose.weapon > 0;
+    this.weapon.root.position.y -= (1 - pose.weapon) * 0.62 + pose.wall * 0.15;
+    this.weapon.root.position.z += (1 - pose.weapon) * 0.18;
+    this.weapon.root.rotation.x -= (1 - pose.weapon) * 0.55;
+    this.supply.visible = pose.supply > 0;
+    this.supply.position.set(0, -0.44 - (1 - pose.supply) * 0.62, -0.72 + (1 - pose.supply) * 0.20);
+    this.supply.rotation.x = (1 - pose.supply) * 0.16;
     this.environment.update(m.elapsed, this.camera.position);
     this.environment.setFacts?.(m.facts);
     const seated = sim.scenario === 'relief' && m.phase === 7;
@@ -357,6 +381,7 @@ class Game {
       health: p.health, ammo: p.ammo, reserve: p.reserve, reload: p.reload > 0 ? 1 - p.reload / 2.1 : 0,
       storyInjury: sim.scenario === 'rescue' && sim.has('rescue-zhou-wounded'),
       workersSafe: evacuees.filter(a => a.safe).length, workerTotal: evacuees.length, elapsed: m.elapsed + (this.chapter?.elapsedBefore ?? 0), interaction: objective.interaction,
+      presentationEpoch: this.presentationEpoch, subtitleTime: m.elapsed, subtitleRevision: m.subtitleUntil,
       subtitle: m.elapsed < m.subtitleUntil ? m.subtitle : '', speaker: m.speaker, checkpoint: m.checkpointLabel,
       hits: sim.hits, kills: sim.kills, ads: p.ads, hitFlash: sim.hitFlash, killFlash: sim.killFlash, hurtFlash: sim.hurtFlash,
       lowMotion: this.lowMotion, muted: this.sound.volume === 0, sensitivity: this.input.sensitivity, volume: this.sound.volume,

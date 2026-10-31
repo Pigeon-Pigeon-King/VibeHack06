@@ -1,0 +1,66 @@
+{
+  "pausedCaption": {
+    "clock": "00:45",
+    "hidden": true,
+    "opacity": "1",
+    "text": "放到里侧的交接台。名字和接收单要放在一起。"
+  },
+  "laterCaption": {
+    "clock": "00:45",
+    "hidden": true,
+    "opacity": "1",
+    "text": "放到里侧的交接台。名字和接收单要放在一起。"
+  },
+  "layout": [
+    {
+      "bottom": 0,
+      "clientHeight": 0,
+      "left": 0,
+      "name": "interaction-prompt",
+      "right": 0,
+      "scrollHeight": 0,
+      "top": 0,
+      "visible": false
+    },
+    {
+      "bottom": 693,
+      "clientHeight": 80,
+      "left": 263,
+      "name": "radio-subtitle",
+      "right": 1103,
+      "scrollHeight": 80,
+      "top": 613,
+      "visible": true
+    },
+    {
+      "bottom": 733,
+      "clientHeight": 63,
+      "left": 36,
+      "name": "survival-cluster",
+      "right": 212,
+      "scrollHeight": 63,
+      "top": 669.75,
+      "visible": true
+    },
+    {
+      "bottom": 0,
+      "clientHeight": 0,
+      "left": 0,
+      "name": "ammunition-cluster",
+      "right": 0,
+      "scrollHeight": 0,
+      "top": 0,
+      "visible": false
+    },
+    {
+      "bottom": 752,
+      "clientHeight": 46,
+      "left": 459.5,
+      "name": "game-error",
+      "right": 906.5,
+      "scrollHeight": 46,
+      "top": 705.65625,
+      "visible": true
+    }
+  ]
+}
