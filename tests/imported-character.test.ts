@@ -1,10 +1,10 @@
 import { createHash } from 'node:crypto';
 import { readFileSync, writeFileSync } from 'node:fs';
 import { afterEach, describe, expect, it, vi } from 'vitest';
-import { AnimationClip, AnimationMixer, Bone, Box3, Group, LoopOnce, Quaternion, QuaternionKeyframeTrack, SkinnedMesh, Texture, Vector3, VectorKeyframeTrack } from 'three';
+import { AnimationClip, AnimationMixer, Bone, Box3, Group, LoopOnce, Mesh, Quaternion, QuaternionKeyframeTrack, SkinnedMesh, Texture, Vector3, VectorKeyframeTrack } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
 import type { CharacterRole } from '../src/contracts';
-import { CHARACTER_ASSETS, CANONICAL_WALK, canonicalWalkSource, characterAssetFor, characterSource, type CharacterAsset } from '../src/assets/character-catalog';
+import { CHARACTER_ASSETS, CANONICAL_WALK, canonicalWalkSource, characterAssetFor, characterSource, type CharacterAsset, type CharacterIdentity } from '../src/assets/character-catalog';
 import { ModelLibrary } from '../src/assets/ModelLibrary';
 import type { ModelAcquireOptions, ModelLease, ModelSource, ModelTemplate } from '../src/assets/model-contracts';
 import { ImportedCharacter, type CharacterLoadStatus } from '../src/presentation/ImportedCharacter';
@@ -223,3 +223,95 @@ describe('character mapping, instance independence and asynchronous ownership', 
 function fakeLease(): ModelLease {
   const root = new Group(); return { root, animations: [], mixer: new AnimationMixer(root), dispose: vi.fn(() => root.removeFromParent()) };
 }
+
+describe('NPC world AK actual character integration', () => {
+  it('replaces every existing armed-role socket at metre scale and keeps its old muzzle through all poses', async () => {
+    const loader = vi.fn(geometryTemplate), lib = new ModelLibrary(loader); cleanup.push(() => lib.dispose());
+    const identities: CharacterIdentity[] = [
+      { id: 'zheng', name: '郑铎', role: 'ally' }, { id: 'enemy-0', name: '敌方步枪兵', role: 'enemy' },
+      { id: 'shao', name: '邵原', role: 'opponent' }, { id: 'father', name: '陆建平', role: 'father' },
+      { id: 'hall-invader-0', name: '冲入主厅的敌兵', role: 'opponent' },
+    ];
+    const rows = identities.map(identity => {
+      const character = new ImportedCharacter(lib, identity, baseURL); cleanup.push(() => character.dispose());
+      const attachment = character.worldWeapon!; expect(attachment).toBeDefined();
+      const socket = character.root.getObjectByName(identity.id === 'shao' ? 'sidearm-placeholder' : 'carbine-placeholder') as Group;
+      return { character, attachment, socket, oldMuzzle: attachment.muzzle };
+    });
+    await Promise.all(rows.map(async ({ character, attachment }) => { await character.ready; expect(await attachment.ready).toBe('ready'); }));
+    expect(loader.mock.calls.filter(([source]) => source.id === 'WP-AK47')).toHaveLength(1);
+    const metrics: unknown[] = [];
+    for (const { character, attachment, socket, oldMuzzle } of rows) {
+      expect(character.root.userData.assetStatus).toBe('ready'); expect(socket.scale.toArray()).toEqual([0.68, 0.68, 0.68]);
+      expect(attachment.muzzle).toBe(oldMuzzle);
+      const mount = socket.getObjectByName('world-ak47-mount')!, actualMuzzle = mount.getObjectByName('MuzzleDeviceTip')!;
+      const placeholder = socket.getObjectByName(character.identity.id === 'shao' ? 'sidearm-body' : 'receiver-stock-barrel')!;
+      expect(placeholder.visible).toBe(false); expect(socket.getObjectByName('right-grip-arm')).toBeUndefined();
+      let mounts = 0; character.root.traverse(node => { if (node.name === 'world-ak47-mount') mounts++; }); expect(mounts).toBe(1);
+      character.root.position.set(12, 0, -8); character.root.rotation.y = 0.73;
+      character.setPose({ walk: 0, aiming: true, down: false, armed: true }); character.root.updateMatrixWorld(true);
+      const forward = new Vector3(0, 0, 1).transformDirection(character.root.matrixWorld);
+      const barrel = new Vector3(0, 0, -1).transformDirection(oldMuzzle.matrixWorld);
+      expect(barrel.dot(forward)).toBeGreaterThan(0.999);
+      let min = Infinity, max = -Infinity, visibleMeshes = 0, triangles = 0;
+      const point = new Vector3();
+      mount.traverseVisible(node => {
+        if (!(node instanceof Mesh)) return;
+        visibleMeshes++; triangles += (node.geometry.index?.count ?? node.geometry.getAttribute('position').count) / 3;
+        const vertices = node.geometry.getAttribute('position');
+        for (let i = 0; i < vertices.count; i++) {
+          const span = point.fromBufferAttribute(vertices, i).applyMatrix4(node.matrixWorld).dot(barrel);
+          min = Math.min(min, span); max = Math.max(max, span);
+        }
+      });
+      expect(max - min).toBeGreaterThan(0.88); expect(max - min).toBeLessThan(0.90);
+      expect(visibleMeshes).toBe(10); expect(triangles).toBe(23_644);
+      for (const pose of [{ aiming: false, down: false }, { aiming: true, down: false, crouched: true }, { aiming: false, down: true }]) {
+        character.setPose({ walk: 0, armed: true, ...pose }); character.root.updateMatrixWorld(true);
+        expect(oldMuzzle.getWorldPosition(new Vector3()).distanceTo(actualMuzzle.getWorldPosition(new Vector3()))).toBeLessThan(1e-6);
+      }
+      character.setPose({ walk: 0, aiming: false, down: false, armed: false }); expect(socket.visible).toBe(false);
+      character.setPose({ walk: 0, aiming: false, down: false, armed: true, carrying: true }); expect(socket.visible).toBe(false);
+      character.setPose({ walk: 0, aiming: true, down: false, armed: true }); expect(socket.visible).toBe(true);
+      metrics.push({ actor: character.identity, actualLengthMeters: max - min, aimForwardDot: barrel.dot(forward), visibleMeshes, triangles,
+        oldMuzzleObjectPreserved: true, socketScalePreserved: socket.scale.toArray(), source: socket.userData.worldWeapon,
+        calibration: mount.userData.calibration });
+    }
+    writeFileSync(new URL('world-ak-npc-calibration.json', directory), JSON.stringify({ status: 'numerical-runtime-integration-passed', actors: metrics,
+      akTemplateLoads: loader.mock.calls.filter(([source]) => source.id === 'WP-AK47').length,
+      limitation: 'Image decoding only is substituted in Node; no browser/PBR/hand-contact/performance acceptance.' }, null, 2) + '\n');
+  });
+
+  it('keeps the procedural gun on a weapon load error and retries it without hiding the loaded character', async () => {
+    let weaponAttempts = 0;
+    const lib = new ModelLibrary(async source => {
+      if (source.id === 'WP-AK47' && ++weaponAttempts === 1) throw new Error('controlled world gun failure');
+      return geometryTemplate(source);
+    }); cleanup.push(() => lib.dispose());
+    const character = new ImportedCharacter(lib, { id: 'zheng', name: '郑铎', role: 'ally' }, baseURL); cleanup.push(() => character.dispose());
+    await character.ready; expect(await character.worldWeapon!.ready).toBe('error');
+    character.setPose({ walk: 0, aiming: true, down: false, armed: true });
+    const socket = character.root.getObjectByName('carbine-placeholder')!;
+    expect(character.root.userData.assetStatus).toBe('ready'); expect(socket.getObjectByName('receiver-stock-barrel')!.visible).toBe(true);
+    expect(socket.getObjectByName('world-ak47-mount')).toBeUndefined(); expect(socket.scale.x).toBe(0.68);
+    for (let i = 0; i < 10; i++) character.setPose({ walk: i, aiming: true, down: false, armed: true });
+    expect(weaponAttempts).toBe(1);
+    character.retry(); await character.ready; expect(await character.worldWeapon!.ready).toBe('ready');
+    expect(weaponAttempts).toBe(2); expect(socket.getObjectByName('receiver-stock-barrel')!.visible).toBe(false);
+  });
+
+  it('cancels a removed real NPC and releases a late decoded AK without attaching or leaking', async () => {
+    let resolveWeapon!: (template: ModelTemplate) => void, weaponSignal!: AbortSignal;
+    const lib = new ModelLibrary(async (source, signal) => {
+      if (source.id !== 'WP-AK47') return geometryTemplate(source);
+      weaponSignal = signal; return new Promise<ModelTemplate>(resolve => { resolveWeapon = resolve; });
+    }); cleanup.push(() => lib.dispose());
+    const character = new ImportedCharacter(lib, { id: 'enemy-0', name: '敌兵', role: 'enemy' }, baseURL); cleanup.push(() => character.dispose());
+    await character.ready; const attachment = character.worldWeapon!;
+    character.dispose(); expect(await attachment.ready).toBe('disposed'); expect(weaponSignal.aborted).toBe(true);
+    const source = await geometryTemplate({ id: 'WP-AK47', revision: '', url: `${baseURL.slice(0, baseURL.lastIndexOf('/') + 1)}models/weapons/ak47-world-r1.glb` });
+    const freeGeometry = vi.spyOn((source.scene.getObjectByName('WeaponBodyGeometry') as Mesh).geometry, 'dispose');
+    resolveWeapon(source); await new Promise(resolve => setTimeout(resolve, 0));
+    expect(character.root.children).toHaveLength(0); expect(freeGeometry).toHaveBeenCalledTimes(1);
+  });
+});

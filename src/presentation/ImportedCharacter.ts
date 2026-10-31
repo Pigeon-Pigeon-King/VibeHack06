@@ -3,8 +3,10 @@ import type { CharacterModel } from '../contracts';
 import { ModelLibrary } from '../assets/ModelLibrary';
 import type { ModelLease, ModelLoadProgress } from '../assets/model-contracts';
 import { canonicalWalkSource, characterAssetFor, characterSource, type CharacterAsset, type CharacterIdentity } from '../assets/character-catalog';
+import { ak47Source } from '../assets/weapon-catalog';
 import { createCharacter } from './characters';
 import { CharacterBonePoser, inspectCharacterRig, restoreCharacterRig, retargetCharacterWalk, type CharacterRig } from './CharacterRig';
+import { attachWorldAK47, type WorldAK47Attachment } from './WorldAK47';
 
 type Pose = Parameters<CharacterModel['setPose']>[0];
 export interface CharacterLoadStatus {
@@ -28,6 +30,8 @@ export class ImportedCharacter implements CharacterModel {
   private readonly posture = new Group();
   private readonly mount = new Group();
   private readonly asset?: CharacterAsset;
+  private readonly weaponRoot?: Group;
+  private weapon?: WorldAK47Attachment;
   private loaded?: LoadedCharacter;
   private controller?: AbortController;
   private generation = 0;
@@ -53,7 +57,16 @@ export class ImportedCharacter implements CharacterModel {
       }
       if (!weapon) this.fallbackBodies.push(object);
     });
+    // Only the NPC fallback's gun socket is eligible. Never visit the first-person viewmodel.
+    const weapon = this.fallback.root.getObjectByName('carbine-placeholder') ?? this.fallback.root.getObjectByName('sidearm-placeholder');
+    if (weapon instanceof Group) { this.weaponRoot = weapon; this.attachWeapon(); }
     this.ready = this.load();
+  }
+
+  /** Independent of character-rig readiness: weapon failure retains the original visible gun. */
+  get worldWeapon(): WorldAK47Attachment | undefined { return this.weapon; }
+  private attachWeapon(): void {
+    if (this.weaponRoot) this.weapon = attachWorldAK47(this.weaponRoot, { library: this.library, source: ak47Source(this.baseURL) });
   }
 
   private notify(status: CharacterLoadStatus): void {
@@ -182,10 +195,14 @@ export class ImportedCharacter implements CharacterModel {
     model.root.updateMatrixWorld(true);
   }
 
-  retry(): void { if (!this.disposed) this.ready = this.load(); }
+  retry(): void {
+    if (this.disposed) return;
+    if (this.weapon?.state === 'error') { this.weapon.dispose(); this.attachWeapon(); }
+    this.ready = this.load();
+  }
   dispose(): void {
     if (this.disposed) return;
-    this.disposed = true; this.generation++; this.controller?.abort(); this.releaseLoaded();
+    this.disposed = true; this.generation++; this.controller?.abort(); this.releaseLoaded(); this.weapon?.dispose();
     this.fallback.root.removeFromParent(); this.fallback.dispose(); this.root.removeFromParent(); this.root.clear();
   }
 }

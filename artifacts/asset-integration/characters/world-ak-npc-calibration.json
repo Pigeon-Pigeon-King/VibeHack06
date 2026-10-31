@@ -1,0 +1,342 @@
+{
+  "status": "numerical-runtime-integration-passed",
+  "actors": [
+    {
+      "actor": {
+        "id": "zheng",
+        "name": "郑铎",
+        "role": "ally"
+      },
+      "actualLengthMeters": 0.8900000000000023,
+      "aimForwardDot": 0.9999986249044621,
+      "visibleMeshes": 10,
+      "triangles": 23644,
+      "oldMuzzleObjectPreserved": true,
+      "socketScalePreserved": [
+        0.68,
+        0.68,
+        0.68
+      ],
+      "source": {
+        "id": "WP-AK47",
+        "revision": "world-r1-d121eb62491e",
+        "state": "ready",
+        "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+      },
+      "calibration": {
+        "sourceForward": "-Z",
+        "sourceUp": "+Y",
+        "uniformScale": 0.6356915489064695,
+        "sourceBounds": {
+          "min": [
+            -0.030422069132328033,
+            -0.3346736952662468,
+            -1.1347936391830444
+          ],
+          "max": [
+            0.058053843677043915,
+            0.08524584025144577,
+            0.26525643467903137
+          ]
+        },
+        "presentationLengthMeters": 0.89,
+        "lengthFrame": "actor-metres-after-legacy-socket-scale",
+        "sourceMuzzle": [
+          0,
+          0.005309000611305237,
+          -1.1347935199737549
+        ],
+        "sourceFiringGrip": [
+          -0.0005482425913214684,
+          -0.14665502309799194,
+          -0.16788557916879654
+        ],
+        "sourceSupportGrip": [
+          -0.0004889434203505516,
+          -0.0385458767414093,
+          -0.6919634342193604
+        ],
+        "sightBasis": [
+          -0.000678297758968579,
+          0.00047692758269157135,
+          0,
+          0.9999996562260564
+        ],
+        "supplierAnimationClips": 0,
+        "handContact": "runtime-review-pending",
+        "socketScale": 0.68,
+        "socketScaleCompensation": 1.4705882352941175
+      }
+    },
+    {
+      "actor": {
+        "id": "enemy-0",
+        "name": "敌方步枪兵",
+        "role": "enemy"
+      },
+      "actualLengthMeters": 0.8900000000000023,
+      "aimForwardDot": 0.9999986249044621,
+      "visibleMeshes": 10,
+      "triangles": 23644,
+      "oldMuzzleObjectPreserved": true,
+      "socketScalePreserved": [
+        0.68,
+        0.68,
+        0.68
+      ],
+      "source": {
+        "id": "WP-AK47",
+        "revision": "world-r1-d121eb62491e",
+        "state": "ready",
+        "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+      },
+      "calibration": {
+        "sourceForward": "-Z",
+        "sourceUp": "+Y",
+        "uniformScale": 0.6356915489064695,
+        "sourceBounds": {
+          "min": [
+            -0.030422069132328033,
+            -0.3346736952662468,
+            -1.1347936391830444
+          ],
+          "max": [
+            0.058053843677043915,
+            0.08524584025144577,
+            0.26525643467903137
+          ]
+        },
+        "presentationLengthMeters": 0.89,
+        "lengthFrame": "actor-metres-after-legacy-socket-scale",
+        "sourceMuzzle": [
+          0,
+          0.005309000611305237,
+          -1.1347935199737549
+        ],
+        "sourceFiringGrip": [
+          -0.0005482425913214684,
+          -0.14665502309799194,
+          -0.16788557916879654
+        ],
+        "sourceSupportGrip": [
+          -0.0004889434203505516,
+          -0.0385458767414093,
+          -0.6919634342193604
+        ],
+        "sightBasis": [
+          -0.000678297758968579,
+          0.00047692758269157135,
+          0,
+          0.9999996562260564
+        ],
+        "supplierAnimationClips": 0,
+        "handContact": "runtime-review-pending",
+        "socketScale": 0.68,
+        "socketScaleCompensation": 1.4705882352941175
+      }
+    },
+    {
+      "actor": {
+        "id": "shao",
+        "name": "邵原",
+        "role": "opponent"
+      },
+      "actualLengthMeters": 0.8900000000000023,
+      "aimForwardDot": 0.9999986249044621,
+      "visibleMeshes": 10,
+      "triangles": 23644,
+      "oldMuzzleObjectPreserved": true,
+      "socketScalePreserved": [
+        0.68,
+        0.68,
+        0.68
+      ],
+      "source": {
+        "id": "WP-AK47",
+        "revision": "world-r1-d121eb62491e",
+        "state": "ready",
+        "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+      },
+      "calibration": {
+        "sourceForward": "-Z",
+        "sourceUp": "+Y",
+        "uniformScale": 0.6356915489064695,
+        "sourceBounds": {
+          "min": [
+            -0.030422069132328033,
+            -0.3346736952662468,
+            -1.1347936391830444
+          ],
+          "max": [
+            0.058053843677043915,
+            0.08524584025144577,
+            0.26525643467903137
+          ]
+        },
+        "presentationLengthMeters": 0.89,
+        "lengthFrame": "actor-metres-after-legacy-socket-scale",
+        "sourceMuzzle": [
+          0,
+          0.005309000611305237,
+          -1.1347935199737549
+        ],
+        "sourceFiringGrip": [
+          -0.0005482425913214684,
+          -0.14665502309799194,
+          -0.16788557916879654
+        ],
+        "sourceSupportGrip": [
+          -0.0004889434203505516,
+          -0.0385458767414093,
+          -0.6919634342193604
+        ],
+        "sightBasis": [
+          -0.000678297758968579,
+          0.00047692758269157135,
+          0,
+          0.9999996562260564
+        ],
+        "supplierAnimationClips": 0,
+        "handContact": "runtime-review-pending",
+        "socketScale": 0.68,
+        "socketScaleCompensation": 1.4705882352941175
+      }
+    },
+    {
+      "actor": {
+        "id": "father",
+        "name": "陆建平",
+        "role": "father"
+      },
+      "actualLengthMeters": 0.8900000000000023,
+      "aimForwardDot": 0.9999986249044621,
+      "visibleMeshes": 10,
+      "triangles": 23644,
+      "oldMuzzleObjectPreserved": true,
+      "socketScalePreserved": [
+        0.68,
+        0.68,
+        0.68
+      ],
+      "source": {
+        "id": "WP-AK47",
+        "revision": "world-r1-d121eb62491e",
+        "state": "ready",
+        "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+      },
+      "calibration": {
+        "sourceForward": "-Z",
+        "sourceUp": "+Y",
+        "uniformScale": 0.6356915489064695,
+        "sourceBounds": {
+          "min": [
+            -0.030422069132328033,
+            -0.3346736952662468,
+            -1.1347936391830444
+          ],
+          "max": [
+            0.058053843677043915,
+            0.08524584025144577,
+            0.26525643467903137
+          ]
+        },
+        "presentationLengthMeters": 0.89,
+        "lengthFrame": "actor-metres-after-legacy-socket-scale",
+        "sourceMuzzle": [
+          0,
+          0.005309000611305237,
+          -1.1347935199737549
+        ],
+        "sourceFiringGrip": [
+          -0.0005482425913214684,
+          -0.14665502309799194,
+          -0.16788557916879654
+        ],
+        "sourceSupportGrip": [
+          -0.0004889434203505516,
+          -0.0385458767414093,
+          -0.6919634342193604
+        ],
+        "sightBasis": [
+          -0.000678297758968579,
+          0.00047692758269157135,
+          0,
+          0.9999996562260564
+        ],
+        "supplierAnimationClips": 0,
+        "handContact": "runtime-review-pending",
+        "socketScale": 0.68,
+        "socketScaleCompensation": 1.4705882352941175
+      }
+    },
+    {
+      "actor": {
+        "id": "hall-invader-0",
+        "name": "冲入主厅的敌兵",
+        "role": "opponent"
+      },
+      "actualLengthMeters": 0.8900000000000023,
+      "aimForwardDot": 0.9999986249044621,
+      "visibleMeshes": 10,
+      "triangles": 23644,
+      "oldMuzzleObjectPreserved": true,
+      "socketScalePreserved": [
+        0.68,
+        0.68,
+        0.68
+      ],
+      "source": {
+        "id": "WP-AK47",
+        "revision": "world-r1-d121eb62491e",
+        "state": "ready",
+        "sha256": "d121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1"
+      },
+      "calibration": {
+        "sourceForward": "-Z",
+        "sourceUp": "+Y",
+        "uniformScale": 0.6356915489064695,
+        "sourceBounds": {
+          "min": [
+            -0.030422069132328033,
+            -0.3346736952662468,
+            -1.1347936391830444
+          ],
+          "max": [
+            0.058053843677043915,
+            0.08524584025144577,
+            0.26525643467903137
+          ]
+        },
+        "presentationLengthMeters": 0.89,
+        "lengthFrame": "actor-metres-after-legacy-socket-scale",
+        "sourceMuzzle": [
+          0,
+          0.005309000611305237,
+          -1.1347935199737549
+        ],
+        "sourceFiringGrip": [
+          -0.0005482425913214684,
+          -0.14665502309799194,
+          -0.16788557916879654
+        ],
+        "sourceSupportGrip": [
+          -0.0004889434203505516,
+          -0.0385458767414093,
+          -0.6919634342193604
+        ],
+        "sightBasis": [
+          -0.000678297758968579,
+          0.00047692758269157135,
+          0,
+          0.9999996562260564
+        ],
+        "supplierAnimationClips": 0,
+        "handContact": "runtime-review-pending",
+        "socketScale": 0.68,
+        "socketScaleCompensation": 1.4705882352941175
+      }
+    }
+  ],
+  "akTemplateLoads": 1,
+  "limitation": "Image decoding only is substituted in Node; no browser/PBR/hand-contact/performance acceptance."
+}

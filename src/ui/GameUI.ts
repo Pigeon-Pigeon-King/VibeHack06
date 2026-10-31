@@ -93,7 +93,7 @@ export class GameUI {
             <p class="touch-help" data-ui="touch-help" hidden>左侧移动，右侧观察。按住开火可同时拖动瞄准。</p>
           </details>
         </div>
-        <p class="candidate-note">占位资产 · 功能验证</p>
+        <p class="candidate-note">开发中 · <a href="${import.meta.env.BASE_URL}credits.html">制作与来源</a></p>
         <p class="equipment-status" data-ui="equipment-status" role="status" hidden></p>
         <button type="button" class="equipment-retry" data-ui="menu-retry-equipment" data-action="retry-equipment" hidden>重新载入装备</button>
       </section>

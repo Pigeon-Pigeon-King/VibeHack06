@@ -1,5 +1,7 @@
-import { Box3, Group, LoadingManager, Matrix4, Mesh, Object3D, Quaternion, Vector3 } from 'three';
+import { Box3, Group, LoadingManager, Matrix4, Mesh, Object3D, Quaternion, Vector3, type BufferGeometry } from 'three';
 import { GLTFLoader } from 'three/addons/loaders/GLTFLoader.js';
+import type { ModelLibrary } from '../assets/ModelLibrary';
+import type { ModelLease, ModelSource } from '../assets/model-contracts';
 import { disposeModelTree, registerModelDisposer } from './model-tools';
 
 /** Same committed source as ImportedWeaponView, without first-person arms or animation rules. */
@@ -8,7 +10,7 @@ export const WORLD_AK47 = {
   runtimePath: 'models/weapons/ak47-world-r1.glb',
   sha256: 'd121eb62491e7f2cc573cd7bdb04e4a482f1eca3b16df7976b2ee2306ea4e1c1',
   bytes: 2_046_524,
-  /** In the existing weapon parent's local metre frame. Its outer 0.68 scale is not applied again. */
+  /** Final length in the actor's metre frame after cancelling the legacy weapon socket scale. */
   presentationLengthMeters: 0.89,
   hiddenNodes: ['SpareMagazine', 'Suppressor', 'OpticMount', 'OpticRailAdapterGeometry', 'OpticRailContact'],
   requiredNodes: ['Magazine', 'ChargingHandle', 'FrontIronSight', 'RearIronSight', 'MuzzleDeviceTip', 'FurnitureGeometry', 'Stock'],
@@ -24,7 +26,15 @@ export interface WorldAK47Attachment {
   readonly muzzle: Object3D;
   dispose(): void;
 }
-export interface WorldAK47Options { pool?: WorldAK47Pool; baseURL?: string; pageURL?: string }
+export interface WorldAK47Options {
+  /** Game integration supplies the same library and exact source as the first-person view. */
+  library?: ModelLibrary;
+  source?: ModelSource;
+  /** Standalone/tool callers may retain the original explicit pool. Ignored when library is supplied. */
+  pool?: WorldAK47Pool;
+  baseURL?: string;
+  pageURL?: string;
+}
 
 export function worldAK47Url(baseURL = import.meta.env.BASE_URL, pageURL?: string): string {
   const path = `${baseURL.endsWith('/') ? baseURL : `${baseURL}/`}${WORLD_AK47.runtimePath}`;
@@ -72,11 +82,15 @@ function pointsInRoot(root: Group, node: Object3D): Vector3[] {
   return points;
 }
 
-/** Geometry-derived calibration from the committed AK view, performed once per shared source. */
-function prepareWorldAK47(source: Group): Group {
-  for (const name of WORLD_AK47.requiredNodes) requireNode(source, name);
-  for (const name of WORLD_AK47.hiddenNodes) source.getObjectByName(name)?.traverse(node => { node.visible = false; });
-  source.updateMatrixWorld(true);
+interface WorldCalibration {
+  bounds: Box3; scale: number; sourceMuzzle: Vector3; front: Vector3; rear: Vector3;
+  basis: Quaternion; grip: Vector3; support: Vector3;
+}
+const calibrations = new WeakMap<BufferGeometry, WorldCalibration>();
+const gripAnchor = new Vector3(0, -0.14, -0.02);
+
+/** Geometry-derived calibration; a shared geometry revision is measured only once. */
+function measureWorldAK47(source: Group): WorldCalibration {
   const bounds = new Box3().setFromPoints(pointsInRoot(source, source)), size = bounds.getSize(new Vector3());
   if (!Number.isFinite(size.z) || size.z < 1.3 || size.z > 1.5 || size.y > 0.6) throw new Error('Unexpected AK source frame');
   const scale = WORLD_AK47.presentationLengthMeters / size.z;
@@ -103,9 +117,21 @@ function prepareWorldAK47(source: Group): Group {
   if (!gripPoints.length || !supportPoints.length) throw new Error('AK grip geometry could not be identified');
   const grip = new Box3().setFromPoints(gripPoints).getCenter(new Vector3());
   const supportBounds = new Box3().setFromPoints(supportPoints), support = supportBounds.getCenter(new Vector3()); support.y = supportBounds.min.y;
+  return { bounds, scale, sourceMuzzle, front, rear, basis, grip, support };
+}
+
+function prepareWorldAK47(source: Group): Group {
+  for (const name of WORLD_AK47.requiredNodes) requireNode(source, name);
+  for (const name of WORLD_AK47.hiddenNodes) source.getObjectByName(name)?.traverse(node => { node.visible = false; });
+  source.updateMatrixWorld(true);
+  const receiver = requireNode(source, 'WeaponBodyGeometry');
+  if (!(receiver instanceof Mesh)) throw new Error('World weapon receiver lacks geometry');
+  let calibration = calibrations.get(receiver.geometry);
+  if (!calibration) { calibration = measureWorldAK47(source); calibrations.set(receiver.geometry, calibration); }
+  const { bounds, scale, sourceMuzzle, front, rear, basis, grip, support } = calibration;
   const mount = new Group(); mount.name = 'world-ak47-mount';
   mount.scale.setScalar(scale); mount.quaternion.copy(basis);
-  mount.position.set(0, -0.14, -0.02).sub(grip.clone().applyQuaternion(basis).multiplyScalar(scale));
+  mount.position.copy(gripAnchor).sub(grip.clone().applyQuaternion(basis).multiplyScalar(scale));
   mount.add(source);
   for (const [name, position] of [['ganymede-front-sight', front], ['ganymede-rear-sight', rear],
     ['ganymede-firing-grip', grip], ['ganymede-support-grip', support]] as const) {
@@ -121,7 +147,25 @@ function prepareWorldAK47(source: Group): Group {
 }
 
 interface PoolEntry { refs: number; retired: boolean; controller: AbortController; promise: Promise<Group>; template?: Group }
-interface WeaponLease { template: Promise<Group>; release(): void }
+interface WeaponLease { template: Promise<Group>; instance?: boolean; release(): void }
+
+/** One instance lease in the existing game library; no second download/texture/GPU ownership pool. */
+function acquireLibraryWeapon(library: ModelLibrary, source: ModelSource): WeaponLease {
+  const controller = new AbortController(); let current: ModelLease | undefined, released = false;
+  const template = library.acquire(source, { signal: controller.signal }).then(lease => {
+    // acquire can have resolved immediately before the owning NPC is disposed.
+    if (released || controller.signal.aborted) { lease.dispose(); throw new Error('World weapon request released'); }
+    current = lease;
+    try {
+      if (lease.animations.length) throw new Error('World AK requires the pinned static model');
+      return prepareWorldAK47(lease.root);
+    } catch (error) { current = undefined; lease.dispose(); throw error; }
+  });
+  return { template, instance: true, release() {
+    if (released) return;
+    released = true; controller.abort(); current?.dispose(); current = undefined;
+  } };
+}
 
 /** Explicit reference counting: no scene owns another character's shared geometry/materials. */
 export class WorldAK47Pool {
@@ -175,7 +219,8 @@ export function attachWorldAK47(parentWeaponRoot: Group, options: WorldAK47Optio
   });
   let state: WorldAK47State = 'loading', mount: Group | undefined;
   const oldStatus = parentWeaponRoot.userData.assetStatus, oldWeapon = parentWeaponRoot.userData.worldWeapon;
-  const lease = (options.pool ?? sharedWorldWeapons).acquire(worldAK47Url(options.baseURL, options.pageURL));
+  const source = options.source ?? { id: WORLD_AK47.id, revision: WORLD_AK47.revision, url: worldAK47Url(options.baseURL, options.pageURL) };
+  const lease = options.library ? acquireLibraryWeapon(options.library, source) : (options.pool ?? sharedWorldWeapons).acquire(source.url);
   let resolveReady!: (value: Exclude<WorldAK47State, 'loading'>) => void;
   const ready = new Promise<Exclude<WorldAK47State, 'loading'>>(resolve => { resolveReady = resolve; });
   let unregister = () => {};
@@ -199,7 +244,18 @@ export function attachWorldAK47(parentWeaponRoot: Group, options: WorldAK47Optio
   parentWeaponRoot.userData.worldWeapon = { id: WORLD_AK47.id, revision: WORLD_AK47.revision, state };
   void lease.template.then(template => {
     if (state === 'disposed') return;
-    mount = template.clone(true); parentWeaponRoot.add(mount);
+    const socketScale = parentWeaponRoot.scale.x;
+    if (!Number.isFinite(socketScale) || socketScale <= 0 || Math.abs(parentWeaponRoot.scale.y - socketScale) > 1e-6
+      || Math.abs(parentWeaponRoot.scale.z - socketScale) > 1e-6) throw new Error('World weapon socket must have a positive uniform scale');
+    mount = lease.instance ? template : template.clone(true);
+    // The procedural actor socket is scaled to 0.68. Keep its pose and fallback
+    // untouched; resize the imported geometry around the same grip anchor only.
+    const compensation = 1 / socketScale;
+    mount.scale.multiplyScalar(compensation);
+    mount.position.sub(gripAnchor).multiplyScalar(compensation).add(gripAnchor);
+    mount.userData.calibration = { ...mount.userData.calibration, socketScale, socketScaleCompensation: compensation,
+      lengthFrame: 'actor-metres-after-legacy-socket-scale' };
+    parentWeaponRoot.add(mount);
     const marker = requireNode(mount, 'MuzzleDeviceTip');
     marker.add(muzzle); muzzle.position.set(0, 0, 0); muzzle.quaternion.identity(); muzzle.scale.setScalar(1);
     muzzle.matrixAutoUpdate = true; muzzle.updateMatrix(); muzzle.userData.forward = '-Z';
