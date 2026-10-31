@@ -49,8 +49,23 @@ export function characterMaterial(): MeshStandardMaterial {
   return new MeshStandardMaterial({ vertexColors: true, roughness: 0.78, metalness: 0.12 });
 }
 
+const treeDisposers = new WeakMap<Group, Set<() => void>>();
+/** Runs before resource traversal, so a tree can reject pending asynchronous attachments. */
+export function registerModelDisposer(root: Group, dispose: () => void): () => void {
+  let callbacks = treeDisposers.get(root);
+  if (!callbacks) { callbacks = new Set(); treeDisposers.set(root, callbacks); }
+  callbacks.add(dispose);
+  return () => callbacks!.delete(dispose);
+}
+
 /** Every factory owns its tree. Shared geometry within a tree is disposed exactly once. */
 export function disposeModelTree(root: Group): void {
+  const callbacks: (() => void)[] = [];
+  root.traverse(object => {
+    const owned = treeDisposers.get(object as Group);
+    if (owned) { callbacks.push(...owned); treeDisposers.delete(object as Group); }
+  });
+  for (const callback of callbacks) { try { callback(); } catch { /* Finish releasing the owning tree. */ } }
   const geometries = new Set<BufferGeometry>();
   const materials = new Set<Material>();
   const textures = new Set<Texture>();
@@ -64,7 +79,15 @@ export function disposeModelTree(root: Group): void {
     });
     if (object instanceof InstancedMesh) object.dispose();
   });
-  textures.forEach(texture => texture.dispose());
+  const images = new Set<{ close?(): void }>();
+  textures.forEach(texture => {
+    texture.dispose();
+    for (const image of [texture.image, texture.source?.data]) {
+      const candidate = image as { close?(): void } | undefined;
+      if (typeof candidate?.close === 'function') images.add(candidate);
+    }
+  });
+  images.forEach(image => image.close?.());
   geometries.forEach(geometry => geometry.dispose());
   materials.forEach(material => material.dispose());
   root.removeFromParent();

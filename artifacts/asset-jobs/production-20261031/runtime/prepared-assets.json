@@ -1,0 +1,800 @@
+{
+  "updatedAt": "2026-10-31T06:09:56.386591+00:00",
+  "batch": "production-20261031",
+  "assets": [
+    {
+      "id": "BG-CRANE",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Hyper3D",
+      "status": "prepared",
+      "name": "BG-CRANE",
+      "source": "assets/source/hyper3d/BG-CRANE/v1/base_basic_pbr.glb",
+      "runtime": "public/assets/generated/production-20261031/BG-CRANE.glb",
+      "url": "assets/generated/production-20261031/BG-CRANE.glb",
+      "taskId": "0af41b69-a2f2-448d-ad4a-b8d348e8f0bb",
+      "normalization": "Runtime wrapper applies Y-up, explicit yaw, bottom-center pivot and per-placement meter dimensions; source geometry/UV/PBR remain intact.",
+      "collision": "Existing level collision stays separate; no collision inferred from generated mesh.",
+      "evidence": "Original source SHA verified; deterministic embedded-image resize; every non-image bufferView unchanged. Material, mesh, accessor, skin and animation JSON unchanged. First-person/Windows rendering acceptance pending.",
+      "sha256": "bfec243ec25cf469ae3f2eb36a373f4d9737ff92cdfc8cdb2937811f4f1b2ca5",
+      "bytes": 3154172,
+      "triangles": 19718,
+      "meshes": 1,
+      "materials": 1,
+      "textures": 3,
+      "rawAccessorBoundsNotMeters": [
+        {
+          "min": [
+            -0.44521310925483704,
+            -0.7250379323959351,
+            -0.9443587064743042
+          ],
+          "max": [
+            0.44664904475212097,
+            0.7188607454299927,
+            0.9452332258224487
+          ]
+        }
+      ],
+      "externalDependencies": [],
+      "sourceSha256": "db2856bf9bf59c22ba408e98a35cf471871d21db2727659d5ec44c3470d0845d",
+      "sourceBytes": 5331512,
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 67108864,
+          "runtime": 16777216
+        }
+      }
+    },
+    {
+      "id": "ENV-LIGHTKIT-POLE",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Hyper3D",
+      "status": "prepared",
+      "name": "ENV-LIGHTKIT-POLE",
+      "source": "assets/source/hyper3d/ENV-LIGHTKIT-POLE/v1/base_basic_pbr.glb",
+      "runtime": "public/assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb",
+      "url": "assets/generated/production-20261031/ENV-LIGHTKIT-POLE.glb",
+      "taskId": "44be1ace-2da5-40d3-b990-a5e476aa1df9",
+      "normalization": "Runtime wrapper applies Y-up, explicit yaw, bottom-center pivot and per-placement meter dimensions; source geometry/UV/PBR remain intact.",
+      "collision": "Existing level collision stays separate; no collision inferred from generated mesh.",
+      "evidence": "Original source SHA verified; deterministic embedded-image resize; every non-image bufferView unchanged. Material, mesh, accessor, skin and animation JSON unchanged. First-person/Windows rendering acceptance pending.",
+      "sha256": "afe2b14a3580fe5445f4cef5441acf9532a5b25c9f127236cfb3d6fa9e0f220d",
+      "bytes": 1393544,
+      "triangles": 11374,
+      "meshes": 1,
+      "materials": 1,
+      "textures": 3,
+      "rawAccessorBoundsNotMeters": [
+        {
+          "min": [
+            -0.435163289308548,
+            -0.9479645490646362,
+            -0.17805664241313934
+          ],
+          "max": [
+            0.43270257115364075,
+            0.9481470584869385,
+            0.17822511494159698
+          ]
+        }
+      ],
+      "externalDependencies": [],
+      "sourceSha256": "c2b66359af56e25609032fa2f0826d89436e1ce76c9d6003713ba9ce1ff83248",
+      "sourceBytes": 2319412,
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 67108864,
+          "runtime": 16777216
+        }
+      }
+    },
+    {
+      "id": "PROP-BENCH",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "status": "prepared",
+      "name": "工业长凳",
+      "source": "assets/source/tripo/PROP-BENCH/f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-BENCH.glb",
+      "url": "assets/generated/production-20261031/PROP-BENCH.glb",
+      "taskId": "f3ae5bd3-fcc8-4c4a-beaa-9c4826be9247",
+      "normalization": "Runtime wrapper applies Y-up, explicit yaw, bottom-center pivot and per-placement meter dimensions; source geometry/UV/PBR remain intact.",
+      "collision": "Existing level collision stays separate; no collision inferred from generated mesh.",
+      "evidence": "Original source SHA verified; deterministic embedded-image resize; every non-image bufferView unchanged. Material, mesh, accessor, skin and animation JSON unchanged. First-person/Windows rendering acceptance pending.",
+      "sha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+      "bytes": 1256928,
+      "triangles": 4592,
+      "meshes": 1,
+      "materials": 1,
+      "textures": 3,
+      "rawAccessorBoundsNotMeters": [
+        {
+          "min": [
+            -0.12602274119853973,
+            -0.1408012956380844,
+            -0.5
+          ],
+          "max": [
+            0.12602274119853973,
+            0.1408012956380844,
+            0.5
+          ]
+        }
+      ],
+      "externalDependencies": [],
+      "sourceSha256": "bafcb58d9cd1d40badbbbf4a7bc05ad19b0e5df657a2dae423d156b82cd01022",
+      "sourceBytes": 11641764,
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      }
+    },
+    {
+      "id": "PROP-LIFE-MUG",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "status": "prepared",
+      "name": "生活杯",
+      "source": "assets/source/tripo/PROP-LIFE-MUG/a509e55e-d414-42db-ba04-1c2b0a44b03b-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+      "url": "assets/generated/production-20261031/PROP-LIFE-MUG.glb",
+      "taskId": "a509e55e-d414-42db-ba04-1c2b0a44b03b",
+      "normalization": "Runtime wrapper applies Y-up, explicit yaw, bottom-center pivot and per-placement meter dimensions; source geometry/UV/PBR remain intact.",
+      "collision": "Existing level collision stays separate; no collision inferred from generated mesh.",
+      "evidence": "Original source SHA verified; deterministic embedded-image resize; every non-image bufferView unchanged. Material, mesh, accessor, skin and animation JSON unchanged. First-person/Windows rendering acceptance pending.",
+      "sha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+      "bytes": 834268,
+      "triangles": 3626,
+      "meshes": 1,
+      "materials": 1,
+      "textures": 3,
+      "rawAccessorBoundsNotMeters": [
+        {
+          "min": [
+            -0.43909358978271484,
+            -0.3714621067047119,
+            -0.5
+          ],
+          "max": [
+            0.43909358978271484,
+            0.3714621067047119,
+            0.5
+          ]
+        }
+      ],
+      "externalDependencies": [],
+      "sourceSha256": "fa95b4b2be647aad5a013b269077fb80579168ccddd559404ba1907a027f8d4f",
+      "sourceBytes": 8377524,
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      }
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "status": "prepared",
+      "name": "护理包",
+      "source": "assets/source/tripo/PROP-MEDICAL-BAG/76629177-8de5-4c65-a8dc-34dcfd2b938b-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+      "url": "assets/generated/production-20261031/PROP-MEDICAL-BAG.glb",
+      "taskId": "76629177-8de5-4c65-a8dc-34dcfd2b938b",
+      "normalization": "Runtime wrapper applies Y-up, explicit yaw, bottom-center pivot and per-placement meter dimensions; source geometry/UV/PBR remain intact.",
+      "collision": "Existing level collision stays separate; no collision inferred from generated mesh.",
+      "evidence": "Original source SHA verified; deterministic embedded-image resize; every non-image bufferView unchanged. Material, mesh, accessor, skin and animation JSON unchanged. First-person/Windows rendering acceptance pending.",
+      "sha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+      "bytes": 1569588,
+      "triangles": 5518,
+      "meshes": 1,
+      "materials": 1,
+      "textures": 3,
+      "rawAccessorBoundsNotMeters": [
+        {
+          "min": [
+            -0.2999960780143738,
+            -0.35750243067741394,
+            -0.5
+          ],
+          "max": [
+            0.2999960780143738,
+            0.35750243067741394,
+            0.5
+          ]
+        }
+      ],
+      "externalDependencies": [],
+      "sourceSha256": "7f9ef520a1f5486aa507b7f0d504d4b75516c1601ad4423181d6e801b5071b9b",
+      "sourceBytes": 17454464,
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      }
+    },
+    {
+      "id": "PROP-TANK",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Hyper3D",
+      "status": "prepared",
+      "name": "PROP-TANK",
+      "source": "assets/source/hyper3d/PROP-TANK/v1/base_basic_pbr.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-TANK.glb",
+      "url": "assets/generated/production-20261031/PROP-TANK.glb",
+      "taskId": "222957ed-2b0b-4800-a022-a1244bc25e88",
+      "normalization": "Runtime wrapper applies Y-up, explicit yaw, bottom-center pivot and per-placement meter dimensions; source geometry/UV/PBR remain intact.",
+      "collision": "Existing level collision stays separate; no collision inferred from generated mesh.",
+      "evidence": "Original source SHA verified; deterministic embedded-image resize; every non-image bufferView unchanged. Material, mesh, accessor, skin and animation JSON unchanged. First-person/Windows rendering acceptance pending.",
+      "sha256": "03f4f654a3101d91247dcd0fc5dd7170999367c477075c470b4fd3ebe663bb1b",
+      "bytes": 1690788,
+      "triangles": 15130,
+      "meshes": 1,
+      "materials": 1,
+      "textures": 3,
+      "rawAccessorBoundsNotMeters": [
+        {
+          "min": [
+            -0.8136574029922485,
+            -0.9513395428657532,
+            -0.809900164604187
+          ],
+          "max": [
+            0.8130090236663818,
+            0.947274386882782,
+            0.8106244802474976
+          ]
+        }
+      ],
+      "externalDependencies": [],
+      "sourceSha256": "fa1688f012e5dfa93e28dc6147a9215e84334f855c7d850d1c68c5270574ee8c",
+      "sourceBytes": 3169960,
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              2048,
+              2048
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 67108864,
+          "runtime": 16777216
+        }
+      }
+    },
+    {
+      "id": "PROP-TERMINAL-CONSOLE",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "status": "prepared",
+      "name": "港务控制台",
+      "source": "assets/source/tripo/PROP-TERMINAL-CONSOLE/914701ef-9b63-4d3e-9064-b1cf113aa4fe-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+      "url": "assets/generated/production-20261031/PROP-TERMINAL-CONSOLE.glb",
+      "taskId": "914701ef-9b63-4d3e-9064-b1cf113aa4fe",
+      "normalization": "Runtime wrapper applies Y-up, explicit yaw, bottom-center pivot and per-placement meter dimensions; source geometry/UV/PBR remain intact.",
+      "collision": "Existing level collision stays separate; no collision inferred from generated mesh.",
+      "evidence": "Original source SHA verified; deterministic embedded-image resize; every non-image bufferView unchanged. Material, mesh, accessor, skin and animation JSON unchanged. First-person/Windows rendering acceptance pending.",
+      "sha256": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+      "bytes": 1617188,
+      "triangles": 9819,
+      "meshes": 1,
+      "materials": 1,
+      "textures": 3,
+      "rawAccessorBoundsNotMeters": [
+        {
+          "min": [
+            -0.15724784135818481,
+            -0.19664359092712402,
+            -0.5
+          ],
+          "max": [
+            0.15724784135818481,
+            0.19664359092712402,
+            0.5
+          ]
+        }
+      ],
+      "externalDependencies": [],
+      "sourceSha256": "8213a3b4a182c5df399dd56e06f7a9de31e1745d18aaafdf2f4bb36dbdf415a2",
+      "sourceBytes": 10952596,
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      }
+    },
+    {
+      "id": "PROP-VEH-TUG",
+      "revision": "production-20261031-tex1024-v1",
+      "provider": "Tripo",
+      "status": "prepared",
+      "name": "港区牵引维修车",
+      "source": "assets/source/tripo/PROP-VEH-TUG/561b30a3-8648-4ea8-84ef-7091de2d68a1-pbr-model.glb",
+      "runtime": "public/assets/generated/production-20261031/PROP-VEH-TUG.glb",
+      "url": "assets/generated/production-20261031/PROP-VEH-TUG.glb",
+      "taskId": "561b30a3-8648-4ea8-84ef-7091de2d68a1",
+      "normalization": "Runtime wrapper applies Y-up, explicit yaw, bottom-center pivot and per-placement meter dimensions; source geometry/UV/PBR remain intact.",
+      "collision": "Existing level collision stays separate; no collision inferred from generated mesh.",
+      "evidence": "Original source SHA verified; deterministic embedded-image resize; every non-image bufferView unchanged. Material, mesh, accessor, skin and animation JSON unchanged. First-person/Windows rendering acceptance pending.",
+      "sha256": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+      "bytes": 2185792,
+      "triangles": 18122,
+      "meshes": 1,
+      "materials": 1,
+      "textures": 3,
+      "rawAccessorBoundsNotMeters": [
+        {
+          "min": [
+            -0.5,
+            -0.23017218708992004,
+            -0.26132938265800476
+          ],
+          "max": [
+            0.5,
+            0.23017218708992004,
+            0.26132938265800476
+          ]
+        }
+      ],
+      "externalDependencies": [],
+      "sourceSha256": "41012891d28356f8e57810b96b1620af34aa81ea59ab98f386411ad408d428da",
+      "sourceBytes": 14286384,
+      "textureBudget": {
+        "maxEdge": 1024,
+        "images": [
+          {
+            "image": 0,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "baseColor-sRGB"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 1,
+            "mimeType": "image/jpeg",
+            "roles": [
+              "metallicRoughness-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": false
+          },
+          {
+            "image": 2,
+            "mimeType": "image/png",
+            "roles": [
+              "normal-linear"
+            ],
+            "sourceDimensions": [
+              4096,
+              4096
+            ],
+            "runtimeDimensions": [
+              1024,
+              1024
+            ],
+            "alphaPreserved": false,
+            "normalRenormalized": true
+          }
+        ],
+        "estimatedRGBA8WithMipmapsBytes": {
+          "source": 268435456,
+          "runtime": 16777216
+        }
+      }
+    }
+  ],
+  "pending": [],
+  "totalBytes": 13702268,
+  "sourceModified": false,
+  "textureTranscoding": false,
+  "limitations": [
+    "Source originals unchanged; runtime PBR images limited to 1024, no geometry simplification or mesh LOD.",
+    "Prepared copies and numeric checks do not establish first-person rendering, mobile, or Windows acceptance."
+  ],
+  "sourceManifestSha256": "56b763f761c3e2d2c582563edc0879f270727a95e8a0e5ab15e8c385705000ee",
+  "totalSourceBytes": 73533616,
+  "textureResizing": {
+    "maxEdge": 1024,
+    "tool": "artifacts/asset-integration/scenery/resize-glb-textures.py",
+    "Pillow": "11.3.0",
+    "JPEGQuality": 90,
+    "JPEGSubsampling": 0,
+    "PNGCompressLevel": 9
+  }
+}
