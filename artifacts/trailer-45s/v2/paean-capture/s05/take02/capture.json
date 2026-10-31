@@ -1,0 +1,798 @@
+{
+  "startedAt": "2026-10-31T10:48:13.620Z",
+  "runtimeBaseline": "a9030c6",
+  "observedHead": "3acd4c7b968b08b5bbc4f17e3b0a3bc26f3a6a6e",
+  "runtimeDiffFromBaseline": [],
+  "skill": "/Users/penguin/.codex/skills/paean-record-demo/SKILL.md",
+  "sourceUrl": "http://127.0.0.1:5188/",
+  "captureKind": "scripted_input_not_human_play",
+  "captureDriverSha256": "c3050fbf1560e7c2f0b27808f850b755d6b2065d04c51123f7f9989ce9c769c0",
+  "context": "throwaway_headless_no_personal_profile",
+  "viewport": {
+    "width": 1280,
+    "height": 720
+  },
+  "entry": "actual DEV menu data-scenario=frontgate",
+  "scenario": "frontgate",
+  "originalVideoPreserved": true,
+  "simulationSpeedModified": false,
+  "missionFactsInjected": false,
+  "frameRate": {
+    "recorderNominalFromSkill": 25,
+    "actualMediaProbe": "PENDING",
+    "renderSamples": []
+  },
+  "errors": [],
+  "requestsFailed": [
+    {
+      "url": "http://127.0.0.1:5188/audio/sfx/ak47-near-01.wav",
+      "error": "net::ERR_ABORTED"
+    },
+    {
+      "url": "http://127.0.0.1:5188/audio/sfx/ak47-near-02.wav",
+      "error": "net::ERR_ABORTED"
+    }
+  ],
+  "stateSamples": [],
+  "inputLog": [],
+  "inputEvents": [],
+  "screenshots": [
+    {
+      "path": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-initial.png",
+      "sha256": "c439b3e746a22b5f8131d973aed6a097d40705a09f2a252cd733517ba45e077f",
+      "state": {
+        "wallPerformanceMs": 131391.79999999702,
+        "frame": 118,
+        "fps": 10.117585948958338,
+        "mode": "playing",
+        "scenario": "frontgate",
+        "phase": 0,
+        "control": "combat",
+        "elapsed": 1.3000000000000003,
+        "phaseTime": 1.3000000000000003,
+        "facts": [],
+        "complete": false,
+        "failed": false,
+        "player": {
+          "position": [
+            -8.000238418579102,
+            0.007425880432128884,
+            39.99993896484375
+          ],
+          "yaw": 0,
+          "pitch": 0,
+          "health": 100,
+          "ammo": 25,
+          "reserve": 150,
+          "height": 1.8,
+          "crouched": false,
+          "reload": 0,
+          "cooldown": 0,
+          "hurtAt": -10,
+          "walk": 0.0009919391105242645,
+          "recoil": 0,
+          "ads": false,
+          "name": "周延 · 三十三岁"
+        },
+        "safeCount": 0,
+        "hits": 0,
+        "kills": 0,
+        "inputYaw": 0,
+        "inputPitch": 0,
+        "pointerLocked": false,
+        "equipment": {
+          "state": "ready"
+        },
+        "characterAssetErrors": [],
+        "sceneAssets": [
+          {
+            "id": "front-tug",
+            "assetId": "PROP-VEH-TUG",
+            "state": "ready"
+          },
+          {
+            "id": "front-east-tank",
+            "assetId": "PROP-TANK",
+            "state": "ready"
+          },
+          {
+            "id": "front-background-crane",
+            "assetId": "BG-CRANE",
+            "state": "ready"
+          },
+          {
+            "id": "front-background-light",
+            "assetId": "ENV-LIGHTKIT-POLE",
+            "state": "ready"
+          },
+          {
+            "id": "front-filter-0",
+            "assetId": "PROP-FILTER",
+            "state": "ready"
+          },
+          {
+            "id": "front-filter-1",
+            "assetId": "PROP-FILTER",
+            "state": "ready"
+          },
+          {
+            "id": "front-pump-0",
+            "assetId": "PROP-PUMP",
+            "state": "ready"
+          },
+          {
+            "id": "front-pump-1",
+            "assetId": "PROP-PUMP",
+            "state": "ready"
+          },
+          {
+            "id": "front-cooling-fan",
+            "assetId": "PROP-FAN",
+            "state": "ready"
+          },
+          {
+            "id": "front-service-cargo",
+            "assetId": "PROP-CARGO",
+            "state": "ready"
+          },
+          {
+            "id": "front-service-bag",
+            "assetId": "PROP-TOOL-BAG",
+            "state": "ready"
+          },
+          {
+            "id": "front-service-tools",
+            "assetId": "PROP-TOOL-ROLL",
+            "state": "ready"
+          },
+          {
+            "id": "front-worker-lunch",
+            "assetId": "PROP-TOOL-LUNCHBOX",
+            "state": "ready"
+          },
+          {
+            "id": "front-transport-parked",
+            "assetId": "PROP-VEH-TRANSPORT",
+            "state": "ready"
+          },
+          {
+            "id": "front-spare-door",
+            "assetId": "PROP-DOOR-LEAF",
+            "state": "ready"
+          },
+          {
+            "id": "front-spare-door-lock",
+            "assetId": "PROP-DOOR-LOCK",
+            "state": "ready"
+          }
+        ],
+        "architectureAssets": [
+          {
+            "id": "S05-ground",
+            "state": "ready",
+            "placements": 999,
+            "drawBatches": 60
+          },
+          {
+            "id": "S05-boundaries",
+            "state": "ready",
+            "placements": 82,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-worker-screens",
+            "state": "ready",
+            "placements": 100,
+            "drawBatches": 6
+          },
+          {
+            "id": "S05-workshop-repair",
+            "state": "ready",
+            "placements": 60,
+            "drawBatches": 15
+          },
+          {
+            "id": "S05-workshop-north-west",
+            "state": "ready",
+            "placements": 52,
+            "drawBatches": 15
+          },
+          {
+            "id": "S05-workshop-north-east",
+            "state": "ready",
+            "placements": 72,
+            "drawBatches": 15
+          },
+          {
+            "id": "S05-workshop-east-long",
+            "state": "ready",
+            "placements": 138,
+            "drawBatches": 18
+          },
+          {
+            "id": "S05-workshop-weigh-booth-building",
+            "state": "ready",
+            "placements": 52,
+            "drawBatches": 15
+          },
+          {
+            "id": "S05-workshop-rear-building",
+            "state": "ready",
+            "placements": 66,
+            "drawBatches": 15
+          },
+          {
+            "id": "S05-main-gate-structure",
+            "state": "ready",
+            "placements": 67,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-pipelines",
+            "state": "ready",
+            "placements": 46,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-ice-silhouette",
+            "state": "ready",
+            "placements": 11,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-far-heat-trio",
+            "state": "ready",
+            "placements": 3,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-freight-containers",
+            "state": "ready",
+            "placements": 4,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-cover",
+            "state": "ready",
+            "placements": 19,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-far-facades",
+            "state": "ready",
+            "placements": 3,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-pipe-return-elbow",
+            "state": "ready",
+            "placements": 1,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-external-inspection-booth",
+            "state": "ready",
+            "placements": 1,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-secondary-tank",
+            "state": "ready",
+            "placements": 1,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-north-lamp",
+            "state": "ready",
+            "placements": 1,
+            "drawBatches": 3
+          },
+          {
+            "id": "S05-dock-crane",
+            "state": "ready",
+            "placements": 1,
+            "drawBatches": 3
+          }
+        ],
+        "canvas": {
+          "width": 1280,
+          "height": 720
+        },
+        "actors": [
+          {
+            "id": "worker-0",
+            "name": "北闸维修工 1",
+            "role": "worker",
+            "position": [
+              -43.20001220703125,
+              0.007328963279724099,
+              -26.399860382080078
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -43.20001220703125,
+              1.667328963279724,
+              -26.399860382080078
+            ],
+            "visible": false
+          },
+          {
+            "id": "worker-1",
+            "name": "北闸维修工 2",
+            "role": "worker",
+            "position": [
+              -40.799930572509766,
+              0.007772243022918679,
+              -25.099990844726562
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -40.799930572509766,
+              1.6677722430229185,
+              -25.099990844726562
+            ],
+            "visible": false
+          },
+          {
+            "id": "worker-2",
+            "name": "北闸维修工 3",
+            "role": "worker",
+            "position": [
+              -37.79999923706055,
+              0.007801270484924294,
+              -27.29999351501465
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -37.79999923706055,
+              1.667801270484924,
+              -27.29999351501465
+            ],
+            "visible": false
+          },
+          {
+            "id": "worker-3",
+            "name": "北闸维修工 4",
+            "role": "worker",
+            "position": [
+              -44.099952697753906,
+              0.007355785369873025,
+              -21.7998104095459
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -44.099952697753906,
+              1.6673557853698728,
+              -21.7998104095459
+            ],
+            "visible": false
+          },
+          {
+            "id": "worker-4",
+            "name": "北闸维修工 5",
+            "role": "worker",
+            "position": [
+              -41.599998474121094,
+              0.007801151275634743,
+              -22.399993896484375
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -41.599998474121094,
+              1.6678011512756346,
+              -22.399993896484375
+            ],
+            "visible": false
+          },
+          {
+            "id": "worker-5",
+            "name": "北闸维修工 6",
+            "role": "worker",
+            "position": [
+              -37.1998176574707,
+              0.007345771789550759,
+              -20.799999237060547
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -37.1998176574707,
+              1.6673457717895506,
+              -20.799999237060547
+            ],
+            "visible": false
+          },
+          {
+            "id": "worker-6",
+            "name": "北闸维修工 7",
+            "role": "worker",
+            "position": [
+              -41.69990921020508,
+              0.0073629379272460715,
+              -17.69982147216797
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -41.69990921020508,
+              1.6673629379272459,
+              -17.69982147216797
+            ],
+            "visible": false
+          },
+          {
+            "id": "zheng",
+            "name": "郑铎",
+            "role": "ally",
+            "position": [
+              -10.000000953674316,
+              0.007387316226959206,
+              33.00021743774414
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -10.000000953674316,
+              1.667387316226959,
+              33.00021743774414
+            ],
+            "visible": true
+          },
+          {
+            "id": "relief",
+            "name": "北闸接替队员",
+            "role": "ally",
+            "position": [
+              -18.00025177001953,
+              0.007447278499603249,
+              46.00006103515625
+            ],
+            "health": 100,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -18.00025177001953,
+              1.667447278499603,
+              46.00006103515625
+            ],
+            "visible": true
+          },
+          {
+            "id": "enemy-E04-0",
+            "name": "北路步枪兵",
+            "role": "enemy",
+            "position": [
+              15.000069618225098,
+              0.0073171615600585715,
+              -38.9998779296875
+            ],
+            "health": 68,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              15.000069618225098,
+              1.6673171615600584,
+              -38.9998779296875
+            ],
+            "visible": true
+          },
+          {
+            "id": "enemy-E04-1",
+            "name": "北路步枪兵",
+            "role": "enemy",
+            "position": [
+              -8.00000286102295,
+              0.0073289036750793235,
+              -34.00016784667969
+            ],
+            "health": 68,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              -8.00000286102295,
+              1.6673289036750791,
+              -34.00016784667969
+            ],
+            "visible": true
+          },
+          {
+            "id": "enemy-E04-2",
+            "name": "北路步枪兵",
+            "role": "enemy",
+            "position": [
+              6.999974727630615,
+              0.007310664653778054,
+              -28.99990463256836
+            ],
+            "health": 68,
+            "down": false,
+            "safe": false,
+            "released": false,
+            "goals": 0,
+            "eye": [
+              6.999974727630615,
+              1.6673106646537779,
+              -28.99990463256836
+            ],
+            "visible": true
+          }
+        ],
+        "sound": null,
+        "objective": "靠近观察位，查看北路"
+      },
+      "afterPageCreationSeconds": 131.499
+    }
+  ],
+  "gameplayCompleteClaim": false,
+  "audio": {
+    "status": "NOT_CAPTURED_YET"
+  },
+  "instrumentation": {
+    "requestUrl": "http://127.0.0.1:5188/src/main.ts?t=1793439218233",
+    "originalSha256": "5f7d98d3ba786876bd99f83e5c373f5bd28fa885944a914e56866ddf3699c9e7",
+    "patchedSha256": "b5140bfba5ee0ca761959f136dd16868db282307c24093cab53c9bb86e4f058c",
+    "replaced": "() => new Game()",
+    "replacement": "() => (window.__paeanCaptureGame = new Game())",
+    "purpose": "Expose the same instance for read-only state and existing Sound controls; no game logic changes"
+  },
+  "resourceReadiness": {
+    "equipment": {
+      "state": "ready"
+    },
+    "scenery": [
+      {
+        "id": "front-tug",
+        "assetId": "PROP-VEH-TUG",
+        "state": "ready"
+      },
+      {
+        "id": "front-east-tank",
+        "assetId": "PROP-TANK",
+        "state": "ready"
+      },
+      {
+        "id": "front-background-crane",
+        "assetId": "BG-CRANE",
+        "state": "ready"
+      },
+      {
+        "id": "front-background-light",
+        "assetId": "ENV-LIGHTKIT-POLE",
+        "state": "ready"
+      },
+      {
+        "id": "front-filter-0",
+        "assetId": "PROP-FILTER",
+        "state": "ready"
+      },
+      {
+        "id": "front-filter-1",
+        "assetId": "PROP-FILTER",
+        "state": "ready"
+      },
+      {
+        "id": "front-pump-0",
+        "assetId": "PROP-PUMP",
+        "state": "ready"
+      },
+      {
+        "id": "front-pump-1",
+        "assetId": "PROP-PUMP",
+        "state": "ready"
+      },
+      {
+        "id": "front-cooling-fan",
+        "assetId": "PROP-FAN",
+        "state": "ready"
+      },
+      {
+        "id": "front-service-cargo",
+        "assetId": "PROP-CARGO",
+        "state": "ready"
+      },
+      {
+        "id": "front-service-bag",
+        "assetId": "PROP-TOOL-BAG",
+        "state": "ready"
+      },
+      {
+        "id": "front-service-tools",
+        "assetId": "PROP-TOOL-ROLL",
+        "state": "ready"
+      },
+      {
+        "id": "front-worker-lunch",
+        "assetId": "PROP-TOOL-LUNCHBOX",
+        "state": "ready"
+      },
+      {
+        "id": "front-transport-parked",
+        "assetId": "PROP-VEH-TRANSPORT",
+        "state": "ready"
+      },
+      {
+        "id": "front-spare-door",
+        "assetId": "PROP-DOOR-LEAF",
+        "state": "ready"
+      },
+      {
+        "id": "front-spare-door-lock",
+        "assetId": "PROP-DOOR-LOCK",
+        "state": "ready"
+      }
+    ],
+    "architecture": [
+      {
+        "id": "S05-ground",
+        "state": "ready",
+        "placements": 999,
+        "drawBatches": 60
+      },
+      {
+        "id": "S05-boundaries",
+        "state": "ready",
+        "placements": 82,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-worker-screens",
+        "state": "ready",
+        "placements": 100,
+        "drawBatches": 6
+      },
+      {
+        "id": "S05-workshop-repair",
+        "state": "ready",
+        "placements": 60,
+        "drawBatches": 15
+      },
+      {
+        "id": "S05-workshop-north-west",
+        "state": "ready",
+        "placements": 52,
+        "drawBatches": 15
+      },
+      {
+        "id": "S05-workshop-north-east",
+        "state": "ready",
+        "placements": 72,
+        "drawBatches": 15
+      },
+      {
+        "id": "S05-workshop-east-long",
+        "state": "ready",
+        "placements": 138,
+        "drawBatches": 18
+      },
+      {
+        "id": "S05-workshop-weigh-booth-building",
+        "state": "ready",
+        "placements": 52,
+        "drawBatches": 15
+      },
+      {
+        "id": "S05-workshop-rear-building",
+        "state": "ready",
+        "placements": 66,
+        "drawBatches": 15
+      },
+      {
+        "id": "S05-main-gate-structure",
+        "state": "ready",
+        "placements": 67,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-pipelines",
+        "state": "ready",
+        "placements": 46,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-ice-silhouette",
+        "state": "ready",
+        "placements": 11,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-far-heat-trio",
+        "state": "ready",
+        "placements": 3,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-freight-containers",
+        "state": "ready",
+        "placements": 4,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-cover",
+        "state": "ready",
+        "placements": 19,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-far-facades",
+        "state": "ready",
+        "placements": 3,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-pipe-return-elbow",
+        "state": "ready",
+        "placements": 1,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-external-inspection-booth",
+        "state": "ready",
+        "placements": 1,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-secondary-tank",
+        "state": "ready",
+        "placements": 1,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-north-lamp",
+        "state": "ready",
+        "placements": 1,
+        "drawBatches": 3
+      },
+      {
+        "id": "S05-dock-crane",
+        "state": "ready",
+        "placements": 1,
+        "drawBatches": 3
+      }
+    ],
+    "characterErrors": []
+  },
+  "failure": {
+    "message": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"resume\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-action=\"resume\" class=\"primary-button\">继续行动</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n",
+    "stack": "locator.click: Timeout 30000ms exceeded.\nCall log:\n\u001b[2m  - waiting for locator('[data-action=\"resume\"]')\u001b[22m\n\u001b[2m    - locator resolved to <button type=\"button\" data-action=\"resume\" class=\"primary-button\">继续行动</button>\u001b[22m\n\u001b[2m  - attempting click action\u001b[22m\n\u001b[2m    - waiting for element to be visible, enabled and stable\u001b[22m\n\u001b[2m    - element is visible, enabled and stable\u001b[22m\n\u001b[2m    - scrolling into view if needed\u001b[22m\n\n    at /Users/penguin/VibeHack06/scripts/submission/capture-s05-paean.mjs:149:82\n    at Object.unlockWithGesture (/Users/penguin/VibeHack06/scripts/submission/capture-game-audio.mjs:258:19)\n    at async file:///Users/penguin/VibeHack06/scripts/submission/capture-s05-paean.mjs:149:7"
+  },
+  "rawVideo": {
+    "path": "/Users/penguin/VibeHack06/artifacts/trailer-45s/v2/paean-capture/s05/take02/s05-raw.webm",
+    "sha256": "683f60550ce9c195bdcfbed91e215d0e341320141cc1724150641189bf5cdd5a"
+  },
+  "finishedAt": "2026-10-31T10:51:12.169Z"
+}

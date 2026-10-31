@@ -1,0 +1,71 @@
+{
+  "zip": "artifacts/submission/ganymede-presentation.zip",
+  "sha256": "257d906b1f0697071c71ea693c20acb1763564eea176184b8ae874246729166f",
+  "bytes": 12964255,
+  "memberCount": 12,
+  "crcAndMemberByteComparison": "PASS",
+  "videoDurationSeconds": 45,
+  "browserReport": "artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/result.json",
+  "files": [
+    {
+      "path": "README.md",
+      "bytes": 2048,
+      "sha256": "60fb4bae3b070d60080ed9e3334afac6913766356bf52c2e54e8cbc851d1bea7"
+    },
+    {
+      "path": "assets/screens/s01-father-memory.png",
+      "bytes": 545724,
+      "sha256": "692de91d46c444b435d3f74a65962127fa8265ff6485783f611761ccdcfcb3dd"
+    },
+    {
+      "path": "assets/screens/s05-northgate.png",
+      "bytes": 714181,
+      "sha256": "c439b3e746a22b5f8131d973aed6a097d40705a09f2a252cd733517ba45e077f"
+    },
+    {
+      "path": "assets/title.png",
+      "bytes": 1336478,
+      "sha256": "e5e10a9ba03df440220bf613093b3cdcd292e4159b8988828ee17969d44822a4"
+    },
+    {
+      "path": "assets/trailer-45s.mp4",
+      "bytes": 7518887,
+      "sha256": "91c3046576891418a2f900f0e1ea0f73528bb60a86f8e254b2569721342544d9"
+    },
+    {
+      "path": "assets/trailer-audio-preview.mp3",
+      "bytes": 1441580,
+      "sha256": "015e7e7d8294dec1603d80795c79f084921fe542d2f40eed9d4b90901c6a7ec1"
+    },
+    {
+      "path": "assets/trailer-preedit-45s.mp4",
+      "bytes": 1693948,
+      "sha256": "1dfea3cc016a6f271a4f202a3ead010716b430b8838ea1ac3528d7348af795c5"
+    },
+    {
+      "path": "content.js",
+      "bytes": 4205,
+      "sha256": "60b6c2a31f44cf7b931ec26fd0bee083017462b582a45dca137baec2c01b10d2"
+    },
+    {
+      "path": "index.html",
+      "bytes": 3757,
+      "sha256": "c9ef5aba241982a49d5f9f2bd59f7b62d1398f76653a5beb0bc66004010e7dde"
+    },
+    {
+      "path": "media-config.js",
+      "bytes": 1056,
+      "sha256": "412e8767a745ebd017f1ee7a1b8a5e56d5a7db44c78be856a7fce08ca014a26d"
+    },
+    {
+      "path": "presentation.js",
+      "bytes": 20193,
+      "sha256": "f531155288f02e141cf3bd2c522525040ce3901f92bafe8f2a7bbc66d99a84e3"
+    },
+    {
+      "path": "styles.css",
+      "bytes": 11974,
+      "sha256": "7e0d18a09a6c55551e08a762f324bf8e4d7020eb2d3d893204855faa832fdf34"
+    }
+  ]
+}

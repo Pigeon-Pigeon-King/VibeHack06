@@ -1,5 +1,17 @@
 # 比赛交付与路演材料包
 
+## 本次最终交付 · 已按用户要求停止新增录制
+
+- 已完成45.000秒故事剪辑、8页HTML及可离线打开的ZIP。影片主文件：artifacts/trailer-45s/v2/delivery-cut/ganymede-story-trailer-45s.mp4；HTML入口：artifacts/submission/presentation/index.html。
+- 依用户“不要再录制，立刻完成剪辑和html交付”，所有游戏采集均已停止，take03未启动。当前成片使用3.6秒S05有效原片，以及S01/S05两张完整加载的实机截图；其余为截图剪辑推拉与末4秒片名。影片已明确标出“实机录屏”或“实机截图”，不称为连续战斗演示。
+- 使用已完成的45秒专用配乐、闻川旁白和中文字幕；按用户裁决不再等待游戏同期音效。S01损坏WebM、资源未加载完整的图片及旧northgate白盒素材全部排除。
+- HTML已接入这两张实机图和最终MP4；未拍到的4个图像槽保留线稿占位，讲稿仍为120秒、影片45秒、切换余量15秒。
+- 已通过Paean技能的独立临时Playwright流程完成实际采集和HTML浏览器检查；此前CUA报错仅为历史接口状态，不再作为本次HTML交付障碍。8页翻页、图片加载和内嵌影片播放通过，视频时长45.000秒，实际播放进度增加1.377秒，图片和控制台错误均为0。
+- 成片完整音视频解码通过：1920×1080、30fps、1350帧、H.264＋AAC。六帧目视确认中文字幕及片名完整。用户听审及完整游戏真人验收未由本次剪辑代替。
+- 来源与剪辑记录：artifacts/trailer-45s/v2/delivery-cut/manifest.json；媒体验收：同目录qa/qa.json；HTML检查：artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/result.json。
+
+以下为按当时状态保留的历史记录；当前交付以上述结果为准。
+
 本目录是 2026-10-31 比赛交付窗口的工作成果。材料可供主窗口审查和整合；作品发布、官网提交、完整宣传片和 Windows 实机验收没有因为这些文档存在而完成。
 
 **当前版交付补充：** [在线游戏](https://pigeon-pigeon-king.github.io/VibeHack06/) · [Clide备用入口](https://7ja2szw7s.clide.app/) · [完整游戏镜像](https://return-to-ganymede.muddy-curry-7368.chatgpt.site) · [公开源码](https://github.com/Pigeon-Pigeon-King/VibeHack06) · [交接记录与截图归属纠正](../../artifacts/submission/RELEASE_HANDOFF_20261031.md) · [可直接使用的介绍](../../artifacts/submission/current-release-intro.md)。主窗口发布源码为 `a9030c6`，各地址及核验来源见 [release-links.json](../../artifacts/submission/release-links.json)。

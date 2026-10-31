@@ -67,10 +67,10 @@
     if(s.layout === "world") art = slot("world","world","港区");
     if(s.layout === "portraits") art = `<div class="portrait-pair">${slot("wen","person-wen","闻川")}${slot("zhou","person-zhou","周延")}</div>`;
     if(s.layout === "promise") art = slot("promise","gateway","护送与接应");
-    if(s.layout === "triptych") art = `<div class="strip">${slot("cover","cover","掩护")}${slot("carry","carry","救援")}${slot("door","door","守门")}</div>`;
+    if(s.layout === "triptych") art = `<div class="strip">${slot("cover","cover","掩护")}${slot("carry","carry","救援")}${slot("door","door","通路")}</div>`;
     if(s.layout === "workflow") art = `<div class="art" role="img" aria-label="概念图、模型、声音、代码、游戏整合的制作流程图">${visual("workflow")}</div>`;
     if(s.layout === "ending") art = slot("ending","ending","通路与希望");
-    if(s.layout === "video") art = `<div class="video-frame"><div class="video-placeholder" aria-label="45秒视频占位，尚无视频素材"><img class="video-wordmark" src="${esc(media.title)}" alt=""><svg class="play-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M18 10v28l23-14z"/></svg></div><video id="trailer" controls playsinline preload="metadata" hidden aria-label="45秒实机预告片"></video></div>`;
+    if(s.layout === "video") art = `<div class="video-frame"><div class="video-placeholder" aria-label="45秒视频占位，尚无视频素材"><img class="video-wordmark" src="${esc(media.title)}" alt=""><svg class="play-mark" viewBox="0 0 48 48" aria-hidden="true"><path d="M18 10v28l23-14z"/></svg></div><video id="trailer" controls playsinline preload="metadata" hidden aria-label="45秒故事预告"></video></div>`;
     return `<section class="slide ${s.layout}" id="slide-${i+1}" data-slide="${s.id}" role="group" aria-roledescription="幻灯片" aria-label="${i+1} / ${slides.length} · ${esc(s.title)}" ${i ? 'hidden' : ''}><div class="accent-rule" aria-hidden="true"></div>${art}<div class="copy">${s.layout === 'cover' ? '' : `<h2>${esc(s.title)}</h2>`}<p class="caption"><span class="full">${esc(s.caption)}</span><span class="short">${esc(s.shortCaption)}</span></p></div></section>`;
   }
   document.querySelector("#slides").innerHTML = slides.map(build).join("");
@@ -162,7 +162,12 @@
     const target = document.querySelector(`[data-slot="${id}"]`);
     if(!target) continue;
     const img=new Image(); img.alt="";
-    img.addEventListener("load", () => { target.append(img); target.setAttribute("aria-label",`${id} 配置图像`); });
+    img.addEventListener("load", () => {
+      target.append(img);
+      target.setAttribute("aria-label",media.imageDescriptions?.[id] || `${id} 游戏实机画面`);
+      if(media.imagePositions?.[id]) img.style.objectPosition=media.imagePositions[id];
+      target.closest(".portraits")?.classList.add("captured-perspectives");
+    });
     img.addEventListener("error", () => { target.dataset.loadError="true"; });
     img.src=src;
   }
@@ -189,7 +194,7 @@
     const seconds=Number.isFinite(trailer.duration) ? trailer.duration.toFixed(3) : "未知";
     document.querySelector("#video-status").textContent=`视频已载入 · ${seconds} 秒${Math.abs(trailer.duration-45)>.1 ? ' · 请核对45秒时长' : ''}`;
     const cap=document.querySelector(".video .caption");
-    const label=Math.abs(trailer.duration-45)<=.1 ? "45秒实机预告片" : "实机预告片";
+    const label=media.trailerLabel || (Math.abs(trailer.duration-45)<=.1 ? "45秒故事预告" : "故事预告");
     cap.querySelector('.full').textContent=label; cap.querySelector('.short').textContent=label;
   });
   trailer.addEventListener("error", () => {

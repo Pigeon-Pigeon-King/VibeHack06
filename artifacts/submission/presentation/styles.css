@@ -42,6 +42,8 @@ button:disabled { opacity:.2; cursor:default; }
 .portrait-pair .slot:first-child { border-top:2px solid #b69068; }
 .portrait-pair .slot:last-child { border-top:2px solid #65889e; }
 .portraits .copy { text-align:center; bottom:7.5%; }
+.portraits.captured-perspectives .portrait-pair { top:16%; left:6.3%; width:87.4%; height:43.5%; }
+.portraits.captured-perspectives .slot > img { object-fit:contain; }
 .promise .slot,.ending .slot { position:absolute; inset:0; }
 .promise .slot::after,.ending .slot::after { background:linear-gradient(0deg,#071018 0%,#071018b3 19%,transparent 60%); }
 .promise .copy { bottom:9%; }

@@ -90,5 +90,17 @@
       "No remote script or style resources"
     ]
   },
-  "preeditVideo": "LABELLED_PREEDIT_WITH_MUSIC_VOICE_SUBTITLES_TITLE; NO_GAMEPLAY_OR_GAME_SFX"
+  "preeditVideo": "LABELLED_PREEDIT_WITH_MUSIC_VOICE_SUBTITLES_TITLE; NO_GAMEPLAY_OR_GAME_SFX",
+  "latestDelivery": {
+    "status": "PASS_LOCAL_BROWSER_AND_DECODE",
+    "browserReport": "artifacts/submission/browser-qa/2026-10-31T11-01-21-647Z/result.json",
+    "mediaReport": "artifacts/trailer-45s/v2/delivery-cut/qa/qa.json",
+    "scope": "Eight slides, valid configured images, actual MP4 playback; no full-game or human acceptance claim",
+    "missingImageSlots": [
+      "zhou",
+      "promise",
+      "carry",
+      "door"
+    ]
+  }
 }
