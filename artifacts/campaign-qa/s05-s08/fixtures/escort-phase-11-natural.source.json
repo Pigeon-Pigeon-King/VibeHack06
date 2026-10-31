@@ -1,0 +1,41 @@
+{
+  "kind": "locked-candidate-public-intent-replay-checkpoint",
+  "sourceTest": "/Users/penguin/VibeHack06/tests/campaign-qa/s05-s08.baseline.check.mjs",
+  "sourceDriver": "tests/escort-paths.test.ts::playEscort (locked original; natural once)",
+  "sourceCase": "S08 one natural public-input route; locked original driver and route assertions",
+  "recordId": "escort-1",
+  "fixture": "escort-phase-11-natural.json",
+  "scenario": "escort",
+  "phase": 11,
+  "elapsed": 234.8833333334124,
+  "stagedSkipInputs": 0,
+  "initial": {
+    "phase": 0,
+    "control": "work",
+    "elapsed": 0,
+    "phaseTime": 0,
+    "position": [
+      12,
+      0,
+      10
+    ],
+    "health": 100,
+    "facts": [
+      "family-escort-promised",
+      "technicians-received",
+      "full-report-shared",
+      "lu-has-full-report",
+      "source-timestamp-shared",
+      "zhou-asks-rest",
+      "zhou-asks-relief",
+      "zhou-on-withdrawal-list"
+    ],
+    "complete": false,
+    "failed": false,
+    "spawned": 0,
+    "kills": 0,
+    "playerHits": 0
+  },
+  "sha256": "65e7a76feaa173da50df05694bd16504bd7c1881daf80998b984ebea51fac6c8",
+  "note": "Local diagnostic entry only; restoring this is not a complete campaign or browser playthrough."
+}

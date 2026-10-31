@@ -1,0 +1,61 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06
+
+ ❯ tests/campaign-qa/s05-s08.check.mjs (9 tests | 1 failed) 19441ms
+   ❯ S05–S08 independent campaign boundaries (explicit fixture origin) (9)
+     ✓ BOUNDARY SNAPSHOT: S05 waits for the last worker and Zheng before the rear radio 3128ms
+     ✓ BOUNDARY SNAPSHOT: S07 requires both transport routes and each actual participant before admission 1309ms
+     ✓ AUTHENTIC CHECKPOINT: S08 leaving the bed resets cooperation; restore and return require eight continuous seconds 1914ms
+     ✓ FAULT-INJECTED AUTHENTIC CHECKPOINT: S08 cannot transfer while its medic is absent 892ms
+     ✓ PUBLIC INPUT FROM FRESH ENTRY OR AUTHENTIC CHECKPOINT: frontgate enemy damage causes failure and retry restores the latest checkpoint 1614ms
+     ✓ PUBLIC INPUT FROM FRESH ENTRY OR AUTHENTIC CHECKPOINT: flank enemy damage causes failure and retry restores the latest checkpoint 1288ms
+     × PUBLIC INPUT FROM FRESH ENTRY OR AUTHENTIC CHECKPOINT: escort enemy damage causes failure and retry restores the latest checkpoint 8853ms
+     ✓ MEASUREMENT: records actual allied damage and distinguishes zero observed hits from proof of cover 20ms
+     ✓ ACTUAL TERMINAL SNAPSHOT: S08 to S09 preserves knowledge, viewpoint and chapter metadata 56ms
+
+ Test Files  1 failed (1)
+      Tests  1 failed | 8 passed (9)
+   Start at  13:06:17
+   Duration  22.64s (tests 91%, transform 5%, setup 2%, import 1%)
+
+JSON report written to /Users/penguin/VibeHack06/artifacts/campaign-qa/s05-s08/boundary-results.json
+
+⎯⎯⎯⎯⎯⎯⎯ Failed Tests 1 ⎯⎯⎯⎯⎯⎯⎯
+
+ FAIL  tests/campaign-qa/s05-s08.check.mjs > S05–S08 independent campaign boundaries (explicit fixture origin) > PUBLIC INPUT FROM FRESH ENTRY OR AUTHENTIC CHECKPOINT: escort enemy damage causes failure and retry restores the latest checkpoint
+AssertionError: {"scenario":"escort","phase":5,"health":82,"player":[-17.748489379882812,0.015099561214447,-47.79435348510742],"enemies":[{"id":"enemy-E06-0","position":[-70.135009765625,0.01509968042373655,-31.82032012939453]},{"id":"enemy-E06-1","position":[-45.49504852294922,0.015088057518005349,-39.66683578491211]},{"id":"enemy-E06-2","position":[-26.48550033569336,0.015099322795867898,-30.675569534301758]},{"id":"enemy-E06-3","position":[-70.135009765625,0.01509968042373655,-31.82032012939453]},{"id":"enemy-E06-4","position":[-45.50367736816406,0.015099918842315652,-39.668094635009766]},{"id":"enemy-E06-5","position":[-70.135009765625,0.01509968042373655,-31.82032012939453]},{"id":"enemy-E06-6","position":[-45.999935150146484,0.015100038051605202,-47.800079345703125]},{"id":"enemy-E06-7","position":[-70.135009765625,0.01509968042373655,-31.82032012939453]}]}: expected false to be true // Object.is equality
+
+- Expected
++ Received
+
+- true
++ false
+
+ ❯ tests/campaign-qa/s05-s08.check.mjs:181:111
+    179|       wait(s, 60);
+    180|       expect(s.mission.failed, JSON.stringify({ scenario, phase: s.mis…
+    181|         player: s.player.position, enemies: s.aliveEnemies.map(a => ({…
+       |                                                                                                               ^
+    182|       expect(s.player.health).toBe(0);
+    183|       const retry = structuredClone(s.checkpoint);
+
+⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯⎯[1/1]⎯
+
+       28.64 real        11.59 user         1.67 sys
+           343851008  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              109409  page reclaims
+                 788  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                 173  messages sent
+                 129  messages received
+                   1  signals received
+                 620  voluntary context switches
+              109851  involuntary context switches
+          3757045135  instructions retired
+          3528453653  cycles elapsed
+            97776792  peak memory footprint

@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "originalRunRoot": "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031",
+  "currentRoot": "/Users/penguin/VibeHack06/artifacts/campaign-qa/node_modules/locked-candidate-20261031",
+  "aggregateSha256": "24699d53881f950b92c0cb0ca4c435c44b16c55f0bef67167f698558bf305713",
+  "unchangedFileCount": 140,
+  "reason": "Default Vitest scans hidden folders; node_modules is excluded. This relocation prevents duplicate legacy tests without editing production configuration.",
+  "historicalPathsPreservedInEvidence": true,
+  "dependencyPolicy": "node_modules symlink is writable at filesystem level; library content is treated as read-only by convention and QA caches are separate.",
+  "localPort5197": "STOPPED after browser evidence capture"
+}

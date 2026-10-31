@@ -1,0 +1,27 @@
+# Rebuildable, locked runtime copies are local fixtures, not a second source tree.
+.candidate-runtime*/
+.cache/
+.vite/
+# Detailed replay traces and intermediate captures stay local; hashes are recorded.
+browser/*/session.json
+browser/*/*.png
+!browser/s01-first-pass/s01-start.png
+!browser/s01-first-pass/s01-door.png
+!browser/s01-first-pass/s01-natural-outcome.png
+!browser/s01-first-pass/s01-clean-restart.png
+!browser/s01-first-pass/s02-from-s01.png
+!browser/s01-first-pass/s02-failure-result.png
+!browser/s01-first-pass/s02-retry.png
+!browser/s01-first-pass/s02-persisted-continue.png
+!browser/s11-natural/s11-equipment-delivered.png
+!browser/s11-natural/s11-visit-approach.png
+!browser/s11-natural/s11-medical-outcome.png
+!browser/s11-natural/s11-water-and-rest.png
+!browser/s11-natural/s11-exit-approach.png
+!browser/s11-natural/s11-clean-restart.png
+s05-s08/*-observations-*.json
+s05-s08/remaining-natural/*-observations-*.json
+s09-s12/natural/
+s09-s12/checkpoints/
+s09-s12/run1-observations.json
+s09-s12/observations.json

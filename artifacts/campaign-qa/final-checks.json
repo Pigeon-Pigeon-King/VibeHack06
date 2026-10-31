@@ -1,0 +1,22 @@
+{
+  "schemaVersion": 1,
+  "mainCommitAtCheck": "043c8b604f3af5e1e6bd372acb41bbb94e41f969",
+  "scope": "QA configuration integration only; not campaign acceptance of latest main",
+  "typecheck": {
+    "command": "npm run typecheck",
+    "chunk_id": "47a4ce",
+    "wall_time_seconds": 0.000010958,
+    "exit_code": 0,
+    "original_token_count": 14,
+    "output": "\n> return-to-ganymede@0.6.0 typecheck\n> tsc --noEmit\n\n"
+  },
+  "defaultDiscovery": {
+    "command": "node node_modules/vitest/vitest.mjs list --filesOnly",
+    "chunk_id": "4022df",
+    "wall_time_seconds": 0.000361875,
+    "exit_code": 0,
+    "original_token_count": 223,
+    "output": "tests/automatic-reload.test.ts\ntests/chapter-paths.test.ts\ntests/combat-feedback.test.ts\ntests/combat-tactics.test.ts\ntests/crowd-staging.test.ts\ntests/crowd-view.test.ts\ntests/escort-paths.test.ts\ntests/finale-interactions.test.ts\ntests/finale-paths.test.ts\ntests/finale-save.test.ts\ntests/flank-paths.test.ts\ntests/frontgate-paths.test.ts\ntests/held-item-motion.test.ts\ntests/hit-confirmation.test.ts\ntests/midcampaign-autonomy.test.ts\ntests/mission-state.test.ts\ntests/navigation.test.ts\ntests/objective-focus.test.ts\ntests/objective-indicator.test.ts\ntests/opening-autonomy.test.ts\ntests/opening-paths.test.ts\ntests/opening-presentation.test.ts\ntests/opening-timeline.test.ts\ntests/physics-ballistics.test.ts\ntests/relief-paths.test.ts\ntests/save-store.test.ts\ntests/scenario-paths.test.ts\ntests/story-hud-order.test.ts\ntests/subtitle-presentation.test.ts\ntests/transfer-paths.test.ts\n",
+    "expected": "No artifacts/campaign-qa runtime copies or *.check.mjs supplementary suites found"
+  }
+}

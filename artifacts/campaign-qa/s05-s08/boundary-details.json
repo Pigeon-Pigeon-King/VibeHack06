@@ -1,0 +1,188 @@
+{
+  "schemaVersion": 1,
+  "candidate": "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031",
+  "details": [
+    {
+      "id": "S05-last-person",
+      "kind": "constructed-boundary-snapshot",
+      "cases": [
+        {
+          "missing": "worker-6",
+          "phase": 3,
+          "frontTeamReturned": false
+        },
+        {
+          "missing": "zheng",
+          "phase": 3,
+          "frontTeamReturned": false
+        },
+        {
+          "missing": null,
+          "phase": 5,
+          "frontTeamReturned": true
+        }
+      ]
+    },
+    {
+      "id": "S07-last-person",
+      "kind": "constructed-boundary-snapshot",
+      "cases": [
+        {
+          "missing": "cart-1",
+          "phase": 4,
+          "routeProven": false
+        },
+        {
+          "missing": "walker-1",
+          "phase": 4,
+          "routeProven": false
+        },
+        {
+          "missing": null,
+          "phase": 5,
+          "routeProven": true
+        }
+      ]
+    },
+    {
+      "id": "S08-leave-restore-return",
+      "kind": "authentic-checkpoint-plus-public-input",
+      "fixture": "fixtures/escort-phase-11-natural.json",
+      "checkpoints": [
+        {
+          "action": "three-seconds-at-bed",
+          "time": 3.599999999999992,
+          "position": [
+            -239.4308624267578,
+            0.015100038051605202,
+            15.513965606689453
+          ]
+        },
+        {
+          "action": "away-ten-seconds",
+          "time": 0,
+          "position": [
+            -242.95887756347656,
+            0.014999306201934792,
+            15.167128562927246
+          ]
+        },
+        {
+          "action": "returned-less-than-eight-seconds",
+          "time": 7.916666666666644,
+          "position": [
+            -239.57376098632812,
+            0.014999306201934792,
+            15.00103759765625
+          ]
+        }
+      ],
+      "note": "Diagnostic snapshot saved after departure; not the production automatic-checkpoint boundary."
+    },
+    {
+      "id": "S08-medic-missing",
+      "kind": "authentic-fixture-with-explicit-actor-fault",
+      "phase": 11,
+      "time": 0,
+      "medicDistance": 14.422205101855958,
+      "waitedSeconds": 12
+    },
+    {
+      "id": "S05-failure-retry",
+      "kind": "authentic-checkpoint-plus-public-input",
+      "fixture": "fresh-scenario-entry",
+      "failure": {
+        "elapsed": 21.26666666666674,
+        "timeToFailure": 21.26666666666674,
+        "phase": 1,
+        "health": 0,
+        "position": [
+          6.822511672973633,
+          0.015090203285217263,
+          -24.79485321044922
+        ]
+      },
+      "retryPhase": 1,
+      "retryHealth": 100,
+      "exactCheckpointRestored": true,
+      "projectilesCleared": true,
+      "playerFireInputs": 0,
+      "playerHits": 0,
+      "allyDamagedEnemies": []
+    },
+    {
+      "id": "S07-failure-retry",
+      "kind": "authentic-checkpoint-plus-public-input",
+      "fixture": "fresh-scenario-entry",
+      "failure": {
+        "elapsed": 19.116666666666863,
+        "timeToFailure": 19.116666666666863,
+        "phase": 0,
+        "health": 0,
+        "position": [
+          33.78893280029297,
+          0.015086448192596413,
+          -4.738270282745361
+        ]
+      },
+      "retryPhase": 0,
+      "retryHealth": 100,
+      "exactCheckpointRestored": true,
+      "projectilesCleared": true,
+      "playerFireInputs": 0,
+      "playerHits": 0,
+      "allyDamagedEnemies": []
+    },
+    {
+      "id": "allied-cover-damage",
+      "kind": "read-only-ballistic-impact-observation",
+      "measured": [
+        {
+          "scenario": "escort",
+          "observedImpacts": 0,
+          "provedInNaturalRoute": false,
+          "nominalDamage": 0,
+          "examples": []
+        }
+      ],
+      "noPlayerFireAttempts": [
+        {
+          "id": "S05-failure-retry",
+          "playerFireInputs": 0,
+          "playerHits": 0,
+          "allyDamagedEnemies": []
+        },
+        {
+          "id": "S07-failure-retry",
+          "playerFireInputs": 0,
+          "playerHits": 0,
+          "allyDamagedEnemies": []
+        }
+      ],
+      "limitation": "Actual hits establish combat effect; they do not establish tactical quality, subjective difficulty or a counterfactual survival advantage."
+    },
+    {
+      "id": "chapter-handoff",
+      "kind": "actual-individual-terminal-plus-next-stage-construction",
+      "sequence": [
+        {
+          "from": "escort",
+          "to": "S09",
+          "viewpoint": "周延 · 三十三岁",
+          "elapsedBefore": 388.7499999999751,
+          "mustHave": [
+            "lu-keeps-escort-promise",
+            "escort-convoy-arrived",
+            "meng-returned-for-relief"
+          ],
+          "mustNotHave": [
+            "zhou-death-confirmed"
+          ]
+        }
+      ],
+      "limitation": "S08 has its own clean entry context. This is not a continuous S01–S12 run or the application menu transition."
+    }
+  ],
+  "browser": "NOT_RUN",
+  "humanPlaythrough": "NOT_RUN"
+}

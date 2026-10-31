@@ -1,0 +1,298 @@
+{
+  "schemaVersion": 1,
+  "policy": "Detailed local traces, intermediate captures and replay checkpoints retained without long-term Git inclusion. Representative images and summaries are tracked.",
+  "files": {
+    "artifacts/campaign-qa/browser/s01-first-pass/campaign-continue-after-refresh.png": {
+      "bytes": 648435,
+      "sha256": "c19d4aca33967e02963bb30319c1b12dff127c372cdd8a848c788e71c1e2180a"
+    },
+    "artifacts/campaign-qa/browser/s01-first-pass/menu-clean.png": {
+      "bytes": 649153,
+      "sha256": "2a13110591689bc89bc2874016437085a5ff88402c210982e6907f22db243462"
+    },
+    "artifacts/campaign-qa/browser/s01-first-pass/s01-follow-father.png": {
+      "bytes": 393615,
+      "sha256": "e3a1e6e60c8ef7f60ab233230ff7def340c7d7692da2e189ce3c07f8153bd1df"
+    },
+    "artifacts/campaign-qa/browser/s01-first-pass/s01-mattress.png": {
+      "bytes": 323882,
+      "sha256": "151c75d67f3c6f0629fafac61210bc735e7845be8f89b0e85cf5b6419ca20ca3"
+    },
+    "artifacts/campaign-qa/browser/s01-first-pass/s02-exposed-failure.png": {
+      "bytes": 523306,
+      "sha256": "f3b7aa5e54812a33d4c363cae560b82f59bd8331d274908baa969205ec7a356b"
+    },
+    "artifacts/campaign-qa/browser/s01-first-pass/s02-fire.png": {
+      "bytes": 284920,
+      "sha256": "138862dc079a21bbb807083b2f256a8fba0b2564592c12446ee185093dd2019c"
+    },
+    "artifacts/campaign-qa/browser/s01-first-pass/s02-frontline.png": {
+      "bytes": 286808,
+      "sha256": "6a781a6b7e85ee53eb09304fc894e31dac65600826b29a9231468d7bb3158871"
+    },
+    "artifacts/campaign-qa/browser/s01-first-pass/s02-ordinary-failure.png": {
+      "bytes": 285188,
+      "sha256": "134c5c5b025bd8330a8f3eed060928b4c61b3a20ba497d4f1e8843412a9af5ef"
+    },
+    "artifacts/campaign-qa/browser/s01-first-pass/session.json": {
+      "bytes": 35085,
+      "sha256": "5b2aae7df56f509e325412705566d7d50d1055f305627381e4970f737c3db477"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/menu-clean.png": {
+      "bytes": 649153,
+      "sha256": "2a13110591689bc89bc2874016437085a5ff88402c210982e6907f22db243462"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-accepts-help.png": {
+      "bytes": 299539,
+      "sha256": "dd22ba44ef1279739c89c6cad22bb9adab08fb6af88ba989c5967eb1b7fc3d31"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-carry.png": {
+      "bytes": 193335,
+      "sha256": "a1964832fad85b7d0c6f5ca6ab8f00ab671c17c1f2a812e87f474c6db62d252b"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-delivery-approach.png": {
+      "bytes": 214476,
+      "sha256": "f843af10192a1cf6ee9b88b06dd0137503073ba0b63416b303d8244381daaeb4"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-equipment-taken.png": {
+      "bytes": 272920,
+      "sha256": "2d58067be2a09c55fc7c20a7b3b521128e5bea053e3b980565580e04048192a7"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-natural-treatment.png": {
+      "bytes": 382029,
+      "sha256": "8f9c3159e01502714e17284aaf286260d4ec04a23c5ccbf509123aad47c40254"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-natural-visit.png": {
+      "bytes": 395243,
+      "sha256": "ddabfe81521436b13f9825aa1ff89d02de8e68ac7cd3205c237c5b10273f8eb9"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-records-delivered.png": {
+      "bytes": 253992,
+      "sha256": "cf29d049f6de9030e3552a4ccb01c4663ad649ab23c6b61812c667f4f786be02"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-registration-active.png": {
+      "bytes": 242522,
+      "sha256": "b629cfb57d09e4261302bce76d5f5761092ada533c3cea0182b475f83aa60782"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-registration.png": {
+      "bytes": 281345,
+      "sha256": "198cea1c27ab144c12d4a7265e9fe0dd0a7cb7159876b1e3aa5705821da31c6e"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-rest-approach.png": {
+      "bytes": 219263,
+      "sha256": "8ddaeb3c14f78c9a1808f5eba108d2269bd1034283a775ce930e61f400b522c8"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/s11-rest-position.png": {
+      "bytes": 266612,
+      "sha256": "0941e5f456fd7d3e0e6bd5d27418cf8a2161cffb31df38e586ada3b235c69a54"
+    },
+    "artifacts/campaign-qa/browser/s11-natural/session.json": {
+      "bytes": 47441,
+      "sha256": "10eeb54d7b16fc0d043b090d4da56c67b7d75351a698bed6ddd0d320fea897ba"
+    },
+    "artifacts/campaign-qa/s05-s08/baseline-observations-s05-s08.baseline.check.json": {
+      "bytes": 47917,
+      "sha256": "136bdb2dbac285cc5ce4188e5b3c68e6e53070c738fc5a1973e6de52ec9cd53d"
+    },
+    "artifacts/campaign-qa/s05-s08/boundary-observations-s05-s08.check.json": {
+      "bytes": 48300,
+      "sha256": "379670c53f31254b0ca089ce1f12ba2ca0623bee88e698a5bea8abfa5c9702e9"
+    },
+    "artifacts/campaign-qa/s05-s08/remaining-natural/remaining-natural-observations-s05-s08.remaining-natural.check.json": {
+      "bytes": 49599,
+      "sha256": "f91f8db10fb6ba218ed5b2b6040e1220d7774864e7f01e716d7038963d357f81"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-0.json": {
+      "bytes": 4650,
+      "sha256": "afb62c660c3274639cf010198e6063a74b569198ac5aacd6dfd4626d683389ec"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-1.json": {
+      "bytes": 5032,
+      "sha256": "240ac8b2587072b6f41ed5abf266dd912ac7a0a1ef1ed3e959cdf51b2a96466d"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-2.json": {
+      "bytes": 5220,
+      "sha256": "3710dd5fcd15000cd459f6d1d4fcdef13903ab81705402094c60c25d04f9bb4c"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-3.json": {
+      "bytes": 5730,
+      "sha256": "3b81cb0f7d1936239737ff4049ae65cd0aa38bb74a5255cc061f9b022b08ecee"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-4.json": {
+      "bytes": 9437,
+      "sha256": "46b1161cdfce63b363f0e053f58b88ed1eca2bc6e84ecc989c6a3b9ceec3df25"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-5.json": {
+      "bytes": 9401,
+      "sha256": "2ec61b855cda4376543e352c9a80618851ce62a747ec52f16dd4a9bd114c4702"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-6.json": {
+      "bytes": 6838,
+      "sha256": "b36528827de39b2d0a2ca1383bbf181b9aeacefa210b5aa56ec6129acddddfc9"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-7.json": {
+      "bytes": 6047,
+      "sha256": "05af0be3207a5a49d210a011b07a971ddb3669d0400cca7a237a20f957d2f014"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/epilogue-8.json": {
+      "bytes": 9125,
+      "sha256": "ad810aa37091264de056edddb64e92966af9f5ec57704030bbc5513ff0d041b9"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-0.json": {
+      "bytes": 4482,
+      "sha256": "eda0034fa15b98d42797d004363c830391b87f0eb682b9f7c66ec73a69493755"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-1.json": {
+      "bytes": 4765,
+      "sha256": "cdddfc805e0b63b6b48048798e476edb768bd3732101945fc52e898840ca6984"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-10.json": {
+      "bytes": 5666,
+      "sha256": "17ed2ffdd4b5fb817eb3e051512746293386034dd908aea114cf7c5d5c78f422"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-2.json": {
+      "bytes": 4754,
+      "sha256": "b0507761cc92c2ecafd27c922397580f09498f427b595d621457a6fd039d68ae"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-3.json": {
+      "bytes": 4778,
+      "sha256": "f34e0e9174a5570139fba317a7d04ce03f63401b60203a514a8df7ba23d6b58e"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-4.json": {
+      "bytes": 4847,
+      "sha256": "2163667fdea065130041d47e2028b000b670f4a1617ae79697fa2abc717bc5c7"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-5.json": {
+      "bytes": 5440,
+      "sha256": "0ec40c2a4704df6527da58a75e8cf09bd57549a0f54c82fe6c39fd4d0aa61f90"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-6.json": {
+      "bytes": 5087,
+      "sha256": "2fd09d401fb8d3bc74b2d3eda0f27fe660070d67095ffad4c19871995b0601db"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-7.json": {
+      "bytes": 5333,
+      "sha256": "d201f351c874c9bd52af222bc7b2a57db872b8803be6df78ef9864dc0afac051"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-8.json": {
+      "bytes": 5379,
+      "sha256": "7402ebc46d7c4f3e27243bf439aa37a5f371cdf9f80fad27e6dbe55ee3816f99"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/medical-9.json": {
+      "bytes": 5584,
+      "sha256": "0961cddd37f8e1f31492d7ceee5fb5d7a93f39b1b624a040c415a6ac4134fb7a"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-0.json": {
+      "bytes": 6302,
+      "sha256": "44a947d9b3da2a37c52c638e102abcead202b8d554491aeb25efb626c45a9d47"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-1.json": {
+      "bytes": 9011,
+      "sha256": "e1804c91d352d58eb4bab307de0573dcfa30ab9fd55e287dc361017d04d96afc"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-10.json": {
+      "bytes": 18038,
+      "sha256": "8d7da29d31f8b53f3037f13f130634bf8f757aebb2252d453a091e46b1cda596"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-2.json": {
+      "bytes": 17404,
+      "sha256": "09120720474f25309ae3975a415ee9f79e8df68296ee210cd32e110d149b076e"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-3.json": {
+      "bytes": 17298,
+      "sha256": "02ffffffbdad27860c82bf26c3d2296b6fb719e81cc707723a6c599154d9deba"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-4.json": {
+      "bytes": 15577,
+      "sha256": "62f9c2271a33fb7522a2cdad7c5f54c32bce9b358a6a09d8f42cdc7ae1aefe94"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-5.json": {
+      "bytes": 22461,
+      "sha256": "310159faaee3af9b891f8c24c1c8522cf43757295382fad8b48285a57560ab9e"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-6.json": {
+      "bytes": 19201,
+      "sha256": "0e954553071e0b4a73a1ba298466d85b46bdfa58f8e66089f71fa6c8bd98f9cb"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-7.json": {
+      "bytes": 18033,
+      "sha256": "fbdab869440d59ffd7fa3dd56c8d2088320c905ea1d791d19ab1c96c683678f1"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-8.json": {
+      "bytes": 17812,
+      "sha256": "df3b55e6b0d71db4ba2872e296a35fc35f4d713037a44468f2f651282f7532c0"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/relief-9.json": {
+      "bytes": 18336,
+      "sha256": "34f54790e8cd7806f3d6521b576226b1c1b87f8ad9d2e6da72758ba2cba10316"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-0.json": {
+      "bytes": 5445,
+      "sha256": "4de1e46c9e72dd5642c40baf8b18d29c4fc141400a2c388a5c27693960fc1d3d"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-1.json": {
+      "bytes": 13335,
+      "sha256": "32f67c407ee2707c7539e332163e0fa52df503eaac87dc9c2a8667dd94573b3c"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-10.json": {
+      "bytes": 14212,
+      "sha256": "14b759fce3d1c1a79833d689409921ae44e289d8a1596b2d31eafdc00b040630"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-2.json": {
+      "bytes": 13586,
+      "sha256": "6dadf9c57750e41d72efed57887019fac556fcd9dc1cc4b4db35101f0a4ab14c"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-3.json": {
+      "bytes": 16962,
+      "sha256": "9f5c0598295fc76dddf8691a255d541e7d9ee74df75f4baf67493f45c940a0f2"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-4.json": {
+      "bytes": 15447,
+      "sha256": "bda8919b6eeec6d43755aa5df9c87de92ef83e4f5986385330a828b7246d5e7c"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-5.json": {
+      "bytes": 13859,
+      "sha256": "dbe0bc9b084e3c27a590701a8d29a36d89b50bdbd92725a5c828a30eb4959446"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-6.json": {
+      "bytes": 13867,
+      "sha256": "92174132dd1b3285a39bf5592ddbbc00bbe7835c048ce629abf33c69565a17f5"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-7.json": {
+      "bytes": 14226,
+      "sha256": "a981cd2178b51c739952dfeaf04a9c5d3c7c14c23ca0754c1d68b4c8f1ae7d74"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-8.json": {
+      "bytes": 14518,
+      "sha256": "2820fdad758a04cc2fd08c3639a950f41ebf1c5b65784a0265286e65a85caaca"
+    },
+    "artifacts/campaign-qa/s09-s12/checkpoints/rescue-9.json": {
+      "bytes": 15642,
+      "sha256": "ae70958ccfb24b8488ab2fe2929dad6d83bdf29fcf33199a15d41f9eebcbf955"
+    },
+    "artifacts/campaign-qa/s09-s12/natural/epilogue.json": {
+      "bytes": 103312,
+      "sha256": "f24da2745209a474e8a472c85517a3a46647c52dff929e711e1bede5a9fc0f2b"
+    },
+    "artifacts/campaign-qa/s09-s12/natural/medical.json": {
+      "bytes": 88779,
+      "sha256": "da822dc489fc0d586bbd098d3cc9308793bfc9dc1c2e98ed8c9994252a7e6b4e"
+    },
+    "artifacts/campaign-qa/s09-s12/natural/relief.json": {
+      "bytes": 289113,
+      "sha256": "684fda397b368243f158db93168970671a8ef90a664f5f599781e9e19018f6cc"
+    },
+    "artifacts/campaign-qa/s09-s12/natural/rescue.json": {
+      "bytes": 217724,
+      "sha256": "d7bca3aa740906d496973e19fc7ab81ad4b6ec499cf37c67e953075d26444c33"
+    },
+    "artifacts/campaign-qa/s09-s12/observations.json": {
+      "bytes": 8520,
+      "sha256": "7754276117dec6c7d32fe231966121ccb19ccb82f47036f3f2963a4ee7531ed5"
+    },
+    "artifacts/campaign-qa/s09-s12/run1-observations.json": {
+      "bytes": 100961,
+      "sha256": "5d52fd480a2c21c9c37fbac79fe8c38d49288d82e2ef10c6a3aacc0b671598e7"
+    }
+  }
+}

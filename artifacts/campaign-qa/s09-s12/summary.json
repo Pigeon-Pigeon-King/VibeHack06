@@ -1,0 +1,280 @@
+{
+  "schemaVersion": 1,
+  "scope": "S09-S12 independent headless mechanism acceptance; excludes browser/Windows/mobile/human first play",
+  "candidate": {
+    "root": "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031",
+    "sourceCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+    "aggregateSha256": "24699d53881f950b92c0cb0ca4c435c44b16c55f0bef67167f698558bf305713"
+  },
+  "predecessor": {
+    "path": "/Users/penguin/VibeHack06/artifacts/campaign-qa/s05-s08/fixtures/escort-terminal-natural.json",
+    "sha256": "54ddc17a3b73d89f8fd002a65c11fb1ea42d72168befeba42634febdbf4f2be5",
+    "scenario": "escort",
+    "phase": 15,
+    "simulationSeconds": 388.7499999999751,
+    "entry": "B-group S08 standalone fresh public-Intent run with explicit prior story context; not S01-S08 first play"
+  },
+  "selectedMechanismGroupsStatus": "PASS",
+  "targetRuntimeVerification": "NOT_RUN",
+  "counts": {
+    "uniqueSelectedGroups": 6,
+    "firstRun": {
+      "executed": 6,
+      "pass": 4,
+      "fail": 2,
+      "notSelected": 1
+    },
+    "targetedRun": {
+      "executed": 2,
+      "pass": 2,
+      "fail": 0,
+      "notSelected": 5
+    },
+    "finalUniqueGroups": {
+      "pass": 6,
+      "fail": 0
+    },
+    "unrunExtendedGroup": 1,
+    "manualEGates": 11,
+    "unavailablePromptNegativeChecks": 10
+  },
+  "timing": {
+    "normalS09S12SimulationSeconds": 767.1500000001787,
+    "normalChainCaseWallSeconds": 44.091816916,
+    "firstCommandWallSeconds": 90.91,
+    "targetedCommandWallSeconds": 10.02,
+    "humanTime": "NOT_RUN"
+  },
+  "stages": {
+    "S09": {
+      "scenario": "relief",
+      "normal": "PASS",
+      "phaseSequence": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "simulationSeconds": 256.20000000009566,
+      "segmentLoopWallSeconds": 23.036657458,
+      "normalCheckpointSerialization": "PASS",
+      "localRestoration": "PASS",
+      "allPhaseRestoredContinuation": "NOT_RUN",
+      "skipEndStateComparison": "NOT_RUN",
+      "browserByThisAgent": "NOT_RUN",
+      "humanFirstPlay": "NOT_RUN",
+      "transition": "PASS",
+      "ordinaryCombatFailureAndRetry": "PASS",
+      "allyDamageByOwner": {
+        "relief-0": 136,
+        "relief-1": 51,
+        "meng": 153
+      },
+      "naturalArtifact": "artifacts/campaign-qa/s09-s12/natural/relief.json"
+    },
+    "S10": {
+      "scenario": "rescue",
+      "normal": "PASS",
+      "phaseSequence": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "simulationSeconds": 230.70000000007573,
+      "segmentLoopWallSeconds": 11.042133249999992,
+      "normalCheckpointSerialization": "PASS",
+      "localRestoration": "PASS",
+      "allPhaseRestoredContinuation": "NOT_RUN",
+      "skipEndStateComparison": "NOT_RUN",
+      "browserByThisAgent": "NOT_RUN",
+      "humanFirstPlay": "NOT_RUN",
+      "transition": "PASS",
+      "ordinaryCombatFailureAndRetry": "PASS",
+      "allyDamageByOwner": {
+        "zheng": 34
+      },
+      "naturalArtifact": "artifacts/campaign-qa/s09-s12/natural/rescue.json"
+    },
+    "S11": {
+      "scenario": "medical",
+      "normal": "PASS",
+      "phaseSequence": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10
+      ],
+      "simulationSeconds": 136.18333333333385,
+      "segmentLoopWallSeconds": 2.259432790999999,
+      "normalCheckpointSerialization": "PASS",
+      "localRestoration": "PASS",
+      "allPhaseRestoredContinuation": "NOT_RUN",
+      "skipEndStateComparison": "NOT_RUN",
+      "browserByThisAgent": "NOT_RUN",
+      "humanFirstPlay": "NOT_RUN",
+      "transition": "PASS",
+      "ordinaryCombatFailureAndRetry": "NOT_RUN design has no ordinary combat",
+      "allyDamageByOwner": {},
+      "naturalArtifact": "artifacts/campaign-qa/s09-s12/natural/medical.json"
+    },
+    "S12": {
+      "scenario": "epilogue",
+      "normal": "PASS",
+      "phaseSequence": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8
+      ],
+      "simulationSeconds": 144.06666666667346,
+      "segmentLoopWallSeconds": 3.635865875000003,
+      "normalCheckpointSerialization": "PASS",
+      "localRestoration": "PASS",
+      "allPhaseRestoredContinuation": "NOT_RUN",
+      "skipEndStateComparison": "NOT_RUN",
+      "browserByThisAgent": "NOT_RUN",
+      "humanFirstPlay": "NOT_RUN",
+      "transition": "PASS terminal has no successor",
+      "ordinaryCombatFailureAndRetry": "NOT_RUN design has no ordinary combat",
+      "allyDamageByOwner": {},
+      "naturalArtifact": "artifacts/campaign-qa/s09-s12/natural/epilogue.json"
+    }
+  },
+  "groups": [
+    {
+      "name": "normal S09 to S12 carries only actually earned facts and switches viewpoint after rescue",
+      "status": "PASS",
+      "evidence": "run1-observations.json"
+    },
+    {
+      "name": "manual E gates reject idle and Enter; allowed E remains necessary",
+      "status": "PASS",
+      "evidence": "run2-targeted-observations.json"
+    },
+    {
+      "name": "S09 restored covering fire and S10 Q before after restore cause owner attributed health loss without player shots",
+      "status": "PASS",
+      "evidence": "run1-observations.json"
+    },
+    {
+      "name": "ordinary S09 and S10 combat defeat stays separate from fixed story injury and retry restores playable control",
+      "status": "PASS",
+      "evidence": "run1-observations.json"
+    },
+    {
+      "name": "S10 carrying can reverse and resume while occupied hands reject firing and reload",
+      "status": "PASS",
+      "evidence": "run2-targeted-observations.json"
+    },
+    {
+      "name": "S12 leaving the held door persists a stopped queue; return resumes four actual arrivals",
+      "status": "PASS",
+      "evidence": "run1-observations.json"
+    }
+  ],
+  "P0": [],
+  "P1": [],
+  "P2": [
+    {
+      "id": "CQA-S12-01",
+      "title": "S12 can complete while Zheng is still 167.63 m behind the player",
+      "status": "OPEN",
+      "location": {
+        "player": [
+          -5.924812316894531,
+          0.01509890556335447,
+          2.3031668663024902
+        ],
+        "zheng": [
+          -158.3730926513672,
+          -0.07721444368362429,
+          72.00020599365234
+        ],
+        "distanceMetres": 167.6250441910674,
+        "remainingGoals": [
+          [
+            -120,
+            0,
+            57
+          ],
+          [
+            -40,
+            0,
+            35
+          ],
+          [
+            -4,
+            0,
+            12
+          ]
+        ]
+      },
+      "impact": "Companion never reaches C03 in this finished scene because complete halts Simulation; four reception participants arrive correctly. Narrative/spatial continuity issue, not a progression blocker.",
+      "suggestedOwners": [
+        "src/mission/Epilogue.ts",
+        "src/mission/Simulation.ts companion movement policy",
+        "src/content/epilogue-layout.ts"
+      ],
+      "evidence": "artifacts/campaign-qa/s09-s12/natural/epilogue.json"
+    }
+  ],
+  "driverDiagnostics": [
+    {
+      "firstFailure": "medical/2 actual prompt snapshot missing",
+      "classification": "test observation gap, not game defect",
+      "resolution": "Reapproach the real stage checkpoint using movement without E. Tested all 11 gates and 10 unavailable-readiness negatives; all PASS."
+    },
+    {
+      "firstFailure": "S10 reverse then move-to target still phase4",
+      "classification": "test driver stopped at player arrival without waiting for partner",
+      "resolution": "One second of ordinary no-movement input lets partner close the 0.557 m gap; phase5 reached. No production change."
+    },
+    {
+      "observation": "run2 carry intermediate facts array alias",
+      "classification": "test logger reference alias, not mission mutation",
+      "resolution": "Preserved original note in run2-carry-reverse-diagnostic.json; temporal report uses only value-captured phase/position/time in carry-reverse-timing.json. Logger now clones facts and positions; no new physical run claimed."
+    }
+  ],
+  "limitations": [
+    "Normal S09-S12 follows B-group S08 standalone natural terminal; this does not prove continuous S01-S12 first play.",
+    "Skip and all-phase restored continuation group was prepared but not executed in the compressed first pass.",
+    "No browser, Windows or mobile execution by this agent.",
+    "Headless public Intent driver uses internal navigation and enemy visibility; it does not prove unaided discovery or ordinary-player difficulty.",
+    "Formal multi-person animation/contact quality remains unverified; physical group spacing and continuity only."
+  ],
+  "evidence": {
+    "report": "docs/campaign-qa/s09-s12.md",
+    "firstRun": "artifacts/campaign-qa/s09-s12/run1-observations.json",
+    "firstVitest": "artifacts/campaign-qa/s09-s12/run1-vitest-results.json",
+    "targetedRun": "artifacts/campaign-qa/s09-s12/run2-targeted-observations.json",
+    "targetedVitest": "artifacts/campaign-qa/s09-s12/run2-targeted-vitest-results.json",
+    "carryTiming": "artifacts/campaign-qa/s09-s12/carry-reverse-timing.json"
+  }
+}

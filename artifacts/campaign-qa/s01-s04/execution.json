@@ -1,0 +1,24 @@
+{
+  "schemaVersion": 1,
+  "candidate": "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031",
+  "command": [
+    "/Users/penguin/.local/node-runtime/node-v22.14.0-darwin-arm64/bin/node",
+    "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031/node_modules/vitest/vitest.mjs",
+    "run",
+    "--config",
+    "/Users/penguin/VibeHack06/tests/campaign-qa/s01-s04.config.mts",
+    "--reporter=default",
+    "--reporter=json",
+    "--outputFile.json=/Users/penguin/VibeHack06/artifacts/campaign-qa/s01-s04/test-results.json"
+  ],
+  "startedAt": "2026-10-31T04:45:14.940Z",
+  "endedAt": "2026-10-31T04:58:26.818Z",
+  "wallSeconds": 791.878,
+  "exitCode": 1,
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "darwin",
+    "arch": "arm64"
+  },
+  "sourceMode": "Frozen candidate. Existing targeted public-input regressions plus independent failure/retry supplement. One worker. No browser."
+}

@@ -1,0 +1,33 @@
+
+ RUN  v5.0.5 /Users/penguin/VibeHack06
+
+stdout | tests/campaign-qa/s05-s08.baseline.check.mjs > S08 one natural public-input route; locked original driver and route assertions
+ESCORT_REPLAY skip=false restore=false {"seconds":388.7499999999751,"spawned":23,"kills":23,"maxActive":5,"maxAimers":1,"phases":[0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15],"restores":[],"retiredRestored":[]}
+
+ ✓ tests/campaign-qa/s05-s08.baseline.check.mjs (1 test) 82359ms
+   ✓ S08 one natural public-input route; locked original driver and route assertions 81687ms
+
+ Test Files  1 passed (1)
+      Tests  1 passed (1)
+   Start at  13:02:56
+   Duration  100.63s (tests 87%, transform 8%, setup 3%, import 1%)
+
+JSON report written to /Users/penguin/VibeHack06/artifacts/campaign-qa/s05-s08/baseline-results.json
+      117.40 real        19.66 user         4.78 sys
+           290095104  maximum resident set size
+                   0  average shared memory size
+                   0  average unshared data size
+                   0  average unshared stack size
+              303054  page reclaims
+                4330  page faults
+                   0  swaps
+                   0  block input operations
+                   0  block output operations
+                 148  messages sent
+                 126  messages received
+                   1  signals received
+               11062  voluntary context switches
+              259146  involuntary context switches
+          6262675619  instructions retired
+          6281681776  cycles elapsed
+           112801856  peak memory footprint

@@ -1,0 +1,126 @@
+{
+  "schemaVersion": 1,
+  "scope": "S05–S08 campaign QA",
+  "targetRuntimeStatus": "NOT_RUN",
+  "sourceCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+  "candidateAggregateSha256": "24699d53881f950b92c0cb0ca4c435c44b16c55f0bef67167f698558bf305713",
+  "headlessTests": {
+    "passed": 12,
+    "failed": 1,
+    "naturalS08": "PASS",
+    "boundary": "FAIL",
+    "provenP0P1": [],
+    "remainingNatural": "PASS",
+    "naturalStages": {
+      "S05": "PASS",
+      "S06": "PASS",
+      "S07": "PASS",
+      "S08": "PASS"
+    }
+  },
+  "timing": {
+    "naturalSimulationSeconds": 388.75,
+    "boundaryAggregateSimulationSeconds": 157.5,
+    "naturalWallSeconds": 117.744195125,
+    "boundaryWallSeconds": 28.66730875,
+    "naturalCpuUserSeconds": 19.66,
+    "naturalCpuSystemSeconds": 4.78,
+    "boundaryCpuUserSeconds": 11.59,
+    "boundaryCpuSystemSeconds": 1.67,
+    "remainingNatural": {
+      "simulationSeconds": 446.6666666666667,
+      "wallSeconds": 99.938501041,
+      "cpuUserSeconds": 28.42,
+      "cpuSystemSeconds": 6.29
+    }
+  },
+  "coverageGaps": [
+    "S08 death diagnostic did not reach death; failure/retry remains NOT_RUN",
+    "S07/S08 natural routes did not observe allied damage; S05 now proves 9 allied hits and 153 damage",
+    "Natural-vs-skip comparison, full checkpoint matrix, and application menu transitions remain incomplete",
+    "Each natural stage has its own authored entry context, not one continuous S01–S12 run",
+    "This group browser, Windows, mobile device and human complete campaign NOT_RUN"
+  ],
+  "handoff": {
+    "scenario": "escort",
+    "phase": 15,
+    "envelope": "fixtures/escort-terminal-natural.json",
+    "sha256": "54ddc17a3b73d89f8fd002a65c11fb1ea42d72168befeba42634febdbf4f2be5",
+    "entryContext": "S08 fresh scenario with original route context; not S01 continuous"
+  },
+  "report": "docs/campaign-qa/s05-s08.md",
+  "harnessFiles": {
+    "tests/campaign-qa/s05-s08.baseline.check.mjs": "80ff4b13e920d50df9b3a644c3473b25f1cdc47c3adfcdba5c84ad3ce26027e1",
+    "tests/campaign-qa/s05-s08.check.mjs": "4ba8b7b4671a9764c1bd62711cd35559f76ae38b904f1689e857c7cb24ee9d67",
+    "tests/campaign-qa/s05-s08.config.mjs": "1b6d6412f8a69cc7856634753bb76760a6084877c8b25c19bd29263346a23c13",
+    "tests/campaign-qa/s05-s08.observe.mjs": "232f2c0796ef0de9280494be144abbe96cb21aad02628a82410f87471348758b",
+    "tests/campaign-qa/s05-s08.remaining-natural.check.mjs": "30f5baca639f72ac6b4e19969d0700f839fb9df4a8223ebf5ad0bdad4fdb917e",
+    "tests/campaign-qa/s05-s08.run.mjs": "ec265a2c3121aea4496694d719e254c1723a295754c1d6188574b9a26c3f05bf"
+  },
+  "firstRound": {
+    "headlessTests": {
+      "passed": 9,
+      "failed": 1,
+      "naturalS08": "PASS",
+      "boundary": "FAIL",
+      "provenP0P1": []
+    },
+    "coverageGaps": [
+      "S08 death diagnostic did not reach death; failure/retry remains NOT_RUN",
+      "No allied ballistic damage observed in this run; cover efficacy is not proved",
+      "S05/S06/S07 complete normal/skip/recovery routes not rerun",
+      "Browser, Windows, mobile device and human complete campaign NOT_RUN"
+    ],
+    "harnessFiles": {
+      "tests/campaign-qa/s05-s08.baseline.check.mjs": "80ff4b13e920d50df9b3a644c3473b25f1cdc47c3adfcdba5c84ad3ce26027e1",
+      "tests/campaign-qa/s05-s08.check.mjs": "4ba8b7b4671a9764c1bd62711cd35559f76ae38b904f1689e857c7cb24ee9d67",
+      "tests/campaign-qa/s05-s08.config.mjs": "f8dc71f35538e8fd153a23f646d84f719b5585465260ce0dbf7697516f056d86",
+      "tests/campaign-qa/s05-s08.observe.mjs": "62a4d5991d2d0b7fa4fc383d1d6749ca50d28de00d417d9690677f3f3cc74668",
+      "tests/campaign-qa/s05-s08.run.mjs": "b9aa3dd41d0e48ffdf53746ab902446f0234e49846a6932cf17cb4aa2d403c8c"
+    }
+  },
+  "remainingNatural": {
+    "status": "PASS",
+    "testCount": 3,
+    "evidence": "remaining-natural/remaining-natural-results.json",
+    "observations": "remaining-natural/remaining-natural-observations-s05-s08.remaining-natural.check.json",
+    "stages": [
+      {
+        "scenario": "frontgate",
+        "phase": 6,
+        "complete": true,
+        "simulationSeconds": 119.06666666666666,
+        "stagedSkipInputs": 0,
+        "interactInputs": 0,
+        "allyImpactCount": 9,
+        "allyDamage": 153,
+        "terminalEnvelope": "remaining-natural/fixtures/frontgate-terminal-natural.json",
+        "terminalSha256": "61cdf1a1eeed2f6a395d4c3022b35819e70a6d6d777b802a05f754835b0e7b0b"
+      },
+      {
+        "scenario": "transfer",
+        "phase": 7,
+        "complete": true,
+        "simulationSeconds": 115.98333333333333,
+        "stagedSkipInputs": 0,
+        "interactInputs": 14,
+        "allyImpactCount": 0,
+        "allyDamage": 0,
+        "terminalEnvelope": "remaining-natural/fixtures/transfer-terminal-natural.json",
+        "terminalSha256": "229c31fd296c76f08660806b1b923af67e02ea7d0f39984b3d395bf70dc87bf0"
+      },
+      {
+        "scenario": "flank",
+        "phase": 8,
+        "complete": true,
+        "simulationSeconds": 211.61666666666667,
+        "stagedSkipInputs": 0,
+        "interactInputs": 245,
+        "allyImpactCount": 0,
+        "allyDamage": 0,
+        "terminalEnvelope": "remaining-natural/fixtures/flank-terminal-natural.json",
+        "terminalSha256": "7226a7443b3a618f6345eeaf8055cbcb117a79c866fdaec142351365552a6b6c"
+      }
+    ]
+  }
+}

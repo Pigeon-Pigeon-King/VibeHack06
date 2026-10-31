@@ -1,0 +1,46 @@
+{
+  "kind": "locked-candidate-public-intent-replay-checkpoint",
+  "sourceTest": "/Users/penguin/VibeHack06/tests/campaign-qa/s05-s08.remaining-natural.check.mjs",
+  "sourceDriver": "tests/flank-paths.test.ts::playFlank (locked original; natural once)",
+  "sourceCase": "S07 one natural public-input route; locked original driver and route assertions",
+  "recordId": "flank-3",
+  "fixture": "flank-phase-1-natural.json",
+  "scenario": "flank",
+  "phase": 1,
+  "elapsed": 6.6999999999999815,
+  "stagedSkipInputs": 0,
+  "initial": {
+    "phase": 0,
+    "control": "combat",
+    "elapsed": 0,
+    "phaseTime": 0,
+    "position": [
+      -8,
+      0,
+      45
+    ],
+    "health": 100,
+    "facts": [
+      "sharing-promised",
+      "zhou-knows-shaoyuan-time",
+      "zhou-withheld-time",
+      "lu-knows-shaoyuan-time",
+      "lu-knows-zhou-withheld",
+      "transfer-gate-open",
+      "transfer-patients-through",
+      "argument-finished",
+      "lu-unfair-accusation",
+      "zhou-admits-withholding",
+      "lu-continues-duty",
+      "source-timestamp-shared",
+      "flank-east-warned"
+    ],
+    "complete": false,
+    "failed": false,
+    "spawned": 4,
+    "kills": 0,
+    "playerHits": 0
+  },
+  "sha256": "3e6d8e0070a3872125e6c7b2828230b9d49a976221e85344711fe191355c1d3c",
+  "note": "Local diagnostic entry only; restoring this is not a complete campaign or browser playthrough."
+}

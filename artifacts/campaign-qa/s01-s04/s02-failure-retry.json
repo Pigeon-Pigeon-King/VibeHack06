@@ -1,0 +1,487 @@
+{
+  "schemaVersion": 1,
+  "candidate": "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031",
+  "method": "public Intent only, then genuine checkpoint serialization/reload; no state injection",
+  "wallSeconds": 65.43018304200001,
+  "final": {
+    "scenario": "mainhall",
+    "phase": 5,
+    "elapsed": 61.0333,
+    "steppedSeconds": 74.45,
+    "hp": 42,
+    "failed": false,
+    "complete": true,
+    "position": [
+      -10,
+      0,
+      4
+    ],
+    "safe": 6,
+    "hits": 12,
+    "kills": 6,
+    "facts": [
+      "zhou-trusts-zhao",
+      "history-gate-open",
+      "mattress-cleared",
+      "hall-front-secured",
+      "hall-side-secured",
+      "civilians-evacuated",
+      "history-collapse",
+      "history-partition-closed",
+      "father-rifle-collected",
+      "father-died",
+      "child-evacuated",
+      "zhao-captured",
+      "hall-zhao-plea",
+      "shao-identified-by-zhou",
+      "hall-recognition",
+      "hall-shao-line",
+      "zhao-executed",
+      "zhou-survived-hall"
+    ],
+    "ammo": [
+      13,
+      150
+    ],
+    "inputs": {
+      "move": 480,
+      "fire": 83,
+      "reload": 0,
+      "interact": 1,
+      "skip": 0
+    },
+    "path": [
+      [
+        -12,
+        0,
+        4
+      ],
+      [
+        -11,
+        0,
+        4
+      ]
+    ],
+    "trace": [
+      {
+        "phase": 4,
+        "at": 46.5833,
+        "hp": 42,
+        "position": [
+          -10,
+          0,
+          4
+        ],
+        "safe": 6
+      },
+      {
+        "phase": 4,
+        "at": 48.5833,
+        "hp": 42,
+        "position": [
+          -10,
+          0,
+          4
+        ],
+        "safe": 6
+      },
+      {
+        "phase": 4,
+        "at": 50.5833,
+        "hp": 42,
+        "position": [
+          -10,
+          0,
+          4
+        ],
+        "safe": 6
+      },
+      {
+        "phase": 4,
+        "at": 52.5833,
+        "hp": 42,
+        "position": [
+          -10,
+          0,
+          4
+        ],
+        "safe": 6
+      },
+      {
+        "phase": 4,
+        "at": 54.5833,
+        "hp": 42,
+        "position": [
+          -10,
+          0,
+          4
+        ],
+        "safe": 6
+      },
+      {
+        "phase": 4,
+        "at": 56.5833,
+        "hp": 42,
+        "position": [
+          -10,
+          0,
+          4
+        ],
+        "safe": 6
+      },
+      {
+        "phase": 4,
+        "at": 58.5833,
+        "hp": 42,
+        "position": [
+          -10,
+          0,
+          4
+        ],
+        "safe": 6
+      },
+      {
+        "phase": 4,
+        "at": 60.5833,
+        "hp": 42,
+        "position": [
+          -10,
+          0,
+          4
+        ],
+        "safe": 6
+      }
+    ]
+  },
+  "hurtEvents": [
+    {
+      "at": 3.1333,
+      "from": 100,
+      "to": 91,
+      "projectileHurt": true,
+      "position": [
+        -2.2983,
+        0.0146,
+        -2.7574
+      ]
+    },
+    {
+      "at": 3.7,
+      "from": 91,
+      "to": 82,
+      "projectileHurt": true,
+      "position": [
+        0.7129,
+        0.0145,
+        -3.9576
+      ]
+    },
+    {
+      "at": 4.0167,
+      "from": 82,
+      "to": 73,
+      "projectileHurt": true,
+      "position": [
+        2.1497,
+        0.0125,
+        -5.1796
+      ]
+    },
+    {
+      "at": 4.6167,
+      "from": 73,
+      "to": 64,
+      "projectileHurt": true,
+      "position": [
+        4.522,
+        0.015,
+        -6.9197
+      ]
+    },
+    {
+      "at": 5.7667,
+      "from": 64,
+      "to": 55,
+      "projectileHurt": true,
+      "position": [
+        10.7856,
+        0.0132,
+        -8.8264
+      ]
+    },
+    {
+      "at": 6.5667,
+      "from": 55,
+      "to": 46,
+      "projectileHurt": true,
+      "position": [
+        12.7705,
+        0.0151,
+        -8.9928
+      ]
+    },
+    {
+      "at": 7.8167,
+      "from": 46,
+      "to": 37,
+      "projectileHurt": true,
+      "position": [
+        12.7705,
+        0.0151,
+        -8.9928
+      ]
+    },
+    {
+      "at": 8.8833,
+      "from": 37,
+      "to": 28,
+      "projectileHurt": true,
+      "position": [
+        12.7705,
+        0.015,
+        -8.9928
+      ]
+    },
+    {
+      "at": 9.8333,
+      "from": 28,
+      "to": 19,
+      "projectileHurt": true,
+      "position": [
+        12.7705,
+        0.015,
+        -8.9928
+      ]
+    },
+    {
+      "at": 10.85,
+      "from": 19,
+      "to": 10,
+      "projectileHurt": true,
+      "position": [
+        12.7705,
+        0.0151,
+        -8.9928
+      ]
+    },
+    {
+      "at": 12.3,
+      "from": 10,
+      "to": 1,
+      "projectileHurt": true,
+      "position": [
+        12.7705,
+        0.0151,
+        -8.9928
+      ]
+    },
+    {
+      "at": 13.4333,
+      "from": 1,
+      "to": 0,
+      "projectileHurt": true,
+      "position": [
+        12.7705,
+        0.015,
+        -8.9928
+      ]
+    },
+    {
+      "at": 34.0167,
+      "from": 100,
+      "to": 42,
+      "projectileHurt": false,
+      "position": [
+        -10,
+        0,
+        4
+      ]
+    }
+  ],
+  "transitions": [
+    {
+      "at": 0.0167,
+      "from": 0,
+      "to": 1,
+      "interact": true,
+      "safe": 0,
+      "position": [
+        -19,
+        0.0001,
+        4
+      ]
+    },
+    {
+      "at": 0.4667,
+      "from": 1,
+      "to": 2,
+      "interact": false,
+      "safe": 0,
+      "position": [
+        -18.2633,
+        0.0028,
+        3.9831
+      ]
+    },
+    {
+      "at": 9.5833,
+      "from": 2,
+      "to": 3,
+      "interact": false,
+      "safe": 0,
+      "position": [
+        -12.5659,
+        0.0151,
+        4
+      ]
+    },
+    {
+      "at": 34.0167,
+      "from": 3,
+      "to": 4,
+      "interact": false,
+      "safe": 6,
+      "position": [
+        -10,
+        0,
+        4
+      ]
+    },
+    {
+      "at": 61.0333,
+      "from": 4,
+      "to": 5,
+      "interact": false,
+      "safe": 6,
+      "position": [
+        -10,
+        0,
+        4
+      ]
+    }
+  ],
+  "status": "PASS",
+  "failed": {
+    "scenario": "mainhall",
+    "phase": 1,
+    "elapsed": 13.4333,
+    "steppedSeconds": 13.4333,
+    "hp": 0,
+    "failed": true,
+    "complete": false,
+    "position": [
+      12.7705,
+      0.015,
+      -8.9928
+    ],
+    "safe": 0,
+    "hits": 0,
+    "kills": 0,
+    "facts": [
+      "zhou-trusts-zhao",
+      "history-gate-open",
+      "mattress-cleared"
+    ],
+    "ammo": [
+      25,
+      150
+    ],
+    "inputs": {
+      "move": 366,
+      "fire": 0,
+      "reload": 0,
+      "interact": 1,
+      "skip": 0
+    },
+    "path": [
+      [
+        13,
+        0,
+        -9
+      ],
+      [
+        14,
+        0,
+        -10
+      ]
+    ],
+    "trace": [
+      {
+        "phase": 1,
+        "at": 2,
+        "hp": 100,
+        "position": [
+          -8.3365,
+          0.0115,
+          -0.9874
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 4,
+        "hp": 82,
+        "position": [
+          2.1497,
+          0.0124,
+          -5.1796
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 6,
+        "hp": 55,
+        "position": [
+          12.0359,
+          0.0146,
+          -8.9699
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 8,
+        "hp": 37,
+        "position": [
+          12.7705,
+          0.0151,
+          -8.9928
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 10,
+        "hp": 19,
+        "position": [
+          12.7705,
+          0.0151,
+          -8.9928
+        ],
+        "safe": 0
+      },
+      {
+        "phase": 1,
+        "at": 12,
+        "hp": 10,
+        "position": [
+          12.7705,
+          0.0151,
+          -8.9928
+        ],
+        "safe": 0
+      }
+    ]
+  },
+  "checkpoint": {
+    "phase": 1,
+    "elapsed": 0.0167,
+    "hp": 100,
+    "facts": [
+      "zhou-trusts-zhao",
+      "history-gate-open",
+      "mattress-cleared"
+    ]
+  }
+}

@@ -1,0 +1,261 @@
+{
+  "schemaVersion": 1,
+  "runId": "s09-s12-1793423870121",
+  "status": "PASS",
+  "candidate": {
+    "root": "/Users/penguin/VibeHack06/artifacts/campaign-qa/.candidate-runtime-20261031",
+    "sourceCommit": "7877cbf0e7c5f8f93aeb5b6f402fce9ed3d4923a",
+    "aggregateSha256": "24699d53881f950b92c0cb0ca4c435c44b16c55f0bef67167f698558bf305713"
+  },
+  "environment": {
+    "node": "v22.14.0",
+    "platform": "darwin",
+    "architecture": "arm64",
+    "runtime": "headless Rapier + Simulation, public Intent at fixed 60 Hz"
+  },
+  "predecessor": {
+    "path": "/Users/penguin/VibeHack06/artifacts/campaign-qa/s05-s08/fixtures/escort-terminal-natural.json",
+    "sha256": "54ddc17a3b73d89f8fd002a65c11fb1ea42d72168befeba42634febdbf4f2be5",
+    "scenario": "escort",
+    "phase": 15,
+    "simulationSeconds": 388.7499999999751,
+    "entry": "B-group S08 standalone fresh public-Intent run with explicit prior story context; not S01-S08 first play"
+  },
+  "limitations": [
+    "No browser rendering or native keyboard evidence in this suite.",
+    "S09 carries B-group actually earned S08 facts; S08 started as a standalone chapter, not S01-S12 first play.",
+    "Headless wall time and simulation time are not human completion time.",
+    "Snapshot restoration is isolated recovery evidence, never first play.",
+    "A passive Ballistics.update wrapper records original impact returns unchanged; it does not change projectiles, health or inputs."
+  ],
+  "cases": [
+    {
+      "name": "manual E gates reject idle and Enter; allowed E remains necessary",
+      "status": "PASS",
+      "observations": [
+        {
+          "id": "relief",
+          "phase": 6,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 7
+        },
+        {
+          "id": "relief",
+          "phase": 8,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": false,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 9
+        },
+        {
+          "id": "rescue",
+          "phase": 2,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 3
+        },
+        {
+          "id": "medical",
+          "phase": 0,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 1
+        },
+        {
+          "id": "medical",
+          "phase": 1,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 2
+        },
+        {
+          "id": "medical",
+          "phase": 2,
+          "promptSource": "actual normal checkpoint restored, approached using public movement without E",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 3
+        },
+        {
+          "id": "medical",
+          "phase": 7,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 8
+        },
+        {
+          "id": "epilogue",
+          "phase": 0,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 1
+        },
+        {
+          "id": "epilogue",
+          "phase": 2,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 3
+        },
+        {
+          "id": "epilogue",
+          "phase": 4,
+          "promptSource": "actual normal checkpoint restored, approached using public movement without E",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 5
+        },
+        {
+          "id": "epilogue",
+          "phase": 6,
+          "promptSource": "normal route, before E input",
+          "unavailableEChecked": true,
+          "idleAndEnterSeconds": 4,
+          "promptAfterDelay": true,
+          "enteredPhase": 7
+        }
+      ],
+      "wallSeconds": 5.476964666
+    },
+    {
+      "name": "S10 carrying can reverse and resume while occupied hands reject firing and reload",
+      "status": "PASS",
+      "observations": {
+        "sourcePhase": 4,
+        "reversed": {
+          "phase": 4,
+          "control": "cooperative",
+          "complete": false,
+          "failed": false,
+          "elapsed": 54.8333333333315,
+          "health": 100,
+          "position": [
+            -27.05124282836914,
+            0.015286242961883523,
+            225.97523498535156
+          ],
+          "facts": [
+            "full-report-shared",
+            "lu-has-full-report",
+            "relationship-repaired",
+            "shaoyuan-departure-confirmed",
+            "lu-keeps-escort-promise",
+            "escort-convoy-arrived",
+            "shaoyuan-passed-dispatch",
+            "escort-manifest-checked",
+            "relief-posts-held",
+            "relief-handover-complete",
+            "zhou-gives-up-post",
+            "zhou-accepts-help",
+            "zhou-brace-adjusted",
+            "zhou-own-gear-on-list",
+            "zhou-heard-family",
+            "zhou-wants-to-live",
+            "zhou-family-reply-queued",
+            "zhou-will-seek-treatment",
+            "lu-checks-zhou-rest",
+            "zhou-leaves-under-protection",
+            "rescue-inland-direction-known",
+            "rescue-cover-requested",
+            "rescue-cover-call-0",
+            "rescue-cover-fired",
+            "rescue-cover-hit",
+            "rescue-entry-cleared",
+            "rescue-meng-hit-fired",
+            "rescue-meng-wounded",
+            "rescue-zheng-approaching",
+            "rescue-space-secured",
+            "rescue-meng-lifted",
+            "rescue-meng-under-cover"
+          ]
+        },
+        "reachedCover": {
+          "phase": 5,
+          "control": "staged",
+          "complete": false,
+          "failed": false,
+          "elapsed": 74.53333333333039,
+          "health": 100,
+          "position": [
+            -53.81789779663086,
+            0.0150997996330261,
+            226.83282470703125
+          ],
+          "facts": [
+            "full-report-shared",
+            "lu-has-full-report",
+            "relationship-repaired",
+            "shaoyuan-departure-confirmed",
+            "lu-keeps-escort-promise",
+            "escort-convoy-arrived",
+            "shaoyuan-passed-dispatch",
+            "escort-manifest-checked",
+            "relief-posts-held",
+            "relief-handover-complete",
+            "zhou-gives-up-post",
+            "zhou-accepts-help",
+            "zhou-brace-adjusted",
+            "zhou-own-gear-on-list",
+            "zhou-heard-family",
+            "zhou-wants-to-live",
+            "zhou-family-reply-queued",
+            "zhou-will-seek-treatment",
+            "lu-checks-zhou-rest",
+            "zhou-leaves-under-protection",
+            "rescue-inland-direction-known",
+            "rescue-cover-requested",
+            "rescue-cover-call-0",
+            "rescue-cover-fired",
+            "rescue-cover-hit",
+            "rescue-entry-cleared",
+            "rescue-meng-hit-fired",
+            "rescue-meng-wounded",
+            "rescue-zheng-approaching",
+            "rescue-space-secured",
+            "rescue-meng-lifted",
+            "rescue-meng-under-cover"
+          ]
+        },
+        "participantPositions": [
+          {
+            "id": "meng",
+            "position": [
+              -51.78913497924805,
+              0.012481915950775191,
+              225.99993896484375
+            ]
+          },
+          {
+            "id": "zheng",
+            "position": [
+              -49.62070846557617,
+              0.01496080160140989,
+              225.9996795654297
+            ]
+          }
+        ]
+      },
+      "wallSeconds": 3.2708682920000003
+    }
+  ],
+  "segmentRuns": [],
+  "terminalComparisons": []
+}

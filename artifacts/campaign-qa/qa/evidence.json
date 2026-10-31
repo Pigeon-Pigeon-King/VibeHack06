@@ -1,0 +1,444 @@
+{
+  "schemaVersion": 1,
+  "runId": "s01-first-pass",
+  "environment": {
+    "browser": "151.0.7922.34",
+    "node": "v22.14.0",
+    "platform": "darwin",
+    "viewport": "1366x768",
+    "headless": true,
+    "targetUrl": "http://127.0.0.1:5197/",
+    "sourceManifest": "artifacts/campaign-qa/candidate-lock.json",
+    "sourceManifestSha256": "957b062f9a966dfd5baa7870146ae94962ca12e1c8c86fd3bf6c4a42d383dbab",
+    "candidateAggregateSha256": "24699d53881f950b92c0cb0ca4c435c44b16c55f0bef67167f698558bf305713",
+    "cleanContext": true,
+    "clockOverride": false,
+    "normalSpeedMeasured": false,
+    "performanceMeasured": false,
+    "realHumanPlaythrough": false,
+    "sourceReviewInformed": true,
+    "targetRuntime": "Windows EXE plus eventual mobile browser; full S01-S12 campaign",
+    "testedRuntime": "macOS headless Chromium 151.0.7922.34, 1366x768; keyboard alternative to unavailable pointer lock"
+  },
+  "inputTrace": [
+    {
+      "at": "2026-10-31T05:07:25.803Z",
+      "inputs": {
+        "action": "navigate",
+        "url": "http://127.0.0.1:5197/"
+      }
+    },
+    {
+      "at": "2026-10-31T05:08:11.221Z",
+      "inputs": {
+        "action": "click",
+        "name": "从序章开始",
+        "label": "s01-start"
+      }
+    },
+    {
+      "at": "2026-10-31T05:08:19.638Z",
+      "inputs": {
+        "action": "press",
+        "key": "e"
+      }
+    },
+    {
+      "at": "2026-10-31T05:08:19.872Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "ArrowLeft"
+        ],
+        "ms": 640
+      }
+    },
+    {
+      "at": "2026-10-31T05:08:21.139Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "w"
+        ],
+        "ms": 4500,
+        "label": "s01-follow-father"
+      }
+    },
+    {
+      "at": "2026-10-31T05:08:36.953Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "w"
+        ],
+        "ms": 1000
+      }
+    },
+    {
+      "at": "2026-10-31T05:08:37.973Z",
+      "inputs": {
+        "action": "press",
+        "key": "e",
+        "label": "s01-mattress"
+      }
+    },
+    {
+      "at": "2026-10-31T05:08:38.073Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "w"
+        ],
+        "ms": 1600,
+        "label": "s01-door"
+      }
+    },
+    {
+      "at": "2026-10-31T05:08:49.984Z",
+      "inputs": {
+        "action": "wait",
+        "ms": 20000,
+        "label": "s01-natural-outcome"
+      }
+    },
+    {
+      "at": "2026-10-31T05:09:54.517Z",
+      "inputs": {
+        "action": "click",
+        "name": "继续 · 主厅",
+        "label": "s02-from-s01"
+      }
+    },
+    {
+      "at": "2026-10-31T05:09:57.782Z",
+      "inputs": {
+        "action": "press",
+        "key": "e"
+      }
+    },
+    {
+      "at": "2026-10-31T05:10:02.975Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "ArrowRight"
+        ],
+        "ms": 2240
+      }
+    },
+    {
+      "at": "2026-10-31T05:10:06.673Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "Shift",
+          "w"
+        ],
+        "ms": 2500
+      }
+    },
+    {
+      "at": "2026-10-31T05:10:11.001Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "Shift",
+          "a"
+        ],
+        "ms": 1200,
+        "label": "s02-frontline"
+      }
+    },
+    {
+      "at": "2026-10-31T05:10:14.197Z",
+      "inputs": {
+        "action": "press",
+        "key": "Escape"
+      }
+    },
+    {
+      "at": "2026-10-31T05:10:57.086Z",
+      "inputs": {
+        "action": "click",
+        "name": "继续行动"
+      }
+    },
+    {
+      "at": "2026-10-31T05:10:58.721Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "f"
+        ],
+        "ms": 1200,
+        "label": "s02-fire"
+      }
+    },
+    {
+      "at": "2026-10-31T05:11:00.234Z",
+      "inputs": {
+        "action": "wait",
+        "ms": 12000,
+        "label": "s02-ordinary-failure"
+      }
+    },
+    {
+      "at": "2026-10-31T05:11:31.835Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "Shift",
+          "s"
+        ],
+        "ms": 3000
+      }
+    },
+    {
+      "at": "2026-10-31T05:11:35.327Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "Shift",
+          "a"
+        ],
+        "ms": 3000
+      }
+    },
+    {
+      "at": "2026-10-31T05:11:40.108Z",
+      "inputs": {
+        "action": "wait",
+        "ms": 8000,
+        "label": "s02-exposed-failure"
+      }
+    },
+    {
+      "at": "2026-10-31T05:12:07.423Z",
+      "inputs": {
+        "action": "hold",
+        "keys": [
+          "Shift",
+          "s"
+        ],
+        "ms": 4000
+      }
+    },
+    {
+      "at": "2026-10-31T05:12:12.857Z",
+      "inputs": {
+        "action": "wait",
+        "ms": 12000,
+        "label": "s02-failure-result"
+      }
+    },
+    {
+      "at": "2026-10-31T05:13:01.725Z",
+      "inputs": {
+        "action": "click",
+        "name": "重试检查点",
+        "label": "s02-retry"
+      }
+    },
+    {
+      "at": "2026-10-31T05:13:08.167Z",
+      "inputs": {
+        "action": "press",
+        "key": "Escape"
+      }
+    },
+    {
+      "at": "2026-10-31T05:13:09.391Z",
+      "inputs": {
+        "action": "click",
+        "name": "返回场景选择"
+      }
+    },
+    {
+      "at": "2026-10-31T05:13:11.518Z",
+      "inputs": {
+        "action": "reload",
+        "label": "campaign-continue-after-refresh"
+      }
+    },
+    {
+      "at": "2026-10-31T05:14:02.681Z",
+      "inputs": {
+        "action": "click",
+        "name": "继续 · 主厅",
+        "label": "s02-persisted-continue"
+      }
+    },
+    {
+      "at": "2026-10-31T05:14:06.340Z",
+      "inputs": {
+        "action": "press",
+        "key": "Escape"
+      }
+    },
+    {
+      "at": "2026-10-31T05:14:06.647Z",
+      "inputs": {
+        "action": "click",
+        "name": "返回场景选择"
+      }
+    },
+    {
+      "at": "2026-10-31T05:14:06.910Z",
+      "inputs": {
+        "action": "click",
+        "name": "从序章重新开始",
+        "label": "s01-clean-restart"
+      }
+    },
+    {
+      "at": "2026-10-31T05:14:07.734Z",
+      "inputs": {
+        "action": "press",
+        "key": "Escape"
+      }
+    }
+  ],
+  "observations": {
+    "launch": {
+      "id": "clean-menu",
+      "inputs": [
+        {
+          "action": "navigate",
+          "url": "http://127.0.0.1:5197/"
+        }
+      ],
+      "state": "Fresh isolated Chromium context opened the locked candidate menu"
+    },
+    "render": {
+      "id": "s01-visible",
+      "inputs": [
+        {
+          "action": "click",
+          "name": "从序章开始",
+          "label": "s01-start"
+        }
+      ],
+      "state": "Nonblank rendered S01 scene with child viewpoint, HUD, interaction prompt and subtitle",
+      "visual": "artifacts/campaign-qa/browser/s01-first-pass/s01-start.png"
+    },
+    "input": {
+      "id": "s01-work-s02-combat",
+      "inputs": [
+        {
+          "action": "press",
+          "key": "e"
+        },
+        {
+          "action": "hold",
+          "keys": [
+            "ArrowLeft"
+          ],
+          "ms": 640
+        },
+        {
+          "action": "hold",
+          "keys": [
+            "w"
+          ],
+          "ms": 4500,
+          "label": "s01-follow-father"
+        },
+        {
+          "action": "hold",
+          "keys": [
+            "w"
+          ],
+          "ms": 1000
+        },
+        {
+          "action": "press",
+          "key": "e",
+          "label": "s01-mattress"
+        },
+        {
+          "action": "hold",
+          "keys": [
+            "w"
+          ],
+          "ms": 1600,
+          "label": "s01-door"
+        },
+        {
+          "action": "press",
+          "key": "e"
+        },
+        {
+          "action": "hold",
+          "keys": [
+            "ArrowRight"
+          ],
+          "ms": 2240
+        },
+        {
+          "action": "hold",
+          "keys": [
+            "Shift",
+            "w"
+          ],
+          "ms": 2500
+        },
+        {
+          "action": "hold",
+          "keys": [
+            "Shift",
+            "a"
+          ],
+          "ms": 1200,
+          "label": "s02-frontline"
+        }
+      ],
+      "state": "Keyboard movement and E changed S01 tasks; S02 firing consumed 25 to 14 rounds and enemy fire caused ordinary failure"
+    },
+    "coreLoop": {
+      "id": "partial-campaign-loop",
+      "inputs": [
+        {
+          "action": "wait",
+          "ms": 20000,
+          "label": "s01-natural-outcome"
+        },
+        {
+          "action": "wait",
+          "ms": 12000,
+          "label": "s02-failure-result"
+        },
+        {
+          "action": "click",
+          "name": "重试检查点",
+          "label": "s02-retry"
+        }
+      ],
+      "state": "S01 complete and S02 failure/retry verified. Full S01-S12 campaign core loop has NOT_RUN status."
+    },
+    "outcome": {
+      "id": "full-campaign-terminal-not-reached",
+      "inputs": [
+        {
+          "action": "wait",
+          "ms": 20000,
+          "label": "s01-natural-outcome"
+        }
+      ],
+      "state": "S12_NOT_REACHED; S01 completed naturally, S02 ordinary failure and checkpoint recovery observed",
+      "visual": "artifacts/campaign-qa/browser/s01-first-pass/s01-natural-outcome.png"
+    },
+    "restart": {
+      "id": "campaign-new-start",
+      "inputs": [
+        {
+          "action": "click",
+          "name": "从序章重新开始",
+          "label": "s01-clean-restart"
+        }
+      ],
+      "state": "S01 phase 0, facts 0, displayed time 00:00, health 100",
+      "visual": "artifacts/campaign-qa/browser/s01-first-pass/s01-clean-restart.png"
+    }
+  },
+  "rawEvidence": "artifacts/campaign-qa/browser/s01-first-pass/session.json"
+}

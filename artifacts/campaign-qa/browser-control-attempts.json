@@ -1,0 +1,11 @@
+{
+  "schemaVersion": 1,
+  "scope": "Browser control setup before gameplay evidence",
+  "attempts": [
+    {"tool": "cua_repl", "action": "createBrowserTab chrome http://127.0.0.1:5197", "result": "aborted before dispatch", "gameplayStarted": false},
+    {"tool": "cua_repl", "action": "getState", "result": "40.3 second execution timeout; kernel reset", "gameplayStarted": false},
+    {"tool": "node_repl", "action": "import installed playwright/index.mjs", "result": "requested module ./index.js does not provide default export", "gameplayStarted": false}
+  ],
+  "fallback": "Standalone Node CommonJS loader with the already-installed Playwright and Chromium. Fresh isolated browser context, public keyboard/button/file-chooser input only.",
+  "interpretation": "These are control-tool setup failures. None establishes a game launch, renderer failure, input failure, or campaign result."
+}

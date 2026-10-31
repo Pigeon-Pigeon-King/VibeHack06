@@ -1,0 +1,7 @@
+{
+  "captureScope": "Final independent driver files after tests; the final state() array-copy logging cleanup was not physically rerun. These are not claimed as pre-run driver hashes.",
+  "files": {
+    "tests/campaign-qa/s09-s12.check.mjs": "93f682aeb94ef580590a61b0f4a6f311deb9bf10301ac3c433241368f3a5e8ea",
+    "tests/campaign-qa/s09-s12.config.mjs": "8c6685ecd06e3bc93a74c2ee6b65cceb40327029846bc8171411a06ba9b5befb"
+  }
+}

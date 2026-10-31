@@ -1,0 +1,164 @@
+{
+  "reversed": {
+    "phase": 4,
+    "control": "cooperative",
+    "complete": false,
+    "failed": false,
+    "elapsed": 54.8333333333315,
+    "health": 100,
+    "position": [
+      -27.05124282836914,
+      0.015286242961883523,
+      225.97523498535156
+    ],
+    "facts": [
+      "full-report-shared",
+      "lu-has-full-report",
+      "relationship-repaired",
+      "shaoyuan-departure-confirmed",
+      "lu-keeps-escort-promise",
+      "escort-convoy-arrived",
+      "shaoyuan-passed-dispatch",
+      "escort-manifest-checked",
+      "relief-posts-held",
+      "relief-handover-complete",
+      "zhou-gives-up-post",
+      "zhou-accepts-help",
+      "zhou-brace-adjusted",
+      "zhou-own-gear-on-list",
+      "zhou-heard-family",
+      "zhou-wants-to-live",
+      "zhou-family-reply-queued",
+      "zhou-will-seek-treatment",
+      "lu-checks-zhou-rest",
+      "zhou-leaves-under-protection",
+      "rescue-inland-direction-known",
+      "rescue-cover-requested",
+      "rescue-cover-call-0",
+      "rescue-cover-fired",
+      "rescue-cover-hit",
+      "rescue-entry-cleared",
+      "rescue-meng-hit-fired",
+      "rescue-meng-wounded",
+      "rescue-zheng-approaching",
+      "rescue-space-secured",
+      "rescue-meng-lifted",
+      "rescue-meng-under-cover"
+    ]
+  },
+  "playerArrived": {
+    "state": {
+      "phase": 4,
+      "control": "cooperative",
+      "complete": false,
+      "failed": false,
+      "elapsed": 73.53333333333045,
+      "health": 100,
+      "position": [
+        -53.78914260864258,
+        0.014660513401031472,
+        225.99993896484375
+      ],
+      "facts": [
+        "full-report-shared",
+        "lu-has-full-report",
+        "relationship-repaired",
+        "shaoyuan-departure-confirmed",
+        "lu-keeps-escort-promise",
+        "escort-convoy-arrived",
+        "shaoyuan-passed-dispatch",
+        "escort-manifest-checked",
+        "relief-posts-held",
+        "relief-handover-complete",
+        "zhou-gives-up-post",
+        "zhou-accepts-help",
+        "zhou-brace-adjusted",
+        "zhou-own-gear-on-list",
+        "zhou-heard-family",
+        "zhou-wants-to-live",
+        "zhou-family-reply-queued",
+        "zhou-will-seek-treatment",
+        "lu-checks-zhou-rest",
+        "zhou-leaves-under-protection",
+        "rescue-inland-direction-known",
+        "rescue-cover-requested",
+        "rescue-cover-call-0",
+        "rescue-cover-fired",
+        "rescue-cover-hit",
+        "rescue-entry-cleared",
+        "rescue-meng-hit-fired",
+        "rescue-meng-wounded",
+        "rescue-zheng-approaching",
+        "rescue-space-secured",
+        "rescue-meng-lifted",
+        "rescue-meng-under-cover"
+      ]
+    },
+    "participants": [
+      {
+        "id": "meng",
+        "position": [
+          -51.76413345336914,
+          0.007985460758209273,
+          225.99993896484375
+        ]
+      },
+      {
+        "id": "zheng",
+        "position": [
+          -49.44316482543945,
+          0.01499441862106321,
+          225.99954223632812
+        ]
+      }
+    ]
+  },
+  "afterWaiting": {
+    "phase": 5,
+    "control": "staged",
+    "complete": false,
+    "failed": false,
+    "elapsed": 74.53333333333039,
+    "health": 100,
+    "position": [
+      -53.81789779663086,
+      0.0150997996330261,
+      226.83282470703125
+    ],
+    "facts": [
+      "full-report-shared",
+      "lu-has-full-report",
+      "relationship-repaired",
+      "shaoyuan-departure-confirmed",
+      "lu-keeps-escort-promise",
+      "escort-convoy-arrived",
+      "shaoyuan-passed-dispatch",
+      "escort-manifest-checked",
+      "relief-posts-held",
+      "relief-handover-complete",
+      "zhou-gives-up-post",
+      "zhou-accepts-help",
+      "zhou-brace-adjusted",
+      "zhou-own-gear-on-list",
+      "zhou-heard-family",
+      "zhou-wants-to-live",
+      "zhou-family-reply-queued",
+      "zhou-will-seek-treatment",
+      "lu-checks-zhou-rest",
+      "zhou-leaves-under-protection",
+      "rescue-inland-direction-known",
+      "rescue-cover-requested",
+      "rescue-cover-call-0",
+      "rescue-cover-fired",
+      "rescue-cover-hit",
+      "rescue-entry-cleared",
+      "rescue-meng-hit-fired",
+      "rescue-meng-wounded",
+      "rescue-zheng-approaching",
+      "rescue-space-secured",
+      "rescue-meng-lifted",
+      "rescue-meng-under-cover"
+    ]
+  },
+  "note": "Earlier intermediate state facts were serialized from a live array reference. Their phase/position/time are value observations, but their facts must not be used for temporal claims. The driver now copies facts. Final phase5 facts remain valid; retain this original diagnostic for traceability."
+}
