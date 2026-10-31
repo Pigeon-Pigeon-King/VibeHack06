@@ -131,7 +131,7 @@ export function buildFrontGate(kit: PortKit): SceneDynamics {
   kit.cover(F.rearPost[0], F.rearPost[2] - 2.7, 6.2);
   kit.label('02 查验线', [11, 3.8, -13.6], 4.4, 0.6);
   kit.box('steel', [13.5, 1.9, -13.7], [0.10, 3.8, 0.10]);
-  kit.tractor(21, 20, -0.15);
+  kit.visualSlot('front-tug', slot => slot.tractor(21, 20, -0.15));
   kit.container(29, 26, Math.PI / 2, 'pale');
 
   // East entry has its own staging bend, gateway, visible road and east-facing hard cover.
@@ -145,7 +145,7 @@ export function buildFrontGate(kit: PortKit): SceneDynamics {
   kit.cover(30.7, -5, 4.2, Math.PI / 2);
   kit.cover(F.eastPost[0] + 2.3, F.eastPost[2], 7.0, Math.PI / 2);
   filterBank(kit);
-  kit.tank(43, 10, 3.1, 8.8);
+  kit.visualSlot('front-east-tank', slot => slot.tank(43, 10, 3.1, 8.8));
   kit.tank(44, 27, 2.2, 7);
   kit.cylinder('amber', [37, 2.5, 19], 0.18, 21, [Math.PI / 2, 0, 0]);
   kit.cylinder('pale', [38.1, 2.9, 19], 0.14, 21, [Math.PI / 2, 0, 0]);

@@ -1,0 +1,80 @@
+{
+  "assets": [
+    {
+      "id": "BG-CRANE",
+      "sourceBytes": 5331512,
+      "runtimeBytes": 3154172,
+      "textureBytes": {
+        "source": 67108864,
+        "runtime": 16777216
+      }
+    },
+    {
+      "id": "ENV-LIGHTKIT-POLE",
+      "sourceBytes": 2319412,
+      "runtimeBytes": 1393544,
+      "textureBytes": {
+        "source": 67108864,
+        "runtime": 16777216
+      }
+    },
+    {
+      "id": "PROP-BENCH",
+      "sourceBytes": 11641764,
+      "runtimeBytes": 1256928,
+      "textureBytes": {
+        "source": 268435456,
+        "runtime": 16777216
+      }
+    },
+    {
+      "id": "PROP-LIFE-MUG",
+      "sourceBytes": 8377524,
+      "runtimeBytes": 834268,
+      "textureBytes": {
+        "source": 268435456,
+        "runtime": 16777216
+      }
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "sourceBytes": 17454464,
+      "runtimeBytes": 1569588,
+      "textureBytes": {
+        "source": 268435456,
+        "runtime": 16777216
+      }
+    },
+    {
+      "id": "PROP-TANK",
+      "sourceBytes": 3169960,
+      "runtimeBytes": 1690788,
+      "textureBytes": {
+        "source": 67108864,
+        "runtime": 16777216
+      }
+    },
+    {
+      "id": "PROP-TERMINAL-CONSOLE",
+      "sourceBytes": 10952596,
+      "runtimeBytes": 1617188,
+      "textureBytes": {
+        "source": 268435456,
+        "runtime": 16777216
+      }
+    },
+    {
+      "id": "PROP-VEH-TUG",
+      "sourceBytes": 14286384,
+      "runtimeBytes": 2185792,
+      "textureBytes": {
+        "source": 268435456,
+        "runtime": 16777216
+      }
+    }
+  ],
+  "sourceBytes": 73533616,
+  "runtimeBytes": 13702268,
+  "sourceEstimatedTextureBytes": 1543503872,
+  "runtimeEstimatedTextureBytes": 134217728
+}

@@ -1,0 +1,193 @@
+{
+  "id": "CH-XU",
+  "sourceSHA256": "91851024995f6285c1a6c2cd7c4ac0be6bef80766e4124eb648a69938e9b0c8f",
+  "runtimeSHA256": "a92899ff81b6ee64e8b9a36185ae2c0e56380c37eef243f14a3542167271e640",
+  "bodyPlan": "adult",
+  "numericalChecks": "passed",
+  "bones": 41,
+  "boneNames": [
+    "Root",
+    "Hip",
+    "Pelvis",
+    "L_Thigh",
+    "L_Calf",
+    "L_Foot",
+    "L_ToeBase",
+    "L_CalfTwist01",
+    "L_CalfTwist02",
+    "L_ThighTwist01",
+    "L_ThighTwist02",
+    "R_Thigh",
+    "R_ThighTwist01",
+    "R_ThighTwist02",
+    "R_Calf",
+    "R_Foot",
+    "R_ToeBase",
+    "R_CalfTwist01",
+    "R_CalfTwist02",
+    "Waist",
+    "Spine01",
+    "Spine02",
+    "NeckTwist01",
+    "NeckTwist02",
+    "Head",
+    "L_Clavicle",
+    "L_Upperarm",
+    "L_Forearm",
+    "L_ForearmTwist01",
+    "L_ForearmTwist02",
+    "L_Hand",
+    "L_UpperarmTwist01",
+    "L_UpperarmTwist02",
+    "R_Clavicle",
+    "R_Upperarm",
+    "R_UpperarmTwist01",
+    "R_UpperarmTwist02",
+    "R_Forearm",
+    "R_ForearmTwist01",
+    "R_ForearmTwist02",
+    "R_Hand"
+  ],
+  "vertices": 10372,
+  "invalidWeights": 0,
+  "maxWeightError": 4.470348358154297e-8,
+  "restPositionError": 0,
+  "restAngleErrorRadians": 0.0000020526856610445165,
+  "restScaleError": 0,
+  "restEnvelopeError": 9.679135002685189e-8,
+  "walk": {
+    "samples": 49,
+    "tracks": 123,
+    "activeBones": [
+      "Hip",
+      "L_Thigh",
+      "L_Calf",
+      "L_Foot",
+      "L_ToeBase",
+      "R_Thigh",
+      "R_Calf",
+      "R_Foot",
+      "R_ToeBase",
+      "Waist",
+      "Spine01",
+      "Spine02",
+      "NeckTwist01",
+      "Head",
+      "L_Clavicle",
+      "L_Upperarm",
+      "L_Forearm",
+      "L_Hand",
+      "R_Clavicle",
+      "R_Upperarm",
+      "R_Forearm",
+      "R_Hand"
+    ],
+    "nonFinite": 0,
+    "minDeterminant": 0.9999981522575325,
+    "maxQuaternionError": 2.831550438564534e-8,
+    "maxAdjacentAngleRadians": 0.41935401167951525,
+    "envelope": {
+      "min": [
+        -0.261926893604311,
+        -0.015614770472348485,
+        -0.2594042579049288
+      ],
+      "max": [
+        0.35846933454877117,
+        0.9958511174014055,
+        0.2301796867705594
+      ]
+    },
+    "rootRange": [
+      3.469446951953614e-18,
+      5.169878828456423e-26,
+      1.734723475976807e-18
+    ]
+  },
+  "calibration": {
+    "heightMeters": 1.75,
+    "sourceForward": "+X",
+    "forward": "+Z",
+    "scale": 1.7500004899385446,
+    "strideMeters": 2.613633860075774,
+    "bodyPlan": "adult",
+    "rigBones": 41,
+    "walkTracks": 123,
+    "retarget": "target-rest-world-delta",
+    "contactAnimation": "procedural approximation; hand, foot and equipment contact awaits visual review"
+  },
+  "idleHeight": 1.7500000000000002,
+  "poseMetrics": {
+    "aiming": {
+      "height": 1.7498971632018543,
+      "ground": -2.274482516120401e-16,
+      "handsForward": 0.4795018046382234,
+      "hipHeight": 0.9285715989930218
+    },
+    "carrying": {
+      "height": 1.7500000000000002,
+      "ground": -2.274482516120401e-16,
+      "handsForward": 0.4515604465132689,
+      "hipHeight": 0.9285715989930218
+    },
+    "crouched": {
+      "height": 1.2134532309921227,
+      "ground": -0.005953230992122527,
+      "handsForward": 0.032467152465183925,
+      "hipHeight": 0.3860715989930218
+    },
+    "kneeling": {
+      "height": 1.3339693441000664,
+      "ground": -0.021469344100066512,
+      "handsForward": 0.032467152465183925,
+      "hipHeight": 0.4910715989930218
+    },
+    "care": {
+      "height": 1.3339693441000664,
+      "ground": -0.021469344100066512,
+      "handsForward": 0.27326880937458076,
+      "hipHeight": 0.4910715989930218
+    },
+    "restrained": {
+      "height": 1.7500000000000002,
+      "ground": -2.274482516120401e-16,
+      "handsForward": -0.2936903600008322,
+      "hipHeight": 0.9285715989930218
+    },
+    "gesture": {
+      "height": 1.7500000000000002,
+      "ground": -2.274482516120401e-16,
+      "handsForward": 0.2489584802209846,
+      "hipHeight": 0.9285715989930218
+    },
+    "reaching": {
+      "height": 1.7632104101303814,
+      "ground": -0.027870148958148176,
+      "handsForward": 0.37697938771827644,
+      "hipHeight": 0.9153927406238019
+    },
+    "lookAway": {
+      "height": 1.7500000009697225,
+      "ground": -2.274482516120401e-16,
+      "handsForward": 0.032467152465183925,
+      "hipHeight": 0.9285715989930218
+    },
+    "down": {
+      "height": 0.42421922788358907,
+      "ground": 5.551115123125783e-17,
+      "handsForward": 0.9054995036597637,
+      "hipHeight": 0.1763879987381667
+    },
+    "walking": {
+      "height": 1.747918059877234,
+      "ground": -0.01457279178842116,
+      "handsForward": 0.11542531294147088,
+      "hipHeight": 0.9145425154257244
+    }
+  },
+  "limitations": [
+    "Node substitutes only image decoding; no PBR or browser acceptance",
+    "Walk foot contact and procedural hand/equipment/care contact remain unreviewed",
+    "No original FBX is loaded or played"
+  ]
+}

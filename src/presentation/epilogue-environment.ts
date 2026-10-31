@@ -54,8 +54,10 @@ export function buildEpilogue(k: PortKit): SceneDynamics {
   block(k, 'epilogue-reception-roof', [3, 5.4, 8], [35, 0.4, 25], 'pale');
   k.part('arch', 'pale', [3, 5.65, 8], [35, 7, 25]);
   k.label('C03 接收中心 / 首批进场', [-4, 4.35, 1.35], 6, 0.65);
-  block(k, 'epilogue-reception-table', [2.2, 0.5, 6], [4, 1, 1.2], 'steel');
-  k.box('glass', [2.2, 1.3, 6], [0.8, 0.5, 0.08]);
+  k.visualSlot('epilogue-reception-console', slot => {
+    block(slot, 'epilogue-reception-table', [2.2, 0.5, 6], [4, 1, 1.2], 'steel');
+    slot.box('glass', [2.2, 1.3, 6], [0.8, 0.5, 0.08]);
+  });
   k.label('泊位与接收终端', [2.2, 2.05, 6], 4, 0.55);
   k.box('signal', [3, 5.0, 10], [23, 0.08, 0.28]);
   const light = new PointLight(0xffdbad, 70, 32, 2); light.position.set(2, 4.7, 10); k.root.add(light);

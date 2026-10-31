@@ -1,0 +1,1814 @@
+{
+  "sourceCatalog": "artifacts/asset-jobs/production-20261031/production-catalog.json",
+  "assets": [
+    {
+      "id": "CH-DOCTOR",
+      "label": "医师",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-doctor-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-DOCTOR/rig-v1/rig/1f3fb503-1bd8-474b-b7ce-574f8f16b650-model.glb",
+      "sha256": "ac40a5bd08473ccd844ec77146c264dfc0cdaea65fb28f314626f121d38cb8cd",
+      "bytes": 1474328,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 2935977,
+          "sha256": "682c36a4679db39f4ac1498fe01eb1ce8cde1fe8600d32465df2719c2c354bf3",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 2680629,
+          "sha256": "6507caaa96b93d6f7aaba89443e765eb5f119bb3d15acdffb2191158b8441d06",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1711233,
+          "sha256": "bc504c36d1dfbd872d11b6c8ad557a21c6cfffbd88b264aed451d8fe0508cbca",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "bdf7f567d245dc555393a53423a6ce7fb52d2a09c8ab82eb7b2e39fe17bb7a24",
+      "sourceBytes": 7991068,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "1724f2c3b354e8495cc385641c56ac4f8f8c08abb75e53f77725364993fbbd2b"
+        },
+        {
+          "index": 1,
+          "sha256": "da9498584fc643fc01e2bcf27d91827052d0eae70ec7bc55c512b002ff067935"
+        },
+        {
+          "index": 2,
+          "sha256": "d589a19a50a554b91e7d5077da61f5cbf1cf48674df50e91f144079c16933654"
+        },
+        {
+          "index": 3,
+          "sha256": "56bd5cc97e2acf8cce87cf6ee0dc53a9579d0a01902d9b374424f50d0db55628"
+        },
+        {
+          "index": 4,
+          "sha256": "7f9849e91f4326c5785de59e68584599ea6a433dfa554445732b53f835ad954c"
+        },
+        {
+          "index": 5,
+          "sha256": "1e83477c4d4177a79928662c12428a2bf6989ad804dc02697df6161d205bbe96"
+        },
+        {
+          "index": 9,
+          "sha256": "e98c7b5cd7bce04112bb4705e3d23d8184b5fc5163d550016f989b0b344c064a"
+        }
+      ],
+      "sourceStructureSha256": "b5dbd745fc7e5dc691c570d4e603480a6e75694e01d623a57a6224a4073991bf",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 2935977,
+          "runtimeBytes": 384525,
+          "sourceSha256": "682c36a4679db39f4ac1498fe01eb1ce8cde1fe8600d32465df2719c2c354bf3",
+          "runtimeSha256": "32634f8bb753335406a748f8efc5c5e93cfb19631977b949b3e5140e3a064a20",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 2680629,
+          "runtimeBytes": 234862,
+          "sourceSha256": "6507caaa96b93d6f7aaba89443e765eb5f119bb3d15acdffb2191158b8441d06",
+          "runtimeSha256": "8427f61e4d270fda45987abbe40fad0c2988df892cfaf6c673926c9adc6915bb",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1711233,
+          "runtimeBytes": 191713,
+          "sourceSha256": "bc504c36d1dfbd872d11b6c8ad557a21c6cfffbd88b264aed451d8fe0508cbca",
+          "runtimeSha256": "6b0dd5b919bc27ba436e84a825a500f1d18563c32f680ab14a19f5ab3897858a",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-ENEMY",
+      "label": "敌兵",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-enemy-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-ENEMY/rig-v1/rig/5a26a6cd-f147-4e99-adfb-733d7c686c60-model.glb",
+      "sha256": "0242cf47abaf0d8692a9fcd40465913af64488f90f5186b02a058920eef83b6c",
+      "bytes": 1871400,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 5539254,
+          "sha256": "86119387fd1f4124598e7ef94bf5a6af9bb9cd0a83b6872115b7bf341fb3c843",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3702757,
+          "sha256": "391283baa09a0e4097c27c314b9236809bd3d990fb5e96d8079749e23e95dcc6",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1999611,
+          "sha256": "75666424ae5df702b3ea1aea44a7539be49dd3c338fe453765a54e04792b5530",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "5f5d3f3fb12a31cae51954ff3e47e615fdd779bd461ee5c4add5b90e1530b3d0",
+      "sourceBytes": 11880164,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "03ebc9bee806155ae6f2bb0a5c7918c3f58046d3bd4b4dcfb108a71c846a6900"
+        },
+        {
+          "index": 1,
+          "sha256": "67388dedc1da3c8b2eafaa5e7ed99fc94235b7267f18635e593b218a5cabbeaa"
+        },
+        {
+          "index": 2,
+          "sha256": "e4946415d5c05a0b1bbbd0310f1d69f6343c26178691c5d08d684cdab427c600"
+        },
+        {
+          "index": 3,
+          "sha256": "6b9c25595d931a4f8381bdec0666c89c5378b1b829f7eaea271d17c31da76018"
+        },
+        {
+          "index": 4,
+          "sha256": "a281fa80d486fc045f27a541d0609eb5bf1384b33b983ba79cc9cd1a3307a30a"
+        },
+        {
+          "index": 5,
+          "sha256": "f34d76adc6d7afea8ff31088329af66ed2972e3230ab8f459d1bbe623a418cbe"
+        },
+        {
+          "index": 9,
+          "sha256": "8c274e493f7d24f0a3a822fb3e33808384f851c207c7b77e5365558f97a1b6d8"
+        }
+      ],
+      "sourceStructureSha256": "cc527b2a3842ff665f228d00db932fd88280f8953dd4b9bf3a141a21f8e7ef53",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 5539254,
+          "runtimeBytes": 697121,
+          "sourceSha256": "86119387fd1f4124598e7ef94bf5a6af9bb9cd0a83b6872115b7bf341fb3c843",
+          "runtimeSha256": "2a64fd737145e091832e543a7860fb099ae8dd5374a3902ce602d82f5190da1b",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3702757,
+          "runtimeBytes": 278228,
+          "sourceSha256": "391283baa09a0e4097c27c314b9236809bd3d990fb5e96d8079749e23e95dcc6",
+          "runtimeSha256": "0992e72809c1a8420ac3b0a7631915e0a7e85e47fd27f1aea822415856c79d05",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1999611,
+          "runtimeBytes": 257520,
+          "sourceSha256": "75666424ae5df702b3ea1aea44a7539be49dd3c338fe453765a54e04792b5530",
+          "runtimeSha256": "c84d83c50fae49534f51e5cc52bdc9164025ca0a7c78770605e95fa94b82c1e3",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-FATHER",
+      "label": "陆建平",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-father-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-FATHER/rig-v1/rig/5d82f4cd-e9a9-4ba5-9ce9-49aa24a971c6-model.glb",
+      "sha256": "0f3e20b3a03cb3000e2fbf4bc9d06118c852433f7ad8e8f174899bea72a3a7f7",
+      "bytes": 1862188,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 5455967,
+          "sha256": "f65df8cf2624517dd7c5dddf0c0bf51774ceb167d6605ca0077efacb5920a9f8",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3643811,
+          "sha256": "e193e4dadd61ed44ca3700f9d7a5186e003df7c31171c4ccc3b3b1e0956a4e8f",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1805886,
+          "sha256": "ab388d1d5f78cebfb3e64997201afef3992f5fb9c675f9fa25386996b033e0b0",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "56f25bda8d2fe8a89475fdbeb142604d10c07d505b30663c83b48750093b82b3",
+      "sourceBytes": 11585296,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "2841dc9a70ff76a875af577c43555478288b7d0204374826cc8d4e9496f0c3ea"
+        },
+        {
+          "index": 1,
+          "sha256": "815f812778bdc20f89218d9e725c271769aa48e1b6add92aa94a1ebcbffbda37"
+        },
+        {
+          "index": 2,
+          "sha256": "76ed51d668268cb38fa35fe1bec276c82be0435fd6c355a5d73623d40aeaf668"
+        },
+        {
+          "index": 3,
+          "sha256": "a2575749a066960756e8e2618ac3452a987d0974805deaa0d04dfa9eaa79fd8b"
+        },
+        {
+          "index": 4,
+          "sha256": "441019d3eee54e591431b03c9ef490f19108c49519981087a8c1da9c5a75352b"
+        },
+        {
+          "index": 5,
+          "sha256": "a0c458afd2677d19dc5aed8696fd84a09580bb336b0c9117a5a24fd1175afd17"
+        },
+        {
+          "index": 9,
+          "sha256": "b5e7ba63872deaf1ea30d99d5dd7492d029a14193378a496078bfd22fcff18df"
+        }
+      ],
+      "sourceStructureSha256": "2c4138f8bb11bf595513c9a058453bfa520f0ccfa89f619407ef58801cea4c50",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 5455967,
+          "runtimeBytes": 679538,
+          "sourceSha256": "f65df8cf2624517dd7c5dddf0c0bf51774ceb167d6605ca0077efacb5920a9f8",
+          "runtimeSha256": "2ea1fc1309f4fa4615f0ae5a1951b76c7de0dc8e2b4d7c5703875191250752c0",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3643811,
+          "runtimeBytes": 289892,
+          "sourceSha256": "e193e4dadd61ed44ca3700f9d7a5186e003df7c31171c4ccc3b3b1e0956a4e8f",
+          "runtimeSha256": "35e9d9d49f5b4ac71e20183e689c7e5489b7a752f3ed034328c8b50cc7bfdc1e",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1805886,
+          "runtimeBytes": 213130,
+          "sourceSha256": "ab388d1d5f78cebfb3e64997201afef3992f5fb9c675f9fa25386996b033e0b0",
+          "runtimeSha256": "e65c9db6c47bcdff13ec13a93d2ecb9b5cac2a38313ab960edf3c056e4b630a5",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-LU",
+      "label": "陆闻川",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-lu-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-LU/rig-v1/rig/77ed8fb0-4b83-4c79-8bc8-f5cd7820c9d3-model.glb",
+      "sha256": "6d6e12d9e23449ab24f260f2b33bdb30a1e48a179c625e0c9904992ac7b5737f",
+      "bytes": 1636760,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 4534627,
+          "sha256": "94ff4d5716e5a1745c297459986cb9e14d77cc07fd0d9d88a00348cf7397e8b8",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 2842310,
+          "sha256": "7b7b5abdeaf620ea7ad90308a3fde9439ea95dce1c5716ed284e9ec4bebd519f",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1052045,
+          "sha256": "a7c24a8f4c46a7e98a0c9a8b6fffa45a036f88dde422098463121ef7076ae446",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "33579cb205c11d50c6fa6dfa42f93f022e387cbcf07b5a24c9a6be0b37961501",
+      "sourceBytes": 9097540,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "f3e056b6d4ec64e8d5d6b3387e8b773ba2f9217a5ee255b2e37fb743e0466a94"
+        },
+        {
+          "index": 1,
+          "sha256": "6083420e7d6211b2b4dbe0a42393062616d791cfb13a14f14d2d5d40d8514d1f"
+        },
+        {
+          "index": 2,
+          "sha256": "43401649c50878573bfcd1a8e4096c3e13dc3fb0fbb239716541573fb0c5d1c0"
+        },
+        {
+          "index": 3,
+          "sha256": "dae34ae8d666f17a3e255d60d8bf8d029615d21a32b0894b779d411f4959c6f9"
+        },
+        {
+          "index": 4,
+          "sha256": "01309511ded9f6c5375c048ac8c905031f91a0f60bf85ed192354f0837d622a7"
+        },
+        {
+          "index": 5,
+          "sha256": "9efe2057c2bd07a9cdc94239e10bca912aa959fc278421458b87e8c195c88bf8"
+        },
+        {
+          "index": 9,
+          "sha256": "ef48d96a676aa62a8d00024b77d5926ef3574ea7d8efe008b7bc1bfa98329239"
+        }
+      ],
+      "sourceStructureSha256": "284498fd80a6fa898cfc36f9a5f574676426372c85deeffe9552cacebc919ea3",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 4534627,
+          "runtimeBytes": 588405,
+          "sourceSha256": "94ff4d5716e5a1745c297459986cb9e14d77cc07fd0d9d88a00348cf7397e8b8",
+          "runtimeSha256": "7fd41cfcb89c8e257234616fe406165d1b2474a2c6110a59a1c1aefce5033240",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 2842310,
+          "runtimeBytes": 281964,
+          "sourceSha256": "7b7b5abdeaf620ea7ad90308a3fde9439ea95dce1c5716ed284e9ec4bebd519f",
+          "runtimeSha256": "50333700ec99cc8d6e11af33347db158ce42064a67bc46b27b105144b3ce7147",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1052045,
+          "runtimeBytes": 97840,
+          "sourceSha256": "a7c24a8f4c46a7e98a0c9a8b6fffa45a036f88dde422098463121ef7076ae446",
+          "runtimeSha256": "3489f547715d26f50c5befefd4456dadccb87cc1d307ebc626cf3ea767d4b00f",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-LU-CHILD",
+      "label": "陆闻川 · 儿童独立模型",
+      "bodyPlan": "child",
+      "heightMeters": 1.15,
+      "runtimePath": "models/characters/ch-lu-child-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-LU-CHILD/rig-v1/rig/1aeea69b-8de0-49c8-8028-b3fff31436be-model.glb",
+      "sha256": "13f8f41d6852a69b6844c51118825e8a0017d7a86856daf6ba1cf1c51ca63f31",
+      "bytes": 1673800,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 4463482,
+          "sha256": "ace11a80f177501c0ba6efc97d20868ac43054e6feec97cf8183148a44ca1819",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 2878445,
+          "sha256": "6a776c1bbc9ca4bf75611fd6e1bcdc92afecd918af49591d445542424ac294cf",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1579714,
+          "sha256": "45d14defe6d71ce9928321280bb9199cc38486749a293ed6df290d24937edf1b",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "1d33683fcf92e1db07de9ca73b059052d16fd841551d927f25022efc72cf83c1",
+      "sourceBytes": 9603700,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "1dd9475a44d50f2416870fbec3711b31e447338b8ba0033eb6ed7e53e234e17d"
+        },
+        {
+          "index": 1,
+          "sha256": "f2f949003902b2e78a8b205c258cebb234a6d179cee4d340245eca49f9e1b606"
+        },
+        {
+          "index": 2,
+          "sha256": "87f4d2e25677197ffdd635015afae2dc813040a65d00dcdf926b3e9967435c61"
+        },
+        {
+          "index": 3,
+          "sha256": "c5ca7c81ada838abe5a45a997c358dcf4f6fabad08cedfd10eb9f5cc92574fad"
+        },
+        {
+          "index": 4,
+          "sha256": "1c6b32843ca465081cc2e93a54bf8e416acb027ffca2d65f1dc2d26991a8554d"
+        },
+        {
+          "index": 5,
+          "sha256": "5107ec48e637b40e73359ace134047a4c3a01e7d1df7f065885946e055637f54"
+        },
+        {
+          "index": 9,
+          "sha256": "b780efae50a9089be1a17dcd0c2cb883453bee4dc1b3e925d5e0ad34febcb12b"
+        }
+      ],
+      "sourceStructureSha256": "fc21502a91fd747e717084fff6b7782ed6ee8d4056203837d601f4f9bcbc84c7",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 4463482,
+          "runtimeBytes": 561531,
+          "sourceSha256": "ace11a80f177501c0ba6efc97d20868ac43054e6feec97cf8183148a44ca1819",
+          "runtimeSha256": "a0763c6ecccfd64991ba3d57d3d4ab59782c0b3e61578db9158082f8592441d7",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 2878445,
+          "runtimeBytes": 257694,
+          "sourceSha256": "6a776c1bbc9ca4bf75611fd6e1bcdc92afecd918af49591d445542424ac294cf",
+          "runtimeSha256": "d9632cf1f62d0b38f12f71cc81ec85c42da0bb37c6d3d534cb64e14e9b53b3ea",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1579714,
+          "runtimeBytes": 172521,
+          "sourceSha256": "45d14defe6d71ce9928321280bb9199cc38486749a293ed6df290d24937edf1b",
+          "runtimeSha256": "cdc127e3dfd961e541a2de82fe45d34142fd0be16ab7f3497c85361f279e1a09",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-LUO",
+      "label": "罗敬",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-luo-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-LUO/rig-v1/rig/b0df3e2a-e328-438e-af06-eca45f2a7510-model.glb",
+      "sha256": "d5e7dad0e2c4c0d4391af902474df2db1a197ff7d6668dc5184b52047c64b894",
+      "bytes": 1774244,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 5229421,
+          "sha256": "a3a57b6f9bd44cfb81bf087c81d1debab1ae2a1855f35b16d4a232e9ceaf3b5e",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3233655,
+          "sha256": "ee2d6b0efff90c38867532e3da648c59917966740a9e42d363e040e9804843f5",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1528268,
+          "sha256": "99306edda68608cda9204741907571a2e57f338142ffc7c6cde9fc55e153937a",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "99d550070d86e919ca780d58699d70daa8ed172f2e9696ee78d4a5a666cbb329",
+      "sourceBytes": 10643556,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "a887fc957f1315cb0fcff41b762629f60e745c3a19a9369fbca593186a2406cf"
+        },
+        {
+          "index": 1,
+          "sha256": "fb96afffea3370e07d17a340c82ca6fadcfdc35cabf6bbb2bfa547a8ec9a9497"
+        },
+        {
+          "index": 2,
+          "sha256": "0fd7d10a7fd9402a2f94f65dfaca4aa19a840f8709c94483dd5cbd222a8fd155"
+        },
+        {
+          "index": 3,
+          "sha256": "d10e4843db5aea9f20948aff47835571847e1fcc9a2be90be4ac3701993294df"
+        },
+        {
+          "index": 4,
+          "sha256": "e46dd3293828f2e6a15512144aaf5790d03158255033b077d5fdf187aa19b362"
+        },
+        {
+          "index": 5,
+          "sha256": "33d4cd6de645fd6c8c557005e34a30656bfe9b1f84a632b797f7170ba384113f"
+        },
+        {
+          "index": 9,
+          "sha256": "af9bbef2b8efea6155b83dd9e54d31a1116fa023c7e545ffd6e05e0f63b84ff0"
+        }
+      ],
+      "sourceStructureSha256": "9bc31bf1a67adc5da8b77fe5e5a3ee09318b9701b9eafffd1b0b3196d5adbf50",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 5229421,
+          "runtimeBytes": 651786,
+          "sourceSha256": "a3a57b6f9bd44cfb81bf087c81d1debab1ae2a1855f35b16d4a232e9ceaf3b5e",
+          "runtimeSha256": "8a60000cbe2036b6368f761a5349c8e9ebbbb6f313173ba9839abe14dea6b688",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3233655,
+          "runtimeBytes": 300652,
+          "sourceSha256": "ee2d6b0efff90c38867532e3da648c59917966740a9e42d363e040e9804843f5",
+          "runtimeSha256": "156923bdc2e6ef004fa2aebab491011901fca505299488ebd1c2503fe9d0744b",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1528268,
+          "runtimeBytes": 169600,
+          "sourceSha256": "99306edda68608cda9204741907571a2e57f338142ffc7c6cde9fc55e153937a",
+          "runtimeSha256": "7c85c4b2858064ff105a5cbe841078ab612925417e47fad8d1855a46613f44b7",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-MENG",
+      "label": "孟齐",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-meng-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-MENG/rig-v1/rig/f348dea9-0358-4eab-9208-1335e1768372-model.glb",
+      "sha256": "c90132d7e2afa41b4ea2fdcf3186a149e4814487a45e08d10c742eb601b61d37",
+      "bytes": 1680184,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 4430630,
+          "sha256": "d55c98f27bdb496b0f8612cd996287ef4e87dfabca5d58f239ea1f80725dbfee",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3142792,
+          "sha256": "17b1951165e6cf80e03d52f9380b04f08e6397dfe017d6efd2f6f01f30f837d6",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1797072,
+          "sha256": "8a8534c732db2fff0ad2d643e8a8e5d3a3534a8fb10390e031166e28efd41acf",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "3c12c834d9efbc5fb15a731101e31f71872bc3f193f0c867f9d09508b7da2a1a",
+      "sourceBytes": 10019672,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "5218583a8957ae01e0f91e1e844f7208e61cd7422862f353fbd7169aa17bd38f"
+        },
+        {
+          "index": 1,
+          "sha256": "883bdb8bd3b5ddc1ae685e1e7bf033529c7784276e3e45a287c2a3b503103f31"
+        },
+        {
+          "index": 2,
+          "sha256": "962ee8fcee06d04a55cd8cd1b27d42dbefea172ce698f5b9694db13385a94f57"
+        },
+        {
+          "index": 3,
+          "sha256": "96bad8e5e0ca4b1d81af8d5d8271e7736d4249aed96a4c81b5ca2248c664caa5"
+        },
+        {
+          "index": 4,
+          "sha256": "3ac436a43e23442bdee2405d51bd68d484ed749eec5dad322d2094673a12a2d9"
+        },
+        {
+          "index": 5,
+          "sha256": "3d9ed437b82225362a1809229725037e4c5b79f9aa3d76b086927d434355f994"
+        },
+        {
+          "index": 9,
+          "sha256": "5282e2ee49077f230e03ee9ef35f16de9ac6fb5ff0c135f8eb25731200c8c209"
+        }
+      ],
+      "sourceStructureSha256": "d84e0af38dd559544d5c00497e0cdac77d0c3165ae7793641d93c5809fa91449",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 4430630,
+          "runtimeBytes": 560778,
+          "sourceSha256": "d55c98f27bdb496b0f8612cd996287ef4e87dfabca5d58f239ea1f80725dbfee",
+          "runtimeSha256": "7ba8d96a6038f454665c0024916289d288a9d76b21417ab0811334a1630e46fc",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3142792,
+          "runtimeBytes": 256518,
+          "sourceSha256": "17b1951165e6cf80e03d52f9380b04f08e6397dfe017d6efd2f6f01f30f837d6",
+          "runtimeSha256": "e2609592949fac1689aac55bf4ba394004ecce88534a8195c6fceb4c234278b4",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1797072,
+          "runtimeBytes": 213712,
+          "sourceSha256": "8a8534c732db2fff0ad2d643e8a8e5d3a3534a8fb10390e031166e28efd41acf",
+          "runtimeSha256": "a1eaba1bdf1ea90bcf2f520de39799baf68f7aa9757d6782b449cd0419dbe242",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-SHAO",
+      "label": "邵原",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-shao-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-SHAO/rig-v1/rig/ae88fddf-945c-4716-9776-1758d063fb27-model.glb",
+      "sha256": "b972baf3bb59fa52f25e7d449e913ae13d5a5dcc9c95c51d02644a67816c72d4",
+      "bytes": 1656292,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 4336797,
+          "sha256": "81e0e7422de775a2dec9bd3b7d034113e6783199adc7b6c05877d77f20917a3e",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 2931246,
+          "sha256": "6f6e1f5472be90d399191bc9de886414b1041f6a0981465d91fb80ebf0f282f9",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1738480,
+          "sha256": "d2efe647a763313b321a08506a839f18875d344ea8c3c4a17ad3fe12de781815",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "8b13b2f6aecc9689df545e93387cc82277775b53feca6ecd73b495376170358d",
+      "sourceBytes": 9687232,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "317cdfc47036edd89925b7418e97a903f4d3b09253a3ab2fe806bd9a0a9bc4ac"
+        },
+        {
+          "index": 1,
+          "sha256": "257e61d4ba75364574031f0b23ce6b2f6a1d0a613be2c9d9d56cf07108c18d70"
+        },
+        {
+          "index": 2,
+          "sha256": "0101dfe1ca68656d05cb6d361b4b2906543ca00e58918cf89c035785304c1bf5"
+        },
+        {
+          "index": 3,
+          "sha256": "d89946fe0c01ed31274b21353f5d8b7e8d2ec7e7efa30f6784f3ca5c3fbbd476"
+        },
+        {
+          "index": 4,
+          "sha256": "e1f7c1b168b9a9be8838639802d6e856d1965e4104cbbd9f3ddcfb1b5372e629"
+        },
+        {
+          "index": 5,
+          "sha256": "98e252e1f7ada912ea933d787c576de01950c13f6ac5cb8a01016e70f512c197"
+        },
+        {
+          "index": 9,
+          "sha256": "cece7149782d48e9ad8cffa95f76a10eff724784b2e6c623c9e9fcccd4d23766"
+        }
+      ],
+      "sourceStructureSha256": "0376fd4d36282cb00dc04df4311a9790c515e64f3b21c225568f8e822c889923",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 4336797,
+          "runtimeBytes": 541106,
+          "sourceSha256": "81e0e7422de775a2dec9bd3b7d034113e6783199adc7b6c05877d77f20917a3e",
+          "runtimeSha256": "52b487ac32658413532ecd5857f5bf7a3c3a140cdf1a62be20f291b736bb58b7",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 2931246,
+          "runtimeBytes": 236419,
+          "sourceSha256": "6f6e1f5472be90d399191bc9de886414b1041f6a0981465d91fb80ebf0f282f9",
+          "runtimeSha256": "d9cc653704cd27355fb624f5f6e51268eb13a734afba8be51552d8f97e305654",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1738480,
+          "runtimeBytes": 198058,
+          "sourceSha256": "d2efe647a763313b321a08506a839f18875d344ea8c3c4a17ad3fe12de781815",
+          "runtimeSha256": "3cb5aa559ded2d973264d62524df1e29f5ed9f340bcf351511f6c2c74420e085",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-SHEN",
+      "label": "沈玉芬",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-shen-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-SHEN/rig-v1/rig/771ca26e-fcc0-4f52-868b-7d7caeaf348c-model.glb",
+      "sha256": "f79c3447a5c3d77bf4ab8abba48281fc696a45bc7db053dedc2e57f5dabaa75e",
+      "bytes": 1491652,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3730070,
+          "sha256": "f2921857f02b2846ab3abe354739566423b3d671d0048eba40ee7138ee839453",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 2601515,
+          "sha256": "b9e02c137cca6db6d6feb3552addceb3d246f805c19c0425179c803ba9d25a33",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1599530,
+          "sha256": "c80c504542e340e87388fd8cb18eeaf92cbeefa781fe6a562c1457f2a22bb5cf",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "00740e54780b3f6b06ffdeba1d68ca531b99638be6fa7bfd50bbfa50f305d0a3",
+      "sourceBytes": 8582020,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "b8bda934fa999888535fa4a33ac57140979b5e518595e502406f9512f0a6897f"
+        },
+        {
+          "index": 1,
+          "sha256": "5aaea572677b6fe2e1db070fd5241ec4f558fd176d7ce4a9fcf721684049c996"
+        },
+        {
+          "index": 2,
+          "sha256": "3ebbf62ea3a786a9fbaf4bc865f1ea48a0d189ccfcf6edd87af4d5956668d957"
+        },
+        {
+          "index": 3,
+          "sha256": "4afe60b1e090db7836591588b0269ca7fc18c18dc5e03f07353fae7ead47b16a"
+        },
+        {
+          "index": 4,
+          "sha256": "f667f2807e023047bf047cecd1261791baf5807d3f6bff12429e604500ccbf54"
+        },
+        {
+          "index": 5,
+          "sha256": "07ea9612d4246938833327b519e15dbc9e4710a0a1cbf9420c4dbdf15258cd9e"
+        },
+        {
+          "index": 9,
+          "sha256": "718619684aff2776987fea7e112db0fed0e8e6fca89ebe7f5c70b1607a5a2ed5"
+        }
+      ],
+      "sourceStructureSha256": "19d4fb20318335de4acbd73e764b28cfd10b1ea0af4018edfe7fa94f9b990790",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3730070,
+          "runtimeBytes": 466028,
+          "sourceSha256": "f2921857f02b2846ab3abe354739566423b3d671d0048eba40ee7138ee839453",
+          "runtimeSha256": "967a139634dbe3fc6c4f78a55025ba38de2d6ad8d6241ff038c1c75c1b3ae8a2",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 2601515,
+          "runtimeBytes": 200037,
+          "sourceSha256": "b9e02c137cca6db6d6feb3552addceb3d246f805c19c0425179c803ba9d25a33",
+          "runtimeSha256": "655eabacd5215211f6055307c42418dcbb5b114335e2aab52f9020e66b0e3655",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1599530,
+          "runtimeBytes": 174681,
+          "sourceSha256": "c80c504542e340e87388fd8cb18eeaf92cbeefa781fe6a562c1457f2a22bb5cf",
+          "runtimeSha256": "d24af4f58d6a1a83dfc9fadf15c0512130fd67d980263a0799e1b1b28332ddde",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-XU",
+      "label": "许岚",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-xu-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-XU/rig-v1/rig/aa6d9286-2831-40bc-96f2-74877d95bedf-model.glb",
+      "sha256": "a92899ff81b6ee64e8b9a36185ae2c0e56380c37eef243f14a3542167271e640",
+      "bytes": 1578972,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3763624,
+          "sha256": "c22fff90ece320c5f60e10c0c83782f061757bbe4474e73155cc1c589e679dcf",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3072001,
+          "sha256": "af7ba940ac78b7fab5f2a1bbb3cefc5a3ab5a55909b478d72c3cab373ac1fa10",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1643701,
+          "sha256": "6aa7713af714ce95124c4742930c804f926fcc6e588e015f45b33f92d381f78b",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "91851024995f6285c1a6c2cd7c4ac0be6bef80766e4124eb648a69938e9b0c8f",
+      "sourceBytes": 9132952,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "56f9acc6c9fc79ce7c0d738e59dfd67a6ae7c082603de832d861a4139b404efa"
+        },
+        {
+          "index": 1,
+          "sha256": "47f3a46304b8e03168acac849328f296a6400ae7ba5d8ecddbb96d1395d09a63"
+        },
+        {
+          "index": 2,
+          "sha256": "3a65b9bf4fa3f8a2bf177cdfaa9e61e92f5213cbe7d4550b6cacf10e84ba6b21"
+        },
+        {
+          "index": 3,
+          "sha256": "ee491a64d454b8f123815ef4123d570eaba15ee9368cb8be252ef6352296fbc2"
+        },
+        {
+          "index": 4,
+          "sha256": "43b8735c40513a697f413a8ede8f0d62480869390595858779b519da3477500a"
+        },
+        {
+          "index": 5,
+          "sha256": "022bf9707989fe2af851c28b71419fbc72cb6f881d01728bc2e1841eb2e7d382"
+        },
+        {
+          "index": 9,
+          "sha256": "ee3aea51ff0055bd3a1d209971e85b5c1f5dfae7831b67dad07a97f12e0e4d82"
+        }
+      ],
+      "sourceStructureSha256": "17e86de72914411888c34de26be8e9de90fb78c0fac23ced8730959e083aebd0",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3763624,
+          "runtimeBytes": 477946,
+          "sourceSha256": "c22fff90ece320c5f60e10c0c83782f061757bbe4474e73155cc1c589e679dcf",
+          "runtimeSha256": "56011759ea06bcaae5bdafe10cd44f5ffc4f7779d4742ac85684bb231eb632d5",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3072001,
+          "runtimeBytes": 255278,
+          "sourceSha256": "af7ba940ac78b7fab5f2a1bbb3cefc5a3ab5a55909b478d72c3cab373ac1fa10",
+          "runtimeSha256": "c939447d882a76b19a95cb7756e6f8a1cfbf377e3144bfe5fe419c04d56aa3cd",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1643701,
+          "runtimeBytes": 192125,
+          "sourceSha256": "6aa7713af714ce95124c4742930c804f926fcc6e588e015f45b33f92d381f78b",
+          "runtimeSha256": "b36e7be1f88069b5ad74a3a6628d04cd327935e940565a1a34461c7229467f52",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-ZHAO",
+      "label": "赵启明",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-zhao-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-ZHAO/rig-v1/rig/f959a172-f5d8-49b8-b783-b57917aa72a0-model.glb",
+      "sha256": "4f669c12b0fbe108e3080f2acf418d6402755cbc443af610b84dc3ddce56bb20",
+      "bytes": 1764692,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 4990275,
+          "sha256": "c738a7479484e386302283bdb768a392ed808fd369abefd0c8b15a0e46178fe6",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3497334,
+          "sha256": "7324dd5227af949c26a298d0859480489c6ab1bf43433e52407d40e059abcbfe",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1695882,
+          "sha256": "56722258e81cfeaa1350a997065c6ce2dfdddee77cb5f5da040ba55f857d6574",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "bb3feadbff89b2ea8bc4dd008cc5c6a4eee4b34c53d6018116003429a4f3af9e",
+      "sourceBytes": 10827388,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "48e709a673b05d84cb0e9fdcca0feabc9b820780ff6134bd9df2b4b134dd996c"
+        },
+        {
+          "index": 1,
+          "sha256": "d1be0dba00ba1bfed7f221aea267404e40dd6a06fcd1105a33afabf7b0919f22"
+        },
+        {
+          "index": 2,
+          "sha256": "accc2315bc14d19d1e972c8ba6ff26d37bd9b064276d1c10eac1acc2a72264ff"
+        },
+        {
+          "index": 3,
+          "sha256": "035830c817b4fe049e3290e3b4bd94ef7955023b11a1e3ccae4c5f961202e00d"
+        },
+        {
+          "index": 4,
+          "sha256": "d698784767be06e44a4bacae2246a6a61978549a7f548ae14a3ff8d0ba771537"
+        },
+        {
+          "index": 5,
+          "sha256": "988f3d9e7411232cf88b9296d3462890349a7ecc45d33c726c447f5a9c9f2d6a"
+        },
+        {
+          "index": 9,
+          "sha256": "3f87e4e5059c6140c8b7b63150784242e053ce9b3affc486424e8f6c58d00b34"
+        }
+      ],
+      "sourceStructureSha256": "422a41cc3f8e7496cc167fd7dceef33ae30307a4ef53af48fe6093dad2f6f29e",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 4990275,
+          "runtimeBytes": 631861,
+          "sourceSha256": "c738a7479484e386302283bdb768a392ed808fd369abefd0c8b15a0e46178fe6",
+          "runtimeSha256": "a29c84315f9aa4cf8c5a8dc7bae6407c126499c674dd50f3c461bc83cd6d4f50",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3497334,
+          "runtimeBytes": 291105,
+          "sourceSha256": "7324dd5227af949c26a298d0859480489c6ab1bf43433e52407d40e059abcbfe",
+          "runtimeSha256": "1cec335f173cf0f0b0f93f8cb4db0f4020251b1532783c59a62c3b3a2ea7b826",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1695882,
+          "runtimeBytes": 197835,
+          "sourceSha256": "56722258e81cfeaa1350a997065c6ce2dfdddee77cb5f5da040ba55f857d6574",
+          "runtimeSha256": "5079c221860a1f64e432df7bcbe0367c9ff2c414d29897f6b790071370bfa2c0",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-ZHENG",
+      "label": "郑铎",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-zheng-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-ZHENG/rig-v1/rig/40053c3a-703e-454f-b015-3339d245489e-model.glb",
+      "sha256": "5753250c0198f63d7a2b723e0e6c704189283870f330513f323635959ccddd09",
+      "bytes": 1732376,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 4697505,
+          "sha256": "c137f8c00d2a7000e1a8e1e5b67ec5596d83f289b39bb7233b2a4d751acc3ab6",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3235918,
+          "sha256": "2eb62c4c9dc1c30a7cb797071af6891987fd6200604e1e52e987b945490a3956",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1870568,
+          "sha256": "e658e4e8974285423909379440e4ab02bb4475f68530a607d00e203c89ecc5f8",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "71465e2907f29cb26e4fd7927bf07a1f756e11fb511ebcc91ffdd1e78fc2e765",
+      "sourceBytes": 10475064,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "93b28d72e5cbb9d45a1da11d346afd1fb921ed0819c2a19b40d829f0b50d6c2b"
+        },
+        {
+          "index": 1,
+          "sha256": "0014fcd89bdb0cdf1dcc96ce339c0f0a39450b40f288ef7ee9b37e540bc1ebce"
+        },
+        {
+          "index": 2,
+          "sha256": "3cc20ae420339f221f62b9adee92c756ac6e1d34dc9cd2546a7b6ea6e490a6e1"
+        },
+        {
+          "index": 3,
+          "sha256": "db388075943c6c23671c0e7f8336d7b08690646e76c786fcf9060d93f3bd856a"
+        },
+        {
+          "index": 4,
+          "sha256": "03a1669d2ff3e1fae912741dfc70e52f7958f1c9cbcc70909575df928e681a37"
+        },
+        {
+          "index": 5,
+          "sha256": "873e44fe24e6b67a4421b46326ba2c411babaca7b62b22d5a1833db1a9313701"
+        },
+        {
+          "index": 9,
+          "sha256": "c01a52caf7f03143299f04cf6f7e673d35c1c63f35a8473b379bb683257900c1"
+        }
+      ],
+      "sourceStructureSha256": "984836a3967bc6c886a1547b9ffb80d27025397f6512739821db10de4e288d32",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 4697505,
+          "runtimeBytes": 590902,
+          "sourceSha256": "c137f8c00d2a7000e1a8e1e5b67ec5596d83f289b39bb7233b2a4d751acc3ab6",
+          "runtimeSha256": "454acc2eef64e88eeda284aad9160d26f5a6d0ebfa9f037e861fdb5ed89cc8b5",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3235918,
+          "runtimeBytes": 234711,
+          "sourceSha256": "2eb62c4c9dc1c30a7cb797071af6891987fd6200604e1e52e987b945490a3956",
+          "runtimeSha256": "d655c64a2e1e60774448b20cca3042a95f6fa5b6e88be4bc6b3dadb901a1346e",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1870568,
+          "runtimeBytes": 235697,
+          "sourceSha256": "e658e4e8974285423909379440e4ab02bb4475f68530a607d00e203c89ecc5f8",
+          "runtimeSha256": "1b77295bf13f87eb123aa39c132f454ca4f34d1865624ffbce6868c51818ec9d",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    },
+    {
+      "id": "CH-ZHOU",
+      "label": "周延",
+      "bodyPlan": "adult",
+      "heightMeters": 1.75,
+      "runtimePath": "models/characters/ch-zhou-rig-v1.glb",
+      "sourcePath": "assets/source/tripo/CH-ZHOU/rig-v1/rig/9d29d053-843a-410e-9c67-1cd20c7435ea-model.glb",
+      "sha256": "e643df2c1bc4a42ebd35d7b1da52a769222c09aa501963f49cd53dcb0a7bcd98",
+      "bytes": 1648864,
+      "provider": "tripo",
+      "revision": "rig-v1-tex1024",
+      "sourceImages": [
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3976641,
+          "sha256": "9c23482ba8e24a6058883f5626945d40f2c0d2c257619b40eaaa6c6b64e72e1c",
+          "mimeType": "image/png"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 3634599,
+          "sha256": "ca2434d532272f1cd5223ebbdabe1f2d12ceb7e758de9f89540f8361b4b4f48d",
+          "mimeType": "image/jpeg"
+        },
+        {
+          "width": 4096,
+          "height": 4096,
+          "mode": "RGB",
+          "bytes": 1757174,
+          "sha256": "ffe6a907d1cf15bceb8494ba6f39a68458ed8c925ea6a12e73da91d988a763d5",
+          "mimeType": "image/jpeg"
+        }
+      ],
+      "sourceTextureRGBA8WithMipBytesEstimate": 268435456.0,
+      "sourceSha256": "1ec1a772922bf269612bb9b7edf0d1453e297ad41ff0a739603bd9c3a0abd38d",
+      "sourceBytes": 10017412,
+      "nonImageBufferViews": [
+        {
+          "index": 0,
+          "sha256": "c57379de1088c043c1d371a8b96b13ba0a5c5623cb010ebb08009fd8d37d0fd5"
+        },
+        {
+          "index": 1,
+          "sha256": "395ece11f09bfc062a41d449b5e30d5b263cd17619cfbc363ccd831e7b555e8d"
+        },
+        {
+          "index": 2,
+          "sha256": "9b4156c7db70f41af2d970b49638e002094614180b7d9c8db4a57bf1af11ee68"
+        },
+        {
+          "index": 3,
+          "sha256": "9a6769746b29f725f759ce3c4a07d13321e3a1329ea4ff8f9d3026f828db2252"
+        },
+        {
+          "index": 4,
+          "sha256": "3f3a4071972226b46a9fc4791c007b9ae09add0008d6ccf6886e48cab3e9d0a8"
+        },
+        {
+          "index": 5,
+          "sha256": "ed7cd7ed2f964e4cfa6c17e74fa9110e584ef1d4c923a106216fb7bd3c8ea7bc"
+        },
+        {
+          "index": 9,
+          "sha256": "e708c095c7c8644ee759cb2bad73d3981fdc43730bf070ea9f76b64f30ea8116"
+        }
+      ],
+      "sourceStructureSha256": "c7d42c2a35bed37485c84d92371e3b0bb41c0b182836f1b747a565560f6ff55f",
+      "runtimeImages": [
+        {
+          "image": 0,
+          "mimeType": "image/png",
+          "roles": [
+            "normal-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3976641,
+          "runtimeBytes": 497256,
+          "sourceSha256": "9c23482ba8e24a6058883f5626945d40f2c0d2c257619b40eaaa6c6b64e72e1c",
+          "runtimeSha256": "a022af662174788975fbdd296ac41e3607cd48aa66f62639f207650b47c6400f",
+          "normalRenormalized": true
+        },
+        {
+          "image": 1,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "baseColor-sRGB"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 3634599,
+          "runtimeBytes": 295557,
+          "sourceSha256": "ca2434d532272f1cd5223ebbdabe1f2d12ceb7e758de9f89540f8361b4b4f48d",
+          "runtimeSha256": "791c7a1cadf3c8c955b63829fa14088d8d8c52e379b1781964f102ca7c54f4da",
+          "normalRenormalized": false
+        },
+        {
+          "image": 2,
+          "mimeType": "image/jpeg",
+          "roles": [
+            "metallicRoughness-linear"
+          ],
+          "sourceDimensions": [
+            4096,
+            4096
+          ],
+          "runtimeDimensions": [
+            1024,
+            1024
+          ],
+          "alphaPreserved": false,
+          "sourceBytes": 1757174,
+          "runtimeBytes": 207057,
+          "sourceSha256": "ffe6a907d1cf15bceb8494ba6f39a68458ed8c925ea6a12e73da91d988a763d5",
+          "runtimeSha256": "fc9dedf5e89e8f201500766611789f0af77da59169726a6c2f54a84d6c51827e",
+          "normalRenormalized": false
+        }
+      ],
+      "runtimeTextureRGBA8WithMipBytesEstimate": 16777216
+    }
+  ],
+  "canonicalWalk": {
+    "id": "ANIM-WALK-CANONICAL",
+    "revision": "canonical-v1",
+    "runtimePath": "models/animations/walk-canonical-v1.glb",
+    "sourcePath": "assets/source/tripo/shared-animations/walk-v1/walk-canonical.glb",
+    "sha256": "8281b6b9d7563805e9fffed3a0db6657eefe42fac0d8d86c9a4357e193b0aa78",
+    "bytes": 532296
+  },
+  "totalCharacterBytes": 21845752,
+  "newProviderCalls": 0,
+  "newProviderCost": 0,
+  "provenance": "User-approved Tripo production outputs; original job, prompt and provider records stay in assets/source/tripo. No new download or generation.",
+  "visualAcceptance": "Runtime integration not browser reviewed",
+  "runtimeTextureRGBA8WithMipBytesEstimateAll13": 218103808,
+  "converterPath": "artifacts/asset-integration/scenery/resize-glb-textures.py"
+}

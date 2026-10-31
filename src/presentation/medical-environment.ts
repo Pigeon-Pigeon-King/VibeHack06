@@ -43,7 +43,11 @@ export function buildMedical(k: PortKit): SceneDynamics {
       k.box('amber', [x, 1.03, z], [1.5, 0.06, 0.8]);
     }
   }
-  block(k, 'medical-rest-bench', [-413.5, 0.43, 63.5], [4.5, 0.86, 0.9], 'pale');
+  k.visualSlot('medical-rest-bench', slot => {
+    // Match the two approved stools' actual uniform-scale envelopes.
+    block(slot, 'medical-rest-bench', [-414.5, 0.25344233214855194, 63.5], [1.8, 0.5068846642971039, 0.45368186831474306], 'pale');
+    block(slot, 'medical-rest-bench-1', [-412.5, 0.25344233214855194, 63.5], [1.8, 0.5068846642971039, 0.45368186831474306], 'pale');
+  });
   block(k, 'medical-rest-back', [-413.5, 1.2, 64], [4.5, 1.0, 0.15], 'paint');
   k.cylinder('white', [-414.5, 1.15, 60.2], 0.15, 0.25);
   block(k, 'medical-water-table', [-414.5, 0.48, 60.2], [1.1, 0.96, 0.8]);

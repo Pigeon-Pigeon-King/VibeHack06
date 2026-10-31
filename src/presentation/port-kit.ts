@@ -45,6 +45,24 @@ export class PortKit {
     this.root.name = 'industrial-port-placeholder';
     this.root.userData.assetStatus = 'placeholder';
   }
+  /** An independently replaceable visual, with unchanged collider IDs and transforms. */
+  visualSlot(id: string, build: (slot: PortKit) => void): Group {
+    const name = `generated-fallback:${id}`;
+    if (this.root.getObjectByName(name)) throw new Error(`Duplicate visual slot: ${id}`);
+    const slot = new PortKit();
+    slot.origin.copy(this.origin);
+    slot.serial = this.serial;
+    slot.materials = this.materials;
+    slot.geometries = this.geometries;
+    build(slot);
+    slot.flush();
+    this.serial = slot.serial;
+    this.solids.push(...slot.solids);
+    slot.root.name = name;
+    slot.root.userData.generatedSlot = id;
+    this.root.add(slot.root);
+    return slot.root;
+  }
   material(surface: Surface): MeshStandardMaterial {
     let material = this.materials.get(surface);
     if (!material) {

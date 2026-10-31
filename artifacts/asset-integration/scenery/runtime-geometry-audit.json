@@ -1,0 +1,631 @@
+{
+  "scope": "Actual GLTFLoader vertex/node/material parsing. Image-to-Texture decode substituted in Node. No rendered-image, gameplay or Windows acceptance.",
+  "assets": [
+    {
+      "id": "BG-CRANE",
+      "bytes": 3154172,
+      "runtimeSha256": "bfec243ec25cf469ae3f2eb36a373f4d9737ff92cdfc8cdb2937811f4f1b2ca5",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 43180,
+      "triangles": 19718,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999998553073943,
+        1.0000001620336911
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.44521310925483704,
+          -0.7250379323959351,
+          -0.9443587064743042
+        ],
+        "max": [
+          0.44664904475212097,
+          0.7188607454299927,
+          0.9452332258224487
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "ENV-LIGHTKIT-POLE",
+      "bytes": 1393544,
+      "runtimeSha256": "afe2b14a3580fe5445f4cef5441acf9532a5b25c9f127236cfb3d6fa9e0f220d",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 11335,
+      "triangles": 11374,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999998547490575,
+        1.0000001470245603
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.435163289308548,
+          -0.9479645490646362,
+          -0.17805664241313934
+        ],
+        "max": [
+          0.43270257115364075,
+          0.9481470584869385,
+          0.17822511494159698
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-BENCH",
+      "bytes": 1256928,
+      "runtimeSha256": "ce7d7df330953b12fb3adb079f49cfe5efdcf125676873824a93956190871d3f",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 3064,
+      "triangles": 4592,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999662984992,
+        1.0000000383217327
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.12602274119853973,
+          -0.1408012956380844,
+          -0.5
+        ],
+        "max": [
+          0.12602274119853973,
+          0.1408012956380844,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-LIFE-MUG",
+      "bytes": 834268,
+      "runtimeSha256": "bcc64d594526addb80dedb12f3768f430840fb033d7c1883bfe8ba1e021e1745",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 2610,
+      "triangles": 3626,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999598652148,
+        1.000000040006683
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.43909358978271484,
+          -0.3714621067047119,
+          -0.5
+        ],
+        "max": [
+          0.43909358978271484,
+          0.3714621067047119,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-MEDICAL-BAG",
+      "bytes": 1569588,
+      "runtimeSha256": "68d06c25d534d0442aaceb6eb46795caa4f9fa1f09e47e96f5b426f540864020",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 4030,
+      "triangles": 5518,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999605944471,
+        1.0000000405937857
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.2999960780143738,
+          -0.35750243067741394,
+          -0.5
+        ],
+        "max": [
+          0.2999960780143738,
+          0.35750243067741394,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TANK",
+      "bytes": 1690788,
+      "runtimeSha256": "03f4f654a3101d91247dcd0fc5dd7170999367c477075c470b4fd3ebe663bb1b",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 17986,
+      "triangles": 15130,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999998523645174,
+        1.0000001526837194
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.8136574029922485,
+          -0.9513395428657532,
+          -0.809900164604187
+        ],
+        "max": [
+          0.8130090236663818,
+          0.947274386882782,
+          0.8106244802474976
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-TERMINAL-CONSOLE",
+      "bytes": 1617188,
+      "runtimeSha256": "e187a83c21ea321c690193517c5551541ed2bef280d9a94fd90ab696d5fceff8",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 7466,
+      "triangles": 9819,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.999999959356786,
+        1.0000000405194964
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.15724784135818481,
+          -0.19664359092712402,
+          -0.5
+        ],
+        "max": [
+          0.15724784135818481,
+          0.19664359092712402,
+          0.5
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    },
+    {
+      "id": "PROP-VEH-TUG",
+      "bytes": 2185792,
+      "runtimeSha256": "1fd793e2a4ae6ed2b958c9a441fdb55a97e8dc3394c76c252fc3dd60946b76ac",
+      "meshes": 1,
+      "geometries": 1,
+      "materials": 1,
+      "textureObjects": 3,
+      "vertices": 13832,
+      "triangles": 18122,
+      "invalidVertices": 0,
+      "invalidNormals": 0,
+      "normalLength": [
+        0.9999999594901637,
+        1.0000000405262781
+      ],
+      "sourceBounds": {
+        "min": [
+          -0.5,
+          -0.23017218708992004,
+          -0.26132938265800476
+        ],
+        "max": [
+          0.5,
+          0.23017218708992004,
+          0.26132938265800476
+        ]
+      },
+      "clips": 0,
+      "pbr": [
+        {
+          "type": "MeshStandardMaterial",
+          "opacity": 1,
+          "transparent": false,
+          "side": 0,
+          "baseColor": true,
+          "normal": true,
+          "metallic": true,
+          "roughness": true
+        }
+      ]
+    }
+  ],
+  "placements": [
+    {
+      "id": "front-background-crane",
+      "scenario": "frontgate",
+      "assetId": "BG-CRANE",
+      "role": "background",
+      "sourceScale": 20.77708114891474,
+      "yaw": 1.5707963267948966,
+      "position": [
+        78,
+        0,
+        60
+      ],
+      "dimensions": [
+        39.26020491566423,
+        30,
+        18.530292347448466
+      ],
+      "bounds": {
+        "min": [
+          58.36989754216789,
+          0,
+          50.73485382627577
+        ],
+        "max": [
+          97.63010245783212,
+          30,
+          69.26514617372423
+        ]
+      },
+      "support": "outside front-boundary-x-54 and front-boundary-z-52",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-background-light",
+      "scenario": "frontgate",
+      "assetId": "ENV-LIGHTKIT-POLE",
+      "role": "background",
+      "sourceScale": 2.6369755767997423,
+      "yaw": 0,
+      "position": [
+        58,
+        0,
+        36
+      ],
+      "dimensions": [
+        2.2885410779770865,
+        5,
+        0.9395062926037312
+      ],
+      "bounds": {
+        "min": [
+          56.85572946101146,
+          0,
+          35.53024685369814
+        ],
+        "max": [
+          59.14427053898854,
+          5,
+          36.46975314630187
+        ]
+      },
+      "support": "outside front-boundary-x-54",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-bench-left",
+      "scenario": "medical",
+      "assetId": "PROP-BENCH",
+      "role": "replacement",
+      "sourceScale": 1.8,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -414.5,
+        0,
+        63.5
+      ],
+      "dimensions": [
+        1.7999999999999545,
+        0.5068846642971039,
+        0.4536818683147459
+      ],
+      "bounds": {
+        "min": [
+          -415.4,
+          0,
+          63.27315906584263
+        ],
+        "max": [
+          -413.6,
+          0.5068846642971039,
+          63.72684093415737
+        ]
+      },
+      "support": "medical-ground / calibrated left bench solid",
+      "fallbackSlot": "medical-rest-bench"
+    },
+    {
+      "id": "medical-bench-right",
+      "scenario": "medical",
+      "assetId": "PROP-BENCH",
+      "role": "replacement",
+      "sourceScale": 1.8,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -412.5,
+        0,
+        63.5
+      ],
+      "dimensions": [
+        1.7999999999999545,
+        0.5068846642971039,
+        0.4536818683147459
+      ],
+      "bounds": {
+        "min": [
+          -413.4,
+          0,
+          63.27315906584263
+        ],
+        "max": [
+          -411.6,
+          0.5068846642971039,
+          63.72684093415737
+        ]
+      },
+      "support": "medical-ground / calibrated right bench solid",
+      "fallbackSlot": "medical-rest-bench"
+    },
+    {
+      "id": "medical-water-mug",
+      "scenario": "medical",
+      "assetId": "PROP-LIFE-MUG",
+      "role": "surface-prop",
+      "sourceScale": 0.13460323165546126,
+      "yaw": 0,
+      "position": [
+        -414.16,
+        0.962,
+        60.39
+      ],
+      "dimensions": [
+        0.11820683236794594,
+        0.10000000000000009,
+        0.1346032316554613
+      ],
+      "bounds": {
+        "min": [
+          -414.219103416184,
+          0.962,
+          60.32269838417227
+        ],
+        "max": [
+          -414.10089658381605,
+          1.062,
+          60.45730161582773
+        ]
+      },
+      "support": "medical-water-table top y=0.96; clear of existing vessel at [-414.5,60.2]",
+      "fallbackSlot": null
+    },
+    {
+      "id": "medical-supply-bag",
+      "scenario": "medical",
+      "assetId": "PROP-MEDICAL-BAG",
+      "role": "surface-prop",
+      "sourceScale": 0.4,
+      "yaw": 1.5707963267948966,
+      "position": [
+        -417,
+        1.062,
+        56
+      ],
+      "dimensions": [
+        0.39999999999997726,
+        0.28600194454193106,
+        0.23999686241150187
+      ],
+      "bounds": {
+        "min": [
+          -417.2,
+          1.062,
+          55.88000156879425
+        ],
+        "max": [
+          -416.8,
+          1.3480019445419311,
+          56.11999843120575
+        ]
+      },
+      "support": "medical-supply-bin--417-56 amber lid top y=1.06",
+      "fallbackSlot": null
+    },
+    {
+      "id": "front-east-tank",
+      "scenario": "frontgate",
+      "assetId": "PROP-TANK",
+      "role": "replacement",
+      "sourceScale": 3.8114759722038096,
+      "yaw": 0,
+      "position": [
+        43,
+        0,
+        10
+      ],
+      "dimensions": [
+        6.199999999999996,
+        7.236521373727994,
+        6.176590746216307
+      ],
+      "bounds": {
+        "min": [
+          39.900000000000006,
+          0,
+          6.911704626891845
+        ],
+        "max": [
+          46.1,
+          7.236521373727994,
+          13.088295373108153
+        ]
+      },
+      "support": "front-ground / existing tank solid",
+      "fallbackSlot": "front-east-tank"
+    },
+    {
+      "id": "epilogue-reception-console",
+      "scenario": "epilogue",
+      "assetId": "PROP-TERMINAL-CONSOLE",
+      "role": "replacement",
+      "sourceScale": 3.5,
+      "yaw": 1.5707963267948966,
+      "position": [
+        2.2,
+        0,
+        6
+      ],
+      "dimensions": [
+        3.5,
+        1.3765051364898682,
+        1.1007348895072937
+      ],
+      "bounds": {
+        "min": [
+          0.4500000000000002,
+          0,
+          5.449632555246353
+        ],
+        "max": [
+          3.95,
+          1.3765051364898682,
+          6.550367444753647
+        ]
+      },
+      "support": "epilogue-ground / existing reception-table solid",
+      "fallbackSlot": "epilogue-reception-console"
+    },
+    {
+      "id": "front-tug",
+      "scenario": "frontgate",
+      "assetId": "PROP-VEH-TUG",
+      "role": "replacement",
+      "sourceScale": 4.35,
+      "yaw": 1.4207963267948966,
+      "position": [
+        21,
+        0,
+        20
+      ],
+      "dimensions": [
+        2.679485412977016,
+        2.002498027682304,
+        4.523980155629129
+      ],
+      "bounds": {
+        "min": [
+          19.63716502438902,
+          0,
+          17.756481298294112
+        ],
+        "max": [
+          22.316650437366036,
+          2.002498027682304,
+          22.28046145392324
+        ]
+      },
+      "support": "front-ground / existing tractor solid",
+      "fallbackSlot": "front-tug"
+    }
+  ]
+}
