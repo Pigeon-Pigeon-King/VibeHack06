@@ -7,6 +7,7 @@
 - `vitest run tests/chapter-transition`：6 文件、58 项通过。覆盖控制器 25 项、旁白清单 8 项、本地音频 10 项、输入 8 项、战役计划 5 项和浏览器外壳事件 2 项。
 - 独立模块及预览 TypeScript 严格检查通过；整仓 TypeScript 检查通过。
 - 独立预览生产构建通过，包含相对路径 HTML/CSS/JS；实际模块由本地 Vite 5198 端口提供。
+- 同步 main 的 AK47 附着模块后，`npm run build` 通过。主游戏 JS 约 5.30 MB，现有大包警告仍在；本模块尚未接入主游戏入口。
 - 复核发现并修复上一关最后一枪误跳过过场、按住 F 的重复事件越过进入边界，以及可见窗口失焦未暂停。修复后独立复核 10 项输入／外壳事件通过。
 - 11 桥按剧情时间线与关内起止事实复核，并经 human-fiction-zh、Humanizer 3.1.0 与根窗口冷读；完整来源和修改记录见 `docs/chapter-transition/NARRATION.md`。
 
