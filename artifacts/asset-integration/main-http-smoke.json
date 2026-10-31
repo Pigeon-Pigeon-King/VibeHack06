@@ -1,0 +1,35 @@
+{
+  "scope": "HTTP resource availability only; no rendering or browser audio acceptance",
+  "responses": [
+    {
+      "path": "/",
+      "status": 200,
+      "type": "text/html",
+      "bytes": null
+    },
+    {
+      "path": "/credits.html",
+      "status": 200,
+      "type": "text/html;charset=utf-8",
+      "bytes": "4451"
+    },
+    {
+      "path": "/models/characters/ch-lu-rig-v1.glb",
+      "status": 200,
+      "type": "model/gltf-binary",
+      "bytes": "1636760"
+    },
+    {
+      "path": "/assets/generated/production-20261031/PROP-VEH-TUG.glb",
+      "status": 200,
+      "type": "model/gltf-binary",
+      "bytes": "2185792"
+    },
+    {
+      "path": "/audio/voice/S01/s01.lu_jianping.09f2e5d6ac.t01.mp3",
+      "status": 200,
+      "type": "audio/mpeg",
+      "bytes": "141740"
+    }
+  ]
+}
